@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Loader from '../components/Loader.astro';
+---
+
+<Layout title="Servicios | Sports & Academic Hub">
+	<Loader />
+	<Navbar />
+	<main class="bg-[#030303] min-h-screen overflow-hidden pt-32 pb-24">
+        
+        <div class="container mx-auto px-6 relative z-10 mb-20 text-center">
+            <h1 class="text-5xl md:text-7xl font-display font-bold text-white tracking-widest uppercase reveal-text">
+                SERVICIOS <span class="text-transparent text-stroke">ACADÉMICOS</span>
+            </h1>
+        </div>
+
+        <div class="container mx-auto px-6 space-y-32">
+            
+            <!-- Service 1: Asymmetrical Left -->
+            <div class="service-row flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                <div class="w-full md:w-1/2 relative">
+                    <!-- Decorative Yellow Frame -->
+                    <div class="absolute -top-6 -left-6 w-full h-full border-2 border-yellow-500 z-0 frame-anim"></div>
+                    <div class="relative z-10 w-full h-[400px] md:h-[600px] overflow-hidden group">
+                        <img src="https://picsum.photos/seed/service1/800/1000" alt="Service 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" />
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex flex-col justify-center text-left reveal-content">
+                    <span class="text-yellow-500 font-display text-xl mb-4 block">01 / ASESORÍA PERSONALIZADA</span>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">Orientación para Atletas</h2>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Evaluamos tu perfil deportivo y académico para conectarte con las instituciones que mejor se adapten a tu talento. Un enfoque 360 grados que maximiza tus oportunidades de obtener becas completas.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-4 text-white font-bold uppercase tracking-widest hover:text-yellow-500 transition-colors w-max group">
+                        Conocer más
+                        <div class="w-12 h-[1px] bg-yellow-500 group-hover:w-20 transition-all duration-300"></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Service 2: Asymmetrical Right -->
+            <div class="service-row flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-20">
+                <div class="w-full md:w-1/2 relative">
+                    <!-- Decorative Yellow Frame -->
+                    <div class="absolute -bottom-6 -right-6 w-full h-full border-2 border-green-500 z-0 frame-anim"></div>
+                    <div class="relative z-10 w-full h-[400px] md:h-[600px] overflow-hidden group">
+                        <img src="https://picsum.photos/seed/service2/800/1000" alt="Service 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" />
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex flex-col justify-center text-left reveal-content">
+                    <span class="text-green-500 font-display text-xl mb-4 block">02 / PREPARACIÓN DEPORTIVA</span>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">Campamentos de Élite</h2>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Entrena con los mejores coaches internacionales. Refina tus habilidades técnicas y tácticas mientras te preparas para las exigencias del deporte universitario de primer nivel.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-4 text-white font-bold uppercase tracking-widest hover:text-green-500 transition-colors w-max group">
+                        Conocer más
+                        <div class="w-12 h-[1px] bg-green-500 group-hover:w-20 transition-all duration-300"></div>
+                    </a>
+                </div>
+            </div>
+
+             <!-- Service 3: Asymmetrical Left -->
+             <div class="service-row flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                <div class="w-full md:w-1/2 relative">
+                    <!-- Decorative Blue Frame -->
+                    <div class="absolute top-6 left-6 w-full h-full border-2 border-blue-500 z-0 frame-anim"></div>
+                    <div class="relative z-10 w-full h-[400px] md:h-[600px] overflow-hidden group">
+                        <img src="https://picsum.photos/seed/service3/800/1000" alt="Service 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" />
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex flex-col justify-center text-left reveal-content">
+                    <span class="text-blue-500 font-display text-xl mb-4 block">03 / GESTIÓN DE ADMISIONES</span>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">Proceso Académico</h2>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Te guiamos paso a paso en los trámites universitarios, desde la preparación para los exámenes estandarizados hasta la elaboración de ensayos y recolección de documentación.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-4 text-white font-bold uppercase tracking-widest hover:text-blue-500 transition-colors w-max group">
+                        Conocer más
+                        <div class="w-12 h-[1px] bg-blue-500 group-hover:w-20 transition-all duration-300"></div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+	</main>
+</Layout>
+
+<script>
+    import gsap from 'gsap';
+    import ScrollTrigger from 'gsap/ScrollTrigger';
+
+    if (typeof window !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Header reveal
+        gsap.from('.reveal-text', {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out',
+            delay: 0.5
+        });
+
+        // Rows reveal on scroll
+        const rows = document.querySelectorAll('.service-row');
+        
+        rows.forEach(row => {
+            const img = row.querySelector('.relative.z-10');
+            const frame = row.querySelector('.frame-anim');
+            const content = row.querySelector('.reveal-content');
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: row,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+            tl.from(img, {
+                x: row.classList.contains('md:flex-row-reverse') ? 100 : -100,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out'
+            })
+            .from(frame, {
+                x: row.classList.contains('md:flex-row-reverse') ? -50 : 50,
+                y: row.classList.contains('md:flex-row-reverse') ? -50 : 50,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            }, '-=0.5')
+            .from(content?.children || [], {
+                y: 30,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: 'power3.out'
+            }, '-=0.5');
+        });
+    }
+</script>

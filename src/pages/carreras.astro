@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const services = [
+  { title: "ENTRENAMIENTO ELITE", desc: "Programas de alto rendimiento con tecnología de punta y métricas de seguimiento personalizado para potenciar tu desempeño.", img: "/images/ima2.jpg" },
+  { title: "ANÁLISIS TÁCTICO", desc: "Desglose de partidos, estrategias y métricas avanzadas por IA para una visión más profunda del juego y los oponentes.", img: "/images/ima3.jpg" },
+  { title: "FISIOTERAPIA", desc: "Recuperación muscular, readaptación deportiva y prevención de lesiones con protocolos de primer nivel internacional.", img: "/images/ima4.jpg" },
+  { title: "PSICOLOGÍA DEPORTIVA", desc: "Fortalecimiento mental y resiliencia para competiciones de alta presión, formando atletas integrales y líderes.", img: "/images/ima5.jpg" }
+];
+---
+
+<Layout title="Carreras y Servicios | Sports">
+  <Navbar />
+  <main class="bg-[#030303] min-h-screen pt-32 px-6 md:px-10 text-white pb-32 relative overflow-hidden">
+    <!-- Ambient Glow Effects -->
+    <div class="absolute top-0 right-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-yellow-500/10 blur-[100px] md:blur-[150px] rounded-full pointer-events-none z-0 translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 blur-[120px] rounded-full pointer-events-none z-0 -translate-x-1/2 translate-y-1/2"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <!-- Header Section -->
+      <div class="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div>
+          <h2 class="text-[10px] md:text-xs font-display text-yellow-500 tracking-[0.4em] uppercase mb-4 title-anim opacity-0 translate-y-4">Desarrollo Profesional</h2>
+          <h1 class="text-5xl md:text-7xl lg:text-8xl font-display leading-none title-anim opacity-0 translate-y-10">CARRERAS Y <br/><span class="text-yellow-500 text-stroke">SERVICIOS</span></h1>
+          <div class="w-16 md:w-24 h-1 bg-yellow-500 mt-8 line-anim scale-x-0 origin-left"></div>
+        </div>
+        <p class="text-gray-400 text-xs md:text-sm max-w-sm md:text-right desc-anim opacity-0">
+          Nuestra infraestructura deportiva te proporciona las herramientas, el análisis y el soporte médico necesario para llevar tu talento al siguiente nivel. Descubre nuestras áreas de especialización.
+        </p>
+      </div>
+      
+      <!-- Interactive Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        {services.map((service, index) => (
+          <div class="group relative h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden bg-[#0a0a0a] border border-white/5 rounded-sm cursor-pointer service-card opacity-0 translate-y-10">
+            <!-- Background Image with Parallax setup and Grayscale -->
+            <img src={service.img} class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-80 group-hover:scale-110 transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] grayscale-[80%] group-hover:grayscale-0" alt={service.title} />
+            
+            <!-- Dark Overlay Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500"></div>
+            
+            <!-- Content -->
+            <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 translate-y-12 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
+              <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center mb-6 opacity-50 group-hover:opacity-100 group-hover:border-yellow-500 group-hover:bg-yellow-500/20 transition-all duration-500">
+                 <span class="text-[10px] font-display text-white">0{index + 1}</span>
+              </div>
+              <h3 class="text-xl md:text-2xl font-display text-white group-hover:text-yellow-500 mb-3 transition-colors duration-300">{service.title}</h3>
+              <p class="text-xs md:text-sm text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 leading-relaxed">{service.desc}</p>
+            </div>
+
+            <!-- Hover Decorative Lines -->
+            <div class="absolute top-4 left-4 w-8 h-[2px] bg-yellow-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+            <div class="absolute top-4 left-4 w-[2px] h-8 bg-yellow-500 scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-500"></div>
+            
+            <div class="absolute bottom-4 right-4 w-8 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-right duration-500"></div>
+            <div class="absolute bottom-4 right-4 w-[2px] h-8 bg-white scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-500"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({ delay: 0.2 });
+    
+    // Header Animation
+    tl.to('.title-anim', { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power3.out' })
+      .to('.line-anim', { scaleX: 1, duration: 0.8, ease: 'power3.out' }, "-=0.6")
+      .to('.desc-anim', { opacity: 1, duration: 1, ease: 'power2.out' }, "-=0.4")
+      
+      // Cards Staggered Animation
+      .to('.service-card', { 
+        y: 0, 
+        opacity: 1, 
+        duration: 1, 
+        stagger: 0.15, 
+        ease: 'power3.out' 
+      }, "-=0.8");
+  }
+</script>

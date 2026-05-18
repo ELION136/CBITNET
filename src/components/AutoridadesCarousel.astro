@@ -1,0 +1,131 @@
+---
+---
+<div class="relative w-full h-[80vh] flex items-center justify-center overflow-hidden perspective-1000 mt-20">
+  <div class="carousel-container relative w-full max-w-7xl h-[600px] flex items-center justify-center">
+    
+    <!-- Background blurred text/decorations -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+      <h2 class="text-[15vw] font-display font-bold text-white/5 whitespace-nowrap select-none">AUTORIDADES</h2>
+    </div>
+
+    <!-- Items -->
+    <div class="authorities-wrapper relative w-full h-full flex items-center justify-center">
+      
+      <!-- Item 1 (Left) -->
+      <div class="auth-item absolute transition-all duration-700 ease-in-out cursor-pointer group w-[250px] md:w-[300px] -translate-x-[120%] scale-75 blur-[4px] opacity-60 z-10" data-index="0">
+        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl h-[400px]">
+          <img src="https://picsum.photos/seed/auth1/400/600" alt="Authority 1" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300"></div>
+          <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <h3 class="text-xl font-display text-white mb-1">Dr. Carlos Mendoza</h3>
+            <p class="text-green-400 text-sm font-bold uppercase tracking-wider">Director Deportivo</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 (Center - Active) -->
+      <div class="auth-item absolute transition-all duration-700 ease-in-out cursor-pointer group w-[320px] md:w-[400px] translate-x-0 scale-100 blur-0 opacity-100 z-30" data-index="1">
+        <div class="relative rounded-2xl overflow-hidden border border-green-400/50 shadow-[0_0_50px_rgba(74,222,128,0.2)] h-[500px]">
+          <img src="https://picsum.photos/seed/auth2/500/700" alt="Authority 2" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 w-full p-8">
+            <div class="w-12 h-1 bg-green-500 mb-4 rounded-full"></div>
+            <h3 class="text-3xl font-display text-white mb-2 leading-none">Dra. Elena Rossi</h3>
+            <p class="text-green-400 text-sm font-bold uppercase tracking-wider mb-4">Rectora Académica</p>
+            <p class="text-gray-300 text-sm line-clamp-3">Líder en innovación educativa y desarrollo de programas integrales para atletas de alto rendimiento.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 (Right) -->
+      <div class="auth-item absolute transition-all duration-700 ease-in-out cursor-pointer group w-[250px] md:w-[300px] translate-x-[120%] scale-75 blur-[4px] opacity-60 z-10" data-index="2">
+        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl h-[400px]">
+          <img src="https://picsum.photos/seed/auth3/400/600" alt="Authority 3" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300"></div>
+          <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <h3 class="text-xl font-display text-white mb-1">Lic. Marcos Silva</h3>
+            <p class="text-blue-400 text-sm font-bold uppercase tracking-wider">Decano de Ciencias</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+    <!-- Controls -->
+    <div class="absolute bottom-[-40px] left-1/2 -translate-x-1/2 flex gap-4 z-40">
+      <button id="prev-btn" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors backdrop-blur-md">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+      </button>
+      <button id="next-btn" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors backdrop-blur-md">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const items = document.querySelectorAll('.auth-item');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    
+    let activeIndex = 1; // Middle item is active initially
+
+    const updateCarousel = () => {
+      items.forEach((item, index) => {
+        item.classList.remove('-translate-x-[120%]', 'translate-x-0', 'translate-x-[120%]', 'scale-100', 'scale-75', 'blur-0', 'blur-[4px]', 'opacity-100', 'opacity-60', 'z-30', 'z-10', 'border-green-400/50');
+        
+        const imgContainer = item.querySelector('.border') as HTMLElement;
+        const details = item.querySelector('.absolute.bottom-0');
+        
+        if (index === activeIndex) {
+          // Active (Center)
+          item.classList.add('translate-x-0', 'scale-100', 'blur-0', 'opacity-100', 'z-30');
+          imgContainer.classList.add('border-green-400/50', 'h-[500px]');
+          imgContainer.classList.remove('border-white/10', 'h-[400px]');
+          if(details && details.classList.contains('translate-y-full')) {
+            details.classList.remove('translate-y-full'); // Ensure active always shows details
+          }
+        } else if (index < activeIndex) {
+          // Left
+          item.classList.add('-translate-x-[120%]', 'scale-75', 'blur-[4px]', 'opacity-60', 'z-10');
+          imgContainer.classList.remove('border-green-400/50', 'h-[500px]');
+          imgContainer.classList.add('border-white/10', 'h-[400px]');
+          if(details && !details.classList.contains('translate-y-full')) {
+            details.classList.add('translate-y-full'); // Hide details for inactive unless hovered
+          }
+        } else {
+          // Right
+          item.classList.add('translate-x-[120%]', 'scale-75', 'blur-[4px]', 'opacity-60', 'z-10');
+          imgContainer.classList.remove('border-green-400/50', 'h-[500px]');
+          imgContainer.classList.add('border-white/10', 'h-[400px]');
+          if(details && !details.classList.contains('translate-y-full')) {
+            details.classList.add('translate-y-full'); 
+          }
+        }
+      });
+    };
+
+    items.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        activeIndex = index;
+        updateCarousel();
+      });
+      // Added hover to change active index (Hover cambia jugador principal)
+      item.addEventListener('mouseenter', () => {
+         activeIndex = index;
+         updateCarousel();
+      });
+    });
+
+    prevBtn?.addEventListener('click', () => {
+      activeIndex = (activeIndex - 1 + items.length) % items.length;
+      updateCarousel();
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      activeIndex = (activeIndex + 1) % items.length;
+      updateCarousel();
+    });
+  }
+</script>

@@ -1,0 +1,174 @@
+---
+---
+<section class="relative w-full h-screen overflow-hidden flex items-center justify-center bg-black">
+  <!-- Video Background -->
+  <div class="absolute inset-0 w-full h-full z-0">
+    <!-- Placeholder video via iframe or html5 video. We'll use a placeholder video from an open source video URL, or an image placeholder that looks like a video. -->
+    <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-60">
+      <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
+    </video>
+    <!-- Dark Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-[#030303]/60 to-[#030303]"></div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 container mx-auto px-6 h-full flex flex-col items-center justify-center pointer-events-none">
+    <div class="hero-text text-center w-full max-w-5xl mx-auto z-20 mix-blend-difference mt-[-10vh]">
+      <h1 class="text-5xl md:text-7xl lg:text-9xl font-display font-bold text-white tracking-tighter leading-none mb-4 transform translate-y-10 opacity-0">
+        COMPARACIÓN DE<br/><span class="text-transparent text-stroke">EDUCACIÓN</span>
+      </h1>
+      <p class="text-lg md:text-2xl text-gray-300 font-medium tracking-wide transform translate-y-10 opacity-0 max-w-2xl mx-auto">
+        Descubre el mejor camino para tu futuro con nuestra guía deportiva y académica.
+      </p>
+    </div>
+  </div>
+
+  <!-- Floating Cards Collage -->
+  <div class="absolute inset-0 z-30 pointer-events-none flex items-center justify-center mt-[15vh]">
+    <div class="relative w-full max-w-6xl h-[600px] perspective-1000">
+      
+      <!-- Card 1: Left (Secondary) -->
+      <div class="edu-card absolute left-[5%] top-[20%] w-[280px] md:w-[320px] rounded-xl overflow-hidden pointer-events-auto cursor-pointer group rotate-[-8deg] shadow-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-green-400/50 transition-colors duration-500 z-10" data-speed="0.05">
+        <div class="h-48 overflow-hidden relative">
+          <img src="https://picsum.photos/seed/sports1/400/300" alt="News" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500"></div>
+        </div>
+        <div class="p-6 relative">
+          <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-green-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <span class="text-green-400 text-xs font-bold tracking-widest uppercase mb-2 block">Tendencias</span>
+          <h3 class="text-xl font-display text-white mb-4 line-clamp-2">Las nuevas carreras del futuro en el deporte</h3>
+          <button class="flex items-center gap-2 text-sm font-semibold text-white/70 group-hover:text-green-400 transition-colors">
+            Full Story 
+            <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 2: Center (Main) -->
+      <div class="edu-card absolute left-1/2 top-[10%] -translate-x-1/2 w-[320px] md:w-[400px] rounded-2xl overflow-hidden pointer-events-auto cursor-pointer group rotate-[2deg] shadow-[0_0_40px_rgba(74,222,128,0.15)] bg-black/40 backdrop-blur-xl border border-white/20 hover:border-green-400 z-30" data-speed="0.02">
+        <div class="h-64 overflow-hidden relative">
+          <img src="https://picsum.photos/seed/sports2/600/400" alt="News" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">
+             <span class="bg-green-500 text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Destacado</span>
+          </div>
+        </div>
+        <div class="p-8 relative">
+          <div class="absolute -inset-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-1000 -z-10"></div>
+          <h3 class="text-3xl font-display text-white mb-4 leading-tight">Comparativa de Universidades 2026</h3>
+          <p class="text-gray-400 text-sm mb-6 line-clamp-2">Un análisis profundo de los mejores programas académicos deportivos a nivel mundial.</p>
+          <button class="w-full py-3 px-4 bg-white/10 hover:bg-green-500 text-white hover:text-black font-bold uppercase tracking-widest text-sm rounded-lg transition-all duration-300 transform group-hover:-translate-y-1">
+            Read Full Story
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 3: Right (Secondary) -->
+      <div class="edu-card absolute right-[5%] top-[25%] w-[280px] md:w-[320px] rounded-xl overflow-hidden pointer-events-auto cursor-pointer group rotate-[12deg] shadow-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-green-400/50 transition-colors duration-500 z-20" data-speed="0.08">
+        <div class="h-48 overflow-hidden relative">
+          <img src="https://picsum.photos/seed/sports3/400/300" alt="News" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-colors duration-500"></div>
+        </div>
+        <div class="p-6">
+          <span class="text-blue-400 text-xs font-bold tracking-widest uppercase mb-2 block">Análisis</span>
+          <h3 class="text-xl font-display text-white mb-4 line-clamp-2">El impacto del rendimiento en las becas</h3>
+          <button class="flex items-center gap-2 text-sm font-semibold text-white/70 group-hover:text-blue-400 transition-colors">
+            Full Story 
+            <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+
+  if (typeof window !== 'undefined') {
+    // Hero Text Entrance
+    gsap.to('.hero-text > *', {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      stagger: 0.2,
+      ease: 'power4.out',
+      delay: 0.5
+    });
+
+    // Cards Entrance Stagger
+    gsap.fromTo('.edu-card', 
+      { y: 100, opacity: 0, scale: 0.8 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        scale: 1,
+        duration: 1.5, 
+        stagger: 0.15,
+        ease: 'elastic.out(1, 0.75)',
+        delay: 1
+      }
+    );
+
+    // Parallax & 3D Hover Effect
+    const cards = document.querySelectorAll('.edu-card');
+    
+    document.addEventListener('mousemove', (e) => {
+      const { clientX, clientY } = e;
+      const xPos = (clientX / window.innerWidth - 0.5) * 2;
+      const yPos = (clientY / window.innerHeight - 0.5) * 2;
+
+      cards.forEach((card) => {
+        const speed = parseFloat((card as HTMLElement).dataset.speed || '0.05');
+        const xOffset = xPos * speed * 100;
+        const yOffset = yPos * speed * 100;
+        
+        // Apply slight parallax translation to cards based on mouse
+        gsap.to(card, {
+          x: xOffset,
+          y: yOffset,
+          duration: 1,
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    // Interactive Hover per card (elevate and scale slightly)
+    cards.forEach(card => {
+      const baseRotate = (card as HTMLElement).style.transform.match(/rotate\((.*?)\)/)?.[1] || 
+                         (card.classList.contains('rotate-[-8deg]') ? '-8deg' : 
+                          card.classList.contains('rotate-[2deg]') ? '2deg' : '12deg');
+                          
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          scale: 1.05,
+          z: 50,
+          rotateX: 5,
+          rotateY: -5,
+          boxShadow: '0 25px 50px -12px rgba(74, 222, 128, 0.25)',
+          duration: 0.4,
+          ease: 'power3.out'
+        });
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          scale: 1,
+          z: 0,
+          rotateX: 0,
+          rotateY: 0,
+          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          duration: 0.4,
+          ease: 'power3.out'
+        });
+      });
+    });
+  }
+</script>

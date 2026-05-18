@@ -1,0 +1,150 @@
+---
+---
+<div id="custom-cursor-container">
+    <div id="cursor-follower"></div>
+    <div id="cursor-dot"></div>
+</div>
+
+<style>
+    #custom-cursor-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+        /* difference blend mode can be cool, but keeping it normal to pop the yellow */
+    }
+    
+    #cursor-dot {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        background-color: #eab308; /* Yellow-500 */
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease-out, opacity 0.3s ease;
+        z-index: 2;
+    }
+
+    #cursor-follower {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 32px;
+        height: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                    height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                    border-color 0.3s,
+                    background-color 0.3s,
+                    border-radius 0.3s;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Hover State for links/buttons */
+    #custom-cursor-container.hovering #cursor-follower {
+        width: 48px;
+        height: 48px;
+        background-color: rgba(234, 179, 8, 0.1); /* Yellow fill */
+        border-color: #eab308; /* Yellow border */
+        /* Optional: make it slightly square for a brutalist tech feel */
+        /* border-radius: 8px; */
+    }
+    
+    #custom-cursor-container.hovering #cursor-dot {
+        transform: translate(-50%, -50%) scale(0); /* Hide dot on hover */
+        opacity: 0;
+    }
+
+    /* Click State */
+    #custom-cursor-container.clicking #cursor-follower {
+        transform: translate(-50%, -50%) scale(0.85);
+        border-color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    #custom-cursor-container.clicking #cursor-dot {
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+</style>
+
+<script>
+    import gsap from 'gsap';
+
+    function initCursor() {
+        const cursorContainer = document.getElementById('custom-cursor-container');
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorFollower = document.getElementById('cursor-follower');
+        
+        if (!cursorContainer || !cursorDot || !cursorFollower) return;
+
+        // Hide default cursor globally
+        const style = document.createElement('style');
+        style.innerHTML = `* { cursor: none !important; }`;
+        document.head.appendChild(style);
+
+        // State
+        let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        let follower = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+        // Mouse Move Event
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            
+            // The dot follows instantly
+            gsap.set(cursorDot, { x: mouse.x, y: mouse.y });
+        });
+
+        // Click Events
+        window.addEventListener('mousedown', () => {
+            cursorContainer.classList.add('clicking');
+        });
+        
+        window.addEventListener('mouseup', () => {
+            cursorContainer.classList.remove('clicking');
+        });
+
+        // Hover detection via event delegation
+        document.addEventListener('mouseover', (e) => {
+            const target = e.target as HTMLElement;
+            if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.closest('a') || target.closest('button')) {
+                cursorContainer.classList.add('hovering');
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            const target = e.target as HTMLElement;
+            if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.closest('a') || target.closest('button')) {
+                cursorContainer.classList.remove('hovering');
+            }
+        });
+
+        // Animation Loop for Smooth Follower
+        let animationFrameId: number;
+        function animate() {
+            // Lerp follower towards mouse
+            follower.x += (mouse.x - follower.x) * 0.2;
+            follower.y += (mouse.y - follower.y) * 0.2;
+            
+            gsap.set(cursorFollower, { x: follower.x, y: follower.y });
+
+            animationFrameId = requestAnimationFrame(animate);
+        }
+
+        animate();
+    }
+
+    // Initialize on load and on Astro view transitions
+    initCursor();
+    document.addEventListener('astro:page-load', initCursor);
+</script>

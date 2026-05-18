@@ -1,0 +1,102 @@
+---
+const players = [
+  {
+    id: 1,
+    name: "PEDRI",
+    number: "8",
+    image: "/images/head1.jpg"
+  },
+  {
+    id: 2,
+    name: "LEWANDOWSKI",
+    number: "9",
+    image: "/images/head2.jpg"
+  },
+  {
+    id: 3,
+    name: "GAVI",
+    number: "6",
+    image: "/images/head3.jpg"
+  }
+];
+---
+
+<section class="py-32 bg-[#020202] relative overflow-hidden player-section">
+  <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent"></div>
+  
+  <div class="container mx-auto px-6 mb-16 text-center">
+    <h2 class="text-5xl md:text-7xl font-display text-white mb-4 player-title mix-blend-difference z-20 relative">THE SQUAD</h2>
+    <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+  </div>
+
+  <div class="relative h-[600px] w-full max-w-6xl mx-auto flex items-center justify-center player-carousel perspective-[1200px]">
+    {players.map((player, index) => (
+      <div 
+        class={`absolute transition-all duration-700 ease-out cursor-pointer player-card 
+          ${index === 1 ? 'z-20 scale-100 opacity-100 active' : (index === 0 ? 'z-10 -translate-x-[60%] scale-75 opacity-50 blur-[2px] rotate-y-[20deg]' : 'z-10 translate-x-[60%] scale-75 opacity-50 blur-[2px] -rotate-y-[20deg]')}`}
+        data-index={index}
+      >
+        <div class="relative w-[300px] md:w-[400px] h-[450px] md:h-[550px] rounded-xl overflow-hidden border-2 border-white/10 group bg-black">
+          <img src={player.image} alt={player.name} class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100 grayscale-[20%] group-hover:grayscale-0" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+          
+          <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <span class="text-yellow-500 font-display text-6xl opacity-50 absolute -top-8 -left-2 mix-blend-overlay">{player.number}</span>
+            <h3 class="font-display text-4xl text-white tracking-wider relative z-10">{player.name}</h3>
+            <div class="h-[2px] w-0 bg-yellow-500 mt-2 transition-all duration-500 group-hover:w-16"></div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .rotate-y-\[20deg\] {
+    transform: translateX(-60%) scale(0.75) rotateY(20deg);
+  }
+  .-rotate-y-\[20deg\] {
+    transform: translateX(60%) scale(0.75) rotateY(-20deg);
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    gsap.from('.player-title', {
+      scrollTrigger: {
+        trigger: '.player-section',
+        start: 'top 70%',
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    const cards = document.querySelectorAll('.player-card') as NodeListOf<HTMLElement>;
+    
+    cards.forEach((card) => {
+      card.addEventListener('mouseenter', function(this: HTMLElement) {
+        const hoveredIndex = parseInt(this.getAttribute('data-index') || '0');
+        
+        cards.forEach((c, i) => {
+          c.classList.remove('z-20', 'scale-100', 'opacity-100', 'active', 'z-10', '-translate-x-[60%]', 'translate-x-[60%]', 'scale-75', 'opacity-50', 'blur-[2px]', 'rotate-y-[20deg]', '-rotate-y-[20deg]');
+          
+          if (i === hoveredIndex) {
+            c.classList.add('z-20', 'scale-100', 'opacity-100', 'active');
+            c.style.transform = 'translateX(0) scale(1) rotateY(0)';
+          } else if (i < hoveredIndex) {
+            c.classList.add('z-10', 'opacity-50', 'blur-[2px]');
+            c.style.transform = 'translateX(-60%) scale(0.75) rotateY(20deg)';
+          } else {
+            c.classList.add('z-10', 'opacity-50', 'blur-[2px]');
+            c.style.transform = 'translateX(60%) scale(0.75) rotateY(-20deg)';
+          }
+        });
+      });
+    });
+  });
+</script>

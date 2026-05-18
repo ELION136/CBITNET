@@ -1,0 +1,136 @@
+---
+---
+
+<!-- Desktop & Mobile Header -->
+<nav class="fixed top-0 left-0 w-full z-[100] py-4 px-6 md:py-6 md:px-10 flex justify-between items-center mix-blend-difference pointer-events-auto">
+  <div class="text-xl md:text-2xl font-display tracking-widest text-white relative z-[101]">SPORTS<span class="text-yellow-500">.</span></div>
+  
+  <!-- Desktop Menu -->
+  <ul class="hidden md:flex space-x-8 text-sm font-semibold tracking-wider text-white">
+    <li><a href="/" class="hover:text-green-400 transition-colors">HOME</a></li>
+    <li><a href="/autoridades" class="hover:text-green-400 transition-colors">AUTORIDADES</a></li>
+    <li><a href="/servicios" class="hover:text-green-400 transition-colors">SERVICIOS</a></li>
+    <li><a href="/sobre-nosotros" class="hover:text-green-400 transition-colors">SOBRE NOSOTROS</a></li>
+    <li><a href="/carreras" class="hover:text-green-400 transition-colors">NUESTROS PROGRAMAS</a></li>
+    <li><a href="/inscribirse" class="hover:text-green-400 transition-colors">INSCRIBIRSE</a></li>
+  </ul>
+
+  <!-- Mobile Hamburger Button -->
+  <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 relative z-[101] p-2 cursor-pointer">
+    <div class="w-6 h-[2px] bg-white transition-all duration-300 line-1"></div>
+    <div class="w-6 h-[2px] bg-white transition-all duration-300 line-2"></div>
+    <div class="w-6 h-[2px] bg-white transition-all duration-300 line-3"></div>
+  </button>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 bg-[#030303] z-[90] flex flex-col items-center justify-center translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] pointer-events-auto">
+  <!-- Background Glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-green-500/10 blur-[80px] rounded-full pointer-events-none z-0"></div>
+
+  <ul class="flex flex-col items-center space-y-8 text-3xl font-display tracking-widest text-white z-10">
+    <li>
+      <a href="/" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
+        <span class="block translate-y-full opacity-0">HOME</span>
+      </a>
+    </li>
+    <li>
+      <a href="/autoridades" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
+        <span class="block translate-y-full opacity-0">AUTORIDADES</span>
+      </a>
+    </li>
+    <li>
+      <a href="/servicios" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
+        <span class="block translate-y-full opacity-0">SERVICIOS</span>
+      </a>
+    </li>
+    <li>
+      <a href="/sobre-nosotros" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
+        <span class="block translate-y-full opacity-0 text-center">SOBRE NOSOTROS</span>
+      </a>
+    </li>
+    <li>
+      <a href="/carreras" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
+        <span class="block translate-y-full opacity-0">NUESTROS PROGRAMAS</span>
+      </a>
+    </li>
+    <li>
+      <a href="/inscribirse" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
+        <span class="block translate-y-full opacity-0">INSCRIBIRSE</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<script>
+  import gsap from 'gsap';
+
+  if (typeof window !== 'undefined') {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const lines = [
+      document.querySelector('.line-1'),
+      document.querySelector('.line-2'),
+      document.querySelector('.line-3')
+    ];
+    const links = document.querySelectorAll('.mobile-link span');
+    
+    let isOpen = false;
+
+    menuBtn?.addEventListener('click', () => {
+      isOpen = !isOpen;
+      
+      if (isOpen) {
+        // Animate hamburger to X
+        gsap.to(lines[0], { y: 8, rotation: 45, duration: 0.3, ease: 'power2.inOut' });
+        gsap.to(lines[1], { opacity: 0, duration: 0.3, ease: 'power2.inOut' });
+        gsap.to(lines[2], { y: -8, rotation: -45, duration: 0.3, ease: 'power2.inOut' });
+
+        // Slide in menu
+        mobileMenu?.classList.remove('translate-x-full');
+        mobileMenu?.classList.add('translate-x-0');
+
+        // Prevent scroll
+        document.body.style.overflow = 'hidden';
+
+        // Animate links staggered reveal
+        gsap.to(links, {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power3.out',
+          delay: 0.3 // wait for menu to start sliding in
+        });
+      } else {
+        // Revert hamburger
+        gsap.to(lines[0], { y: 0, rotation: 0, duration: 0.3, ease: 'power2.inOut' });
+        gsap.to(lines[1], { opacity: 1, duration: 0.3, ease: 'power2.inOut' });
+        gsap.to(lines[2], { y: 0, rotation: 0, duration: 0.3, ease: 'power2.inOut' });
+
+        // Animate links out fast
+        gsap.to(links, {
+          y: '100%',
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power2.in'
+        }).then(() => {
+          // Slide out menu after links hide
+          mobileMenu?.classList.remove('translate-x-0');
+          mobileMenu?.classList.add('translate-x-full');
+          document.body.style.overflow = '';
+        });
+      }
+    });
+
+    // Close menu when a link is clicked
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (isOpen) {
+          menuBtn?.click();
+        }
+      });
+    });
+  }
+</script>

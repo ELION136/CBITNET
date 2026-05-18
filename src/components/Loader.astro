@@ -1,0 +1,79 @@
+---
+---
+
+<div id="global-loader" class="fixed inset-0 z-[9999] bg-[#030303] flex flex-col items-center justify-center text-white overflow-hidden pointer-events-auto">
+  <!-- Dynamic glow in background -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-yellow-500/10 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+  <div class="relative z-10 flex flex-col items-center">
+    <!-- Brand Title -->
+    <div class="text-xs md:text-sm font-display tracking-[0.5em] text-yellow-500 uppercase mb-4 opacity-0 loader-text">
+      SYSTEM INITIALIZATION
+    </div>
+
+    <!-- Progress Percentage -->
+    <div class="text-7xl md:text-9xl font-display font-bold tracking-widest text-stroke mb-8 flex items-center">
+      <span id="loader-progress">0</span>
+      <span class="text-3xl md:text-5xl ml-2 text-yellow-500">%</span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="w-48 md:w-64 h-[2px] bg-white/10 relative overflow-hidden">
+      <div id="loader-bar" class="absolute top-0 left-0 h-full bg-yellow-500 w-0"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import gsap from 'gsap';
+
+  // We want to run this as soon as possible on the client
+  if (typeof window !== 'undefined') {
+    const loader = document.getElementById('global-loader');
+    const progressText = document.getElementById('loader-progress');
+    const progressBar = document.getElementById('loader-bar');
+    
+    if (loader && progressText && progressBar) {
+      // Temporarily block body scroll
+      document.body.style.overflow = 'hidden';
+
+      // Animate the text and bar
+      const progress = { value: 0 };
+      
+      // Initial text fade in
+      gsap.to('.loader-text', { opacity: 1, duration: 0.5, ease: 'power2.out' });
+
+      // Count up to 100
+      gsap.to(progress, {
+        value: 100,
+        duration: 2.5,
+        ease: 'power3.inOut',
+        onUpdate: () => {
+          progressText.innerText = Math.round(progress.value).toString();
+          progressBar.style.width = `${progress.value}%`;
+        },
+        onComplete: () => {
+          // Animation when reaching 100%
+          const tl = gsap.timeline();
+          
+          tl.to('.loader-text, #loader-progress, #loader-bar', {
+            opacity: 0,
+            y: -20,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: 'power2.in'
+          })
+          .to(loader, {
+            yPercent: -100,
+            duration: 0.8,
+            ease: 'power4.inOut',
+            onComplete: () => {
+              loader.style.display = 'none';
+              document.body.style.overflow = ''; // Restore body scroll
+            }
+          });
+        }
+      });
+    }
+  }
+</script>

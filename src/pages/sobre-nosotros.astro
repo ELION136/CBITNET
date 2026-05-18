@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Loader from '../components/Loader.astro';
+---
+
+<Layout title="Sobre Nosotros | Sports & Academic Hub">
+	<Loader />
+	<Navbar />
+	<main class="bg-[#030303] min-h-screen overflow-hidden pt-32 pb-24">
+        
+        <!-- Hero Section for About -->
+        <div class="container mx-auto px-6 relative z-10 mb-32">
+            <div class="flex flex-col lg:flex-row items-end gap-8 border-b border-white/10 pb-12">
+                <h1 class="text-6xl md:text-8xl lg:text-[9rem] font-display font-bold text-white tracking-tighter leading-none w-full lg:w-2/3 reveal-text">
+                    NUESTRA <br/>
+                    <span class="text-green-400">HISTORIA</span>
+                </h1>
+                <div class="w-full lg:w-1/3 pb-4 reveal-text delay-200">
+                    <p class="text-gray-400 text-lg md:text-xl border-l border-green-500 pl-6">
+                        Forjando campeones dentro y fuera de la cancha. Una misión editorial enfocada en el desarrollo integral.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Editorial Grid Layout -->
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+                
+                <!-- Main Big Image -->
+                <div class="md:col-span-8 relative group overflow-hidden h-[500px] md:h-[700px] rounded-xl grid-reveal">
+                    <img src="https://picsum.photos/seed/aboutmain/1200/800" alt="Nuestra Misión" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-10 left-10 text-white z-10">
+                        <span class="text-green-400 font-bold tracking-widest text-sm uppercase mb-2 block">Fundación</span>
+                        <h3 class="font-display text-4xl">EL INICIO DEL LEGADO</h3>
+                    </div>
+                </div>
+
+                <!-- Text & Small Image -->
+                <div class="md:col-span-4 flex flex-col justify-between grid-reveal">
+                    <div class="mb-12">
+                        <h2 class="text-2xl font-display text-white mb-6 uppercase tracking-wider">Visión <span class="text-transparent text-stroke">Global</span></h2>
+                        <p class="text-gray-400 text-base leading-relaxed mb-6">
+                            Desde nuestros inicios, hemos creído que el deporte y la educación no son caminos paralelos, sino fuerzas que convergen para crear individuos extraordinarios. Nuestra plataforma nació con la idea de proporcionar a los jóvenes talentos una brújula precisa.
+                        </p>
+                        <p class="text-gray-400 text-base leading-relaxed">
+                            Trabajamos con más de 50 instituciones alrededor del mundo, evaluando programas de estudios, instalaciones deportivas, prestigio académico y oportunidades de desarrollo profesional.
+                        </p>
+                    </div>
+                    
+                    <div class="relative overflow-hidden h-[300px] rounded-xl group">
+                        <img src="https://picsum.photos/seed/aboutsmall/600/400" alt="Nuestra Visión" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0" />
+                        <div class="absolute inset-0 bg-blue-900/40 mix-blend-multiply group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="md:col-span-12 grid grid-cols-2 md:grid-cols-4 gap-8 py-20 border-b border-white/10 grid-reveal">
+                    <div class="text-center">
+                        <span class="text-5xl md:text-7xl font-display font-bold text-white block mb-2 stat-num" data-target="15">0</span>
+                        <span class="text-green-400 text-sm font-bold tracking-widest uppercase">Años de Experiencia</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-5xl md:text-7xl font-display font-bold text-white block mb-2 stat-num" data-target="2000">0</span>
+                        <span class="text-blue-400 text-sm font-bold tracking-widest uppercase">Atletas Ubicados</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-5xl md:text-7xl font-display font-bold text-white block mb-2 stat-num" data-target="50">0</span>
+                        <span class="text-yellow-500 text-sm font-bold tracking-widest uppercase">Universidades</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-5xl md:text-7xl font-display font-bold text-white block mb-2 stat-num" data-target="98">0</span>
+                        <span class="text-white text-sm font-bold tracking-widest uppercase">% Éxito</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+	</main>
+</Layout>
+
+<script>
+    import gsap from 'gsap';
+    import ScrollTrigger from 'gsap/ScrollTrigger';
+
+    if (typeof window !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Header reveal
+        gsap.from('.reveal-text', {
+            y: 50,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.2,
+            ease: 'power3.out',
+            delay: 0.5
+        });
+
+        // Grid elements reveal
+        gsap.utils.toArray('.grid-reveal').forEach((elem: any) => {
+            gsap.from(elem, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out'
+            });
+        });
+
+        // Stats counter animation
+        const stats = document.querySelectorAll('.stat-num');
+        stats.forEach((stat: any) => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            gsap.to(stat, {
+                scrollTrigger: {
+                    trigger: stat,
+                    start: 'top 90%',
+                    once: true
+                },
+                innerHTML: target,
+                duration: 2,
+                snap: { innerHTML: 1 },
+                ease: 'power2.out',
+                onUpdate: function() {
+                    stat.innerHTML = Math.round(this.targets()[0].innerHTML) + (target > 1000 ? '+' : (target === 98 ? '%' : ''));
+                }
+            });
+        });
+    }
+</script>

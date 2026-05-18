@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+---
+
+<Layout title="Standings | Sports Editorial">
+  <Navbar />
+  <main class="bg-black min-h-screen pt-32 px-10 text-white pb-32">
+    <div class="container mx-auto max-w-4xl">
+      <h1 class="text-6xl md:text-8xl font-display mb-4 text-center">LEAGUE <span class="text-yellow-500">TABLE</span></h1>
+      <div class="w-24 h-1 bg-yellow-500 mx-auto mb-16"></div>
+      
+      <div class="bg-[#0a0a0a] rounded-xl border border-white/10 overflow-hidden">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-white/5 text-gray-400 text-sm uppercase tracking-wider">
+              <th class="p-4 font-semibold text-center w-16">Pos</th>
+              <th class="p-4 font-semibold">Club</th>
+              <th class="p-4 font-semibold text-center">MP</th>
+              <th class="p-4 font-semibold text-center">W</th>
+              <th class="p-4 font-semibold text-center">D</th>
+              <th class="p-4 font-semibold text-center">L</th>
+              <th class="p-4 font-semibold text-center text-yellow-500">Pts</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((pos) => (
+              <tr class={`border-t border-white/5 hover:bg-white/5 transition-colors ${pos === 1 ? 'bg-yellow-500/10' : ''}`}>
+                <td class="p-4 text-center font-bold text-gray-400">{pos}</td>
+                <td class="p-4 font-display text-xl flex items-center gap-4">
+                  <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-xs">FC</div>
+                  {pos === 1 ? 'BARCA' : `TEAM ${pos}`}
+                </td>
+                <td class="p-4 text-center text-gray-400">38</td>
+                <td class="p-4 text-center text-gray-400">{38 - pos}</td>
+                <td class="p-4 text-center text-gray-400">{pos}</td>
+                <td class="p-4 text-center text-gray-400">0</td>
+                <td class="p-4 text-center font-bold text-yellow-500 text-lg">{(38 - pos) * 3 + pos}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</Layout>

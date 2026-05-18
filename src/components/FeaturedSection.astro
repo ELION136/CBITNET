@@ -1,0 +1,86 @@
+---
+---
+
+<section class="py-32 bg-black relative featured-section">
+  <div class="container mx-auto px-6 lg:px-16">
+    <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+      
+      <div class="w-full lg:w-1/2 relative">
+        <div class="absolute -inset-4 border border-yellow-500/30 translate-x-8 translate-y-8 z-0 decorative-frame"></div>
+        <div class="relative z-10 w-full aspect-[4/5] overflow-hidden featured-img-container">
+          <img src="/images/ima5.jpg" alt="Featured Moment" class="w-full h-full object-cover scale-110 featured-img opacity-80" />
+          <div class="absolute inset-0 bg-black/10"></div>
+        </div>
+        <!-- Accent elements -->
+        <div class="absolute top-10 -left-6 w-12 h-[2px] bg-yellow-500 z-20 hidden md:block accent-line"></div>
+        <div class="absolute bottom-20 -right-6 w-[2px] h-24 bg-yellow-500 z-20 hidden md:block accent-line"></div>
+      </div>
+
+      <div class="w-full lg:w-1/2 relative z-10">
+        <span class="text-yellow-500 uppercase tracking-[0.2em] text-sm font-bold block mb-4 featured-text">Exclusive Interview</span>
+        <h2 class="text-5xl lg:text-7xl font-display text-white leading-none mb-8 featured-text uppercase text-stroke">
+          Redefining <br/> The Game
+        </h2>
+        <p class="text-gray-400 text-lg mb-10 max-w-lg featured-text">
+          A deep dive into the strategic masterpiece that changed the course of the season. Hear directly from the coach about the preparation, the mindset, and the execution that led to this historic victory.
+        </p>
+        
+        <div class="featured-text">
+          <a href="#" class="inline-flex items-center gap-4 text-white font-bold uppercase tracking-widest text-sm group">
+            <span class="w-12 h-[1px] bg-yellow-500 transition-all duration-300 group-hover:w-20"></span>
+            Watch the Documentary
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.featured-section',
+        start: 'top 60%',
+      }
+    });
+
+    tl.from('.decorative-frame', {
+      x: 0,
+      y: 0,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out'
+    })
+    .from('.featured-img-container', {
+      clipPath: 'inset(100% 0% 0% 0%)',
+      duration: 1.5,
+      ease: 'power4.inOut'
+    }, "-=0.8")
+    .to('.featured-img', {
+      scale: 1,
+      opacity: 1,
+      duration: 2,
+      ease: 'power3.out'
+    }, "-=1.5")
+    .from('.accent-line', {
+      scaleX: 0,
+      scaleY: 0,
+      transformOrigin: "left top",
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power2.out'
+    }, "-=1")
+    .from('.featured-text', {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out'
+    }, "-=1.2");
+  });
+</script>

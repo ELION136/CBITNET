@@ -1,0 +1,370 @@
+---
+const slides = [
+  {
+    id: 1,
+    title: "TACTICS",
+    subtitle: "INSTANCE TASK",
+    image: "/images/ima2.jpg",
+    locked: false,
+  },
+  {
+    id: 2,
+    title: "MATCH REPORT",
+    subtitle: "INSTANCE TASK",
+    image: "/images/ima3.jpg",
+    locked: false,
+  },
+  {
+    id: 3,
+    title: "THE MASTERMIND",
+    subtitle: "MAIN EVENT",
+    image: "/images/head1.jpg",
+    locked: false,
+  },
+  {
+    id: 4,
+    title: "INTERVIEW",
+    subtitle: "INSTANCE TASK",
+    image: "/images/ima4.jpg",
+    locked: true,
+  },
+  {
+    id: 5,
+    title: "ANALYSIS",
+    subtitle: "INSTANCE TASK",
+    image: "/images/ima5.jpg",
+    locked: true,
+  }
+];
+
+const institutions = [
+  "INFOCADE",
+  "CENACAP",
+  "FUNDACION 1",
+  "FUNDACION 2",
+  "CLUB DE LEONES"
+];
+---
+
+<section class="relative min-h-screen w-full flex items-center justify-center overflow-x-hidden bg-[#030303] coverflow-section py-32 xl:py-0">
+  
+  <!-- Animated Background Image -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <img src="/images/ima1.jpg" alt="Background" class="w-full h-full object-cover opacity-20 bg-pan pointer-events-none" />
+    <div class="absolute inset-0 bg-gradient-to-b from-[#030303] via-transparent to-[#030303]"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#030303] via-[#030303]/50 to-[#030303]"></div>
+  </div>
+
+  <!-- Background glow effect -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-yellow-500/10 blur-[100px] md:blur-[150px] rounded-full pointer-events-none z-0"></div>
+
+  <!-- Main Layout Container (3 Columns) -->
+  <div class="relative z-50 w-full max-w-[1600px] mx-auto px-6 md:px-10 flex flex-col xl:flex-row items-center justify-between gap-16 xl:gap-4">
+    
+    <!-- Left Column (Title & Review) -->
+    <div class="w-full xl:w-[350px] flex flex-col items-center xl:items-start text-center xl:text-left pointer-events-none order-1">
+      <h1 class="text-6xl md:text-7xl font-display text-white tracking-widest uppercase leading-none drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] type-text" data-text="CBIT"></h1>
+      <h2 class="text-[10px] md:text-xs font-display text-yellow-500 tracking-[0.3em] md:tracking-[0.5em] uppercase mt-2 h-4 type-text" data-text="SYSTEM INITIALIZATION"></h2>
+      
+      <div class="h-[2px] w-16 bg-yellow-500 mt-4 opacity-80 line-anim origin-center xl:origin-left scale-x-0"></div>
+      
+      <p class="text-gray-400 text-xs md:text-sm mt-6 mb-8 leading-relaxed pointer-events-auto max-w-md xl:max-w-sm min-h-[80px] type-text text-left xl:text-left" data-text="Accede a la base de datos principal para revisar análisis tácticos, entrevistas exclusivas y la metodología deportiva. Explora las instancias de manera fluida interactuando con los módulos centrales del sistema."></p>
+    </div>
+
+    <!-- Center Column (3D Carousel Container) -->
+    <div class="relative w-full xl:flex-1 h-[380px] md:h-[450px] lg:h-[500px] flex items-center justify-center perspective-[1200px] z-20 slider-container pointer-events-auto order-2">
+      <!-- The Spinner that rotates -->
+      <div class="relative w-[200px] md:w-[280px] lg:w-[320px] h-[320px] md:h-[450px] lg:h-[500px] transform-style-3d carousel-spinner" style="will-change: transform;">
+        
+        {slides.map((slide, index) => (
+          <div 
+            class="absolute top-0 left-0 w-full h-full cursor-pointer coverflow-card group"
+            data-index={index}
+          >
+            <div class="w-full h-full relative flex flex-col items-center justify-between p-3 md:p-4 bg-[#0a0a0a]/90 backdrop-blur-md border border-white/10 group-[.active]:border-yellow-500 group-[.active]:shadow-[0_0_50px_rgba(234,179,8,0.3)] transition-all duration-500 overflow-hidden" style="clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);">
+              
+              <img src={slide.image} alt={slide.title} class="absolute inset-0 w-full h-full object-cover opacity-50 group-[.active]:opacity-90 transition-opacity duration-500 pointer-events-none grayscale-[60%] group-[.active]:grayscale-0" />
+              <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90 group-[.active]:from-black/40 group-[.active]:to-black/80 transition-colors duration-500"></div>
+
+              <!-- Top Header -->
+              <div class="relative z-10 w-full flex flex-col items-center mt-2">
+                 <div class="h-[2px] w-1/3 bg-yellow-500 mb-2 opacity-30 group-[.active]:opacity-100 group-[.active]:w-2/3 transition-all duration-500"></div>
+                 <h3 class="text-gray-400 group-[.active]:text-white text-[8px] md:text-xs font-bold tracking-[0.2em] uppercase transition-colors">{slide.subtitle}</h3>
+                 <h2 class="text-white/50 group-[.active]:text-yellow-500 font-display text-base md:text-2xl mt-1 tracking-wider text-center transition-colors">{slide.title}</h2>
+              </div>
+
+              <!-- Center Icon (Lock or Unlock) -->
+              <div class="relative z-10 w-10 h-10 md:w-16 md:h-16 rounded-full border border-white/20 flex items-center justify-center bg-black/60 backdrop-blur-md group-[.active]:border-yellow-500/80 group-[.active]:bg-yellow-500/20 group-[.active]:scale-110 transition-all duration-500">
+                {slide.locked ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/30 md:w-6 md:h-6"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/50 group-[.active]:text-yellow-400 md:w-6 md:h-6"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+                )}
+              </div>
+
+              <!-- Bottom Button -->
+              <div class="relative z-10 w-full flex flex-col items-center mb-2 md:mb-4">
+                 <button class="px-4 py-1.5 md:px-8 md:py-2 rounded-sm border border-white/20 text-white/50 font-bold tracking-widest text-[8px] md:text-xs bg-white/5 hover:bg-white/10 group-[.active]:border-yellow-500 group-[.active]:text-black group-[.active]:bg-yellow-500 group-[.active]:shadow-[0_0_20px_rgba(234,179,8,0.6)] transition-all duration-300">
+                   ENTER
+                 </button>
+                 <div class="flex gap-1 mt-3 md:mt-6 opacity-30 group-[.active]:opacity-100 transition-opacity duration-500">
+                    <div class="w-2 h-1 bg-white/50 group-[.active]:bg-yellow-500 transition-colors"></div>
+                    <div class="w-6 h-1 bg-white/50 group-[.active]:bg-yellow-500 transition-colors"></div>
+                    <div class="w-2 h-1 bg-white/50 group-[.active]:bg-yellow-500 transition-colors"></div>
+                 </div>
+              </div>
+
+              <!-- Decorative borders -->
+              <div class="absolute top-0 left-0 w-4 md:w-6 h-[2px] bg-white/20 group-[.active]:bg-yellow-500 transition-colors duration-500"></div>
+              <div class="absolute top-0 left-0 w-[2px] h-4 md:h-6 bg-white/20 group-[.active]:bg-yellow-500 transition-colors duration-500"></div>
+              <div class="absolute bottom-0 right-0 w-4 md:w-6 h-[2px] bg-white/20 group-[.active]:bg-yellow-500 transition-colors duration-500"></div>
+              <div class="absolute bottom-0 right-0 w-[2px] h-4 md:h-6 bg-white/20 group-[.active]:bg-yellow-500 transition-colors duration-500"></div>
+
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Right Column (Institutions Buttons) -->
+    <div class="w-full xl:w-[350px] flex flex-col items-center xl:items-end text-center xl:text-right pointer-events-none order-3">
+      <h3 class="text-base lg:text-lg font-display text-white tracking-[0.2em] uppercase right-title-anim opacity-0">
+        NUESTRAS <span class="text-yellow-500">INSTITUCIONES</span>
+      </h3>
+      <div class="h-[2px] w-12 bg-white/20 mt-3 mb-6 right-line-anim origin-center xl:origin-right mx-auto xl:mx-0 scale-x-0"></div>
+      
+      <div class="flex flex-col items-center xl:items-end gap-3 pointer-events-auto right-buttons-anim w-full">
+        {institutions.map(inst => (
+          <button class="group relative px-6 py-3 md:py-4 border border-white/10 bg-white/5 hover:border-yellow-500 hover:bg-yellow-500/10 transition-all duration-300 w-full max-w-[300px] xl:w-[250px] flex items-center justify-center xl:justify-end overflow-hidden opacity-0 translate-x-5">
+            <span class="absolute left-0 top-0 w-1 h-full bg-yellow-500 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom"></span>
+            <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-gray-400 group-hover:text-yellow-500 transition-colors z-10 relative">
+              {inst}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .bg-pan {
+    animation: panImage 30s linear infinite alternate;
+  }
+  @keyframes panImage {
+    0% { transform: scale(1.1) translate(0, 0); }
+    100% { transform: scale(1.15) translate(-2%, 2%); }
+  }
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  
+  /* Typewriter Cursor */
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.2em;
+    background-color: #eab308; /* yellow-500 */
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+    margin-left: 4px;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // ----------------------------------------------------
+    // TYPEWRITER EFFECT LOGIC
+    // ----------------------------------------------------
+    const typeElements = document.querySelectorAll('.type-text');
+    
+    // Function to type text out letter by letter
+    const typeWriter = (element: Element, speed: number) => {
+      return new Promise<void>(resolve => {
+        const text = element.getAttribute('data-text') || '';
+        element.innerHTML = '<span class="cursor"></span>';
+        const cursor = element.querySelector('.cursor');
+        
+        let i = 0;
+        const type = () => {
+          if (i < text.length) {
+            const charNode = document.createTextNode(text.charAt(i));
+            element.insertBefore(charNode, cursor);
+            i++;
+            setTimeout(type, speed);
+          } else {
+            // Remove cursor after typing if not the last element
+            if(element.id !== 'type-desc') {
+               cursor?.remove();
+            }
+            resolve();
+          }
+        };
+        type();
+      });
+    };
+
+    // Sequential Typing Animation
+    const startTypingSequence = async () => {
+      if (typeElements.length >= 3) {
+        // 1. Type Title
+        await typeWriter(typeElements[0], 80);
+        
+        // 2. Type Subtitle
+        await typeWriter(typeElements[1], 40);
+        
+        // 3. Draw the line (GSAP)
+        gsap.to('.line-anim', { scaleX: 1, opacity: 0.8, duration: 0.8, ease: 'power3.out' });
+        
+        // Wait a tiny bit
+        await new Promise(r => setTimeout(r, 200));
+
+        // 4. Type Paragraph
+        await typeWriter(typeElements[2], 20);
+
+        // 5. Trigger right side elements after typing finishes
+        gsap.to('.right-title-anim', { x: 0, opacity: 1, duration: 1, ease: 'power3.out' });
+        gsap.to('.right-line-anim', { scaleX: 1, opacity: 1, duration: 0.8, delay: 0.2, ease: 'power3.out' });
+        gsap.to('.right-buttons-anim button', { x: 0, opacity: 1, duration: 0.8, delay: 0.4, stagger: 0.1, ease: 'power3.out' });
+      }
+    };
+
+    // Start sequence
+    startTypingSequence();
+
+
+    // ----------------------------------------------------
+    // 3D CAROUSEL LOGIC
+    // ----------------------------------------------------
+    // Idle floating animation for the slider container
+    gsap.to('.slider-container', {
+      y: -10,
+      duration: 4,
+      ease: 'sine.inOut',
+      yoyo: true,
+      repeat: -1
+    });
+
+    const spinner = document.querySelector('.carousel-spinner') as HTMLElement;
+    const cards = document.querySelectorAll('.coverflow-card') as NodeListOf<HTMLElement>;
+    const totalCards = cards.length;
+    const theta = 360 / totalCards;
+    
+    // Calculate radius to perfectly space out cards depending on screen size
+    const calculateRadius = () => {
+      if (window.innerWidth < 640) return 160;      // Mobile phones
+      if (window.innerWidth < 1024) return 220;     // Tablets
+      return 320;                                   // Desktops
+    };
+    
+    let radius = calculateRadius();
+
+    // Position cards in a circle
+    const positionCards = () => {
+      radius = calculateRadius();
+      cards.forEach((card, index) => {
+        const angle = theta * index;
+        card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+      });
+      updateCards();
+    };
+
+    let activeIndex = 0; // The currently active/centered card
+    let rotation = 0;    // Current rotation of the spinner
+    let autoPlayTimer: gsap.core.Tween | null = null;
+
+    const updateCards = (animate = true) => {
+      // Calculate rotation. To center `activeIndex`, we rotate the spinner to `-activeIndex * theta`
+      rotation = -activeIndex * theta;
+      
+      // We push the spinner back on the Z axis so the active card is visually closer to the screen
+      if (animate) {
+        gsap.to(spinner, {
+          z: -radius,
+          rotationY: rotation,
+          duration: 1,
+          ease: "power3.out"
+        });
+      } else {
+        gsap.set(spinner, {
+          z: -radius,
+          rotationY: rotation
+        });
+      }
+
+      // Update active classes for styling (glow, colors, etc.)
+      const normalizedIndex = ((activeIndex % totalCards) + totalCards) % totalCards;
+      
+      cards.forEach((card, index) => {
+        if (index === normalizedIndex) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    };
+
+    // Listen for resize to recalculate 3D spacing
+    window.addEventListener('resize', () => {
+      positionCards();
+      updateCards(false); // Snap on resize without animation
+    });
+
+    positionCards();
+    updateCards(false); // Initial snap
+
+    // Auto Play Logic
+    const nextSlide = () => {
+      activeIndex++;
+      updateCards();
+      startAutoPlay(); // queue the next slide
+    };
+
+    const startAutoPlay = () => {
+      if (autoPlayTimer) autoPlayTimer.kill();
+      autoPlayTimer = gsap.delayedCall(3.5, nextSlide);
+    };
+
+    const resetAutoPlay = () => {
+      startAutoPlay();
+    };
+
+    startAutoPlay();
+
+    // Interaction on Click
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const index = parseInt(card.getAttribute('data-index') || '0');
+        const normalizedActive = ((activeIndex % totalCards) + totalCards) % totalCards;
+        
+        if (normalizedActive !== index) {
+          // Calculate the shortest path to rotate
+          let diff = index - normalizedActive;
+          if (diff > totalCards / 2) diff -= totalCards;
+          if (diff < -totalCards / 2) diff += totalCards;
+          
+          activeIndex += diff;
+          updateCards();
+          resetAutoPlay();
+        } else {
+          // Card is already active, trigger button bounce
+          const btn = card.querySelector('button');
+          if (btn) {
+              console.log("ENTER CLICKED ON", index);
+              gsap.fromTo(card, 
+                { scale: 0.95 },
+                { scale: 1, duration: 0.4, ease: 'back.out(2)' }
+              );
+          }
+        }
+      });
+    });
+  });
+</script>
