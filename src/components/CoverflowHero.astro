@@ -1,145 +1,124 @@
 ---
 const slides = [
-  {
-    id: 1,
-    title: "TACTICS",
-    subtitle: "INSTANCE TASK",
-    image: "/images/ima2.jpg",
-    locked: false,
-  },
-  {
-    id: 2,
-    title: "MATCH REPORT",
-    subtitle: "INSTANCE TASK",
-    image: "/images/ima3.jpg",
-    locked: false,
-  },
-  {
-    id: 3,
-    title: "THE MASTERMIND",
-    subtitle: "MAIN EVENT",
-    image: "/images/head1.jpg",
-    locked: false,
-  },
-  {
-    id: 4,
-    title: "INTERVIEW",
-    subtitle: "INSTANCE TASK",
-    image: "/images/ima4.jpg",
-    locked: true,
-  },
-  {
-    id: 5,
-    title: "ANALYSIS",
-    subtitle: "INSTANCE TASK",
-    image: "/images/ima5.jpg",
-    locked: true,
-  }
+  { id: 1, title: "TACTICS",       subtitle: "INSTANCE TASK", image: "/images/ima2.jpg", locked: false },
+  { id: 2, title: "MATCH REPORT",  subtitle: "INSTANCE TASK", image: "/images/ima3.jpg", locked: false },
+  { id: 3, title: "THE MASTERMIND",subtitle: "MAIN EVENT",    image: "/images/head1.jpg",locked: false },
+  { id: 4, title: "INTERVIEW",     subtitle: "INSTANCE TASK", image: "/images/ima4.jpg", locked: true  },
+  { id: 5, title: "ANALYSIS",      subtitle: "INSTANCE TASK", image: "/images/ima5.jpg", locked: true  },
 ];
 
-const institutions = [
-  "INFOCADE",
-  "CENACAP",
-  "FUNDACION 1",
-  "FUNDACION 2",
-  "CLUB DE LEONES"
-];
+const institutions = ["INFOCADE", "CENACAP", "FUNDACION 1", "FUNDACION 2", "CLUB DE LEONES"];
 ---
 
-<section class="relative min-h-screen w-full flex items-center justify-center overflow-x-hidden bg-[#030303] coverflow-section py-32 xl:py-0">
-  
-  <!-- Animated Background Image -->
-  <div class="absolute inset-0 z-0 overflow-hidden">
-    <img src="/images/ima1.jpg" alt="Background" class="w-full h-full object-cover opacity-20 bg-pan pointer-events-none" />
-    <div class="absolute inset-0 bg-gradient-to-b from-[#030303] via-transparent to-[#030303]"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-[#030303] via-[#030303]/50 to-[#030303]"></div>
+<section class="hero-section">
+
+  <!-- Background -->
+  <div class="hero-bg">
+    <img src="/images/ima1.jpg" alt="" class="hero-bg-img" aria-hidden="true" />
+    <div class="hero-bg-fade-y"></div>
+    <div class="hero-bg-fade-x"></div>
   </div>
+  <div class="hero-glow"></div>
 
-  <!-- Background glow effect -->
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-yellow-500/10 blur-[100px] md:blur-[150px] rounded-full pointer-events-none z-0"></div>
+  <div class="hero-inner">
 
-  <!-- Main Layout Container (3 Columns) -->
-  <div class="relative z-50 w-full max-w-[1600px] mx-auto px-6 md:px-10 flex flex-col xl:flex-row items-center justify-between gap-16 xl:gap-4">
-    
-    <!-- Left Column (Title & Review) -->
-    <div class="w-full xl:w-[350px] flex flex-col items-center xl:items-start text-center xl:text-left pointer-events-none order-1">
-      <h1 class="text-6xl md:text-7xl font-display text-white tracking-widest uppercase leading-none drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] type-text" data-text="CBIT"></h1>
-      <h2 class="text-[10px] md:text-xs font-display text-yellow-500 tracking-[0.3em] md:tracking-[0.5em] uppercase mt-2 h-4 type-text" data-text="SYSTEM INITIALIZATION"></h2>
-      
-      <div class="h-[2px] w-16 bg-yellow-500 mt-4 opacity-80 line-anim origin-center xl:origin-left scale-x-0"></div>
-      
-      <p class="text-gray-400 text-xs md:text-sm mt-6 mb-8 leading-relaxed pointer-events-auto max-w-md xl:max-w-sm min-h-[80px] type-text text-left xl:text-left" data-text="Accede a la base de datos principal para revisar análisis tácticos, entrevistas exclusivas y la metodología deportiva. Explora las instancias de manera fluida interactuando con los módulos centrales del sistema."></p>
-    </div>
+    <!-- Header -->
+    <header class="hero-header">
+      <h1 class="hero-title">CBIT</h1>
+      <p class="hero-sub">SYSTEM INITIALIZED</p>
+      <div class="hero-divider"></div>
+    </header>
 
-    <!-- Center Column (3D Carousel Container) -->
-    <div class="relative w-full xl:flex-1 h-[380px] md:h-[450px] lg:h-[500px] flex items-center justify-center perspective-[1200px] z-20 slider-container pointer-events-auto order-2">
-      <!-- The Spinner that rotates -->
-      <div class="relative w-[200px] md:w-[280px] lg:w-[320px] h-[320px] md:h-[450px] lg:h-[500px] transform-style-3d carousel-spinner" style="will-change: transform;">
-        
-        {slides.map((slide, index) => (
-          <div 
-            class="absolute top-0 left-0 w-full h-full cursor-pointer coverflow-card group"
-            data-index={index}
+    <!-- Carousel -->
+    <div class="carousel-wrap" id="carousel" aria-label="Módulos CBIT">
+      <div class="carousel-track" id="carouselTrack">
+        {slides.map((slide, i) => (
+          <article
+            class="card"
+            data-index={i}
+            aria-label={slide.title}
+            role="button"
+            tabindex="0"
           >
-            <div class="w-full h-full relative flex flex-col items-center justify-between p-3 md:p-4 bg-[#0a0a0a]/90 backdrop-blur-md border border-white/10 group-[.active]:border-yellow-500 group-[.active]:shadow-[0_0_50px_rgba(234,179,8,0.3)] transition-all duration-500 overflow-hidden" style="clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);">
-              
-              <img src={slide.image} alt={slide.title} class="absolute inset-0 w-full h-full object-cover opacity-50 group-[.active]:opacity-90 transition-opacity duration-500 pointer-events-none grayscale-[60%] group-[.active]:grayscale-0" />
-              <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90 group-[.active]:from-black/40 group-[.active]:to-black/80 transition-colors duration-500"></div>
+            <div
+              class="card-bg"
+              style={`background-image: url('${slide.image}')`}
+            ></div>
+            <div class="card-overlay-y"></div>
+            <div class="card-overlay-x"></div>
 
-              <!-- Top Header -->
-              <div class="relative z-10 w-full flex flex-col items-center mt-2">
-                 <div class="h-[2px] w-1/3 bg-yellow-500 mb-2 opacity-30 group-[.active]:opacity-100 group-[.active]:w-2/3 transition-all duration-500"></div>
-                 <h3 class="text-gray-400 group-[.active]:text-white text-[8px] md:text-xs font-bold tracking-[0.2em] uppercase transition-colors">{slide.subtitle}</h3>
-                 <h2 class="text-white/50 group-[.active]:text-yellow-500 font-display text-base md:text-2xl mt-1 tracking-wider text-center transition-colors">{slide.title}</h2>
+            <!-- Collapsed: vertical label -->
+            <div class="card-vtitle" aria-hidden="true">{slide.title}</div>
+
+            <!-- Expanded: full content -->
+            <div class="card-content">
+              <div class="card-top">
+                <div class="acc-bar"></div>
+                <span class="card-subtitle">{slide.subtitle}</span>
+                <h2 class="card-title">{slide.title}</h2>
               </div>
 
-              <!-- Center Icon (Lock or Unlock) -->
-              <div class="relative z-10 w-10 h-10 md:w-16 md:h-16 rounded-full border border-white/20 flex items-center justify-center bg-black/60 backdrop-blur-md group-[.active]:border-yellow-500/80 group-[.active]:bg-yellow-500/20 group-[.active]:scale-110 transition-all duration-500">
-                {slide.locked ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/30 md:w-6 md:h-6"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/50 group-[.active]:text-yellow-400 md:w-6 md:h-6"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
-                )}
+              <div class="lock-wrap">
+                <div class="lock-icon">
+                  {slide.locked ? (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="rgba(255,255,255,0.3)" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="18" height="11" x="3" y="11" rx="2"/>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                  ) : (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="#eab308" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="18" height="11" x="3" y="11" rx="2"/>
+                      <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+                    </svg>
+                  )}
+                </div>
               </div>
 
-              <!-- Bottom Button -->
-              <div class="relative z-10 w-full flex flex-col items-center mb-2 md:mb-4">
-                 <button class="px-4 py-1.5 md:px-8 md:py-2 rounded-sm border border-white/20 text-white/50 font-bold tracking-widest text-[8px] md:text-xs bg-white/5 hover:bg-white/10 group-[.active]:border-yellow-500 group-[.active]:text-black group-[.active]:bg-yellow-500 group-[.active]:shadow-[0_0_20px_rgba(234,179,8,0.6)] transition-all duration-300">
-                   ENTER
-                 </button>
-                 <div class="flex gap-1 mt-3 md:mt-6 opacity-30 group-[.active]:opacity-100 transition-opacity duration-500">
-                    <div class="w-2 h-1 bg-white/50 group-[.active]:bg-yellow-500 transition-colors"></div>
-                    <div class="w-6 h-1 bg-white/50 group-[.active]:bg-yellow-500 transition-colors"></div>
-                    <div class="w-2 h-1 bg-white/50 group-[.active]:bg-yellow-500 transition-colors"></div>
-                 </div>
+              <div class="card-bottom">
+                <button class="enter-btn" tabindex="-1">ENTER</button>
+                <div class="dot-row" aria-hidden="true">
+                  <span class="dot" style="width:6px"></span>
+                  <span class="dot" style="width:20px"></span>
+                  <span class="dot" style="width:6px"></span>
+                </div>
               </div>
-
-              <!-- Decorative borders -->
-              <div class="absolute top-0 left-0 w-4 md:w-6 h-[2px] bg-white/20 group-[.active]:bg-yellow-500 transition-colors duration-500"></div>
-              <div class="absolute top-0 left-0 w-[2px] h-4 md:h-6 bg-white/20 group-[.active]:bg-yellow-500 transition-colors duration-500"></div>
-              <div class="absolute bottom-0 right-0 w-4 md:w-6 h-[2px] bg-white/20 group-[.active]:bg-yellow-500 transition-colors duration-500"></div>
-              <div class="absolute bottom-0 right-0 w-[2px] h-4 md:h-6 bg-white/20 group-[.active]:bg-yellow-500 transition-colors duration-500"></div>
-
             </div>
-          </div>
+
+            <!-- Corner decor -->
+            <span class="corner c-tl-h" aria-hidden="true"></span>
+            <span class="corner c-tl-v" aria-hidden="true"></span>
+            <span class="corner c-br-h" aria-hidden="true"></span>
+            <span class="corner c-br-v" aria-hidden="true"></span>
+          </article>
         ))}
       </div>
     </div>
 
-    <!-- Right Column (Institutions Buttons) -->
-    <div class="w-full xl:w-[350px] flex flex-col items-center xl:items-end text-center xl:text-right pointer-events-none order-3">
-      <h3 class="text-base lg:text-lg font-display text-white tracking-[0.2em] uppercase right-title-anim opacity-0">
-        NUESTRAS <span class="text-yellow-500">INSTITUCIONES</span>
-      </h3>
-      <div class="h-[2px] w-12 bg-white/20 mt-3 mb-6 right-line-anim origin-center xl:origin-right mx-auto xl:mx-0 scale-x-0"></div>
-      
-      <div class="flex flex-col items-center xl:items-end gap-3 pointer-events-auto right-buttons-anim w-full">
+    <!-- Dot indicators -->
+    <div class="indicators" id="indicators" aria-label="Navegación de tarjetas">
+      {slides.map((_, i) => (
+        <button class:list={["ind", { active: i === 0 }]} data-idx={i} aria-label={`Ir a tarjeta ${i + 1}`}></button>
+      ))}
+    </div>
+
+    <!-- Bottom row -->
+    <div class="bottom-row">
+      <p class="hero-desc">
+        Accede a la base de datos principal para revisar análisis tácticos,
+        entrevistas exclusivas y la metodología deportiva.
+      </p>
+
+      <div class="inst-col">
+        <h3 class="inst-title">NUESTRAS <span>INSTITUCIONES</span></h3>
+        <div class="inst-sep"></div>
         {institutions.map(inst => (
-          <button class="group relative px-6 py-3 md:py-4 border border-white/10 bg-white/5 hover:border-yellow-500 hover:bg-yellow-500/10 transition-all duration-300 w-full max-w-[300px] xl:w-[250px] flex items-center justify-center xl:justify-end overflow-hidden opacity-0 translate-x-5">
-            <span class="absolute left-0 top-0 w-1 h-full bg-yellow-500 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom"></span>
-            <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-gray-400 group-hover:text-yellow-500 transition-colors z-10 relative">
-              {inst}
-            </span>
+          <button class="inst-btn">
+            <span class="inst-accent" aria-hidden="true"></span>
+            <span>{inst}</span>
           </button>
         ))}
       </div>
@@ -149,222 +128,525 @@ const institutions = [
 </section>
 
 <style>
-  .bg-pan {
-    animation: panImage 30s linear infinite alternate;
+  /* ── Base ─────────────────────────────────────────────────── */
+  .hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100svh;
+    background: #030303;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
-  @keyframes panImage {
-    0% { transform: scale(1.1) translate(0, 0); }
+
+  /* ── Background ───────────────────────────────────────────── */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.18;
+    animation: panBg 32s linear infinite alternate;
+    will-change: transform;
+  }
+  @keyframes panBg {
+    0%   { transform: scale(1.1) translate(0, 0); }
     100% { transform: scale(1.15) translate(-2%, 2%); }
   }
-  .transform-style-3d {
-    transform-style: preserve-3d;
+  .hero-bg-fade-y {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, #030303 0%, transparent 30%, transparent 70%, #030303 100%);
   }
-  
-  /* Typewriter Cursor */
-  .cursor {
+  .hero-bg-fade-x {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #030303 0%, rgba(3,3,3,0.4) 40%, rgba(3,3,3,0.4) 60%, #030303 100%);
+  }
+  .hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(234,179,8,0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Layout ───────────────────────────────────────────────── */
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  /* ── Header ───────────────────────────────────────────────── */
+  .hero-header {
+    text-align: center;
+  }
+  .hero-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(40px, 8vw, 72px);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.25em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .hero-sub {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10px;
+    color: #eab308;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+  .hero-divider {
+    width: 36px;
+    height: 1px;
+    background: #eab308;
+    margin: 14px auto 0;
+    opacity: 0.75;
+  }
+
+  /* ── Carousel ─────────────────────────────────────────────── */
+  .carousel-wrap {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    overflow: hidden;
+  }
+  .carousel-wrap.is-dragging { cursor: grabbing; }
+
+  .carousel-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    will-change: transform;
+  }
+
+  /* ── Card ─────────────────────────────────────────────────── */
+  .card {
+    flex-shrink: 0;
+    width: 260px;
+    height: 340px;
+    margin: 0 10px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    clip-path: polygon(5% 0, 100% 0, 100% 95%, 95% 100%, 0 100%, 0 5%);
+    cursor: pointer;
+    outline: none;
+
+    /* Scale/translate managed by JS inline style — not transition here to let JS lerp handle it */
+    will-change: transform, opacity;
+    transition:
+      border-color 0.4s ease,
+      transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+      opacity 0.5s ease;
+  }
+  .card:focus-visible { outline: 2px solid #eab308; outline-offset: 4px; }
+
+  .card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(80%);
+    opacity: 0.22;
+    transform: scale(1.06);
+    transition: filter 0.5s ease, opacity 0.5s ease, transform 0.6s ease;
+  }
+  .card-overlay-y {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 40%, rgba(0,0,0,0.9) 100%);
+  }
+  .card-overlay-x {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.35), transparent);
+  }
+
+  /* Vertical title (collapsed) */
+  .card-vtitle {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  /* Full content (expanded) */
+  .card-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  .acc-bar {
+    width: 24px;
+    height: 2px;
+    background: #eab308;
+    margin-bottom: 10px;
+    transition: width 0.4s ease;
+  }
+  .card-subtitle {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 9px;
+    color: #eab308;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    display: block;
+  }
+  .card-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-top: 6px;
+  }
+
+  .lock-wrap { display: flex; align-items: center; }
+  .lock-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    transition: border-color 0.4s, background 0.4s;
+  }
+
+  .enter-btn {
     display: inline-block;
-    width: 8px;
-    height: 1.2em;
-    background-color: #eab308; /* yellow-500 */
-    vertical-align: middle;
-    animation: blink 1s step-end infinite;
-    margin-left: 4px;
+    padding: 8px 20px;
+    border: 1px solid #eab308;
+    background: #eab308;
+    color: #000;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
   }
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+  .enter-btn:hover { background: #fcd34d; }
+
+  .dot-row {
+    display: flex;
+    gap: 4px;
+    margin-top: 10px;
+  }
+  .dot {
+    display: block;
+    height: 2px;
+    background: #eab308;
+  }
+
+  /* Corner decorations */
+  .corner { position: absolute; background: rgba(255, 255, 255, 0.12); transition: background 0.4s; }
+  .c-tl-h { top: 0; left: 0; width: 18px; height: 1px; }
+  .c-tl-v { top: 0; left: 0; width: 1px;  height: 18px; }
+  .c-br-h { bottom: 0; right: 0; width: 18px; height: 1px; }
+  .c-br-v { bottom: 0; right: 0; width: 1px;  height: 18px; }
+
+  /* ── Card states ──────────────────────────────────────────── */
+  /* Selected */
+  .card.is-selected {
+    border-color: rgba(234, 179, 8, 0.6);
+    transform: scale(1.06) translateY(-10px);
+  }
+  .card.is-selected .card-bg    { filter: grayscale(0%); opacity: 0.82; transform: scale(1); }
+  .card.is-selected .acc-bar    { width: 48px; }
+  .card.is-selected .lock-icon  { border-color: rgba(234,179,8,0.7); background: rgba(234,179,8,0.12); }
+  .card.is-selected .corner     { background: #eab308; }
+  .card.is-selected .card-vtitle  { opacity: 0; pointer-events: none; }
+  .card.is-selected .card-content { opacity: 1; pointer-events: auto; }
+
+  /* Neighbor */
+  .card.is-neighbor { transform: scale(0.93) translateY(6px); opacity: 0.8; }
+
+  /* Far */
+  .card.is-far { transform: scale(0.84) translateY(14px); opacity: 0.5; }
+
+  /* ── Indicators ───────────────────────────────────────────── */
+  .indicators {
+    display: flex;
+    gap: 6px;
+  }
+  .ind {
+    width: 20px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: width 0.35s ease, background 0.35s ease;
+  }
+  .ind.active { width: 38px; background: #eab308; }
+
+  /* ── Bottom row ───────────────────────────────────────────── */
+  .bottom-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-desc {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+    color: rgba(156, 163, 175, 1);
+    line-height: 1.9;
+    max-width: 360px;
+  }
+
+  .inst-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  .inst-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 9px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .inst-title span { color: #eab308; }
+  .inst-sep {
+    width: 28px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    align-self: flex-end;
+    margin-bottom: 2px;
+  }
+
+  .inst-btn {
+    position: relative;
+    width: 190px;
+    padding: 9px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .inst-btn:hover { border-color: #eab308; background: rgba(234,179,8,0.06); }
+
+  .inst-accent {
+    position: absolute;
+    left: 0; top: 0;
+    width: 3px; height: 100%;
+    background: #eab308;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+  }
+  .inst-btn:hover .inst-accent { transform: scaleY(1); }
+
+  .inst-btn > span:last-child {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(156, 163, 175, 1);
+    transition: color 0.3s;
+    position: relative;
+    z-index: 1;
+  }
+  .inst-btn:hover > span:last-child { color: #eab308; }
+
+  /* ── Responsive ───────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .carousel-wrap { height: 300px; }
+    .card { width: 200px; height: 270px; }
+    .bottom-row { flex-direction: column; gap: 20px; }
+    .inst-col { align-items: flex-start; }
+    .inst-btn { width: 100%; justify-content: flex-start; }
+    .hero-desc { max-width: 100%; }
   }
 </style>
 
 <script>
-  import gsap from 'gsap';
+  const CARD_W = 280; // card width (260) + margins (10*2)
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // ----------------------------------------------------
-    // TYPEWRITER EFFECT LOGIC
-    // ----------------------------------------------------
-    const typeElements = document.querySelectorAll('.type-text');
-    
-    // Function to type text out letter by letter
-    const typeWriter = (element: Element, speed: number) => {
-      return new Promise<void>(resolve => {
-        const text = element.getAttribute('data-text') || '';
-        element.innerHTML = '<span class="cursor"></span>';
-        const cursor = element.querySelector('.cursor');
-        
-        let i = 0;
-        const type = () => {
-          if (i < text.length) {
-            const charNode = document.createTextNode(text.charAt(i));
-            element.insertBefore(charNode, cursor);
-            i++;
-            setTimeout(type, speed);
-          } else {
-            // Remove cursor after typing if not the last element
-            if(element.id !== 'type-desc') {
-               cursor?.remove();
-            }
-            resolve();
-          }
-        };
-        type();
-      });
-    };
+  const carousel   = document.getElementById('carousel')!;
+  const track      = document.getElementById('carouselTrack')!;
+  const cards      = Array.from(document.querySelectorAll<HTMLElement>('.card'));
+  const indicators = Array.from(document.querySelectorAll<HTMLElement>('.ind'));
 
-    // Sequential Typing Animation
-    const startTypingSequence = async () => {
-      if (typeElements.length >= 3) {
-        // 1. Type Title
-        await typeWriter(typeElements[0], 80);
-        
-        // 2. Type Subtitle
-        await typeWriter(typeElements[1], 40);
-        
-        // 3. Draw the line (GSAP)
-        gsap.to('.line-anim', { scaleX: 1, opacity: 0.8, duration: 0.8, ease: 'power3.out' });
-        
-        // Wait a tiny bit
-        await new Promise(r => setTimeout(r, 200));
+  let selectedIdx   = 0;
+  let currentOffset = 0;
+  let targetOffset  = 0;
+  let isDragging    = false;
+  let startX        = 0;
+  let startOffset   = 0;
+  let dragDelta     = 0;
+  let rafId         = 0;
 
-        // 4. Type Paragraph
-        await typeWriter(typeElements[2], 20);
+  // ── Helpers ────────────────────────────────────────────────
+  const getCenter = () => carousel.offsetWidth / 2;
 
-        // 5. Trigger right side elements after typing finishes
-        gsap.to('.right-title-anim', { x: 0, opacity: 1, duration: 1, ease: 'power3.out' });
-        gsap.to('.right-line-anim', { scaleX: 1, opacity: 1, duration: 0.8, delay: 0.2, ease: 'power3.out' });
-        gsap.to('.right-buttons-anim button', { x: 0, opacity: 1, duration: 0.8, delay: 0.4, stagger: 0.1, ease: 'power3.out' });
-      }
-    };
+  const scrollToCard = (idx: number) => {
+    targetOffset = getCenter() - (idx * CARD_W + CARD_W / 2);
+  };
 
-    // Start sequence
-    startTypingSequence();
+  const selectCard = (idx: number) => {
+    selectedIdx = Math.max(0, Math.min(cards.length - 1, idx));
 
-
-    // ----------------------------------------------------
-    // 3D CAROUSEL LOGIC
-    // ----------------------------------------------------
-    // Idle floating animation for the slider container
-    gsap.to('.slider-container', {
-      y: -10,
-      duration: 4,
-      ease: 'sine.inOut',
-      yoyo: true,
-      repeat: -1
+    cards.forEach((card, i) => {
+      const diff = Math.abs(i - selectedIdx);
+      card.classList.remove('is-selected', 'is-neighbor', 'is-far');
+      if (i === selectedIdx)    card.classList.add('is-selected');
+      else if (diff === 1)      card.classList.add('is-neighbor');
+      else                      card.classList.add('is-far');
     });
 
-    const spinner = document.querySelector('.carousel-spinner') as HTMLElement;
-    const cards = document.querySelectorAll('.coverflow-card') as NodeListOf<HTMLElement>;
-    const totalCards = cards.length;
-    const theta = 360 / totalCards;
-    
-    // Calculate radius to perfectly space out cards depending on screen size
-    const calculateRadius = () => {
-      if (window.innerWidth < 640) return 160;      // Mobile phones
-      if (window.innerWidth < 1024) return 220;     // Tablets
-      return 320;                                   // Desktops
-    };
-    
-    let radius = calculateRadius();
+    indicators.forEach((ind, i) => {
+      ind.classList.toggle('active', i === selectedIdx);
+    });
+  };
 
-    // Position cards in a circle
-    const positionCards = () => {
-      radius = calculateRadius();
-      cards.forEach((card, index) => {
-        const angle = theta * index;
-        card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
-      });
-      updateCards();
-    };
+  // ── RAF loop ───────────────────────────────────────────────
+  const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-    let activeIndex = 0; // The currently active/centered card
-    let rotation = 0;    // Current rotation of the spinner
-    let autoPlayTimer: gsap.core.Tween | null = null;
+  const tick = () => {
+    currentOffset = lerp(currentOffset, targetOffset, 0.1);
+    (track as HTMLElement).style.transform = `translateX(${currentOffset}px)`;
+    rafId = requestAnimationFrame(tick);
+  };
 
-    const updateCards = (animate = true) => {
-      // Calculate rotation. To center `activeIndex`, we rotate the spinner to `-activeIndex * theta`
-      rotation = -activeIndex * theta;
-      
-      // We push the spinner back on the Z axis so the active card is visually closer to the screen
-      if (animate) {
-        gsap.to(spinner, {
-          z: -radius,
-          rotationY: rotation,
-          duration: 1,
-          ease: "power3.out"
-        });
-      } else {
-        gsap.set(spinner, {
-          z: -radius,
-          rotationY: rotation
-        });
-      }
+  // ── Mouse drag ─────────────────────────────────────────────
+  carousel.addEventListener('mousedown', (e: MouseEvent) => {
+    isDragging = true;
+    dragDelta  = 0;
+    startX     = e.clientX;
+    startOffset = currentOffset;
+    targetOffset = currentOffset;
+    carousel.classList.add('is-dragging');
+  });
 
-      // Update active classes for styling (glow, colors, etc.)
-      const normalizedIndex = ((activeIndex % totalCards) + totalCards) % totalCards;
-      
-      cards.forEach((card, index) => {
-        if (index === normalizedIndex) {
-          card.classList.add('active');
-        } else {
-          card.classList.remove('active');
-        }
-      });
-    };
+  window.addEventListener('mousemove', (e: MouseEvent) => {
+    if (!isDragging) return;
+    dragDelta = e.clientX - startX;
+    targetOffset = startOffset + dragDelta;
+  });
 
-    // Listen for resize to recalculate 3D spacing
-    window.addEventListener('resize', () => {
-      positionCards();
-      updateCards(false); // Snap on resize without animation
+  window.addEventListener('mouseup', (e: MouseEvent) => {
+    if (!isDragging) return;
+    isDragging = false;
+    carousel.classList.remove('is-dragging');
+    const moved = e.clientX - startX;
+    if (Math.abs(moved) > 40) {
+      selectCard(selectedIdx + (moved < 0 ? 1 : -1));
+    }
+    scrollToCard(selectedIdx);
+  });
+
+  // ── Touch drag ─────────────────────────────────────────────
+  carousel.addEventListener('touchstart', (e: TouchEvent) => {
+    startX = e.touches[0].clientX;
+    startOffset = currentOffset;
+    targetOffset = currentOffset;
+    dragDelta = 0;
+  }, { passive: true });
+
+  carousel.addEventListener('touchmove', (e: TouchEvent) => {
+    dragDelta = e.touches[0].clientX - startX;
+    targetOffset = startOffset + dragDelta;
+  }, { passive: true });
+
+  carousel.addEventListener('touchend', (e: TouchEvent) => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) {
+      selectCard(selectedIdx + (dx < 0 ? 1 : -1));
+    }
+    scrollToCard(selectedIdx);
+  });
+
+  // ── Card click ─────────────────────────────────────────────
+  cards.forEach((card, i) => {
+    card.addEventListener('click', () => {
+      if (Math.abs(dragDelta) > 6) return; // ignore click after drag
+      selectCard(i);
+      scrollToCard(i);
     });
 
-    positionCards();
-    updateCards(false); // Initial snap
-
-    // Auto Play Logic
-    const nextSlide = () => {
-      activeIndex++;
-      updateCards();
-      startAutoPlay(); // queue the next slide
-    };
-
-    const startAutoPlay = () => {
-      if (autoPlayTimer) autoPlayTimer.kill();
-      autoPlayTimer = gsap.delayedCall(3.5, nextSlide);
-    };
-
-    const resetAutoPlay = () => {
-      startAutoPlay();
-    };
-
-    startAutoPlay();
-
-    // Interaction on Click
-    cards.forEach((card) => {
-      card.addEventListener('click', () => {
-        const index = parseInt(card.getAttribute('data-index') || '0');
-        const normalizedActive = ((activeIndex % totalCards) + totalCards) % totalCards;
-        
-        if (normalizedActive !== index) {
-          // Calculate the shortest path to rotate
-          let diff = index - normalizedActive;
-          if (diff > totalCards / 2) diff -= totalCards;
-          if (diff < -totalCards / 2) diff += totalCards;
-          
-          activeIndex += diff;
-          updateCards();
-          resetAutoPlay();
-        } else {
-          // Card is already active, trigger button bounce
-          const btn = card.querySelector('button');
-          if (btn) {
-              console.log("ENTER CLICKED ON", index);
-              gsap.fromTo(card, 
-                { scale: 0.95 },
-                { scale: 1, duration: 0.4, ease: 'back.out(2)' }
-              );
-          }
-        }
-      });
+    card.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectCard(i);
+        scrollToCard(i);
+      }
     });
   });
+
+  // ── Indicator click ────────────────────────────────────────
+  indicators.forEach((ind, i) => {
+    ind.addEventListener('click', () => { selectCard(i); scrollToCard(i); });
+  });
+
+  // ── Keyboard arrow nav ─────────────────────────────────────
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'ArrowLeft')  { selectCard(selectedIdx - 1); scrollToCard(selectedIdx); }
+    if (e.key === 'ArrowRight') { selectCard(selectedIdx + 1); scrollToCard(selectedIdx); }
+  });
+
+  // ── Init ───────────────────────────────────────────────────
+  selectCard(0);
+  scrollToCard(0);
+  currentOffset = targetOffset;
+  rafId = requestAnimationFrame(tick);
 </script>
