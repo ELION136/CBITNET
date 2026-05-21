@@ -1,4 +1,6 @@
 ---
+const { pathname } = Astro.url;
+const isRegisterPage = pathname === "/inscribirse" || pathname === "/inscribirse/";
 ---
 
 <!-- Desktop & Mobile Header -->
@@ -12,8 +14,8 @@
     <li><a href="/servicios" class="hover:text-green-400 transition-colors">SERVICIOS</a></li>
     <li><a href="/sobre-nosotros" class="hover:text-green-400 transition-colors">SOBRE NOSOTROS</a></li>
     <li><a href="/carreras" class="hover:text-green-400 transition-colors">NUESTROS PROGRAMAS</a></li>
-    <li><a href="/inscribirse" class="hover:text-green-400 transition-colors">INSCRIBIRSE</a></li>
   </ul>
+
 
   <!-- Mobile Hamburger Button -->
   <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 relative z-[101] p-2 cursor-pointer">
@@ -52,11 +54,6 @@
     <li>
       <a href="/carreras" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
         <span class="block translate-y-full opacity-0">NUESTROS PROGRAMAS</span>
-      </a>
-    </li>
-    <li>
-      <a href="/inscribirse" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
-        <span class="block translate-y-full opacity-0">INSCRIBIRSE</span>
       </a>
     </li>
   </ul>
@@ -134,3 +131,20 @@
     });
   }
 </script>
+
+<!-- Floating CTA Button (Persistent on all pages, except the register page itself) -->
+{!isRegisterPage && (
+  <a 
+    href="https://forms.gle/cVVdBKkZb4oSyXf27" 
+    target="_blank"
+    rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 z-[80] flex items-center justify-center gap-2 px-5 py-3 md:px-6 md:py-4 rounded-full bg-green-500 hover:bg-green-400 text-black font-bold tracking-widest text-xs md:text-sm uppercase transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.4)] hover:shadow-[0_0_35px_rgba(34,197,94,0.7)] hover:scale-105 active:scale-95 group pointer-events-auto animate-pulse"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">
+      <path d="M15 3h6v6"/>
+      <path d="M10 14 21 3"/>
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    </svg>
+    <span>INSCRIBIRSE AHORA</span>
+  </a>
+)}

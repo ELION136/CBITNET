@@ -1,0 +1,1086 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const principles = [
+  {
+    num: "01",
+    title: "We Serve",
+    titleEs: "Servimos",
+    desc: "Más de 1.4 millones de socios en 200+ países. La organización de servicio voluntario más grande del mundo, activa en cada comunidad que lo necesita.",
+  },
+  {
+    num: "02",
+    title: "We Care",
+    titleEs: "Nos Importa",
+    desc: "Erradicamos la ceguera, atendemos a los jóvenes, ofrecemos auxilio en desastres y abordamos necesidades humanitarias urgentes.",
+  },
+  {
+    num: "03",
+    title: "We Lead",
+    titleEs: "Lideramos",
+    desc: "Formamos líderes comunitarios íntegros que inspiran a sus entornos, con civismo activo y valores de servicio sostenido.",
+  },
+  {
+    num: "04",
+    title: "We Unite",
+    titleEs: "Unimos",
+    desc: "Conectamos familias, comunidades y naciones bajo un mismo propósito: hacer del mundo un lugar mejor para todos.",
+  },
+];
+
+const activities = [
+  { title: "Torneos Comunitarios", desc: "Ligas deportivas juveniles reuniendo a más de 500 atletas en disciplinas múltiples.", imagen: "/images/miu1.jpeg" },
+  { title: "Brigadas de Salud", desc: "Campañas médicas gratuitas y soporte nutricional para familias de escasos recursos.", imagen: "/images/miu2.jpeg" },
+  { title: "Equipamiento Deportivo", desc: "Renovación de complejos deportivos barriales y dotación de material técnico de calidad.", imagen: "/images/miu3.jpeg" },
+  { title: "Becas y Formacion", desc: "Clínicas de liderazgo cívico para guiar el carácter ético de los futuros campeones.", imagen: "/images/miu4.jpeg" },
+  { title: "Ceremonia de Afiliacion", desc: "Acto formal de bienvenida a nuevos miembros del Club de Leones Sacaba.", imagen: "/images/miro1.JPG" },
+  { title: "Accion Comunitaria", desc: "Voluntariado activo transformando el entorno social de nuestra región.", imagen: "/images/miu5.jpeg" },
+];
+
+const stats = [
+  { num: "1.4M+", label: "Socios en el Mundo" },
+  { num: "45K+", label: "Clubes Activos" },
+  { num: "200+", label: "Países Presentes" },
+  { num: "100+", label: "Años de Servicio" },
+];
+---
+
+<Layout title="Club de Leones Sacaba | Lions Clubs International">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:        #1a3a8f;
+    --blue-dark:   #0f2460;
+    --blue-mid:    #2650b8;
+    --blue-light:  #3b6fd4;
+    --blue-pale:   #dde8ff;
+    --gold:        #f5c518;
+    --gold-dark:   #c9a010;
+    --gold-light:  #fad84a;
+    --gold-pale:   #fff8dc;
+    --ink:         #0d1a3a;
+    --white:       #ffffff;
+    --off-white:   #f7f9ff;
+    --gray:        #8395b8;
+    --gray-light:  #e8edf8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--off-white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  #navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    height: 76px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(20px);
+    border-bottom: 3px solid var(--gold);
+    box-shadow: 0 2px 24px rgba(26,58,143,0.08);
+    transition: all 0.4s;
+  }
+  .nav-left {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none;
+  }
+  .nav-logo-img { height: 52px; width: auto; }
+  .nav-wordmark { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--blue-dark);
+    letter-spacing: 0.03em;
+  }
+  .nav-name em { color: var(--gold-dark); font-style: normal; }
+  .nav-sub {
+    font-size: 0.62rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gray); margin-top: 2px;
+  }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-link {
+    font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--blue);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.25s;
+  }
+  .nav-link::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 2px; background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .nav-link:hover { color: var(--blue-dark); }
+  .nav-link:hover::after { transform: scaleX(1); }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 26px;
+    background: var(--blue);
+    color: var(--gold);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 2px solid var(--blue);
+    transition: all 0.3s;
+    box-shadow: 0 4px 16px rgba(26,58,143,0.25);
+  }
+  .nav-cta:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--blue-dark);
+    box-shadow: 0 6px 24px rgba(245,197,24,0.4);
+    transform: translateY(-2px);
+  }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('/images/miro1.JPG') center center / cover no-repeat;
+    will-change: transform;
+    filter: brightness(0.45) saturate(0.7);
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to top, rgba(10,22,64,0.98) 0%, rgba(10,22,64,0.6) 50%, rgba(10,22,64,0.25) 100%),
+      linear-gradient(to right, rgba(10,22,64,0.6) 0%, transparent 60%);
+  }
+  /* Diagonal gold stripe accent */
+  .hero-stripe {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 5px; z-index: 3;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  }
+
+  .hero-content {
+    position: relative; z-index: 10;
+    padding: 0 64px 100px;
+    max-width: 1000px;
+  }
+  .hero-kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 7px 16px 7px 12px;
+    background: var(--gold);
+    color: var(--blue-dark);
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    border-radius: 3px;
+    margin-bottom: 32px;
+    opacity: 0;
+  }
+  .hero-kicker-dot { width: 6px; height: 6px; background: var(--blue-dark); border-radius: 50%; }
+
+  .hero-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 9vw, 8.5rem);
+    line-height: 0.92; font-weight: 900;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .h1-line { display: block; overflow: hidden; }
+  .h1-inner { display: block; }
+  .h1-gold { color: var(--gold); }
+  .h1-outline {
+    -webkit-text-stroke: 2px rgba(255,255,255,0.22);
+    color: transparent;
+  }
+
+  .hero-divider {
+    width: 0; height: 3px;
+    background: var(--gold);
+    margin: 30px 0;
+    border-radius: 2px;
+  }
+  .hero-tagline {
+    font-size: 1.05rem; font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    max-width: 460px; line-height: 1.85;
+    margin-bottom: 40px; opacity: 0;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; opacity: 0; }
+  .btn-gold {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 38px;
+    background: var(--gold);
+    color: var(--blue-dark);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border-radius: 4px;
+    transition: all 0.3s;
+    box-shadow: 0 6px 28px rgba(245,197,24,0.4);
+  }
+  .btn-gold:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(245,197,24,0.55);
+  }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 30px;
+    border: 2px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.86rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; border-radius: 4px;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* Hero floating badge */
+  .hero-badge {
+    position: absolute; top: 130px; right: 64px; z-index: 10;
+    padding: 24px 28px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(245,197,24,0.4);
+    border-radius: 12px;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0; text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  .hero-badge-logo {
+    width: 56px; height: 56px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 900;
+    color: var(--blue-dark);
+    margin-bottom: 6px;
+    box-shadow: 0 0 0 3px rgba(245,197,24,0.2);
+  }
+  .hero-badge-title {
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .hero-badge-org {
+    font-size: 0.7rem; font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* Scroll hint */
+  .scroll-hint {
+    position: absolute; bottom: 36px; right: 64px; z-index: 10;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    opacity: 0;
+  }
+  .scroll-hint span {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.25); writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1.5px; height: 56px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scanDown 2.5s ease-in-out infinite;
+  }
+  @keyframes scanDown {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ── STATS STRIP ── */
+  #stats-strip {
+    background: var(--blue-dark);
+    border-top: 4px solid var(--gold);
+  }
+  .stats-row {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .stat-cell {
+    padding: 48px 32px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-cell:hover { background: rgba(245,197,24,0.06); }
+  .stat-cell::before {
+    content: '';
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 0; height: 3px; background: var(--gold);
+    transition: width 0.4s;
+  }
+  .stat-cell:hover::before { width: 60%; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900; line-height: 1;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-top: 10px; display: block;
+  }
+
+  /* ── SECTION BASE ── */
+  .section-wrap { max-width: 1260px; margin: 0 auto; padding: 110px 52px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 16px;
+  }
+  .eyebrow::before {
+    content: ''; width: 24px; height: 2px;
+    background: var(--gold); display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4.4rem);
+    font-weight: 900; line-height: 0.95;
+    color: var(--blue-dark);
+  }
+  .section-title .hl { color: var(--gold-dark); }
+  .section-title .light { color: var(--blue-light); }
+
+  /* ── QUIENES SOMOS ── */
+  #quienes {
+    background: var(--white);
+    border-top: 1px solid var(--gray-light);
+  }
+  .quienes-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .quienes-body {
+    font-size: 1rem; font-weight: 300;
+    color: #4a5580; line-height: 1.9;
+    margin: 28px 0 32px;
+  }
+  .quienes-quote {
+    padding: 22px 26px;
+    border-left: 4px solid var(--gold);
+    background: var(--gold-pale);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 32px;
+  }
+  .quienes-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--blue-dark); line-height: 1.5;
+    font-style: italic;
+  }
+  .quienes-quote span {
+    display: block; margin-top: 8px;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gray);
+  }
+  .quienes-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--blue); text-decoration: none;
+    transition: gap 0.25s, color 0.25s;
+  }
+  .quienes-link:hover { gap: 16px; color: var(--blue-dark); }
+  .quienes-img-wrap {
+    position: relative; height: 580px;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 24px 64px rgba(26,58,143,0.18);
+  }
+  .quienes-img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .quienes-img-wrap:hover .quienes-img { transform: scale(1.04); }
+  /* Corner decorations using brand blue */
+  .quienes-img-wrap::before {
+    content: '';
+    position: absolute; top: 16px; left: 16px;
+    width: 40px; height: 40px;
+    border-top: 3px solid var(--gold);
+    border-left: 3px solid var(--gold);
+    z-index: 2; border-radius: 2px;
+  }
+  .quienes-img-wrap::after {
+    content: '';
+    position: absolute; bottom: 16px; right: 16px;
+    width: 40px; height: 40px;
+    border-bottom: 3px solid var(--gold);
+    border-right: 3px solid var(--gold);
+    z-index: 2; border-radius: 2px;
+  }
+  .quienes-float {
+    position: absolute; bottom: 28px; left: -20px; z-index: 3;
+    padding: 18px 24px;
+    background: var(--blue-dark);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+  }
+  .quienes-float-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem; font-weight: 900; line-height: 1;
+    color: var(--gold);
+  }
+  .quienes-float-label {
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); margin-top: 4px;
+  }
+
+  /* ── PRINCIPLES ── */
+  #principles {
+    background: var(--blue-dark);
+  }
+  .principles-header { margin-bottom: 56px; }
+  .principles-header .section-title { color: var(--white); }
+  .principles-header .section-title .hl { color: var(--gold); }
+  .principles-header .eyebrow { color: var(--gold-light); }
+  .principles-header .eyebrow::before { background: var(--gold); }
+
+  .principles-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .principle-card {
+    padding: 40px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    position: relative; overflow: hidden;
+    transition: all 0.35s;
+  }
+  .principle-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .principle-card:hover {
+    background: rgba(245,197,24,0.05);
+    border-color: rgba(245,197,24,0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+  }
+  .principle-card:hover::before { transform: scaleX(1); }
+  .principle-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; font-weight: 900; line-height: 1;
+    -webkit-text-stroke: 1px rgba(245,197,24,0.12);
+    color: transparent;
+    position: absolute; top: 16px; right: 24px;
+    user-select: none; transition: -webkit-text-stroke 0.3s;
+  }
+  .principle-card:hover .principle-num { -webkit-text-stroke-color: rgba(245,197,24,0.25); }
+  .principle-en {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--gold); margin-bottom: 4px;
+    display: block;
+  }
+  .principle-es {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 400; font-style: italic;
+    color: rgba(255,255,255,0.25);
+    display: block; margin-bottom: 18px;
+  }
+  .principle-desc {
+    font-size: 0.88rem; font-weight: 300;
+    color: rgba(255,255,255,0.5); line-height: 1.8;
+  }
+
+  /* ── ACTIVIDADES ── */
+  #actividades {
+    background: var(--off-white);
+    border-top: 1px solid var(--gray-light);
+  }
+  .act-header { margin-bottom: 56px; }
+  .act-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .act-card {
+    position: relative; overflow: hidden;
+    height: 300px; border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(26,58,143,0.1);
+    cursor: default;
+  }
+  .act-card:first-child, .act-card:nth-child(5) { grid-column: span 2; }
+  .act-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.6) saturate(0.8);
+    transition: transform 0.7s ease, filter 0.5s;
+  }
+  .act-card:hover .act-img { transform: scale(1.06); filter: brightness(0.7) saturate(1.1); }
+  .act-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,22,64,0.95) 0%, rgba(10,22,64,0.35) 55%, transparent 100%);
+    transition: background 0.4s;
+  }
+  .act-card:hover .act-overlay {
+    background: linear-gradient(to top, rgba(10,22,64,0.98) 0%, rgba(10,22,64,0.5) 60%, rgba(26,58,143,0.1) 100%);
+  }
+  .act-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 24px 26px; z-index: 2;
+  }
+  .act-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .act-tag::before { content: ''; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
+  .act-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--white); margin-bottom: 6px;
+    transition: color 0.3s;
+  }
+  .act-card:hover .act-title { color: var(--gold-light); }
+  .act-desc {
+    font-size: 0.82rem; font-weight: 300;
+    color: rgba(255,255,255,0.5); line-height: 1.6;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .act-card:hover .act-desc { max-height: 80px; }
+
+  /* ── UNIRSE ── */
+  #unirse {
+    background: var(--white);
+    border-top: 1px solid var(--gray-light);
+  }
+  .unirse-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .unirse-steps { display: flex; flex-direction: column; gap: 10px; }
+  .step-item {
+    display: flex; align-items: flex-start; gap: 20px;
+    padding: 22px 24px;
+    border: 1.5px solid var(--gray-light);
+    border-radius: 10px;
+    background: var(--off-white);
+    transition: all 0.3s;
+  }
+  .step-item:hover {
+    border-color: var(--gold);
+    background: var(--gold-pale);
+    transform: translateX(6px);
+    box-shadow: 0 4px 20px rgba(245,197,24,0.15);
+  }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 900; line-height: 1;
+    color: var(--blue-pale); flex-shrink: 0;
+    transition: color 0.3s;
+  }
+  .step-item:hover .step-num { color: var(--gold-dark); }
+  .step-title {
+    font-size: 1rem; font-weight: 700;
+    color: var(--blue-dark); margin-bottom: 5px;
+    letter-spacing: 0.02em;
+  }
+  .step-desc {
+    font-size: 0.85rem; font-weight: 300;
+    color: #6370a0; line-height: 1.7;
+  }
+  .unirse-right { display: flex; flex-direction: column; gap: 28px; }
+  .unirse-cta-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 900; line-height: 1.0;
+    color: var(--blue-dark);
+  }
+  .unirse-cta-text .hl { color: var(--gold-dark); }
+  .unirse-body {
+    font-size: 0.95rem; font-weight: 300;
+    color: #6370a0; line-height: 1.85; max-width: 400px;
+  }
+
+  /* ── CTA FINAL ── */
+  #cta {
+    position: relative; overflow: hidden;
+    background: var(--blue-dark);
+  }
+  .cta-bg {
+    position: absolute; inset: 0;
+    background: url('/images/miro1.JPG') center 40% / cover no-repeat;
+    opacity: 0.07; filter: blur(4px);
+  }
+  .cta-shape {
+    position: absolute; top: -120px; right: -120px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(245,197,24,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .cta-shape2 {
+    position: absolute; bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(59,111,212,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .cta-inner {
+    position: relative; z-index: 2;
+    max-width: 1260px; margin: 0 auto;
+    padding: 130px 52px;
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .cta-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 7.5rem);
+    font-weight: 900; line-height: 0.95;
+    margin-bottom: 36px;
+  }
+  .cta-h2 .l1 { display: block; color: var(--white); }
+  .cta-h2 .l2 { display: block; -webkit-text-stroke: 2px rgba(255,255,255,0.18); color: transparent; }
+  .cta-h2 .l3 { display: block; color: var(--gold); }
+  .cta-sub {
+    font-size: 1rem; font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    max-width: 480px; line-height: 1.85; margin-bottom: 40px;
+  }
+  .cta-badges {
+    display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+    margin-bottom: 44px;
+  }
+  .cta-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 18px;
+    border: 1.5px solid rgba(245,197,24,0.25);
+    background: rgba(245,197,24,0.06);
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    border-radius: 100px;
+    transition: all 0.3s;
+  }
+  .cta-badge:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(245,197,24,0.1);
+  }
+  .cta-badge svg { width: 11px; height: 11px; color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 36px 52px;
+    border-top: 3px solid var(--gold);
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-left { display: flex; flex-direction: column; gap: 4px; }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--white);
+  }
+  .footer-brand em { color: var(--gold); font-style: normal; }
+  .footer-sub {
+    font-size: 0.67rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+  .footer-links { display: flex; gap: 24px; align-items: center; }
+  .footer-link {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+    text-decoration: none; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); transition: color 0.25s;
+  }
+  .footer-link:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.15); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .quienes-layout, .unirse-layout { grid-template-columns: 1fr; gap: 40px; }
+    .quienes-img-wrap { height: 380px; }
+    .principles-grid { grid-template-columns: 1fr; }
+    .act-grid { grid-template-columns: 1fr 1fr; }
+    .act-card:first-child, .act-card:nth-child(5) { grid-column: span 1; }
+  }
+  @media (max-width: 768px) {
+    #navbar { padding: 0 24px; height: 68px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 28px 80px; }
+    .hero-badge { display: none; }
+    .section-wrap { padding: 80px 24px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .act-grid { grid-template-columns: 1fr; }
+    .act-card:first-child, .act-card:nth-child(5) { grid-column: span 1; }
+    footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+    .scroll-hint { right: 24px; }
+  }
+</style>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="/" class="nav-left">
+    <img src="/images/log4.png" alt="Club de Leones" class="nav-logo-img" onerror="this.style.display='none'" />
+    <div class="nav-wordmark">
+      <span class="nav-name">LEONES <em>SACABA</em></span>
+      <span class="nav-sub">Lions Clubs International</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#quienes" class="nav-link">Quiénes Somos</a>
+    <a href="#actividades" class="nav-link">Actividades</a>
+    <a href="#unirse" class="nav-link">Unirse</a>
+    <a href="https://www.lionsclubs.org/es" target="_blank" class="nav-link">Internacional</a>
+  </div>
+  <a href="https://www.lionsclubs.org/es/start-our-approach/club-locator/details?id=146647" target="_blank" class="nav-cta">
+    Ser León
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-stripe"></div>
+
+  <div class="hero-badge" id="hero-badge">
+    <div class="hero-badge-logo">L</div>
+    <span class="hero-badge-title">Miembro Oficial</span>
+    <span class="hero-badge-org">Lions Clubs International</span>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-kicker" id="hero-kicker">
+      <span class="hero-kicker-dot"></span>
+      Club de Leones Sacaba — Cochabamba, Bolivia
+    </div>
+
+    <h1 class="hero-h1" id="hero-h1">
+      <span class="h1-line"><span class="h1-inner">SERVIMOS</span></span>
+      <span class="h1-line"><span class="h1-inner h1-outline">A UN MUNDO</span></span>
+      <span class="h1-line"><span class="h1-inner h1-gold">NECESITADO</span></span>
+    </h1>
+
+    <div class="hero-divider" id="hero-divider"></div>
+
+    <p class="hero-tagline" id="hero-tagline">
+      Voluntarios activos comprometidos con el servicio humanitario y el liderazgo comunitario. Parte de la organización de servicio más grande del mundo.
+    </p>
+
+    <div class="hero-btns" id="hero-btns">
+      <a href="#unirse" class="btn-gold">
+        Unirme al Club
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a href="https://www.lionsclubs.org/es" target="_blank" class="btn-outline">
+        Lions International
+      </a>
+    </div>
+  </div>
+
+  <div class="scroll-hint" id="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats-strip">
+  <div class="stats-row">
+    {stats.map(s => (
+      <div class="stat-cell">
+        <span class="stat-num">{s.num}</span>
+        <span class="stat-label">{s.label}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<!-- QUIENES SOMOS -->
+<section id="quienes">
+  <div class="section-wrap">
+    <div class="quienes-layout">
+      <div class="quienes-img-wrap" id="qs-img">
+        <img src="/images/miro1.JPG" alt="Club de Leones Sacaba" class="quienes-img"
+          onerror="this.src='https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80'" />
+        <div class="quienes-float">
+          <span class="quienes-float-num">1.4M</span>
+          <span class="quienes-float-label">Socios Globales</span>
+        </div>
+      </div>
+      <div id="qs-right">
+        <div class="eyebrow">Quiénes Somos</div>
+        <h2 class="section-title">MARCAMOS<br/>LA <span class="hl">DIFE</span><br/>RENCIA</h2>
+        <div class="quienes-quote">
+          <p>"Los Leones marcamos la diferencia todos los días, en todas partes"</p>
+          <span>Lions Clubs International — Desde 1917</span>
+        </div>
+        <p class="quienes-body">
+          Los Leones somos grupos de personas con vocación de servicio interesados en mejorar la comunidad. Ser León es ser un voluntario activo, socio de una organización internacional muy respetada, líder de la comunidad y amigo de los necesitados.<br/><br/>
+          El Club de Leones Sacaba opera en Cochabamba, Bolivia, llevando a cabo proyectos de impacto social, deportivo y humanitario para los sectores más vulnerables de nuestra región.
+        </p>
+        <a href="https://www.lionsclubs.org/es" target="_blank" class="quienes-link">
+          Conocer Lions International
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section id="principles">
+  <div class="section-wrap">
+    <div class="principles-header" id="princ-header">
+      <div class="eyebrow">Ideario Institucional</div>
+      <h2 class="section-title">NUESTROS <span class="hl">VALORES</span><br/><span class="light">CÍVICOS</span></h2>
+    </div>
+    <div class="principles-grid" id="princ-grid">
+      {principles.map(p => (
+        <div class="principle-card">
+          <span class="principle-num">{p.num}</span>
+          <span class="principle-en">{p.title}</span>
+          <span class="principle-es">{p.titleEs}</span>
+          <p class="principle-desc">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVIDADES -->
+<section id="actividades">
+  <div class="section-wrap">
+    <div class="act-header" id="act-header">
+      <div class="eyebrow">Historial de Acciones</div>
+      <h2 class="section-title">BITÁCORA <span class="hl">COMUNI</span><br/>TARIA</h2>
+    </div>
+    <div class="act-grid" id="act-grid">
+      {activities.map(act => (
+        <div class="act-card">
+          <img src={act.imagen} alt={act.title} class="act-img"
+            onerror="this.src='https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80'" />
+          <div class="act-overlay"></div>
+          <div class="act-content">
+            <span class="act-tag">Actividad</span>
+            <h3 class="act-title">{act.title}</h3>
+            <p class="act-desc">{act.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- UNIRSE -->
+<section id="unirse">
+  <div class="section-wrap">
+    <div class="unirse-layout">
+      <div>
+        <div class="eyebrow">Cómo Ser León</div>
+        <h2 class="section-title" style="margin-bottom:36px;">PASOS PARA <span class="hl">UNIRTE</span></h2>
+        <div class="unirse-steps" id="unirse-steps">
+          {[
+            { num: "01", title: "Solicitud de Interés", desc: "Completa el formulario de interés o contacta directamente a un miembro activo de nuestro club." },
+            { num: "02", title: "Presentación al Club", desc: "Asiste a una reunión ordinaria para conocer a los socios y conocer nuestros proyectos activos." },
+            { num: "03", title: "Proceso de Admisión", desc: "Los socios actuales revisan tu perfil. La membresía se obtiene por invitación formal del club." },
+            { num: "04", title: "Ceremonia de Afiliación", desc: "Recibe tu certificado oficial de Lions Clubs International y comienza a servir desde el primer día." },
+          ].map(s => (
+            <div class="step-item">
+              <span class="step-num">{s.num}</span>
+              <div>
+                <h3 class="step-title">{s.title}</h3>
+                <p class="step-desc">{s.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="unirse-right" id="unirse-right">
+        <h2 class="unirse-cta-text">SÉ PARTE DEL<br/>CAMBIO <span class="hl">QUE</span><br/>EL MUNDO<br/>NECESITA.</h2>
+        <p class="unirse-body">
+          La calidad de socio se obtiene por invitación. Si estás interesado en formar parte del Club de Leones Sacaba, registra tu interés hoy.
+        </p>
+        <a href="https://www.lionsclubs.org/es/start-our-approach/club-locator/details?id=146647" target="_blank" class="btn-gold" style="align-self:flex-start;">
+          Registrar Interés
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="https://www.lionsclubs.org/es" target="_blank" class="quienes-link" style="color:#6370a0;font-size:0.78rem;">
+          Visitar lionsclubs.org
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-bg"></div>
+  <div class="cta-shape"></div>
+  <div class="cta-shape2"></div>
+  <div class="cta-inner">
+    <h2 class="cta-h2" id="cta-h2">
+      <span class="l1">CONVIÉRTETE</span>
+      <span class="l2">EN LEÓN</span>
+      <span class="l3">HOY.</span>
+    </h2>
+    <p class="cta-sub">Nuestras puertas están abiertas para quienes quieran ser voluntarios activos y líderes comunitarios con impacto real.</p>
+    <div class="cta-badges">
+      {["Voluntariado Activo", "Certificado Internacional", "Red Global de Socios", "Impacto Local Real"].map(b => (
+        <span class="cta-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          {b}
+        </span>
+      ))}
+    </div>
+    <a href="https://www.lionsclubs.org/es/start-our-approach/club-locator/details?id=146647" target="_blank" class="btn-gold" style="font-size:1rem;padding:18px 52px;">
+      Ser León Ahora
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <span class="footer-brand">LEONES <em>SACABA</em></span>
+    <span class="footer-sub">Lions Clubs International · Cochabamba, Bolivia</span>
+  </div>
+  <div class="footer-links">
+    <a href="https://www.lionsclubs.org/es" target="_blank" class="footer-link">lionsclubs.org</a>
+    <a href="#quienes" class="footer-link">Quiénes Somos</a>
+    <a href="#unirse" class="footer-link">Unirse</a>
+  </div>
+  <span class="footer-copy">© 2025 Club de Leones Sacaba · Todos los derechos reservados</span>
+</footer>
+
+<script>
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+// ── NAVBAR scroll ──
+const navbar = document.getElementById('navbar')!;
+ScrollTrigger.create({
+  start: 'top -60',
+  onUpdate: s => {
+    navbar.style.boxShadow = s.progress > 0
+      ? '0 4px 32px rgba(26,58,143,0.14)'
+      : '0 2px 24px rgba(26,58,143,0.08)';
+  }
+});
+
+// ── HERO PARALLAX ──
+gsap.to('#hero-bg', {
+  yPercent: 22, ease: 'none',
+  scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+// ── HERO ENTRANCE ──
+const h1Inners = document.querySelectorAll('#hero-h1 .h1-inner');
+gsap.set('#hero-h1 .h1-line', { overflow: 'hidden', display: 'block' });
+gsap.set(h1Inners, { yPercent: 110, skewY: 4 });
+gsap.set(['#hero-tagline', '#hero-btns'], { opacity: 0, y: 24 });
+gsap.set('#hero-divider', { width: 0 });
+
+const tl = gsap.timeline({ delay: 0.3 });
+tl
+  .to('#hero-kicker', { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' })
+  .to(h1Inners, { yPercent: 0, skewY: 0, duration: 1.1, ease: 'power4.out', stagger: 0.13 }, '-=0.2')
+  .to('#hero-divider', { width: 80, duration: 0.6, ease: 'power3.out' }, '-=0.5')
+  .to('#hero-tagline', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+  .to('#hero-btns', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.45')
+  .to('#hero-badge', { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.3')
+  .to('#scroll-hint', { opacity: 1, duration: 0.5 }, '-=0.2');
+
+// ── STATS ──
+ScrollTrigger.create({
+  trigger: '#stats-strip', start: 'top 85%', once: true,
+  onEnter: () => gsap.from('#stats-strip .stat-cell', { opacity: 0, y: 30, duration: 0.65, stagger: 0.1, ease: 'power3.out' })
+});
+
+// ── QUIENES ──
+ScrollTrigger.create({
+  trigger: '#qs-img', start: 'top 78%', once: true,
+  onEnter: () => gsap.from('#qs-img', { opacity: 0, x: -50, duration: 1, ease: 'power3.out' })
+});
+ScrollTrigger.create({
+  trigger: '#qs-right', start: 'top 78%', once: true,
+  onEnter: () => gsap.from('#qs-right > *', { opacity: 0, x: 40, duration: 0.7, stagger: 0.12, ease: 'power3.out' })
+});
+
+// ── PRINCIPLES ──
+ScrollTrigger.create({
+  trigger: '#princ-header', start: 'top 80%', once: true,
+  onEnter: () => {
+    gsap.from('#princ-header .eyebrow', { opacity: 0, x: -30, duration: 0.5 });
+    gsap.from('#princ-header .section-title', { opacity: 0, y: 40, duration: 0.8, delay: 0.1, ease: 'power4.out' });
+  }
+});
+ScrollTrigger.create({
+  trigger: '#princ-grid', start: 'top 80%', once: true,
+  onEnter: () => gsap.from('#princ-grid .principle-card', { opacity: 0, y: 50, duration: 0.65, stagger: 0.1, ease: 'power3.out' })
+});
+
+// ── ACTIVIDADES ──
+ScrollTrigger.create({
+  trigger: '#act-grid', start: 'top 80%', once: true,
+  onEnter: () => gsap.from('#act-grid .act-card', { opacity: 0, scale: 0.95, duration: 0.6, stagger: 0.08, ease: 'power3.out' })
+});
+
+// ── UNIRSE ──
+ScrollTrigger.create({
+  trigger: '#unirse-steps', start: 'top 80%', once: true,
+  onEnter: () => gsap.from('#unirse-steps .step-item', { opacity: 0, x: -40, duration: 0.6, stagger: 0.1, ease: 'power3.out' })
+});
+ScrollTrigger.create({
+  trigger: '#unirse-right', start: 'top 80%', once: true,
+  onEnter: () => gsap.from('#unirse-right > *', { opacity: 0, x: 40, duration: 0.6, stagger: 0.1, ease: 'power3.out' })
+});
+
+// ── CTA ──
+ScrollTrigger.create({
+  trigger: '#cta-h2', start: 'top 80%', once: true,
+  onEnter: () => gsap.from('#cta-h2 span', { opacity: 0, y: 70, skewY: 4, duration: 0.9, stagger: 0.14, ease: 'power4.out' })
+});
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = (a as HTMLAnchorElement).getAttribute('href')!;
+    const target = document.querySelector(id);
+    if (target) {
+      e.preventDefault();
+      gsap.to(window, { duration: 1.2, scrollTo: { y: target, offsetY: 76 }, ease: 'power3.inOut' });
+    }
+  });
+});
+</script>
+</Layout>

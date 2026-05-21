@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+
+const projects = [
+  {
+    tag: "PROYECTO 01 / INFORMÁTICA DEPORTIVA",
+    title: "Plataforma de Analítica de Rendimiento",
+    desc: "Desarrollamos algoritmos de seguimiento cinemático de código abierto para evaluar el desempeño físico de jóvenes en riesgo social.",
+    image: "https://picsum.photos/seed/fundect1/800/600"
+  },
+  {
+    tag: "PROYECTO 02 / BECAS DE TECNOLOGÍA",
+    title: "Programa Semillas Digitales",
+    desc: "Financiamos la educación superior en computación y desarrollo de software de atletas destacados sin recursos.",
+    image: "https://picsum.photos/seed/fundect2/800/600"
+  },
+  {
+    tag: "PROYECTO 03 / ROBÓTICA COMUNITARIA",
+    title: "Talleres Tecnológicos Deportivos",
+    desc: "Fusionamos la física del deporte con talleres de robótica y sensores interactivos para motivar el ingenio tecnológico en comunidades.",
+    image: "https://picsum.photos/seed/fundect3/800/600"
+  }
+];
+
+const values = [
+  { title: "Innovación Abierta", desc: "Creemos en la democratización del software y la ingeniería para el desarrollo comunitario." },
+  { title: "Equidad Social", desc: "El talento tecnológico no tiene origen social; abrimos puertas a quienes más lo necesitan." },
+  { title: "Sinergia Integral", desc: "El entrenamiento mental y físico construyen un carácter resiliente y enfocado al éxito." }
+];
+---
+
+<Layout title="FUNDECT | Innovación Tecnológica y Social">
+
+  
+  <main class="bg-[#030303] text-white min-h-screen overflow-hidden pt-28">
+    
+    <!-- Hero Section: Organic Purple/Fuchsia Mesh Background -->
+    <section class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-6 py-12 md:py-0 border-b border-white/5">
+      
+      <!-- Flowing mesh gradients -->
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.05)_0%,transparent_60%)] pointer-events-none"></div>
+      <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[350px] md:w-[600px] h-[350px] md:h-[600px] bg-fuchsia-500/10 blur-[130px] md:blur-[180px] rounded-full pointer-events-none"></div>
+      
+      <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 border border-purple-500/30 bg-purple-950/20 text-purple-400 rounded-full text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-8">
+          <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+          FUNDACIÓN PARA EL DESARROLLO DE CIENCIA, DEPORTE & TECNOLOGÍA
+        </div>
+        
+        <h1 class="text-6xl md:text-8xl font-display font-bold tracking-widest text-white leading-none uppercase mb-6 hero-title">
+          FUNDECT<span class="text-fuchsia-400 font-sans">_</span>
+        </h1>
+        
+        <p class="text-gray-400 text-sm md:text-lg max-w-xl md:max-w-2xl leading-relaxed mb-12 hero-desc">
+          Impulsamos el futuro de la sociedad a través del desarrollo científico y tecnológico aplicado al entorno comunitario y deportivo. Rompemos la brecha digital con educación y ciencia de élite.
+        </p>
+
+        <a 
+          href="#projects-section" 
+          class="px-8 py-3.5 border border-purple-500/50 hover:border-purple-400 bg-purple-500/10 text-purple-300 hover:bg-purple-500 hover:text-black font-bold tracking-widest text-xs uppercase transition-all duration-300 rounded-md"
+        >
+          CONOCER NUESTROS PROYECTOS
+        </a>
+      </div>
+    </section>
+
+    <!-- Asymmetrical Projects Grid Section -->
+    <section class="py-24 px-6 relative" id="projects-section">
+      <div class="absolute top-1/3 left-0 w-[300px] h-[300px] bg-purple-500/5 blur-[100px] rounded-full pointer-events-none"></div>
+
+      <div class="max-w-[1400px] mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-4">
+          <div class="text-left">
+            <span class="text-purple-400 font-display text-sm tracking-[0.3em] block mb-2">INICIATIVAS DE CAMBIO</span>
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-white tracking-widest uppercase">PROYECTOS TECNOCÍVICOS</h2>
+          </div>
+          <div class="h-[2px] w-24 bg-purple-500/50 hidden md:block"></div>
+        </div>
+
+        <!-- Asymmetrical layout (row-alternating) -->
+        <div class="space-y-32">
+          {projects.map((proj, idx) => (
+            <div class={`project-row flex flex-col ${idx % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-12 lg:gap-20`}>
+              
+              <!-- Image Column -->
+              <div class="w-full md:w-1/2 relative">
+                <!-- Decorative frame and shadow -->
+                <div class="absolute -top-4 -left-4 w-full h-full border-2 border-purple-500/20 z-0 rounded-lg group-hover:scale-102 transition-transform"></div>
+                <div class="relative z-10 w-full h-[300px] md:h-[450px] overflow-hidden rounded-lg shadow-2xl group">
+                  <img src={proj.image} alt={proj.title} class="w-full h-full object-cover grayscale opacity-70 hover:opacity-100 hover:scale-105 hover:grayscale-0 transition-all duration-700 pointer-events-auto" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent"></div>
+                </div>
+              </div>
+
+              <!-- Text Content Column -->
+              <div class="w-full md:w-1/2 flex flex-col justify-center text-left project-content">
+                <span class="text-purple-400 font-mono text-xs tracking-widest mb-3 block">{proj.tag}</span>
+                <h3 class="text-3xl md:text-4xl font-display font-bold text-white mb-6 leading-tight">{proj.title}</h3>
+                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8">{proj.desc}</p>
+                <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-4 text-white font-bold uppercase tracking-widest hover:text-purple-400 transition-colors w-max group">
+                  Postular/Involucrarse
+                  <div class="w-12 h-[1px] bg-purple-500 group-hover:w-20 transition-all duration-300"></div>
+                </a>
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Values / Core Cards Section -->
+    <section class="py-24 px-6 relative border-t border-white/5 bg-[#050505]/30">
+      <div class="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-purple-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="max-w-[1200px] mx-auto text-center">
+        <span class="text-purple-400 font-display text-sm tracking-[0.3em] block mb-2">IDEARIO CIENTÍFICO</span>
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-white tracking-widest uppercase mb-16">FILOSOFÍA DE ACCIÓN</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="values-grid">
+          {values.map((val) => (
+            <div class="p-8 border border-white/10 bg-black/50 hover:border-purple-500/30 transition-all duration-300 rounded-lg text-center flex flex-col justify-center relative overflow-hidden group">
+              <!-- Grid glow dot hover -->
+              <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-purple-500/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+              <h3 class="text-xl font-display text-white group-hover:text-purple-400 transition-colors mb-4 relative z-10">{val.title}</h3>
+              <p class="text-gray-400 text-sm leading-relaxed relative z-10">{val.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Support Call to Action -->
+    <section class="py-32 px-6 relative text-center">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[600px] h-[350px] md:h-[600px] bg-purple-500/10 blur-[120px] md:blur-[180px] rounded-full pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+        <h2 class="text-4xl md:text-6xl font-display font-bold text-white tracking-widest uppercase mb-6 cta-title">
+          SE PARTE DEL CÍRCULO CIENTÍFICO-DEPORTIVO
+        </h2>
+        <p class="text-gray-400 text-sm md:text-lg leading-relaxed mb-12 max-w-2xl">
+          Nuestras convocatorias de becas científicas de alto nivel están abiertas constantemente. Registra tu perfil en el formulario externo para agendar la primera prueba de aptitud tecnológica.
+        </p>
+
+        <a 
+          href="https://forms.gle/cVVdBKkZb4oSyXf27" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-purple-500 hover:bg-purple-400 text-black font-bold tracking-widest text-sm uppercase transition-all duration-300 shadow-[0_0_30px_rgba(168,85,247,0.3)] hover:shadow-[0_0_45px_rgba(168,85,247,0.6)] hover:scale-105 active:scale-95 group"
+        >
+          INSCRIBIRSE AHORA
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero
+    gsap.from('.hero-title', { opacity: 0, y: 30, duration: 1, ease: 'power3.out', delay: 0.4 });
+    gsap.from('.hero-desc', { opacity: 0, y: 35, duration: 1, ease: 'power3.out', delay: 0.6 });
+
+    // Project Rows Reveal
+    const projectRows = document.querySelectorAll('.project-row');
+    projectRows.forEach((row) => {
+      const img = row.querySelector('.relative.z-10 img');
+      const frame = row.querySelector('.absolute.z-0');
+      const content = row.querySelector('.project-content');
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: row,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      tl.from(img, {
+        scale: 1.1,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'power3.out'
+      })
+      .from(frame, {
+        x: row.classList.contains('md:flex-row-reverse') ? 30 : -30,
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+      }, '-=0.8')
+      .from(content?.children || [], {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: 'power3.out'
+      }, '-=0.6');
+    });
+
+    // Values Grid Scroll trigger
+    gsap.from('#values-grid > div', {
+      scrollTrigger: {
+        trigger: '#values-grid',
+        start: 'top 85%'
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out'
+    });
+  }
+</script>

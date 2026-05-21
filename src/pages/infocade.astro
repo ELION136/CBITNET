@@ -1,0 +1,900 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const carreras = [
+  { nombre: "Arbitraje de Fútbol Amateur", desc: "Formación de árbitros con las reglas FIFA, control de partidos y gestión de incidencias.", code: "ARB-01", imagen: "/images/1.png" },
+  { nombre: "Arbitraje de Voleyball en Cancha", desc: "Árbitros certificados para competencias de voleibol indoor y playa.", code: "ARB-02", imagen: "/images/1.png" },
+  { nombre: "Comunicación y Periodismo Deportivo", desc: "Relatos deportivos, cobertura mediática y producción de contenido.", code: "COM-01", imagen: "/images/1.png" },
+  { nombre: "Entrenador de Fútbol", desc: "Licencia de entrenador, metodologías de entrenamiento y gestión de equipos.", code: "ENT-01", imagen: "/images/1.png" },
+  { nombre: "Entrenador de Beach Voley", desc: "Especialización en vóley playa, tácticas y preparación física específica.", code: "ENT-02", imagen: "/images/1.png" },
+  { nombre: "Marketing Deportivo", desc: "Estrategias de marketing aplicadas al deporte, patrocinios y gestión de marcas.", code: "MKT-01", imagen: "/images/1.png" },
+  { nombre: "Auditoría de Organizaciones Deportivas", desc: "Control y auditoría de entidades deportivas, cumplimiento normativo.", code: "AUD-01", imagen: "/images/1.png" },
+  { nombre: "Dirigencia Deportiva", desc: "Gestión de clubes, federaciones y organizaciones deportivas.", code: "DIR-01", imagen: "/images/1.png" },
+  { nombre: "Gestión de Eventos Deportivos y Protocolo", desc: "Organización de eventos, logística, protocolo y ceremonias.", code: "EVT-01", imagen: "/images/1.png" },
+  { nombre: "Escuela de Negocios Industriales", desc: "Gestión empresarial aplicada al sector industrial y deportivo.", code: "NEG-01", imagen: "/images/1.png" },
+  { nombre: "Informática Industrial", desc: "Tecnología de la información aplicada a la gestión deportiva y empresarial.", code: "INF-01", imagen: "/images/1.png" },
+];
+
+const ticker_items = ["ARBITRAJE", "ENTRENAMIENTO", "MARKETING DEPORTIVO", "PERIODISMO", "DIRIGENCIA", "GESTIÓN DE EVENTOS", "INFORMÁTICA INDUSTRIAL", "BEACH VOLEY"];
+---
+
+<Layout title="INFOCADE | Instituto de Formación Deportiva y Empresarial">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --c-black: #000000;
+    --c-ink: #060606;
+    --c-orange: #f97316;
+    --c-orange-hot: #fb923c;
+    --c-red: #ef4444;
+    --c-yellow: #fbbf24;
+    --c-white: #f8fafc;
+    --c-gray: #6b7280;
+    --c-border: rgba(255,255,255,0.06);
+    --c-surface: rgba(255,255,255,0.03);
+  }
+
+  /* ── NAVBAR ── */
+  #navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+    height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 52px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--c-border);
+    transition: background 0.4s;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo img { height: 36px; width: auto; }
+  .nav-wordmark {
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 1.3rem;
+    color: var(--c-white);
+  }
+  .nav-wordmark em { color: var(--c-orange); font-style: normal; }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 10px 26px;
+    background: var(--c-orange);
+    color: #000;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    transition: all 0.25s;
+  }
+  .nav-cta:hover {
+    background: var(--c-orange-hot);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(249,115,22,0.5);
+  }
+  .nav-cta svg { width: 13px; height: 13px; }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    overflow: hidden;
+  }
+
+  /* Fondo imagen cancha */
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('/images/mon.webp') center center / cover no-repeat;
+    will-change: transform;
+  }
+  /* Overlay dinámico degradado diagonal */
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0.15) 100%),
+      linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 40%);
+  }
+  /* Scan-lines sutiles */
+  .hero-scanlines {
+    position: absolute; inset: 0; z-index: 1;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent, transparent 3px,
+      rgba(0,0,0,0.07) 3px, rgba(0,0,0,0.07) 4px
+    );
+    pointer-events: none;
+  }
+  /* Noise overlay para textura */
+  .hero-noise {
+    position: absolute; inset: 0; z-index: 1; opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  /* Línea diagonal decorativa naranja */
+  .hero-diag {
+    position: absolute;
+    top: 0; right: 35%;
+    width: 2px; height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--c-orange) 30%, var(--c-orange) 70%, transparent);
+    opacity: 0.15;
+    transform: rotate(8deg) translateX(40px);
+    z-index: 2;
+  }
+
+  .hero-left {
+    position: relative; z-index: 10;
+    padding: 140px 0 80px 52px;
+    display: flex; flex-direction: column; align-items: flex-start;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--c-orange);
+    margin-bottom: 28px;
+    opacity: 0;
+  }
+  .hero-eyebrow-line { display: block; width: 36px; height: 1.5px; background: var(--c-orange); }
+
+  .hero-h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(5rem, 10vw, 9.5rem);
+    line-height: 0.88;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--c-white);
+    margin-bottom: 8px;
+    overflow: visible;
+  }
+  .hero-h1 .h1-line { display: block; overflow: hidden; }
+  .hero-h1 .h1-inner { display: block; }
+  .hero-h1 .stroke-line {
+    -webkit-text-stroke: 1.5px rgba(255,255,255,0.18);
+    color: transparent;
+  }
+  .hero-h1 .orange-line { color: var(--c-orange); }
+
+  .hero-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.42);
+    max-width: 380px;
+    line-height: 1.75;
+    margin-top: 28px;
+    margin-bottom: 40px;
+    opacity: 0;
+  }
+
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; opacity: 0; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 36px;
+    background: var(--c-orange);
+    color: #000;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    transition: all 0.3s;
+  }
+  .btn-primary:hover {
+    background: var(--c-orange-hot);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(249,115,22,0.55);
+  }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.55);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    transition: all 0.3s;
+  }
+  .btn-ghost:hover { border-color: var(--c-orange); color: var(--c-orange); }
+
+  /* Hero stat blocks */
+  .hero-stats {
+    position: relative; z-index: 10;
+    padding: 0 52px 80px 0;
+    display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end;
+    gap: 3px;
+    opacity: 0;
+  }
+  .hstat {
+    display: flex; flex-direction: column; align-items: flex-end;
+    padding: 20px 28px;
+    border: 1px solid var(--c-border);
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(12px);
+    min-width: 200px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .hstat::before {
+    content: '';
+    position: absolute; right: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--c-orange);
+    transform: scaleY(0); transform-origin: bottom;
+    transition: transform 0.4s;
+  }
+  .hstat:hover { border-color: rgba(249,115,22,0.3); }
+  .hstat:hover::before { transform: scaleY(1); }
+  .hstat-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.8rem;
+    line-height: 1;
+    color: var(--c-orange);
+  }
+  .hstat-label {
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-top: 4px;
+  }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute; bottom: 32px; left: 52px; z-index: 10;
+    display: flex; align-items: center; gap: 14px;
+    opacity: 0;
+  }
+  .scroll-hint span {
+    font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+  .scroll-line {
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, var(--c-orange), transparent);
+    animation: scrollScan 2s ease-in-out infinite;
+  }
+  @keyframes scrollScan {
+    0% { transform: scaleX(0); transform-origin: left; opacity: 0; }
+    50% { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(0); transform-origin: right; opacity: 0; }
+  }
+
+  /* ── MARQUEE STRIP ── */
+  #marquee-strip {
+    background: var(--c-orange);
+    padding: 14px 0;
+    overflow: hidden;
+    position: relative; z-index: 5;
+  }
+  .marquee-track {
+    display: flex; gap: 0; flex-shrink: 0;
+    animation: marqueeRun 20s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes marqueeRun {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-item {
+    display: inline-flex; align-items: center; gap: 20px;
+    padding: 0 40px;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #000;
+  }
+  .marquee-dot { width: 5px; height: 5px; background: rgba(0,0,0,0.35); border-radius: 50%; }
+
+  /* ── SECTION BASE ── */
+  .section-wrap { max-width: 1300px; margin: 0 auto; padding: 110px 52px; }
+  .section-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--c-orange);
+    margin-bottom: 18px;
+  }
+  .section-eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--c-orange); display: block; }
+  .section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.8rem, 5.5vw, 5rem);
+    letter-spacing: 0.02em;
+    line-height: 0.92;
+    text-transform: uppercase;
+    color: var(--c-white);
+  }
+  .section-title .hl {
+    -webkit-text-stroke: 1.5px var(--c-orange);
+    color: transparent;
+  }
+
+  /* ── CURSOS GRID ── */
+  #cursos { background: var(--c-ink); border-top: 1px solid var(--c-border); }
+
+  .cursos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2px;
+    margin-top: 56px;
+  }
+
+  .curso-card {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--c-border);
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+    transition: all 0.35s ease;
+    cursor: default;
+  }
+  .curso-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--c-orange), var(--c-yellow));
+    transform: scaleX(0);
+    transition: transform 0.35s ease;
+  }
+  .curso-card:hover {
+    background: rgba(249,115,22,0.05);
+    border-color: rgba(249,115,22,0.25);
+    transform: translateY(-4px);
+  }
+  .curso-card:hover::before { transform: scaleX(1); }
+
+  .curso-img-wrap {
+    height: 180px; overflow: hidden; position: relative; flex-shrink: 0;
+  }
+  .curso-img-wrap::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(6,6,6,0.9) 100%);
+  }
+  .curso-img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block; filter: grayscale(30%);
+  }
+  .curso-card:hover .curso-img { transform: scale(1.07); filter: grayscale(0%); }
+
+  /* Code badge overlaid on image */
+  .curso-code-badge {
+    position: absolute; top: 14px; left: 14px; z-index: 2;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.75rem; letter-spacing: 0.15em;
+    padding: 5px 12px;
+    background: var(--c-orange);
+    color: #000;
+    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+  }
+
+  .curso-body { padding: 24px 28px 28px; flex: 1; display: flex; flex-direction: column; }
+  .curso-nombre {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--c-white);
+    line-height: 1.2; margin-bottom: 12px;
+    transition: color 0.3s;
+  }
+  .curso-card:hover .curso-nombre { color: var(--c-orange); }
+  .curso-desc {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.72; flex: 1;
+    margin-bottom: 20px;
+  }
+  .curso-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .curso-cert {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+  .curso-cert svg { width: 11px; height: 11px; color: var(--c-orange); flex-shrink: 0; }
+  .curso-arrow-btn {
+    width: 34px; height: 34px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+    transition: all 0.3s; flex-shrink: 0;
+  }
+  .curso-card:hover .curso-arrow-btn {
+    background: var(--c-orange);
+    border-color: var(--c-orange);
+    transform: rotate(45deg);
+  }
+  .curso-arrow-btn svg { width: 13px; height: 13px; color: rgba(255,255,255,0.3); }
+  .curso-card:hover .curso-arrow-btn svg { color: #000; }
+
+  /* ── ABOUT / SPLIT SECTION ── */
+  #about {
+    background: #000;
+    border-top: 1px solid var(--c-border);
+  }
+  .about-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .about-img-wrap {
+    position: relative; height: 560px;
+  }
+  .about-img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(50%) contrast(1.1);
+    display: block;
+    transition: filter 0.6s;
+  }
+  .about-img:hover { filter: grayscale(0%) contrast(1.1); }
+  /* Corner decorators */
+  .about-img-wrap::before {
+    content: '';
+    position: absolute; top: -10px; left: -10px;
+    width: 28px; height: 28px;
+    border-top: 2px solid var(--c-orange);
+    border-left: 2px solid var(--c-orange);
+    z-index: 2;
+  }
+  .about-img-wrap::after {
+    content: '';
+    position: absolute; bottom: -10px; right: -10px;
+    width: 28px; height: 28px;
+    border-bottom: 2px solid var(--c-orange);
+    border-right: 2px solid var(--c-orange);
+    z-index: 2;
+  }
+  .about-frame {
+    position: absolute; inset: 0;
+    border: 1px solid rgba(249,115,22,0.15);
+    pointer-events: none; z-index: 1;
+  }
+  /* Accent number behind image */
+  .about-big-num {
+    position: absolute; bottom: -30px; right: -20px;
+    font-family: 'Anton', sans-serif;
+    font-size: 9rem; line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(249,115,22,0.08);
+    z-index: 0; pointer-events: none;
+    user-select: none;
+  }
+
+  .about-right { display: flex; flex-direction: column; gap: 32px; }
+  .about-claim {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    letter-spacing: 0.02em; line-height: 0.95;
+    text-transform: uppercase;
+    color: var(--c-white);
+  }
+  .about-claim .hl { color: var(--c-orange); }
+  .about-body {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.38);
+    line-height: 1.85;
+    max-width: 460px;
+  }
+  .about-list { display: flex; flex-direction: column; gap: 2px; }
+  .about-item {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 20px;
+    border: 1px solid var(--c-border);
+    background: var(--c-surface);
+    transition: all 0.3s;
+  }
+  .about-item:hover { border-color: rgba(249,115,22,0.2); background: rgba(249,115,22,0.04); }
+  .about-item-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border: 1px solid rgba(249,115,22,0.25);
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(249,115,22,0.06);
+  }
+  .about-item-icon svg { width: 15px; height: 15px; color: var(--c-orange); }
+  .about-item-text {
+    font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* ── CTA SECTION ── */
+  #cta {
+    position: relative; overflow: hidden;
+    background: var(--c-ink);
+    border-top: 1px solid var(--c-border);
+  }
+  .cta-bg-img {
+    position: absolute; inset: 0;
+    background: url('/imagen/voley.jpg') center 30% / cover no-repeat;
+    opacity: 0.06; filter: blur(3px);
+  }
+  /* Diagonal orange accent */
+  .cta-diag {
+    position: absolute; top: 0; bottom: 0; left: -5%;
+    width: 55%;
+    background: linear-gradient(135deg, rgba(249,115,22,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-inner {
+    position: relative; z-index: 2;
+    max-width: 1300px; margin: 0 auto;
+    padding: 140px 52px;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 60px; align-items: end;
+  }
+  .cta-h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    line-height: 0.9; letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+  .cta-h2 .l1 { display: block; color: var(--c-white); }
+  .cta-h2 .l2 { display: block; -webkit-text-stroke: 1.5px rgba(255,255,255,0.18); color: transparent; }
+  .cta-h2 .l3 { display: block; color: var(--c-orange); }
+  .cta-right { display: flex; flex-direction: column; align-items: flex-end; gap: 20px; }
+  .cta-sub {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.3);
+    max-width: 280px;
+    line-height: 1.7;
+    text-align: right;
+  }
+  .cta-badges { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+  .cta-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.02);
+  }
+  .cta-badge svg { width: 11px; height: 11px; color: var(--c-orange); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 30px 52px;
+    border-top: 1px solid var(--c-border);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 14px;
+    background: #000;
+  }
+  .footer-brand {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.05rem; letter-spacing: 0.12em;
+    color: var(--c-white);
+  }
+  .footer-brand em { color: var(--c-orange); font-style: normal; }
+  .footer-copy { font-size: 0.73rem; color: rgba(255,255,255,0.18); letter-spacing: 0.06em; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-stats { display: none; }
+    .hero-left { padding: 130px 28px 80px; }
+    .about-layout { grid-template-columns: 1fr; gap: 40px; }
+    .about-img-wrap { height: 320px; }
+    .cta-inner { grid-template-columns: 1fr; }
+    .cta-right { align-items: flex-start; }
+    .cta-sub { text-align: left; }
+    .cta-badges { align-items: flex-start; }
+  }
+  @media (max-width: 768px) {
+    #navbar { padding: 0 24px; }
+    .section-wrap { padding: 80px 24px; }
+    .cursos-grid { grid-template-columns: 1fr; }
+    footer { padding: 24px; }
+    .scroll-hint { left: 28px; }
+  }
+</style>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="/" class="nav-logo">
+    <img src="/images/log3.png" alt="INFOCADE" onerror="this.style.display='none'" />
+    <span class="nav-wordmark">INFO<em>CADE</em></span>
+  </a>
+  <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="nav-cta">
+    Inscribirme
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-scanlines"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-diag"></div>
+
+  <!-- Left content -->
+  <div class="hero-left">
+    <div class="hero-eyebrow" id="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      Instituto de Formación Deportiva y Empresarial
+    </div>
+    <h1 class="hero-h1" id="hero-h1">
+      <span class="h1-line"><span class="h1-inner">INFO</span></span>
+      <span class="h1-line"><span class="h1-inner stroke-line">CADE</span></span>
+      <span class="h1-line"><span class="h1-inner orange-line">ELITE.</span></span>
+    </h1>
+    <p class="hero-tagline" id="hero-tagline">
+      Formación certificada en arbitraje, entrenamiento, gestión deportiva, marketing y empresarismo. Programas diseñados para el profesional que el deporte necesita.
+    </p>
+    <div class="hero-btns" id="hero-btns">
+      <a href="#cursos" class="btn-primary">
+        Ver Programas
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="btn-ghost">
+        Inscribirse
+      </a>
+    </div>
+  </div>
+
+  <!-- Right stats -->
+  <div class="hero-stats" id="hero-stats">
+    {[
+      { num: "11", label: "Programas Activos" },
+      { num: "800+", label: "Egresados Certificados" },
+      { num: "100%", label: "Certificación Válida" },
+    ].map(s => (
+      <div class="hstat">
+        <span class="hstat-num">{s.num}</span>
+        <span class="hstat-label">{s.label}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class="scroll-hint" id="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Explorar</span>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div id="marquee-strip" aria-hidden="true">
+  <div style="display:flex;overflow:hidden;">
+    <div class="marquee-track">
+      {[...ticker_items, ...ticker_items].map(item => (
+        <span class="marquee-item">
+          {item}<span class="marquee-dot"></span>
+        </span>
+      ))}
+    </div>
+  </div>
+</div>
+
+<!-- CURSOS -->
+<section id="cursos">
+  <div class="section-wrap">
+    <div id="cursos-header">
+      <div class="section-eyebrow">Oferta Académica</div>
+      <h2 class="section-title">PROGRAMAS <span class="hl">CERTIFI</span><br/>CADOS</h2>
+    </div>
+
+    <div class="cursos-grid" id="cursos-grid">
+      {carreras.map(c => (
+        <div class="curso-card">
+          <div class="curso-img-wrap">
+            <img
+              src={c.imagen}
+              alt={c.nombre}
+              class="curso-img"
+              onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=600&q=80'"
+            />
+            <span class="curso-code-badge">{c.code}</span>
+          </div>
+          <div class="curso-body">
+            <h3 class="curso-nombre">{c.nombre}</h3>
+            <p class="curso-desc">{c.desc}</p>
+            <div class="curso-footer">
+              <span class="curso-cert">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Certificado Incluido
+              </span>
+              <div class="curso-arrow-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="about-layout">
+      <div class="about-img-wrap" id="about-img-wrap">
+        <img
+          src="/imagen/voley.jpg"
+          alt="Instalaciones INFOCADE"
+          class="about-img"
+          onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=800&q=80'"
+        />
+        <div class="about-frame"></div>
+        <span class="about-big-num">11</span>
+      </div>
+      <div class="about-right" id="about-right">
+        <div>
+          <div class="section-eyebrow">Por Que Elegirnos</div>
+          <h2 class="about-claim">FORMACION<br/>QUE <span class="hl">TRANSFORMA</span><br/>CARRERAS</h2>
+        </div>
+        <p class="about-body">
+          INFOCADE es el referente en formación deportiva y empresarial certificada. Nuestros programas combinan teoría aplicada con experiencia real en campo, preparando profesionales listos para el mercado.
+        </p>
+        <div class="about-list">
+          {[
+            { label: "Instructores en Ejercicio Activo" },
+            { label: "Certificacion con Respaldo Institucional" },
+            { label: "Modalidad Presencial y Virtual" },
+            { label: "Proyectos Practicos Desde el Dia 1" },
+            { label: "Red de Contactos Deportivos y Empresariales" },
+          ].map(item => (
+            <div class="about-item">
+              <div class="about-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span class="about-item-text">{item.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-bg-img"></div>
+  <div class="cta-diag"></div>
+  <div class="cta-inner">
+    <h2 class="cta-h2" id="cta-h2">
+      <span class="l1">TU CARRERA</span>
+      <span class="l2">PROFESIONAL</span>
+      <span class="l3">EMPIEZA HOY.</span>
+    </h2>
+    <div class="cta-right" id="cta-right">
+      <p class="cta-sub">Inscripciones abiertas. Cupos limitados para garantizar formacion personalizada.</p>
+      <div class="cta-badges">
+        {["Proceso 100% en Linea", "Certificado al Finalizar", "Inicio Inmediato"].map(b => (
+          <span class="cta-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            {b}
+          </span>
+        ))}
+      </div>
+      <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin-top:8px;font-size:0.95rem;padding:17px 44px;">
+        Inscribirme Ahora
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">INFO<em>CADE</em></span>
+  <span class="footer-copy">© 2025 INFOCADE · Instituto de Formacion Deportiva y Empresarial · Todos los derechos reservados</span>
+</footer>
+
+<script>
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+// ── NAVBAR ──
+const navbar = document.getElementById('navbar')!;
+ScrollTrigger.create({
+  start: 'top -60',
+  onUpdate: s => {
+    navbar.style.background = s.progress > 0 ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.6)';
+  }
+});
+
+// ── HERO PARALLAX ──
+gsap.to('#hero-bg', {
+  yPercent: 22,
+  ease: 'none',
+  scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+// ── HERO ENTRANCE ──
+// Prepare lines
+const h1Lines = document.querySelectorAll('#hero-h1 .h1-inner');
+gsap.set('#hero-h1 .h1-line', { overflow: 'hidden', display: 'block' });
+gsap.set(h1Lines, { yPercent: 110, skewY: 4 });
+gsap.set(['#hero-tagline', '#hero-btns', '#hero-stats'], { opacity: 0, y: 24 });
+
+const tl = gsap.timeline({ delay: 0.15 });
+tl
+  .to('#hero-eyebrow', { opacity: 1, duration: 0.5, ease: 'power2.out' })
+  .to(h1Lines, {
+    yPercent: 0, skewY: 0,
+    duration: 0.9, ease: 'power4.out', stagger: 0.1
+  }, '-=0.2')
+  .to('#hero-tagline', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.4')
+  .to('#hero-btns', { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, '-=0.45')
+  .to('#hero-stats', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.08 }, '-=0.4')
+  .to('#scroll-hint', { opacity: 1, duration: 0.5 }, '-=0.3');
+
+// ── MARQUEE pause on hover ──
+const marqueeTrack = document.querySelector('.marquee-track') as HTMLElement;
+if (marqueeTrack) {
+  marqueeTrack.addEventListener('mouseenter', () => marqueeTrack.style.animationPlayState = 'paused');
+  marqueeTrack.addEventListener('mouseleave', () => marqueeTrack.style.animationPlayState = 'running');
+}
+
+// ── CURSOS HEADER ──
+ScrollTrigger.create({
+  trigger: '#cursos-header',
+  start: 'top 80%', once: true,
+  onEnter: () => {
+    gsap.from('#cursos-header .section-eyebrow', { opacity: 0, x: -30, duration: 0.5, ease: 'power3.out' });
+    gsap.from('#cursos-header .section-title', { opacity: 0, y: 40, duration: 0.8, ease: 'power4.out', delay: 0.15 });
+  }
+});
+
+// ── CURSOS GRID stagger ──
+ScrollTrigger.create({
+  trigger: '#cursos-grid',
+  start: 'top 80%', once: true,
+  onEnter: () => {
+    gsap.from('#cursos-grid .curso-card', {
+      opacity: 0, y: 50,
+      duration: 0.65, stagger: 0.07, ease: 'power3.out'
+    });
+  }
+});
+
+// ── ABOUT ──
+ScrollTrigger.create({
+  trigger: '#about-img-wrap',
+  start: 'top 75%', once: true,
+  onEnter: () => {
+    gsap.from('#about-img-wrap', { opacity: 0, x: -50, duration: 0.9, ease: 'power3.out' });
+  }
+});
+ScrollTrigger.create({
+  trigger: '#about-right',
+  start: 'top 78%', once: true,
+  onEnter: () => {
+    gsap.from('#about-right > *', {
+      opacity: 0, x: 40,
+      duration: 0.7, stagger: 0.12, ease: 'power3.out'
+    });
+    gsap.from('#about-right .about-item', {
+      opacity: 0, x: 30,
+      duration: 0.5, stagger: 0.07, ease: 'power3.out', delay: 0.4
+    });
+  }
+});
+
+// ── CTA ──
+ScrollTrigger.create({
+  trigger: '#cta-h2',
+  start: 'top 80%', once: true,
+  onEnter: () => {
+    gsap.from('#cta-h2 span', {
+      opacity: 0, y: 70, skewY: 4,
+      duration: 0.85, stagger: 0.14, ease: 'power4.out'
+    });
+    gsap.from('#cta-right > *', {
+      opacity: 0, y: 30,
+      duration: 0.6, stagger: 0.1, ease: 'power3.out', delay: 0.4
+    });
+  }
+});
+</script>
+</Layout>
