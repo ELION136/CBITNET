@@ -2,48 +2,66 @@
 ---
 
 <div id="global-loader" class="fixed inset-0 z-[9999] bg-[#030303] flex flex-col items-center justify-center text-white overflow-hidden pointer-events-auto">
-  <!-- Dynamic glow in background -->
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-yellow-500/10 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+  <!-- Glow background -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full pointer-events-none z-0"
+       style="background:radial-gradient(ellipse,rgba(14,165,233,0.1) 0%,transparent 70%);filter:blur(60px);"></div>
 
   <div class="relative z-10 flex flex-col items-center">
-    <!-- Brand Title -->
-    <div class="text-xs md:text-sm font-display tracking-[0.5em] text-yellow-500 uppercase mb-4 opacity-0 loader-text">
-      SYSTEM INITIALIZATION
+
+    <!-- Eyebrow -->
+    <div class="text-[0.6rem] md:text-xs font-display tracking-[0.4em] uppercase mb-2 opacity-0 loader-eyebrow"
+         style="color:#0ea5e9;">
+      SISTEMA DE INICIALIZACIÓN
     </div>
 
-    <!-- Progress Percentage -->
-    <div class="text-7xl md:text-9xl font-display font-bold tracking-widest text-stroke mb-8 flex items-center">
+    <!-- Brand name -->
+    <div class="text-[0.55rem] md:text-[0.65rem] font-display tracking-[0.18em] uppercase mb-8 opacity-0 loader-brand leading-relaxed text-center max-w-[260px]"
+         style="-webkit-text-stroke:1px rgba(255,255,255,0.22);color:transparent;">
+      Corporación Boliviana de Talento y Formación Integral
+    </div>
+
+    <!-- Progress percentage -->
+    <div class="text-7xl md:text-9xl font-display font-bold tracking-widest mb-8 flex items-end opacity-0 loader-number">
       <span id="loader-progress">0</span>
-      <span class="text-3xl md:text-5xl ml-2 text-yellow-500">%</span>
+      <span class="text-3xl md:text-5xl ml-2 mb-1" style="color:#0ea5e9;">%</span>
     </div>
 
-    <!-- Progress Bar -->
-    <div class="w-48 md:w-64 h-[2px] bg-white/10 relative overflow-hidden">
-      <div id="loader-bar" class="absolute top-0 left-0 h-full bg-yellow-500 w-0"></div>
+    <!-- Progress bar -->
+    <div class="w-48 md:w-64 h-[1.5px] relative overflow-hidden" style="background:rgba(255,255,255,0.08);">
+      <div id="loader-bar" class="absolute top-0 left-0 h-full w-0"
+           style="background:linear-gradient(90deg,#0ea5e9,#2dd4bf);"></div>
     </div>
+
+    <!-- CBIT label bottom -->
+    <div class="mt-6 font-display text-[0.6rem] tracking-[0.5em] uppercase opacity-0 loader-cbit"
+         style="color:rgba(255,255,255,0.15);">
+      CBIT
+    </div>
+
   </div>
 </div>
 
 <script>
   import gsap from 'gsap';
 
-  // We want to run this as soon as possible on the client
   if (typeof window !== 'undefined') {
-    const loader = document.getElementById('global-loader');
+    const loader       = document.getElementById('global-loader');
     const progressText = document.getElementById('loader-progress');
-    const progressBar = document.getElementById('loader-bar');
-    
+    const progressBar  = document.getElementById('loader-bar');
+
     if (loader && progressText && progressBar) {
-      // Temporarily block body scroll
       document.body.style.overflow = 'hidden';
 
-      // Animate the text and bar
       const progress = { value: 0 };
-      
-      // Initial text fade in
-      gsap.to('.loader-text', { opacity: 1, duration: 0.5, ease: 'power2.out' });
 
-      // Count up to 100
+      // Reveal elements
+      gsap.to('.loader-eyebrow', { opacity: 1, y: 0, duration: 0.5, delay: 0.1, ease: 'power2.out' });
+      gsap.to('.loader-brand',   { opacity: 1, y: 0, duration: 0.6, delay: 0.2, ease: 'power2.out' });
+      gsap.to('.loader-number',  { opacity: 1, duration: 0.4, delay: 0.3, ease: 'power2.out' });
+      gsap.to('.loader-cbit',    { opacity: 1, duration: 0.6, delay: 0.5, ease: 'power2.out' });
+
+      // Count to 100
       gsap.to(progress, {
         value: 100,
         duration: 2.5,
@@ -53,14 +71,12 @@
           progressBar.style.width = `${progress.value}%`;
         },
         onComplete: () => {
-          // Animation when reaching 100%
           const tl = gsap.timeline();
-          
-          tl.to('.loader-text, #loader-progress, #loader-bar', {
+          tl.to('.loader-eyebrow, .loader-brand, .loader-number, .loader-cbit, #loader-bar', {
             opacity: 0,
-            y: -20,
-            duration: 0.5,
-            stagger: 0.1,
+            y: -16,
+            duration: 0.45,
+            stagger: 0.07,
             ease: 'power2.in'
           })
           .to(loader, {
@@ -69,7 +85,7 @@
             ease: 'power4.inOut',
             onComplete: () => {
               loader.style.display = 'none';
-              document.body.style.overflow = ''; // Restore body scroll
+              document.body.style.overflow = '';
             }
           });
         }
