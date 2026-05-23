@@ -1,0 +1,937 @@
+---
+const slides = [
+  { id: 1, title: "INFOCADE",       subtitle: "Instituto Deportivo",      image: "/images/mix5.webp",  href: "/infocade"    },
+  { id: 2, title: "CENACAP",        subtitle: "Centro de Capacitacion",   image: "/images/mix3.webp",  href: "/cenacap"     },
+  { id: 3, title: "NUEVO SIGLO",    subtitle: "Formacion Profesional",    image: "/images/mix4.webp",  href: "/nuevo-ciclo" },
+  { id: 4, title: "FUNDECT",        subtitle: "Fundacion Educativa",      image: "/images/mix2.webp",  href: "/fundect"     },
+  { id: 5, title: "CLUB DE LEONES", subtitle: "Accion Civica y Social",   image: "/images/mix1.webp",  href: "/club-leones" },
+];
+
+const institutions = [
+  { name: "INAF",         color: "#f59e0b", glow: "rgba(245,158,11,0.25)"  },
+  { name: "UNITEP",       color: "#10b981", glow: "rgba(16,185,129,0.25)"  },
+  { name: "UNIFRANZ",     color: "#8b5cf6", glow: "rgba(139,92,246,0.25)"  },
+  { name: "CLUB OLIMPIC", color: "#ef4444", glow: "rgba(239,68,68,0.25)"   },
+  { name: "INTRASPORTS",  color: "#0ea5e9", glow: "rgba(14,165,233,0.25)"  },
+];
+---
+
+<section
+  class="coverflow-section relative min-h-screen w-full flex items-center justify-center overflow-x-hidden bg-transparent py-32 xl:py-0"
+  transition:animate="none"
+>
+  <!-- Beam canvas -->
+  <canvas id="beam-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+  <!-- 3-column layout -->
+  <div class="relative z-50 w-full max-w-[1600px] mx-auto px-6 md:px-10 flex flex-col xl:flex-row items-center justify-between gap-16 xl:gap-4">
+
+    <!-- LEFT COLUMN -->
+    <div class="w-full xl:w-[350px] flex flex-col items-center xl:items-start text-center xl:text-left order-1 left-col">
+
+      <div class="inline-flex items-center gap-3 mb-4 opacity-0 left-reveal-1">
+        <span class="w-7 h-[1.5px] bg-[#0ea5e9] block"></span>
+        <span class="text-[0.65rem] font-bold tracking-[0.26em] uppercase text-[#0ea5e9]">Sistema de Acceso</span>
+      </div>
+
+      <h1 class="font-display text-4xl text-white tracking-widest uppercase leading-none opacity-0 left-reveal-1"
+          style="text-shadow:0 0 60px rgba(14,165,233,0.12);">
+        CORPORACION BOLIVIA DE TALENTO Y FORMACION INTEGRAL
+      </h1>
+
+      <p class="font-display text-sm tracking-[0.18em] uppercase mt-1 mb-5 opacity-0 left-reveal-2"
+         style="-webkit-text-stroke:1px rgba(255,255,255,0.15);color:transparent;">
+        PLATAFORMA
+      </p>
+
+      <div id="left-line" class="h-[2px] mb-5 origin-left"
+           style="width:0;background:linear-gradient(90deg,#0ea5e9,#2dd4bf);transition:width 1s ease;"></div>
+
+      <p class="text-gray-600 text-xs md:text-sm leading-relaxed max-w-md xl:max-w-sm text-left opacity-0 left-reveal-2">
+        Accede a la red de instituciones y programas aliados. Explora cada modulo y descubre la oferta academica, civica y deportiva de nuestra plataforma.
+      </p>
+
+      <div class="flex items-center gap-3 mt-8 opacity-0 left-reveal-3">
+        <button id="btn-prev"
+                class="btn-nav w-10 h-10 border border-white/10 bg-white/[0.03] flex items-center justify-center transition-all duration-300 hover:border-white/30 hover:bg-white/[0.07]"
+                style="clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));"
+                aria-label="Anterior">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white/40">
+            <path d="M19 12H5"/><path d="m12 5-7 7 7 7"/>
+          </svg>
+        </button>
+        <button id="btn-next"
+                class="btn-nav w-10 h-10 flex items-center justify-center transition-all duration-300"
+                style="border:1.5px solid rgba(14,165,233,0.45);background:rgba(14,165,233,0.07);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));"
+                aria-label="Siguiente">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:#0ea5e9;">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </button>
+        <div class="ml-2 font-display text-xs tracking-[0.2em]" style="color:rgba(255,255,255,0.2);">
+          <span id="counter-current" style="color:#0ea5e9;">01</span>
+          <span class="mx-1">/</span>
+          <span>0{slides.length}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER COLUMN — CAROUSEL -->
+    <div
+      class="relative w-full xl:flex-1 h-[380px] md:h-[450px] lg:h-[500px] flex items-center justify-center z-20 slider-container pointer-events-auto order-2"
+      style="perspective:1200px;"
+    >
+      <div
+        class="relative w-[200px] md:w-[280px] lg:w-[320px] h-[320px] md:h-[450px] lg:h-[500px] transform-style-3d carousel-spinner"
+        style="will-change:transform;"
+      >
+        {slides.map((slide, index) => (
+          <div
+            class="absolute top-0 left-0 w-full h-full cursor-pointer coverflow-card group"
+            data-index={index}
+          >
+            <!-- Glow difuso externo — solo activo -->
+            <div class="absolute pointer-events-none z-[-1] opacity-0 group-[.active]:opacity-100 transition-opacity duration-700"
+                 style="inset:-20px;background:radial-gradient(ellipse at center,rgba(234,179,8,0.15) 0%,rgba(14,165,233,0.08) 55%,transparent 75%);filter:blur(22px);"></div>
+
+            <!-- Borde gradiente dorado/teal — solo activo, padding 1.5px trick -->
+            <div class="absolute inset-0 opacity-0 group-[.active]:opacity-100 transition-opacity duration-700 pointer-events-none"
+                 style="clip-path:polygon(10% 0,100% 0,100% 90%,90% 100%,0 100%,0 10%);background:linear-gradient(135deg,#eab308 0%,#f59e0b 30%,#2dd4bf 70%,#0ea5e9 100%);padding:1.5px;z-index:1;">
+              <div style="width:100%;height:100%;background:#060606;clip-path:polygon(10% 0,100% 0,100% 90%,90% 100%,0 100%,0 10%);"></div>
+            </div>
+
+            <div class="w-full h-full relative flex flex-col items-center justify-between p-3 md:p-4 bg-[#060606]/92 backdrop-blur-md border border-white/[0.07] group-[.active]:border-transparent transition-all duration-500 overflow-hidden"
+                 style="clip-path:polygon(10% 0,100% 0,100% 90%,90% 100%,0 100%,0 10%);">
+
+              <!-- Inner highlight suave — solo activo -->
+              <div class="absolute inset-0 opacity-0 group-[.active]:opacity-100 transition-opacity duration-700 pointer-events-none"
+                   style="background:linear-gradient(180deg,rgba(234,179,8,0.06) 0%,transparent 45%);"></div>
+
+              <!-- BG image -->
+              <img src={slide.image} alt={slide.title}
+                   class="absolute inset-0 w-full h-full object-cover opacity-35 group-[.active]:opacity-80 transition-all duration-500 pointer-events-none grayscale group-[.active]:grayscale-0 group-[.active]:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-transparent to-black/88 group-[.active]:from-black/40 group-[.active]:to-black/80 transition-colors duration-500"></div>
+
+              <!-- Top accent line — dorado → teal → cyan -->
+              <div class="absolute top-0 left-0 right-0 h-[2px] origin-left scale-x-0 group-[.active]:scale-x-100 transition-transform duration-500"
+                   style="background:linear-gradient(90deg,#eab308,#f59e0b 40%,#2dd4bf 80%,#0ea5e9);"></div>
+
+              <!-- Corner accents — dorado TL, teal BR -->
+              <div class="absolute top-0 left-0 w-4 md:w-6 h-[2px] bg-white/20 group-[.active]:bg-[#eab308] transition-colors duration-500"></div>
+              <div class="absolute top-0 left-0 w-[2px] h-4 md:h-6 bg-white/20 group-[.active]:bg-[#eab308] transition-colors duration-500"></div>
+              <div class="absolute bottom-0 right-0 w-4 md:w-6 h-[2px] bg-white/20 group-[.active]:bg-[#2dd4bf] transition-colors duration-500"></div>
+              <div class="absolute bottom-0 right-0 w-[2px] h-4 md:h-6 bg-white/20 group-[.active]:bg-[#2dd4bf] transition-colors duration-500"></div>
+
+              <!-- Header -->
+              <div class="relative z-10 w-full flex flex-col items-center mt-2">
+                <div class="h-[2px] w-1/3 mb-2 opacity-25 group-[.active]:opacity-100 group-[.active]:w-2/3 transition-all duration-500"
+                     style="background:linear-gradient(90deg,#eab308,#0ea5e9);"></div>
+                <h3 class="text-gray-500 group-[.active]:text-amber-400/70 text-[8px] md:text-xs font-bold tracking-[0.2em] uppercase transition-colors duration-300">
+                  {slide.subtitle}
+                </h3>
+                <h2 class="text-white/40 group-[.active]:text-white font-display text-base md:text-2xl mt-1 tracking-wider text-center transition-all duration-300">
+                  {slide.title}
+                </h2>
+              </div>
+
+              <!-- Center icon -->
+              <div class="relative z-10 w-10 h-10 md:w-16 md:h-16 rounded-full border border-white/20 flex items-center justify-center bg-black/60 backdrop-blur-md group-[.active]:border-[#eab308]/70 group-[.active]:bg-[#eab308]/10 group-[.active]:scale-110 transition-all duration-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="text-white/40 group-[.active]:text-[#eab308] md:w-6 md:h-6 transition-colors duration-300">
+                  <path d="M5 12h14"/>
+                  <path d="M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+
+              <!-- Bottom CTA -->
+              <div class="relative z-10 w-full flex flex-col items-center mb-2 md:mb-4">
+                <a
+                  href={slide.href}
+                  class="px-4 py-1.5 md:px-8 md:py-2 border border-white/20 text-white/40 font-display tracking-widest text-[8px] md:text-xs bg-white/[0.04] hover:bg-white/10 group-[.active]:border-[#eab308] group-[.active]:text-black group-[.active]:bg-[#eab308] group-[.active]:shadow-[0_0_24px_rgba(234,179,8,0.5),0_0_48px_rgba(234,179,8,0.2)] transition-all duration-300"
+                  style="clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));"
+                >
+                  ENTRAR
+                </a>
+                <div class="flex gap-1 mt-3 md:mt-6 opacity-25 group-[.active]:opacity-100 transition-opacity duration-500">
+                  <div class="w-2 h-[3px] bg-white/40 group-[.active]:bg-[#eab308] transition-colors duration-300"></div>
+                  <div class="w-6 h-[3px] bg-white/40 group-[.active]:bg-[#eab308] transition-colors duration-300"></div>
+                  <div class="w-2 h-[3px] bg-white/40 group-[.active]:bg-[#eab308] transition-colors duration-300"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN — ALLIES -->
+    <div class="w-full xl:w-[350px] flex flex-col items-center xl:items-end text-center xl:text-right order-3">
+      <div class="right-col opacity-0" style="transform:translateX(20px);">
+
+        <div class="inline-flex items-center gap-3 mb-3 justify-end">
+          <span class="text-[0.65rem] font-bold tracking-[0.26em] uppercase" style="color:rgba(255,255,255,0.2);">Convenios</span>
+          <span class="w-7 h-[1.5px] block" style="background:rgba(255,255,255,0.08);"></span>
+        </div>
+
+        <h3 class="font-display text-base lg:text-lg text-white tracking-[0.2em] uppercase">
+          NUESTROS <span class="text-[#0ea5e9]">ALIADOS</span>
+        </h3>
+        <div class="h-[1.5px] w-10 mt-3 mb-6 ml-auto"
+             style="background:linear-gradient(90deg,transparent,#0ea5e9);"></div>
+
+        <div class="flex flex-col items-center xl:items-end gap-3 w-full">
+          {institutions.map((inst) => (
+            <button
+              class="inst-btn group relative px-6 py-3 md:py-4 transition-all duration-350 w-full max-w-[300px] xl:w-[250px] flex items-center justify-center xl:justify-end gap-3 overflow-hidden opacity-0"
+              style={`
+                clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+                transform:translateX(16px);
+                border:1px solid rgba(255,255,255,0.06);
+                background:linear-gradient(135deg,#0a0f1c,#05070d);
+                --inst-color:${inst.color};
+                --inst-glow:${inst.glow};
+              `}
+              data-color={inst.color}
+              data-glow={inst.glow}
+            >
+              <span class="inst-fill absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={`background:linear-gradient(135deg,${inst.glow},transparent);`}></span>
+              <span class="absolute right-0 top-0 bottom-0 w-[2px] origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-400"
+                    style={`background:linear-gradient(to top,${inst.color},transparent);`}></span>
+              <span class="inst-dot absolute left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100"
+                    style={`background:${inst.color};box-shadow:0 0 8px ${inst.color};`}></span>
+              <span class="text-[10px] md:text-xs font-bold tracking-[0.22em] text-gray-600 transition-colors duration-300 z-10 relative inst-label">
+                {inst.name}
+              </span>
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                   class="opacity-20 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300 flex-shrink-0 relative z-10 hidden xl:block inst-arrow"
+                   style={`color:${inst.color};`}>
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Active slide name bottom center -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
+    <p id="active-slide-name"
+       class="font-display text-[0.65rem] tracking-[0.3em] uppercase"
+       style="color:rgba(255,255,255,0.12);transition:opacity 0.3s;"></p>
+  </div>
+
+</section>
+
+<style>
+  .transform-style-3d { transform-style: preserve-3d; }
+
+  .inst-btn:hover .inst-label { color: var(--inst-color); }
+  .inst-btn:hover { border-color: color-mix(in srgb, var(--inst-color) 30%, transparent) !important; }
+
+  .coverflow-card.active h2 {
+    text-shadow: 0 0 30px rgba(234,179,8,0.35), 0 0 60px rgba(234,179,8,0.15) !important;
+  }
+</style>
+
+<script>
+import gsap from 'gsap';
+
+let floatTween:    gsap.core.Tween | null = null;
+let autoPlayTween: gsap.core.Tween | null = null;
+let resumeTimeout: ReturnType<typeof setTimeout> | null = null;
+let userInteracted = false;
+let abortController: AbortController | null = null;
+let beamRAF: number | null = null;
+
+function cleanup() {
+  autoPlayTween?.kill(); floatTween?.kill();
+  autoPlayTween = null; floatTween = null;
+  if (resumeTimeout) { clearTimeout(resumeTimeout); resumeTimeout = null; }
+  abortController?.abort(); abortController = null;
+  userInteracted = false;
+  if (beamRAF) { cancelAnimationFrame(beamRAF); beamRAF = null; }
+  const spinner = document.querySelector<HTMLElement>('.carousel-spinner');
+  if (spinner) { gsap.killTweensOf(spinner); gsap.set(spinner, { clearProps: 'all' }); }
+}
+
+type Beam = { x:number; y:number; vx:number; vy:number; life:number; maxLife:number; width:number; color:string };
+
+function initBeam() {
+  const canvas = document.getElementById('beam-canvas') as HTMLCanvasElement | null;
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
+  resize();
+  window.addEventListener('resize', resize);
+
+  const beams: Beam[] = [];
+  const colors = ['rgba(14,165,233,','rgba(45,212,191,','rgba(234,179,8,','rgba(29,78,216,'];
+
+  const spawnBeam = () => {
+    const w = canvas.width, h = canvas.height;
+    const side = Math.random();
+    let x = 0, y = 0, vx = 0, vy = 0;
+    const speed = 0.35 + Math.random() * 0.75;
+    const angle = (Math.random() * 60 - 30) * Math.PI / 180;
+    if (side < 0.5) {
+      x = side < 0.25 ? 0 : w; y = Math.random() * h;
+      vx = side < 0.25 ? Math.cos(angle)*speed : -Math.cos(angle)*speed;
+      vy = Math.sin(angle)*speed;
+    } else {
+      x = Math.random() * w; y = side < 0.75 ? 0 : h;
+      vx = Math.sin(angle)*speed;
+      vy = side < 0.75 ? Math.cos(angle)*speed : -Math.cos(angle)*speed;
+    }
+    beams.push({ x, y, vx, vy, life:0, maxLife:160+Math.random()*200, width:0.4+Math.random()*1.4, color:colors[Math.floor(Math.random()*colors.length)] });
+  };
+
+  for (let i = 0; i < 10; i++) spawnBeam();
+
+  const draw = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (Math.random() < 0.04) spawnBeam();
+    for (let i = beams.length-1; i >= 0; i--) {
+      const b = beams[i];
+      b.life++; b.x += b.vx; b.y += b.vy;
+      const p = b.life / b.maxLife;
+      let alpha = p < 0.15 ? p/0.15 : p > 0.75 ? 1-(p-0.75)/0.25 : 1;
+      alpha *= 0.3;
+      ctx.beginPath();
+      ctx.moveTo(b.x - b.vx*90, b.y - b.vy*90);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = b.color + alpha + ')';
+      ctx.lineWidth = b.width;
+      ctx.stroke();
+      if (b.life >= b.maxLife) beams.splice(i, 1);
+    }
+    beamRAF = requestAnimationFrame(draw);
+  };
+  draw();
+}
+
+function initCarousel() {
+  cleanup();
+
+  const spinner         = document.querySelector<HTMLElement>('.carousel-spinner');
+  const sliderContainer = document.querySelector<HTMLElement>('.slider-container');
+  const cards           = document.querySelectorAll<HTMLElement>('.coverflow-card');
+  if (!spinner || !sliderContainer || !cards.length) return;
+
+  abortController = new AbortController();
+  const { signal } = abortController;
+
+  const totalCards = cards.length;
+  const theta = 360 / totalCards;
+  let radius = 0;
+  let activeIndex = 0;
+
+  const calcRadius = () =>
+    window.innerWidth < 640 ? 160 : window.innerWidth < 1024 ? 220 : 320;
+
+  const positionCards = () => {
+    radius = calcRadius();
+    cards.forEach((card, i) => {
+      card.style.transform = `rotateY(${theta*i}deg) translateZ(${radius}px)`;
+    });
+  };
+
+  const counterEl = document.getElementById('counter-current');
+  const nameEl    = document.getElementById('active-slide-name');
+
+  const updateCards = (animate = true) => {
+    const rotation = -activeIndex * theta;
+    if (animate) gsap.to(spinner, { z:-radius, rotationY:rotation, duration:0.85, ease:'power3.out' });
+    else         gsap.set(spinner, { z:-radius, rotationY:rotation });
+
+    const norm = ((activeIndex % totalCards) + totalCards) % totalCards;
+    cards.forEach((card, i) => card.classList.toggle('active', i === norm));
+
+    if (counterEl) counterEl.textContent = String(norm+1).padStart(2,'0');
+    if (nameEl) {
+      gsap.to(nameEl, { opacity:0, duration:0.18, onComplete:() => {
+        const t = cards[norm].querySelector<HTMLElement>('h2');
+        nameEl.textContent = t?.textContent ?? '';
+        gsap.to(nameEl, { opacity:1, duration:0.28 });
+      }});
+    }
+  };
+
+  const startAutoPlay = () => {
+    autoPlayTween?.kill();
+    autoPlayTween = gsap.delayedCall(3.5, () => {
+      if (!userInteracted) { activeIndex++; updateCards(); startAutoPlay(); }
+    });
+  };
+
+  const onUserInteraction = () => {
+    userInteracted = true;
+    autoPlayTween?.kill();
+    if (resumeTimeout) clearTimeout(resumeTimeout);
+    resumeTimeout = setTimeout(() => { userInteracted = false; startAutoPlay(); }, 5000);
+  };
+
+  positionCards();
+  updateCards(false);
+  floatTween = gsap.to(spinner, { y:-10, duration:4, ease:'sine.inOut', yoyo:true, repeat:-1 });
+  startAutoPlay();
+  initBeam();
+
+  gsap.to('.left-reveal-1', { opacity:1, y:0, duration:0.7, delay:0.15, stagger:0.08, ease:'power3.out' });
+  gsap.to('.left-reveal-2', { opacity:1, y:0, duration:0.7, delay:0.3,  stagger:0.08, ease:'power3.out' });
+  gsap.to('.left-reveal-3', { opacity:1, duration:0.6, delay:0.5, ease:'power3.out' });
+  gsap.fromTo(cards, { opacity:0, scale:0.94 }, { opacity:1, scale:1, duration:0.65, delay:0.2, ease:'power3.out' });
+  gsap.to('.right-col', { opacity:1, x:0, duration:0.8, delay:0.3, ease:'power3.out' });
+  gsap.to('.inst-btn', { opacity:1, x:0, duration:0.6, delay:0.5, stagger:0.08, ease:'power3.out' });
+  setTimeout(() => { const ll = document.getElementById('left-line'); if (ll) ll.style.width='56px'; }, 500);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { floatTween?.pause(); autoPlayTween?.kill(); }
+    else { floatTween?.resume(); if (!userInteracted) startAutoPlay(); }
+  }, { signal });
+
+  cards.forEach(card => {
+    card.addEventListener('click', e => {
+      if ((e.target as HTMLElement).closest('a')) return;
+      const index = parseInt(card.getAttribute('data-index') ?? '0');
+      const norm  = ((activeIndex % totalCards) + totalCards) % totalCards;
+      onUserInteraction();
+      if (norm !== index) {
+        let diff = index - norm;
+        if (diff >  totalCards/2) diff -= totalCards;
+        if (diff < -totalCards/2) diff += totalCards;
+        activeIndex += diff;
+        updateCards();
+      } else {
+        gsap.fromTo(card, { scale:0.95 }, { scale:1, duration:0.4, ease:'back.out(2)' });
+      }
+    }, { signal });
+  });
+
+  document.getElementById('btn-prev')?.addEventListener('click', () => { onUserInteraction(); activeIndex--; updateCards(); }, { signal });
+  document.getElementById('btn-next')?.addEventListener('click', () => { onUserInteraction(); activeIndex++; updateCards(); }, { signal });
+
+  let wheelTO: ReturnType<typeof setTimeout>;
+  sliderContainer.addEventListener('wheel', (e: WheelEvent) => {
+    e.preventDefault();
+    clearTimeout(wheelTO);
+    wheelTO = setTimeout(() => {
+      onUserInteraction();
+      activeIndex += (e.deltaY > 0 || e.deltaX > 0) ? 1 : -1;
+      updateCards();
+    }, 50);
+  }, { passive:false, signal });
+
+  let touchStartX = 0, touchStartY = 0;
+  sliderContainer.addEventListener('touchstart', (e:TouchEvent) => {
+    touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY;
+  }, { passive:true, signal });
+  sliderContainer.addEventListener('touchend', (e:TouchEvent) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      onUserInteraction(); activeIndex += dx < 0 ? 1 : -1; updateCards();
+    }
+  }, { passive:true, signal });
+
+  window.addEventListener('resize', () => { positionCards(); updateCards(false); }, { signal });
+}
+
+document.addEventListener('astro:before-swap', cleanup);
+document.addEventListener('astro:page-load', initCarousel);
+if (document.readyState !== 'loading') initCarousel();
+else document.addEventListener('DOMContentLoaded', initCarousel);
+</script>
+
+
+
+
+
+---
+const slides = [
+  { id: 1, title: "INFOCADE",       subtitle: "Instituto Deportivo",      image: "/images/mix5.webp",  href: "/infocade"    },
+  { id: 2, title: "CENACAP",        subtitle: "Centro de Capacitacion",   image: "/images/mix3.webp",  href: "/cenacap"     },
+  { id: 3, title: "NUEVO SIGLO",    subtitle: "Formacion Profesional",    image: "/images/mix4.webp", href: "/nuevo-ciclo" },
+  { id: 4, title: "FUNDECT",        subtitle: "Fundacion Educativa",      image: "/images/mix2.webp",  href: "/fundect"     },
+  { id: 5, title: "CLUB DE LEONES", subtitle: "Accion Civica y Social",   image: "/images/mix1.webp",  href: "/club-leones" },
+];
+
+const institutions = ["INAF","UNITEP","UNIFRANZ","CLUB OLIMPIC","INTRASPORTS"];
+---
+
+<section
+  class="relative min-h-screen w-full flex items-center justify-center overflow-x-hidden bg-transparent coverflow-section py-32 xl:py-0"
+  transition:animate="none"
+>
+
+  <!-- ── BEAM CANVAS ── -->
+  <canvas id="beam-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+  <!-- Background image sutil 
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <img src="/images/head1.jpg" alt="" class="w-full h-full object-cover opacity-[0.07] scale-110 pointer-events-none" style="filter:grayscale(70%);" />
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-black"></div>
+  </div>-->
+
+  <!-- Glow orb central azul -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full pointer-events-none z-0"
+       style="background:radial-gradient(ellipse,rgba(14,165,233,0.07) 0%,transparent 70%);filter:blur(24px);"></div>
+
+  <!-- ── LAYOUT 3 COLUMNAS ── -->
+  <div class="relative z-50 w-full max-w-[1600px] mx-auto px-6 md:px-10 flex flex-col xl:flex-row items-center justify-between gap-16 xl:gap-4">
+
+    <!-- ── COLUMNA IZQUIERDA ── -->
+    <div class="w-full xl:w-[350px] flex flex-col items-center xl:items-start text-center xl:text-left order-1 left-col">
+
+      <!-- Eyebrow -->
+      <div class="inline-flex items-center gap-3 mb-4 opacity-0 left-reveal-1">
+        <span class="w-7 h-[1.5px] bg-[#0ea5e9] block"></span>
+        <span class="text-[0.65rem] font-bold tracking-[0.26em] uppercase text-[#0ea5e9]">Sistema de Acceso</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="font-display text-4xl md:text-4xl text-white tracking-widest uppercase leading-none opacity-0 left-reveal-1"
+          style="text-shadow:0 0 40px rgba(14,165,233,0.15);">
+        CORPOTACION BOLIVIA DE TALENTO Y FORMACION INTEGRAL
+      </h1>
+
+      <!-- Subtitle stroke -->
+      <p class="font-display text-sm md:text-base tracking-[0.18em] uppercase mt-1 mb-5 opacity-0 left-reveal-2"
+         style="-webkit-text-stroke:1px rgba(255,255,255,0.18);color:transparent;">
+        PLATAFORMA
+      </p>
+
+      <!-- Animated line -->
+      <div id="left-line"
+           class="h-[2px] mb-5 origin-left"
+           style="width:0;background:linear-gradient(90deg,#0ea5e9,#2dd4bf);transition:width 1s ease;"></div>
+
+      <!-- Description -->
+      <p class="text-gray-500 text-xs md:text-sm leading-relaxed max-w-md xl:max-w-sm text-left opacity-0 left-reveal-2">
+        Accede a la red de instituciones y programas aliados. Explora cada modulo y descubre la oferta academica, civica y deportiva de nuestra plataforma.
+      </p>
+
+      <!-- Nav arrows + counter -->
+      <div class="flex items-center gap-3 mt-8 opacity-0 left-reveal-3">
+        <button id="btn-prev"
+                class="w-10 h-10 border border-white/10 bg-white/[0.03] flex items-center justify-center transition-all duration-300 hover:border-white/30 hover:bg-white/[0.07]"
+                style="clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));"
+                aria-label="Anterior">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white/40"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+        </button>
+        <button id="btn-next"
+                class="w-10 h-10 flex items-center justify-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(14,165,233,0.4)]"
+                style="border:1.5px solid rgba(14,165,233,0.45);background:rgba(14,165,233,0.07);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));"
+                aria-label="Siguiente">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:#0ea5e9;"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+
+        <div class="ml-2 font-display text-xs tracking-[0.2em]" style="color:rgba(255,255,255,0.2);">
+          <span id="counter-current" style="color:#0ea5e9;">01</span>
+          <span class="mx-1">/</span>
+          <span>0{slides.length}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COLUMNA CENTRAL — CARRUSEL ORIGINAL ── -->
+    <div
+      class="relative w-full xl:flex-1 h-[380px] md:h-[450px] lg:h-[500px] flex items-center justify-center z-20 slider-container pointer-events-auto order-2"
+      style="perspective:1200px;"
+    >
+      <div
+        class="relative w-[200px] md:w-[280px] lg:w-[320px] h-[320px] md:h-[450px] lg:h-[500px] transform-style-3d carousel-spinner"
+        style="will-change:transform;"
+      >
+        {slides.map((slide, index) => (
+          <div
+            class="absolute top-0 left-0 w-full h-full cursor-pointer coverflow-card group"
+            data-index={index}
+          >
+            <div class="w-full h-full relative flex flex-col items-center justify-between p-3 md:p-4 bg-[#060606]/92 backdrop-blur-md border border-white/[0.07] group-[.active]:border-[#0ea5e9]/50 group-[.active]:shadow-[0_0_50px_rgba(14,165,233,0.2),0_0_0_1px_rgba(14,165,233,0.12)] transition-all duration-500 overflow-hidden"
+                 style="clip-path:polygon(10% 0,100% 0,100% 90%,90% 100%,0 100%,0 10%);">
+
+              <!-- BG image -->
+              <img src={slide.image} alt={slide.title}
+                   class="absolute inset-0 w-full h-full object-cover opacity-35 group-[.active]:opacity-80 transition-all duration-500 pointer-events-none grayscale group-[.active]:grayscale-0 group-[.active]:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-transparent to-black/88 group-[.active]:from-black/40 group-[.active]:to-black/80 transition-colors duration-500"></div>
+
+              <!-- Top accent line -->
+              <div class="absolute top-0 left-0 right-0 h-[2px] origin-left scale-x-0 group-[.active]:scale-x-100 transition-transform duration-500"
+                   style="background:linear-gradient(90deg,#0ea5e9,#2dd4bf);"></div>
+
+              <!-- Corner accents -->
+              <div class="absolute top-0 left-0 w-4 md:w-6 h-[2px] bg-white/20 group-[.active]:bg-[#0ea5e9] transition-colors duration-500"></div>
+              <div class="absolute top-0 left-0 w-[2px] h-4 md:h-6 bg-white/20 group-[.active]:bg-[#0ea5e9] transition-colors duration-500"></div>
+              <div class="absolute bottom-0 right-0 w-4 md:w-6 h-[2px] bg-white/20 group-[.active]:bg-[#2dd4bf] transition-colors duration-500"></div>
+              <div class="absolute bottom-0 right-0 w-[2px] h-4 md:h-6 bg-white/20 group-[.active]:bg-[#2dd4bf] transition-colors duration-500"></div>
+
+              <!-- Header -->
+              <div class="relative z-10 w-full flex flex-col items-center mt-2">
+                <div class="h-[2px] w-1/3 mb-2 opacity-25 group-[.active]:opacity-100 group-[.active]:w-2/3 transition-all duration-500"
+                     style="background:linear-gradient(90deg,#0ea5e9,#2dd4bf);"></div>
+                <h3 class="text-gray-500 group-[.active]:text-white/60 text-[8px] md:text-xs font-bold tracking-[0.2em] uppercase transition-colors duration-300">
+                  {slide.subtitle}
+                </h3>
+                <h2 class="text-white/40 group-[.active]:text-[#0ea5e9] font-display text-base md:text-2xl mt-1 tracking-wider text-center transition-colors duration-300">
+                  {slide.title}
+                </h2>
+              </div>
+
+              <!-- Center icon -->
+              <div class="relative z-10 w-10 h-10 md:w-16 md:h-16 rounded-full border border-white/20 flex items-center justify-center bg-black/60 backdrop-blur-md group-[.active]:border-[#0ea5e9]/80 group-[.active]:bg-[#0ea5e9]/15 group-[.active]:scale-110 transition-all duration-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="text-white/40 group-[.active]:text-[#0ea5e9] md:w-6 md:h-6 transition-colors duration-300">
+                  <path d="M5 12h14"/>
+                  <path d="M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+
+              <!-- Bottom CTA -->
+              <div class="relative z-10 w-full flex flex-col items-center mb-2 md:mb-4">
+                <a
+                  href={slide.href}
+                  class="px-4 py-1.5 md:px-8 md:py-2 border border-white/20 text-white/40 font-display tracking-widest text-[8px] md:text-xs bg-white/[0.04] hover:bg-white/10 group-[.active]:border-[#0ea5e9] group-[.active]:text-black group-[.active]:bg-[#0ea5e9] group-[.active]:shadow-[0_0_20px_rgba(14,165,233,0.5)] transition-all duration-300"
+                  style="clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));"
+                >
+                  ENTRAR
+                </a>
+                <div class="flex gap-1 mt-3 md:mt-6 opacity-25 group-[.active]:opacity-100 transition-opacity duration-500">
+                  <div class="w-2 h-[3px] bg-white/40 group-[.active]:bg-[#0ea5e9] transition-colors duration-300"></div>
+                  <div class="w-6 h-[3px] bg-white/40 group-[.active]:bg-[#0ea5e9] transition-colors duration-300"></div>
+                  <div class="w-2 h-[3px] bg-white/40 group-[.active]:bg-[#0ea5e9] transition-colors duration-300"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- ── COLUMNA DERECHA ── -->
+    <div class="w-full xl:w-[350px] flex flex-col items-center xl:items-end text-center xl:text-right order-3">
+
+      <div class="right-col opacity-0" style="transform:translateX(20px);">
+        <!-- Eyebrow derecho -->
+        <div class="inline-flex items-center gap-3 mb-3 justify-end">
+          <span class="text-[0.65rem] font-bold tracking-[0.26em] uppercase" style="color:rgba(255,255,255,0.25);">Convenios</span>
+          <span class="w-7 h-[1.5px] block" style="background:rgba(255,255,255,0.12);"></span>
+        </div>
+
+        <h3 class="font-display text-base lg:text-lg text-white tracking-[0.2em] uppercase">
+          NUESTROS <span style="color:#0ea5e9;">ALIADOS</span>
+        </h3>
+        <div class="h-[1.5px] w-10 mt-3 mb-6 ml-auto" style="background:linear-gradient(90deg,transparent,#0ea5e9);"></div>
+
+        <div class="flex flex-col items-center xl:items-end gap-3 w-full">
+          {institutions.map((inst) => (
+            <button
+              class="inst-btn group relative px-6 py-3 md:py-4 border border-white/[0.07] bg-white/[0.02] transition-all duration-300 w-full max-w-[300px] xl:w-[250px] flex items-center justify-center xl:justify-end gap-3 overflow-hidden opacity-0"
+              style="clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transform:translateX(16px);"
+            >
+              <!-- Hover fill -->
+              <span class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style="background:linear-gradient(135deg,rgba(14,165,233,0.07),rgba(45,212,191,0.04));"></span>
+              <!-- Right bar -->
+              <span class="absolute right-0 top-0 bottom-0 w-[2px] origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300"
+                    style="background:linear-gradient(to top,#0ea5e9,#2dd4bf);"></span>
+              <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-gray-500 group-hover:text-[#0ea5e9] transition-colors duration-300 z-10 relative">
+                {inst}
+              </span>
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                   class="text-[#0ea5e9]/30 group-hover:text-[#0ea5e9] group-hover:translate-x-0.5 transition-all duration-300 flex-shrink-0 relative z-10 hidden xl:block">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Slide name bottom center -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
+    <p id="active-slide-name"
+       class="font-display text-[0.65rem] tracking-[0.3em] uppercase"
+       style="color:rgba(255,255,255,0.12);transition:opacity 0.3s;"></p>
+  </div>
+
+</section>
+
+<style>
+  .transform-style-3d { transform-style: preserve-3d; }
+
+  /* Active card — border glow azul ya definido con Tailwind group-[.active] */
+  /* Imagen activa escala via Tailwind group-[.active]:scale-105 */
+</style>
+
+<script>
+import gsap from 'gsap';
+
+// ── Estado global ─────────────────────────────────────────────────────────
+let floatTween:    gsap.core.Tween | null = null;
+let autoPlayTween: gsap.core.Tween | null = null;
+let resumeTimeout: ReturnType<typeof setTimeout> | null = null;
+let userInteracted = false;
+let abortController: AbortController | null = null;
+let beamRAF: number | null = null;
+
+// ── CLEANUP ────────────────────────────────────────────────────────────────
+function cleanup() {
+  autoPlayTween?.kill();
+  floatTween?.kill();
+  autoPlayTween = null;
+  floatTween = null;
+
+  if (resumeTimeout) { clearTimeout(resumeTimeout); resumeTimeout = null; }
+  abortController?.abort();
+  abortController = null;
+  userInteracted = false;
+
+  if (beamRAF) { cancelAnimationFrame(beamRAF); beamRAF = null; }
+
+  const spinner = document.querySelector<HTMLElement>('.carousel-spinner');
+  if (spinner) { gsap.killTweensOf(spinner); gsap.set(spinner, { clearProps: 'all' }); }
+}
+
+// ── BEAM CANVAS ────────────────────────────────────────────────────────────
+type Beam = {
+  x: number; y: number; vx: number; vy: number;
+  life: number; maxLife: number; width: number; color: string;
+};
+
+function initBeam() {
+  const canvas = document.getElementById('beam-canvas') as HTMLCanvasElement | null;
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
+  resize();
+  window.addEventListener('resize', resize);
+
+  const beams: Beam[] = [];
+  const colors = ['rgba(14,165,233,', 'rgba(45,212,191,', 'rgba(29,78,216,'];
+
+  const spawnBeam = () => {
+    const w = canvas.width;
+    const h = canvas.height;
+    const side = Math.random();
+    let x = 0, y = 0, vx = 0, vy = 0;
+    const speed = 0.35 + Math.random() * 0.75;
+    const angle = (Math.random() * 60 - 30) * Math.PI / 180;
+    if (side < 0.5) {
+      x = side < 0.25 ? 0 : w;
+      y = Math.random() * h;
+      vx = side < 0.25 ?  Math.cos(angle) * speed : -Math.cos(angle) * speed;
+      vy = Math.sin(angle) * speed;
+    } else {
+      x = Math.random() * w;
+      y = side < 0.75 ? 0 : h;
+      vx = Math.sin(angle) * speed;
+      vy = side < 0.75 ? Math.cos(angle) * speed : -Math.cos(angle) * speed;
+    }
+    beams.push({
+      x, y, vx, vy, life: 0,
+      maxLife: 160 + Math.random() * 200,
+      width: 0.4 + Math.random() * 1.4,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    });
+  };
+
+  for (let i = 0; i < 10; i++) spawnBeam();
+
+  const drawFrame = () => {
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    if (Math.random() < 0.04) spawnBeam();
+
+    for (let i = beams.length - 1; i >= 0; i--) {
+      const b = beams[i];
+      b.life++; b.x += b.vx; b.y += b.vy;
+      const p = b.life / b.maxLife;
+      let alpha = p < 0.15 ? p / 0.15 : p > 0.75 ? 1 - (p - 0.75) / 0.25 : 1;
+      alpha *= 0.3;
+      ctx.beginPath();
+      ctx.moveTo(b.x - b.vx * 90, b.y - b.vy * 90);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = b.color + alpha + ')';
+      ctx.lineWidth = b.width;
+      ctx.stroke();
+      if (b.life >= b.maxLife) beams.splice(i, 1);
+    }
+    beamRAF = requestAnimationFrame(drawFrame);
+  };
+  drawFrame();
+}
+
+// ── CAROUSEL INIT ──────────────────────────────────────────────────────────
+function initCarousel() {
+  cleanup();
+
+  const spinner        = document.querySelector<HTMLElement>('.carousel-spinner');
+  const sliderContainer= document.querySelector<HTMLElement>('.slider-container');
+  const cards          = document.querySelectorAll<HTMLElement>('.coverflow-card');
+
+  if (!spinner || !sliderContainer || cards.length === 0) return;
+
+  abortController = new AbortController();
+  const { signal } = abortController;
+
+  const totalCards = cards.length;
+  const theta = 360 / totalCards;
+  let radius = 0;
+  let activeIndex = 0;
+
+  const calculateRadius = (): number => {
+    if (window.innerWidth < 640)  return 160;
+    if (window.innerWidth < 1024) return 220;
+    return 320;
+  };
+
+  const positionCards = () => {
+    radius = calculateRadius();
+    cards.forEach((card, i) => {
+      card.style.transform = `rotateY(${theta * i}deg) translateZ(${radius}px)`;
+    });
+  };
+
+  const counterEl  = document.getElementById('counter-current');
+  const nameEl     = document.getElementById('active-slide-name');
+
+  const updateCards = (animate = true) => {
+    const rotation = -activeIndex * theta;
+    if (animate) {
+      gsap.to(spinner, { z: -radius, rotationY: rotation, duration: 0.85, ease: 'power3.out' });
+    } else {
+      gsap.set(spinner, { z: -radius, rotationY: rotation });
+    }
+    const norm = ((activeIndex % totalCards) + totalCards) % totalCards;
+    cards.forEach((card, i) => card.classList.toggle('active', i === norm));
+
+    if (counterEl) counterEl.textContent = String(norm + 1).padStart(2, '0');
+    if (nameEl) {
+      const ne = nameEl;
+      gsap.to(ne, { opacity: 0, duration: 0.18, onComplete: () => {
+        const titleEl = cards[norm].querySelector<HTMLElement>('.card-title-js');
+        ne.textContent = titleEl?.textContent ?? '';
+        gsap.to(ne, { opacity: 1, duration: 0.28 });
+      }});
+    }
+  };
+
+  const startAutoPlay = () => {
+    autoPlayTween?.kill();
+    autoPlayTween = gsap.delayedCall(3.5, () => {
+      if (!userInteracted) { activeIndex++; updateCards(); startAutoPlay(); }
+    });
+  };
+
+  const onUserInteraction = () => {
+    userInteracted = true;
+    autoPlayTween?.kill();
+    if (resumeTimeout) clearTimeout(resumeTimeout);
+    resumeTimeout = setTimeout(() => { userInteracted = false; startAutoPlay(); }, 5000);
+  };
+
+  // Init
+  positionCards();
+  updateCards(false);
+
+  floatTween = gsap.to(spinner, { y: -10, duration: 4, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+
+  startAutoPlay();
+  initBeam();
+
+  // ── REVEAL animations ──
+  gsap.to('.left-reveal-1', { opacity: 1, y: 0, duration: 0.7, delay: 0.15, stagger: 0.08, ease: 'power3.out' });
+  gsap.to('.left-reveal-2', { opacity: 1, y: 0, duration: 0.7, delay: 0.3,  stagger: 0.08, ease: 'power3.out' });
+  gsap.to('.left-reveal-3', { opacity: 1, duration: 0.6, delay: 0.5, ease: 'power3.out' });
+  gsap.fromTo(cards, { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.65, delay: 0.2, ease: 'power3.out' });
+  gsap.to('.right-col', { opacity: 1, x: 0, duration: 0.8, delay: 0.3, ease: 'power3.out' });
+  gsap.to('.inst-btn', { opacity: 1, x: 0, duration: 0.6, delay: 0.5, stagger: 0.08, ease: 'power3.out' });
+  setTimeout(() => {
+    const ll = document.getElementById('left-line');
+    if (ll) ll.style.width = '56px';
+  }, 500);
+
+  // ── Visibility ──
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { floatTween?.pause(); autoPlayTween?.kill(); }
+    else { floatTween?.resume(); if (!userInteracted) startAutoPlay(); }
+  }, { signal });
+
+  // ── Card click ──
+  cards.forEach(card => {
+    card.addEventListener('click', e => {
+      if ((e.target as HTMLElement).closest('a')) return;
+      const index = parseInt(card.getAttribute('data-index') ?? '0');
+      const norm  = ((activeIndex % totalCards) + totalCards) % totalCards;
+      onUserInteraction();
+      if (norm !== index) {
+        let diff = index - norm;
+        if (diff >  totalCards / 2) diff -= totalCards;
+        if (diff < -totalCards / 2) diff += totalCards;
+        activeIndex += diff;
+        updateCards();
+      } else {
+        gsap.fromTo(card, { scale: 0.95 }, { scale: 1, duration: 0.4, ease: 'back.out(2)' });
+      }
+    }, { signal });
+  });
+
+  // ── Arrow buttons ──
+  document.getElementById('btn-prev')?.addEventListener('click', () => {
+    onUserInteraction(); activeIndex--; updateCards();
+  }, { signal });
+  document.getElementById('btn-next')?.addEventListener('click', () => {
+    onUserInteraction(); activeIndex++; updateCards();
+  }, { signal });
+
+  // ── Wheel ──
+  let wheelTO: ReturnType<typeof setTimeout>;
+  sliderContainer.addEventListener('wheel', (e: WheelEvent) => {
+    e.preventDefault();
+    clearTimeout(wheelTO);
+    wheelTO = setTimeout(() => {
+      onUserInteraction();
+      activeIndex += (e.deltaY > 0 || e.deltaX > 0) ? 1 : -1;
+      updateCards();
+    }, 50);
+  }, { passive: false, signal });
+
+  // ── Touch ──
+  let touchStartX = 0, touchStartY = 0;
+  sliderContainer.addEventListener('touchstart', (e: TouchEvent) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true, signal });
+  sliderContainer.addEventListener('touchend', (e: TouchEvent) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      onUserInteraction();
+      activeIndex += dx < 0 ? 1 : -1;
+      updateCards();
+    }
+  }, { passive: true, signal });
+
+  // ── Resize ──
+  window.addEventListener('resize', () => { positionCards(); updateCards(false); }, { signal });
+}
+
+// ── ASTRO LIFECYCLE ────────────────────────────────────────────────────────
+document.addEventListener('astro:before-swap', cleanup);
+document.addEventListener('astro:page-load', initCarousel);
+if (document.readyState !== 'loading') initCarousel();
+else document.addEventListener('DOMContentLoaded', initCarousel);
+</script>

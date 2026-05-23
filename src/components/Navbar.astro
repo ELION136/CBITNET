@@ -7,15 +7,34 @@ const isRegisterPage = pathname === "/inscribirse" || pathname === "/inscribirse
 <nav class="fixed top-0 left-0 w-full z-[100] py-4 px-6 md:py-6 md:px-10 flex justify-between items-center mix-blend-difference pointer-events-auto">
   <div class="text-xl md:text-2xl font-display tracking-widest text-white relative z-[101]">CBIT<span class="text-yellow-500">.</span></div>
   
-  <!-- Desktop Menu -->
+  <!-- Desktop Menu with enhanced hover effect: golden underline + smooth scale & color transition -->
   <ul class="hidden md:flex space-x-8 text-sm font-semibold tracking-wider text-white">
-    <li><a href="/" class="hover:text-green-400 transition-colors">HOME</a></li>
-    <li><a href="/autoridades" class="hover:text-green-400 transition-colors">AUTORIDADES</a></li>
-    <li><a href="/servicios" class="hover:text-green-400 transition-colors">SERVICIOS</a></li>
-    <li><a href="/sobre-nosotros" class="hover:text-green-400 transition-colors">SOBRE NOSOTROS</a></li>
-    <li><a href="/carreras" class="hover:text-green-400 transition-colors">NUESTROS PROGRAMAS</a></li>
+    <li>
+      <a href="/" class="relative inline-block after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full transition-all duration-300 hover:text-amber-300 hover:scale-105">
+        HOME
+      </a>
+    </li>
+    <li>
+      <a href="/autoridades" class="relative inline-block after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full transition-all duration-300 hover:text-amber-300 hover:scale-105">
+        AUTORIDADES
+      </a>
+    </li>
+    <li>
+      <a href="/servicios" class="relative inline-block after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full transition-all duration-300 hover:text-amber-300 hover:scale-105">
+        SERVICIOS
+      </a>
+    </li>
+    <li>
+      <a href="/sobre-nosotros" class="relative inline-block after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full transition-all duration-300 hover:text-amber-300 hover:scale-105">
+        SOBRE NOSOTROS
+      </a>
+    </li>
+    <li>
+      <a href="/carreras" class="relative inline-block after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full transition-all duration-300 hover:text-amber-300 hover:scale-105">
+        NUESTROS PROGRAMAS
+      </a>
+    </li>
   </ul>
-
 
   <!-- Mobile Hamburger Button -->
   <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 relative z-[101] p-2 cursor-pointer">
@@ -25,34 +44,34 @@ const isRegisterPage = pathname === "/inscribirse" || pathname === "/inscribirse
   </button>
 </nav>
 
-<!-- Mobile Menu Overlay -->
+<!-- Mobile Menu Overlay with updated hover color to golden -->
 <div id="mobile-menu" class="fixed inset-0 bg-[#030303] z-[90] flex flex-col items-center justify-center translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] pointer-events-auto">
   <!-- Background Glow -->
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-green-500/10 blur-[80px] rounded-full pointer-events-none z-0"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-amber-500/10 blur-[80px] rounded-full pointer-events-none z-0"></div>
 
   <ul class="flex flex-col items-center space-y-8 text-3xl font-display tracking-widest text-white z-10">
     <li>
-      <a href="/" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
+      <a href="/" class="mobile-link hover:text-amber-300 transition-colors block overflow-hidden">
         <span class="block translate-y-full opacity-0">HOME</span>
       </a>
     </li>
     <li>
-      <a href="/autoridades" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
+      <a href="/autoridades" class="mobile-link hover:text-amber-300 transition-colors block overflow-hidden">
         <span class="block translate-y-full opacity-0">AUTORIDADES</span>
       </a>
     </li>
     <li>
-      <a href="/servicios" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
+      <a href="/servicios" class="mobile-link hover:text-amber-300 transition-colors block overflow-hidden">
         <span class="block translate-y-full opacity-0">SERVICIOS</span>
       </a>
     </li>
     <li>
-      <a href="/sobre-nosotros" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
+      <a href="/sobre-nosotros" class="mobile-link hover:text-amber-300 transition-colors block overflow-hidden">
         <span class="block translate-y-full opacity-0 text-center">SOBRE NOSOTROS</span>
       </a>
     </li>
     <li>
-      <a href="/carreras" class="mobile-link hover:text-green-400 transition-colors block overflow-hidden">
+      <a href="/carreras" class="mobile-link hover:text-amber-300 transition-colors block overflow-hidden">
         <span class="block translate-y-full opacity-0">NUESTROS PROGRAMAS</span>
       </a>
     </li>
@@ -132,13 +151,13 @@ const isRegisterPage = pathname === "/inscribirse" || pathname === "/inscribirse
   }
 </script>
 
-<!-- Floating CTA Button (Persistent on all pages, except the register page itself) -->
+<!-- Floating CTA Button (Persistent on all pages, except the register page itself) - Updated to Golden Yellow with enhanced hover effect -->
 {!isRegisterPage && (
   <a 
     href="https://forms.gle/cVVdBKkZb4oSyXf27" 
     target="_blank"
     rel="noopener noreferrer"
-    class="fixed bottom-6 right-6 z-[80] flex items-center justify-center gap-2 px-5 py-3 md:px-6 md:py-4 rounded-full bg-green-500 hover:bg-green-400 text-black font-bold tracking-widest text-xs md:text-sm uppercase transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.4)] hover:shadow-[0_0_35px_rgba(34,197,94,0.7)] hover:scale-105 active:scale-95 group pointer-events-auto animate-pulse"
+    class="fixed bottom-6 right-6 z-[80] flex items-center justify-center gap-2 px-5 py-3 md:px-6 md:py-4 rounded-full bg-amber-500 hover:bg-amber-400 text-black font-bold tracking-widest text-xs md:text-sm uppercase transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.5)] hover:shadow-[0_0_35px_rgba(245,158,11,0.8)] hover:scale-105 active:scale-95 group pointer-events-auto animate-pulse"
   >
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">
       <path d="M15 3h6v6"/>

@@ -7,7 +7,13 @@ const slides = [
   { id: 5, title: "CLUB DE LEONES", subtitle: "Accion Civica y Social",   image: "/images/mix1.webp",  href: "/club-leones" },
 ];
 
-const institutions = ["INAF","UNITEP","UNIFRANZ","CLUB OLIMPIC","INTRASPORTS"];
+const institutions = [
+  { name: "INAF",         color: "#f59e0b", glow: "rgba(245,158,11,0.25)"  },
+  { name: "UNITEP",       color: "#10b981", glow: "rgba(16,185,129,0.25)"  },
+  { name: "UNIFRANZ",     color: "#8b5cf6", glow: "rgba(139,92,246,0.25)"  },
+  { name: "CLUB OLIMPIC", color: "#ef4444", glow: "rgba(239,68,68,0.25)"   },
+  { name: "INTRASPORTS",  color: "#0ea5e9", glow: "rgba(14,165,233,0.25)"  },
+];
 ---
 
 <section
@@ -162,37 +168,48 @@ const institutions = ["INAF","UNITEP","UNIFRANZ","CLUB OLIMPIC","INTRASPORTS"];
     </div>
 
     <!-- ── COLUMNA DERECHA ── -->
+     <!-- RIGHT COLUMN — ALLIES -->
     <div class="w-full xl:w-[350px] flex flex-col items-center xl:items-end text-center xl:text-right order-3">
-
       <div class="right-col opacity-0" style="transform:translateX(20px);">
-        <!-- Eyebrow derecho -->
+
         <div class="inline-flex items-center gap-3 mb-3 justify-end">
-          <span class="text-[0.65rem] font-bold tracking-[0.26em] uppercase" style="color:rgba(255,255,255,0.25);">Convenios</span>
-          <span class="w-7 h-[1.5px] block" style="background:rgba(255,255,255,0.12);"></span>
+          <span class="text-[0.65rem] font-bold tracking-[0.26em] uppercase" style="color:rgba(255,255,255,0.2);">Convenios</span>
+          <span class="w-7 h-[1.5px] block" style="background:rgba(255,255,255,0.08);"></span>
         </div>
 
         <h3 class="font-display text-base lg:text-lg text-white tracking-[0.2em] uppercase">
-          NUESTROS <span style="color:#0ea5e9;">ALIADOS</span>
+          NUESTROS <span class="text-[#0ea5e9]">ALIADOS</span>
         </h3>
-        <div class="h-[1.5px] w-10 mt-3 mb-6 ml-auto" style="background:linear-gradient(90deg,transparent,#0ea5e9);"></div>
+        <div class="h-[1.5px] w-10 mt-3 mb-6 ml-auto"
+             style="background:linear-gradient(90deg,transparent,#0ea5e9);"></div>
 
         <div class="flex flex-col items-center xl:items-end gap-3 w-full">
           {institutions.map((inst) => (
             <button
-              class="inst-btn group relative px-6 py-3 md:py-4 border border-white/[0.07] bg-white/[0.02] transition-all duration-300 w-full max-w-[300px] xl:w-[250px] flex items-center justify-center xl:justify-end gap-3 overflow-hidden opacity-0"
-              style="clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transform:translateX(16px);"
+              class="inst-btn group relative px-6 py-3 md:py-4 transition-all duration-350 w-full max-w-[300px] xl:w-[250px] flex items-center justify-center xl:justify-end gap-3 overflow-hidden opacity-0"
+              style={`
+                clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+                transform:translateX(16px);
+                border:1px solid rgba(255,255,255,0.06);
+                background:linear-gradient(135deg,#0a0f1c,#05070d);
+                --inst-color:${inst.color};
+                --inst-glow:${inst.glow};
+              `}
+              data-color={inst.color}
+              data-glow={inst.glow}
             >
-              <!-- Hover fill -->
-              <span class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style="background:linear-gradient(135deg,rgba(14,165,233,0.07),rgba(45,212,191,0.04));"></span>
-              <!-- Right bar -->
-              <span class="absolute right-0 top-0 bottom-0 w-[2px] origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300"
-                    style="background:linear-gradient(to top,#0ea5e9,#2dd4bf);"></span>
-              <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-gray-500 group-hover:text-[#0ea5e9] transition-colors duration-300 z-10 relative">
-                {inst}
+              <span class="inst-fill absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={`background:linear-gradient(135deg,${inst.glow},transparent);`}></span>
+              <span class="absolute right-0 top-0 bottom-0 w-[2px] origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-400"
+                    style={`background:linear-gradient(to top,${inst.color},transparent);`}></span>
+              <span class="inst-dot absolute left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100"
+                    style={`background:${inst.color};box-shadow:0 0 8px ${inst.color};`}></span>
+              <span class="text-[10px] md:text-xs font-bold tracking-[0.22em] text-white-400 transition-colors duration-300 z-10 relative inst-label">
+                {inst.name}
               </span>
               <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                   class="text-[#0ea5e9]/30 group-hover:text-[#0ea5e9] group-hover:translate-x-0.5 transition-all duration-300 flex-shrink-0 relative z-10 hidden xl:block">
+                   class="opacity-20 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300 flex-shrink-0 relative z-10 hidden xl:block inst-arrow"
+                   style={`color:${inst.color};`}>
                 <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
               </svg>
             </button>
