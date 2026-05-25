@@ -10,31 +10,46 @@ const isRegisterPage = pathname === "/inscribirse" || pathname === "/inscribirse
     <span class="text-xl md:text-2xl font-display tracking-widest text-white">CBIT<span class="text-yellow-500">.</span></span>
   </a>
   
-  <!-- Desktop Menu with enhanced hover effect: golden underline + smooth scale & color transition -->
-  <ul class="hidden md:flex space-x-8 text-xs font-semibold tracking-widest text-white">
+  <!-- Desktop Menu with enhanced hover effect: golden corner drawing brackets + smooth glow transition -->
+  <ul class="hidden md:flex items-center space-x-6 text-xs font-semibold tracking-widest text-white">
     <li>
-      <a href="/" class="relative inline-block after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full transition-all duration-300 hover:text-amber-300 hover:scale-105">
-        HOME
-      </a>
-    </li>
-    <li>
-      <a href="/autoridades" class="relative inline-block after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full transition-all duration-300 hover:text-amber-300 hover:scale-105">
-        AUTORIDADES
-      </a>
-    </li>
-    <li>
-      <a href="/servicios" class="relative inline-block after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full transition-all duration-300 hover:text-amber-300 hover:scale-105">
-        SERVICIOS
-      </a>
-    </li>
-    <li>
-      <a href="/sobre-nosotros" class="relative inline-block after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full transition-all duration-300 hover:text-amber-300 hover:scale-105">
+      <a href="/sobre-nosotros" class="relative inline-block px-4 py-2 text-white/80 hover:text-amber-400 transition-colors duration-300 group">
         SOBRE NOSOTROS
+        <span class="absolute top-0 left-0 w-2.5 h-[2px] bg-amber-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+        <span class="absolute top-0 left-0 w-[2px] h-2.5 bg-amber-400 scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-300"></span>
+        <span class="absolute bottom-0 right-0 w-2.5 h-[2px] bg-amber-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-right duration-300"></span>
+        <span class="absolute bottom-0 right-0 w-[2px] h-2.5 bg-amber-400 scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></span>
+        <span class="absolute inset-0 bg-amber-400/5 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[2px] -z-10"></span>
       </a>
     </li>
     <li>
-      <a href="/carreras" class="relative inline-block after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[2px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full transition-all duration-300 hover:text-amber-300 hover:scale-105">
-        NUESTROS PROGRAMAS
+      <a href="/carreras" class="relative inline-block px-4 py-2 text-white/80 hover:text-amber-400 transition-colors duration-300 group">
+        CARRERAS Y SERVICIOS
+        <span class="absolute top-0 left-0 w-2.5 h-[2px] bg-amber-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+        <span class="absolute top-0 left-0 w-[2px] h-2.5 bg-amber-400 scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-300"></span>
+        <span class="absolute bottom-0 right-0 w-2.5 h-[2px] bg-amber-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-right duration-300"></span>
+        <span class="absolute bottom-0 right-0 w-[2px] h-2.5 bg-amber-400 scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></span>
+        <span class="absolute inset-0 bg-amber-400/5 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[2px] -z-10"></span>
+      </a>
+    </li>
+    <li>
+      <a href="/proximos-eventos" class="relative inline-block px-4 py-2 text-white/80 hover:text-amber-400 transition-colors duration-300 group">
+        PROXIMOS EVENTOS
+        <span class="absolute top-0 left-0 w-2.5 h-[2px] bg-amber-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+        <span class="absolute top-0 left-0 w-[2px] h-2.5 bg-amber-400 scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-300"></span>
+        <span class="absolute bottom-0 right-0 w-2.5 h-[2px] bg-amber-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-right duration-300"></span>
+        <span class="absolute bottom-0 right-0 w-[2px] h-2.5 bg-amber-400 scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></span>
+        <span class="absolute inset-0 bg-amber-400/5 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[2px] -z-10"></span>
+      </a>
+    </li>
+    <li>
+      <a href="/latest" class="relative inline-block px-4 py-2 text-white/80 hover:text-amber-400 transition-colors duration-300 group">
+        NOTICIAS
+        <span class="absolute top-0 left-0 w-2.5 h-[2px] bg-amber-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+        <span class="absolute top-0 left-0 w-[2px] h-2.5 bg-amber-400 scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-300"></span>
+        <span class="absolute bottom-0 right-0 w-2.5 h-[2px] bg-amber-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-right duration-300"></span>
+        <span class="absolute bottom-0 right-0 w-[2px] h-2.5 bg-amber-400 scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></span>
+        <span class="absolute inset-0 bg-amber-400/5 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[2px] -z-10"></span>
       </a>
     </li>
   </ul>
@@ -54,28 +69,23 @@ const isRegisterPage = pathname === "/inscribirse" || pathname === "/inscribirse
 
   <ul class="flex flex-col items-center space-y-8 text-3xl font-display tracking-widest text-white z-10">
     <li>
-      <a href="/" class="mobile-link hover:text-amber-300 transition-colors block overflow-hidden">
-        <span class="block translate-y-full opacity-0">HOME</span>
-      </a>
-    </li>
-    <li>
-      <a href="/autoridades" class="mobile-link hover:text-amber-300 transition-colors block overflow-hidden">
-        <span class="block translate-y-full opacity-0">AUTORIDADES</span>
-      </a>
-    </li>
-    <li>
-      <a href="/servicios" class="mobile-link hover:text-amber-300 transition-colors block overflow-hidden">
-        <span class="block translate-y-full opacity-0">SERVICIOS</span>
-      </a>
-    </li>
-    <li>
       <a href="/sobre-nosotros" class="mobile-link hover:text-amber-300 transition-colors block overflow-hidden">
         <span class="block translate-y-full opacity-0 text-center">SOBRE NOSOTROS</span>
       </a>
     </li>
     <li>
       <a href="/carreras" class="mobile-link hover:text-amber-300 transition-colors block overflow-hidden">
-        <span class="block translate-y-full opacity-0">NUESTROS PROGRAMAS</span>
+        <span class="block translate-y-full opacity-0 text-center">CARRERAS Y SERVICIOS</span>
+      </a>
+    </li>
+    <li>
+      <a href="/proximos-eventos" class="mobile-link hover:text-amber-300 transition-colors block overflow-hidden">
+        <span class="block translate-y-full opacity-0 text-center">PROXIMOS EVENTOS</span>
+      </a>
+    </li>
+    <li>
+      <a href="/latest" class="mobile-link hover:text-amber-300 transition-colors block overflow-hidden">
+        <span class="block translate-y-full opacity-0 text-center">NOTICIAS</span>
       </a>
     </li>
   </ul>

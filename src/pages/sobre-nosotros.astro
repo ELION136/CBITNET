@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
-import Loader from '../components/Loader.astro';
+
+import AutoridadesCarousel from '../components/AutoridadesCarousel.astro';
 ---
 
 <Layout title="Sobre Nosotros | Sports & Academic Hub">
-	<Loader />
 	<Navbar />
 	<main class="bg-[#030303] min-h-screen overflow-hidden pt-32 pb-24">
         
@@ -76,6 +76,22 @@ import Loader from '../components/Loader.astro';
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <!-- Sección de Autoridades Integrada -->
+        <div class="mt-32 border-t border-white/5 pt-20">
+            <div class="container mx-auto px-6 relative z-10 text-center mb-10">
+                <h2 class="text-5xl md:text-7xl font-display font-bold text-white tracking-widest uppercase mb-4 grid-reveal">
+                    NUESTRAS <span class="text-yellow-500">AUTORIDADES</span>
+                </h2>
+                <div class="w-16 h-1 bg-yellow-500 mx-auto mb-6 grid-reveal"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg grid-reveal">
+                    Conoce a los líderes que guían nuestra institución hacia la excelencia académica y deportiva.
+                </p>
+            </div>
+            <div class="grid-reveal">
+                <AutoridadesCarousel />
             </div>
         </div>
 	</main>
