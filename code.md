@@ -2221,3 +2221,96 @@ document.addEventListener('astro:page-load', initCarousel);
 if (document.readyState !== 'loading') initCarousel();
 else document.addEventListener('DOMContentLoaded', initCarousel);
 </script>
+
+
+
+
+
+
+secction en caso de haber un error
+
+<section class="container mx-auto px-6 relative z-10 mb-36" id="mision-vision-section">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <!-- MISIÓN -->
+        <div class="relative group overflow-hidden select-none reveal-item" style="perspective:1000px;">
+          <!-- Glowing Border Frame using clip-path -->
+          <div class="absolute inset-0 p-[1.5px] transition-all duration-500 group-hover:scale-[1.01]"
+               style="
+                 clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+                 background: linear-gradient(135deg, #0ea5e9, #2dd4bf);
+               ">
+            <div class="w-full h-full bg-[#060606]/90 backdrop-blur-md relative p-8 md:p-10 flex flex-col justify-between"
+                 style="clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px)); min-height: 310px;">
+              
+              <!-- Content Header -->
+              <div class="text-left">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-8 h-8 rounded-lg flex items-center justify-center border" style="border-color: rgba(14, 165, 233, 0.3); background: rgba(14, 165, 233, 0.05); color: #0ea5e9;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24M14.83 9.17l4.24-4.24M14.83 14.83l4.24 4.24M9.17 14.83l-4.24 4.24"/>
+                    </svg>
+                  </div>
+                  <h2 class="text-3xl font-display font-bold text-white tracking-widest uppercase">MISIÓN</h2>
+                </div>
+                
+                <div class="h-[2px] w-12 bg-gradient-to-r from-[#0ea5e9] to-[#2dd4bf] mb-6"></div>
+                
+                <p class="text-gray-300 text-sm md:text-base leading-relaxed font-medium">
+                  Promover el desarrollo integral de las personas en diferentes etapas de su 
+                  vida mediante actividades de formación con enfoque deportivo y programas educativos 
+                  complementarios innovadores, impulsando el aprendizaje, la salud física, el bienestar 
+                  emocional, la construcción de valores y la inclusión social.
+                </p>
+              </div>
+
+              <!-- Tech accents -->
+              <div class="absolute top-0 left-0 w-4 h-[1.5px] bg-[#0ea5e9]"></div>
+              <div class="absolute top-0 left-0 w-[1.5px] h-4 bg-[#0ea5e9]"></div>
+              <div class="absolute bottom-0 right-0 w-4 h-[1.5px] bg-[#2dd4bf]"></div>
+              <div class="absolute bottom-0 right-0 w-[1.5px] h-4 bg-[#2dd4bf]"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VISIÓN -->
+        <div class="relative group overflow-hidden select-none reveal-item" style="perspective:1000px;">
+          <!-- Glowing Border Frame using clip-path -->
+          <div class="absolute inset-0 p-[1.5px] transition-all duration-500 group-hover:scale-[1.01]"
+               style="
+                 clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+                 background: linear-gradient(135deg, #f59e0b, #eab308);
+               ">
+            <div class="w-full h-full bg-[#060606]/90 backdrop-blur-md relative p-8 md:p-10 flex flex-col justify-between"
+                 style="clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px)); min-height: 310px;">
+              
+              <!-- Content Header -->
+              <div class="text-left">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-8 h-8 rounded-lg flex items-center justify-center border" style="border-color: rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.05); color: #f59e0b;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </div>
+                  <h2 class="text-3xl font-display font-bold text-white tracking-widest uppercase">VISIÓN</h2>
+                </div>
+                
+                <div class="h-[2px] w-12 bg-gradient-to-r from-[#f59e0b] to-[#eab308] mb-6"></div>
+                
+                <p class="text-gray-300 text-sm md:text-base leading-relaxed font-medium">
+                  Ser una institución de referencia nacional reconocida por su excelencia para promover 
+                  un ecosistema de formación integral de talento deportivo de alto rendimiento, logrando 
+                  el bienestar y salud en la comunidad, haciendo que el deporte sea un pilar fundamental 
+                  para una vida plena y un motor de desarrollo social con conciencia ambiental.
+                </p>
+              </div>
+
+              <!-- Tech accents -->
+              <div class="absolute top-0 left-0 w-4 h-[1.5px] bg-[#f59e0b]"></div>
+              <div class="absolute top-0 left-0 w-[1.5px] h-4 bg-[#f59e0b]"></div>
+              <div class="absolute bottom-0 right-0 w-4 h-[1.5px] bg-[#eab308]"></div>
+              <div class="absolute bottom-0 right-0 w-[1.5px] h-4 bg-[#eab308]"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
