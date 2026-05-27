@@ -3,90 +3,335 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 
 const services = [
-  { title: "ENTRENAMIENTO ELITE", desc: "Programas de alto rendimiento con tecnología de punta y métricas de seguimiento personalizado para potenciar tu desempeño.", img: "/images/ima2.jpg" },
-  { title: "ANÁLISIS TÁCTICO", desc: "Desglose de partidos, estrategias y métricas avanzadas por IA para una visión más profunda del juego y los oponentes.", img: "/images/ima3.jpg" },
-  { title: "FISIOTERAPIA", desc: "Recuperación muscular, readaptación deportiva y prevención de lesiones con protocolos de primer nivel internacional.", img: "/images/ima4.jpg" },
-  { title: "PSICOLOGÍA DEPORTIVA", desc: "Fortalecimiento mental y resiliencia para competiciones de alta presión, formando atletas integrales y líderes.", img: "/images/ima5.jpg" }
+  {
+    title: "DEPORTES",
+    tag: "Alto Rendimiento",
+    number: "01",
+    accent: "#0ea5e9",
+    accentAlt: "#2dd4bf",
+    img: "https://images.unsplash.com/photo-1526676317768-d9b14f15615a?w=900&q=80",
+    link: "/deportes",
+    desc: "Formación de alto rendimiento deportivo con metodologías de clase mundial. Nuestro programa integra dirección técnica especializada, preparación física avanzada y psicología del deporte para desarrollar atletas completos.",
+    bullets: [
+      "Dirección técnica con entrenadores certificados",
+      "Preparación física avanzada y biomecánica",
+      "Psicología del deporte y liderazgo mental",
+      "Evaluación continua de rendimiento"
+    ]
+  },
+  {
+    title: "RAMAS TÉCNICAS",
+    tag: "Formación Digital",
+    number: "02",
+    accent: "#2dd4bf",
+    accentAlt: "#0ea5e9",
+    img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=900&q=80",
+    link: "/ramas-tecnicas",
+    desc: "Carreras técnicas y digitales diseñadas para el mercado laboral actual. Integramos habilidades prácticas con fundamentos sólidos para formar profesionales altamente competitivos a nivel nacional e internacional.",
+    bullets: [
+      "Diseño gráfico y comunicación visual",
+      "Desarrollo full-stack y tecnologías web",
+      "Administración de proyectos (PMP / SCRUM)",
+      "Sistemas de gestión de calidad ISO"
+    ]
+  },
+  {
+    title: "CURSOS Y CONFERENCIAS",
+    tag: "Actualización Continua",
+    number: "03",
+    accent: "#0ea5e9",
+    accentAlt: "#2dd4bf",
+    img: "https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80",
+    link: "/cursos-conferencias",
+    desc: "Programas de actualización continua que conectan el conocimiento académico con las tendencias globales. Nuestros seminarios y masterclasses son diseñados por expertos con trayectoria internacional.",
+    bullets: [
+      "Masterclasses con ponentes internacionales",
+      "Talleres prácticos de oratoria y liderazgo",
+      "Seminarios de emprendimiento e innovación",
+      "Certificaciones y credenciales reconocidas"
+    ]
+  }
 ];
 ---
 
-<Layout title="Carreras y Servicios | Sports">
+<Layout title="Carreras y Servicios | CBIT">
   <Navbar />
-  <main class="min-h-screen pt-32 px-6 md:px-10 text-white pb-32 relative overflow-hidden">
-  <!-- Glow derecho en azul -->
-  <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none z-0 translate-x-1/3 -translate-y-1/3"
-       style="background:radial-gradient(ellipse,rgba(14,165,233,0.08) 0%,transparent 70%);filter:blur(80px);"></div>
-  <!-- Glow izquierdo en teal -->
-  <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none z-0 -translate-x-1/2 translate-y-1/2"
-       style="background:radial-gradient(ellipse,rgba(45,212,191,0.06) 0%,transparent 70%);filter:blur(100px);"></div>
-  
-    <div class="max-w-7xl mx-auto relative z-10">
-      
-      <!-- Header Section -->
-      <div class="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
-        <div>
-          <h2 class="text-[10px] md:text-xs font-display text-yellow-500 tracking-[0.4em] uppercase mb-4 title-anim opacity-0 translate-y-4">Desarrollo Profesional</h2>
-          <h1 class="text-5xl md:text-7xl lg:text-8xl font-display leading-none title-anim opacity-0 translate-y-10">CARRERAS Y <br/><span class="text-yellow-500 text-stroke">SERVICIOS</span></h1>
-          <div class="w-16 md:w-24 h-1 bg-yellow-500 mt-8 line-anim scale-x-0 origin-left"></div>
-        </div>
-        <p class="text-gray-400 text-xs md:text-sm max-w-sm md:text-right desc-anim opacity-0">
-          Nuestra infraestructura deportiva te proporciona las herramientas, el análisis y el soporte médico necesario para llevar tu talento al siguiente nivel. Descubre nuestras áreas de especialización.
-        </p>
-      </div>
-      
-      <!-- Interactive Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-        {services.map((service, index) => (
-          <div class="group relative h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden bg-[#0a0a0a] border border-white/5 rounded-sm cursor-pointer service-card opacity-0 translate-y-10">
-            <!-- Background Image with Parallax setup and Grayscale -->
-            <img src={service.img} class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-80 group-hover:scale-110 transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] grayscale-[80%] group-hover:grayscale-0" alt={service.title} />
-            
-            <!-- Dark Overlay Gradient -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500"></div>
-            
-            <!-- Content -->
-            <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 translate-y-12 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
-              <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center mb-6 opacity-50 group-hover:opacity-100 group-hover:border-yellow-500 group-hover:bg-yellow-500/20 transition-all duration-500">
-                 <span class="text-[10px] font-display text-white">0{index + 1}</span>
-              </div>
-              <h3 class="text-xl md:text-2xl font-display text-white group-hover:text-yellow-500 mb-3 transition-colors duration-300">{service.title}</h3>
-              <p class="text-xs md:text-sm text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 leading-relaxed">{service.desc}</p>
-            </div>
 
-            <!-- Hover Decorative Lines -->
-            <div class="absolute top-4 left-4 w-8 h-[2px] bg-yellow-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
-            <div class="absolute top-4 left-4 w-[2px] h-8 bg-yellow-500 scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-500"></div>
-            
-            <div class="absolute bottom-4 right-4 w-8 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-right duration-500"></div>
-            <div class="absolute bottom-4 right-4 w-[2px] h-8 bg-white scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-500"></div>
+  <main class="min-h-screen pt-32 pb-32 relative overflow-hidden" >
+
+    <!-- Grain overlay -->
+    <div class="fixed inset-0 pointer-events-none z-0 opacity-[0.025]"
+         style="background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');background-size:200px 200px;"></div>
+
+    <!-- Glows ambientales -->
+    <div class="absolute top-0 right-0 w-[700px] h-[700px] pointer-events-none z-0"
+         style="background:radial-gradient(ellipse,rgba(14,165,233,0.08) 0%,transparent 65%);filter:blur(60px);transform:translate(30%,-30%);"></div>
+    <div class="absolute bottom-0 left-0 w-[600px] h-[600px] pointer-events-none z-0"
+         style="background:radial-gradient(ellipse,rgba(45,212,191,0.06) 0%,transparent 65%);filter:blur(80px);transform:translate(-40%,40%);"></div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
+
+      <!-- ── HEADER ── -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-14 mb-24">
+        <div class="overflow-hidden">
+          <p class="eyebrow text-[10px] font-display text-[#0ea5e9] tracking-[0.5em] uppercase mb-5">
+            Desarrollo Profesional
+          </p>
+          <h1 class="hero-title text-5xl md:text-7xl lg:text-[8.5rem] font-display font-bold leading-none tracking-tighter text-white">
+            CARRERAS<br/>
+            <span style="color:#0ea5e9;filter:drop-shadow(0 0 24px rgba(14,165,233,0.35));">Y SERVICIOS</span>
+          </h1>
+          <div class="hero-line w-0 h-[2px] mt-8 origin-left"
+               style="background:linear-gradient(to right,#0ea5e9,#2dd4bf);"></div>
+        </div>
+        <div class="hero-desc opacity-0 max-w-sm">
+          <p class="text-gray-400 text-sm leading-relaxed border-l-2 border-[#2dd4bf] pl-5 mb-0">
+            Nuestra infraestructura académica y de entrenamiento te proporciona las herramientas, el análisis y el soporte integral necesario para llevar tu talento al siguiente nivel. Descubre nuestras especialidades.
+          </p>
+        </div>
+      </div>
+
+      <!-- ── FILAS DE SERVICIOS ── -->
+      <div class="flex flex-col">
+        {services.map((s, i) => (
+          <div
+            class="service-row border-b border-white/[0.07] py-2"
+            data-index={i}
+          >
+            <div class={`grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch`}>
+
+              <!-- ── IMAGEN ── -->
+              <div
+                class={`img-col relative group ${i % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}`}
+                style="min-height:480px; padding: 2rem;"
+              >
+                <!-- Número grande decorativo de fondo -->
+                <div class="absolute z-0 select-none pointer-events-none"
+                     style={`${i%2===1 ? 'right:2.5rem;' : 'left:2.5rem;'} bottom:1rem; font-size:14rem; font-weight:800; line-height:1; color:${s.accent}; opacity:0.04; font-family:system-ui;`}>
+                  {s.number}
+                </div>
+
+                <!-- Marco clip gradiente -->
+                <div class="img-frame w-full h-full relative z-10"
+                     style={`padding:2px; clip-path:polygon(8% 0,100% 0,100% 92%,92% 100%,0 100%,0 8%); background:linear-gradient(135deg,${s.accent},${s.accentAlt});`}>
+                  <div class="w-full h-full relative overflow-hidden"
+                       style="clip-path:polygon(8% 0,100% 0,100% 92%,92% 100%,0 100%,0 8%); background:#090909; min-height:420px;">
+
+                    <img
+                      src={s.img}
+                      alt={s.title}
+                      class="w-full h-full object-cover block transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)]"
+                      style="opacity:0.55; min-height:420px;"
+                      data-img
+                    />
+
+                    <!-- Overlay -->
+                    <div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(6,6,6,0.4) 0%,transparent 60%),linear-gradient(to top,#060606 0%,transparent 50%);"></div>
+
+                    <!-- Scan line animada -->
+                    <div class="scan-line absolute left-0 right-0 h-[1px] pointer-events-none"
+                         style={`background:linear-gradient(to right,transparent,${s.accent}88,transparent); top:0;`}></div>
+
+                    <!-- Brackets esquina superior izquierda -->
+                    <div class="bracket-tl-h absolute top-4 left-4 h-[2px] w-0 transition-none"
+                         style={`background:${s.accent};`}></div>
+                    <div class="bracket-tl-v absolute top-4 left-4 w-[2px] h-0 transition-none"
+                         style={`background:${s.accent};`}></div>
+                    <!-- Brackets esquina inferior derecha -->
+                    <div class="bracket-br-h absolute bottom-4 right-4 h-[2px] w-0 transition-none"
+                         style={`background:${s.accentAlt};`}></div>
+                    <div class="bracket-br-v absolute bottom-4 right-4 w-[2px] h-0 transition-none"
+                         style={`background:${s.accentAlt};`}></div>
+
+                    <!-- Tag en esquina inferior -->
+                    <div class="absolute bottom-7 left-7 z-10">
+                      <span class="text-[9px] font-bold tracking-[0.3em] uppercase block mb-1"
+                            style={`color:${s.accent};`}>{s.tag}</span>
+                      <p class="text-white font-bold text-lg tracking-wider leading-none"
+                         style="font-family:system-ui;">{s.title}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── TEXTO ── -->
+              <div
+                class={`text-col flex flex-col justify-center px-6 lg:px-16 py-16 ${i % 2 === 1 ? 'lg:order-1' : 'lg:order-2'}`}
+              >
+                <!-- Header del bloque -->
+                <div class="row-header flex items-center gap-4 mb-8">
+                  <span class="font-display font-bold text-[10px] tracking-[0.4em]"
+                        style={`color:${s.accent};`}>{s.number}</span>
+                  <div class="flex-1 h-[1px]" style={`background:linear-gradient(to right,${s.accent}66,transparent);`}></div>
+                  <span class="text-[9px] font-bold tracking-[0.3em] uppercase border px-3 py-1"
+                        style={`color:${s.accent}; border-color:${s.accent}44;`}>{s.tag}</span>
+                </div>
+
+                <!-- Título -->
+                <h2 class="row-title text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tighter leading-none text-white mb-4 overflow-hidden">
+                  <span class="block translate-y-full opacity-0">{s.title}</span>
+                </h2>
+
+                <!-- Línea decorativa -->
+                <div class="row-line w-0 h-[2px] mb-8 origin-left"
+                     style={`background:linear-gradient(to right,${s.accent},${s.accentAlt});`}></div>
+
+                <!-- Descripción -->
+                <p class="row-desc text-gray-400 text-sm md:text-base leading-[1.85] mb-8 opacity-0 max-w-lg">
+                  {s.desc}
+                </p>
+
+                <!-- Bullets -->
+                <ul class="row-bullets mb-10 flex flex-col gap-3">
+                  {s.bullets.map((b) => (
+                    <li class="bullet-item flex items-start gap-3 opacity-0 translate-x-4">
+                      <span class="mt-[7px] w-[5px] h-[5px] rounded-none flex-shrink-0 rotate-45"
+                            style={`background:${s.accent};`}></span>
+                      <span class="text-gray-400 text-sm leading-relaxed">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <!-- CTA -->
+                <div class="row-cta opacity-0 translate-y-4">
+                  <a
+                    href={s.link}
+                    class="cta-btn inline-flex items-center gap-4 border px-7 py-4 text-white text-[11px] font-bold tracking-[0.3em] uppercase transition-all duration-300 relative overflow-hidden group/btn"
+                    style={`border-color:${s.accent}55; clip-path:polygon(0 0,92% 0,100% 18%,100% 100%,8% 100%,0 82%);`}
+                    data-accent={s.accent}
+                  >
+                    <span class="relative z-10">CONOCER MÁS</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="relative z-10 transition-transform duration-300 group-hover/btn:translate-x-2">
+                      <line x1="5" y1="12" x2="19" y2="12"/>
+                      <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                    <!-- Hover fill -->
+                    <div class="cta-fill absolute inset-0 scale-x-0 origin-left transition-transform duration-400"
+                         style={`background:${s.accent}18;`}></div>
+                  </a>
+                </div>
+
+              </div>
+            </div>
           </div>
         ))}
       </div>
+
     </div>
   </main>
 </Layout>
 
+<style>
+  @keyframes scanMove {
+    0%   { top: 0%;    opacity: 0; }
+    5%   { opacity: 1; }
+    95%  { opacity: 1; }
+    100% { top: 100%;  opacity: 0; }
+  }
+  .scan-line { animation: scanMove 4s linear infinite; }
+
+  .cta-btn:hover .cta-fill { transform: scaleX(1); }
+  .cta-btn:hover { border-color: v-bind('s.accent') !important; }
+</style>
+
 <script>
   import gsap from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
+  
 
   if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 
-    const tl = gsap.timeline({ delay: 0.2 });
-    
-    // Header Animation
-    tl.to('.title-anim', { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power3.out' })
-      .to('.line-anim', { scaleX: 1, duration: 0.8, ease: 'power3.out' }, "-=0.6")
-      .to('.desc-anim', { opacity: 1, duration: 1, ease: 'power2.out' }, "-=0.4")
-      
-      // Cards Staggered Animation
-      .to('.service-card', { 
-        y: 0, 
-        opacity: 1, 
-        duration: 1, 
-        stagger: 0.15, 
-        ease: 'power3.out' 
-      }, "-=0.8");
+    /* ── HEADER ── */
+    const headerTl = gsap.timeline({ delay: 0.15 });
+
+    headerTl
+      .from('.eyebrow', {
+        y: 20, opacity: 0, duration: 0.8, ease: 'power3.out'
+      })
+      .from('.hero-title', {
+        y: 60, opacity: 0, duration: 1.1, ease: 'power4.out'
+      }, '-=0.5')
+      .to('.hero-line', {
+        width: '3rem', duration: 0.9, ease: 'power3.out'
+      }, '-=0.6')
+      .to('.hero-desc', {
+        opacity: 1, y: 0, duration: 0.9, ease: 'power2.out'
+      }, '-=0.5');
+
+    /* ── FILAS ── */
+    document.querySelectorAll<HTMLElement>('.service-row').forEach((row) => {
+
+      const imgFrame   = row.querySelector<HTMLElement>('.img-frame');
+      const titleSpan  = row.querySelector<HTMLElement>('.row-title span');
+      const line       = row.querySelector<HTMLElement>('.row-line');
+      const desc       = row.querySelector<HTMLElement>('.row-desc');
+      const bullets    = row.querySelectorAll<HTMLElement>('.bullet-item');
+      const cta        = row.querySelector<HTMLElement>('.row-cta');
+      const brackets   = row.querySelectorAll<HTMLElement>('.bracket-tl-h,.bracket-tl-v,.bracket-br-h,.bracket-br-v');
+      const img        = row.querySelector<HTMLImageElement>('[data-img]');
+      const header     = row.querySelector<HTMLElement>('.row-header');
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: row,
+          start: 'top 78%',
+          once: true,
+        }
+      });
+
+      /* imagen: fade in + leve scale desde abajo */
+      tl.fromTo(imgFrame,
+        { opacity: 0, y: 40, scale: 0.97 },
+        { opacity: 1, y: 0, scale: 1, duration: 1.1, ease: 'power3.out' },
+        0
+      )
+      /* imagen interior opacidad */
+      .to(img, { opacity: 0.62, duration: 1.2, ease: 'power2.out' }, 0.1)
+
+      /* brackets dibujados uno a uno */
+      .to(row.querySelector('.bracket-tl-h'), { width: '2rem', duration: 0.35, ease: 'power2.out' }, 0.5)
+      .to(row.querySelector('.bracket-tl-v'), { height: '2rem', duration: 0.35, ease: 'power2.out' }, 0.62)
+      .to(row.querySelector('.bracket-br-h'), { width: '2rem', duration: 0.35, ease: 'power2.out' }, 0.72)
+      .to(row.querySelector('.bracket-br-v'), { height: '2rem', duration: 0.35, ease: 'power2.out' }, 0.84)
+
+      /* header tag */
+      .from(header, { opacity: 0, x: -20, duration: 0.6, ease: 'power2.out' }, 0.3)
+
+      /* título slide up */
+      .to(titleSpan, { y: '0%', opacity: 1, duration: 0.9, ease: 'power4.out' }, 0.45)
+
+      /* línea */
+      .to(line, { width: '3rem', duration: 0.7, ease: 'power3.out' }, 0.7)
+
+      /* descripción */
+      .to(desc, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 0.8)
+
+      /* bullets escalonados */
+      .to(bullets, {
+        opacity: 1, x: 0, duration: 0.5,
+        stagger: 0.1, ease: 'power2.out'
+      }, 1.0)
+
+      /* CTA */
+      .to(cta, { opacity: 1, y: 0, duration: 0.6, ease: 'back.out(1.5)' }, 1.4);
+
+    });
+
+    /* ── hover en imagen: brillo ── */
+    document.querySelectorAll<HTMLElement>('.img-col').forEach((col) => {
+      const img = col.querySelector<HTMLImageElement>('[data-img]');
+      if (!img) return;
+      col.addEventListener('mouseenter', () => gsap.to(img, { opacity: 0.88, scale: 1.04, duration: 0.8, ease: 'power2.out' }));
+      col.addEventListener('mouseleave', () => gsap.to(img, { opacity: 0.62, scale: 1,    duration: 0.8, ease: 'power2.out' }));
+    });
+
+    /* ── hover CTA: fill ── */
+    document.querySelectorAll<HTMLElement>('.cta-btn').forEach((btn) => {
+      const fill = btn.querySelector<HTMLElement>('.cta-fill');
+      if (!fill) return;
+      btn.addEventListener('mouseenter', () => gsap.to(fill, { scaleX: 1, duration: 0.35, ease: 'power2.out' }));
+      btn.addEventListener('mouseleave', () => gsap.to(fill, { scaleX: 0, duration: 0.3,  ease: 'power2.in'  }));
+    });
   }
 </script>

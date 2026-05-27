@@ -1,0 +1,962 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const stats = [
+  { num: "50", suffix: "+", label: "Masterclasses Anuales" },
+  { num: "15", suffix: "+", label: "Países Participantes" },
+  { num: "8500", suffix: "+", label: "Asistentes Registrados" },
+  { num: "4.9", suffix: "/5", label: "Calificación Promedio" },
+];
+
+const workshops = [
+  {
+    title: "Masterclasses con Expertos Internacionales",
+    desc: "Sesiones exclusivas con líderes globales de la tecnología, finanzas y dirección táctica que comparten metodologías de frontera y tendencias críticas del mercado.",
+    tag: "Masterclass",
+    fecha: "Próximamente",
+    img: "/images/ima4.jpg"
+  },
+  {
+    title: "Talleres Prácticos de Liderazgo y Oratoria",
+    desc: "Entrenamientos dinámicos enfocados en comunicación estratégica, resolución de conflictos, inteligencia emocional corporativa y presentaciones de alto impacto.",
+    tag: "Taller Intensivo",
+    fecha: "Próximamente",
+    img: "/images/ima5.jpg"
+  },
+  {
+    title: "Seminarios de Tendencias Digitales y Nuevas Economías",
+    desc: "Actualización continua sobre Inteligencia Artificial aplicada, automatización de procesos, Web3, transformación cultural digital y optimización de flujos de trabajo.",
+    tag: "Seminario",
+    fecha: "Próximamente",
+    img: "/images/ima1.jpg"
+  }
+];
+
+const speakers = [
+  {
+    nombre: "Dr. Alejandro Santos",
+    rol: "Especialista en Liderazgo Organizacional",
+    origen: "España",
+    img: "/images/au1.webp"
+  },
+  {
+    nombre: "Ing. Elena Rostova",
+    rol: "Consultora en Transformación Digital e IA",
+    origen: "Alemania",
+    img: "/images/au2.webp"
+  },
+  {
+    nombre: "Mtr. Marcus Vance",
+    rol: "Asesor de Negocios y Nuevas Economías",
+    origen: "Estados Unidos",
+    img: "/images/au3.webp"
+  }
+];
+---
+
+<Layout title="Cursos y Conferencias | CBIT" showBackgroundFX={false}>
+  <Navbar />
+  
+  <style>
+    :root {
+      --c-amber: #f59e0b;
+      --c-amber-light: #fcd34d;
+      --c-amber-dim: #b45309;
+      --c-dark-bg: #070604;
+      --c-dark-card: #120e06;
+      --c-white: #f8fafc;
+      --c-border: rgba(245, 158, 11, 0.08);
+      --c-glow: rgba(245, 158, 11, 0.12);
+    }
+
+    body {
+      background-color: var(--c-dark-bg);
+      color: var(--c-white);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Elegant Hero Section */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 80px;
+      overflow: hidden;
+    }
+
+    #hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(245, 158, 11, 0.12) 0%, transparent 60%);
+      z-index: 0;
+    }
+
+    #hero-mesh {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.05) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(255, 255, 255, 0.02) 0px, transparent 50%);
+      z-index: 0;
+    }
+
+    /* Soft Blur Ambient Lights */
+    #glow-1 {
+      position: absolute;
+      top: -200px;
+      left: 10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #glow-2 {
+      position: absolute;
+      bottom: -100px;
+      right: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(245, 158, 11, 0.05) 0%, transparent 70%);
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--c-amber);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero-kicker-line {
+      display: block;
+      width: 48px;
+      height: 1.5px;
+      background: var(--c-amber);
+    }
+
+    .hero-h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--c-white);
+      margin-bottom: 24px;
+    }
+
+    .hero-h1 span {
+      display: block;
+    }
+
+    .hero-h1 .text-stroke {
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+      color: transparent;
+    }
+
+    .hero-h1 .text-gradient {
+      background: linear-gradient(90deg, var(--c-amber), #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: flex-start;
+      gap: 48px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 460px;
+      line-height: 1.8;
+      font-weight: 400;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 36px;
+      background: linear-gradient(135deg, var(--c-amber), var(--c-amber-light));
+      color: #000;
+      font-family: 'Anton', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      font-weight: bold;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(245, 158, 11, 0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 32px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.7);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--c-amber);
+      color: var(--c-amber);
+    }
+
+    /* Scroll Indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      right: 48px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+    }
+
+    .scroll-hint span {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+      writing-mode: vertical-rl;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(245, 158, 11, 0.2), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+      50% { transform: scaleY(1); opacity: 1; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+
+    /* Stats Bar */
+    #stats-bar {
+      background: #0f0b04;
+      border-top: 1px solid var(--c-border);
+      border-bottom: 1px solid var(--c-border);
+      position: relative;
+      z-index: 10;
+    }
+
+    .stats-inner {
+      display: flex;
+      justify-content: space-around;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .stat-chip {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .stat-num {
+      font-family: 'Anton', sans-serif;
+      font-size: 3rem;
+      letter-spacing: -0.01em;
+      background: linear-gradient(135deg, var(--c-amber), #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      max-width: 120px;
+      line-height: 1.4;
+    }
+
+    /* Sections */
+    .section-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 120px 48px;
+    }
+
+    .section-header {
+      margin-bottom: 80px;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--c-amber);
+      margin-bottom: 20px;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--c-amber);
+    }
+
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      letter-spacing: 0.02em;
+      line-height: 0.95;
+      text-transform: uppercase;
+      color: var(--c-white);
+    }
+
+    .section-title .outline {
+      -webkit-text-stroke: 1.5px var(--c-amber);
+      color: transparent;
+    }
+
+    /* Workshops List */
+    .workshop-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .workshop-card {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--c-border);
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      min-height: 240px;
+      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .workshop-card:hover {
+      border-color: rgba(245, 158, 11, 0.35);
+      background: rgba(245, 158, 11, 0.02);
+      transform: translateX(5px);
+    }
+
+    .workshop-img-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .workshop-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+      filter: grayscale(100%);
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .workshop-card:hover .workshop-img {
+      opacity: 0.7;
+      transform: scale(1.06);
+      filter: grayscale(0%);
+    }
+
+    .workshop-body {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .workshop-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .workshop-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-amber);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .workshop-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--c-amber);
+      display: block;
+    }
+
+    .workshop-date {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 9999px;
+    }
+
+    .workshop-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--c-white);
+      line-height: 1.15;
+      margin-bottom: 14px;
+      transition: color 0.3s;
+    }
+
+    .workshop-card:hover .workshop-title {
+      color: var(--c-amber);
+    }
+
+    .workshop-desc {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .workshop-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--c-amber);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .workshop-cta svg {
+      transition: transform 0.3s;
+    }
+
+    .workshop-cta:hover svg {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 768px) {
+      .workshop-card {
+        grid-template-columns: 1fr;
+      }
+      .workshop-img-wrap {
+        height: 200px;
+      }
+    }
+
+    /* Speakers Section */
+    #speakers {
+      background: #0f0b04;
+      border-top: 1px solid var(--c-border);
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .grid-speakers {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .speaker-card {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid var(--c-border);
+      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      overflow: hidden;
+    }
+
+    .speaker-card:hover {
+      border-color: rgba(245, 158, 11, 0.35);
+      background: rgba(245, 158, 11, 0.02);
+      transform: translateY(-5px);
+    }
+
+    .speaker-img-wrap {
+      height: 380px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .speaker-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, #0f0b04 0%, rgba(15, 11, 4, 0.4) 60%, transparent 100%);
+    }
+
+    .speaker-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .speaker-card:hover .speaker-img {
+      filter: grayscale(0%);
+      transform: scale(1.06);
+    }
+
+    .speaker-body {
+      padding: 32px;
+      text-align: center;
+    }
+
+    .speaker-name {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--c-white);
+      margin-bottom: 8px;
+    }
+
+    .speaker-rol {
+      font-size: 0.8rem;
+      color: var(--c-amber);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .speaker-origin {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2px 10px;
+      border-radius: 9999px;
+    }
+
+    /* CTA Section */
+    #cta {
+      position: relative;
+      overflow: hidden;
+      background: var(--c-dark-bg);
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background: url('/images/ima4.jpg') center 30% / cover no-repeat;
+      opacity: 0.04;
+      filter: blur(4px);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 140px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cta-h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(3rem, 7.5vw, 7.5rem);
+      letter-spacing: 0.01em;
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: var(--c-white);
+      margin-bottom: 48px;
+    }
+
+    .cta-h2 .stroke {
+      display: block;
+      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.15);
+      color: transparent;
+    }
+
+    .cta-h2 .filled {
+      display: block;
+      background: linear-gradient(90deg, var(--c-amber), #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .cta-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    }
+
+    .cta-badge svg {
+      width: 12px;
+      height: 12px;
+      color: var(--c-amber);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 48px;
+      border-top: 1px solid var(--c-border);
+      background: #060503;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.1em;
+      color: var(--c-white);
+    }
+
+    .footer-brand em {
+      color: var(--c-amber);
+      font-style: normal;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.25);
+      letter-spacing: 0.06em;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      #hero { padding: 0 24px 60px; }
+      .section-wrap { padding: 80px 24px; }
+      .cta-content { padding: 80px 24px; }
+      footer { padding: 24px; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-meta { flex-direction: column; gap: 24px; }
+      .cta-row { flex-direction: column; align-items: flex-start; gap: 24px; }
+    }
+  </style>
+
+  <!-- ELEGANT HERO SECTION -->
+  <section id="hero">
+    <div id="hero-bg"></div>
+    <div id="hero-mesh"></div>
+    <div id="glow-1"></div>
+    <div id="glow-2"></div>
+
+    <div class="hero-content">
+      <div class="hero-kicker" id="hero-kicker">
+        <span class="hero-kicker-line"></span>
+        Educación Continua y Talleres de Liderazgo
+      </div>
+
+      <h1 class="hero-h1" id="hero-h1">
+        <span class="line-wrap"><span>CURSOS Y</span></span>
+        <span class="line-wrap"><span class="text-stroke">CONFERENCIAS</span></span>
+        <span class="line-wrap"><span class="text-gradient">CORPORATIVAS</span></span>
+      </h1>
+
+      <div class="hero-meta">
+        <p class="hero-desc" id="hero-desc">
+          Accede a masterclasses exclusivas, seminarios de innovación y talleres interactivos diseñados para directivos, estrategas y profesionales que buscan transformar su campo.
+        </p>
+        <div class="hero-cta-group" id="hero-ctas">
+          <a href="#talleres" class="btn-primary">
+            Explorar Agenda
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            Reservar Cupo
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint" id="scroll-hint">
+      <span>Deslizar</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div id="stats-bar">
+    <div class="stats-inner">
+      {stats.map(s => (
+        <div class="stat-chip">
+          <span class="stat-num">{s.num}<span style="font-size:0.6em">{s.suffix}</span></span>
+          <span class="stat-label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- WORKSHOPS SECTION -->
+  <section id="talleres">
+    <div class="section-wrap">
+      <div class="section-header" id="work-header">
+        <div class="section-eyebrow">Programación Ejecutiva</div>
+        <h2 class="section-title">AGENDA Y <br/><span class="outline">CONFERENCIAS</span> ACTIVAS</h2>
+      </div>
+
+      <div class="workshop-list" id="work-list">
+        {workshops.map(w => (
+          <div class="workshop-card">
+            <div class="workshop-img-wrap">
+              <img src={w.img} alt={w.title} class="workshop-img" />
+            </div>
+            
+            <div class="workshop-body">
+              <div class="workshop-meta-row">
+                <span class="workshop-tag">{w.tag}</span>
+                <span class="workshop-date">{w.fecha}</span>
+              </div>
+              <h3 class="workshop-title">{w.title}</h3>
+              <p class="workshop-desc">{w.desc}</p>
+              
+              <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="workshop-cta">
+                Registrarme en esta sesión
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKERS SECTION -->
+  <section id="speakers">
+    <div class="section-wrap">
+      <div class="section-header" id="speakers-header">
+        <div class="section-eyebrow">Ponentes Destacados</div>
+        <h2 class="section-title">EXPOSITORES <br/><span class="outline">INTERNACIO</span>NALES</h2>
+      </div>
+
+      <div class="grid-speakers" id="speakers-grid">
+        {speakers.map(s => (
+          <div class="speaker-card">
+            <div class="speaker-img-wrap">
+              <img src={s.img} alt={s.nombre} class="speaker-img" />
+            </div>
+            <div class="speaker-body">
+              <h3 class="speaker-name">{s.nombre}</h3>
+              <p class="speaker-rol">{s.rol}</p>
+              <span class="speaker-origin">{s.origen}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section id="cta">
+    <div class="cta-bg"></div>
+    <div class="cta-content">
+      <h2 class="cta-h2" id="cta-h2">
+        <span class="stroke">APRENDE DE LOS MEJORES.</span>
+        <span class="stroke">IMPULSA TU COMPAÑÍA.</span>
+        <span class="filled">RESERVA TU ACCESO HOY.</span>
+      </h2>
+      <div class="cta-row">
+        <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:1rem;padding:18px 48px;">
+          Reservar Entrada General
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <div class="cta-badges">
+          <div class="cta-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
+            Certificado Incluido
+          </div>
+          <div class="cta-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
+            Acceso a Grabación
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand">CBIT <em>CONFERENCIAS</em></span>
+    <span class="footer-copy">© {new Date().getFullYear()} CBIT Corporación. Todos los derechos reservados.</span>
+  </footer>
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Initial Hero Entrance Animation
+    const tl = gsap.timeline({ delay: 0.2 });
+    tl.to('#hero-kicker', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' })
+      .to('#hero-h1 .line-wrap span', { y: 0, duration: 1, stagger: 0.15, ease: 'power4.out' }, "-=0.6")
+      .to('#hero-desc', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=0.5")
+      .to('#hero-ctas', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=0.6")
+      .to('#scroll-hint', { opacity: 1, duration: 0.6 }, "-=0.2");
+
+    // Workshops Header Animation
+    gsap.from('#work-header > *', {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#talleres',
+        start: 'top 80%',
+      }
+    });
+
+    // Workshop Cards reveal
+    gsap.from('.workshop-card', {
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#work-list',
+        start: 'top 75%',
+      }
+    });
+
+    // Speakers Section Animation
+    gsap.from('#speakers-header > *', {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#speakers',
+        start: 'top 80%',
+      }
+    });
+
+    gsap.from('.speaker-card', {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#speakers-grid',
+        start: 'top 75%',
+      }
+    });
+
+    // CTA section entrance
+    gsap.from('#cta-h2 > *', {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#cta',
+        start: 'top 75%',
+      }
+    });
+  }
+</script>
