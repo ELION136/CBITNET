@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 
-
 const events = [
   {
     title: "CONGRESO DEPORTIVO INTERNACIONAL",
@@ -46,135 +45,134 @@ const events = [
   }
 ];
 
-// Helper to get color classes based on categories
-const getColorClasses = (color: string) => {
-  switch (color) {
-    case 'green':
-      return {
-        text: 'text-green-400 group-hover:text-green-300',
-        badge: 'bg-green-500/10 border-green-500/30 text-green-400',
-        dateText: 'text-green-500',
-        bracket: 'bg-green-500'
-      };
-    case 'blue':
-      return {
-        text: 'text-blue-400 group-hover:text-blue-300',
-        badge: 'bg-blue-500/10 border-blue-500/30 text-blue-400',
-        dateText: 'text-blue-500',
-        bracket: 'bg-blue-500'
-      };
-    case 'yellow':
-      return {
-        text: 'text-yellow-400 group-hover:text-yellow-300',
-        badge: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400',
-        dateText: 'text-yellow-500',
-        bracket: 'bg-yellow-500'
-      };
-    case 'amber':
-    default:
-      return {
-        text: 'text-amber-400 group-hover:text-amber-300',
-        badge: 'bg-amber-500/10 border-amber-500/30 text-amber-400',
-        dateText: 'text-amber-500',
-        bracket: 'bg-amber-400'
-      };
-  }
+// Color tokens por categoría — solo las propiedades que realmente usamos
+type ColorTokens = { accent: string; badgeBg: string; badgeBorder: string; };
+
+const colorMap: Record<string, ColorTokens> = {
+  green:  { accent: '#4ade80', badgeBg: 'rgba(74,222,128,0.08)',  badgeBorder: 'rgba(74,222,128,0.25)'  },
+  blue:   { accent: '#38bdf8', badgeBg: 'rgba(56,189,248,0.08)',  badgeBorder: 'rgba(56,189,248,0.25)'  },
+  yellow: { accent: '#facc15', badgeBg: 'rgba(250,204,21,0.08)',  badgeBorder: 'rgba(250,204,21,0.25)'  },
+  amber:  { accent: '#f59e0b', badgeBg: 'rgba(245,158,11,0.08)',  badgeBorder: 'rgba(245,158,11,0.25)'  },
 };
+const getColor = (c: string) => colorMap[c] ?? colorMap.amber;
 ---
 
-<Layout title="Próximos Eventos | Sports & Academic Hub">
- 
+<Layout title="Próximos Eventos | CBTFI">
   <Navbar />
-  <main class="min-h-screen overflow-hidden pt-32 pb-24 relative">
-    
-    <!-- Glow derecho en azul -->
-    <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none z-0 translate-x-1/3 -translate-y-1/3"
-         style="background:radial-gradient(ellipse,rgba(14,165,233,0.08) 0%,transparent 70%);filter:blur(80px);"></div>
-    <!-- Glow izquierdo en teal -->
-    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none z-0 -translate-x-1/2 translate-y-1/2"
-         style="background:radial-gradient(ellipse,rgba(45,212,191,0.06) 0%,transparent 70%);filter:blur(100px);"></div>
 
-    <div class="container mx-auto px-6 relative z-10">
-      
-      <!-- Header Section -->
-      <div class="flex flex-col md:flex-row items-end gap-8 border-b border-white/10 pb-12 mb-20">
-        <div class="w-full md:w-2/3">
-          <h2 class="text-[10px] md:text-xs font-display text-amber-500 tracking-[0.4em] uppercase mb-4 title-anim opacity-0 translate-y-4">
+  <main class="events-main min-h-screen pt-28 pb-24 relative overflow-hidden">
+
+    <!-- Glows: reducidos y con will-change:none para no triggerar compositing innecesario -->
+    <div class="glow-r absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
+         aria-hidden="true"></div>
+    <div class="glow-l absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
+         aria-hidden="true"></div>
+
+    <div class="container mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
+
+      <!-- ── HEADER ── -->
+      <header class="flex flex-col lg:flex-row lg:items-end gap-8 border-b pb-12 mb-16 lg:mb-20"
+              style="border-color:rgba(255,255,255,0.07);">
+        <div class="lg:w-2/3">
+          <p class="eyebrow text-[10px] font-bold tracking-[0.4em] uppercase text-amber-500 mb-4">
             Calendario de Actividades
-          </h2>
-          <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white tracking-tighter leading-none title-anim opacity-0 translate-y-10">
-            PRÓXIMOS <br/>
-            <span class="text-amber-500 text-stroke">EVENTOS</span>
+          </p>
+          <h1 class="headline font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tighter leading-[0.92]">
+            PRÓXIMOS<br/>
+            <span class="text-amber-500">EVENTOS</span>
           </h1>
-          <div class="w-16 md:w-24 h-1 bg-amber-500 mt-8 line-anim scale-x-0 origin-left"></div>
+          <div class="accent-line mt-7 h-[3px] w-0 bg-amber-500 origin-left"></div>
         </div>
-        <div class="w-full md:w-1/3 pb-4 desc-anim opacity-0">
-          <p class="text-gray-400 text-lg md:text-xl border-l border-amber-500 pl-6 leading-relaxed">
+        <div class="lg:w-1/3 lg:pb-3 desc-block">
+          <p class="text-gray-400 text-base sm:text-lg border-l-2 border-amber-500/60 pl-5 leading-relaxed">
             Mantente al día con nuestras competencias, conferencias magistrales, ferias de salud y jornadas deportivas de primer nivel.
           </p>
         </div>
-      </div>
+      </header>
 
-      <!-- Events Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+      <!-- ── GRID ── -->
+      <div class="events-grid grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
         {events.map((event) => {
-          const colors = getColorClasses(event.colorClass);
+          const c = getColor(event.colorClass);
+          const [day, month] = event.date.split(' ');
           return (
-            <div class="event-card group relative overflow-hidden bg-[#0a0a0a]/90 border border-white/5 rounded-xl cursor-pointer opacity-0 translate-y-10 transition-shadow duration-500 hover:shadow-[0_0_30px_rgba(245,158,11,0.1)]">
-              <!-- Top Banner Image -->
-              <div class="relative h-[220px] md:h-[260px] overflow-hidden">
-                <img src={event.img} class="w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-[1000ms] ease-out grayscale group-hover:grayscale-0" alt={event.title} />
-                <!-- Dark shadow overlay inside image -->
-                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
-                
-                <!-- Date badge on top right -->
-                <div class="absolute top-4 right-4 px-4 py-2 bg-black/85 border border-white/10 backdrop-blur-md text-center rounded-lg shadow-lg">
-                  <span class={`block text-xl font-display ${colors.dateText} font-bold leading-none`}>{event.date.split(" ")[0]}</span>
-                  <span class="block text-[10px] text-gray-400 font-bold tracking-widest uppercase mt-1">{event.date.split(" ")[1]}</span>
+            <article
+              class="event-card group relative overflow-hidden cursor-pointer"
+              style={`--accent:${c.accent};--badge-bg:${c.badgeBg};--badge-border:${c.badgeBorder};`}
+            >
+              <!-- Image wrapper: transform isolated on its own layer -->
+              <div class="img-wrap relative h-[200px] sm:h-[240px] overflow-hidden">
+                <img
+                  src={event.img}
+                  alt={event.title}
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
+                  class="card-img w-full h-full object-cover"
+                />
+                <!-- overlay — CSS only, no JS -->
+                <div class="img-overlay absolute inset-0"></div>
+
+                <!-- Date badge -->
+                <div class="date-badge absolute top-4 right-4 px-4 py-2 text-center"
+                     style="background:rgba(0,0,0,0.82);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(6px);">
+                  <span class="block text-xl font-display font-bold leading-none"
+                        style={`color:${c.accent};`}>{day}</span>
+                  <span class="block text-[10px] text-gray-400 font-bold tracking-widest uppercase mt-0.5">{month}</span>
                 </div>
 
-                <!-- Category tag bottom left -->
-                <div class="absolute bottom-4 left-6">
-                  <span class={`px-3 py-1 text-[9px] font-bold tracking-widest uppercase rounded-full border ${colors.badge}`}>
+                <!-- Category badge -->
+                <div class="absolute bottom-4 left-5">
+                  <span class="px-3 py-1 text-[9px] font-bold tracking-widest uppercase"
+                        style={`background:${c.badgeBg};border:1px solid ${c.badgeBorder};color:${c.accent};`}>
                     {event.category}
                   </span>
                 </div>
               </div>
 
-              <!-- Details Section -->
-              <div class="p-6 md:p-8 flex flex-col justify-between h-[240px] relative z-10">
+              <!-- Body -->
+              <div class="card-body relative z-10 p-5 sm:p-7 flex flex-col justify-between min-h-[220px] sm:min-h-[240px]">
                 <div>
-                  <h3 class="text-xl md:text-2xl font-display text-white group-hover:text-amber-400 mb-3 transition-colors duration-300 line-clamp-2 leading-tight">
+                  <h2 class="card-title font-display text-lg sm:text-xl md:text-2xl text-white leading-tight mb-3 line-clamp-2">
                     {event.title}
-                  </h3>
-                  <p class="text-xs md:text-sm text-gray-400 line-clamp-3 leading-relaxed mb-6">
+                  </h2>
+                  <p class="text-gray-400 text-xs sm:text-sm leading-relaxed line-clamp-3">
                     {event.desc}
                   </p>
                 </div>
 
-                <!-- Time and Location info -->
-                <div class="flex items-center justify-between border-t border-white/5 pt-4 text-[10px] text-gray-500 tracking-wider">
-                  <div class="flex items-center gap-1.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500">
+                <!-- Meta row -->
+                <div class="flex items-center justify-between mt-5 pt-4 border-t"
+                     style="border-color:rgba(255,255,255,0.06);">
+                  <span class="meta-item flex items-center gap-1.5 text-[10px] text-gray-500 tracking-wide">
+                    <!-- clock icon -->
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 text-amber-500" aria-hidden="true">
                       <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                     </svg>
-                    <span>{event.time}</span>
-                  </div>
-                  <div class="flex items-center gap-1.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500">
+                    {event.time}
+                  </span>
+                  <span class="meta-item flex items-center gap-1.5 text-[10px] text-gray-500 tracking-wide">
+                    <!-- pin icon -->
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 text-amber-500" aria-hidden="true">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
                     </svg>
-                    <span>{event.location}</span>
-                  </div>
+                    {event.location}
+                  </span>
                 </div>
               </div>
 
-              <!-- Decorative Drawing Corner Brackets on Hover -->
-              <span class={`absolute top-4 left-4 w-6 h-[2px] ${colors.bracket} scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500`}></span>
-              <span class={`absolute top-4 left-4 w-[2px] h-6 ${colors.bracket} scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-500`}></span>
-              <span class={`absolute bottom-4 right-4 w-6 h-[2px] ${colors.bracket} scale-x-0 group-hover:scale-x-100 transition-transform origin-right duration-500`}></span>
-              <span class={`absolute bottom-4 right-4 w-[2px] h-6 ${colors.bracket} scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-500`}></span>
-            </div>
+              <!-- Corner brackets — CSS transform only, GPU-composited -->
+              <span class="bracket bracket-tl-h" aria-hidden="true"></span>
+              <span class="bracket bracket-tl-v" aria-hidden="true"></span>
+              <span class="bracket bracket-br-h" aria-hidden="true"></span>
+              <span class="bracket bracket-br-v" aria-hidden="true"></span>
+
+              <!-- Hover border glow -->
+              <div class="card-glow absolute inset-0 pointer-events-none opacity-0"></div>
+            </article>
           );
         })}
       </div>
@@ -183,27 +181,152 @@ const getColorClasses = (color: string) => {
   </main>
 </Layout>
 
-<script>
-  import gsap from 'gsap';
-  import ScrollTrigger from 'gsap/ScrollTrigger';
+<style>
+  /* ── BASE ── */
+  
 
-  if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const tl = gsap.timeline({ delay: 0.2 });
-
-    // Header reveal anim
-    tl.to('.title-anim', { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power3.out' })
-      .to('.line-anim', { scaleX: 1, duration: 0.8, ease: 'power3.out' }, '-=0.6')
-      .to('.desc-anim', { opacity: 1, duration: 1, ease: 'power2.out' }, '-=0.4')
-      
-      // Events stagger anim
-      .to('.event-card', {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.15,
-        ease: 'power3.out'
-      }, '-=0.6');
+  /* Glows: filter:blur solo en pseudo — no afecta al layout */
+  .glow-r {
+    translate: 33% -33%;
+    background: radial-gradient(ellipse, rgba(14,165,233,0.07) 0%, transparent 70%);
+    filter: blur(60px);
+    will-change: auto;
   }
-</script>
+  .glow-l {
+    translate: -50% 50%;
+    background: radial-gradient(ellipse, rgba(45,212,191,0.05) 0%, transparent 70%);
+    filter: blur(70px);
+    will-change: auto;
+  }
+
+  /* ── HEADER REVEAL (CSS-only, sin GSAP) ── */
+  .eyebrow {
+    opacity: 0;
+    translate: 0 12px;
+    animation: fadeUp 0.6s 0.1s ease forwards;
+  }
+  .headline {
+    opacity: 0;
+    translate: 0 20px;
+    animation: fadeUp 0.7s 0.2s ease forwards;
+  }
+  .accent-line {
+    animation: expandLine 0.7s 0.6s ease forwards;
+  }
+  .desc-block {
+    opacity: 0;
+    animation: fadeIn 0.8s 0.5s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; translate: 0 0; }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  @keyframes expandLine {
+    to { width: 64px; }
+  }
+
+  /* ── CARD ── */
+  .event-card {
+    background: #0a0a0f;
+    border: 1px solid rgba(255,255,255,0.06);
+    /* entrada con CSS animation + delay por nth-child */
+    opacity: 0;
+    translate: 0 24px;
+    animation: fadeUp 0.65s ease forwards;
+    /* stagger por índice — Astro renderiza en orden */
+  }
+  .event-card:nth-child(1) { animation-delay: 0.35s; }
+  .event-card:nth-child(2) { animation-delay: 0.48s; }
+  .event-card:nth-child(3) { animation-delay: 0.61s; }
+  .event-card:nth-child(4) { animation-delay: 0.74s; }
+
+  /* ── IMAGE — solo opacity + scale, aislado con contain ── */
+  .img-wrap { contain: strict; }
+
+  .card-img {
+    opacity: 0.38;
+    filter: grayscale(1);
+    /* Solo transform + opacity + filter en will-change → compositor thread */
+    will-change: transform, opacity, filter;
+    transition:
+      opacity      400ms ease,
+      filter       400ms ease,
+      transform    600ms ease;
+  }
+  .event-card:hover .card-img {
+    opacity: 0.78;
+    filter: grayscale(0);
+    transform: scale(1.04);
+  }
+
+  .img-overlay {
+    background: linear-gradient(to top, #0a0a0f 0%, rgba(10,10,15,0.3) 50%, transparent 100%);
+    /* pointer-events ya son none por ser decorativo */
+  }
+
+  /* ── CARD BODY ── */
+  .card-body { background: #0a0a0f; }
+
+  .card-title {
+    transition: color 250ms ease;
+  }
+  .event-card:hover .card-title {
+    color: var(--accent);
+  }
+
+  /* ── CORNER BRACKETS — transform solo en GPU ── */
+  .bracket {
+    position: absolute;
+    background: var(--accent);
+    will-change: transform;
+  }
+  .bracket-tl-h { top: 14px; left: 14px; width: 22px; height: 2px; transform: scaleX(0); transform-origin: left;  transition: transform 350ms ease; }
+  .bracket-tl-v { top: 14px; left: 14px; width: 2px; height: 22px; transform: scaleY(0); transform-origin: top;   transition: transform 350ms 50ms ease; }
+  .bracket-br-h { bottom: 14px; right: 14px; width: 22px; height: 2px; transform: scaleX(0); transform-origin: right;  transition: transform 350ms ease; }
+  .bracket-br-v { bottom: 14px; right: 14px; width: 2px; height: 22px; transform: scaleY(0); transform-origin: bottom; transition: transform 350ms 50ms ease; }
+
+  .event-card:hover .bracket-tl-h,
+  .event-card:hover .bracket-br-h { transform: scaleX(1); }
+  .event-card:hover .bracket-tl-v,
+  .event-card:hover .bracket-br-v { transform: scaleY(1); }
+
+  /* ── CARD GLOW — opacity only (compositor) ── */
+  .card-glow {
+    box-shadow: inset 0 0 0 1px var(--accent);
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+  .event-card:hover .card-glow { opacity: 0.35; }
+
+  /* ── hover shadow — box-shadow no fuerza reflow ── */
+  .event-card {
+    transition:
+      box-shadow 300ms ease,
+      border-color 300ms ease;
+  }
+  .event-card:hover {
+    border-color: rgba(245,158,11,0.18);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 24px rgba(245,158,11,0.07);
+  }
+
+  /* ── RESPONSIVE tweaks ── */
+  @media (max-width: 480px) {
+    .meta-item { font-size: 9px; }
+    .date-badge { padding: 8px 12px; }
+  }
+
+  /* reduce-motion: sin animaciones de entrada */
+  @media (prefers-reduced-motion: reduce) {
+    .eyebrow, .headline, .desc-block, .event-card {
+      opacity: 1 !important;
+      translate: none !important;
+      animation: none !important;
+    }
+    .accent-line { width: 64px !important; animation: none !important; }
+    .card-img { transition: opacity 200ms ease !important; }
+    .bracket { transition: transform 200ms ease !important; }
+  }
+</style>

@@ -1,25 +1,334 @@
 ---
+// src/pages/latest.astro
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
-import FloatingCards from '../components/FloatingCards.astro';
-import FeaturedSection from '../components/FeaturedSection.astro';
+import NewsCard from '../components/NewsCard.astro';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('news');
+
+type NewsEntry = (typeof entries)[number];
+
+const allNews = entries
+  .map((e: NewsEntry) => ({
+    title:    e.data.title,
+    subtitle: e.data.subtitle,
+    excerpt:  e.data.excerpt,
+    category: e.data.category,
+    tag:      e.data.tag,
+    date:     e.data.date.toISOString(),
+    image:    e.data.image,
+    href:     `/noticias/${e.id.replace(/\.(md|mdx)$/, '')}`,
+    featured: e.data.featured,
+    type:     e.data.type,
+    own:      true,
+  }))
+  .sort((a: { date: string }, b: { date: string }) =>
+    new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+const ads   = allNews.filter(n => n.type === 'ad');
+const news  = allNews.filter(n => n.type !== 'ad');
+
+const heroNews  = news.find(n => n.featured) ?? news[0];
+const gridNews  = news.filter(n => n !== heroNews);
+
+const allCategories = ['TODOS', ...new Set(news.map(n => n.category))];
 ---
 
-<Layout title="Latest News | Sports Editorial">
+<Layout title="Noticias | CBIT">
   <Navbar />
-  <main class="bg-black min-h-screen pt-32 text-white">
-    <div class="container mx-auto px-6 lg:px-10 mb-20">
-      <h1 class="text-6xl md:text-8xl font-display mb-4"><span class="text-yellow-500">LATEST</span> NEWS</h1>
-      <p class="text-gray-400 max-w-2xl text-xl mb-16">Stay up to date with the latest developments, match reports, and exclusive interviews.</p>
+
+  <main class="min-h-screen pt-24 pb-20 text-white" >
+
+    <!-- ── HEADER ── -->
+    <div class="relative overflow-hidden border-b" style="border-color:rgba(255,255,255,0.06);">
+      
+      <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-12 md:py-16">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            <div class="inline-flex items-center gap-3 mb-4">
+              <span class="w-6 h-[1.5px] bg-[#eab308] block"></span>
+              <span class="text-[10px] font-bold tracking-[0.35em] uppercase text-[#eab308]">
+                Portal de Noticias
+              </span>
+            </div>
+
+            <!-- ── TÍTULO: usa font-display de Tailwind (igual al resto del sitio) ── -->
+            <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-[7rem] tracking-tighter leading-none uppercase">
+              <span class="text-[#eab308]">NOTICIAS</span>
+              <span class="text-white"> Y ANUNCIOS</span>
+            </h1>
+
+            <p class="text-gray-500 text-sm mt-3 max-w-xl leading-relaxed">
+              Noticias, anuncios y novedades oficiales de CBIT
+            </p>
+          </div>
+
+          <!-- Live indicator -->
+          <div class="flex items-center gap-2 self-start md:self-end">
+            <span class="w-2 h-2 rounded-full bg-[#eab308] animate-pulse"></span>
+            <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-[#eab308]">ACTUALIZADO</span>
+            <span class="text-[10px] text-gray-600 ml-2" id="portal-time"></span>
+          </div>
+        </div>
+
+        <!-- Category filter tabs -->
+        <div class="flex gap-2 mt-8 overflow-x-auto pb-1 scrollbar-hide" id="cat-filter">
+          {allCategories.map((cat, i) => (
+            <button
+              class="cat-tab flex-shrink-0 px-4 py-1.5 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
+              data-cat={cat}
+              style={`
+                clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,5px 100%,0 calc(100% - 5px));
+                ${i === 0
+                  ? 'background:#eab308;color:#000;'
+                  : 'background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.08);'}
+              `}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
 
-    <!-- We moved the Floating Cards and Featured Section here from the main page -->
-    <div class="mt-40">
-      <FloatingCards />
-    </div>
-    
-    <div class="mt-20">
-      <FeaturedSection />
+    <!-- ── MAIN CONTENT ── -->
+    <div class="max-w-[1600px] mx-auto px-6 lg:px-10 mt-8 md:mt-12">
+      <div class="flex flex-col xl:flex-row gap-8">
+
+        <!-- ── LEFT: HERO + GRID ── -->
+        <div class="flex-1 min-w-0">
+
+          <!-- HERO -->
+          {heroNews && (
+            <div class="mb-6">
+              <NewsCard
+                title={heroNews.title}
+                excerpt={heroNews.excerpt}
+                category={heroNews.category}
+                tag={heroNews.tag}
+                date={heroNews.date}
+                image={heroNews.image}
+                href={heroNews.href}
+                own={true}
+                size="hero"
+              />
+            </div>
+          )}
+
+          <!-- Section label -->
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-5 h-[1.5px] bg-[#0ea5e9] block"></span>
+            <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-[#0ea5e9]">
+              Todas las noticias
+            </span>
+            <div class="flex-1 h-[1px]" style="background:rgba(255,255,255,0.06);"></div>
+            <span class="text-[9px] text-gray-600 tracking-widest">{gridNews.length} artículos</span>
+          </div>
+
+          <!-- Grid -->
+          {gridNews.length > 0 ? (
+            <div class="grid gap-4" id="news-grid"
+                 style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));">
+              {gridNews.map((n, i) => (
+                <div class="news-item" data-cat={n.category}>
+                  <NewsCard
+                    title={n.title}
+                    excerpt={n.excerpt}
+                    category={n.category}
+                    tag={n.tag}
+                    date={n.date}
+                    image={n.image}
+                    href={n.href}
+                    own={true}
+                    size={i < 2 ? 'large' : 'medium'}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div class="flex flex-col items-center justify-center py-20 text-center">
+              <div class="w-12 h-12 rounded-full mb-4 flex items-center justify-center"
+                   style="background:rgba(234,179,8,0.08);border:1px solid rgba(234,179,8,0.2);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="#eab308" stroke-width="1.5">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <p class="text-[11px] font-bold tracking-[0.25em] uppercase text-gray-600">
+                Sin noticias adicionales
+              </p>
+              <p class="text-[10px] text-gray-700 mt-1">
+                Agrega archivos .md en src/content/news/
+              </p>
+            </div>
+          )}
+        </div>
+
+        <!-- ── RIGHT: SIDEBAR ── -->
+        <aside class="w-full xl:w-[300px] flex-shrink-0">
+
+          <!-- PUBLICIDADES -->
+          {ads.length > 0 && (
+            <div class="mb-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="w-4 h-[1.5px] bg-[#eab308] block"></span>
+                <span class="text-[9px] font-bold tracking-[0.25em] uppercase text-[#eab308]">
+                  Publicidad
+                </span>
+              </div>
+              <div class="flex flex-col gap-3">
+                {ads.map(ad => (
+                  <a href={ad.href}
+                     class="ad-card group relative flex overflow-hidden transition-all duration-500 h-[110px]"
+                     style="clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));background:#0a0f1c;border:1px solid rgba(234,179,8,0.2);">
+                    {ad.image && (
+                      <img src={ad.image} alt={ad.title}
+                           class="w-[90px] flex-shrink-0 object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300 grayscale group-hover:grayscale-0" />
+                    )}
+                    <div class="flex-1 p-3 flex flex-col justify-between">
+                      <div>
+                        <span class="text-[8px] font-bold tracking-[0.2em] uppercase text-[#eab308] block mb-1">
+                          {ad.category}
+                        </span>
+                        <p class="text-[10px] text-white/80 leading-snug line-clamp-2
+                                  group-hover:text-white transition-colors duration-300 font-semibold">
+                          {ad.title}
+                        </p>
+                      </div>
+                      <span class="text-[8px] font-bold tracking-[0.15em] uppercase
+                                   text-[#eab308]/60 group-hover:text-[#eab308]
+                                   transition-colors duration-300 flex items-center gap-1">
+                        VER MÁS
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2.5">
+                          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100
+                                transition-opacity duration-500 pointer-events-none"
+                         style="border:1px solid rgba(234,179,8,0.4);
+                                clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));"></div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- ÍNDICE -->
+          <div class="sticky top-24">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-4 h-[1.5px] bg-[#0ea5e9] block"></span>
+              <span class="text-[9px] font-bold tracking-[0.25em] uppercase text-[#0ea5e9]">
+                Índice
+              </span>
+            </div>
+
+            <div class="flex flex-col">
+              {allNews.filter(n => n.type !== 'ad').map((n, i) => (
+                <a href={n.href}
+                   class="sidebar-item group flex items-start gap-3 p-3
+                          transition-all duration-300 hover:bg-white/[0.03]"
+                   style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                  <span class="text-[26px] font-display font-bold leading-none flex-shrink-0
+                               transition-colors duration-300 group-hover:text-[#eab308]"
+                        style="color:rgba(255,255,255,0.07);">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <span class="text-[8px] font-bold tracking-[0.2em] uppercase block mb-0.5"
+                          style="color:rgba(234,179,8,0.6);">
+                      {n.category}
+                    </span>
+                    <p class="text-[10px] text-white/60 leading-snug line-clamp-2
+                               group-hover:text-white transition-colors duration-300">
+                      {n.title}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            <!-- CTA contacto -->
+            <div class="mt-6 p-4"
+                 style="background:linear-gradient(135deg,rgba(234,179,8,0.06),rgba(14,165,233,0.03));
+                        border:1px solid rgba(234,179,8,0.12);
+                        clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));">
+              <p class="text-[9px] font-bold tracking-[0.2em] uppercase text-[#eab308] mb-2">
+                PUBLICAR CONTENIDO
+              </p>
+              <p class="text-[10px] text-gray-500 leading-relaxed">
+                ¿Querés publicar tu clasificado o anuncio? Contáctanos al
+                <span class="text-[#0ea5e9] font-bold"> 7704659</span>
+                para noticias y anuncios.
+              </p>
+            </div>
+          </div>
+        </aside>
+
+      </div>
     </div>
   </main>
 </Layout>
+
+<style>
+  .scrollbar-hide { scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+  .cat-tab.active {
+    background: #eab308 !important;
+    color: #000 !important;
+    border-color: transparent !important;
+  }
+
+  .news-item.hidden { display: none; }
+</style>
+
+<script>
+  const timeEl = document.getElementById('portal-time');
+  const tick = () => {
+    if (!timeEl) return;
+    timeEl.textContent = new Date().toLocaleTimeString('es-BO', {
+      hour: '2-digit', minute: '2-digit'
+    });
+  };
+  tick();
+  setInterval(tick, 60_000);
+
+  const tabs  = document.querySelectorAll<HTMLButtonElement>('.cat-tab');
+  const items = document.querySelectorAll<HTMLElement>('.news-item');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const cat = tab.dataset.cat ?? 'TODOS';
+      items.forEach(item => {
+        item.classList.toggle('hidden', cat !== 'TODOS' && item.dataset.cat !== cat);
+      });
+    });
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          (entry.target as HTMLElement).style.opacity = '1';
+          (entry.target as HTMLElement).style.transform = 'translateY(0)';
+        }, i * 40);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll<HTMLElement>('.news-card, .sidebar-item, .ad-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(14px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    obs.observe(el);
+  });
+</script>

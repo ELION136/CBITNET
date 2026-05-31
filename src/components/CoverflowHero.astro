@@ -2,42 +2,17 @@
 const slides = [
   { id: 1, title: "INFOCADE",       subtitle: "Instituto Deportivo",      image: "/images/mix5.webp",  href: "/infocade"    },
   { id: 2, title: "CENACAP",        subtitle: "Centro de Capacitacion",   image: "/images/mix3.webp",  href: "/cenacap"     },
-  { id: 3, title: "NUEVO SIGLO",    subtitle: "Formacion Profesional",    image: "/images/mix4.webp", href: "/nuevo-ciclo" },
+  { id: 3, title: "NUEVO SIGLO",    subtitle: "Formacion Profesional",    image: "/images/mix4.webp",  href: "/nuevo-ciclo" },
   { id: 4, title: "FUNDECT",        subtitle: "Fundacion Educativa",      image: "/images/mix2.webp",  href: "/fundect"     },
   { id: 5, title: "CLUB DE LEONES", subtitle: "Accion Civica y Social",   image: "/images/mix1.webp",  href: "/club-leones" },
 ];
 
 const institutions = [
-  { 
-    name: "INAF",         
-    color: "#f59e0b", 
-    glow: "rgba(245,158,11,0.25)",
-    path: "M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z M2 12h20"
-  },
-  { 
-    name: "UNITEP",       
-    color: "#10b981", 
-    glow: "rgba(16,185,129,0.25)",
-    path: "M22 10v6M2 10l10-5 10 5-10 5z M6 12.5V16a6 6 0 0 0 12 0v-3.5"
-  },
-  { 
-    name: "UNIFRANZ",     
-    color: "#8b5cf6", 
-    glow: "rgba(139,92,246,0.25)",
-    path: "M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5z"
-  },
-  { 
-    name: "CLUB OLIMPIC", 
-    color: "#ef4444", 
-    glow: "rgba(239,68,68,0.25)",
-    path: "M6 9H4.5a2.5 2.5 0 0 1 0-5H6 M18 9h1.5a2.5 2.5 0 0 0 0-5H18 M4 22h16 M10 14.66V17c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2.34 M12 2a5 5 0 0 0-5 5v3c0 2.2 1.8 4 4 4h2c2.2 0 4-1.8 4-4V7a5 5 0 0 0-5-5z"
-  },
-  { 
-    name: "INTRASPORTS",  
-    color: "#0ea5e9", 
-    glow: "rgba(14,165,233,0.25)",
-    path: "M13 2L3 14h9l-1 8 10-12h-9l1-8z"
-  },
+  { name: "INAF",         color: "#f59e0b", glow: "rgba(245,158,11,0.25)",  path: "M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z M2 12h20" },
+  { name: "UNITEP",       color: "#10b981", glow: "rgba(16,185,129,0.25)",  path: "M22 10v6M2 10l10-5 10 5-10 5z M6 12.5V16a6 6 0 0 0 12 0v-3.5" },
+  { name: "UNIFRANZ",     color: "#8b5cf6", glow: "rgba(139,92,246,0.25)",  path: "M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5z" },
+  { name: "CLUB OLIMPIC", color: "#ef4444", glow: "rgba(239,68,68,0.25)",   path: "M6 9H4.5a2.5 2.5 0 0 1 0-5H6 M18 9h1.5a2.5 2.5 0 0 0 0-5H18 M4 22h16 M10 14.66V17c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2.34 M12 2a5 5 0 0 0-5 5v3c0 2.2 1.8 4 4 4h2c2.2 0 4-1.8 4-4V7a5 5 0 0 0-5-5z" },
+  { name: "INTRASPORTS",  color: "#0ea5e9", glow: "rgba(14,165,233,0.25)", path: "M13 2L3 14h9l-1 8 10-12h-9l1-8z" },
 ];
 ---
 
@@ -45,93 +20,71 @@ const institutions = [
   class="relative min-h-screen w-full flex items-center justify-center overflow-x-hidden bg-transparent coverflow-section py-40 xl:py-0"
   transition:animate="none"
 >
-
-  <!-- ── BEAM CANVAS ── -->
   <canvas id="beam-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
 
-  <!-- Glow orb central azul -->
   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full pointer-events-none z-0"
        style="background:radial-gradient(ellipse,rgba(14,165,233,0.07) 0%,transparent 70%);filter:blur(24px);"></div>
 
-  <!-- ── LAYOUT 3 COLUMNAS ── -->
   <div class="relative z-50 w-full max-w-[1600px] mx-auto px-6 md:px-10 flex flex-col xl:flex-row items-center justify-between gap-16 xl:gap-4">
 
-    <!-- ── COLUMNA IZQUIERDA ── -->
+    <!-- LEFT COLUMN -->
     <div class="w-full xl:w-[350px] flex flex-col items-center xl:items-start text-center xl:text-left order-1 left-col">
-      <!-- Brand Logo Container -->
       <div class="relative mb-6 opacity-0 left-reveal-logo group flex items-center justify-center xl:justify-start">
-        <img src="/images/milogo.png" alt="Logo Corporación" 
-             class="h-24 md:h-28 w-auto object-contain transition-all duration-500 group-hover:scale-105 pointer-events-auto" 
+        <img src="/images/milogo.webp" alt="Logo Corporación"
+             class="h-24 md:h-28 w-auto object-contain transition-all duration-500 group-hover:scale-105 pointer-events-auto"
              style="filter: drop-shadow(0 0 20px rgba(14,165,233,0.3));" />
       </div>
 
-      <!-- Title -->
       <h1 class="font-display text-4xl md:text-4xl text-white tracking-widest uppercase leading-none opacity-0 left-reveal-1"
           style="text-shadow:0 0 40px rgba(14,165,233,0.15);">
         CORPORACION BOLIVIANA DE TALENTO Y FORMACION INTEGRAL
       </h1>
 
-      
-
-      <!-- Animated line -->
-      <div id="left-line"
-           class="h-[2px] mb-5 origin-left"
+      <div id="left-line" class="h-[2px] mb-5 origin-left"
            style="width:0;background:linear-gradient(90deg,#0ea5e9,#2dd4bf);transition:width 1s ease;"></div>
 
-      <!-- Description -->
       <p class="text-gray-500 text-xs md:text-sm leading-relaxed max-w-md xl:max-w-sm text-left opacity-0 left-reveal-2">
         Entidad orientada a la formación integral del talento boliviano, que integra programas académicos, cívicos y deportivos mediante alianzas estratégicas.
       </p>
 
-      <!-- Social Media Icons (WhatsApp, Facebook, Instagram, TikTok) -->
+      <!-- Social -->
       <div class="flex items-center gap-3 mt-6 opacity-0 left-reveal-social">
         <a href="https://wa.me/yournumber" target="_blank" rel="noopener noreferrer"
            class="social-btn group relative w-10 h-10 flex items-center justify-center border transition-all duration-300"
-           style="border-color: rgba(37,211,102,0.3); background: rgba(37,211,102,0.05); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px)); --social-color: #25D366;"
+           style="border-color:rgba(37,211,102,0.3);background:rgba(37,211,102,0.05);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));--social-color:#25D366;"
            aria-label="WhatsApp">
           <span class="social-tooltip absolute -top-10 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-black/90 border rounded text-[9px] font-bold tracking-widest uppercase opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 z-50 text-white whitespace-nowrap shadow-lg"
-                style="border-color: #25D366; clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px));">
-            WhatsApp
-          </span>
+                style="border-color:#25D366;clip-path:polygon(0 0,calc(100% - 4px) 0,100% 4px,100% 100%,4px 100%,0 calc(100% - 4px));">WhatsApp</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-white/60 group-hover:text-[#25D366] transition-colors duration-300">
             <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.993L2 22l5.13-1.347a9.947 9.947 0 0 0 4.881 1.279h.005c5.505 0 9.988-4.478 9.99-9.985 0-2.67-1.037-5.18-2.92-7.065A9.925 9.925 0 0 0 12.012 2zm5.727 14.123c-.253.715-1.47 1.387-2.022 1.478-.497.082-1.135.15-3.32-.756-2.793-1.157-4.595-4.004-4.736-4.193-.14-.188-1.136-1.51-1.136-2.88 0-1.37.718-2.043.97-2.317.254-.275.563-.343.75-.343.187 0 .375.002.537.01.17.008.402-.065.63.486.23.557.788 1.92.857 2.062.069.141.115.306.022.493-.092.188-.138.305-.276.467-.137.16-.29.356-.413.478-.138.136-.282.285-.121.562.162.277.72 1.184 1.543 1.916.822.732 1.517.957 1.733 1.05.215.093.342.079.467-.066.126-.145.539-.627.683-.84.143-.214.287-.18.483-.107.195.074 1.238.583 1.452.69.214.108.356.162.408.252.052.09.052.522-.201 1.238z"/>
           </svg>
         </a>
-
         <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer"
            class="social-btn group relative w-10 h-10 flex items-center justify-center border transition-all duration-300"
-           style="border-color: rgba(24,119,242,0.3); background: rgba(24,119,242,0.05); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px)); --social-color: #1877F2;"
+           style="border-color:rgba(24,119,242,0.3);background:rgba(24,119,242,0.05);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));--social-color:#1877F2;"
            aria-label="Facebook">
           <span class="social-tooltip absolute -top-10 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-black/90 border rounded text-[9px] font-bold tracking-widest uppercase opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 z-50 text-white whitespace-nowrap shadow-lg"
-                style="border-color: #1877F2; clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px));">
-            Facebook
-          </span>
+                style="border-color:#1877F2;clip-path:polygon(0 0,calc(100% - 4px) 0,100% 4px,100% 100%,4px 100%,0 calc(100% - 4px));">Facebook</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-white/60 group-hover:text-[#1877F2] transition-colors duration-300">
             <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
           </svg>
         </a>
-
         <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer"
            class="social-btn group relative w-10 h-10 flex items-center justify-center border transition-all duration-300"
-           style="border-color: rgba(228,64,95,0.3); background: rgba(228,64,95,0.05); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px)); --social-color: #E4405F;"
+           style="border-color:rgba(228,64,95,0.3);background:rgba(228,64,95,0.05);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));--social-color:#E4405F;"
            aria-label="Instagram">
           <span class="social-tooltip absolute -top-10 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-black/90 border rounded text-[9px] font-bold tracking-widest uppercase opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 z-50 text-white whitespace-nowrap shadow-lg"
-                style="border-color: #E4405F; clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px));">
-            Instagram
-          </span>
+                style="border-color:#E4405F;clip-path:polygon(0 0,calc(100% - 4px) 0,100% 4px,100% 100%,4px 100%,0 calc(100% - 4px));">Instagram</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-white/60 group-hover:text-[#E4405F] transition-colors duration-300">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
           </svg>
         </a>
-
         <a href="https://tiktok.com/@yourhandle" target="_blank" rel="noopener noreferrer"
            class="social-btn group relative w-10 h-10 flex items-center justify-center border transition-all duration-300"
-           style="border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.03); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px)); --social-color: #ffffff;"
+           style="border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.03);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));--social-color:#ffffff;"
            aria-label="TikTok">
           <span class="social-tooltip absolute -top-10 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-black/90 border rounded text-[9px] font-bold tracking-widest uppercase opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 z-50 text-white whitespace-nowrap shadow-lg"
-                style="border-color: #ffffff; clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px));">
-            TikTok
-          </span>
+                style="border-color:#ffffff;clip-path:polygon(0 0,calc(100% - 4px) 0,100% 4px,100% 100%,4px 100%,0 calc(100% - 4px));">TikTok</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-white/60 group-hover:text-white transition-colors duration-300">
             <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .8.11V9.4a6.27 6.27 0 0 0-8.31 6A6.25 6.25 0 0 0 12 21.67a6.24 6.24 0 0 0 6.25-6.25v-8.2a8.73 8.73 0 0 0 4.74 1.48V5.3a5.22 5.22 0 0 1-3.4-1.28z"/>
           </svg>
@@ -152,7 +105,6 @@ const institutions = [
                 aria-label="Siguiente">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:#0ea5e9;"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </button>
-
         <div class="ml-2 font-display text-xs tracking-[0.2em]" style="color:rgba(255,255,255,0.2);">
           <span id="counter-current" style="color:#0ea5e9;">01</span>
           <span class="mx-1">/</span>
@@ -161,7 +113,7 @@ const institutions = [
       </div>
     </div>
 
-    <!-- ── COLUMNA CENTRAL — CARRUSEL ORIGINAL ── -->
+    <!-- CENTER COLUMN — CAROUSEL -->
     <div
       class="relative w-full xl:flex-1 h-[380px] md:h-[450px] lg:h-[500px] flex items-center justify-center z-20 slider-container pointer-events-auto order-2"
       style="perspective:1200px;"
@@ -175,7 +127,7 @@ const institutions = [
             class="absolute top-0 left-0 w-full h-full cursor-pointer coverflow-card group"
             data-index={index}
           >
-            <div class="w-full h-full relative flex flex-col items-center justify-between p-3 md:p-4 bg-[#060606]/92 backdrop-blur-md border border-white/[0.07] group-[.active]:border-[#0ea5e9]/50 group-[.active]:shadow-[0_0_50px_rgba(14,165,233,0.2),0_0_0_1px_rgba(14,165,233,0.12)] transition-all duration-500 overflow-hidden"
+            <div class="w-full h-full relative flex flex-col items-center justify-between p-3 md:p-4 bg-[#060606]/92 backdrop-blur-md border border-white/[0.07] group-[.active]:border-[#eab308]/50 group-[.active]:shadow-[0_0_50px_rgba(234,179,8,0.18),0_0_0_1px_rgba(234,179,8,0.12)] transition-all duration-500 overflow-hidden"
                  style="clip-path:polygon(10% 0,100% 0,100% 90%,90% 100%,0 100%,0 10%);">
 
               <!-- BG image -->
@@ -183,42 +135,88 @@ const institutions = [
                    class="absolute inset-0 w-full h-full object-cover opacity-35 group-[.active]:opacity-80 transition-all duration-500 pointer-events-none grayscale group-[.active]:grayscale-0 group-[.active]:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-transparent to-black/88 group-[.active]:from-black/40 group-[.active]:to-black/80 transition-colors duration-500"></div>
 
-              <!-- Top accent line -->
-              <div class="absolute top-0 left-0 right-0 h-[2px] origin-left scale-x-0 group-[.active]:scale-x-100 transition-transform duration-500"
-                   style="background:linear-gradient(90deg,#0ea5e9,#2dd4bf);"></div>
+              <!-- ── EFECTO ESPEJO ── -->
+              <!-- Capa base: reflejo diagonal semitransparente (efecto vidrio) -->
+              <div class="absolute inset-0 pointer-events-none z-[1] opacity-0 group-[.active]:opacity-100 transition-opacity duration-700"
+                   style="background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.01) 35%,transparent 55%);"></div>
+              <!-- Brillo deslizante animado -->
+              <div class="mirror-shine absolute inset-0 pointer-events-none z-[2] opacity-0 group-[.active]:opacity-100"
+                   style="background:linear-gradient(108deg,transparent 25%,rgba(255,255,255,0.11) 48%,rgba(255,255,255,0.04) 52%,transparent 72%);"></div>
+              <!-- Highlight dorado top-left (reflejo cálido) -->
+              <div class="absolute top-0 left-0 right-0 h-2/5 pointer-events-none z-[1] opacity-0 group-[.active]:opacity-100 transition-opacity duration-700"
+                   style="background:linear-gradient(160deg,rgba(234,179,8,0.07) 0%,rgba(234,179,8,0.02) 40%,transparent 70%);clip-path:polygon(10% 0,100% 0,100% 100%,0 100%,0 10%);"></div>
+              <!-- Borde interior sutil (reflejo de cristal) -->
+              <div class="absolute inset-[1px] pointer-events-none z-[1] opacity-0 group-[.active]:opacity-100 transition-opacity duration-700"
+                   style="clip-path:polygon(10% 0,100% 0,100% 90%,90% 100%,0 100%,0 10%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.08),inset 1px 0 0 rgba(255,255,255,0.04);"></div>
+
+              <!-- Top accent line — dorado -->
+              <div class="absolute top-0 left-0 right-0 h-[2px] origin-left scale-x-0 group-[.active]:scale-x-100 transition-transform duration-500 z-10"
+                   style="background:linear-gradient(90deg,#eab308,#f59e0b 50%,#2dd4bf);"></div>
 
               <!-- Corner accents -->
-              <div class="absolute top-0 left-0 w-4 md:w-6 h-[2px] bg-white/20 group-[.active]:bg-[#0ea5e9] transition-colors duration-500"></div>
-              <div class="absolute top-0 left-0 w-[2px] h-4 md:h-6 bg-white/20 group-[.active]:bg-[#0ea5e9] transition-colors duration-500"></div>
-              <div class="absolute bottom-0 right-0 w-4 md:w-6 h-[2px] bg-white/20 group-[.active]:bg-[#2dd4bf] transition-colors duration-500"></div>
-              <div class="absolute bottom-0 right-0 w-[2px] h-4 md:h-6 bg-white/20 group-[.active]:bg-[#2dd4bf] transition-colors duration-500"></div>
+              <div class="absolute top-0 left-0 w-4 md:w-6 h-[2px] bg-white/20 group-[.active]:bg-[#eab308] transition-colors duration-500 z-10"></div>
+              <div class="absolute top-0 left-0 w-[2px] h-4 md:h-6 bg-white/20 group-[.active]:bg-[#eab308] transition-colors duration-500 z-10"></div>
+              <div class="absolute bottom-0 right-0 w-4 md:w-6 h-[2px] bg-white/20 group-[.active]:bg-[#2dd4bf] transition-colors duration-500 z-10"></div>
+              <div class="absolute bottom-0 right-0 w-[2px] h-4 md:h-6 bg-white/20 group-[.active]:bg-[#2dd4bf] transition-colors duration-500 z-10"></div>
 
               <!-- Header -->
               <div class="relative z-10 w-full flex flex-col items-center mt-2">
                 <div class="h-[2px] w-1/3 mb-2 opacity-25 group-[.active]:opacity-100 group-[.active]:w-2/3 transition-all duration-500"
-                     style="background:linear-gradient(90deg,#0ea5e9,#2dd4bf);"></div>
+                     style="background:linear-gradient(90deg,#eab308,#0ea5e9);"></div>
                 <h3 class="text-gray-500 group-[.active]:text-white/60 text-[8px] md:text-xs font-bold tracking-[0.2em] uppercase transition-colors duration-300">
                   {slide.subtitle}
                 </h3>
-                <h2 class="text-white/40 group-[.active]:text-[#0ea5e9] font-display text-base md:text-2xl mt-1 tracking-wider text-center transition-colors duration-300">
+                <h2 class="text-white/40 group-[.active]:text-white font-display text-base md:text-2xl mt-1 tracking-wider text-center transition-colors duration-300">
                   {slide.title}
                 </h2>
               </div>
-              <!-- Bottom CTA -->
+
               <div class="relative z-10 w-full flex flex-col items-center mb-2 md:mb-4">
-                <a
-                  href={slide.href}
-                  class="px-4 py-1.5 md:px-8 md:py-2 border border-white/20 text-white/40 font-display tracking-widest text-[8px] md:text-xs bg-white/[0.04] hover:bg-white/10 group-[.active]:border-[#0ea5e9] group-[.active]:text-black group-[.active]:bg-[#0ea5e9] group-[.active]:shadow-[0_0_20px_rgba(14,165,233,0.5)] transition-all duration-300"
-                  style="clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));"
-                >
-                  ENTRAR
-                </a>
-                <div class="flex gap-1 mt-3 md:mt-6 opacity-25 group-[.active]:opacity-100 transition-opacity duration-500">
-                  <div class="w-2 h-[3px] bg-white/40 group-[.active]:bg-[#0ea5e9] transition-colors duration-300"></div>
-                  <div class="w-6 h-[3px] bg-white/40 group-[.active]:bg-[#0ea5e9] transition-colors duration-300"></div>
-                  <div class="w-2 h-[3px] bg-white/40 group-[.active]:bg-[#0ea5e9] transition-colors duration-300"></div>
-                </div>
+              <a
+                href={slide.href}
+                class="
+                  relative overflow-hidden
+                  px-5 py-2 md:px-8 md:py-3
+                  border border-[#eab308]/40
+                  text-[#fefce8]
+                  font-light tracking-[0.25em]
+                  text-[10px] md:text-xs
+                  uppercase
+                  bg-black/40 backdrop-blur-sm
+                  transition-all duration-300
+                  hover:border-[#eab308]
+                  hover:text-white
+                  hover:shadow-[0_0_25px_rgba(234,179,8,0.5)]
+                  hover:scale-105
+                  group-[.active]:bg-[#eab308]
+                  group-[.active]:text-black
+                  group-[.active]:border-[#eab308]
+                  group-[.active]:shadow-[0_0_30px_rgba(234,179,8,0.6)]
+                "
+                style="clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));"
+              >
+                <span class="relative z-10">ENTRAR</span>
+
+                <span
+                  class="
+                    absolute inset-0
+                    -translate-x-full
+                    bg-gradient-to-r
+                    from-transparent
+                    via-[#eab308]/30
+                    to-transparent
+                    transition-transform duration-700
+                    hover:translate-x-full
+                  "
+                ></span>
+              </a>
+
+              <div class="flex gap-1 mt-4 opacity-50 group-[.active]:opacity-100 transition-all duration-500">
+                <div class="w-2 h-[2px] bg-[#eab308]/60"></div>
+                <div class="w-8 h-[2px] bg-[#eab308]"></div>
+                <div class="w-2 h-[2px] bg-[#eab308]/60"></div>
               </div>
+            </div>
 
             </div>
           </div>
@@ -226,8 +224,7 @@ const institutions = [
       </div>
     </div>
 
-    <!-- ── COLUMNA DERECHA ── -->
-     <!-- RIGHT COLUMN — ALLIES -->
+    <!-- RIGHT COLUMN — ALLIES -->
     <div class="w-full xl:w-[350px] flex flex-col items-center xl:items-end text-center xl:text-right order-3">
       <div class="right-col opacity-0" style="transform:translateX(20px);">
 
@@ -240,7 +237,7 @@ const institutions = [
           NUESTROS <span class="text-[#0ea5e9]">ALIADOS</span>
         </h3>
         <div class="h-[1.5px] w-10 mt-3 mb-6 ml-auto"
-             style="background:linear-gradient(90deg,transparent,#0ea5e9); font-size: 1.25rem;"></div>
+             style="background:linear-gradient(90deg,transparent,#0ea5e9);"></div>
 
         <div class="flex flex-col items-center xl:items-end gap-3 w-full">
           {institutions.map((inst) => (
@@ -263,19 +260,16 @@ const institutions = [
                     style={`background:linear-gradient(to top,${inst.color},transparent);`}></span>
               <span class="inst-dot absolute left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100"
                     style={`background:${inst.color};box-shadow:0 0 8px ${inst.color};`}></span>
-              
-              <!-- Dynamic Icon with Custom Glow -->
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                    class="w-4 h-4 transition-all duration-300 relative z-10 opacity-70 group-hover:opacity-100 group-hover:scale-110"
-                   style={`color:${inst.color}; filter: drop-shadow(0 0 6px ${inst.color});`}>
+                   style={`color:${inst.color};filter:drop-shadow(0 0 6px ${inst.color});`}>
                 <path d={inst.path} />
               </svg>
-
               <span class="text-[10px] md:text-xs font-bold tracking-[0.22em] text-white/70 group-hover:text-white transition-colors duration-300 z-10 relative inst-label">
                 {inst.name}
               </span>
               <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                   class="opacity-20 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300 flex-shrink-0 relative z-10 hidden xl:block inst-arrow"
+                   class="opacity-20 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300 flex-shrink-0 relative z-10 hidden xl:block"
                    style={`color:${inst.color};`}>
                 <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
               </svg>
@@ -287,57 +281,60 @@ const institutions = [
 
   </div>
 
-  <!-- Slide name bottom center -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
-    <p id="active-slide-name"
-       class="font-display text-[0.65rem] tracking-[0.3em] uppercase"
-       style="color:rgba(255,255,255,0.12);transition:opacity 0.3s;"></p>
-  </div>
-
+  
 </section>
 
 <style>
   .transform-style-3d { transform-style: preserve-3d; }
 
-  /* Active card — border glow azul ya definido con Tailwind group-[.active] */
-  /* Imagen activa escala via Tailwind group-[.active]:scale-105 */
+  /* ── EFECTO ESPEJO — brillo deslizante infinito en card activa ── */
+  @keyframes mirrorSlide {
+    0%   { transform: translateX(-120%); }
+    100% { transform: translateX(220%); }
+  }
+  .coverflow-card.active .mirror-shine {
+    animation: mirrorSlide 3.2s ease-in-out infinite;
+  }
+  /* Sin animación si el usuario prefiere reducción de movimiento */
+  @media (prefers-reduced-motion: reduce) {
+    .coverflow-card.active .mirror-shine { animation: none; }
+  }
 
-  /* Social Media Premium Buttons */
+  /* Social buttons */
   .social-btn {
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    position: relative;
+    transition: all 0.4s cubic-bezier(0.165,0.84,0.44,1);
   }
   .social-btn:hover {
     transform: translateY(-4px) scale(1.08);
-    background: rgba(255, 255, 255, 0.05);
     border-color: var(--social-color) !important;
-    box-shadow: 0 0 20px rgba(var(--social-color), 0.4);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--social-color) 40%, transparent);
   }
   .social-btn::before {
-    content: '';
-    position: absolute;
-    inset: -1.5px;
-    background: linear-gradient(135deg, var(--social-color), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: -1;
-    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    content:'';
+    position:absolute;
+    inset:-1.5px;
+    background:linear-gradient(135deg,var(--social-color),transparent);
+    opacity:0;
+    transition:opacity 0.4s ease;
+    z-index:-1;
+    clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
   }
-  .social-btn:hover::before {
-    opacity: 0.45;
-  }
+  .social-btn:hover::before { opacity:0.4; }
 
-  /* Tooltip animations */
-  .social-btn:hover .social-tooltip {
-    top: -44px;
-    opacity: 1;
+  /* CTA activo — estado gold aplicado también vía CSS para mayor especificidad */
+  .coverflow-card.active a[href] {
+    border-color: #eab308 !important;
+    color: #000 !important;
+    background: #eab308 !important;
+    box-shadow: 0 0 24px rgba(234,179,8,0.55), 0 0 48px rgba(234,179,8,0.2);
+    font-weight: 900;
+    letter-spacing: 0.2em;
   }
 </style>
 
 <script>
 import gsap from 'gsap';
 
-// ── Estado global ─────────────────────────────────────────────────────────
 let floatTween:    gsap.core.Tween | null = null;
 let autoPlayTween: gsap.core.Tween | null = null;
 let resumeTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -345,257 +342,164 @@ let userInteracted = false;
 let abortController: AbortController | null = null;
 let beamRAF: number | null = null;
 
-// ── CLEANUP ────────────────────────────────────────────────────────────────
 function cleanup() {
-  autoPlayTween?.kill();
-  floatTween?.kill();
-  autoPlayTween = null;
-  floatTween = null;
-
+  autoPlayTween?.kill(); floatTween?.kill();
+  autoPlayTween = null; floatTween = null;
   if (resumeTimeout) { clearTimeout(resumeTimeout); resumeTimeout = null; }
-  abortController?.abort();
-  abortController = null;
+  abortController?.abort(); abortController = null;
   userInteracted = false;
-
   if (beamRAF) { cancelAnimationFrame(beamRAF); beamRAF = null; }
-
   const spinner = document.querySelector<HTMLElement>('.carousel-spinner');
   if (spinner) { gsap.killTweensOf(spinner); gsap.set(spinner, { clearProps: 'all' }); }
 }
 
-// ── BEAM CANVAS ────────────────────────────────────────────────────────────
-type Beam = {
-  x: number; y: number; vx: number; vy: number;
-  life: number; maxLife: number; width: number; color: string;
-};
+type Beam = { x:number; y:number; vx:number; vy:number; life:number; maxLife:number; width:number; color:string };
 
 function initBeam() {
   const canvas = document.getElementById('beam-canvas') as HTMLCanvasElement | null;
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
-
   const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
   resize();
   window.addEventListener('resize', resize);
-
   const beams: Beam[] = [];
-  const colors = ['rgba(14,165,233,', 'rgba(45,212,191,', 'rgba(29,78,216,'];
-
+  const colors = ['rgba(14,165,233,','rgba(45,212,191,','rgba(29,78,216,'];
   const spawnBeam = () => {
-    const w = canvas.width;
-    const h = canvas.height;
+    const w = canvas.width, h = canvas.height;
     const side = Math.random();
-    let x = 0, y = 0, vx = 0, vy = 0;
-    const speed = 0.35 + Math.random() * 0.75;
-    const angle = (Math.random() * 60 - 30) * Math.PI / 180;
-    if (side < 0.5) {
-      x = side < 0.25 ? 0 : w;
-      y = Math.random() * h;
-      vx = side < 0.25 ?  Math.cos(angle) * speed : -Math.cos(angle) * speed;
-      vy = Math.sin(angle) * speed;
-    } else {
-      x = Math.random() * w;
-      y = side < 0.75 ? 0 : h;
-      vx = Math.sin(angle) * speed;
-      vy = side < 0.75 ? Math.cos(angle) * speed : -Math.cos(angle) * speed;
-    }
-    beams.push({
-      x, y, vx, vy, life: 0,
-      maxLife: 160 + Math.random() * 200,
-      width: 0.4 + Math.random() * 1.4,
-      color: colors[Math.floor(Math.random() * colors.length)]
-    });
+    let x=0,y=0,vx=0,vy=0;
+    const speed = 0.35+Math.random()*0.75;
+    const angle = (Math.random()*60-30)*Math.PI/180;
+    if (side<0.5) { x=side<0.25?0:w; y=Math.random()*h; vx=side<0.25?Math.cos(angle)*speed:-Math.cos(angle)*speed; vy=Math.sin(angle)*speed; }
+    else { x=Math.random()*w; y=side<0.75?0:h; vx=Math.sin(angle)*speed; vy=side<0.75?Math.cos(angle)*speed:-Math.cos(angle)*speed; }
+    beams.push({ x,y,vx,vy,life:0,maxLife:160+Math.random()*200,width:0.4+Math.random()*1.4,color:colors[Math.floor(Math.random()*colors.length)] });
   };
-
-  for (let i = 0; i < 10; i++) spawnBeam();
-
+  for (let i=0;i<10;i++) spawnBeam();
   const drawFrame = () => {
-    const w = canvas.width;
-    const h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-    if (Math.random() < 0.04) spawnBeam();
-
-    for (let i = beams.length - 1; i >= 0; i--) {
-      const b = beams[i];
-      b.life++; b.x += b.vx; b.y += b.vy;
-      const p = b.life / b.maxLife;
-      let alpha = p < 0.15 ? p / 0.15 : p > 0.75 ? 1 - (p - 0.75) / 0.25 : 1;
-      alpha *= 0.3;
-      ctx.beginPath();
-      ctx.moveTo(b.x - b.vx * 90, b.y - b.vy * 90);
-      ctx.lineTo(b.x, b.y);
-      ctx.strokeStyle = b.color + alpha + ')';
-      ctx.lineWidth = b.width;
-      ctx.stroke();
-      if (b.life >= b.maxLife) beams.splice(i, 1);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    if (Math.random()<0.04) spawnBeam();
+    for (let i=beams.length-1;i>=0;i--) {
+      const b=beams[i]; b.life++; b.x+=b.vx; b.y+=b.vy;
+      const p=b.life/b.maxLife;
+      let alpha=p<0.15?p/0.15:p>0.75?1-(p-0.75)/0.25:1; alpha*=0.3;
+      ctx.beginPath(); ctx.moveTo(b.x-b.vx*90,b.y-b.vy*90); ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle=b.color+alpha+')'; ctx.lineWidth=b.width; ctx.stroke();
+      if (b.life>=b.maxLife) beams.splice(i,1);
     }
-    beamRAF = requestAnimationFrame(drawFrame);
+    beamRAF=requestAnimationFrame(drawFrame);
   };
   drawFrame();
 }
 
-// ── CAROUSEL INIT ──────────────────────────────────────────────────────────
 function initCarousel() {
   cleanup();
-
-  const spinner        = document.querySelector<HTMLElement>('.carousel-spinner');
-  const sliderContainer= document.querySelector<HTMLElement>('.slider-container');
-  const cards          = document.querySelectorAll<HTMLElement>('.coverflow-card');
-
-  if (!spinner || !sliderContainer || cards.length === 0) return;
+  const spinner         = document.querySelector<HTMLElement>('.carousel-spinner');
+  const sliderContainer = document.querySelector<HTMLElement>('.slider-container');
+  const cards           = document.querySelectorAll<HTMLElement>('.coverflow-card');
+  if (!spinner||!sliderContainer||!cards.length) return;
 
   abortController = new AbortController();
   const { signal } = abortController;
-
   const totalCards = cards.length;
-  const theta = 360 / totalCards;
-  let radius = 0;
-  let activeIndex = 0;
+  const theta = 360/totalCards;
+  let radius=0, activeIndex=0;
 
-  const calculateRadius = (): number => {
-    if (window.innerWidth < 640)  return 160;
-    if (window.innerWidth < 1024) return 220;
-    return 320;
-  };
+  const calcRadius = () => window.innerWidth<640?160:window.innerWidth<1024?220:320;
 
   const positionCards = () => {
-    radius = calculateRadius();
-    cards.forEach((card, i) => {
-      card.style.transform = `rotateY(${theta * i}deg) translateZ(${radius}px)`;
-    });
+    radius=calcRadius();
+    cards.forEach((card,i) => { card.style.transform=`rotateY(${theta*i}deg) translateZ(${radius}px)`; });
   };
 
-  const counterEl  = document.getElementById('counter-current');
-  const nameEl     = document.getElementById('active-slide-name');
+  const counterEl = document.getElementById('counter-current');
+  const nameEl    = document.getElementById('active-slide-name');
 
-  const updateCards = (animate = true) => {
-    const rotation = -activeIndex * theta;
-    if (animate) {
-      gsap.to(spinner, { z: -radius, rotationY: rotation, duration: 0.85, ease: 'power3.out' });
-    } else {
-      gsap.set(spinner, { z: -radius, rotationY: rotation });
-    }
-    const norm = ((activeIndex % totalCards) + totalCards) % totalCards;
-    cards.forEach((card, i) => card.classList.toggle('active', i === norm));
-
-    if (counterEl) counterEl.textContent = String(norm + 1).padStart(2, '0');
+  const updateCards = (animate=true) => {
+    const rotation = -activeIndex*theta;
+    if (animate) gsap.to(spinner,{z:-radius,rotationY:rotation,duration:0.85,ease:'power3.out'});
+    else         gsap.set(spinner,{z:-radius,rotationY:rotation});
+    const norm=((activeIndex%totalCards)+totalCards)%totalCards;
+    cards.forEach((card,i)=>card.classList.toggle('active',i===norm));
+    if (counterEl) counterEl.textContent=String(norm+1).padStart(2,'0');
     if (nameEl) {
-      const ne = nameEl;
-      gsap.to(ne, { opacity: 0, duration: 0.18, onComplete: () => {
-        const titleEl = cards[norm].querySelector<HTMLElement>('.card-title-js');
-        ne.textContent = titleEl?.textContent ?? '';
-        gsap.to(ne, { opacity: 1, duration: 0.28 });
+      gsap.to(nameEl,{opacity:0,duration:0.18,onComplete:()=>{
+        const t=cards[norm].querySelector<HTMLElement>('h2');
+        nameEl.textContent=t?.textContent??'';
+        gsap.to(nameEl,{opacity:1,duration:0.28});
       }});
     }
   };
 
   const startAutoPlay = () => {
     autoPlayTween?.kill();
-    autoPlayTween = gsap.delayedCall(3.5, () => {
-      if (!userInteracted) { activeIndex++; updateCards(); startAutoPlay(); }
-    });
+    autoPlayTween=gsap.delayedCall(3.5,()=>{ if (!userInteracted){activeIndex++;updateCards();startAutoPlay();} });
   };
 
   const onUserInteraction = () => {
-    userInteracted = true;
-    autoPlayTween?.kill();
+    userInteracted=true; autoPlayTween?.kill();
     if (resumeTimeout) clearTimeout(resumeTimeout);
-    resumeTimeout = setTimeout(() => { userInteracted = false; startAutoPlay(); }, 5000);
+    resumeTimeout=setTimeout(()=>{ userInteracted=false; startAutoPlay(); },5000);
   };
 
-  // Init
-  positionCards();
-  updateCards(false);
+  positionCards(); updateCards(false);
+  floatTween=gsap.to(spinner,{y:-10,duration:4,ease:'sine.inOut',yoyo:true,repeat:-1});
+  startAutoPlay(); initBeam();
 
-  floatTween = gsap.to(spinner, { y: -10, duration: 4, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  gsap.fromTo('.left-reveal-logo',{opacity:0,scale:0.8,y:-20},{opacity:1,scale:1,y:0,duration:0.8,delay:0.05,ease:'back.out(1.7)'});
+  gsap.to('.left-reveal-1',{opacity:1,y:0,duration:0.7,delay:0.15,stagger:0.08,ease:'power3.out'});
+  gsap.to('.left-reveal-2',{opacity:1,y:0,duration:0.7,delay:0.3,stagger:0.08,ease:'power3.out'});
+  gsap.to('.left-reveal-social',{opacity:1,duration:0.6,delay:0.4,ease:'power3.out'});
+  gsap.fromTo('.social-btn',{opacity:0,y:15,scale:0.8},{opacity:1,y:0,scale:1,duration:0.6,delay:0.45,stagger:0.08,ease:'power3.out'});
+  gsap.to('.left-reveal-3',{opacity:1,duration:0.6,delay:0.65,ease:'power3.out'});
+  gsap.fromTo(cards,{opacity:0,scale:0.94},{opacity:1,scale:1,duration:0.65,delay:0.2,ease:'power3.out'});
+  gsap.to('.right-col',{opacity:1,x:0,duration:0.8,delay:0.3,ease:'power3.out'});
+  gsap.to('.inst-btn',{opacity:1,x:0,duration:0.6,delay:0.5,stagger:0.08,ease:'power3.out'});
+  setTimeout(()=>{ const ll=document.getElementById('left-line'); if(ll) ll.style.width='56px'; },500);
 
-  startAutoPlay();
-  initBeam();
+  document.addEventListener('visibilitychange',()=>{
+    if (document.hidden){floatTween?.pause();autoPlayTween?.kill();}
+    else{floatTween?.resume();if(!userInteracted)startAutoPlay();}
+  },{signal});
 
-  // ── REVEAL animations ──
-  gsap.fromTo('.left-reveal-logo', { opacity: 0, scale: 0.8, y: -20 }, { opacity: 1, scale: 1, y: 0, duration: 0.8, delay: 0.05, ease: 'back.out(1.7)' });
-  gsap.to('.left-reveal-1', { opacity: 1, y: 0, duration: 0.7, delay: 0.15, stagger: 0.08, ease: 'power3.out' });
-  gsap.to('.left-reveal-2', { opacity: 1, y: 0, duration: 0.7, delay: 0.3,  stagger: 0.08, ease: 'power3.out' });
-  gsap.to('.left-reveal-social', { opacity: 1, duration: 0.6, delay: 0.4, ease: 'power3.out' });
-  gsap.fromTo('.social-btn', { opacity: 0, y: 15, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, delay: 0.45, stagger: 0.08, ease: 'power3.out' });
-  gsap.to('.left-reveal-3', { opacity: 1, duration: 0.6, delay: 0.65, ease: 'power3.out' });
-  gsap.fromTo(cards, { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.65, delay: 0.2, ease: 'power3.out' });
-  gsap.to('.right-col', { opacity: 1, x: 0, duration: 0.8, delay: 0.3, ease: 'power3.out' });
-  gsap.to('.inst-btn', { opacity: 1, x: 0, duration: 0.6, delay: 0.5, stagger: 0.08, ease: 'power3.out' });
-  setTimeout(() => {
-    const ll = document.getElementById('left-line');
-    if (ll) ll.style.width = '56px';
-  }, 500);
-
-  // ── Visibility ──
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) { floatTween?.pause(); autoPlayTween?.kill(); }
-    else { floatTween?.resume(); if (!userInteracted) startAutoPlay(); }
-  }, { signal });
-
-  // ── Card click ──
-  cards.forEach(card => {
-    card.addEventListener('click', e => {
+  cards.forEach(card=>{
+    card.addEventListener('click',e=>{
       if ((e.target as HTMLElement).closest('a')) return;
-      const index = parseInt(card.getAttribute('data-index') ?? '0');
-      const norm  = ((activeIndex % totalCards) + totalCards) % totalCards;
+      const index=parseInt(card.getAttribute('data-index')??'0');
+      const norm=((activeIndex%totalCards)+totalCards)%totalCards;
       onUserInteraction();
-      if (norm !== index) {
-        let diff = index - norm;
-        if (diff >  totalCards / 2) diff -= totalCards;
-        if (diff < -totalCards / 2) diff += totalCards;
-        activeIndex += diff;
-        updateCards();
+      if (norm!==index){
+        let diff=index-norm;
+        if (diff>totalCards/2) diff-=totalCards;
+        if (diff<-totalCards/2) diff+=totalCards;
+        activeIndex+=diff; updateCards();
       } else {
-        gsap.fromTo(card, { scale: 0.95 }, { scale: 1, duration: 0.4, ease: 'back.out(2)' });
+        gsap.fromTo(card,{scale:0.95},{scale:1,duration:0.4,ease:'back.out(2)'});
       }
-    }, { signal });
+    },{signal});
   });
 
-  // ── Arrow buttons ──
-  document.getElementById('btn-prev')?.addEventListener('click', () => {
-    onUserInteraction(); activeIndex--; updateCards();
-  }, { signal });
-  document.getElementById('btn-next')?.addEventListener('click', () => {
-    onUserInteraction(); activeIndex++; updateCards();
-  }, { signal });
+  document.getElementById('btn-prev')?.addEventListener('click',()=>{onUserInteraction();activeIndex--;updateCards();},{signal});
+  document.getElementById('btn-next')?.addEventListener('click',()=>{onUserInteraction();activeIndex++;updateCards();},{signal});
 
-  // ── Wheel ──
   let wheelTO: ReturnType<typeof setTimeout>;
-  sliderContainer.addEventListener('wheel', (e: WheelEvent) => {
-    e.preventDefault();
-    clearTimeout(wheelTO);
-    wheelTO = setTimeout(() => {
-      onUserInteraction();
-      activeIndex += (e.deltaY > 0 || e.deltaX > 0) ? 1 : -1;
-      updateCards();
-    }, 50);
-  }, { passive: false, signal });
+  sliderContainer.addEventListener('wheel',(e:WheelEvent)=>{
+    e.preventDefault(); clearTimeout(wheelTO);
+    wheelTO=setTimeout(()=>{ onUserInteraction(); activeIndex+=(e.deltaY>0||e.deltaX>0)?1:-1; updateCards(); },50);
+  },{passive:false,signal});
 
-  // ── Touch ──
-  let touchStartX = 0, touchStartY = 0;
-  sliderContainer.addEventListener('touchstart', (e: TouchEvent) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true, signal });
-  sliderContainer.addEventListener('touchend', (e: TouchEvent) => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    const dy = e.changedTouches[0].clientY - touchStartY;
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-      onUserInteraction();
-      activeIndex += dx < 0 ? 1 : -1;
-      updateCards();
-    }
-  }, { passive: true, signal });
+  let tx=0,ty=0;
+  sliderContainer.addEventListener('touchstart',(e:TouchEvent)=>{ tx=e.touches[0].clientX; ty=e.touches[0].clientY; },{passive:true,signal});
+  sliderContainer.addEventListener('touchend',(e:TouchEvent)=>{
+    const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+    if (Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){ onUserInteraction(); activeIndex+=dx<0?1:-1; updateCards(); }
+  },{passive:true,signal});
 
-  // ── Resize ──
-  window.addEventListener('resize', () => { positionCards(); updateCards(false); }, { signal });
+  window.addEventListener('resize',()=>{ positionCards(); updateCards(false); },{signal});
 }
 
-// ── ASTRO LIFECYCLE ────────────────────────────────────────────────────────
-document.addEventListener('astro:before-swap', cleanup);
-document.addEventListener('astro:page-load', initCarousel);
-if (document.readyState !== 'loading') initCarousel();
-else document.addEventListener('DOMContentLoaded', initCarousel);
+document.addEventListener('astro:before-swap',cleanup);
+document.addEventListener('astro:page-load',initCarousel);
+if (document.readyState!=='loading') initCarousel();
+else document.addEventListener('DOMContentLoaded',initCarousel);
 </script>

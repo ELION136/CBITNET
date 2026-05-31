@@ -1,0 +1,170 @@
+---
+// NewsCard.astro
+// Props:
+//   title, excerpt, category, tag, date, image, href, source, featured, own
+interface Props {
+  title:    string;
+  excerpt:  string;
+  category: string;
+  tag?:     string;
+  date:     string;
+  image?:   string;
+  href:     string;
+  source?:  string;
+  featured?: boolean;
+  own?:     boolean;       // true = nuestra noticia/anuncio
+  size?:    'hero' | 'large' | 'medium' | 'small';
+}
+
+const {
+  title, excerpt, category, tag, date, image,
+  href, source, featured, own, size = 'medium'
+} = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('es-BO', {
+  day: '2-digit', month: 'short', year: 'numeric'
+});
+
+// Category color map
+const catColors: Record<string, string> = {
+  'FÚTBOL':       '#0ea5e9',
+  'BALONCESTO':   '#f59e0b',
+  'ATLETISMO':    '#10b981',
+  'DEPORTES':     '#0ea5e9',
+  'ANUNCIO':      '#eab308',
+  'INSTITUCIONAL':'#8b5cf6',
+  'GENERAL':      '#6b7280',
+};
+const catColor = catColors[category] ?? '#0ea5e9';
+---
+
+<a
+  href={href}
+  target={own ? '_self' : '_blank'}
+  rel={own ? '' : 'noopener noreferrer'}
+  class:list={[
+    'news-card group relative flex overflow-hidden transition-all duration-500',
+    size === 'hero'   && 'flex-col h-[520px]',
+    size === 'large'  && 'flex-col h-[380px]',
+    size === 'medium' && 'flex-col h-[280px]',
+    size === 'small'  && 'flex-row h-[100px] items-stretch',
+  ]}
+  style="clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));"
+>
+  <!-- Background image / placeholder -->
+  {size !== 'small' && (
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      {image
+        ? <img src={image} alt={title}
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale-[30%] group-hover:grayscale-0" />
+        : <div class="w-full h-full" style={`background:linear-gradient(135deg,#0a0f1c,#0f172a);`}></div>
+      }
+      <!-- Gradient overlay -->
+      <div class="absolute inset-0"
+           style="background:linear-gradient(180deg,rgba(5,7,13,0.2) 0%,rgba(5,7,13,0.5) 40%,rgba(5,7,13,0.97) 100%);"></div>
+    </div>
+  )}
+
+  {size === 'small' && (
+    <div class="w-[80px] flex-shrink-0 relative overflow-hidden"
+         style="background:#0a0f1c;">
+      {image
+        ? <img src={image} alt={title}
+               class="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-500" />
+        : <div class="w-full h-full flex items-center justify-center"
+               style={`background:linear-gradient(135deg,${catColor}22,#0a0f1c);`}>
+            <span class="text-xs font-bold" style={`color:${catColor};`}>{category.slice(0,3)}</span>
+          </div>
+      }
+    </div>
+  )}
+
+  <!-- Content -->
+  <div class:list={[
+    'relative z-10 flex flex-col justify-end',
+    size !== 'small' ? 'flex-1 p-4 md:p-5' : 'flex-1 p-3 justify-center'
+  ]}>
+
+    <!-- Own badge -->
+    {own && (
+      <div class="absolute top-3 right-3 flex items-center gap-1.5 px-2 py-1 z-20"
+           style="background:#eab308;clip-path:polygon(0 0,calc(100% - 4px) 0,100% 4px,100% 100%,4px 100%,0 calc(100% - 4px));">
+        <span class="text-[9px] font-black tracking-[0.15em] text-black">CBTFI</span>
+      </div>
+    )}
+
+    <!-- Category + tag row -->
+    <div class="flex items-center gap-2 mb-2">
+      <span class="text-[9px] font-black tracking-[0.2em] uppercase px-2 py-0.5"
+            style={`color:${catColor};border:1px solid ${catColor}44;background:${catColor}11;`}>
+        {category}
+      </span>
+      {tag && (
+        <span class="text-[9px] font-bold tracking-[0.15em] uppercase"
+              style={`color:${catColor};`}>
+          {tag}
+        </span>
+      )}
+      {source && size !== 'small' && (
+        <span class="text-[9px] text-gray-600 ml-auto tracking-widest uppercase">{source}</span>
+      )}
+    </div>
+
+    <!-- Title -->
+    <h3 class:list={[
+      'font-display text-white leading-tight tracking-wide uppercase group-hover:text-amber-400 transition-colors duration-300',
+      size === 'hero'   && 'text-2xl md:text-3xl mb-3',
+      size === 'large'  && 'text-lg md:text-xl mb-2',
+      size === 'medium' && 'text-sm md:text-base mb-2',
+      size === 'small'  && 'text-xs mb-1 line-clamp-2',
+    ]}>
+      {title}
+    </h3>
+
+    <!-- Excerpt -->
+    {size !== 'small' && (
+      <p class:list={[
+        'text-gray-400 leading-relaxed line-clamp-2 mb-3',
+        size === 'hero'  ? 'text-sm' : 'text-xs',
+      ]}>
+        {excerpt}
+      </p>
+    )}
+
+    <!-- Footer: date + read more -->
+    <div class="flex items-center justify-between">
+      <span class="text-[10px] text-gray-600 tracking-widest">{formattedDate}</span>
+      {size !== 'small' && (
+        <span class="text-[9px] font-bold tracking-[0.2em] uppercase flex items-center gap-1 transition-all duration-300"
+              style={`color:${catColor};`}>
+          LEER
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+               class="group-hover:translate-x-0.5 transition-transform duration-300">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </span>
+      )}
+    </div>
+
+    <!-- Bottom accent line -->
+    <div class="absolute bottom-0 left-0 right-0 h-[2px] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+         style={`background:linear-gradient(90deg,${catColor},transparent);`}></div>
+  </div>
+
+  <!-- Border -->
+  <div class="absolute inset-0 pointer-events-none transition-all duration-500"
+       style={`border:1px solid rgba(255,255,255,0.06);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));`}></div>
+  <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+       style={`border:1px solid ${catColor}44;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));`}></div>
+
+  <!-- Corner TL -->
+  <div class="absolute top-0 left-0 w-5 h-[1.5px] pointer-events-none transition-colors duration-500"
+       style={`background:rgba(255,255,255,0.15);`}></div>
+  <div class="absolute top-0 left-0 w-[1.5px] h-5 pointer-events-none transition-colors duration-500"
+       style={`background:rgba(255,255,255,0.15);`}></div>
+</a>
+
+<style>
+  .news-card { background: #08090e; }
+  .news-card:hover { background: #0a0f1c; }
+</style>

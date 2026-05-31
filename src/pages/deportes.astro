@@ -145,61 +145,79 @@ const courses = [
 ];
 ---
 
-<Layout title="Deportes y Alto Rendimiento | CBIT" showBackgroundFX={false}>
+<Layout title="Deportes y Alto Rendimiento | CBIT">
   <Navbar />
 
-  <main class="min-h-screen relative overflow-hidden" style="background:#060606;">
-
-    <!-- Glows ambientales -->
-    <div class="absolute top-0 right-0 w-[700px] h-[700px] pointer-events-none z-0"
-         style="background:radial-gradient(ellipse,rgba(14,165,233,0.07) 0%,transparent 65%);filter:blur(60px);transform:translate(30%,-30%);"></div>
-    <div class="absolute bottom-1/3 left-0 w-[500px] h-[500px] pointer-events-none z-0"
-         style="background:radial-gradient(ellipse,rgba(45,212,191,0.05) 0%,transparent 65%);filter:blur(80px);transform:translateX(-40%);"></div>
+  <main class="min-h-screen relative overflow-hidden">
 
     <!-- ── HERO ── -->
-    <section class="relative min-h-screen flex flex-col justify-end overflow-hidden" style="padding:0 3rem 5rem;">
+    <section class="relative min-h-screen flex flex-col justify-end overflow-hidden"
+             style="padding:0 3rem 5rem;">
+
       <div id="hero-bg" class="absolute inset-0 will-change-transform"
            style="background:url('/images/ima2.jpg') center 20% / cover no-repeat;"></div>
+
+      <!-- Overlay doble: oscurece + dirige la lectura a la izquierda -->
       <div class="absolute inset-0"
-           style="background:linear-gradient(to top,#060606 0%,rgba(6,6,6,0.7) 40%,rgba(6,6,6,0.25) 100%),linear-gradient(to right,rgba(6,6,6,0.85) 0%,transparent 60%);"></div>
-      <!-- Scanlines -->
+           style="background:
+             linear-gradient(to top,rgba(0,0,0,0.97) 0%,rgba(0,0,0,0.55) 45%,rgba(0,0,0,0.15) 100%),
+             linear-gradient(to right,rgba(0,0,0,0.9) 0%,transparent 65%);"></div>
+
+      <!-- Scanlines sutiles -->
       <div class="absolute inset-0 pointer-events-none z-[1]"
-           style="background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.1) 2px,rgba(0,0,0,0.1) 4px);"></div>
+           style="background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.08) 2px,rgba(0,0,0,0.08) 4px);"></div>
 
-      <div class="relative z-[2] max-w-4xl">
+      <div class="relative z-[2] max-w-5xl">
+
         <!-- Kicker -->
-        <div id="hero-kicker" class="flex items-center gap-3 mb-6" style="opacity:0;transform:translateY(20px);">
-          <div class="w-12 h-[1.5px]" style="background:#0ea5e9;"></div>
-          <span class="text-[10px] font-bold tracking-[0.35em] uppercase" style="color:#0ea5e9;">
-            Promocionado por INFOCADE · Centro de Capacitación Deportiva
-          </span>
-        </div>
-
-        <!-- Título -->
-        <h1 class="font-display font-bold tracking-tighter leading-none text-white mb-6 overflow-hidden"
-            style="font-size:clamp(3.5rem,9vw,8rem);line-height:0.92;">
-          <span class="hero-line block overflow-hidden"><span class="block translate-y-full">ACADEMIA DE</span></span>
-          <span class="hero-line block overflow-hidden"><span class="block translate-y-full" style="-webkit-text-stroke:1px rgba(255,255,255,0.15);color:transparent;">ALTO RENDIMIENTO</span></span>
+        
+        <!-- Título hero -->
+        <h1 class="font-display font-bold tracking-tighter leading-[0.9] text-white mb-8 overflow-hidden"
+            style="font-size:clamp(3.2rem,9vw,8.5rem);">
           <span class="hero-line block overflow-hidden">
-            <span class="block translate-y-full" style="background:linear-gradient(90deg,#0ea5e9,#2dd4bf);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">DEPORTIVO</span>
+            <span class="block translate-y-full">ACADEMIA DE</span>
+          </span>
+          <span class="hero-line block overflow-hidden">
+            <span class="block translate-y-full"
+                  style="-webkit-text-stroke:1px rgba(255, 255, 255, 0.12);color:rgb(243, 214, 22);">
+              ALTO RENDIMIENTO
+            </span>
+          </span>
+          <span class="hero-line block overflow-hidden">
+            <span class="block translate-y-full"
+                  style="background:linear-gradient(90deg,#0ea5e9,#2dd4bf);
+                         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+                         background-clip:text;">
+              DEPORTIVO
+            </span>
           </span>
         </h1>
 
-        <div class="flex flex-wrap items-start gap-12 mt-8">
-          <p id="hero-desc" class="text-gray-400 text-base max-w-md leading-relaxed"
-             style="opacity:0;transform:translateY(20px);">
-            Formamos directores técnicos, preparadores físicos, árbitros, psicólogos y especialistas con metodologías de nivel élite, integrados a la red de scouting profesional boliviano e internacional.
+        <!-- Meta row -->
+        <div class="flex flex-wrap items-start gap-10 mt-4">
+          <p id="hero-desc"
+             class="text-gray-400 text-sm md:text-base max-w-lg leading-[1.85] border-l-2 border-[#0ea5e9]/40 pl-5"
+             style="opacity:0;transform:translateY(18px);">
+            Formamos directores técnicos, preparadores físicos, árbitros, psicólogos y especialistas
+            con metodologías de nivel élite, integrados a la red de scouting profesional boliviano
+            e internacional.
           </p>
-          <div id="hero-ctas" class="flex gap-4 flex-wrap" style="opacity:0;transform:translateY(20px);">
+
+          <div id="hero-ctas" class="flex gap-3 flex-wrap"
+               style="opacity:0;transform:translateY(18px);">
             <a href="#cursos"
-               class="inline-flex items-center gap-3 font-display font-bold text-[11px] tracking-[0.15em] uppercase px-8 py-4 text-black transition-all duration-300 hover:-translate-y-1"
-               style="background:linear-gradient(135deg,#0ea5e9,#2dd4bf);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));">
+               class="inline-flex items-center gap-3 font-display font-bold text-[11px] tracking-[0.18em] uppercase px-8 py-4 text-black transition-all duration-300 hover:-translate-y-1 hover:brightness-110"
+               style="background:linear-gradient(135deg,#0ea5e9,#2dd4bf);
+                      clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));">
               Ver Cursos
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
             </a>
             <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 font-bold text-[11px] tracking-[0.15em] uppercase px-7 py-4 border text-gray-300 transition-all duration-300 hover:border-[#0ea5e9] hover:text-[#0ea5e9]"
-               style="border-color:rgba(255,255,255,0.15);clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));">
+               class="inline-flex items-center gap-2 font-bold text-[11px] tracking-[0.18em] uppercase px-7 py-4 border text-gray-300 transition-all duration-300 hover:border-[#0ea5e9] hover:text-[#0ea5e9]"
+               style="border-color:rgba(255,255,255,0.12);
+                      clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));">
               Inscribirse
             </a>
           </div>
@@ -207,119 +225,156 @@ const courses = [
       </div>
 
       <!-- Scroll hint -->
-      <div id="scroll-hint" class="absolute bottom-10 right-12 flex flex-col items-center gap-2 z-[2]" style="opacity:0;">
-        <span class="text-[9px] tracking-[0.25em] uppercase text-white/30" style="writing-mode:vertical-rl;">Deslizar</span>
-        <div class="w-[1px] h-14" style="background:linear-gradient(to bottom,rgba(255,255,255,0.3),transparent);animation:scrollPulse 2s ease-in-out infinite;"></div>
+      <div id="scroll-hint" class="absolute bottom-10 right-12 flex flex-col items-center gap-2 z-[2]"
+           style="opacity:0;">
+        <span class="text-[9px] tracking-[0.25em] uppercase text-white/25"
+              style="writing-mode:vertical-rl;">Deslizar</span>
+        <div class="w-[1px] h-14"
+             style="background:linear-gradient(to bottom,rgba(255,255,255,0.25),transparent);
+                    animation:scrollPulse 2s ease-in-out infinite;"></div>
       </div>
     </section>
 
     <!-- ── STATS BAR ── -->
-    <div class="border-t border-b border-white/[0.06]" style="background:#03070f;">
+    <div class="border-t border-b border-white/[0.05]"
+         style="background:rgba(0,0,0,0.5);backdrop-filter:blur(12px);">
       <div class="max-w-6xl mx-auto px-10 py-10 flex flex-wrap justify-around gap-8">
         {stats.map(s => (
           <div class="stat-chip flex items-center gap-4">
             <span class="font-display font-bold leading-none"
-                  style="font-size:3rem;background:linear-gradient(135deg,#0ea5e9,#2dd4bf);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
-              {s.num}<span style="font-size:0.55em;">{s.suffix}</span>
+                  style="font-size:2.75rem;
+                         background:linear-gradient(135deg,#0ea5e9,#2dd4bf);
+                         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+                         background-clip:text;">
+              {s.num}<span style="font-size:0.5em;">{s.suffix}</span>
             </span>
-            <span class="text-[11px] font-bold tracking-[0.12em] uppercase text-white/40 max-w-[90px] leading-[1.4]">{s.label}</span>
+            <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-white/35
+                         max-w-[90px] leading-[1.5]">
+              {s.label}
+            </span>
           </div>
         ))}
       </div>
     </div>
 
     <!-- ── CURSOS ── -->
-    <section id="cursos" class="max-w-7xl mx-auto px-6 md:px-10 py-28 relative z-10">
+    <section id="cursos" class="max-w-7xl mx-auto px-6 md:px-10 py-24 relative z-10">
 
-      <!-- Header -->
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/10 pb-12 mb-16">
+      <!-- Header sección -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8
+                  border-b border-white/[0.07] pb-12 mb-14">
         <div id="courses-header">
-          <p class="text-[10px] font-display font-bold tracking-[0.4em] uppercase mb-4" style="color:#0ea5e9;">
+          <p class="text-[9px] font-bold tracking-[0.45em] uppercase mb-4"
+             style="color:#0ea5e9;">
             Programas Especializados
           </p>
-          <h2 class="font-display font-bold tracking-tighter leading-none text-white"
-              style="font-size:clamp(2.8rem,6vw,5.5rem);">
+          <h2 class="font-display font-bold tracking-tighter leading-[0.93] text-white"
+              style="font-size:clamp(2.6rem,5.5vw,5rem);">
             DISCIPLINAS Y<br/>
             <span style="-webkit-text-stroke:1.5px #0ea5e9;color:transparent;">FORMACIÓN</span>
-            <span style="color:#fff;"> ÉLITE</span>
+            <span class="text-white"> ÉLITE</span>
           </h2>
-          <div id="courses-line" class="w-0 h-[2px] mt-6 origin-left"
+          <div id="courses-line" class="w-0 h-[2px] mt-5 origin-left"
                style="background:linear-gradient(to right,#0ea5e9,#2dd4bf);"></div>
         </div>
 
-        <!-- Badge infocade grande -->
-        <div id="infocade-badge-main" class="flex items-center gap-3 border px-5 py-3 self-start lg:self-end"
-             style="border-color:rgba(14,165,233,0.3);clip-path:polygon(0 0,92% 0,100% 20%,100% 100%,8% 100%,0 80%);opacity:0;">
-          <div class="w-8 h-8 rounded-full flex items-center justify-center"
-               style="background:rgba(14,165,233,0.15);border:1px solid rgba(14,165,233,0.4);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round">
+        <!-- Badge INFOCADE -->
+        <div id="infocade-badge-main"
+             class="flex items-center gap-3 self-start lg:self-end px-5 py-3 border"
+             style="border-color:rgba(14,165,233,0.25);
+                    background:rgba(14,165,233,0.04);
+                    clip-path:polygon(0 0,92% 0,100% 20%,100% 100%,8% 100%,0 80%);
+                    opacity:0;">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+               style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.35);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                 stroke="#0ea5e9" stroke-width="2" stroke-linecap="round">
               <circle cx="12" cy="12" r="9"/>
-              <line x1="12" y1="8" x2="12" y2="12"/>
-              <circle cx="12" cy="16" r=".5" fill="#0ea5e9"/>
+              <line x1="12" y1="8" x2="12" y2="13"/>
+              <circle cx="12" cy="16.5" r=".6" fill="#0ea5e9"/>
             </svg>
           </div>
-          <div>
-            <span class="text-[9px] font-bold tracking-[0.25em] uppercase block" style="color:#0ea5e9;">Promocionado por</span>
-            <span class="text-white font-bold text-sm tracking-widest">INFOCADE</span>
+          <div class="flex flex-col">
+            <span class="text-[8px] font-bold tracking-[0.3em] uppercase"
+                  style="color:#0ea5e9;opacity:0.7;">Promocionado por</span>
+            <span class="text-white font-bold text-sm tracking-[0.2em]">INFOCADE</span>
           </div>
         </div>
       </div>
 
-      <!-- Grid de cursos -->
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5" id="courses-grid">
+      <!-- Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4" id="courses-grid">
         {courses.map((c, i) => (
           <div
-            class="course-card group relative border border-white/[0.08] overflow-hidden transition-all duration-400 hover:-translate-y-1"
-            style={`clip-path:polygon(0 0,96% 0,100% 4%,100% 100%,4% 100%,0 96%);background:#0a0a0a;opacity:0;transform:translateY(40px);`}
+            class="course-card group relative border border-white/[0.07] overflow-hidden
+                   transition-colors duration-300"
+            style={`clip-path:polygon(0 0,96% 0,100% 4%,100% 100%,4% 100%,0 96%);
+                    background:rgba(255,255,255,0.02);
+                    opacity:0;transform:translateY(36px);`}
             data-idx={i}
           >
             <!-- Imagen -->
-            <div class="relative overflow-hidden" style="height:200px;">
+            <div class="relative overflow-hidden" style="height:190px;">
               <img
                 src={c.img}
                 alt={c.title}
-                class="w-full h-full object-cover block transition-all duration-700 group-hover:scale-105"
-                style="opacity:0.45;"
+                class="w-full h-full object-cover block transition-all duration-700 group-hover:scale-[1.04]"
+                style="opacity:0.4;"
                 data-card-img
               />
-              <div class="absolute inset-0" style="background:linear-gradient(to top,#0a0a0a 0%,transparent 55%);"></div>
+              <div class="absolute inset-0"
+                   style="background:linear-gradient(to top,rgba(0,0,0,0.95) 0%,transparent 60%);"></div>
 
-              <!-- Badge INFOCADE sobre la imagen -->
-              <div class="absolute top-3 right-3 flex items-center gap-2 border px-2 py-1"
-                   style="background:rgba(6,6,6,0.88);border-color:rgba(14,165,233,0.35);clip-path:polygon(0 0,90% 0,100% 20%,100% 100%,0 100%);">
-                <div class="w-[13px] h-[13px] rounded-full flex items-center justify-center flex-shrink-0"
+              <!-- Badge INFOCADE -->
+              <div class="absolute top-3 right-3 flex items-center gap-1.5 px-2 py-1"
+                   style="background:rgba(4,4,4,0.92);
+                          border:1px solid rgba(14,165,233,0.3);
+                          clip-path:polygon(0 0,88% 0,100% 20%,100% 100%,0 100%);">
+                <div class="w-[11px] h-[11px] rounded-full flex items-center justify-center flex-shrink-0"
                      style="background:#0ea5e9;">
-                  <svg width="8" height="8" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5">
-                    <circle cx="6" cy="6" r="4"/>
-                    <line x1="6" y1="4.5" x2="6" y2="7"/>
-                    <circle cx="6" cy="8.5" r=".6" fill="#fff" stroke="none"/>
+                  <svg width="6" height="6" viewBox="0 0 10 10" fill="none"
+                       stroke="#fff" stroke-width="2.5">
+                    <circle cx="5" cy="5" r="3.5"/>
                   </svg>
                 </div>
-                <span class="text-[8px] font-bold tracking-[0.2em] uppercase" style="color:#0ea5e9;">INFOCADE</span>
+                <span class="text-[7px] font-bold tracking-[0.2em] uppercase"
+                      style="color:#0ea5e9;">INFOCADE</span>
               </div>
+
+              <!-- Número en imagen -->
+              <div class="absolute bottom-3 left-4 font-bold leading-none pointer-events-none select-none"
+                   style="font-size:5rem;color:#0ea5e9;opacity:0.05;line-height:1;">{c.num}</div>
             </div>
 
-            <!-- Brackets animados en hover (CSS Tailwind group) -->
-            <div class="absolute top-0 left-0 w-0 h-[2px] group-hover:w-10 transition-all duration-500" style="background:#0ea5e9;"></div>
-            <div class="absolute top-0 left-0 w-[2px] h-0 group-hover:h-10 transition-all duration-500 delay-75" style="background:#0ea5e9;"></div>
-
-            <!-- Número decorativo -->
-            <div class="absolute top-4 left-4 font-bold leading-none pointer-events-none select-none"
-                 style="font-size:4rem;color:#0ea5e9;opacity:0.06;">{c.num}</div>
+            <!-- Brackets hover top-left -->
+            <div class="absolute top-0 left-0 w-0 h-[2px] group-hover:w-9
+                        transition-all duration-500" style="background:#0ea5e9;"></div>
+            <div class="absolute top-0 left-0 w-[2px] h-0 group-hover:h-9
+                        transition-all duration-500 delay-[60ms]" style="background:#0ea5e9;"></div>
 
             <!-- Cuerpo -->
-            <div class="p-5 pb-3">
-              <span class="text-[9px] font-bold tracking-[0.25em] uppercase block mb-2" style="color:#0ea5e9;">{c.tag}</span>
-              <h3 class="text-white font-bold leading-snug tracking-wide" style="font-size:0.9rem;">{c.title}</h3>
+            <div class="px-5 pt-4 pb-3">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-3 h-[1px]" style="background:#0ea5e9;opacity:0.6;"></div>
+                <span class="text-[8px] font-bold tracking-[0.3em] uppercase"
+                      style="color:#0ea5e9;">{c.tag}</span>
+              </div>
+              <h3 class="text-white font-bold leading-snug"
+                  style="font-size:0.875rem;letter-spacing:0.02em;">{c.title}</h3>
             </div>
 
-            <!-- Footer de la card -->
-            <div class="flex items-center justify-between px-5 py-3 mt-1"
-                 style="border-top:1px solid rgba(255,255,255,0.06);">
-              <span class="text-[9px] uppercase tracking-wider text-gray-600 font-semibold">{c.modalidad}</span>
+            <!-- Footer card -->
+            <div class="flex items-center justify-between px-5 py-3"
+                 style="border-top:1px solid rgba(255,255,255,0.05);">
+              <span class="text-[8px] uppercase tracking-[0.15em] text-white/25 font-semibold">
+                {c.modalidad}
+              </span>
               <button
-                class="learn-btn text-[9px] font-bold tracking-[0.2em] uppercase border px-3 py-2 transition-all duration-250"
-                style="color:#0ea5e9;border-color:rgba(14,165,233,0.35);clip-path:polygon(0 0,88% 0,100% 20%,100% 100%,12% 100%,0 80%);"
+                class="learn-btn text-[8px] font-bold tracking-[0.2em] uppercase px-3 py-1.5
+                       border transition-colors duration-200 hover:bg-[#0ea5e9]/10"
+                style="color:#0ea5e9;
+                       border-color:rgba(14,165,233,0.3);
+                       clip-path:polygon(0 0,86% 0,100% 22%,100% 100%,14% 100%,0 78%);"
                 data-target={`panel-${i}`}
               >
                 ¿Qué aprenderás?
@@ -327,28 +382,36 @@ const courses = [
             </div>
 
             <!-- Panel expandible -->
-            <div class="learn-panel overflow-hidden transition-all duration-500" id={`panel-${i}`}
+            <div class="learn-panel overflow-hidden" id={`panel-${i}`}
                  style="max-height:0;">
-              <div class="px-5 pb-5 pt-2" style="background:#060d14;border-top:1px solid rgba(14,165,233,0.12);">
+              <div class="px-5 pb-5 pt-3"
+                   style="background:rgba(14,165,233,0.03);
+                          border-top:1px solid rgba(14,165,233,0.1);">
                 <div class="flex items-center gap-2 mb-3">
-                  <div class="w-5 h-[1px]" style="background:#0ea5e9;"></div>
-                  <span class="text-[9px] font-bold tracking-[0.2em] uppercase" style="color:#0ea5e9;">CONTENIDO DEL CURSO</span>
+                  <div class="w-4 h-[1px]" style="background:#0ea5e9;"></div>
+                  <span class="text-[8px] font-bold tracking-[0.25em] uppercase"
+                        style="color:#0ea5e9;">CONTENIDO DEL CURSO</span>
                 </div>
-                <ul class="flex flex-col gap-2">
+                <ul class="flex flex-col gap-2.5">
                   {c.learn.map(l => (
-                    <li class="flex items-start gap-2 text-gray-400 text-xs leading-relaxed">
-                      <span class="mt-[6px] w-[5px] h-[5px] flex-shrink-0 rotate-45" style="background:#0ea5e9;display:block;"></span>
+                    <li class="flex items-start gap-2.5 text-white/50 text-xs leading-relaxed">
+                      <span class="mt-[5px] w-[4px] h-[4px] flex-shrink-0 rotate-45 bg-[#0ea5e9]
+                                   opacity-70 block"></span>
                       {l}
                     </li>
                   ))}
                 </ul>
                 <button
-                  class="close-panel mt-4 flex items-center gap-2 text-[9px] font-bold tracking-[0.15em] uppercase"
-                  style="color:#0ea5e9;background:none;border:none;cursor:pointer;"
+                  class="close-panel mt-4 flex items-center gap-2 text-[8px] font-bold
+                         tracking-[0.2em] uppercase text-[#0ea5e9]/60 hover:text-[#0ea5e9]
+                         transition-colors duration-200"
+                  style="background:none;border:none;cursor:pointer;"
                   data-target={`panel-${i}`}
                 >
-                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#0ea5e9" stroke-width="2">
-                    <line x1="2" y1="2" x2="10" y2="10"/><line x1="10" y1="2" x2="2" y2="10"/>
+                  <svg width="9" height="9" viewBox="0 0 12 12" fill="none"
+                       stroke="currentColor" stroke-width="2">
+                    <line x1="2" y1="2" x2="10" y2="10"/>
+                    <line x1="10" y1="2" x2="2" y2="10"/>
                   </svg>
                   CERRAR
                 </button>
@@ -360,27 +423,59 @@ const courses = [
     </section>
 
     <!-- ── CTA ── -->
-    <section class="relative overflow-hidden border-t border-white/[0.06]">
-      <div class="absolute inset-0" style="background:url('/images/ima3.jpg') center 30% / cover no-repeat;opacity:0.05;filter:blur(4px);"></div>
-      <div class="relative z-10 max-w-6xl mx-auto px-10 py-32 flex flex-col items-start" id="cta-section">
-        <h2 class="font-display font-bold tracking-tighter leading-none mb-12"
-            style="font-size:clamp(3rem,7.5vw,7rem);">
-          <span class="block text-white/15" style="-webkit-text-stroke:1.5px rgba(255,255,255,0.15);color:transparent;">LLEVA TU PASIÓN</span>
-          <span class="block text-white/15" style="-webkit-text-stroke:1.5px rgba(255,255,255,0.15);color:transparent;">AL SIGUIENTE NIVEL.</span>
-          <span class="block" style="background:linear-gradient(90deg,#0ea5e9,#2dd4bf);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">INICIA TU CAMINO HOY.</span>
+    <section class="relative overflow-hidden border-t border-white/[0.05]">
+      <div class="absolute inset-0"
+           style="background:url('/images/ima3.jpg') center 30% / cover no-repeat;
+                  opacity:0.04;filter:blur(6px);"></div>
+      <!-- Glow cálido de fondo CTA -->
+      <div class="absolute inset-0 pointer-events-none"
+           style="background:radial-gradient(ellipse at 20% 50%,rgba(14,165,233,0.06) 0%,transparent 60%);"></div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-10 py-28 flex flex-col items-start"
+           id="cta-section">
+        <h2 class="font-display font-bold tracking-tighter leading-[0.9] mb-10"
+            style="font-size:clamp(2.8rem,7vw,6.5rem);">
+          <span class="block"
+                style="-webkit-text-stroke:1px rgba(255,255,255,0.1);color:transparent;">
+            LLEVA TU PASIÓN
+          </span>
+          <span class="block"
+                style="-webkit-text-stroke:1px rgba(255,255,255,0.1);color:transparent;">
+            AL SIGUIENTE NIVEL.
+          </span>
+          <span class="block"
+                style="background:linear-gradient(90deg,#0ea5e9,#2dd4bf);
+                       -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+                       background-clip:text;">
+            INICIA TU CAMINO HOY.
+          </span>
         </h2>
-        <div class="flex flex-wrap items-center gap-6">
+
+        <div class="flex flex-wrap items-center gap-5">
           <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 font-display font-bold text-sm tracking-[0.12em] uppercase px-10 py-5 text-black transition-all duration-300 hover:-translate-y-1"
-             style="background:linear-gradient(135deg,#0ea5e9,#2dd4bf);clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));">
+             class="inline-flex items-center gap-3 font-display font-bold text-sm
+                    tracking-[0.14em] uppercase px-10 py-5 text-black
+                    transition-all duration-300 hover:-translate-y-1 hover:brightness-110"
+             style="background:linear-gradient(135deg,#0ea5e9,#2dd4bf);
+                    clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));">
             Reservar Mi Cupo
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
           </a>
-          <div class="flex gap-3 flex-wrap">
+
+          <div class="flex gap-2.5 flex-wrap">
             {["Cupos Limitados","Validez Curricular","Cert. Analítico"].map(b => (
-              <div class="inline-flex items-center gap-2 px-4 py-3 border text-gray-400 text-[10px] font-bold tracking-[0.1em] uppercase"
-                   style="border-color:rgba(255,255,255,0.08);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="3" width="11" height="11"><polyline points="20 6 9 17 4 12"/></svg>
+              <div class="inline-flex items-center gap-2 px-4 py-2.5 border
+                          text-white/40 text-[9px] font-bold tracking-[0.15em] uppercase
+                          hover:border-[#0ea5e9]/30 hover:text-white/60 transition-colors duration-300"
+                   style="border-color:rgba(255,255,255,0.07);
+                          clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px));">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="3"
+                     width="10" height="10">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
                 {b}
               </div>
             ))}
@@ -389,21 +484,13 @@ const courses = [
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="px-10 py-8 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-5" style="background:#03070f;">
-      <span class="font-display font-bold text-lg tracking-widest text-white">
-        CBIT <span style="color:#0ea5e9;">DEPORTES</span>
-      </span>
-      <span class="text-gray-600 text-xs tracking-widest">© {new Date().getFullYear()} CBIT Corporación · Todos los derechos reservados.</span>
-    </footer>
-
   </main>
 </Layout>
 
 <style>
   @keyframes scrollPulse {
-    0%, 100% { opacity: 0.3; transform: scaleY(1); }
-    50%       { opacity: 0.8; transform: scaleY(1.1); }
+    0%, 100% { opacity: 0.25; }
+    50%       { opacity: 0.7; }
   }
 </style>
 
@@ -415,90 +502,91 @@ const courses = [
     gsap.registerPlugin(ScrollTrigger);
 
     /* ── HERO ── */
-    const heroTl = gsap.timeline({ delay: 0.15 });
+    const heroTl = gsap.timeline({ delay: 0.1 });
     heroTl
-      .from('#hero-bg',       { scale: 1.1, duration: 2.2, ease: 'power2.out' }, 0)
-      .to('#hero-kicker',     { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, 0.3)
-      .to('.hero-line span',  { y: '0%', duration: 1, stagger: 0.15, ease: 'power4.out' }, 0.5)
-      .to('#hero-desc',       { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.9)
-      .to('#hero-ctas',       { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 1.05)
-      .to('#scroll-hint',     { opacity: 1, duration: 0.6 }, 1.3);
+      .from('#hero-bg',      { scale: 1.08, duration: 2.4, ease: 'power2.out' }, 0)
+      .to('#hero-kicker',    { y: 0, opacity: 1, duration: 0.85, ease: 'power3.out' }, 0.25)
+      .to('.hero-line span', { y: '0%', duration: 1.05, stagger: 0.14, ease: 'power4.out' }, 0.45)
+      .to('#hero-desc',      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.88)
+      .to('#hero-ctas',      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 1.02)
+      .to('#scroll-hint',    { opacity: 1, duration: 0.5 }, 1.25);
 
     /* Parallax hero */
     gsap.to('#hero-bg', {
-      yPercent: 22,
+      yPercent: 20,
       ease: 'none',
-      scrollTrigger: { trigger: 'section', start: 'top top', end: 'bottom top', scrub: true }
+      scrollTrigger: {
+        trigger: 'section',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
     });
 
-    /* Stats counter */
+    /* Stats */
     gsap.utils.toArray<HTMLElement>('.stat-chip').forEach((chip, i) => {
       gsap.from(chip, {
-        y: 30, opacity: 0, duration: 0.7,
-        delay: i * 0.1,
+        y: 24, opacity: 0, duration: 0.65,
+        delay: i * 0.08,
         ease: 'power3.out',
-        scrollTrigger: { trigger: chip, start: 'top 88%' }
+        scrollTrigger: { trigger: chip, start: 'top 90%' }
       });
     });
 
-    /* ── CURSOS HEADER ── */
+    /* Header cursos */
     const hdrTl = gsap.timeline({
-      scrollTrigger: { trigger: '#courses-header', start: 'top 82%' }
+      scrollTrigger: { trigger: '#courses-header', start: 'top 84%' }
     });
     hdrTl
-      .from('#courses-header > *', { y: 40, opacity: 0, duration: 0.8, stagger: 0.2, ease: 'power3.out' })
-      .to('#courses-line',         { width: '3rem', duration: 0.8, ease: 'power3.out' }, '-=0.4')
-      .to('#infocade-badge-main',  { opacity: 1, x: 0, duration: 0.7, ease: 'back.out(1.5)' }, '-=0.3');
+      .from('#courses-header > *', {
+        y: 35, opacity: 0, duration: 0.75, stagger: 0.18, ease: 'power3.out'
+      })
+      .to('#courses-line', { width: '3rem', duration: 0.75, ease: 'power3.out' }, '-=0.35')
+      .to('#infocade-badge-main', { opacity: 1, duration: 0.6, ease: 'back.out(1.4)' }, '-=0.25');
 
-    /* ── CARDS: entrada escalonada ── */
-    const cards = gsap.utils.toArray<HTMLElement>('.course-card');
-    cards.forEach((card, i) => {
+    /* Cards */
+    gsap.utils.toArray<HTMLElement>('.course-card').forEach((card, i) => {
       const img = card.querySelector<HTMLImageElement>('[data-card-img]');
 
       gsap.to(card, {
-        y: 0, opacity: 1, duration: 0.9,
+        y: 0, opacity: 1, duration: 0.85,
         ease: 'power3.out',
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 88%',
-          once: true,
-        },
-        delay: (i % 3) * 0.12,
+        delay: (i % 3) * 0.1,
+        scrollTrigger: { trigger: card, start: 'top 90%', once: true }
       });
 
-      /* hover imagen */
       card.addEventListener('mouseenter', () => {
-        if (img) gsap.to(img, { opacity: 0.78, duration: 0.6, ease: 'power2.out' });
-        gsap.to(card, { borderColor: 'rgba(14,165,233,0.4)', duration: 0.3 });
+        if (img) gsap.to(img, { opacity: 0.72, duration: 0.55, ease: 'power2.out' });
+        gsap.to(card, { borderColor: 'rgba(14,165,233,0.35)', duration: 0.25 });
       });
       card.addEventListener('mouseleave', () => {
-        if (img) gsap.to(img, { opacity: 0.45, duration: 0.6, ease: 'power2.out' });
-        gsap.to(card, { borderColor: 'rgba(255,255,255,0.08)', duration: 0.3 });
+        if (img) gsap.to(img, { opacity: 0.4, duration: 0.55, ease: 'power2.out' });
+        gsap.to(card, { borderColor: 'rgba(255,255,255,0.07)', duration: 0.25 });
       });
     });
 
-    /* ── PANEL EXPANDIBLE ── */
+    /* Panel expandible */
     document.querySelectorAll<HTMLButtonElement>('.learn-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const targetId = btn.dataset.target!;
-        const panel    = document.getElementById(targetId)!;
-        const isOpen   = panel.style.maxHeight !== '0px' && panel.style.maxHeight !== '';
+        const panel  = document.getElementById(btn.dataset.target!)!;
+        const isOpen = parseFloat(panel.style.maxHeight || '0') > 0;
 
-        /* cerrar todos */
         document.querySelectorAll<HTMLElement>('.learn-panel').forEach(p => {
-          gsap.to(p, { maxHeight: 0, duration: 0.4, ease: 'power3.in',
-            onComplete: () => p.style.maxHeight = '0' });
+          gsap.to(p, {
+            maxHeight: 0, duration: 0.38, ease: 'power3.in',
+            onComplete: () => { p.style.maxHeight = '0'; }
+          });
         });
 
         if (!isOpen) {
           gsap.fromTo(panel,
             { maxHeight: 0 },
-            { maxHeight: 400, duration: 0.5, ease: 'power3.out',
-              onStart: () => panel.style.overflow = 'hidden' }
+            { maxHeight: 420, duration: 0.48, ease: 'power3.out' }
           );
-          /* animar los bullets del panel al abrirse */
-          const bullets = panel.querySelectorAll('li');
-          gsap.from(bullets, { x: -10, opacity: 0, duration: 0.4, stagger: 0.07, delay: 0.15, ease: 'power2.out' });
+          gsap.from(panel.querySelectorAll('li'), {
+            x: -8, opacity: 0, duration: 0.35,
+            stagger: 0.06, delay: 0.14, ease: 'power2.out'
+          });
         }
       });
     });
@@ -506,15 +594,17 @@ const courses = [
     document.querySelectorAll<HTMLButtonElement>('.close-panel').forEach(btn => {
       btn.addEventListener('click', () => {
         const panel = document.getElementById(btn.dataset.target!)!;
-        gsap.to(panel, { maxHeight: 0, duration: 0.4, ease: 'power3.in',
-          onComplete: () => panel.style.maxHeight = '0' });
+        gsap.to(panel, {
+          maxHeight: 0, duration: 0.38, ease: 'power3.in',
+          onComplete: () => { panel.style.maxHeight = '0'; }
+        });
       });
     });
 
-    /* ── CTA ── */
+    /* CTA */
     gsap.from('#cta-section > *', {
-      y: 50, opacity: 0, duration: 0.9, stagger: 0.2, ease: 'power3.out',
-      scrollTrigger: { trigger: '#cta-section', start: 'top 78%' }
+      y: 45, opacity: 0, duration: 0.85, stagger: 0.18, ease: 'power3.out',
+      scrollTrigger: { trigger: '#cta-section', start: 'top 80%' }
     });
   }
 </script>
