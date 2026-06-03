@@ -6,25 +6,60 @@ const carreras = [
     categoria: "Gestión y Calidad",
     num: "01",
     cursos: [
-      { nombre: "Sistemas de Gestión Ambiental", desc: "Gestión ambiental empresarial, normativas ISO 14001 y desarrollo sostenible.", modalidad: "Presencial / Virtual", imagen: "/images/1.png" },
-      { nombre: "Sistemas de Gestión de Calidad", desc: "Implementación de normas ISO 9001, auditoría de calidad y mejora continua.", modalidad: "Presencial", imagen: "/images/2.png" },
-      { nombre: "Supervisión y Liderazgo en Prevención de Riesgos", desc: "Gestión de riesgos laborales, seguridad industrial y salud ocupacional.", modalidad: "Presencial", imagen: "/images/5.png" },
+      {
+        nombre: "Sistemas de Gestión Ambiental",
+        desc: "Aprende a implementar estrategias que reduzcan el impacto ambiental empresarial. Identificarás riesgos, manejarás residuos, optimizarás recursos y aplicarás normas como ISO 14001, preparándote para trabajar en industrias o consultorías ambientales.",
+        modalidad: "Presencial / Virtual",
+        imagen: "/images/1.png"
+      },
+      {
+        nombre: "Sistemas de Gestión de Calidad",
+        desc: "Diseña e implementa sistemas que garanticen altos estándares en productos y servicios. Aprenderás a aplicar ISO 9001, realizar auditorías internas y optimizar procesos, siendo clave en la mejora continua.",
+        modalidad: "Presencial",
+        imagen: "/images/2.png"
+      },
+      {
+        nombre: "Supervisión y Liderazgo en Prevención de Riesgos",
+        desc: "Prepárate para liderar equipos y garantizar la seguridad laboral. Identificarás riesgos, prevendrás accidentes y aplicarás normativas de seguridad en entornos industriales.",
+        modalidad: "Presencial",
+        imagen: "/images/5.png"
+      },
     ],
   },
   {
     categoria: "Diseño y Tecnología",
     num: "02",
     cursos: [
-      { nombre: "Diseño Gráfico y Producción Audiovisual", desc: "Adobe Creative Suite, motion graphics, edición de video y producción digital.", modalidad: "Presencial / Virtual", imagen: "/images/6.png" },
-      { nombre: "Microsoft Project", desc: "Gestión de proyectos con MS Project, planificación y control de cronogramas.", modalidad: "Virtual", imagen: "/images/3.png" },
+      {
+        nombre: "Diseño Gráfico y Producción Audiovisual",
+        desc: "Desarrolla tu creatividad creando contenido visual y audiovisual profesional. Aprenderás a usar software de diseño, edición de video y producción de contenido para redes sociales.",
+        modalidad: "Presencial / Virtual",
+        imagen: "/images/6.png"
+      },
+      {
+        nombre: "Microsoft Project",
+        desc: "Domina la herramienta esencial para la gestión de proyectos. Aprende a planificar tareas, asignar recursos, gestionar costos y monitorear el avance en tiempo real.",
+        modalidad: "Virtual",
+        imagen: "/images/3.png"
+      },
     ],
   },
   {
     categoria: "Deporte y Rendimiento",
     num: "03",
     cursos: [
-      { nombre: "Sistemas Tácticos Deportivos", desc: "Análisis táctico, estrategias de juego y preparación deportiva especializada.", modalidad: "Presencial", imagen: "/images/4.png" },
-      { nombre: "Deporte de Alto Rendimiento y Competición", desc: "Preparación física, mental y técnica para deportistas de élite.", modalidad: "Presencial", imagen: "/images/8.png" },
+      {
+        nombre: "Sistemas Tácticos Deportivos",
+        desc: "Descubre cómo se construyen las jugadas ganadoras. Analiza el juego, diseña tácticas y adapta estrategias a diferentes situaciones competitivas.",
+        modalidad: "Presencial",
+        imagen: "/images/4.png"
+      },
+      {
+        nombre: "Deporte de Alto Rendimiento y Competición",
+        desc: "Alcanza el máximo nivel con preparación física, mental y técnica de élite. Métodos de entrenamiento avanzado y manejo psicológico en competencias.",
+        modalidad: "Presencial",
+        imagen: "/images/8.png"
+      },
     ],
   },
 ];
@@ -34,6 +69,32 @@ const stats = [
   { num: "18", suffix: "", label: "Programas" },
   { num: "97", suffix: "%", label: "Inserción Laboral" },
   { num: "12", suffix: "", label: "Años de Experiencia" },
+];
+
+const testimonios = [
+  {
+    cita: "Gracias a CENACAP conseguí un puesto en una multinacional apenas terminé el curso. La metodología práctica marcó la diferencia.",
+    autor: "María Fernández",
+    rol: "Egresada de Gestión de Calidad"
+  },
+  {
+    cita: "Los profesores son profesionales en activo, no te enseñan teoría vacía. Aprendí herramientas que uso a diario en mi trabajo.",
+    autor: "Carlos López",
+    rol: "Egresado de Diseño Gráfico"
+  },
+  {
+    cita: "El enfoque en prevención de riesgos es justo lo que necesitaba para ascender en mi empresa. Recomiendo CENACAP al 100%.",
+    autor: "Ana Martínez",
+    rol: "Egresada de Prevención de Riesgos"
+  }
+];
+
+// Nueva galería de instalaciones (reemplaza aliados)
+const instalaciones = [
+  { imagen: "/images/instalacion1.jpg", titulo: "Aula de Tecnología", desc: "Equipos de última generación para clases prácticas." },
+  { imagen: "/images/instalacion2.jpg", titulo: "Laboratorio de Calidad", desc: "Espacios simulados para auditorías y gestión." },
+  { imagen: "/images/instalacion3.jpg", titulo: "Estudio de Diseño", desc: "Estaciones de trabajo con software profesional." },
+  { imagen: "/images/instalacion4.jpg", titulo: "Área Deportiva", desc: "Instalaciones para entrenamiento táctico y físico." },
 ];
 ---
 
@@ -45,12 +106,12 @@ const stats = [
   :root {
     --c-black: #000000;
     --c-ink: #080c10;
-    --c-blue: #0ea5e9;
-    --c-blue-dim: #0369a1;
+    --c-sky: #38bdf8;        /* azul celeste */
+    --c-sky-dim: #0284c7;
     --c-green: #22c55e;
     --c-green-dim: #16a34a;
-    --c-teal: #2dd4bf;
-    --c-white: #f8fafc;
+    --c-cream: #f8fafc;      /* blanco/crema */
+    --c-white: #ffffff;
     --c-gray: #94a3b8;
     --c-border: rgba(255,255,255,0.07);
   }
@@ -61,7 +122,7 @@ const stats = [
     height: 72px;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 48px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.85);
     backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--c-border);
     transition: background 0.4s;
@@ -75,7 +136,7 @@ const stats = [
     font-family: 'Anton', sans-serif;
     letter-spacing: 0.08em;
     font-size: 1.3rem;
-    color: var(--c-white);
+    color: var(--c-cream);
     line-height: 1;
   }
   .nav-wordmark em { color: var(--c-green); font-style: normal; }
@@ -83,8 +144,8 @@ const stats = [
     display: inline-flex; align-items: center; gap: 8px;
     padding: 11px 28px;
     background: transparent;
-    border: 1.5px solid var(--c-blue);
-    color: var(--c-blue);
+    border: 1.5px solid var(--c-sky);
+    color: var(--c-sky);
     font-family: 'Anton', sans-serif;
     font-size: 0.82rem;
     letter-spacing: 0.12em;
@@ -94,9 +155,9 @@ const stats = [
     clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
   }
   .nav-pill:hover {
-    background: var(--c-blue);
+    background: var(--c-sky);
     color: #000;
-    box-shadow: 0 0 24px rgba(14,165,233,0.5);
+    box-shadow: 0 0 24px rgba(56,189,248,0.5);
   }
   .nav-pill svg { width: 14px; height: 14px; transition: transform 0.25s; }
   .nav-pill:hover svg { transform: translateX(3px); }
@@ -113,8 +174,6 @@ const stats = [
   #hero-bg {
     position: absolute; inset: 0;
     background: url('/images/sala.webp') center center / cover no-repeat;
-    transform-origin: center;
-    will-change: transform;
   }
   #hero-overlay {
     position: absolute; inset: 0;
@@ -122,7 +181,6 @@ const stats = [
       linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.25) 100%),
       linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 60%);
   }
-  /* Scan lines */
   #hero::after {
     content: '';
     position: absolute; inset: 0;
@@ -160,17 +218,17 @@ const stats = [
     line-height: 0.9;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: var(--c-white);
+    color: var(--c-cream);
     margin-bottom: 8px;
-    overflow: hidden;
   }
-  .hero-h1 span { display: block; }
+  .hero-h1 .line-wrap { display: block; overflow: hidden; }
+  .hero-h1 .line-wrap span { display: block; }
   .hero-h1 .line-accent {
     -webkit-text-stroke: 1px rgba(255,255,255,0.25);
     color: transparent;
   }
   .hero-h1 .line-color {
-    background: linear-gradient(90deg, var(--c-blue), var(--c-teal));
+    background: linear-gradient(90deg, var(--c-green), var(--c-sky));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -184,7 +242,7 @@ const stats = [
   .hero-desc {
     font-family: 'Inter', sans-serif;
     font-size: 1.05rem;
-    color: rgba(255,255,255,0.55);
+    color: rgba(248,250,252,0.55);
     max-width: 420px;
     line-height: 1.75;
     font-weight: 400;
@@ -197,7 +255,7 @@ const stats = [
   .btn-hero-primary {
     display: inline-flex; align-items: center; gap: 10px;
     padding: 15px 36px;
-    background: linear-gradient(135deg, var(--c-blue), var(--c-teal));
+    background: linear-gradient(135deg, var(--c-green), var(--c-sky));
     color: #000;
     font-family: 'Anton', sans-serif;
     font-size: 0.9rem;
@@ -206,11 +264,10 @@ const stats = [
     text-decoration: none;
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
     transition: all 0.3s;
-    box-shadow: 0 0 0 rgba(14,165,233,0);
   }
   .btn-hero-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(14,165,233,0.5);
+    box-shadow: 0 12px 40px rgba(34,197,94,0.5);
   }
   .btn-hero-secondary {
     display: inline-flex; align-items: center; gap: 8px;
@@ -231,7 +288,6 @@ const stats = [
     color: var(--c-green);
   }
 
-  /* Scroll indicator */
   .scroll-hint {
     position: absolute; bottom: 32px; right: 60px; z-index: 2;
     display: flex; flex-direction: column; align-items: center; gap: 8px;
@@ -283,7 +339,7 @@ const stats = [
     font-family: 'Anton', sans-serif;
     font-size: 3rem;
     letter-spacing: -0.01em;
-    background: linear-gradient(135deg, var(--c-blue), var(--c-teal));
+    background: linear-gradient(135deg, var(--c-green), var(--c-sky));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -312,13 +368,13 @@ const stats = [
     display: inline-flex; align-items: center; gap: 12px;
     font-size: 0.7rem; font-weight: 700;
     letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--c-teal);
+    color: var(--c-sky);
     margin-bottom: 20px;
   }
   .section-eyebrow::before {
     content: ''; display: block;
     width: 32px; height: 1px;
-    background: var(--c-teal);
+    background: var(--c-sky);
   }
   .section-title {
     font-family: 'Anton', sans-serif;
@@ -326,10 +382,10 @@ const stats = [
     letter-spacing: 0.02em;
     line-height: 0.95;
     text-transform: uppercase;
-    color: var(--c-white);
+    color: var(--c-cream);
   }
   .section-title .hl {
-    -webkit-text-stroke: 1.5px var(--c-blue);
+    -webkit-text-stroke: 1.5px var(--c-sky);
     color: transparent;
   }
 
@@ -365,99 +421,101 @@ const stats = [
   .tab-item::after {
     content: '';
     position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--c-blue), var(--c-teal));
+    background: linear-gradient(90deg, var(--c-green), var(--c-sky));
     transform: scaleX(0);
     transition: transform 0.3s;
   }
   .tab-item.active, .tab-item:hover {
-    color: var(--c-white);
-    background: rgba(14,165,233,0.05);
+    color: var(--c-cream);
+    background: rgba(56,189,248,0.05);
   }
   .tab-item.active::after, .tab-item:hover::after { transform: scaleX(1); }
   .tab-num {
     font-family: 'Anton', sans-serif;
     font-size: 1.1rem;
-    color: var(--c-blue);
+    color: var(--c-sky);
     opacity: 0.5;
     transition: opacity 0.3s;
   }
   .tab-item.active .tab-num, .tab-item:hover .tab-num { opacity: 1; }
 
   .cursos-panel { display: none; }
-  .cursos-panel.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2px; }
+  .cursos-panel.active { display: block; }
 
-  .curso-card {
+  .cursos-scroll {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cursos-scroll::-webkit-scrollbar { height: 6px; }
+  .cursos-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+  .cursos-scroll::-webkit-scrollbar-thumb { background: var(--c-sky); border-radius: 3px; }
+
+  .curso-card-h {
+    flex: 0 0 340px;
+    scroll-snap-align: start;
     background: rgba(255,255,255,0.025);
     border: 1px solid var(--c-border);
     overflow: hidden;
-    position: relative;
-    transition: all 0.4s ease;
+    transition: all 0.4s;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
   }
-  .curso-card:hover {
-    border-color: rgba(14,165,233,0.4);
-    background: rgba(14,165,233,0.04);
+  .curso-card-h:hover {
+    border-color: rgba(56,189,248,0.5);
+    background: rgba(56,189,248,0.06);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
   }
-  .curso-card:hover .curso-img { transform: scale(1.06); }
-  .curso-img-wrap { height: 220px; overflow: hidden; position: relative; }
-  .curso-img-wrap::after {
+  .curso-card-h:hover .curso-img { transform: scale(1.08); }
+  .curso-img-wrap-h { height: 280px; overflow: hidden; position: relative; }
+  .curso-img-wrap-h::after {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.85));
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8));
   }
   .curso-img {
     width: 100%; height: 100%; object-fit: cover;
     transition: transform 0.6s ease;
-    display: block;
   }
-  .curso-body { padding: 28px 32px 32px; }
+  .curso-body-h { padding: 28px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
   .curso-tag {
     display: inline-flex; align-items: center; gap: 6px;
     font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--c-teal);
-    margin-bottom: 14px;
+    color: var(--c-sky);
+    margin-bottom: 12px;
   }
-  .curso-tag::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--c-teal); display: block; }
+  .curso-tag::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--c-sky); display: block; }
   .curso-nombre {
     font-family: 'Anton', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    color: var(--c-white);
+    color: var(--c-cream);
     line-height: 1.15;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
   .curso-desc {
     font-size: 0.85rem;
-    color: rgba(255,255,255,0.4);
+    color: rgba(248,250,252,0.55);
     line-height: 1.7;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    flex: 1;
   }
   .curso-cert {
     display: inline-flex; align-items: center; gap: 8px;
     font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--c-green);
-    padding: 7px 16px;
+    padding: 8px 16px;
     border: 1px solid rgba(34,197,94,0.25);
     background: rgba(34,197,94,0.06);
+    align-self: flex-start;
   }
   .curso-cert svg { width: 11px; height: 11px; }
-
-  .curso-arrow {
-    position: absolute; top: 20px; right: 20px;
-    width: 36px; height: 36px;
-    border: 1px solid rgba(255,255,255,0.1);
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.3s;
-    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
-  }
-  .curso-card:hover .curso-arrow {
-    background: var(--c-blue);
-    border-color: var(--c-blue);
-    transform: translate(2px, -2px);
-  }
-  .curso-arrow svg { width: 14px; height: 14px; color: rgba(255,255,255,0.4); }
-  .curso-card:hover .curso-arrow svg { color: #000; }
 
   /* ── WHY SECTION ── */
   #why {
@@ -485,22 +543,22 @@ const stats = [
   .why-img:hover { filter: grayscale(0%) contrast(1.1); }
   .why-img-frame {
     position: absolute; inset: 0;
-    border: 1px solid rgba(14,165,233,0.2);
+    border: 1px solid rgba(56,189,248,0.2);
     pointer-events: none;
   }
   .why-img-frame::before {
     content: '';
     position: absolute; top: -8px; left: -8px;
     width: 24px; height: 24px;
-    border-top: 2px solid var(--c-blue);
-    border-left: 2px solid var(--c-blue);
+    border-top: 2px solid var(--c-sky);
+    border-left: 2px solid var(--c-sky);
   }
   .why-img-frame::after {
     content: '';
     position: absolute; bottom: -8px; right: -8px;
     width: 24px; height: 24px;
-    border-bottom: 2px solid var(--c-teal);
-    border-right: 2px solid var(--c-teal);
+    border-bottom: 2px solid var(--c-green);
+    border-right: 2px solid var(--c-green);
   }
 
   .why-items { display: flex; flex-direction: column; gap: 2px; }
@@ -514,12 +572,15 @@ const stats = [
   .why-item::before {
     content: '';
     position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
-    background: linear-gradient(to bottom, var(--c-blue), var(--c-teal));
+    background: linear-gradient(to bottom, var(--c-green), var(--c-sky));
     transform: scaleY(0);
     transform-origin: top;
     transition: transform 0.35s;
   }
-  .why-item:hover { background: rgba(14,165,233,0.04); border-color: rgba(14,165,233,0.2); }
+  .why-item:hover {
+    background: rgba(56,189,248,0.08);
+    border-color: rgba(56,189,248,0.5);
+  }
   .why-item:hover::before { transform: scaleY(1); }
   .why-item-head {
     display: flex; align-items: center; justify-content: space-between;
@@ -530,18 +591,133 @@ const stats = [
     font-size: 1.05rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--c-white);
+    color: var(--c-cream);
   }
   .why-item-num {
     font-family: 'Anton', sans-serif;
     font-size: 1.8rem;
-    color: rgba(255,255,255,0.06);
+    color: rgba(248,250,252,0.18);
     line-height: 1;
+    transition: color 0.35s;
   }
+  .why-item:hover .why-item-num { color: rgba(56,189,248,0.6); }
   .why-item-desc {
     font-size: 0.84rem;
-    color: rgba(255,255,255,0.38);
+    color: rgba(248,250,252,0.68);
     line-height: 1.7;
+    transition: color 0.35s;
+  }
+  .why-item:hover .why-item-desc { color: rgba(248,250,252,0.9); }
+
+  /* ── TESTIMONIOS ── */
+  #testimonios {
+    background: #000;
+    border-bottom: 1px solid var(--c-border);
+  }
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .testimonio-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--c-border);
+    padding: 36px 32px;
+    transition: all 0.3s;
+  }
+  .testimonio-card:hover {
+    border-color: rgba(56,189,248,0.3);
+    background: rgba(56,189,248,0.04);
+  }
+  .testimonio-cita {
+    font-size: 1rem;
+    color: rgba(248,250,252,0.65);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testimonio-autor {
+    font-family: 'Anton', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    color: var(--c-cream);
+    text-transform: uppercase;
+  }
+  .testimonio-rol {
+    font-size: 0.75rem;
+    color: var(--c-sky);
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  /* ── GALERÍA INSTALACIONES ── */
+  #instalaciones {
+    background: var(--c-ink);
+    border-top: 1px solid var(--c-border);
+    border-bottom: 1px solid var(--c-border);
+  }
+  .galeria-scroll {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 12px;
+    margin-top: 48px;
+  }
+  .galeria-scroll::-webkit-scrollbar { height: 6px; }
+  .galeria-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+  .galeria-scroll::-webkit-scrollbar-thumb { background: var(--c-green); border-radius: 3px; }
+
+  .galeria-item {
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--c-border);
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .galeria-item.revealed {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .galeria-item:hover {
+    border-color: var(--c-green);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  }
+  .galeria-item img {
+    width: 100%; height: 260px;
+    object-fit: cover;
+    transition: transform 0.6s;
+  }
+  .galeria-item:hover img { transform: scale(1.05); }
+  .galeria-info {
+    padding: 20px;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(8px);
+    position: absolute; bottom: 0; left: 0; right: 0;
+    transform: translateY(0);
+    transition: transform 0.3s;
+  }
+  .galeria-item:hover .galeria-info {
+    background: rgba(0,0,0,0.9);
+  }
+  .galeria-info h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    color: var(--c-cream);
+    margin-bottom: 4px;
+  }
+  .galeria-info p {
+    font-size: 0.8rem;
+    color: rgba(248,250,252,0.6);
+    line-height: 1.5;
   }
 
   /* ── CTA ── */
@@ -568,7 +744,7 @@ const stats = [
     letter-spacing: 0.01em;
     line-height: 0.92;
     text-transform: uppercase;
-    color: var(--c-white);
+    color: var(--c-cream);
     margin-bottom: 48px;
   }
   .cta-h2 .stroke {
@@ -578,7 +754,7 @@ const stats = [
   }
   .cta-h2 .filled {
     display: block;
-    background: linear-gradient(90deg, var(--c-blue), var(--c-teal));
+    background: linear-gradient(90deg, var(--c-green), var(--c-sky));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -609,7 +785,7 @@ const stats = [
   .footer-brand {
     font-family: 'Anton', sans-serif;
     font-size: 1.1rem; letter-spacing: 0.12em;
-    color: var(--c-white);
+    color: var(--c-cream);
   }
   .footer-brand em { color: var(--c-green); font-style: normal; }
   .footer-copy {
@@ -628,11 +804,15 @@ const stats = [
     footer { padding: 28px; }
     #navbar { padding: 0 24px; }
     .tab-item { padding: 14px 16px; font-size: 0.72rem; }
+    .curso-card-h { flex: 0 0 300px; }
+    .galeria-item { flex: 0 0 280px; }
   }
   @media (max-width: 640px) {
     .hero-meta { flex-direction: column; gap: 20px; }
     .tab-row { flex-direction: column; }
     .tab-item { border-right: none; border-bottom: 1px solid var(--c-border); }
+    .curso-card-h { flex: 0 0 260px; }
+    .galeria-item { flex: 0 0 250px; }
   }
 </style>
 
@@ -701,10 +881,10 @@ const stats = [
   </div>
 </div>
 
-<!-- CARRERAS -->
+<!-- CARRERAS (presentación horizontal) -->
 <section id="carreras">
   <div class="section-wrap">
-    <div class="section-header" id="carreras-header">
+    <div class="section-header">
       <div class="section-eyebrow">Oferta Académica</div>
       <h2 class="section-title">PROGRAMAS <span class="hl">CERTIFI</span><br/>CADOS</h2>
     </div>
@@ -720,30 +900,31 @@ const stats = [
 
     {carreras.map((cat, ci) => (
       <div class={`cursos-panel${ci === 0 ? ' active' : ''}`} id={`panel-${ci}`}>
-        {cat.cursos.map(curso => (
-          <div class="curso-card">
-            <div class="curso-img-wrap">
-              <img
-                src={curso.imagen}
-                alt={curso.nombre}
-                class="curso-img"
-                onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80'"
-              />
+        <div class="cursos-scroll">
+          {cat.cursos.map(curso => (
+            <div class="curso-card-h">
+              <div class="curso-img-wrap-h">
+                <img
+                  src={curso.imagen}
+                  alt={curso.nombre}
+                  class="curso-img"
+                  onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80'"
+                />
+              </div>
+              <div class="curso-body-h">
+                <div>
+                  <span class="curso-tag">{curso.modalidad}</span>
+                  <h3 class="curso-nombre">{curso.nombre}</h3>
+                  <p class="curso-desc">{curso.desc}</p>
+                </div>
+                <span class="curso-cert">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  Certificado Incluido
+                </span>
+              </div>
             </div>
-            <div class="curso-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-            </div>
-            <div class="curso-body">
-              <span class="curso-tag">{curso.modalidad}</span>
-              <h3 class="curso-nombre">{curso.nombre}</h3>
-              <p class="curso-desc">{curso.desc}</p>
-              <span class="curso-cert">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                Certificado Incluido
-              </span>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     ))}
   </div>
@@ -753,7 +934,7 @@ const stats = [
 <section id="why">
   <div class="section-wrap">
     <div class="why-layout">
-      <div class="why-left" id="why-left">
+      <div class="why-left">
         <div class="section-eyebrow">Por Que Elegirnos</div>
         <h2 class="section-title">LO QUE NOS HACE <span class="hl">DIFE</span><br/>RENTES</h2>
         <div class="why-visual">
@@ -762,14 +943,14 @@ const stats = [
           <div class="why-img-frame"></div>
         </div>
       </div>
-      <div class="why-items" id="why-items">
+      <div class="why-items">
         {[
-          { title: "Certificacion Reconocida", desc: "Respaldo institucional con validez para el mercado laboral local e internacional.", num: "01" },
-          { title: "Docentes en Ejercicio", desc: "Profesionales activos que traen experiencia real al aula, no solo teoria.", num: "02" },
-          { title: "Metodologia Activa", desc: "Aprende haciendo. Proyectos reales, casos de estudio y simulaciones desde el primer modulo.", num: "03" },
-          { title: "Modalidad Flexible", desc: "Presencial, virtual o hibrido. Adapta tu formacion a tu ritmo y disponibilidad.", num: "04" },
-          { title: "Resultados Comprobados", desc: "97% de insercion laboral post-certificacion. Los egresados mas demandados del mercado.", num: "05" },
-          { title: "Red Profesional", desc: "Comunidad activa de profesionales y empresas aliadas desde el primer dia.", num: "06" },
+          { title: "Certificación Reconocida", desc: "Respaldo institucional con validez para el mercado laboral local e internacional.", num: "01" },
+          { title: "Docentes en Ejercicio", desc: "Profesionales activos que traen experiencia real al aula, no solo teoría.", num: "02" },
+          { title: "Metodología Activa", desc: "Aprende haciendo. Proyectos reales, casos de estudio y simulaciones desde el primer módulo.", num: "03" },
+          { title: "Modalidad Flexible", desc: "Presencial, virtual o híbrido. Adapta tu formación a tu ritmo y disponibilidad.", num: "04" },
+          { title: "Resultados Comprobados", desc: "97% de inserción laboral post-certificación. Los egresados más demandados del mercado.", num: "05" },
+          { title: "Red Profesional", desc: "Comunidad activa de profesionales y empresas aliadas desde el primer día.", num: "06" },
         ].map(item => (
           <div class="why-item">
             <div class="why-item-head">
@@ -784,14 +965,54 @@ const stats = [
   </div>
 </section>
 
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">Testimonios</div>
+      <h2 class="section-title">LO QUE DICEN<br/><span class="hl">NUESTROS</span> ALUMNOS</h2>
+    </div>
+    <div class="testimonios-grid">
+      {testimonios.map(t => (
+        <div class="testimonio-card">
+          <p class="testimonio-cita">“{t.cita}”</p>
+          <div class="testimonio-autor">{t.autor}</div>
+          <div class="testimonio-rol">{t.rol}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA INSTALACIONES (reemplaza aliados) -->
+<section id="instalaciones">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">Nuestras Instalaciones</div>
+      <h2 class="section-title">ESPACIOS <span class="hl">DISEÑADOS</span><br/>PARA APRENDER</h2>
+    </div>
+    <div class="galeria-scroll" id="galeria-scroll">
+      {instalaciones.map((item, i) => (
+        <div class="galeria-item" data-reveal>
+          <img src={item.imagen} alt={item.titulo} onerror="this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80'" />
+          <div class="galeria-info">
+            <h3>{item.titulo}</h3>
+            <p>{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section id="cta">
   <div class="cta-bg"></div>
   <div class="cta-content">
-    <h2 class="cta-h2" id="cta-h2">
+    <h2 class="cta-h2">
       <span class="stroke">TU CARRERA</span>
       <span class="stroke">PROFESIONAL</span>
-      <span class="filled">EMPIEZA AQUI.</span>
+      <span class="filled">EMPIEZA AQUÍ.</span>
     </h2>
     <div class="cta-row">
       <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="btn-hero-primary" style="font-size:1rem;padding:18px 48px;">
@@ -800,8 +1021,8 @@ const stats = [
       </a>
       <div class="cta-badges">
         {[
-          { label: "100% en Linea" },
-          { label: "Certificado Valido" },
+          { label: "100% en Línea" },
+          { label: "Certificado Válido" },
           { label: "Horario Flexible" },
         ].map(b => (
           <span class="cta-badge">
@@ -817,145 +1038,99 @@ const stats = [
 <!-- FOOTER -->
 <footer>
   <span class="footer-brand">CENA<em>CAP</em></span>
-  <span class="footer-copy">© 2026 CENACAP · Centro Nacional de Capacitacion Profesional · Todos los derechos reservados</span>
+  <span class="footer-copy">© 2026 CENACAP · Centro Nacional de Capacitación Profesional · Todos los derechos reservados</span>
 </footer>
 
 <script>
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-//import SplitType from 'split-type';
+  // Animación de entrada del hero
+  const initGSAP = async () => {
+    try {
+      const gsapModule = await import('gsap');
+      return { gsap: gsapModule.default };
+    } catch (e) {
+      console.warn('GSAP no encontrado como módulo, cargando desde CDN...');
+      await new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
+        script.onload = resolve;
+        document.head.appendChild(script);
+      });
+      return { gsap: (window as any).gsap };
+    }
+  };
 
-gsap.registerPlugin(ScrollTrigger);
+  const runHeroAnimation = (gsap: any) => {
+    const kicker = document.getElementById('hero-kicker');
+    const h1Lines = document.querySelectorAll('#hero-h1 .line-wrap span');
+    const heroDesc = document.getElementById('hero-desc');
+    const heroCtas = document.getElementById('hero-ctas');
+    const scrollHint = document.getElementById('scroll-hint');
 
-// ── NAVBAR ──
-const navbar = document.getElementById('navbar')!;
-ScrollTrigger.create({
-  start: 'top -80',
-  onUpdate: (self) => {
-    navbar.style.background = self.progress > 0
-      ? 'rgba(0,0,0,0.92)'
-      : 'rgba(0,0,0,0.5)';
-  }
-});
+    if (!kicker || !h1Lines.length || !heroDesc || !heroCtas || !scrollHint) return;
 
-// ── HERO PARALLAX ──
-const heroBg = document.getElementById('hero-bg')!;
-gsap.to(heroBg, {
-  yPercent: 25,
-  ease: 'none',
-  scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
-});
+    gsap.set('#hero-h1 .line-wrap', { overflow: 'hidden', display: 'block' });
+    gsap.set(h1Lines, { yPercent: 100 });
+    gsap.set([heroDesc, heroCtas], { y: 20 });
 
-// ── HERO ENTRANCE ──
-const tl = gsap.timeline({ delay: 0.2 });
-const kicker = document.getElementById('hero-kicker')!;
-const h1Lines = document.querySelectorAll('#hero-h1 .line-wrap span');
-const heroDesc = document.getElementById('hero-desc')!;
-const heroCtas = document.getElementById('hero-ctas')!;
-const scrollHint = document.getElementById('scroll-hint')!;
+    const tl = gsap.timeline({ delay: 0.2 });
+    tl
+      .to(kicker, { opacity: 1, duration: 0.6, ease: 'power2.out' })
+      .to(h1Lines, {
+        yPercent: 0,
+        duration: 1,
+        ease: 'power4.out',
+        stagger: 0.12
+      }, '-=0.2')
+      .to(heroDesc, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+      .to(heroCtas, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.5')
+      .to(scrollHint, { opacity: 1, duration: 0.6 }, '-=0.3');
+  };
 
-// Each h1 line slides up from a clip
-gsap.set('#hero-h1 .line-wrap', { overflow: 'hidden', display: 'block' });
-gsap.set(h1Lines, { yPercent: 100 });
-
-tl
-  .to(kicker, { opacity: 1, duration: 0.6, ease: 'power2.out' })
-  .to(h1Lines, {
-    yPercent: 0,
-    duration: 1,
-    ease: 'power4.out',
-    stagger: 0.12
-  }, '-=0.2')
-  .to(heroDesc, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
-  .to(heroCtas, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.5')
-  .to(scrollHint, { opacity: 1, duration: 0.6 }, '-=0.3');
-
-gsap.set([heroDesc, heroCtas], { y: 20 });
-
-// ── STATS TICKER pause on hover ──
-const track = document.getElementById('stats-track')!;
-track.addEventListener('mouseenter', () => gsap.to(track, { timeScale: 0, duration: 0.5 }));
-track.addEventListener('mouseleave', () => gsap.to(track, { timeScale: 1, duration: 0.5 }));
-
-// ── CARRERAS HEADER ──
-ScrollTrigger.create({
-  trigger: '#carreras-header',
-  start: 'top 80%',
-  onEnter: () => {
-    gsap.from('#carreras-header .section-eyebrow', { opacity: 0, x: -30, duration: 0.6, ease: 'power3.out' });
-    gsap.from('#carreras-header .section-title', { opacity: 0, y: 40, duration: 0.8, ease: 'power4.out', delay: 0.15 });
-  }
-});
-
-// ── TABS ──
-const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-item');
-const panels = document.querySelectorAll<HTMLElement>('.cursos-panel');
-
-tabBtns.forEach((btn, i) => {
-  btn.addEventListener('click', () => {
-    tabBtns.forEach(b => b.classList.remove('active'));
-    panels.forEach(p => { p.classList.remove('active'); });
-    btn.classList.add('active');
-    const panel = panels[i];
-    panel.classList.add('active');
-    // Animate cards in
-    gsap.from(panel.querySelectorAll('.curso-card'), {
-      opacity: 0,
-      y: 30,
-      duration: 0.5,
-      stagger: 0.08,
-      ease: 'power3.out'
+  // Tabs de cursos
+  const setupTabs = () => {
+    const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-item');
+    const panels = document.querySelectorAll<HTMLElement>('.cursos-panel');
+    tabBtns.forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        panels[i].classList.add('active');
+      });
     });
-  });
-});
+  };
 
-// Animate first panel on load
-ScrollTrigger.create({
-  trigger: '#tab-row',
-  start: 'top 75%',
-  once: true,
-  onEnter: () => {
-    gsap.from('#panel-0 .curso-card', {
-      opacity: 0, y: 40, duration: 0.6, stagger: 0.1, ease: 'power3.out'
+  // Pausa del ticker al hacer hover
+  const track = document.getElementById('stats-track');
+  if (track) {
+    track.addEventListener('mouseenter', () => {
+      track.style.animationPlayState = 'paused';
+    });
+    track.addEventListener('mouseleave', () => {
+      track.style.animationPlayState = 'running';
     });
   }
-});
 
-// ── WHY SECTION ──
-ScrollTrigger.create({
-  trigger: '#why-left',
-  start: 'top 75%',
-  once: true,
-  onEnter: () => {
-    gsap.from('#why-left .section-eyebrow', { opacity: 0, x: -30, duration: 0.5, ease: 'power3.out' });
-    gsap.from('#why-left .section-title', { opacity: 0, y: 30, duration: 0.7, ease: 'power4.out', delay: 0.1 });
-    gsap.from('#why-left .why-visual', { opacity: 0, scale: 0.95, duration: 1, ease: 'power3.out', delay: 0.3 });
-  }
-});
+  // Animación de revelación para la galería (Intersection Observer)
+  const setupReveal = () => {
+    const items = document.querySelectorAll('[data-reveal]');
+    if (!items.length) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    items.forEach(item => observer.observe(item));
+  };
 
-ScrollTrigger.create({
-  trigger: '#why-items',
-  start: 'top 80%',
-  once: true,
-  onEnter: () => {
-    gsap.from('#why-items .why-item', {
-      opacity: 0, x: 40,
-      duration: 0.6, stagger: 0.1, ease: 'power3.out'
-    });
-  }
-});
-
-// ── CTA ──
-ScrollTrigger.create({
-  trigger: '#cta-h2',
-  start: 'top 80%',
-  once: true,
-  onEnter: () => {
-    gsap.from('#cta-h2 span', {
-      opacity: 0, y: 60,
-      duration: 0.9, stagger: 0.15, ease: 'power4.out'
-    });
-  }
-});
+  // Inicializar
+  initGSAP().then(({ gsap }) => {
+    if (gsap) runHeroAnimation(gsap);
+    setupTabs();
+    setupReveal();
+  }).catch(err => console.error('Error al cargar GSAP:', err));
 </script>
 </Layout>
