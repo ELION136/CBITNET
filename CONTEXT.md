@@ -1,0 +1,283 @@
+# Contexto del proyecto
+
+## 1. Stack tecnologico
+
+- Framework principal: Astro.
+- Configuracion Astro: `astro.config.mjs`.
+  - Usa `defineConfig` de `astro/config`.
+  - Integra Tailwind mediante el plugin Vite `@tailwindcss/vite`.
+- TypeScript:
+  - `tsconfig.json` extiende `astro/tsconfigs/strict`.
+  - Incluye `.astro/types.d.ts` y `**/*`.
+  - Excluye `dist`.
+- Package manager detectado: pnpm, por `pnpm-lock.yaml`.
+- Node requerido: `>=22.12.0`, declarado en `package.json`.
+- Dependencias declaradas en `package.json`:
+  - `astro`: `^6.3.3`.
+  - `tailwindcss`: `^4.3.0`.
+  - `@tailwindcss/vite`: `^4.3.0`.
+  - `gsap`: `^3.15.0`.
+  - `lenis`: `^1.3.23`.
+- Versiones resueltas en `pnpm-lock.yaml`:
+  - `astro`: `6.3.3`.
+  - `tailwindcss`: `4.3.0`.
+  - `@tailwindcss/vite`: `4.3.0`.
+  - `gsap`: `3.15.0`.
+  - `lenis`: `1.3.23`.
+- Scripts disponibles en `package.json`:
+  - `dev`: `astro dev`.
+  - `build`: `astro build`.
+  - `preview`: `astro preview`.
+  - `astro`: `astro`.
+- Content collections:
+  - `src/content.config.ts` define la coleccion `news`.
+  - Loader: `glob({ pattern: '**/*.md', base: './src/content/news' })`.
+  - Schema: `title`, `subtitle`, `excerpt`, `category`, `tag`, `date`, `image`, `featured`, `author`, `type`.
+
+## 2. Estructura de carpetas y archivos principales
+
+- `.astro/`: carpeta generada por Astro.
+- `.vscode/`: configuracion local del editor.
+- `dist/`: build generado.
+- `node_modules/`: dependencias instaladas.
+- `public/`: assets publicos servidos desde la raiz.
+  - `public/favicon.svg`.
+  - `public/favicon.ico`.
+  - `public/images/`: imagenes usadas por paginas y componentes, por ejemplo `milogo.webp`, `logocbit2.webp`, `au1.webp`, `miu1.jpeg`, `head1.jpg`, `ima1.jpg`, etc.
+- `src/`: codigo fuente principal.
+  - `src/assets/`: assets importables por Astro.
+    - `src/assets/astro.svg`.
+    - `src/assets/background.svg`.
+  - `src/components/`: componentes Astro reutilizables.
+  - `src/content/`: contenido Markdown.
+    - `src/content/news/torneo-infocade-2025.md`.
+    - `src/content/news/publicidad-cenacap.md`.
+  - `src/layouts/`: layouts globales.
+    - `src/layouts/Layout.astro`.
+  - `src/pages/`: rutas de la aplicacion.
+  - `src/styles/`: estilos globales.
+    - `src/styles/global.css`.
+- Archivos raiz principales:
+  - `package.json`.
+  - `pnpm-lock.yaml`.
+  - `astro.config.mjs`.
+  - `tsconfig.json`.
+  - `README.md`.
+  - `.gitignore`.
+- Archivos Markdown adicionales en raiz:
+  - `code.md`, `codigo.md`, `conver.md`, `cover.md`, `cursores.md`, `fondos.md`, `mod.md`.
+
+## 3. Sistema de estilos actual
+
+- Estilo global central: `src/styles/global.css`.
+- Tailwind CSS 4 se importa en `src/styles/global.css` con `@import "tailwindcss";`.
+- Fuentes globales:
+  - `Inter` para `body`.
+  - `Anton` para `.font-display`.
+  - Ambas se importan desde Google Fonts en `src/styles/global.css`.
+- Base global:
+  - `body` usa `background-color: #000000`, `color: #ffffff`, `overflow-x: hidden`.
+  - `.font-display` aplica `font-family: 'Anton'`, uppercase y `letter-spacing: 0.02em`.
+  - `.text-stroke` aplica texto transparente con `-webkit-text-stroke: 1px rgba(255, 255, 255, 0.2)`.
+- Lenis:
+  - `src/styles/global.css` contiene reglas para `html.lenis`, `.lenis-smooth`, `.lenis-stopped` y iframes dentro de Lenis.
+- El proyecto usa principalmente utilidades Tailwind inline en `.astro`.
+- Colores globales/base detectados:
+  - Negro: `#000000`, `#030303`, `#060606`, `#0a0a0a`.
+  - Blanco: `#ffffff`.
+  - Grises con opacidad: `white/10`, `white/[0.03]`, `text-gray-400`, `text-white/40`, etc.
+  - Acentos frecuentes: cian `#0ea5e9`, teal `#2dd4bf`, amber `#f59e0b`, emerald `#10b981`, violet `#8b5cf6`, red `#ef4444`.
+- Variables CSS locales por pagina:
+  - `src/pages/cenacap.astro`: `--c-black`, `--c-ink`, `--c-sky`, `--c-sky-dim`, `--c-green`, `--c-green-dim`, `--c-cream`, `--c-white`, `--c-gray`, `--c-border`.
+  - `src/pages/cursos-conferencias.astro`: `--c-amber`, `--c-amber-light`, `--c-amber-dim`, `--c-dark-bg`, `--c-dark-card`, `--c-white`, `--c-border`, `--c-glow`.
+  - `src/pages/club-leones.astro`: `--blue`, `--blue-dark`, `--blue-mid`, `--blue-light`, `--blue-pale`, `--gold`, `--gold-dark`, `--gold-light`, `--gold-pale`, `--ink`, `--white`, `--off-white`, `--gray`, `--gray-light`.
+  - `src/pages/infocade.astro`: `--c-black`, `--c-ink`, `--c-orange`, `--c-orange-hot`, `--c-red`, `--c-yellow`, `--c-white`, `--c-gray`, `--c-border`, `--c-surface`.
+  - `src/pages/proximos-eventos.astro`: variables inline por card `--accent`, `--badge-bg`, `--badge-border`.
+  - `src/pages/sobre-nosotros.astro`: variables inline por item `--val-color`, `--val-glow`, `--cert-color`, `--cert-glow`.
+  - `src/components/CoverflowHero.astro`: variables inline `--social-color`, `--inst-color`, `--inst-glow`.
+
+## 4. Paginas, ruta y componente principal
+
+- `/`: `src/pages/index.astro`.
+  - Usa `Layout`, `Navbar`, `CoverflowHero`.
+  - `Loader` esta importado pero su uso esta comentado.
+- `/autoridades`: `src/pages/autoridades.astro`.
+  - Usa `Layout`, `Navbar`, `AutoridadesCarousel`.
+- `/carreras`: `src/pages/carreras.astro`.
+  - Usa `Layout`, `Navbar`.
+  - Define datos locales `services`.
+- `/cenacap`: `src/pages/cenacap.astro`.
+  - Usa `Layout` con `showBackgroundFX={false}`.
+  - Define datos locales `carreras`, `stats`, `testimonios`, `instalaciones`.
+  - Tiene navegacion y estilos propios dentro de la pagina.
+- `/club-leones`: `src/pages/club-leones.astro`.
+  - Usa `Layout` con `showBackgroundFX={false}`.
+  - Define datos locales `principles`, `activities`, `stats`.
+  - Tiene estilos propios y script GSAP.
+- `/cursos-conferencias`: `src/pages/cursos-conferencias.astro`.
+  - Usa `Layout`, `Navbar`, con `showBackgroundFX={false}`.
+  - Define datos locales `stats`, `workshops`, `speakers`.
+- `/deportes`: `src/pages/deportes.astro`.
+  - Usa `Layout`, `Navbar`.
+  - Define datos locales `stats`, `courses`.
+- `/fundect`: `src/pages/fundect.astro`.
+  - Usa `Layout`.
+  - Define datos locales `projects`, `values`.
+- `/infocade`: `src/pages/infocade.astro`.
+  - Usa `Layout` con `showBackgroundFX={false}`.
+  - Define datos locales `carreras`, `ticker_items`, `testimonios`, `instalaciones`.
+  - Tiene estilos propios y carga dinamica externa de GSAP si no existe `window.gsap`.
+- `/inscribirse`: `src/pages/inscribirse.astro`.
+  - Usa `Layout`, `Navbar`.
+  - Tiene script GSAP local.
+- `/latest`: `src/pages/latest.astro`.
+  - Usa `Layout`, `Navbar`, `NewsCard`.
+  - Lee contenido con `getCollection('news')`.
+  - Construye categorias desde los posts de `src/content/news`.
+- `/nuevo-ciclo`: `src/pages/nuevo-ciclo.astro`.
+  - Usa `Layout`.
+  - Define datos locales `pillars`, `achievements`.
+  - Tiene script GSAP/ScrollTrigger.
+- `/players`: `src/pages/players.astro`.
+  - Usa `Layout`, `Navbar`, `PlayerSection`.
+- `/proximos-eventos`: `src/pages/proximos-eventos.astro`.
+  - Usa `Layout`, `Navbar`.
+  - Define datos locales `events`.
+  - Usa estilos locales con keyframes CSS.
+- `/ramas-tecnicas`: `src/pages/ramas-tecnicas.astro`.
+  - Usa `Layout`, `Navbar`.
+  - Define datos locales `stats`, `programs`.
+  - Tiene script GSAP/ScrollTrigger.
+- `/servicios`: `src/pages/servicios.astro`.
+  - Usa `Layout`, `Loader`, `Navbar`.
+  - Tiene script GSAP/ScrollTrigger.
+- `/sobre-nosotros`: `src/pages/sobre-nosotros.astro`.
+  - Usa `Layout`, `Navbar`, `AutoridadesCarousel`.
+  - Define datos locales `valores`, `personal`, `certificados`.
+  - Tiene estilos propios y script GSAP/ScrollTrigger.
+- `/standings`: `src/pages/standings.astro`.
+  - Usa `Layout`, `Navbar`.
+
+## 5. Componentes compartidos/reutilizables
+
+- `src/layouts/Layout.astro`:
+  - Layout base HTML.
+  - Props: `title`, `showBackgroundFX?`.
+  - Importa `src/styles/global.css`.
+  - Renderiza `CustomCursor`.
+  - Renderiza `BackgroundFX` salvo que `showBackgroundFX` sea `false`.
+  - Configura Lenis y sincroniza scroll con GSAP ScrollTrigger.
+- `src/components/Navbar.astro`:
+  - Navegacion principal.
+  - Usa GSAP en script local.
+- `src/components/BackgroundFX.astro`:
+  - Fondo canvas animado.
+  - Usa `requestAnimationFrame`.
+  - Colores base en canvas y blobs definidos dentro del componente.
+- `src/components/CustomCursor.astro`:
+  - Cursor personalizado.
+  - Usa estilos propios y script con eventos de mouse.
+  - Usa canvas/animacion con `requestAnimationFrame`.
+- `src/components/CoverflowHero.astro`:
+  - Hero principal del home.
+  - Define arrays locales `slides` e `institutions`.
+  - Usa GSAP para carousel 3D, autoplay, entradas y efectos.
+- `src/components/AutoridadesCarousel.astro`:
+  - Carrusel de autoridades.
+  - Usado en `src/pages/autoridades.astro` y `src/pages/sobre-nosotros.astro`.
+  - Maneja estado activo con DOM, botones previo/siguiente y hover.
+- `src/components/NewsCard.astro`:
+  - Card de noticias/anuncios.
+  - Props: `title`, `excerpt`, `image`, `category`, `date`, `url`, `type`, `author`.
+  - Usado en `src/pages/latest.astro`.
+- `src/components/PlayerSection.astro`:
+  - Seccion de jugadores/equipo.
+  - Define array local `players`.
+  - Usa GSAP/ScrollTrigger.
+- `src/components/Loader.astro`:
+  - Loader visual.
+  - Usa GSAP.
+  - Usado en `src/pages/servicios.astro`; importado pero comentado en `src/pages/index.astro`.
+- `src/components/FloatingCards.astro`:
+  - Cards flotantes con array local `cards`.
+  - Usa GSAP/ScrollTrigger.
+  - No aparece importado por paginas en el barrido realizado.
+- `src/components/FeaturedSection.astro`:
+  - Seccion destacada con GSAP/ScrollTrigger.
+  - No aparece importado por paginas en el barrido realizado.
+- `src/components/EduHero.astro`:
+  - Hero educativo con cards, video externo y GSAP.
+  - No aparece importado por paginas en el barrido realizado.
+- `src/components/Welcome.astro`:
+  - Componente de bienvenida generado/plantilla Astro.
+  - Importa `src/assets/astro.svg` y `src/assets/background.svg`.
+  - No aparece importado por paginas en el barrido realizado.
+
+## 6. Manejo del tema oscuro
+
+- No se encontro un sistema formal de tema claro/oscuro.
+- No se encontro uso de `dark`, `theme`, `localStorage`, `matchMedia`, context providers ni librerias de tema.
+- El tema predominante es oscuro por estilos base:
+  - `src/styles/global.css` define `body` con `background-color: #000000` y `color: #ffffff`.
+  - Muchas paginas usan fondos negros u oscuros mediante utilidades como `bg-[#030303]`, `bg-[#060606]`, `bg-black`, `bg-white/[0.03]`, etc.
+- Excepciones con tema propio:
+  - `src/pages/club-leones.astro` define un tema claro/institucional propio con `--off-white`, `--white`, azules y dorados.
+  - `src/pages/cenacap.astro`, `src/pages/infocade.astro` y `src/pages/cursos-conferencias.astro` desactivan `BackgroundFX` y tienen paletas locales propias.
+
+## 7. Animaciones y transiciones existentes
+
+- Animacion global de scroll:
+  - `src/layouts/Layout.astro` inicializa `Lenis`.
+  - Registra `ScrollTrigger` de GSAP.
+  - Conecta `lenis.on('scroll', ScrollTrigger.update)`.
+  - Usa `gsap.ticker` para ejecutar `lenis.raf`.
+- Animaciones GSAP/ScrollTrigger por archivo:
+  - `src/components/CoverflowHero.astro`: carousel 3D, autoplay, entrada de elementos, flotacion, canvas beams.
+  - `src/components/Navbar.astro`: animaciones de navegacion con GSAP.
+  - `src/components/Loader.astro`: loader con GSAP.
+  - `src/components/PlayerSection.astro`: cards con GSAP/ScrollTrigger.
+  - `src/components/FloatingCards.astro`: cards con GSAP/ScrollTrigger.
+  - `src/components/FeaturedSection.astro`: seccion destacada con GSAP/ScrollTrigger.
+  - `src/components/EduHero.astro`: entrada de hero/cards, parallax por mouse y hover con GSAP.
+  - `src/pages/carreras.astro`: animaciones de filas, hover y scroll con GSAP/ScrollTrigger.
+  - `src/pages/club-leones.astro`: script GSAP/ScrollTrigger.
+  - `src/pages/cursos-conferencias.astro`: script GSAP/ScrollTrigger.
+  - `src/pages/deportes.astro`: script GSAP/ScrollTrigger.
+  - `src/pages/fundect.astro`: script GSAP/ScrollTrigger.
+  - `src/pages/inscribirse.astro`: script GSAP.
+  - `src/pages/nuevo-ciclo.astro`: script GSAP/ScrollTrigger.
+  - `src/pages/ramas-tecnicas.astro`: script GSAP/ScrollTrigger.
+  - `src/pages/servicios.astro`: script GSAP/ScrollTrigger.
+  - `src/pages/sobre-nosotros.astro`: canvas beams, tilt por mouse, reveal items con GSAP/ScrollTrigger.
+- Animaciones con `requestAnimationFrame`:
+  - `src/components/BackgroundFX.astro`.
+  - `src/components/CustomCursor.astro`.
+  - `src/components/CoverflowHero.astro`.
+  - `src/pages/sobre-nosotros.astro`.
+- Keyframes CSS detectados:
+  - `src/components/CoverflowHero.astro`: `mirrorSlide`.
+  - `src/pages/cenacap.astro`: `scrollPulse`, `ticker`, `fadeInUp`.
+  - `src/pages/carreras.astro`: `scanMove`.
+  - `src/pages/cursos-conferencias.astro`: `scrollPulse`.
+  - `src/pages/club-leones.astro`: `scanDown`.
+  - `src/pages/deportes.astro`: `scrollPulse`.
+  - `src/pages/infocade.astro`: `scrollScan`, `marqueeRun`.
+  - `src/pages/proximos-eventos.astro`: `fadeUp`, `fadeIn`, `expandLine`.
+  - `src/pages/ramas-tecnicas.astro`: `scrollPulse`.
+- Transiciones:
+  - Uso extensivo de clases Tailwind `transition-all`, `transition-colors`, `transition-transform`, `duration-*`, `ease-*`, `group-hover:*`.
+  - Varias paginas tienen CSS local con `transition` para hover, cards, imagenes, bordes, overlays y paneles.
+
+## 8. Lo que NO se debe tocar
+
+- No se encontro autenticacion, login, manejo de tokens, `localStorage` de sesion, providers de auth ni rutas protegidas en `src`.
+- No se encontraron llamadas `fetch`, `axios`, endpoints propios, variables `PUBLIC_*`, `SECRET`, `process.env` ni `import.meta.env`.
+- No hay una capa API identificada en el codigo fuente actual.
+- Se debe evitar tocar sin motivo:
+  - La coleccion de contenido `news` en `src/content.config.ts`, porque define el contrato de los Markdown usados por `src/pages/latest.astro`.
+  - Los archivos Markdown reales en `src/content/news/`, porque son datos de contenido publicados.
+  - `src/layouts/Layout.astro`, porque concentra el layout global, `CustomCursor`, `BackgroundFX`, Lenis y ScrollTrigger.
+  - `src/styles/global.css`, porque define base visual global, fuente, fondo, color y reglas Lenis.
+  - Los assets en `public/images/`, porque muchas paginas referencian rutas directas como `/images/...`.
+  - Scripts de animacion existentes con GSAP/ScrollTrigger/Lenis, salvo que el cambio pedido sea especificamente visual/interactivo.
+  - Paletas locales declaradas en paginas institucionales (`cenacap`, `infocade`, `club-leones`, `cursos-conferencias`), porque cada una maneja su identidad visual dentro de su propio archivo.
