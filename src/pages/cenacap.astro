@@ -6,813 +6,552 @@ const carreras = [
     categoria: "Gestión y Calidad",
     num: "01",
     cursos: [
-      {
-        nombre: "Sistemas de Gestión Ambiental",
-        desc: "Aprende a implementar estrategias que reduzcan el impacto ambiental empresarial. Identificarás riesgos, manejarás residuos, optimizarás recursos y aplicarás normas como ISO 14001, preparándote para trabajar en industrias o consultorías ambientales.",
-        modalidad: "Presencial / Virtual",
-        imagen: "/images/1.png"
-      },
-      {
-        nombre: "Sistemas de Gestión de Calidad",
-        desc: "Diseña e implementa sistemas que garanticen altos estándares en productos y servicios. Aprenderás a aplicar ISO 9001, realizar auditorías internas y optimizar procesos, siendo clave en la mejora continua.",
-        modalidad: "Presencial",
-        imagen: "/images/2.png"
-      },
-      {
-        nombre: "Supervisión y Liderazgo en Prevención de Riesgos",
-        desc: "Prepárate para liderar equipos y garantizar la seguridad laboral. Identificarás riesgos, prevendrás accidentes y aplicarás normativas de seguridad en entornos industriales.",
-        modalidad: "Presencial",
-        imagen: "/images/5.png"
-      },
+      { nombre: "Sistemas de Gestión Ambiental", modalidad: "Presencial / Virtual", imagen: "/images/1.png" },
+      { nombre: "Sistemas de Gestión de Calidad", modalidad: "Presencial", imagen: "/images/2.png" },
+      { nombre: "Prevención de Riesgos Laborales", modalidad: "Presencial", imagen: "/images/5.png" },
     ],
   },
   {
     categoria: "Diseño y Tecnología",
     num: "02",
     cursos: [
-      {
-        nombre: "Diseño Gráfico y Producción Audiovisual",
-        desc: "Desarrolla tu creatividad creando contenido visual y audiovisual profesional. Aprenderás a usar software de diseño, edición de video y producción de contenido para redes sociales.",
-        modalidad: "Presencial / Virtual",
-        imagen: "/images/6.png"
-      },
-      {
-        nombre: "Microsoft Project",
-        desc: "Domina la herramienta esencial para la gestión de proyectos. Aprende a planificar tareas, asignar recursos, gestionar costos y monitorear el avance en tiempo real.",
-        modalidad: "Virtual",
-        imagen: "/images/3.png"
-      },
+      { nombre: "Diseño Gráfico y Producción Audiovisual", modalidad: "Presencial / Virtual", imagen: "/images/6.png" },
+      { nombre: "Microsoft Project", modalidad: "Virtual", imagen: "/images/3.png" },
     ],
   },
   {
     categoria: "Deporte y Rendimiento",
     num: "03",
     cursos: [
-      {
-        nombre: "Sistemas Tácticos Deportivos",
-        desc: "Descubre cómo se construyen las jugadas ganadoras. Analiza el juego, diseña tácticas y adapta estrategias a diferentes situaciones competitivas.",
-        modalidad: "Presencial",
-        imagen: "/images/4.png"
-      },
-      {
-        nombre: "Deporte de Alto Rendimiento y Competición",
-        desc: "Alcanza el máximo nivel con preparación física, mental y técnica de élite. Métodos de entrenamiento avanzado y manejo psicológico en competencias.",
-        modalidad: "Presencial",
-        imagen: "/images/8.png"
-      },
+      { nombre: "Sistemas Tácticos Deportivos", modalidad: "Presencial", imagen: "/images/4.png" },
+      { nombre: "Deporte de Alto Rendimiento", modalidad: "Presencial", imagen: "/images/8.png" },
     ],
   },
 ];
 
-const stats = [
-  { num: "2400", suffix: "+", label: "Egresados" },
-  { num: "18", suffix: "", label: "Programas" },
-  { num: "97", suffix: "%", label: "Inserción Laboral" },
-  { num: "12", suffix: "", label: "Años de Experiencia" },
+const servicios = [
+  { titulo: "Gestión de Calidad",  desc: "ISO 9001 y auditorías internas para estándares internacionales.", imagen: "/images/2.png" },
+  { titulo: "Gestión Ambiental",   desc: "Normas ISO 14001 y estrategias de impacto ambiental empresarial.", imagen: "/images/1.png" },
+  { titulo: "Diseño Gráfico",      desc: "Software profesional, video y producción para medios digitales.", imagen: "/images/6.png" },
+  { titulo: "Alto Rendimiento",    desc: "Entrenamiento táctico, físico y mental de élite competitiva.", imagen: "/images/8.png" },
+];
+
+const programas = [
+  { titulo: "Sistemas de Gestión Ambiental",           cat: "Calidad",    modalidad: "Presencial / Virtual", imagen: "/images/1.png"    },
+  { titulo: "Diseño Visual Corporativo",                cat: "Diseño",     modalidad: "Presencial / Virtual", imagen: "/images/6.png"    },
+  { titulo: "Prevención de Riesgos Laborales",          cat: "Seguridad",  modalidad: "Presencial",           imagen: "/images/5.png"    },
+  { titulo: "Entrenamiento Deportivo de Alto Nivel",    cat: "Deporte",    modalidad: "Presencial",           imagen: "/images/8.png"    },
+  { titulo: "Microsoft Project",                        cat: "Tecnología", modalidad: "Virtual",              imagen: "/images/3.png"    },
+  { titulo: "Sistemas Tácticos Deportivos",             cat: "Deporte",    modalidad: "Presencial",           imagen: "/images/4.png"    },
+  { titulo: "Sistemas de Gestión de Calidad ISO 9001",  cat: "Calidad",    modalidad: "Presencial",           imagen: "/images/2.png"    },
+  { titulo: "Informática Industrial",                   cat: "Tecnología", modalidad: "Presencial / Virtual", imagen: "/images/3.png"    },
 ];
 
 const testimonios = [
-  {
-    cita: "Gracias a CENACAP conseguí un puesto en una multinacional apenas terminé el curso. La metodología práctica marcó la diferencia.",
-    autor: "María Fernández",
-    rol: "Egresada de Gestión de Calidad"
-  },
-  {
-    cita: "Los profesores son profesionales en activo, no te enseñan teoría vacía. Aprendí herramientas que uso a diario en mi trabajo.",
-    autor: "Carlos López",
-    rol: "Egresado de Diseño Gráfico"
-  },
-  {
-    cita: "El enfoque en prevención de riesgos es justo lo que necesitaba para ascender en mi empresa. Recomiendo CENACAP al 100%.",
-    autor: "Ana Martínez",
-    rol: "Egresada de Prevención de Riesgos"
-  }
+  { cita: "La metodología práctica marcó la diferencia. Conseguí trabajo en una multinacional al terminar el curso.", autor: "María Fernández", rol: "Egresada · Gestión de Calidad",    ini: "MF" },
+  { cita: "Profesores que trabajan en la industria. Aprendí herramientas reales que uso a diario en mi empresa.",    autor: "Carlos López",    rol: "Egresado · Diseño Gráfico",         ini: "CL" },
+  { cita: "El mejor programa de prevención de riesgos. Me ayudó a ascender en mi empresa. Totalmente recomendado.", autor: "Ana Martínez",    rol: "Egresada · Prevención de Riesgos",  ini: "AM" },
 ];
 
-// Nueva galería de instalaciones (reemplaza aliados)
-const instalaciones = [
-  { imagen: "/images/instalacion1.jpg", titulo: "Aula de Tecnología", desc: "Equipos de última generación para clases prácticas." },
-  { imagen: "/images/instalacion2.jpg", titulo: "Laboratorio de Calidad", desc: "Espacios simulados para auditorías y gestión." },
-  { imagen: "/images/instalacion3.jpg", titulo: "Estudio de Diseño", desc: "Estaciones de trabajo con software profesional." },
-  { imagen: "/images/instalacion4.jpg", titulo: "Área Deportiva", desc: "Instalaciones para entrenamiento táctico y físico." },
+const stats = [
+  { num: "2,400+", label: "Profesionales Egresados" },
+  { num: "18",     label: "Programas Activos"        },
+  { num: "97%",    label: "Inserción Laboral"         },
+  { num: "12+",    label: "Años de Experiencia"       },
+];
+
+const whyItems = [
+  { t: "Certificación Reconocida",  d: "Validez internacional respaldada por instituciones del mercado laboral." },
+  { t: "Docentes en Ejercicio",     d: "Profesionales activos que traen experiencia real, no solo teoría."       },
+  { t: "Metodología Activa",        d: "Proyectos reales, casos de estudio y simulaciones desde el primer módulo." },
+  { t: "Modalidad Flexible",        d: "Presencial, virtual o híbrido. Estudia a tu ritmo sin renunciar a la calidad." },
+];
+
+const vacantes = [
+  { cargo: "Gestor de Calidad Industrial", area: "Gestión y Calidad"    },
+  { cargo: "Diseñador Gráfico Digital",    area: "Diseño y Tecnología"  },
+  { cargo: "Coordinador Deportivo",        area: "Deporte y Rendimiento" },
+];
+
+/* Diapositivas del carrusel hero */
+const heroSlides = [
+  { img: "/images/sala.webp",   tag: "Gestión y Calidad",    h1a: "FORMAMOS",     h1b: "PROFESIONALES", h1c: "DE ÉLITE." },
+  { img: "/images/ban.webp",    tag: "Deporte y Rendimiento", h1a: "DESARROLLAMOS", h1b: "TALENTO",      h1c: "BOLIVIANO." },
+  { img: "/images/ima1.jpg",    tag: "Diseño y Tecnología",   h1a: "IMPULSAMOS",   h1b: "TU CARRERA",    h1c: "PROFESIONAL." },
 ];
 ---
 
 <Layout title="CENACAP | Centro Nacional de Capacitación Profesional" showBackgroundFX={false}>
 <style>
-  /* ── RESET & BASE ── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --c-black: #000000;
-    --c-ink: #080c10;
-    --c-sky: #38bdf8;        /* azul celeste */
-    --c-sky-dim: #0284c7;
-    --c-green: #22c55e;
-    --c-green-dim: #16a34a;
-    --c-cream: #f8fafc;      /* blanco/crema */
-    --c-white: #ffffff;
-    --c-gray: #94a3b8;
-    --c-border: rgba(255,255,255,0.07);
+    /* ── PALETA CENACAP: verde · azul · crema ── */
+    --green:     #1e6b45;
+    --green-mid: #28834f;
+    --green-lt:  #e6f4ec;
+    --green-dim: rgba(30,107,69,0.18);
+    --blue:      #1a4b8c;
+    --blue-mid:  #2d7dd2;
+    --blue-lt:   #ebf3fb;
+    --cream:     #f5f0e8;
+    --cream2:    #ede7d9;
+    --beige:     #c9b99a;
+    --brown:     #8b7355;
+    --dark:      #1a1612;
+    --dark2:     #1d2820;   /* verde muy oscuro */
+    --mid:       #4a5e52;
+    --soft:      #7a9080;
+    --faint:     #a8b8b0;
+    --white:     #ffffff;
+    --accent:    #2ca2f1;   /* dorado para detalles cálidos */
+    --r:         12px;
+    --r-lg:      20px;
+    --r-xl:      32px;
   }
+  html { scroll-behavior: smooth; }
+  body { background: var(--white); color: var(--dark); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-  /* ── NAVBAR ── */
+  /* ══════════════ NAVBAR ══════════════ */
   #navbar {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    height: 72px;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+    height: 64px;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 48px;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(24px);
-    border-bottom: 1px solid var(--c-border);
-    transition: background 0.4s;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #dce8e0;
+    transition: box-shadow 0.3s;
   }
-  .nav-logo {
-    display: flex; align-items: center; gap: 14px;
-    text-decoration: none;
-  }
-  .nav-logo img { height: 38px; width: auto; }
-  .nav-wordmark {
-    font-family: 'Anton', sans-serif;
-    letter-spacing: 0.08em;
-    font-size: 1.3rem;
-    color: var(--c-cream);
-    line-height: 1;
-  }
-  .nav-wordmark em { color: var(--c-green); font-style: normal; }
-  .nav-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 11px 28px;
-    background: transparent;
-    border: 1.5px solid var(--c-sky);
-    color: var(--c-sky);
-    font-family: 'Anton', sans-serif;
-    font-size: 0.82rem;
-    letter-spacing: 0.12em;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: all 0.25s;
-    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-  }
-  .nav-pill:hover {
-    background: var(--c-sky);
-    color: #000;
-    box-shadow: 0 0 24px rgba(56,189,248,0.5);
-  }
-  .nav-pill svg { width: 14px; height: 14px; transition: transform 0.25s; }
-  .nav-pill:hover svg { transform: translateX(3px); }
+  #navbar.scrolled { box-shadow: 0 2px 20px rgba(30,107,69,0.10); }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo img { height: 32px; }
+  .nav-wordmark { font-family: 'Anton', sans-serif; font-size: 1.15rem; letter-spacing: 0.08em; color: var(--dark); }
+  .nav-wordmark em { color: var(--green); font-style: normal; }
+  .nav-links { display: flex; align-items: center; gap: 6px; }
+  .nav-link { padding: 7px 16px; color: var(--mid); font-size: 0.83rem; font-weight: 500; text-decoration: none; border-radius: 100px; transition: all 0.2s; }
+  .nav-link:hover { color: var(--dark); background: var(--cream); }
+  .nav-cta { display: inline-flex; align-items: center; gap: 7px; padding: 9px 22px; background: var(--green); color: #fff; font-size: 0.83rem; font-weight: 700; text-decoration: none; border-radius: 100px; letter-spacing: 0.02em; transition: all 0.25s; }
+  .nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,107,69,0.35); }
 
-  /* ── HERO ── */
+  /* ══════════════ HERO CARRUSEL ══════════════ */
   #hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 60px 80px;
-    overflow: hidden;
-  }
-  #hero-bg {
-    position: absolute; inset: 0;
-    background: url('/images/sala.webp') center center / cover no-repeat;
-  }
-  #hero-overlay {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.25) 100%),
-      linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 60%);
-  }
-  #hero::after {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.08) 2px,
-      rgba(0,0,0,0.08) 4px
-    );
-    pointer-events: none; z-index: 1;
+    margin-top: 64px;
+    position: relative; overflow: hidden;
+    border-radius: 0 0 var(--r-xl) var(--r-xl);
+    height: calc(100vh - 64px); min-height: 560px; max-height: 820px;
   }
 
-  .hero-content { position: relative; z-index: 2; max-width: 900px; }
-
-  .hero-kicker {
-    display: inline-flex; align-items: center; gap: 10px;
-    margin-bottom: 28px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--c-green);
+  /* slides */
+  .hero-slide {
+    position: absolute; inset: 0;
     opacity: 0;
-  }
-  .hero-kicker-line {
-    display: block; width: 40px; height: 1.5px;
-    background: var(--c-green);
-  }
-
-  .hero-h1 {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(4.5rem, 11vw, 10rem);
-    line-height: 0.9;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: var(--c-cream);
-    margin-bottom: 8px;
-  }
-  .hero-h1 .line-wrap { display: block; overflow: hidden; }
-  .hero-h1 .line-wrap span { display: block; }
-  .hero-h1 .line-accent {
-    -webkit-text-stroke: 1px rgba(255,255,255,0.25);
-    color: transparent;
-  }
-  .hero-h1 .line-color {
-    background: linear-gradient(90deg, var(--c-green), var(--c-sky));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero-meta {
-    display: flex; align-items: center; gap: 32px;
-    margin-top: 36px;
-    flex-wrap: wrap;
-  }
-  .hero-desc {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.05rem;
-    color: rgba(248,250,252,0.55);
-    max-width: 420px;
-    line-height: 1.75;
-    font-weight: 400;
-    opacity: 0;
-  }
-  .hero-cta-group {
-    display: flex; gap: 12px; flex-wrap: wrap;
-    opacity: 0;
-  }
-  .btn-hero-primary {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 15px 36px;
-    background: linear-gradient(135deg, var(--c-green), var(--c-sky));
-    color: #000;
-    font-family: 'Anton', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-decoration: none;
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-    transition: all 0.3s;
-  }
-  .btn-hero-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(34,197,94,0.5);
-  }
-  .btn-hero-secondary {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 28px;
-    border: 1px solid rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.6);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: all 0.3s;
-    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-  }
-  .btn-hero-secondary:hover {
-    border-color: var(--c-green);
-    color: var(--c-green);
-  }
-
-  .scroll-hint {
-    position: absolute; bottom: 32px; right: 60px; z-index: 2;
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    opacity: 0;
-  }
-  .scroll-hint span {
-    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: rgba(255,255,255,0.3); writing-mode: vertical-rl;
-  }
-  .scroll-line {
-    width: 1px; height: 60px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-  @keyframes scrollPulse {
-    0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-    50% { transform: scaleY(1); opacity: 1; }
-    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-  }
-
-  /* ── STATS TICKER ── */
-  #stats-bar {
-    background: var(--c-ink);
-    border-top: 1px solid var(--c-border);
-    border-bottom: 1px solid var(--c-border);
-    overflow: hidden;
-    padding: 0;
-  }
-  .stats-inner {
-    display: flex;
-    overflow: hidden;
-    padding: 36px 0;
-  }
-  .stats-track {
-    display: flex; gap: 0; flex-shrink: 0;
-    animation: ticker 30s linear infinite;
-  }
-  @keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  .stat-chip {
-    display: flex; align-items: center; gap: 24px;
-    padding: 0 64px;
-    border-right: 1px solid var(--c-border);
-    flex-shrink: 0;
-  }
-  .stat-num {
-    font-family: 'Anton', sans-serif;
-    font-size: 3rem;
-    letter-spacing: -0.01em;
-    background: linear-gradient(135deg, var(--c-green), var(--c-sky));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    max-width: 80px;
-    line-height: 1.4;
-  }
-
-  /* ── SECTION BASE ── */
-  .section-wrap {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 120px 60px;
-  }
-  .section-header {
-    margin-bottom: 72px;
-  }
-  .section-eyebrow {
-    display: inline-flex; align-items: center; gap: 12px;
-    font-size: 0.7rem; font-weight: 700;
-    letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--c-sky);
-    margin-bottom: 20px;
-  }
-  .section-eyebrow::before {
-    content: ''; display: block;
-    width: 32px; height: 1px;
-    background: var(--c-sky);
-  }
-  .section-title {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(2.8rem, 6vw, 5.5rem);
-    letter-spacing: 0.02em;
-    line-height: 0.95;
-    text-transform: uppercase;
-    color: var(--c-cream);
-  }
-  .section-title .hl {
-    -webkit-text-stroke: 1.5px var(--c-sky);
-    color: transparent;
-  }
-
-  /* ── CARRERAS ── */
-  #carreras { background: #000; }
-
-  .tab-row {
-    display: flex; gap: 0;
-    border: 1px solid var(--c-border);
-    margin-bottom: 48px;
-    overflow: hidden;
-    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
-  }
-  .tab-item {
-    flex: 1;
-    display: flex; align-items: center; gap: 12px;
-    padding: 18px 28px;
-    background: transparent;
-    border: none;
-    border-right: 1px solid var(--c-border);
-    color: rgba(255,255,255,0.3);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  .tab-item:last-child { border-right: none; }
-  .tab-item::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--c-green), var(--c-sky));
-    transform: scaleX(0);
-    transition: transform 0.3s;
-  }
-  .tab-item.active, .tab-item:hover {
-    color: var(--c-cream);
-    background: rgba(56,189,248,0.05);
-  }
-  .tab-item.active::after, .tab-item:hover::after { transform: scaleX(1); }
-  .tab-num {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.1rem;
-    color: var(--c-sky);
-    opacity: 0.5;
-    transition: opacity 0.3s;
-  }
-  .tab-item.active .tab-num, .tab-item:hover .tab-num { opacity: 1; }
-
-  .cursos-panel { display: none; }
-  .cursos-panel.active { display: block; }
-
-  .cursos-scroll {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 12px;
-    -webkit-overflow-scrolling: touch;
-  }
-  .cursos-scroll::-webkit-scrollbar { height: 6px; }
-  .cursos-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
-  .cursos-scroll::-webkit-scrollbar-thumb { background: var(--c-sky); border-radius: 3px; }
-
-  .curso-card-h {
-    flex: 0 0 340px;
-    scroll-snap-align: start;
-    background: rgba(255,255,255,0.025);
-    border: 1px solid var(--c-border);
-    overflow: hidden;
-    transition: all 0.4s;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-  }
-  .curso-card-h:hover {
-    border-color: rgba(56,189,248,0.5);
-    background: rgba(56,189,248,0.06);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-  }
-  .curso-card-h:hover .curso-img { transform: scale(1.08); }
-  .curso-img-wrap-h { height: 280px; overflow: hidden; position: relative; }
-  .curso-img-wrap-h::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8));
-  }
-  .curso-img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.6s ease;
-  }
-  .curso-body-h { padding: 28px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-  .curso-tag {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--c-sky);
-    margin-bottom: 12px;
-  }
-  .curso-tag::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--c-sky); display: block; }
-  .curso-nombre {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.3rem;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: var(--c-cream);
-    line-height: 1.15;
-    margin-bottom: 14px;
-  }
-  .curso-desc {
-    font-size: 0.85rem;
-    color: rgba(248,250,252,0.55);
-    line-height: 1.7;
-    margin-bottom: 20px;
-    flex: 1;
-  }
-  .curso-cert {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--c-green);
-    padding: 8px 16px;
-    border: 1px solid rgba(34,197,94,0.25);
-    background: rgba(34,197,94,0.06);
-    align-self: flex-start;
-  }
-  .curso-cert svg { width: 11px; height: 11px; }
-
-  /* ── WHY SECTION ── */
-  #why {
-    background: var(--c-ink);
-    border-top: 1px solid var(--c-border);
-    border-bottom: 1px solid var(--c-border);
-  }
-  .why-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-  .why-left { position: sticky; top: 100px; }
-  .why-visual {
-    position: relative; margin-top: 40px;
-    height: 420px;
-  }
-  .why-img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    filter: grayscale(60%) contrast(1.1);
-    transition: filter 0.5s;
-  }
-  .why-img:hover { filter: grayscale(0%) contrast(1.1); }
-  .why-img-frame {
-    position: absolute; inset: 0;
-    border: 1px solid rgba(56,189,248,0.2);
+    transition: opacity 1s cubic-bezier(0.4,0,0.2,1);
     pointer-events: none;
   }
-  .why-img-frame::before {
-    content: '';
-    position: absolute; top: -8px; left: -8px;
-    width: 24px; height: 24px;
-    border-top: 2px solid var(--c-sky);
-    border-left: 2px solid var(--c-sky);
-  }
-  .why-img-frame::after {
-    content: '';
-    position: absolute; bottom: -8px; right: -8px;
-    width: 24px; height: 24px;
-    border-bottom: 2px solid var(--c-green);
-    border-right: 2px solid var(--c-green);
-  }
+  .hero-slide.active { opacity: 1; pointer-events: auto; }
 
-  .why-items { display: flex; flex-direction: column; gap: 2px; }
-  .why-item {
-    padding: 28px 32px;
-    border: 1px solid var(--c-border);
-    position: relative; overflow: hidden;
-    transition: all 0.35s;
-    cursor: default;
-  }
-  .why-item::before {
-    content: '';
-    position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
-    background: linear-gradient(to bottom, var(--c-green), var(--c-sky));
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.35s;
-  }
-  .why-item:hover {
-    background: rgba(56,189,248,0.08);
-    border-color: rgba(56,189,248,0.5);
-  }
-  .why-item:hover::before { transform: scaleY(1); }
-  .why-item-head {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  .why-item-title {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.05rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--c-cream);
-  }
-  .why-item-num {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.8rem;
-    color: rgba(248,250,252,0.18);
-    line-height: 1;
-    transition: color 0.35s;
-  }
-  .why-item:hover .why-item-num { color: rgba(56,189,248,0.6); }
-  .why-item-desc {
-    font-size: 0.84rem;
-    color: rgba(248,250,252,0.68);
-    line-height: 1.7;
-    transition: color 0.35s;
-  }
-  .why-item:hover .why-item-desc { color: rgba(248,250,252,0.9); }
-
-  /* ── TESTIMONIOS ── */
-  #testimonios {
-    background: #000;
-    border-bottom: 1px solid var(--c-border);
-  }
-  .testimonios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    margin-top: 48px;
-  }
-  .testimonio-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--c-border);
-    padding: 36px 32px;
-    transition: all 0.3s;
-  }
-  .testimonio-card:hover {
-    border-color: rgba(56,189,248,0.3);
-    background: rgba(56,189,248,0.04);
-  }
-  .testimonio-cita {
-    font-size: 1rem;
-    color: rgba(248,250,252,0.65);
-    line-height: 1.7;
-    margin-bottom: 24px;
-    font-style: italic;
-  }
-  .testimonio-autor {
-    font-family: 'Anton', sans-serif;
-    font-size: 0.95rem;
-    letter-spacing: 0.05em;
-    color: var(--c-cream);
-    text-transform: uppercase;
-  }
-  .testimonio-rol {
-    font-size: 0.75rem;
-    color: var(--c-sky);
-    letter-spacing: 0.1em;
-    margin-top: 4px;
-  }
-
-  /* ── GALERÍA INSTALACIONES ── */
-  #instalaciones {
-    background: var(--c-ink);
-    border-top: 1px solid var(--c-border);
-    border-bottom: 1px solid var(--c-border);
-  }
-  .galeria-scroll {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 12px;
-    margin-top: 48px;
-  }
-  .galeria-scroll::-webkit-scrollbar { height: 6px; }
-  .galeria-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
-  .galeria-scroll::-webkit-scrollbar-thumb { background: var(--c-green); border-radius: 3px; }
-
-  .galeria-item {
-    flex: 0 0 320px;
-    scroll-snap-align: start;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--c-border);
-    transition: all 0.3s;
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  .galeria-item.revealed {
-    animation: fadeInUp 0.6s ease forwards;
-  }
-  @keyframes fadeInUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .galeria-item:hover {
-    border-color: var(--c-green);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-  }
-  .galeria-item img {
-    width: 100%; height: 260px;
-    object-fit: cover;
-    transition: transform 0.6s;
-  }
-  .galeria-item:hover img { transform: scale(1.05); }
-  .galeria-info {
-    padding: 20px;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(8px);
-    position: absolute; bottom: 0; left: 0; right: 0;
-    transform: translateY(0);
-    transition: transform 0.3s;
-  }
-  .galeria-item:hover .galeria-info {
-    background: rgba(0,0,0,0.9);
-  }
-  .galeria-info h3 {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.04em;
-    color: var(--c-cream);
-    margin-bottom: 4px;
-  }
-  .galeria-info p {
-    font-size: 0.8rem;
-    color: rgba(248,250,252,0.6);
-    line-height: 1.5;
-  }
-
-  /* ── CTA ── */
-  #cta {
-    position: relative;
-    overflow: hidden;
-    background: #000;
-  }
-  .cta-bg {
+  .hero-slide-img {
     position: absolute; inset: 0;
-    background: url('/images/jun.jpg') center 30% / cover no-repeat;
-    opacity: 0.08;
-    filter: blur(4px);
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transform: scale(1.04);
+    transition: transform 7s ease-out;
   }
-  .cta-content {
+  .hero-slide.active .hero-slide-img { transform: scale(1); }
+
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(14,30,20,0.82) 0%, rgba(14,30,20,0.3) 55%, transparent 100%);
+  }
+
+  /* contenido slide */
+  .hero-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0 56px 56px; z-index: 2;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 100px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    color: #fff; margin-bottom: 20px;
+  }
+  .hero-tag-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green-mid); }
+  .hero-h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.92; letter-spacing: 0.01em; text-transform: uppercase;
+    color: #fff; max-width: 700px; margin-bottom: 28px;
+  }
+  .hero-h1 .c-green { color: #6ee6a0; }
+
+  .hero-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .btn-white {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 32px; background: var(--white); color: var(--dark);
+    font-weight: 700; font-size: 0.9rem; text-decoration: none;
+    border-radius: 100px; transition: all 0.3s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+  .btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); background: var(--cream); }
+  .btn-outline-white {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 28px;
+    border: 1.5px solid rgba(255,255,255,0.45); color: rgba(255,255,255,0.85);
+    font-weight: 600; font-size: 0.88rem; text-decoration: none;
+    border-radius: 100px; transition: all 0.3s;
+  }
+  .btn-outline-white:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.12); }
+  .hero-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .hero-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 14px;
+    background: rgba(255,255,255,0.10); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 100px; font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.8);
+  }
+
+  /* controles carrusel */
+  .hero-controls {
+    position: absolute; bottom: 56px; right: 56px;
+    z-index: 10; display: flex; gap: 10px; align-items: center;
+  }
+  .hc-btn {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(8px); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.25s;
+  }
+  .hc-btn:hover { background: var(--green); border-color: var(--green); }
+
+  .hero-dots {
+    position: absolute; bottom: 72px; left: 56px;
+    z-index: 10; display: flex; gap: 8px;
+  }
+  .hero-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.3); border: none; cursor: pointer;
+    transition: all 0.3s; padding: 0;
+  }
+  .hero-dot.active { background: var(--green-mid); transform: scale(1.4); }
+
+  /* barra de progreso */
+  .hero-progress {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px; z-index: 10;
+    background: rgba(255,255,255,0.1);
+  }
+  .hero-progress-bar {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--green-mid), #6ee6a0);
+    transition: none;
+  }
+  .hero-progress-bar.running {
+    width: 100%;
+    transition: width 5.5s linear;
+  }
+
+  /* ══════════════ ABOUT ══════════════ */
+  #about { background: var(--white); }
+  .about-wrap { max-width: 1280px; margin: 0 auto; padding: 90px 56px; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .about-eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
+  .about-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--green); border-radius: 2px; display: block; }
+  .about-h2 { font-family: 'Anton', sans-serif; font-size: clamp(2rem, 4vw, 3.8rem); line-height: 1; letter-spacing: 0.01em; text-transform: uppercase; color: var(--dark); margin-bottom: 20px; }
+  .about-h2 .hl { color: var(--green); }
+  .about-desc { font-size: 0.95rem; color: var(--mid); line-height: 1.78; margin-bottom: 32px; }
+  .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .ab-feat {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 16px 18px;
+    background: var(--cream); border-radius: var(--r);
+    border: 1px solid #dce8e0;
+    transition: all 0.3s;
+  }
+  .ab-feat:hover { background: var(--green-lt); border-color: var(--green); transform: translateY(-2px); }
+  .ab-feat-icon { color: var(--green); flex-shrink: 0; margin-top: 2px; }
+  .ab-feat-title { font-weight: 700; font-size: 0.82rem; color: var(--dark); margin-bottom: 3px; }
+  .ab-feat-desc { font-size: 0.76rem; color: var(--soft); line-height: 1.5; }
+  .about-right { position: relative; }
+  .about-mosaic { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 280px 180px; gap: 12px; }
+  .ab-img { border-radius: var(--r-lg); overflow: hidden; }
+  .ab-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+  .ab-img:hover img { transform: scale(1.05); }
+  .ab-img.span2 { grid-column: span 2; }
+  .about-badge {
+    position: absolute; bottom: -20px; left: -20px;
+    background: var(--green); color: #fff;
+    padding: 18px 24px; border-radius: var(--r-lg);
+    text-align: center;
+    box-shadow: 0 12px 32px rgba(30,107,69,0.3);
+  }
+  .about-badge-num { font-family: 'Anton', sans-serif; font-size: 2.4rem; color: #6ee6a0; line-height: 1; }
+  .about-badge-lbl { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 3px; }
+
+  /* ══════════════ SECCIÓN SHARED ══════════════ */
+  .sw { max-width: 1280px; margin: 0 auto; padding: 90px 56px; }
+  .sec-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 52px; gap: 24px; flex-wrap: wrap; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 12px;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 2px; border-radius: 2px; display: block; }
+  .eyebrow.green  { color: var(--green);    } .eyebrow.green::before  { background: var(--green);    }
+  .eyebrow.blue   { color: var(--blue-mid); } .eyebrow.blue::before   { background: var(--blue-mid); }
+  .eyebrow.cream  { color: var(--brown);    } .eyebrow.cream::before  { background: var(--brown);    }
+  .sec-title { font-family: 'Anton', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 0.95; letter-spacing: 0.01em; text-transform: uppercase; color: var(--dark); }
+  .hl-green { color: var(--green);    }
+  .hl-blue  { color: var(--blue-mid); }
+  .hl-acc   { color: var(--accent);   }
+  .link-all {
+    display: inline-flex; align-items: center; gap: 7px; padding: 10px 22px;
+    border: 1.5px solid #c8ddd0; border-radius: 100px;
+    font-size: 0.8rem; font-weight: 600; color: var(--mid); text-decoration: none; transition: all 0.25s; white-space: nowrap;
+  }
+  .link-all:hover { border-color: var(--green); color: var(--green); }
+
+  /* ══════════════ SERVICIOS ══════════════ */
+  #servicios { background: var(--cream); }
+  .servicios-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .serv-card {
+    background: var(--white); border-radius: var(--r-lg);
+    border: 1px solid #dce8e0; overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.4s, border-color 0.3s;
+  }
+  .serv-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(30,107,69,0.12); border-color: var(--green); }
+  .serv-img { height: 200px; overflow: hidden; }
+  .serv-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.55s; }
+  .serv-card:hover .serv-img img { transform: scale(1.07); }
+  .serv-body { padding: 20px 20px 22px; }
+  .serv-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); margin-bottom: 10px; }
+  .serv-title { font-family: 'Anton', sans-serif; font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dark); margin-bottom: 7px; }
+  .serv-desc { font-size: 0.78rem; color: var(--soft); line-height: 1.6; }
+
+  /* ══════════════ PROGRAMAS CERTIFICADOS ══════════════ */
+  #programas { background: var(--white); }
+
+  .prog-tabs { display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
+  .prog-tab {
+    padding: 8px 20px; background: transparent;
+    border: 1.5px solid #c8ddd0; border-radius: 100px;
+    font-size: 0.78rem; font-weight: 600; color: var(--soft);
+    cursor: pointer; transition: all 0.22s;
+  }
+  .prog-tab:hover { border-color: var(--green); color: var(--green); }
+  .prog-tab.active { background: var(--green); border-color: var(--green); color: #fff; }
+
+  .prog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .prog-card {
+    border-radius: var(--r-lg); overflow: hidden;
+    border: 1px solid #dce8e0;
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(30,107,69,0.06);
+    transition: transform 0.38s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.38s, border-color 0.3s;
+    display: none; /* oculto por defecto, JS lo muestra */
+  }
+  .prog-card.visible {
+    display: block;
+  }
+  .prog-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(30,107,69,0.14); border-color: var(--green); }
+  .prog-card-img { height: 160px; overflow: hidden; position: relative; }
+  .prog-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+  .prog-card:hover .prog-card-img img { transform: scale(1.06); }
+  .prog-card-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(14,30,20,0.6) 0%, transparent 55%);
+  }
+  .prog-cat-badge {
+    position: absolute; bottom: 10px; left: 12px;
+    font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    color: #fff; background: var(--green); padding: 3px 10px; border-radius: 50px;
+  }
+  .prog-card-body { padding: 14px 16px 18px; }
+  .prog-card-title { font-weight: 700; font-size: 0.88rem; color: var(--dark); line-height: 1.3; margin-bottom: 6px; }
+  .prog-card-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .prog-modalidad { font-size: 0.65rem; color: var(--faint); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .prog-cta {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--green); text-decoration: none; transition: gap 0.2s;
+  }
+  .prog-cta:hover { gap: 8px; }
+
+  /* ══════════════ WHY ══════════════ */
+  #why { background: var(--cream); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .why-img-col { position: relative; }
+  .why-img-main { width: 100%; height: 480px; object-fit: cover; border-radius: var(--r-xl); display: block; }
+  .why-float {
+    position: absolute; top: 32px; right: -28px;
+    background: var(--white); border-radius: var(--r-lg);
+    padding: 18px 22px;
+    box-shadow: 0 12px 40px rgba(30,107,69,0.15);
+    text-align: center; min-width: 130px;
+  }
+  .why-float-num { font-family: 'Anton', sans-serif; font-size: 2.2rem; color: var(--green); line-height: 1; }
+  .why-float-lbl { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); margin-top: 3px; }
+  .why-float-2 {
+    position: absolute; bottom: 32px; left: -28px;
+    background: var(--dark2);
+    border-radius: var(--r-lg);
+    padding: 18px 22px;
+    box-shadow: 0 12px 40px rgba(14,30,20,0.25);
+    text-align: center; min-width: 130px;
+  }
+  .why-float-2 .why-float-num { color: #6ee6a0; }
+  .why-float-2 .why-float-lbl { color: rgba(255,255,255,0.45); }
+  .why-items { display: flex; flex-direction: column; gap: 16px; }
+  .why-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 20px 22px; background: var(--white);
+    border-radius: var(--r); border: 1px solid #dce8e0;
+    transition: transform 0.35s cubic-bezier(0.34,1.4,0.64,1), border-color 0.3s, box-shadow 0.3s;
+  }
+  .why-item:hover { transform: translateX(8px); border-color: var(--green); box-shadow: 0 4px 20px rgba(30,107,69,0.10); }
+  .why-num { font-family: 'Anton', sans-serif; font-size: 1.4rem; color: #c8ddd0; line-height: 1; flex-shrink: 0; width: 32px; transition: color 0.3s; }
+  .why-item:hover .why-num { color: var(--green); }
+  .why-t { font-weight: 700; font-size: 0.9rem; color: var(--dark); margin-bottom: 4px; }
+  .why-d { font-size: 0.8rem; color: var(--soft); line-height: 1.6; }
+
+  /* ══════════════ STATS ══════════════ */
+  #stats { background: var(--dark2); }
+  .stats-inner { max-width: 1280px; margin: 0 auto; padding: 72px 56px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+  .stat-block {
+    text-align: center; padding: 48px 32px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+  }
+  .stat-block:last-child { border-right: none; }
+  .stat-block:hover { background: rgba(255,255,255,0.03); }
+  .stat-num { font-family: 'Anton', sans-serif; font-size: clamp(2.8rem, 5vw, 4rem); color: #6ee6a0; line-height: 1; margin-bottom: 10px; }
+  .stat-lbl { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+
+  /* ══════════════ TESTIMONIOS ══════════════ */
+  #testimonios { background: var(--white); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .testi-card {
+    background: var(--cream);
+    border: 1px solid #dce8e0; border-radius: var(--r-lg);
+    padding: 34px 30px; position: relative; overflow: hidden;
+    transition: transform 0.38s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.38s;
+  }
+  .testi-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--green), var(--blue-mid));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .testi-card:hover { transform: translateY(-8px); box-shadow: 0 24px 56px rgba(30,107,69,0.10); }
+  .testi-card:hover::after { transform: scaleX(1); }
+  .testi-stars { color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 16px; }
+  .testi-cita { font-size: 0.93rem; color: var(--mid); line-height: 1.76; font-style: italic; margin-bottom: 22px; }
+  .testi-footer { display: flex; align-items: center; gap: 12px; }
+  .testi-av { width: 42px; height: 42px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; font-family: 'Anton', sans-serif; font-size: 0.8rem; color: #fff; flex-shrink: 0; }
+  .testi-card:nth-child(2) .testi-av { background: var(--blue); }
+  .testi-card:nth-child(3) .testi-av { background: var(--brown); }
+  .testi-autor { font-weight: 700; font-size: 0.87rem; color: var(--dark); }
+  .testi-rol { font-size: 0.71rem; color: var(--green); font-weight: 600; margin-top: 2px; }
+
+  /* ══════════════ VACANTES ══════════════ */
+  #vacantes { background: var(--cream); }
+  .vacantes-list { display: flex; flex-direction: column; gap: 14px; }
+  .vacante-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 24px 28px; background: var(--white);
+    border: 1px solid #dce8e0; border-radius: var(--r-lg); transition: all 0.3s;
+  }
+  .vacante-row:hover { border-color: var(--green); box-shadow: 0 6px 24px rgba(30,107,69,0.10); transform: translateX(6px); }
+  .vac-num { font-family: 'Anton', sans-serif; font-size: 1.5rem; color: #c8ddd0; flex-shrink: 0; width: 32px; transition: color 0.3s; }
+  .vacante-row:hover .vac-num { color: var(--green); }
+  .vac-info { flex: 1; }
+  .vac-cargo { font-weight: 700; font-size: 1rem; color: var(--dark); margin-bottom: 4px; }
+  .vac-area { font-size: 0.78rem; color: var(--soft); }
+  .btn-apply { display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; background: var(--green); color: #fff; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-decoration: none; border-radius: 100px; transition: all 0.25s; }
+  .btn-apply:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(30,107,69,0.35); }
+
+  /* ══════════════ CTA BANNER ══════════════ */
+  #cta { position: relative; overflow: hidden; background: var(--dark2); }
+  .cta-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.07; }
+  .cta-inner {
     position: relative; z-index: 1;
     max-width: 1280px; margin: 0 auto;
-    padding: 140px 60px;
-    display: flex; flex-direction: column; align-items: flex-start;
+    padding: 100px 56px;
+    display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap;
   }
-  .cta-h2 {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(3rem, 8vw, 8rem);
-    letter-spacing: 0.01em;
-    line-height: 0.92;
-    text-transform: uppercase;
-    color: var(--c-cream);
-    margin-bottom: 48px;
-  }
-  .cta-h2 .stroke {
-    display: block;
-    -webkit-text-stroke: 1.5px rgba(255,255,255,0.2);
-    color: transparent;
-  }
-  .cta-h2 .filled {
-    display: block;
-    background: linear-gradient(90deg, var(--c-green), var(--c-sky));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .cta-row {
-    display: flex; align-items: center; gap: 40px; flex-wrap: wrap;
-  }
-  .cta-badges {
-    display: flex; gap: 12px; flex-wrap: wrap;
-  }
-  .cta-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 10px 20px;
-    border: 1px solid rgba(255,255,255,0.1);
-    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
-  }
-  .cta-badge svg { width: 12px; height: 12px; color: var(--c-green); }
+  .cta-tag { display: inline-flex; align-items: center; gap: 7px; padding: 6px 14px; background: rgba(110,230,160,0.12); border: 1px solid rgba(110,230,160,0.25); border-radius: 100px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6ee6a0; margin-bottom: 20px; }
+  .cta-h2 { font-family: 'Anton', sans-serif; font-size: clamp(2.4rem, 5vw, 5rem); line-height: 0.93; letter-spacing: 0.01em; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
+  .cta-h2 .c-acc { color: #6ee6a0; }
+  .cta-sub { font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 440px; }
+  .cta-right { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .btn-cta-prim { display: inline-flex; align-items: center; gap: 9px; padding: 16px 40px; background: var(--green); color: #fff; font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em; text-decoration: none; border-radius: 100px; transition: all 0.3s; box-shadow: 0 6px 24px rgba(30,107,69,0.4); }
+  .btn-cta-prim:hover { background: var(--green-mid); transform: translateY(-3px); box-shadow: 0 12px 36px rgba(30,107,69,0.5); }
+  .btn-cta-sec { display: inline-flex; align-items: center; gap: 9px; padding: 15px 32px; border: 1.5px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); font-weight: 600; font-size: 0.9rem; text-decoration: none; border-radius: 100px; transition: all 0.3s; }
+  .btn-cta-sec:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+  .cta-chips { display: flex; gap: 10px; flex-wrap: wrap; }
+  .cta-chip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border: 1px solid rgba(255,255,255,0.10); border-radius: 100px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+  .chip-d { width: 5px; height: 5px; border-radius: 50%; background: #6ee6a0; }
 
-  /* ── FOOTER ── */
-  footer {
-    padding: 32px 60px;
-    border-top: 1px solid var(--c-border);
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 16px;
-  }
-  .footer-brand {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.1rem; letter-spacing: 0.12em;
-    color: var(--c-cream);
-  }
-  .footer-brand em { color: var(--c-green); font-style: normal; }
-  .footer-copy {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.2);
-    letter-spacing: 0.06em;
-  }
+  /* ══════════════ FOOTER ══════════════ */
+  footer { background: var(--dark); padding: 56px 56px 36px; }
+  .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 32px; }
+  .footer-brand { font-family: 'Anton', sans-serif; font-size: 1.2rem; letter-spacing: 0.1em; color: #fff; margin-bottom: 12px; }
+  .footer-brand em { color: #6ee6a0; font-style: normal; }
+  .footer-desc { font-size: 0.8rem; color: rgba(255,255,255,0.32); line-height: 1.7; }
+  .footer-col-title { font-weight: 700; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 16px; }
+  .footer-links { display: flex; flex-direction: column; gap: 9px; }
+  .footer-link { font-size: 0.82rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-link:hover { color: #6ee6a0; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); letter-spacing: 0.04em; }
+  .footer-accent { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; color: #6ee6a0; font-weight: 600; }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    #hero { padding: 0 28px 60px; }
-    .section-wrap { padding: 80px 28px; }
-    .why-layout { grid-template-columns: 1fr; gap: 40px; }
-    .why-left { position: static; }
-    .cta-content { padding: 80px 28px; }
-    footer { padding: 28px; }
-    #navbar { padding: 0 24px; }
-    .tab-item { padding: 14px 16px; font-size: 0.72rem; }
-    .curso-card-h { flex: 0 0 300px; }
-    .galeria-item { flex: 0 0 280px; }
+  /* ══════════════ ANIMACIONES ══════════════ */
+  .anim-up    { opacity: 0; transform: translateY(44px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
+  .anim-left  { opacity: 0; transform: translateX(-52px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
+  .anim-right { opacity: 0; transform: translateX(52px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
+  .anim-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+  .anim-up.in, .anim-left.in, .anim-right.in, .anim-scale.in { opacity: 1; transform: none; }
+  .d1 { transition-delay: 0.07s; } .d2 { transition-delay: 0.14s; }
+  .d3 { transition-delay: 0.21s; } .d4 { transition-delay: 0.28s; }
+
+  /* ══════════════ RESPONSIVE ══════════════ */
+  @media(max-width:1024px) {
+    .servicios-grid { grid-template-columns: repeat(2,1fr); }
+    .prog-grid { grid-template-columns: repeat(2,1fr); }
+    .stats-grid { grid-template-columns: repeat(2,1fr); }
+    .footer-top { grid-template-columns: 1fr 1fr; }
   }
-  @media (max-width: 640px) {
-    .hero-meta { flex-direction: column; gap: 20px; }
-    .tab-row { flex-direction: column; }
-    .tab-item { border-right: none; border-bottom: 1px solid var(--c-border); }
-    .curso-card-h { flex: 0 0 260px; }
-    .galeria-item { flex: 0 0 250px; }
+  @media(max-width:768px) {
+    #navbar { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 24px 40px; }
+    .hero-controls { right: 24px; bottom: 40px; }
+    .hero-dots { left: 24px; bottom: 56px; }
+    .about-wrap, .sw, .stats-inner { padding: 72px 24px; }
+    .about-grid, .why-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-mosaic { grid-template-rows: 200px 140px; }
+    .about-badge { left: 0; bottom: -14px; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .servicios-grid { grid-template-columns: 1fr; }
+    .prog-grid { grid-template-columns: repeat(2,1fr); }
+    .cta-inner { flex-direction: column; padding: 72px 24px; }
+    footer { padding: 48px 24px 28px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .why-float  { right: -10px; top: 16px; }
+    .why-float-2{ left: -10px; }
+  }
+  @media(max-width:480px) {
+    .prog-grid { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -822,183 +561,304 @@ const instalaciones = [
     <img src="/images/log2.png" alt="CENACAP" onerror="this.style.display='none'" />
     <span class="nav-wordmark">CENA<em>CAP</em></span>
   </a>
-  <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="nav-pill">
+  <div class="nav-links">
+    <a href="#about"      class="nav-link">Nosotros</a>
+    <a href="#servicios"  class="nav-link">Servicios</a>
+    <a href="#programas"  class="nav-link">Programas</a>
+    <a href="#testimonios"class="nav-link">Egresados</a>
+    <a href="#vacantes"   class="nav-link">Vacantes</a>
+  </div>
+  <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="nav-cta">
     Inscribirme
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
   </a>
 </nav>
 
-<!-- HERO -->
+<!-- HERO CARRUSEL -->
 <section id="hero">
-  <div id="hero-bg"></div>
-  <div id="hero-overlay"></div>
 
-  <div class="hero-content">
-    <div class="hero-kicker" id="hero-kicker">
-      <span class="hero-kicker-line"></span>
-      Centro Nacional de Capacitación Profesional
-    </div>
-
-    <h1 class="hero-h1" id="hero-h1">
-      <span class="line-wrap"><span>FORMACIÓN</span></span>
-      <span class="line-wrap"><span class="line-accent">DE ÉLITE</span></span>
-      <span class="line-wrap"><span class="line-color">PROFESIONAL</span></span>
-    </h1>
-
-    <div class="hero-meta">
-      <p class="hero-desc" id="hero-desc">
-        Desarrolla competencias certificadas en gestión, tecnología y deporte de alto rendimiento. Programas diseñados por profesionales activos.
-      </p>
-      <div class="hero-cta-group" id="hero-ctas">
-        <a href="#carreras" class="btn-hero-primary">
-          Ver Programas
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="btn-hero-secondary">
-          Inscribirse
-        </a>
+  {heroSlides.map((slide, i) => (
+    <div class={`hero-slide${i === 0 ? ' active' : ''}`} data-slide={i}>
+      <img
+        src={slide.img}
+        alt={slide.tag}
+        class="hero-slide-img"
+        onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1600&q=80'"
+      />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          {slide.tag}
+        </div>
+        <h1 class="hero-h1">
+          <span>{slide.h1a}</span><br/>
+          <span>{slide.h1b}</span><br/>
+          <span class="c-green">{slide.h1c}</span>
+        </h1>
+        <div class="hero-row">
+          <a href="#programas" class="btn-white">
+            Ver Programas
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="btn-outline-white">Inscribirme</a>
+        </div>
+        <div class="hero-chips">
+          <span class="hero-chip">97% Inserción Laboral</span>
+          <span class="hero-chip">18 Programas</span>
+          <span class="hero-chip">Certificado Válido</span>
+        </div>
       </div>
     </div>
+  ))}
+
+  <!-- dots -->
+  <div class="hero-dots">
+    {heroSlides.map((_, i) => (
+      <button class={`hero-dot${i === 0 ? ' active' : ''}`} data-dot={i} aria-label={`Slide ${i+1}`}></button>
+    ))}
   </div>
 
-  <div class="scroll-hint" id="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
+  <!-- prev / next -->
+  <div class="hero-controls">
+    <button class="hc-btn" id="hc-prev" aria-label="Anterior">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="hc-btn" id="hc-next" aria-label="Siguiente">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
   </div>
+
+  <!-- barra de progreso -->
+  <div class="hero-progress">
+    <div class="hero-progress-bar" id="hero-prog-bar"></div>
+  </div>
+
 </section>
 
-<!-- STATS BAR -->
-<div id="stats-bar">
-  <div class="stats-inner">
-    <div class="stats-track" id="stats-track">
-      {[...stats, ...stats].map(s => (
-        <div class="stat-chip">
-          <span class="stat-num">{s.num}<span style="font-size:0.6em">{s.suffix}</span></span>
-          <span class="stat-label">{s.label}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-</div>
-
-<!-- CARRERAS (presentación horizontal) -->
-<section id="carreras">
-  <div class="section-wrap">
-    <div class="section-header">
-      <div class="section-eyebrow">Oferta Académica</div>
-      <h2 class="section-title">PROGRAMAS <span class="hl">CERTIFI</span><br/>CADOS</h2>
-    </div>
-
-    <div class="tab-row" id="tab-row">
-      {carreras.map((c, i) => (
-        <button class={`tab-item${i === 0 ? ' active' : ''}`} data-idx={i}>
-          <span class="tab-num">{c.num}</span>
-          {c.categoria}
-        </button>
-      ))}
-    </div>
-
-    {carreras.map((cat, ci) => (
-      <div class={`cursos-panel${ci === 0 ? ' active' : ''}`} id={`panel-${ci}`}>
-        <div class="cursos-scroll">
-          {cat.cursos.map(curso => (
-            <div class="curso-card-h">
-              <div class="curso-img-wrap-h">
-                <img
-                  src={curso.imagen}
-                  alt={curso.nombre}
-                  class="curso-img"
-                  onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80'"
-                />
-              </div>
-              <div class="curso-body-h">
-                <div>
-                  <span class="curso-tag">{curso.modalidad}</span>
-                  <h3 class="curso-nombre">{curso.nombre}</h3>
-                  <p class="curso-desc">{curso.desc}</p>
-                </div>
-                <span class="curso-cert">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                  Certificado Incluido
-                </span>
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div class="about-grid">
+      <div class="about-left anim-left">
+        <div class="about-eyebrow">Quiénes Somos</div>
+        <h2 class="about-h2">SOMOS UN CENTRO DE <span class="hl">FORMACIÓN</span> PROFESIONAL</h2>
+        <p class="about-desc">
+          CENACAP lleva más de 12 años desarrollando competencias certificadas en gestión, tecnología y deporte de alto rendimiento. Nuestros programas son diseñados y dictados por profesionales activos del mercado laboral.
+        </p>
+        <div class="about-features">
+          {[
+            { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/></svg>`, t: "Certificación Reconocida", d: "Validez nacional e internacional" },
+            { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>`, t: "Docentes en Ejercicio", d: "Profesionales activos del sector" },
+            { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`, t: "Modalidad Flexible", d: "Presencial, virtual o híbrido" },
+            { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`, t: "Metodología Activa", d: "Proyectos reales desde el día 1" },
+          ].map(f => (
+            <div class="ab-feat">
+              <span class="ab-feat-icon" set:html={f.icon} />
+              <div>
+                <div class="ab-feat-title">{f.t}</div>
+                <div class="ab-feat-desc">{f.d}</div>
               </div>
             </div>
           ))}
         </div>
       </div>
-    ))}
+      <div class="about-right anim-right" style="padding:20px 20px 28px 0;">
+        <div class="about-mosaic">
+          <div class="ab-img"><img src="/images/jun.jpg" alt="Clase" onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80'" /></div>
+          <div class="ab-img"><img src="/images/1.png" alt="Gestión" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80'" /></div>
+          <div class="ab-img span2"><img src="/images/6.png" alt="Diseño" onerror="this.src='https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80'" /></div>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">12+</div>
+          <div class="about-badge-lbl">Años de Experiencia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="sw">
+    <div class="sec-head">
+      <div class="sec-head-left anim-up">
+        <div class="eyebrow cream">Nuestras Especialidades</div>
+        <h2 class="sec-title">ÁREAS DE <span class="hl-acc">FORMACIÓN</span></h2>
+      </div>
+      <a href="#programas" class="link-all anim-up d2">
+        Ver todos
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="servicios-grid">
+      {servicios.map((s, i) => (
+        <div class={`serv-card anim-up d${i+1}`}>
+          <div class="serv-img">
+            <img src={s.imagen} alt={s.titulo} onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80'" />
+          </div>
+          <div class="serv-body">
+            <div class="serv-dot"></div>
+            <div class="serv-title">{s.titulo}</div>
+            <div class="serv-desc">{s.desc}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS CERTIFICADOS -->
+<section id="programas">
+  <div class="sw">
+    <div class="sec-head">
+      <div class="anim-up">
+        <div class="eyebrow blue">Oferta Académica</div>
+        <h2 class="sec-title">PROGRAMAS <span class="hl-green">CERTIFICADOS</span></h2>
+      </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="prog-tabs anim-up d1" id="prog-tabs">
+      <button class="prog-tab active" data-filter="Todos">Todos</button>
+      <button class="prog-tab" data-filter="Calidad">Calidad</button>
+      <button class="prog-tab" data-filter="Diseño">Diseño</button>
+      <button class="prog-tab" data-filter="Deporte">Deporte</button>
+      <button class="prog-tab" data-filter="Tecnología">Tecnología</button>
+      <button class="prog-tab" data-filter="Seguridad">Seguridad</button>
+    </div>
+
+    <!-- Grid de tarjetas -->
+    <div class="prog-grid" id="prog-grid">
+      {programas.map((p, i) => (
+        <div
+          class="prog-card visible anim-scale"
+          data-cat={p.cat}
+          style={`transition-delay:${(i % 4) * 0.07}s`}
+        >
+          <div class="prog-card-img">
+            <img src={p.imagen} alt={p.titulo} onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80'" />
+            <div class="prog-card-img-overlay"></div>
+            <span class="prog-cat-badge">{p.cat}</span>
+          </div>
+          <div class="prog-card-body">
+            <div class="prog-card-title">{p.titulo}</div>
+            <div class="prog-card-meta">
+              <span class="prog-modalidad">{p.modalidad}</span>
+              <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="prog-cta">
+                Ver más
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 
 <!-- WHY -->
 <section id="why">
-  <div class="section-wrap">
-    <div class="why-layout">
-      <div class="why-left">
-        <div class="section-eyebrow">Por Que Elegirnos</div>
-        <h2 class="section-title">LO QUE NOS HACE <span class="hl">DIFE</span><br/>RENTES</h2>
-        <div class="why-visual">
-          <img src="/images/jun.jpg" alt="Aula CENACAP" class="why-img"
-               onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80'" />
-          <div class="why-img-frame"></div>
+  <div class="sw">
+    <div class="why-grid">
+      <div class="why-img-col anim-left">
+        <img src="/images/jun.jpg" alt="Formación CENACAP" class="why-img-main"
+             onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80'" />
+        <div class="why-float">
+          <div class="why-float-num">97%</div>
+          <div class="why-float-lbl">Inserción Laboral</div>
+        </div>
+        <div class="why-float-2">
+          <div class="why-float-num">18</div>
+          <div class="why-float-lbl">Programas Activos</div>
         </div>
       </div>
-      <div class="why-items">
-        {[
-          { title: "Certificación Reconocida", desc: "Respaldo institucional con validez para el mercado laboral local e internacional.", num: "01" },
-          { title: "Docentes en Ejercicio", desc: "Profesionales activos que traen experiencia real al aula, no solo teoría.", num: "02" },
-          { title: "Metodología Activa", desc: "Aprende haciendo. Proyectos reales, casos de estudio y simulaciones desde el primer módulo.", num: "03" },
-          { title: "Modalidad Flexible", desc: "Presencial, virtual o híbrido. Adapta tu formación a tu ritmo y disponibilidad.", num: "04" },
-          { title: "Resultados Comprobados", desc: "97% de inserción laboral post-certificación. Los egresados más demandados del mercado.", num: "05" },
-          { title: "Red Profesional", desc: "Comunidad activa de profesionales y empresas aliadas desde el primer día.", num: "06" },
-        ].map(item => (
-          <div class="why-item">
-            <div class="why-item-head">
-              <h3 class="why-item-title">{item.title}</h3>
-              <span class="why-item-num">{item.num}</span>
+      <div>
+        <div class="anim-right">
+          <div class="eyebrow cream">Por Qué Elegirnos</div>
+          <h2 class="sec-title" style="margin-bottom:36px">LO QUE NOS HACE <span class="hl-acc">DIFERENTES</span></h2>
+        </div>
+        <div class="why-items">
+          {whyItems.map((item, i) => (
+            <div class={`why-item anim-right d${i+1}`}>
+              <span class="why-num">0{i+1}</span>
+              <div>
+                <div class="why-t">{item.t}</div>
+                <div class="why-d">{item.d}</div>
+              </div>
             </div>
-            <p class="why-item-desc">{item.desc}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="stats-grid">
+      {stats.map((s, i) => (
+        <div class={`stat-block anim-up d${i+1}`}>
+          <div class="stat-num">{s.num}</div>
+          <div class="stat-lbl">{s.label}</div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIOS -->
 <section id="testimonios">
-  <div class="section-wrap">
-    <div class="section-header">
-      <div class="section-eyebrow">Testimonios</div>
-      <h2 class="section-title">LO QUE DICEN<br/><span class="hl">NUESTROS</span> ALUMNOS</h2>
+  <div class="sw">
+    <div class="sec-head">
+      <div class="anim-up">
+        <div class="eyebrow cream">Testimonios</div>
+        <h2 class="sec-title">LO QUE DICEN<br/><span class="hl-acc">NUESTROS</span> ALUMNOS</h2>
+      </div>
     </div>
-    <div class="testimonios-grid">
-      {testimonios.map(t => (
-        <div class="testimonio-card">
-          <p class="testimonio-cita">“{t.cita}”</p>
-          <div class="testimonio-autor">{t.autor}</div>
-          <div class="testimonio-rol">{t.rol}</div>
+    <div class="testi-grid">
+      {testimonios.map((t, i) => (
+        <div class={`testi-card anim-up d${i+1}`}>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-cita">"{t.cita}"</p>
+          <div class="testi-footer">
+            <div class="testi-av">{t.ini}</div>
+            <div>
+              <div class="testi-autor">{t.autor}</div>
+              <div class="testi-rol">{t.rol}</div>
+            </div>
+          </div>
         </div>
       ))}
     </div>
   </div>
 </section>
 
-<!-- GALERÍA INSTALACIONES (reemplaza aliados) -->
-<section id="instalaciones">
-  <div class="section-wrap">
-    <div class="section-header">
-      <div class="section-eyebrow">Nuestras Instalaciones</div>
-      <h2 class="section-title">ESPACIOS <span class="hl">DISEÑADOS</span><br/>PARA APRENDER</h2>
+<!-- VACANTES -->
+<section id="vacantes">
+  <div class="sw">
+    <div class="sec-head">
+      <div class="anim-up">
+        <div class="eyebrow green">Oportunidades</div>
+        <h2 class="sec-title">CONSTRUYE TU <span class="hl-blue">CARRERA</span><br/>CON NOSOTROS</h2>
+      </div>
     </div>
-    <div class="galeria-scroll" id="galeria-scroll">
-      {instalaciones.map((item, i) => (
-        <div class="galeria-item" data-reveal>
-          <img src={item.imagen} alt={item.titulo} onerror="this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80'" />
-          <div class="galeria-info">
-            <h3>{item.titulo}</h3>
-            <p>{item.desc}</p>
+    <p class="anim-up" style="font-size:0.95rem;color:var(--soft);margin-bottom:36px;max-width:520px;line-height:1.75;">
+      Al graduarte en CENACAP accedes a nuestra red de empresas aliadas. Estas son algunas de las posiciones más solicitadas por nuestros egresados.
+    </p>
+    <div class="vacantes-list">
+      {vacantes.map((v, i) => (
+        <div class={`vacante-row anim-up d${i+1}`}>
+          <span class="vac-num">0{i+1}</span>
+          <div class="vac-info">
+            <div class="vac-cargo">{v.cargo}</div>
+            <div class="vac-area">{v.area}</div>
           </div>
+          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="btn-apply">
+            Inscribirme
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
         </div>
       ))}
     </div>
@@ -1007,29 +867,24 @@ const instalaciones = [
 
 <!-- CTA -->
 <section id="cta">
-  <div class="cta-bg"></div>
-  <div class="cta-content">
-    <h2 class="cta-h2">
-      <span class="stroke">TU CARRERA</span>
-      <span class="stroke">PROFESIONAL</span>
-      <span class="filled">EMPIEZA AQUÍ.</span>
-    </h2>
-    <div class="cta-row">
-      <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="btn-hero-primary" style="font-size:1rem;padding:18px 48px;">
+  <img src="/images/sala.webp" alt="" class="cta-bg-img" aria-hidden="true"
+       onerror="this.style.display='none'" />
+  <div class="cta-inner">
+    <div class="cta-left anim-left">
+      <div class="cta-tag">Inscripciones Abiertas 2026</div>
+      <h2 class="cta-h2">TU PRÓXIMO<br/>NIVEL ESTÁ<br/><span class="c-acc">AQUÍ.</span></h2>
+      <p class="cta-sub">Más de 2,400 profesionales ya dieron el paso. Certifícate con los mejores.</p>
+    </div>
+    <div class="cta-right anim-right">
+      <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="btn-cta-prim">
         Inscribirme Ahora
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
-      <div class="cta-badges">
-        {[
-          { label: "100% en Línea" },
-          { label: "Certificado Válido" },
-          { label: "Horario Flexible" },
-        ].map(b => (
-          <span class="cta-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            {b.label}
-          </span>
-        ))}
+      <a href="#servicios" class="btn-cta-sec">Ver Programas</a>
+      <div class="cta-chips">
+        <span class="cta-chip"><span class="chip-d"></span> Certificado Válido</span>
+        <span class="cta-chip"><span class="chip-d"></span> Horario Flexible</span>
+        <span class="cta-chip"><span class="chip-d"></span> 97% de Inserción</span>
       </div>
     </div>
   </div>
@@ -1037,100 +892,120 @@ const instalaciones = [
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-brand">CENA<em>CAP</em></span>
-  <span class="footer-copy">© 2026 CENACAP · Centro Nacional de Capacitación Profesional · Todos los derechos reservados</span>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">CENA<em>CAP</em></div>
+      <p class="footer-desc">Centro Nacional de Capacitación Profesional. Formamos profesionales certificados para el mercado laboral de hoy.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Programas</div>
+      <div class="footer-links">
+        <a href="#servicios" class="footer-link">Gestión de Calidad</a>
+        <a href="#servicios" class="footer-link">Gestión Ambiental</a>
+        <a href="#servicios" class="footer-link">Diseño Gráfico</a>
+        <a href="#servicios" class="footer-link">Alto Rendimiento</a>
+        <a href="#servicios" class="footer-link">Microsoft Project</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Institución</div>
+      <div class="footer-links">
+        <a href="#about"       class="footer-link">Quiénes Somos</a>
+        <a href="#testimonios" class="footer-link">Egresados</a>
+        <a href="#vacantes"    class="footer-link">Vacantes</a>
+        <a href="#why"         class="footer-link">Por Qué CENACAP</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <div class="footer-links">
+        <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="footer-link">Formulario de Inscripción</a>
+        <span class="footer-link">info@cenacap.edu</span>
+        <span class="footer-link">+591 4 000 0000</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 CENACAP — Todos los derechos reservados</span>
+    <span class="footer-accent">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Formación certificada de calidad
+    </span>
+  </div>
 </footer>
 
 <script>
-  // Animación de entrada del hero
-  const initGSAP = async () => {
-    try {
-      const gsapModule = await import('gsap');
-      return { gsap: gsapModule.default };
-    } catch (e) {
-      console.warn('GSAP no encontrado como módulo, cargando desde CDN...');
-      await new Promise((resolve) => {
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
-        script.onload = resolve;
-        document.head.appendChild(script);
-      });
-      return { gsap: (window as any).gsap };
+  /* ── CARRUSEL HERO ── */
+  (() => {
+    const slides   = Array.from(document.querySelectorAll<HTMLElement>('.hero-slide'));
+    const dots     = Array.from(document.querySelectorAll<HTMLButtonElement>('.hero-dot'));
+    const bar      = document.getElementById('hero-prog-bar');
+    const DURATION = 5500;
+    let current = 0;
+    let timer: ReturnType<typeof setTimeout>;
+
+    function goTo(idx: number) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (idx + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      resetBar();
     }
-  };
 
-  const runHeroAnimation = (gsap: any) => {
-    const kicker = document.getElementById('hero-kicker');
-    const h1Lines = document.querySelectorAll('#hero-h1 .line-wrap span');
-    const heroDesc = document.getElementById('hero-desc');
-    const heroCtas = document.getElementById('hero-ctas');
-    const scrollHint = document.getElementById('scroll-hint');
+    function resetBar() {
+      if (!bar) return;
+      bar.classList.remove('running');
+      // forzar reflow
+      void bar.offsetWidth;
+      bar.classList.add('running');
+      clearTimeout(timer);
+      timer = setTimeout(() => goTo(current + 1), DURATION);
+    }
 
-    if (!kicker || !h1Lines.length || !heroDesc || !heroCtas || !scrollHint) return;
+    document.getElementById('hc-prev')?.addEventListener('click', () => goTo(current - 1));
+    document.getElementById('hc-next')?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 
-    gsap.set('#hero-h1 .line-wrap', { overflow: 'hidden', display: 'block' });
-    gsap.set(h1Lines, { yPercent: 100 });
-    gsap.set([heroDesc, heroCtas], { y: 20 });
+    // pausa en hover
+    const hero = document.getElementById('hero')!;
+    hero.addEventListener('mouseenter', () => { clearTimeout(timer); bar?.classList.remove('running'); });
+    hero.addEventListener('mouseleave', resetBar);
 
-    const tl = gsap.timeline({ delay: 0.2 });
-    tl
-      .to(kicker, { opacity: 1, duration: 0.6, ease: 'power2.out' })
-      .to(h1Lines, {
-        yPercent: 0,
-        duration: 1,
-        ease: 'power4.out',
-        stagger: 0.12
-      }, '-=0.2')
-      .to(heroDesc, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
-      .to(heroCtas, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.5')
-      .to(scrollHint, { opacity: 1, duration: 0.6 }, '-=0.3');
-  };
+    resetBar(); // arrancar
+  })();
 
-  // Tabs de cursos
-  const setupTabs = () => {
-    const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-item');
-    const panels = document.querySelectorAll<HTMLElement>('.cursos-panel');
-    tabBtns.forEach((btn, i) => {
-      btn.addEventListener('click', () => {
-        tabBtns.forEach(b => b.classList.remove('active'));
-        panels.forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        panels[i].classList.add('active');
+  /* ── FILTROS PROGRAMAS ── */
+  (() => {
+    const tabs  = document.querySelectorAll<HTMLButtonElement>('.prog-tab');
+    const cards = document.querySelectorAll<HTMLElement>('.prog-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter!;
+
+        cards.forEach((card, i) => {
+          const match = filter === 'Todos' || card.dataset.cat === filter;
+          card.classList.toggle('visible', match);
+          // re-stagger visual
+          (card as HTMLElement).style.transitionDelay = match ? `${(i % 4) * 0.07}s` : '0s';
+        });
       });
     });
-  };
+  })();
 
-  // Pausa del ticker al hacer hover
-  const track = document.getElementById('stats-track');
-  if (track) {
-    track.addEventListener('mouseenter', () => {
-      track.style.animationPlayState = 'paused';
+  /* ── NAVBAR SCROLL ── */
+  const nb = document.getElementById('navbar')!;
+  window.addEventListener('scroll', () => nb.classList.toggle('scrolled', scrollY > 40), { passive: true });
+
+  /* ── SCROLL REVEAL ── */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
-    track.addEventListener('mouseleave', () => {
-      track.style.animationPlayState = 'running';
-    });
-  }
-
-  // Animación de revelación para la galería (Intersection Observer)
-  const setupReveal = () => {
-    const items = document.querySelectorAll('[data-reveal]');
-    if (!items.length) return;
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    items.forEach(item => observer.observe(item));
-  };
-
-  // Inicializar
-  initGSAP().then(({ gsap }) => {
-    if (gsap) runHeroAnimation(gsap);
-    setupTabs();
-    setupReveal();
-  }).catch(err => console.error('Error al cargar GSAP:', err));
+  }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+  document.querySelectorAll('.anim-up, .anim-left, .anim-right, .anim-scale').forEach(el => io.observe(el));
 </script>
 </Layout>

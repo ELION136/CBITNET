@@ -4,9 +4,9 @@ import Navbar from '../components/Navbar.astro';
 
 const stats = [
   { num: "3500", suffix: "+", label: "Profesionales Graduados" },
-  { num: "95",   suffix: "%", label: "Empleabilidad Inicial" },
-  { num: "40",   suffix: "+", label: "Empresas Aliadas" },
-  { num: "100",  suffix: "%", label: "Validez Curricular" },
+  { num: "95",   suffix: "%", label: "Empleabilidad Inicial"   },
+  { num: "40",   suffix: "+", label: "Empresas Aliadas"        },
+  { num: "100",  suffix: "%", label: "Validez Curricular"      },
 ];
 
 const programs = [
@@ -91,437 +91,271 @@ const programs = [
 ];
 
 const promoConfig = {
-  infocade: { label: "INFOCADE", color: "#06b6d4", colorDim: "rgba(6,182,212,0.3)" },
-  cenacap:  { label: "CENACAP",  color: "#2dd4bf", colorDim: "rgba(45,212,191,0.3)" },
+  infocade: { label: "INFOCADE", color: "#C9993A", colorDim: "rgba(201,153,58,0.3)" },
+  cenacap:  { label: "CENACAP",  color: "#2D7DD2", colorDim: "rgba(45,125,210,0.3)" },
 };
+
+const ventajas = [
+  { title: "Bolsa de Empleo Activa", num: "01",
+    desc: "Integración con empresas aliadas que buscan perfiles técnicos directamente de nuestras aulas, con seguimiento de inserción laboral post-egreso." },
+  { title: "Metodología Práctica y Project-Based", num: "02",
+    desc: "Aprende resolviendo desafíos reales del sector corporativo, estructurando un portafolio profesional durante toda la carrera." },
+  { title: "Certificados con Validez Oficial", num: "03",
+    desc: "Nuestras acreditaciones cumplen los estándares de CENACAP e INFOCADE para potenciar tu CV ante auditorías y reclutamientos nacionales." },
+  { title: "Tutoría y Consultoría Personalizada", num: "04",
+    desc: "Acompañamiento por instructores certificados para resolver dudas en vivo y guiar proyectos individuales durante todo el programa." },
+  { title: "Flexibilidad de Horarios", num: "05",
+    desc: "Diseñado para profesionales activos: clases presenciales en fines de semana y sesiones virtuales asincrónicas de soporte." },
+];
 ---
 
 <Layout title="Ramas Técnicas y Digitales | CBIT">
   <Navbar />
 
-  <main class="min-h-screen relative overflow-hidden">
+  <main class="rt-main">
 
-    <!-- ── HERO ── -->
-    <section class="relative min-h-screen flex flex-col justify-end overflow-hidden"
-             style="padding:0 3rem 5rem;">
+    <!-- ══════════════════════════════════
+         HERO
+    ══════════════════════════════════ -->
+    <section class="rt-hero" id="rt-hero">
+      <div class="rt-hero-mesh" aria-hidden="true"></div>
+      <div class="rt-orb rt-orb-1" aria-hidden="true"></div>
+      <div class="rt-orb rt-orb-2" aria-hidden="true"></div>
+      <div class="rt-orb rt-orb-3" aria-hidden="true"></div>
 
-      <!-- Grid pattern sobre el fondo del layout -->
-      <div class="absolute inset-0 z-0 pointer-events-none"
-           style="background-size:40px 40px;
-                  background-image:linear-gradient(to right,rgba(255,255,255,0.012) 1px,transparent 1px),
-                                   linear-gradient(to bottom,rgba(255,255,255,0.012) 1px,transparent 1px);
-                  mask-image:linear-gradient(to top,rgba(0,0,0,0.7),transparent);"></div>
+      <div class="rt-container rt-hero-inner">
+        <div class="rt-reveal">
+          <div class="rt-hero-top">
 
-      <!-- Glows hero propios (complementan el canvas) -->
-      <div class="absolute top-0 right-0 w-[450px] h-[450px] pointer-events-none rounded-full z-0"
-           style="background:radial-gradient(circle,rgba(6,182,212,0.14) 0%,transparent 70%);
-                  filter:blur(70px);transform:translate(25%,-25%);"></div>
-      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none rounded-full z-0"
-           style="background:radial-gradient(circle,rgba(139,92,246,0.08) 0%,transparent 70%);
-                  filter:blur(80px);transform:translate(-35%,35%);"></div>
+            <h1 class="rt-hero-title font-display">
+              FORMACIÓN<br/>
+              <span style="color:#f2c82f">TÉCNICA Y</span><br/>
+              <span style="color: #2ff2e2 ">TECNOLÓGICA</span>
+            </h1>
 
-      <div class="relative z-[2] max-w-5xl">
-      
+            <div class="rt-hero-side rt-reveal rt-d1">
+              <p class="rt-hero-sub">
+                Capacítate en diseño digital, programación, gestión ambiental, calidad,
+                seguridad laboral y administración de proyectos bajo el respaldo de CBIT
+                con validez laboral inmediata.
+              </p>
+              <div class="rt-hero-ctas">
+                <a href="#programas" class="rt-btn-primary font-display">
+                  Ver Especialidades
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                  </svg>
+                </a>
+                <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank"
+                   rel="noopener noreferrer" class="rt-btn-outline">
+                  Inscribirme
+                </a>
+              </div>
+            </div>
 
-        <h1 class="font-display font-bold tracking-tighter leading-[0.9] text-white mb-8 overflow-hidden"
-            style="font-size:clamp(3.2rem,9vw,8.5rem);">
-          <span class="hero-line block overflow-hidden">
-            <span class="block translate-y-full">FORMACIÓN</span>
-          </span>
-          <span class="hero-line block overflow-hidden">
-            <span class="block translate-y-full"
-                  style="-webkit-text-stroke:1px rgba(255,255,255,0.12);color:rgb(251, 234, 0);">
-              TÉCNICA Y
-            </span>
-          </span>
-          <span class="hero-line block overflow-hidden">
-            <span class="block translate-y-full"
-                  style="background:linear-gradient(90deg,#06b6d4,#f6f65c);
-                         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-                         background-clip:text;">
-              TECNOLÓGICA
-            </span>
-          </span>
-        </h1>
-
-        <div class="flex flex-wrap items-start gap-10 mt-4">
-          <p id="hero-desc"
-             class="text-gray-400 text-sm md:text-base max-w-lg leading-[1.85]
-                    border-l-2 border-[#06b6d4]/40 pl-5"
-             style="opacity:0;transform:translateY(18px);">
-            Capacítate en diseño digital, programación, gestión ambiental, calidad,
-            seguridad laboral y administración de proyectos bajo el respaldo de CBIT
-            con validez laboral inmediata.
-          </p>
-
-          <div id="hero-ctas" class="flex gap-3 flex-wrap"
-               style="opacity:0;transform:translateY(18px);">
-            <a href="#programas"
-               class="inline-flex items-center gap-3 font-display font-bold text-[11px]
-                      tracking-[0.18em] uppercase px-8 py-4 text-black
-                      transition-all duration-300 hover:-translate-y-1 hover:brightness-110"
-               style="background:linear-gradient(135deg,#06b6d4,#eef65c);
-                      clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));">
-              Ver Especialidades
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-                   stroke="currentColor" stroke-width="2.5">
-                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-              </svg>
-            </a>
-            <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 font-bold text-[11px] tracking-[0.18em]
-                      uppercase px-7 py-4 border text-gray-300
-                      transition-all duration-300 hover:border-[#06b6d4] hover:text-[#06b6d4]"
-               style="border-color:rgba(255,255,255,0.12);
-                      clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));">
-              Inscribirme
-            </a>
           </div>
         </div>
       </div>
-
-      <div id="scroll-hint" class="absolute bottom-10 right-12 flex flex-col items-center gap-2 z-[2]"
-           style="opacity:0;">
-        <span class="text-[9px] tracking-[0.25em] uppercase text-white/25"
-              style="writing-mode:vertical-rl;">Deslizar</span>
-        <div class="w-[1px] h-14"
-             style="background:linear-gradient(to bottom,rgba(255,255,255,0.25),transparent);
-                    animation:scrollPulse 2s ease-in-out infinite;"></div>
-      </div>
     </section>
 
-    <!-- ── STATS BAR ── -->
-    <div class="border-t border-b border-white/[0.05]"
-         style="background:rgba(0,0,0,0.45);backdrop-filter:blur(12px);">
-      <div class="max-w-6xl mx-auto px-10 py-10 flex flex-wrap justify-around gap-8">
-        {stats.map(s => (
-          <div class="stat-chip flex items-center gap-4">
-            <span class="font-display font-bold leading-none"
-                  style="font-size:2.75rem;
-                         background:linear-gradient(135deg,#06b6d4,#f6f15c);
-                         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-                         background-clip:text;">
-              {s.num}<span style="font-size:0.5em;">{s.suffix}</span>
+    <!-- ══════════════════════════════════
+         STATS
+    ══════════════════════════════════ -->
+    <div class="rt-stats-bar">
+      <div class="rt-container rt-stats-inner">
+        {stats.map((s, i) => (
+          <div class={`rt-stat rt-reveal rt-s${i}`}>
+            <span class="rt-stat-num font-display">
+              {s.num}<span class="rt-stat-suffix">{s.suffix}</span>
             </span>
-            <span class="text-[10px] font-bold tracking-[0.15em] uppercase
-                         text-white/35 max-w-[110px] leading-[1.5]">
-              {s.label}
-            </span>
+            <span class="rt-stat-label">{s.label}</span>
           </div>
         ))}
       </div>
     </div>
 
-    <!-- ── PROGRAMAS ── -->
-    <section id="programas" class="max-w-7xl mx-auto px-6 md:px-10 py-24 relative z-10">
+    <!-- ══════════════════════════════════
+         PROGRAMAS
+    ══════════════════════════════════ -->
+    <section class="rt-section" id="programas">
+      <div class="rt-container">
 
-      <!-- Header -->
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8
-                  border-b border-white/[0.07] pb-12 mb-14">
-        <div id="prog-header">
-          <p class="text-[9px] font-bold tracking-[0.45em] uppercase mb-4" style="color:#06b6d4;">
-            Carreras Cortas y Profesionales
-          </p>
-          <h2 class="font-display font-bold tracking-tighter leading-[0.93] text-white"
-              style="font-size:clamp(2.6rem,5.5vw,5rem);">
-            ESPECIALIDADES Y<br/>
-            <span style="-webkit-text-stroke:1.5px #06b6d4;color:transparent;">ÁREAS</span>
-            <span class="text-white"> DIGITALES</span>
+        <div class="rt-section-head rt-reveal">
+          <span class="rt-eyebrow">Carreras Cortas y Profesionales</span>
+          <h2 class="rt-section-title font-display">
+            ESPECIALIDADES Y <span class="rt-gold">ÁREAS DIGITALES</span>
           </h2>
-          <div id="prog-line" class="w-0 h-[2px] mt-5 origin-left"
-               style="background:linear-gradient(to right,#06b6d4,#8b5cf6);"></div>
+          <div class="rt-bar" data-bar></div>
         </div>
 
         <!-- Leyenda promotores -->
-        <div id="promo-legend" class="flex flex-col gap-2 self-start lg:self-end"
-             style="opacity:0;">
-          <p class="text-[8px] text-white/25 uppercase tracking-[0.25em] font-bold mb-1">
-            Promocionado por
-          </p>
+        <div class="rt-promo-legend rt-reveal rt-d1">
+          <span class="rt-promo-lbl">Promocionado por</span>
           {Object.entries(promoConfig).map(([, v]) => (
-            <div class="flex items-center gap-2 border px-4 py-2"
-                 style={`border-color:${v.colorDim};
-                         background:rgba(0,0,0,0.3);
-                         clip-path:polygon(0 0,90% 0,100% 20%,100% 100%,0 100%);`}>
-              <div class="w-[11px] h-[11px] rounded-full flex items-center justify-center flex-shrink-0"
-                   style={`background:${v.color};`}>
-                <svg width="6" height="6" viewBox="0 0 10 10" fill="none"
-                     stroke="#000" stroke-width="2.5">
-                  <circle cx="5" cy="5" r="3.5"/>
-                </svg>
-              </div>
-              <span class="text-[8px] font-bold tracking-[0.25em] uppercase"
-                    style={`color:${v.color};`}>{v.label}</span>
+            <div class="rt-promo-badge"
+                 style={`border-color:${v.colorDim};`}>
+              <span class="rt-promo-dot" style={`background:${v.color};`}></span>
+              <span style={`color:${v.color};`}>{v.label}</span>
             </div>
           ))}
         </div>
-      </div>
 
-      <!-- Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4" id="prog-grid">
-        {programs.map((p, i) => {
-          const promo = promoConfig[p.promo as keyof typeof promoConfig];
-          return (
-            <div
-              class="prog-card group relative border border-white/[0.07] overflow-hidden
-                     transition-colors duration-300"
-              style={`clip-path:polygon(0 0,96% 0,100% 4%,100% 100%,4% 100%,0 96%);
-                      background:rgba(255,255,255,0.02);
-                      opacity:0;transform:translateY(36px);`}
-              data-idx={i}
-              data-accent={promo.color}
-            >
-              <!-- Imagen -->
-              <div class="relative overflow-hidden" style="height:190px;">
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  class="w-full h-full object-cover block transition-all duration-700
-                         group-hover:scale-[1.04]"
-                  style="opacity:0.4;"
-                  data-card-img
-                />
-                <div class="absolute inset-0"
-                     style="background:linear-gradient(to top,rgba(0,0,0,0.92) 0%,transparent 60%);"></div>
+        <!-- Grid de tarjetas -->
+        <div class="rt-prog-grid">
+          {programs.map((p, i) => {
+            const promo = promoConfig[p.promo as keyof typeof promoConfig];
+            return (
+              <div class={`rt-float-card rt-prog-card rt-reveal rt-s${i % 3}`}
+                   data-idx={i}
+                   data-accent={promo.color}>
 
-                <!-- Badge promotor -->
-                <div class="absolute top-3 right-3 flex items-center gap-1.5 px-2 py-1"
-                     style={`background:rgba(4,4,4,0.92);
-                             border:1px solid ${promo.colorDim};
-                             clip-path:polygon(0 0,88% 0,100% 20%,100% 100%,0 100%);`}>
-                  <div class="w-[11px] h-[11px] rounded-full flex items-center
-                               justify-center flex-shrink-0"
-                       style={`background:${promo.color};`}>
-                    <svg width="6" height="6" viewBox="0 0 10 10" fill="none"
-                         stroke="#000" stroke-width="2.5">
-                      <circle cx="5" cy="5" r="3.5"/>
-                    </svg>
+                <!-- Imagen -->
+                <div class="rt-prog-img-wrap">
+                  <img src={p.img} alt={p.title} class="rt-img rt-zoom-target" />
+                  <div class="rt-prog-img-overlay"></div>
+
+                  <!-- Badge promotor -->
+                  <div class="rt-prog-badge" style={`border-color:${promo.colorDim};`}>
+                    <span class="rt-promo-dot" style={`background:${promo.color};`}></span>
+                    <span style={`color:${promo.color};`}>{promo.label}</span>
                   </div>
-                  <span class="text-[7px] font-bold tracking-[0.2em] uppercase"
-                        style={`color:${promo.color};`}>{promo.label}</span>
+
+                  <!-- Número watermark -->
+                  <span class="rt-prog-num font-display"
+                        style={`color:${promo.color};`}>{p.num}</span>
                 </div>
 
-                <!-- Número en imagen -->
-                <div class="absolute bottom-3 left-4 font-bold leading-none
-                             pointer-events-none select-none"
-                     style={`font-size:5rem;color:${promo.color};opacity:0.05;line-height:1;`}>
-                  {p.num}
-                </div>
-              </div>
-
-              <!-- Brackets hover -->
-              <div class="absolute top-0 left-0 w-0 h-[2px] group-hover:w-9
-                          transition-all duration-500"
-                   style={`background:${promo.color};`}></div>
-              <div class="absolute top-0 left-0 w-[2px] h-0 group-hover:h-9
-                          transition-all duration-500 delay-[60ms]"
-                   style={`background:${promo.color};`}></div>
-
-              <!-- Cuerpo -->
-              <div class="px-5 pt-4 pb-3">
-                <div class="flex items-center gap-2 mb-2">
-                  <div class="w-3 h-[1px] opacity-60"
-                       style={`background:${promo.color};`}></div>
-                  <span class="text-[8px] font-bold tracking-[0.3em] uppercase"
-                        style={`color:${promo.color};`}>{p.tag}</span>
-                </div>
-                <h3 class="text-white font-bold leading-snug"
-                    style="font-size:0.875rem;letter-spacing:0.02em;">{p.title}</h3>
-              </div>
-
-              <!-- Footer card -->
-              <div class="flex items-center justify-between px-5 py-3"
-                   style="border-top:1px solid rgba(255,255,255,0.05);">
-                <span class="text-[8px] uppercase tracking-[0.15em] text-white/25 font-semibold">
-                  {p.modalidad}
-                </span>
-                <button
-                  class="learn-btn text-[8px] font-bold tracking-[0.2em] uppercase
-                         px-3 py-1.5 border transition-colors duration-200"
-                  style={`color:${promo.color};
-                          border-color:${promo.colorDim};
-                          clip-path:polygon(0 0,86% 0,100% 22%,100% 100%,14% 100%,0 78%);`}
-                  data-target={`panel-${i}`}
-                  data-accent={promo.color}
-                >
-                  ¿Qué aprenderás?
-                </button>
-              </div>
-
-              <!-- Panel expandible -->
-              <div class="learn-panel overflow-hidden" id={`panel-${i}`}
-                   style="max-height:0;">
-                <div class="px-5 pb-5 pt-3"
-                     style={`background:rgba(0,0,0,0.4);
-                             border-top:1px solid ${promo.colorDim};`}>
-                  <div class="flex items-center gap-2 mb-3">
-                    <div class="w-4 h-[1px]" style={`background:${promo.color};`}></div>
-                    <span class="text-[8px] font-bold tracking-[0.25em] uppercase"
-                          style={`color:${promo.color};`}>CONTENIDO DEL CURSO</span>
+                <!-- Cuerpo -->
+                <div class="rt-prog-body">
+                  <div class="rt-prog-tag" style={`color:${promo.color};`}>
+                    <span class="rt-prog-tag-line" style={`background:${promo.color};`}></span>
+                    {p.tag}
                   </div>
-                  <ul class="flex flex-col gap-2.5">
-                    {p.learn.map(l => (
-                      <li class="flex items-start gap-2.5 text-white/50 text-xs leading-relaxed">
-                        <span class="mt-[5px] w-[4px] h-[4px] flex-shrink-0 rotate-45 opacity-70 block"
-                              style={`background:${promo.color};`}></span>
-                        {l}
-                      </li>
-                    ))}
-                  </ul>
+                  <h3 class="rt-prog-title">{p.title}</h3>
+                </div>
+
+                <!-- Footer -->
+                <div class="rt-prog-footer">
+                  <span class="rt-prog-modalidad">{p.modalidad}</span>
                   <button
-                    class="close-panel mt-4 flex items-center gap-2 text-[8px] font-bold
-                           tracking-[0.2em] uppercase transition-colors duration-200"
-                    style={`color:${promo.color};opacity:0.6;background:none;border:none;cursor:pointer;`}
+                    class="rt-learn-btn"
+                    style={`color:${promo.color};border-color:${promo.colorDim};`}
                     data-target={`panel-${i}`}
                   >
-                    <svg width="9" height="9" viewBox="0 0 12 12" fill="none"
-                         stroke="currentColor" stroke-width="2">
-                      <line x1="2" y1="2" x2="10" y2="10"/>
-                      <line x1="10" y1="2" x2="2" y2="10"/>
-                    </svg>
-                    CERRAR
+                    ¿Qué aprenderás?
                   </button>
                 </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </section>
 
-    <!-- ── VENTAJAS ── -->
-    <section class="border-t border-white/[0.05]"
-             style="background:rgba(0,0,0,0.4);backdrop-filter:blur(8px);">
-      <div class="max-w-7xl mx-auto px-6 md:px-10 py-24">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
-          <!-- Izquierda sticky -->
-          <div id="adv-left" class="lg:sticky lg:top-28">
-            <p class="text-[9px] font-bold tracking-[0.35em] uppercase mb-4"
-               style="color:#06b6d4;">Ventaja Curricular</p>
-            <h2 class="font-display font-bold tracking-tighter leading-[0.93] text-white mb-6"
-                style="font-size:clamp(2.4rem,5vw,4.5rem);">
-              RESPALDO Y<br/>
-              <span style="-webkit-text-stroke:1.5px #06b6d4;color:transparent;">VALIDEZ</span>
-              <span class="text-white"> LABORAL</span>
-            </h2>
-            <div class="w-12 h-[2px] mb-8"
-                 style="background:linear-gradient(to right,#06b6d4,#8b5cf6);"></div>
-
-            <!-- Imagen con marco clip -->
-            <div style="padding:2px;
-                        clip-path:polygon(8% 0,100% 0,100% 92%,92% 100%,0 100%,0 8%);
-                        background:linear-gradient(135deg,#06b6d4,#8b5cf6);">
-              <div class="relative overflow-hidden"
-                   style="clip-path:polygon(8% 0,100% 0,100% 92%,92% 100%,0 100%,0 8%);
-                          background:#090909;">
-                <img src="/images/ima1.jpg" alt="Certificación CBIT"
-                     class="w-full object-cover block transition-all duration-700
-                            hover:scale-105 hover:opacity-90"
-                     style="height:360px;opacity:0.55;filter:grayscale(50%);"/>
-                <div class="absolute inset-0"
-                     style="background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 55%);"></div>
-                <div class="absolute top-3 left-3 w-7 h-[2px]" style="background:#06b6d4;"></div>
-                <div class="absolute top-3 left-3 w-[2px] h-7" style="background:#06b6d4;"></div>
-                <div class="absolute bottom-3 right-3 w-7 h-[2px]" style="background:#8b5cf6;"></div>
-                <div class="absolute bottom-3 right-3 w-[2px] h-7" style="background:#8b5cf6;"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Items -->
-          <div class="flex flex-col gap-3" id="adv-items">
-            {[
-              { title: "Bolsa de Empleo Activa", num: "01",
-                desc: "Integración con empresas aliadas que buscan perfiles técnicos directamente de nuestras aulas, con seguimiento de inserción laboral post-egreso." },
-              { title: "Metodología Práctica y Project-Based", num: "02",
-                desc: "Aprende resolviendo desafíos reales del sector corporativo, estructurando un portafolio profesional durante toda la carrera." },
-              { title: "Certificados con Validez Oficial", num: "03",
-                desc: "Nuestras acreditaciones cumplen los estándares de CENACAP e INFOCADE para potenciar tu CV ante auditorías y reclutamientos nacionales." },
-              { title: "Tutoría y Consultoría Personalizada", num: "04",
-                desc: "Acompañamiento por instructores certificados para resolver dudas en vivo y guiar proyectos individuales durante todo el programa." },
-              { title: "Flexibilidad de Horarios", num: "05",
-                desc: "Diseñado para profesionales activos: clases presenciales en fines de semana y sesiones virtuales asincrónicas de soporte." },
-            ].map((item) => (
-              <div
-                class="adv-item relative border border-white/[0.05] p-7 overflow-hidden
-                       transition-all duration-300"
-                style="clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
-                       background:rgba(255,255,255,0.015);"
-              >
-                <div class="absolute left-0 top-0 bottom-0 w-[2px] origin-top scale-y-0
-                             adv-bar transition-none"
-                     style="background:linear-gradient(to bottom,#06b6d4,#8b5cf6);"></div>
-                <div class="flex items-center justify-between mb-2.5">
-                  <h3 class="font-display font-bold text-white uppercase tracking-wide"
-                      style="font-size:0.95rem;">
-                    {item.title}
-                  </h3>
-                  <span class="font-bold leading-none flex-shrink-0 ml-4"
-                        style="font-size:1.6rem;color:rgba(6,182,212,0.1);">
-                    {item.num}
-                  </span>
+                <!-- Panel expandible -->
+                <div class="rt-learn-panel" id={`panel-${i}`}
+                     style={`border-top-color:${promo.colorDim};`}>
+                  <div class="rt-learn-inner">
+                    <div class="rt-learn-head" style={`color:${promo.color};`}>
+                      <span class="rt-prog-tag-line" style={`background:${promo.color};`}></span>
+                      CONTENIDO DEL CURSO
+                    </div>
+                    <ul class="rt-learn-list">
+                      {p.learn.map(l => (
+                        <li class="rt-learn-item">
+                          <span class="rt-learn-dot" style={`background:${promo.color};`}></span>
+                          {l}
+                        </li>
+                      ))}
+                    </ul>
+                    <button class="rt-close-panel"
+                            style={`color:${promo.color};`}
+                            data-target={`panel-${i}`}>
+                      <svg width="9" height="9" viewBox="0 0 12 12" fill="none"
+                           stroke="currentColor" stroke-width="2">
+                        <line x1="2" y1="2" x2="10" y2="10"/>
+                        <line x1="10" y1="2" x2="2" y2="10"/>
+                      </svg>
+                      CERRAR
+                    </button>
+                  </div>
                 </div>
-                <p class="text-white/35 text-sm leading-relaxed">{item.desc}</p>
+
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>
 
-    <!-- ── CTA ── -->
-    <section class="relative overflow-hidden border-t border-white/[0.05]">
-      <div class="absolute inset-0"
-           style="background:url('/images/3.png') center 30% / cover no-repeat;
-                  opacity:0.03;filter:blur(6px);"></div>
-      <div class="absolute inset-0 pointer-events-none"
-           style="background:radial-gradient(ellipse at 20% 50%,rgba(6,182,212,0.06) 0%,transparent 55%),
-                             radial-gradient(ellipse at 80% 50%,rgba(139,92,246,0.05) 0%,transparent 55%);"></div>
+    <!-- ══════════════════════════════════
+         VENTAJAS
+    ══════════════════════════════════ -->
+    <section class="rt-section rt-blue-bg" id="ventajas">
+      <div class="rt-orb rt-orb-v1" aria-hidden="true"></div>
+      <div class="rt-orb rt-orb-v2" aria-hidden="true"></div>
+      <div class="rt-container rt-ventajas-grid" style="position:relative;z-index:2;">
 
-      <div class="relative z-10 max-w-6xl mx-auto px-10 py-28 flex flex-col items-start"
-           id="cta-section">
-        <h2 class="font-display font-bold tracking-tighter leading-[0.9] mb-10"
-            style="font-size:clamp(2.8rem,7vw,6.5rem);">
-          <span class="block"
-                style="-webkit-text-stroke:1px rgba(255,255,255,0.1);color:white;">
-            CONSTRUYE TU FUTURO
-          </span>
-          <span class="block"
-                style="-webkit-text-stroke:1px rgba(255,255,255,0.1);color:white;">
-            TECNOLÓGICO AHORA.
-          </span>
-          <span class="block"
-                style="background:linear-gradient(90deg,#06b6d4,#f6e95c);
-                       -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-                       background-clip:text;">
-            POSTULA HOY MISMO.
-          </span>
+        <!-- Izquierda -->
+        <div class="rt-vent-left rt-reveal">
+          <span class="rt-eyebrow rt-eyebrow-gold">Ventaja Curricular</span>
+          <h2 class="rt-section-title rt-white font-display">
+            RESPALDO Y <span class="rt-gold">VALIDEZ LABORAL</span>
+          </h2>
+          <div class="rt-bar rt-bar-gold" data-bar></div>
+
+          <div class="rt-vent-img-frame">
+            <img src="/images/ima1.jpg" alt="Certificación CBIT" class="rt-vent-img" />
+            <div class="rt-vent-img-overlay"></div>
+            <div class="rt-img-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+              </svg>
+              Certificación Oficial CBIT
+            </div>
+          </div>
+        </div>
+
+        <!-- Derecha -->
+        <div class="rt-vent-items">
+          {ventajas.map((item, i) => (
+            <div class={`rt-float-card rt-vent-card rt-reveal rt-s${i % 3}`}>
+              <div class="rt-vent-num font-display">{item.num}</div>
+              <div class="rt-vent-body">
+                <h3 class="rt-vent-title font-display">{item.title}</h3>
+                <p class="rt-vent-desc">{item.desc}</p>
+              </div>
+              <div class="rt-vent-bar"></div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         CTA
+    ══════════════════════════════════ -->
+    <section class="rt-section rt-soft-bg" id="cta">
+      <div class="rt-container rt-cta-inner rt-reveal">
+        <span class="rt-eyebrow">Próximos Ingresos</span>
+        <h2 class="rt-section-title font-display">
+          CONSTRUYE TU FUTURO<br/>
+          <span class="rt-gold">TECNOLÓGICO HOY.</span>
         </h2>
+        <div class="rt-bar" data-bar></div>
 
-        <div class="flex flex-wrap items-center gap-5">
-          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 font-display font-bold text-sm
-                    tracking-[0.14em] uppercase px-10 py-5 text-black
-                    transition-all duration-300 hover:-translate-y-1 hover:brightness-110"
-             style="background:linear-gradient(135deg,#06b6d4,#f6e75c);
-                    clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));">
+        <div class="rt-cta-actions">
+          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank"
+             rel="noopener noreferrer" class="rt-btn-primary font-display">
             Iniciar Mi Admisión
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2.5">
               <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
             </svg>
           </a>
-
-          <div class="flex gap-2.5 flex-wrap">
+          <div class="rt-cta-chips">
             {["Validez Curricular","Bolsa de Trabajo","Cert. Académico"].map(b => (
-              <div class="inline-flex items-center gap-2 px-4 py-2.5 border
-                          text-white/40 text-[9px] font-bold tracking-[0.15em] uppercase
-                          hover:border-[#06b6d4]/30 hover:text-white/60 transition-colors duration-300"
-                   style="border-color:rgba(255,255,255,0.07);
-                          clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px));">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="3"
-                     width="10" height="10">
+              <div class="rt-cta-chip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="3" width="11" height="11"
+                     style="color:var(--gold);">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
                 {b}
@@ -536,136 +370,593 @@ const promoConfig = {
 </Layout>
 
 <style>
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.25; }
-    50%       { opacity: 0.7; }
-  }
+/* ══════════════════════════════════
+   TOKENS — idénticos al Componente 1
+══════════════════════════════════ */
+:root {
+  --blue:      #1A4B8C;
+  --blue-mid:  #2D7DD2;
+  --blue-lt:   #EBF3FB;
+  --gold:      #C9993A;
+  --gold-lt:   #F5E8CC;
+  --white:     #ffffff;
+  --soft:      #F0F4FA;
+  --text:      #1e293b;
+  --muted:     #64748B;
+  --faint:     #94A3B8;
+
+  --sh1: 0 1px 3px rgba(0,0,0,0.08),  0 4px 6px rgba(0,0,0,0.04);
+  --sh2: 0 4px 12px rgba(0,0,0,0.10), 0 8px 24px rgba(26,75,140,0.10);
+  --sh3: 0 8px 28px rgba(0,0,0,0.12), 0 18px 48px rgba(26,75,140,0.16);
+  --sh-hover: 0 14px 40px rgba(0,0,0,0.14), 0 28px 60px rgba(26,75,140,0.22);
+
+  --r:    20px;
+  --r-lg: 28px;
+  --r-xl: 36px;
+}
+
+/* ══════════════════════════════════
+   BASE
+══════════════════════════════════ */
+.rt-main         { background: var(--white); overflow-x: hidden; }
+.rt-container    { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.rt-white        { color: var(--white) !important; }
+.rt-gold         { color: var(--gold); }
+
+/* ══════════════════════════════════
+   SECCIONES
+══════════════════════════════════ */
+.rt-section      { padding: 7rem 0; background: var(--white); }
+.rt-blue-bg      { background: var(--blue); position: relative; overflow: hidden; }
+.rt-soft-bg      { background: var(--soft); }
+
+/* ══════════════════════════════════
+   HERO
+══════════════════════════════════ */
+.rt-hero {
+  background: var(--blue);
+  padding: 10rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.rt-hero-mesh {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.rt-orb {
+  position: absolute; border-radius: 50%;
+  pointer-events: none; filter: blur(80px);
+}
+.rt-orb-1 { width:500px;height:500px; top:-150px;right:-120px; background:radial-gradient(circle,rgba(201,153,58,0.18),transparent 70%); }
+.rt-orb-2 { width:350px;height:350px; bottom:-80px;left:-80px;  background:radial-gradient(circle,rgba(45,125,210,0.16),transparent 70%); }
+.rt-orb-3 { width:250px;height:250px; top:40%;left:40%;          background:radial-gradient(circle,rgba(26,75,140,0.12),transparent 70%); }
+.rt-orb-v1{ width:400px;height:400px; top:-100px;right:-100px;   background:radial-gradient(circle,rgba(201,153,58,0.14),transparent 70%); }
+.rt-orb-v2{ width:300px;height:300px; bottom:-60px;left:-60px;   background:radial-gradient(circle,rgba(45,125,210,0.12),transparent 70%); }
+
+.rt-hero-inner { display: flex; flex-direction: column; gap: 3rem; }
+.rt-hero-top {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  padding-bottom: 3rem;
+}
+@media(min-width:1024px) {
+  .rt-hero-top { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+}
+
+.rt-hero-title {
+  font-size: clamp(3.8rem, 10vw, 8rem);
+  color: #fff;
+  line-height: 1.02;
+  margin: 0;
+}
+.rt-hero-gradient {
+  background: linear-gradient(90deg, var(--gold), var(--blue-mid));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.rt-hero-side {
+  width: 100%;
+  max-width: 42%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media(max-width:1023px) { .rt-hero-side { max-width: 100%; } }
+
+.rt-hero-sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.6);
+  border-left: 2px solid var(--gold);
+  padding-left: 1.5rem;
+  line-height: 1.85;
+  margin: 0;
+}
+.rt-hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ══════════════════════════════════
+   BOTONES
+══════════════════════════════════ */
+.rt-btn-primary {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; text-decoration: none;
+  padding: 1rem 2rem; color: var(--blue);
+  background: linear-gradient(135deg, var(--gold), #f2c82f);
+  border-radius: 4px;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;
+  box-shadow: 0 4px 16px rgba(201,153,58,0.35);
+}
+.rt-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(201,153,58,0.5);
+}
+.rt-btn-outline {
+  display: inline-flex; align-items: center;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; text-decoration: none;
+  padding: 1rem 1.75rem;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  transition: border-color 0.3s, color 0.3s, transform 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.rt-btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-3px);
+}
+
+/* ══════════════════════════════════
+   STATS BAR
+══════════════════════════════════ */
+.rt-stats-bar {
+  background: var(--blue);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.rt-stats-inner {
+  display: flex; flex-wrap: wrap;
+  justify-content: space-around; gap: 2rem;
+  padding: 3rem 2rem;
+}
+.rt-stat { display: flex; align-items: center; gap: 1rem; }
+.rt-stat-num {
+  font-size: 2.75rem; line-height: 1;
+  color: var(--gold);
+}
+.rt-stat-suffix { font-size: 1.3rem; }
+.rt-stat-label {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  max-width: 110px; line-height: 1.5;
+}
+
+/* ══════════════════════════════════
+   SECTION HEADER
+══════════════════════════════════ */
+.rt-section-head { text-align: center; margin-bottom: 3rem; }
+.rt-eyebrow {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--blue-mid); margin-bottom: 0.6rem;
+}
+.rt-eyebrow-gold { color: var(--gold); }
+
+.rt-section-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  color: var(--blue);
+  line-height: 1.12;
+  margin: 0 0 1.2rem;
+}
+.rt-bar {
+  display: block; height: 3px; width: 0;
+  background: var(--blue-mid); border-radius: 2px;
+  margin: 0 auto;
+  transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s;
+}
+.rt-bar-gold { background: var(--gold); }
+.rt-bar.rt-bar-on { width: 56px; }
+
+/* ══════════════════════════════════
+   PROMO LEGEND
+══════════════════════════════════ */
+.rt-promo-legend {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 0.75rem; justify-content: center;
+  margin-bottom: 3rem;
+}
+.rt-promo-lbl {
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--faint);
+}
+.rt-promo-badge {
+  display: flex; align-items: center; gap: 0.5rem;
+  border: 1px solid; padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+}
+.rt-promo-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+
+/* ══════════════════════════════════
+   FLOAT CARD — mismo sistema que Comp.1
+══════════════════════════════════ */
+.rt-float-card {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh2);
+  border: 1px solid rgba(26,75,140,0.06);
+  transition: transform 0.42s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.42s cubic-bezier(0.22,1,0.36,1);
+  overflow: hidden;
+}
+.rt-float-card:hover {
+  transform: translateY(-10px) scale(1.012);
+  box-shadow: var(--sh-hover);
+}
+.rt-img { width:100%; height:100%; object-fit:cover; display:block;
+          transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+.rt-float-card:hover .rt-zoom-target { transform: scale(1.05); }
+
+/* ══════════════════════════════════
+   PROG GRID
+══════════════════════════════════ */
+.rt-prog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.rt-prog-img-wrap { position: relative; height: 200px; overflow: hidden; }
+.rt-prog-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,75,140,0.75) 0%, transparent 55%);
+}
+.rt-prog-badge {
+  position: absolute; top: 0.9rem; right: 0.9rem;
+  display: flex; align-items: center; gap: 0.4rem;
+  border: 1px solid; border-radius: 50px;
+  padding: 0.3rem 0.8rem;
+  background: rgba(255,255,255,0.92);
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.rt-prog-num {
+  position: absolute; bottom: 0.5rem; left: 1rem;
+  font-size: 5rem; opacity: 0.07; line-height: 1;
+  pointer-events: none; user-select: none;
+}
+.rt-prog-body { padding: 1.4rem 1.5rem 0.8rem; }
+.rt-prog-tag {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  margin-bottom: 0.55rem;
+}
+.rt-prog-tag-line { width: 14px; height: 1px; flex-shrink: 0; }
+.rt-prog-title {
+  font-size: 0.95rem; font-weight: 700;
+  color: var(--blue); line-height: 1.35; margin: 0;
+}
+.rt-prog-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.8rem 1.5rem 1.25rem;
+  border-top: 1px solid rgba(26,75,140,0.06);
+  margin-top: 0.8rem;
+}
+.rt-prog-modalidad {
+  font-size: 0.65rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--faint);
+}
+.rt-learn-btn {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; cursor: pointer;
+  padding: 0.4rem 0.9rem; border: 1px solid; border-radius: 4px;
+  background: none; transition: opacity 0.2s;
+}
+.rt-learn-btn:hover { opacity: 0.75; }
+
+/* Panel expandible */
+.rt-learn-panel {
+  max-height: 0; overflow: hidden;
+  border-top: 1px solid transparent;
+  transition: max-height 0.45s cubic-bezier(0.22,1,0.36,1);
+}
+.rt-learn-inner {
+  padding: 1.25rem 1.5rem 1.5rem;
+  background: var(--soft);
+}
+.rt-learn-head {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.rt-learn-list { display: flex; flex-direction: column; gap: 0.7rem; list-style: none; padding: 0; margin: 0; }
+.rt-learn-item {
+  display: flex; align-items: flex-start; gap: 0.65rem;
+  font-size: 0.88rem; line-height: 1.7; color: var(--muted);
+}
+.rt-learn-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 6px;
+}
+.rt-close-panel {
+  display: flex; align-items: center; gap: 0.5rem; margin-top: 1.1rem;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; cursor: pointer;
+  background: none; border: none; opacity: 0.65;
+  transition: opacity 0.2s;
+}
+.rt-close-panel:hover { opacity: 1; }
+
+/* ══════════════════════════════════
+   VENTAJAS
+══════════════════════════════════ */
+.rt-ventajas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.rt-vent-left { display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 7rem; }
+/* Override para que los títulos de sección sean blancos aquí */
+.rt-blue-bg .rt-section-title { color: var(--white); }
+.rt-blue-bg .rt-eyebrow { color: var(--gold); }
+
+.rt-vent-img-frame {
+  position: relative; border-radius: var(--r-lg); overflow: hidden;
+  height: 360px; box-shadow: var(--sh3);
+}
+.rt-vent-img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.65);
+  transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.rt-vent-img-frame:hover .rt-vent-img { transform: scale(1.04); }
+.rt-vent-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,75,140,0.7) 0%, transparent 55%);
+}
+.rt-img-pill {
+  position: absolute; bottom: 1.25rem; left: 1.25rem;
+  background: rgba(26,75,140,0.88); backdrop-filter: blur(8px);
+  color: #fff; font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 0.5rem 1rem; border-radius: 50px;
+  border-left: 3px solid var(--gold);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+
+.rt-vent-items { display: flex; flex-direction: column; gap: 1.25rem; }
+.rt-vent-card {
+  display: flex; align-items: flex-start; gap: 1.5rem;
+  padding: 1.75rem 2rem; position: relative;
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.1);
+}
+.rt-vent-card:hover { background: rgba(255,255,255,0.13); }
+.rt-vent-num {
+  font-size: 2.2rem; color: rgba(201,153,58,0.18);
+  line-height: 1; flex-shrink: 0; padding-top: 0.1rem;
+}
+.rt-vent-body { flex: 1; }
+.rt-vent-title {
+  font-size: 0.92rem; color: var(--white);
+  margin: 0 0 0.5rem; letter-spacing: 0.04em;
+}
+.rt-vent-desc { font-size: 0.9rem; line-height: 1.75; color: rgba(255,255,255,0.5); margin: 0; }
+.rt-vent-bar {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(to bottom, var(--gold), var(--blue-mid));
+  transform: scaleY(0); transform-origin: top;
+  transition: transform 0.38s cubic-bezier(0.22,1,0.36,1);
+  border-radius: 0 0 0 var(--r-xl);
+}
+.rt-float-card:hover .rt-vent-bar { transform: scaleY(1); }
+
+/* ══════════════════════════════════
+   CTA
+══════════════════════════════════ */
+.rt-cta-inner { text-align: center; }
+.rt-cta-actions {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: center; gap: 1.5rem; margin-top: 2.5rem;
+}
+.rt-cta-chips { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+.rt-cta-chip {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); border: 1px solid rgba(26,75,140,0.12);
+  border-radius: 50px; padding: 0.45rem 1rem;
+  background: var(--white);
+  transition: border-color 0.3s, color 0.3s;
+}
+.rt-cta-chip:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ══════════════════════════════════
+   SCROLL REVEAL — mismo sistema
+══════════════════════════════════ */
+.rt-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+              transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.rt-reveal.rt-on { opacity: 1; transform: translateY(0); }
+.rt-d1 { transition-delay: .13s; }
+.rt-d2 { transition-delay: .26s; }
+.rt-s0 { transition-delay: 0s; }
+.rt-s1 { transition-delay: .10s; }
+.rt-s2 { transition-delay: .20s; }
+.rt-s3 { transition-delay: .30s; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media(max-width:1024px) {
+  .rt-prog-grid      { grid-template-columns: repeat(2,1fr); }
+  .rt-ventajas-grid  { grid-template-columns: 1fr; gap: 3rem; }
+  .rt-vent-left      { position: static; }
+}
+@media(max-width:640px) {
+  .rt-prog-grid      { grid-template-columns: 1fr; }
+  .rt-section        { padding: 4.5rem 0; }
+  .rt-hero           { padding: 9rem 0 5rem; }
+  .rt-container      { padding: 0 1.25rem; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .rt-reveal  { opacity:1; transform:none; transition:none; }
+  .rt-bar     { width:56px; transition:none; }
+}
 </style>
 
 <script>
   import gsap from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
 
-  if (typeof window !== 'undefined') {
+  let ctx: gsap.Context | null = null;
+
+  function initPage() {
+    if (ctx) { ctx.revert(); ctx = null; }
     gsap.registerPlugin(ScrollTrigger);
 
-    /* ── HERO ── */
-    const heroTl = gsap.timeline({ delay: 0.1 });
-    heroTl
-      .to('#hero-kicker',    { y: 0, opacity: 1, duration: 0.85, ease: 'power3.out' }, 0.25)
-      .to('.hero-line span', { y: '0%', duration: 1.05, stagger: 0.14, ease: 'power4.out' }, 0.42)
-      .to('#hero-desc',      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.85)
-      .to('#hero-ctas',      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 1.0)
-      .to('#scroll-hint',    { opacity: 1, duration: 0.5 }, 1.22);
+    ctx = gsap.context(() => {
 
-    /* Stats */
-    gsap.utils.toArray<HTMLElement>('.stat-chip').forEach((chip, i) => {
-      gsap.from(chip, {
-        y: 22, opacity: 0, duration: 0.65, delay: i * 0.08, ease: 'power3.out',
-        scrollTrigger: { trigger: chip, start: 'top 90%' }
+      /* ── 1. SCROLL REVEAL ── */
+      const revealIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('rt-on');
+            revealIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+
+      document.querySelectorAll('.rt-reveal').forEach(el => revealIO.observe(el));
+
+      /* ── 2. GOLD BAR DRAW ── */
+      const barIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('rt-bar-on');
+            barIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.8 });
+
+      document.querySelectorAll('[data-bar]').forEach(el => barIO.observe(el));
+
+      /* ── 3. PARALLAX HERO TITLE ── */
+      const heroTitle = document.querySelector<HTMLElement>('.rt-hero-title');
+      if (heroTitle) {
+        gsap.to(heroTitle, {
+          yPercent: 20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.rt-hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.8,
+          }
+        });
+      }
+
+      /* ── 4. PARALLAX ORBS ── */
+      document.querySelectorAll<HTMLElement>('.rt-orb-1, .rt-orb-2').forEach((orb, i) => {
+        gsap.to(orb, {
+          yPercent: i % 2 === 0 ? -25 : 20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.rt-hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 2,
+          }
+        });
       });
-    });
 
-    /* Header programas */
-    const hdrTl = gsap.timeline({
-      scrollTrigger: { trigger: '#prog-header', start: 'top 84%' }
-    });
-    hdrTl
-      .from('#prog-header > *', { y: 35, opacity: 0, duration: 0.75, stagger: 0.18, ease: 'power3.out' })
-      .to('#prog-line',          { width: '3rem', duration: 0.75, ease: 'power3.out' }, '-=0.35')
-      .to('#promo-legend',       { opacity: 1, duration: 0.6, ease: 'back.out(1.4)' }, '-=0.25');
+      /* ── 5. HERO TITLE ENTRANCE ── */
+      const heroTl = gsap.timeline({ delay: 0.1 });
+      heroTl
+        .from('.rt-hero-title', { y: 60, opacity: 0, duration: 1.1, ease: 'power4.out' }, 0.2)
+        .from('.rt-hero-sub',   { y: 25, opacity: 0, duration: 0.85, ease: 'power3.out' }, 0.65)
+        .from('.rt-hero-ctas',  { y: 20, opacity: 0, duration: 0.8,  ease: 'power3.out' }, 0.85);
 
-    /* Cards */
-    gsap.utils.toArray<HTMLElement>('.prog-card').forEach((card, i) => {
-      const img    = card.querySelector<HTMLImageElement>('[data-card-img]');
-      const accent = card.dataset.accent || '#06b6d4';
-
-      gsap.to(card, {
-        y: 0, opacity: 1, duration: 0.85, ease: 'power3.out',
-        delay: (i % 3) * 0.1,
-        scrollTrigger: { trigger: card, start: 'top 90%', once: true }
+      /* ── 6. STAGGER GRIDS ── */
+      ['#programas .rt-prog-grid', '#ventajas .rt-vent-items'].forEach(sel => {
+        const grid = document.querySelector(sel);
+        if (!grid) return;
+        const cards = Array.from(grid.querySelectorAll<HTMLElement>('.rt-reveal'));
+        ScrollTrigger.create({
+          trigger: grid,
+          start: 'top 86%',
+          once: true,
+          onEnter: () => {
+            cards.forEach((card, i) => {
+              gsap.to(card, {
+                opacity: 1, y: 0,
+                duration: 0.72,
+                delay: i * 0.1,
+                ease: 'power3.out',
+                overwrite: true,
+              });
+            });
+          }
+        });
       });
 
-      card.addEventListener('mouseenter', () => {
-        if (img) gsap.to(img, { opacity: 0.72, duration: 0.55, ease: 'power2.out' });
-        gsap.to(card, { borderColor: accent + '55', duration: 0.25 });
-      });
-      card.addEventListener('mouseleave', () => {
-        if (img) gsap.to(img, { opacity: 0.4, duration: 0.55, ease: 'power2.out' });
-        gsap.to(card, { borderColor: 'rgba(255,255,255,0.07)', duration: 0.25 });
-      });
-    });
+      /* ── 7. PANEL EXPANDIBLE ── */
+      document.querySelectorAll<HTMLButtonElement>('.rt-learn-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const panel  = document.getElementById(btn.dataset.target!)!;
+          const isOpen = parseFloat(panel.style.maxHeight || '0') > 0;
 
-    /* Panel expandible */
-    document.querySelectorAll<HTMLButtonElement>('.learn-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const panel  = document.getElementById(btn.dataset.target!)!;
-        const isOpen = parseFloat(panel.style.maxHeight || '0') > 0;
-
-        document.querySelectorAll<HTMLElement>('.learn-panel').forEach(p => {
-          gsap.to(p, {
-            maxHeight: 0, duration: 0.38, ease: 'power3.in',
-            onComplete: () => { p.style.maxHeight = '0'; }
+          document.querySelectorAll<HTMLElement>('.rt-learn-panel').forEach(p => {
+            gsap.to(p, { maxHeight: 0, duration: 0.38, ease: 'power3.in',
+              onComplete: () => { p.style.maxHeight = '0'; } });
           });
-        });
 
-        if (!isOpen) {
-          gsap.fromTo(panel,
-            { maxHeight: 0 },
-            { maxHeight: 420, duration: 0.48, ease: 'power3.out' }
-          );
-          gsap.from(panel.querySelectorAll('li'), {
-            x: -8, opacity: 0, duration: 0.35,
-            stagger: 0.06, delay: 0.14, ease: 'power2.out'
-          });
-        }
-      });
-    });
-
-    document.querySelectorAll<HTMLButtonElement>('.close-panel').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const panel = document.getElementById(btn.dataset.target!)!;
-        gsap.to(panel, {
-          maxHeight: 0, duration: 0.38, ease: 'power3.in',
-          onComplete: () => { panel.style.maxHeight = '0'; }
+          if (!isOpen) {
+            gsap.fromTo(panel,
+              { maxHeight: 0 },
+              { maxHeight: 420, duration: 0.48, ease: 'power3.out' }
+            );
+            gsap.from(panel.querySelectorAll('li'), {
+              x: -8, opacity: 0, duration: 0.35,
+              stagger: 0.06, delay: 0.14, ease: 'power2.out'
+            });
+          }
         });
       });
-    });
 
-    /* Ventajas */
-    gsap.from('#adv-left > *', {
-      y: 35, opacity: 0, duration: 0.75, stagger: 0.16, ease: 'power3.out',
-      scrollTrigger: { trigger: '#adv-left', start: 'top 82%' }
-    });
-
-    gsap.utils.toArray<HTMLElement>('.adv-item').forEach((item, i) => {
-      const bar = item.querySelector<HTMLElement>('.adv-bar');
-      gsap.from(item, {
-        x: 45, opacity: 0, duration: 0.7, delay: i * 0.09, ease: 'power3.out',
-        scrollTrigger: { trigger: '#adv-items', start: 'top 80%' }
-      });
-      item.addEventListener('mouseenter', () => {
-        if (bar) gsap.to(bar, { scaleY: 1, duration: 0.32, ease: 'power2.out' });
-        gsap.to(item, {
-          borderColor: 'rgba(6,182,212,0.2)',
-          backgroundColor: 'rgba(6,182,212,0.03)',
-          duration: 0.25
+      document.querySelectorAll<HTMLButtonElement>('.rt-close-panel').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const panel = document.getElementById(btn.dataset.target!)!;
+          gsap.to(panel, { maxHeight: 0, duration: 0.38, ease: 'power3.in',
+            onComplete: () => { panel.style.maxHeight = '0'; } });
         });
       });
-      item.addEventListener('mouseleave', () => {
-        if (bar) gsap.to(bar, { scaleY: 0, duration: 0.28, ease: 'power2.in' });
-        gsap.to(item, {
-          borderColor: 'rgba(255,255,255,0.05)',
-          backgroundColor: 'rgba(255,255,255,0.015)',
-          duration: 0.25
-        });
-      });
-    });
 
-    /* CTA */
-    gsap.from('#cta-section > *', {
-      y: 42, opacity: 0, duration: 0.85, stagger: 0.18, ease: 'power3.out',
-      scrollTrigger: { trigger: '#cta-section', start: 'top 80%' }
     });
   }
+
+  function cleanup() {
+    if (ctx) { ctx.revert(); ctx = null; }
+    ScrollTrigger.getAll().forEach(t => t.kill());
+  }
+
+  initPage();
+  document.addEventListener('astro:page-load', () => { cleanup(); initPage(); });
+  document.addEventListener('astro:before-swap', cleanup);
 </script>

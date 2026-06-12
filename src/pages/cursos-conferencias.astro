@@ -3,10 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 
 const stats = [
-  { num: "50", suffix: "+", label: "Masterclasses Anuales" },
-  { num: "15", suffix: "+", label: "Países Participantes" },
-  { num: "8500", suffix: "+", label: "Asistentes Registrados" },
-  { num: "4.9", suffix: "/5", label: "Calificación Promedio" },
+  { num: "50",   suffix: "+",  label: "Masterclasses Anuales"    },
+  { num: "15",   suffix: "+",  label: "Países Participantes"     },
+  { num: "8500", suffix: "+",  label: "Asistentes Registrados"   },
+  { num: "4.9",  suffix: "/5", label: "Calificación Promedio"    },
 ];
 
 const workshops = [
@@ -34,923 +34,644 @@ const workshops = [
 ];
 
 const speakers = [
-  {
-    nombre: "Dr. Alejandro Santos",
-    rol: "Especialista en Liderazgo Organizacional",
-    origen: "España",
-    img: "/images/au1.webp"
-  },
-  {
-    nombre: "Ing. Elena Rostova",
-    rol: "Consultora en Transformación Digital e IA",
-    origen: "Alemania",
-    img: "/images/au2.webp"
-  },
-  {
-    nombre: "Mtr. Marcus Vance",
-    rol: "Asesor de Negocios y Nuevas Economías",
-    origen: "Estados Unidos",
-    img: "/images/au3.webp"
-  }
+  { nombre: "Dr. Alejandro Santos",  rol: "Especialista en Liderazgo Organizacional",       origen: "España",         img: "/images/au1.webp" },
+  { nombre: "Ing. Elena Rostova",    rol: "Consultora en Transformación Digital e IA",       origen: "Alemania",       img: "/images/au2.webp" },
+  { nombre: "Mtr. Marcus Vance",     rol: "Asesor de Negocios y Nuevas Economías",           origen: "Estados Unidos", img: "/images/au3.webp" },
 ];
 ---
 
-<Layout title="Cursos y Conferencias | CBIT" showBackgroundFX={false}>
+<Layout title="Cursos y Conferencias | CBIT">
   <Navbar />
-  
-  <style>
-    :root {
-      --c-amber: #f59e0b;
-      --c-amber-light: #fcd34d;
-      --c-amber-dim: #b45309;
-      --c-dark-bg: #070604;
-      --c-dark-card: #120e06;
-      --c-white: #f8fafc;
-      --c-border: rgba(245, 158, 11, 0.08);
-      --c-glow: rgba(245, 158, 11, 0.12);
-    }
 
-    body {
-      background-color: var(--c-dark-bg);
-      color: var(--c-white);
-      font-family: 'Inter', sans-serif;
-    }
-
-    /* Elegant Hero Section */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 48px 80px;
-      overflow: hidden;
-    }
-
-    #hero-bg {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 30%, rgba(245, 158, 11, 0.12) 0%, transparent 60%);
-      z-index: 0;
-    }
-
-    #hero-mesh {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.05) 0px, transparent 50%),
-        radial-gradient(at 0% 100%, rgba(255, 255, 255, 0.02) 0px, transparent 50%);
-      z-index: 0;
-    }
-
-    /* Soft Blur Ambient Lights */
-    #glow-1 {
-      position: absolute;
-      top: -200px;
-      left: 10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(ellipse, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
-      filter: blur(120px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    #glow-2 {
-      position: absolute;
-      bottom: -100px;
-      right: 10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(ellipse, rgba(245, 158, 11, 0.05) 0%, transparent 70%);
-      filter: blur(100px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1000px;
-    }
-
-    .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--c-amber);
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .hero-kicker-line {
-      display: block;
-      width: 48px;
-      height: 1.5px;
-      background: var(--c-amber);
-    }
-
-    .hero-h1 {
-      font-family: 'Anton', sans-serif;
-      font-size: clamp(3.5rem, 9vw, 8rem);
-      line-height: 0.9;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      color: var(--c-white);
-      margin-bottom: 24px;
-    }
-
-    .hero-h1 span {
-      display: block;
-    }
-
-    .hero-h1 .text-stroke {
-      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
-      color: transparent;
-    }
-
-    .hero-h1 .text-gradient {
-      background: linear-gradient(90deg, var(--c-amber), #ffffff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-meta {
-      display: flex;
-      align-items: flex-start;
-      gap: 48px;
-      margin-top: 36px;
-      flex-wrap: wrap;
-    }
-
-    .hero-desc {
-      font-size: 1.05rem;
-      color: rgba(255, 255, 255, 0.6);
-      max-width: 460px;
-      line-height: 1.8;
-      font-weight: 400;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .hero-cta-group {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 36px;
-      background: linear-gradient(135deg, var(--c-amber), var(--c-amber-light));
-      color: #000;
-      font-family: 'Anton', sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-      font-weight: bold;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(245, 158, 11, 0.4);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 32px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: rgba(255, 255, 255, 0.7);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: all 0.3s;
-      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--c-amber);
-      color: var(--c-amber);
-    }
-
-    /* Scroll Indicator */
-    .scroll-hint {
-      position: absolute;
-      bottom: 40px;
-      right: 48px;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      opacity: 0;
-    }
-
-    .scroll-hint span {
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.3);
-      writing-mode: vertical-rl;
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(to bottom, rgba(245, 158, 11, 0.2), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollPulse {
-      0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-      50% { transform: scaleY(1); opacity: 1; }
-      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-    }
-
-    /* Stats Bar */
-    #stats-bar {
-      background: #0f0b04;
-      border-top: 1px solid var(--c-border);
-      border-bottom: 1px solid var(--c-border);
-      position: relative;
-      z-index: 10;
-    }
-
-    .stats-inner {
-      display: flex;
-      justify-content: space-around;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 40px 24px;
-      flex-wrap: wrap;
-      gap: 32px;
-    }
-
-    .stat-chip {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .stat-num {
-      font-family: 'Anton', sans-serif;
-      font-size: 3rem;
-      letter-spacing: -0.01em;
-      background: linear-gradient(135deg, var(--c-amber), #ffffff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.4);
-      max-width: 120px;
-      line-height: 1.4;
-    }
-
-    /* Sections */
-    .section-wrap {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 120px 48px;
-    }
-
-    .section-header {
-      margin-bottom: 80px;
-    }
-
-    .section-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--c-amber);
-      margin-bottom: 20px;
-    }
-
-    .section-eyebrow::before {
-      content: '';
-      display: block;
-      width: 32px;
-      height: 1px;
-      background: var(--c-amber);
-    }
-
-    .section-title {
-      font-family: 'Anton', sans-serif;
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      letter-spacing: 0.02em;
-      line-height: 0.95;
-      text-transform: uppercase;
-      color: var(--c-white);
-    }
-
-    .section-title .outline {
-      -webkit-text-stroke: 1.5px var(--c-amber);
-      color: transparent;
-    }
-
-    /* Workshops List */
-    .workshop-list {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .workshop-card {
-      background: rgba(255, 255, 255, 0.01);
-      border: 1px solid var(--c-border);
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      min-height: 240px;
-      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
-      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .workshop-card:hover {
-      border-color: rgba(245, 158, 11, 0.35);
-      background: rgba(245, 158, 11, 0.02);
-      transform: translateX(5px);
-    }
-
-    .workshop-img-wrap {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .workshop-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.4;
-      filter: grayscale(100%);
-      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .workshop-card:hover .workshop-img {
-      opacity: 0.7;
-      transform: scale(1.06);
-      filter: grayscale(0%);
-    }
-
-    .workshop-body {
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .workshop-meta-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .workshop-tag {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--c-amber);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .workshop-tag::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--c-amber);
-      display: block;
-    }
-
-    .workshop-date {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 4px 10px;
-      border-radius: 9999px;
-    }
-
-    .workshop-title {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.6rem;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      color: var(--c-white);
-      line-height: 1.15;
-      margin-bottom: 14px;
-      transition: color 0.3s;
-    }
-
-    .workshop-card:hover .workshop-title {
-      color: var(--c-amber);
-    }
-
-    .workshop-desc {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.45);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    .workshop-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--c-amber);
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-
-    .workshop-cta svg {
-      transition: transform 0.3s;
-    }
-
-    .workshop-cta:hover svg {
-      transform: translateX(4px);
-    }
-
-    @media (max-width: 768px) {
-      .workshop-card {
-        grid-template-columns: 1fr;
-      }
-      .workshop-img-wrap {
-        height: 200px;
-      }
-    }
-
-    /* Speakers Section */
-    #speakers {
-      background: #0f0b04;
-      border-top: 1px solid var(--c-border);
-      border-bottom: 1px solid var(--c-border);
-    }
-
-    .grid-speakers {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 32px;
-    }
-
-    .speaker-card {
-      background: rgba(255, 255, 255, 0.015);
-      border: 1px solid var(--c-border);
-      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
-      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-      overflow: hidden;
-    }
-
-    .speaker-card:hover {
-      border-color: rgba(245, 158, 11, 0.35);
-      background: rgba(245, 158, 11, 0.02);
-      transform: translateY(-5px);
-    }
-
-    .speaker-img-wrap {
-      height: 380px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .speaker-img-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, #0f0b04 0%, rgba(15, 11, 4, 0.4) 60%, transparent 100%);
-    }
-
-    .speaker-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(100%);
-      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .speaker-card:hover .speaker-img {
-      filter: grayscale(0%);
-      transform: scale(1.06);
-    }
-
-    .speaker-body {
-      padding: 32px;
-      text-align: center;
-    }
-
-    .speaker-name {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--c-white);
-      margin-bottom: 8px;
-    }
-
-    .speaker-rol {
-      font-size: 0.8rem;
-      color: var(--c-amber);
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      margin-bottom: 12px;
-    }
-
-    .speaker-origin {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.4);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 2px 10px;
-      border-radius: 9999px;
-    }
-
-    /* CTA Section */
-    #cta {
-      position: relative;
-      overflow: hidden;
-      background: var(--c-dark-bg);
-    }
-
-    .cta-bg {
-      position: absolute;
-      inset: 0;
-      background: url('/images/ima4.jpg') center 30% / cover no-repeat;
-      opacity: 0.04;
-      filter: blur(4px);
-    }
-
-    .cta-content {
-      position: relative;
-      z-index: 1;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 140px 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .cta-h2 {
-      font-family: 'Anton', sans-serif;
-      font-size: clamp(3rem, 7.5vw, 7.5rem);
-      letter-spacing: 0.01em;
-      line-height: 0.92;
-      text-transform: uppercase;
-      color: var(--c-white);
-      margin-bottom: 48px;
-    }
-
-    .cta-h2 .stroke {
-      display: block;
-      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.15);
-      color: transparent;
-    }
-
-    .cta-h2 .filled {
-      display: block;
-      background: linear-gradient(90deg, var(--c-amber), #ffffff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .cta-row {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .cta-badges {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .cta-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5);
-      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
-    }
-
-    .cta-badge svg {
-      width: 12px;
-      height: 12px;
-      color: var(--c-amber);
-    }
-
-    /* Footer */
-    footer {
-      padding: 40px 48px;
-      border-top: 1px solid var(--c-border);
-      background: #060503;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .footer-brand {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.25rem;
-      letter-spacing: 0.1em;
-      color: var(--c-white);
-    }
-
-    .footer-brand em {
-      color: var(--c-amber);
-      font-style: normal;
-    }
-
-    .footer-copy {
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.25);
-      letter-spacing: 0.06em;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      #hero { padding: 0 24px 60px; }
-      .section-wrap { padding: 80px 24px; }
-      .cta-content { padding: 80px 24px; }
-      footer { padding: 24px; }
-    }
-
-    @media (max-width: 640px) {
-      .hero-meta { flex-direction: column; gap: 24px; }
-      .cta-row { flex-direction: column; align-items: flex-start; gap: 24px; }
-    }
-  </style>
-
-  <!-- ELEGANT HERO SECTION -->
-  <section id="hero">
-    <div id="hero-bg"></div>
-    <div id="hero-mesh"></div>
-    <div id="glow-1"></div>
-    <div id="glow-2"></div>
-
-    <div class="hero-content">
-      
-
-      <h1 class="hero-h1" id="hero-h1">
-        <span class="line-wrap"><span>CURSOS Y</span></span>
-        <span class="line-wrap"><span class="text-stroke">CONFERENCIAS</span></span>
-        <span class="line-wrap"><span class="text-gradient">CORPORATIVAS</span></span>
-      </h1>
-
-      <div class="hero-meta">
-        <p class="hero-desc" id="hero-desc">
-          Accede a masterclasses exclusivas, seminarios de innovación y talleres interactivos diseñados para directivos, estrategas y profesionales que buscan transformar su campo.
-        </p>
-        <div class="hero-cta-group" id="hero-ctas">
-          <a href="#talleres" class="btn-primary">
-            Explorar Agenda
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-            Reservar Cupo
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="scroll-hint" id="scroll-hint">
-      <span>Deslizar</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- STATS BAR -->
-  <div id="stats-bar">
-    <div class="stats-inner">
-      {stats.map(s => (
-        <div class="stat-chip">
-          <span class="stat-num">{s.num}<span style="font-size:0.6em">{s.suffix}</span></span>
-          <span class="stat-label">{s.label}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-
-  <!-- WORKSHOPS SECTION -->
-  <section id="talleres">
-    <div class="section-wrap">
-      <div class="section-header" id="work-header">
-        <div class="section-eyebrow">Programación Ejecutiva</div>
-        <h2 class="section-title">AGENDA Y <br/><span class="outline">CONFERENCIAS</span> ACTIVAS</h2>
-      </div>
-
-      <div class="workshop-list" id="work-list">
-        {workshops.map(w => (
-          <div class="workshop-card">
-            <div class="workshop-img-wrap">
-              <img src={w.img} alt={w.title} class="workshop-img" />
-            </div>
-            
-            <div class="workshop-body">
-              <div class="workshop-meta-row">
-                <span class="workshop-tag">{w.tag}</span>
-                <span class="workshop-date">{w.fecha}</span>
+  <main class="cc-main">
+
+    <!-- ══════════════════════════════════
+         HERO
+    ══════════════════════════════════ -->
+    <section class="cc-hero" id="cc-hero">
+      <div class="cc-hero-mesh" aria-hidden="true"></div>
+      <div class="cc-orb cc-orb-1" aria-hidden="true"></div>
+      <div class="cc-orb cc-orb-2" aria-hidden="true"></div>
+      <div class="cc-orb cc-orb-3" aria-hidden="true"></div>
+
+      <div class="cc-container cc-hero-inner">
+        <div class="cc-reveal">
+          <div class="cc-hero-top">
+
+            <h1 class="cc-hero-title font-display">
+              CURSOS Y<br/>
+              <span style="color:#f2c82f">CONFERENCIAS</span><br/>
+              <span class="cc-hero-gradient">CORPORATIVAS</span>
+            </h1>
+
+            <div class="cc-hero-side cc-reveal cc-d1">
+              <p class="cc-hero-sub">
+                Accede a masterclasses exclusivas, seminarios de innovación y talleres
+                interactivos diseñados para directivos, estrategas y profesionales que
+                buscan transformar su campo.
+              </p>
+              <div class="cc-hero-ctas">
+                <a href="#talleres" class="cc-btn-primary font-display">
+                  Explorar Agenda
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                  </svg>
+                </a>
+                <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank"
+                   rel="noopener noreferrer" class="cc-btn-outline">
+                  Reservar Cupo
+                </a>
               </div>
-              <h3 class="workshop-title">{w.title}</h3>
-              <p class="workshop-desc">{w.desc}</p>
-              
-              <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="workshop-cta">
-                Registrarme en esta sesión
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </a>
             </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
-  <!-- SPEAKERS SECTION -->
-  <section id="speakers">
-    <div class="section-wrap">
-      <div class="section-header" id="speakers-header">
-        <div class="section-eyebrow">Ponentes Destacados</div>
-        <h2 class="section-title">EXPOSITORES <br/><span class="outline">INTERNACIO</span>NALES</h2>
-      </div>
-
-      <div class="grid-speakers" id="speakers-grid">
-        {speakers.map(s => (
-          <div class="speaker-card">
-            <div class="speaker-img-wrap">
-              <img src={s.img} alt={s.nombre} class="speaker-img" />
-            </div>
-            <div class="speaker-body">
-              <h3 class="speaker-name">{s.nombre}</h3>
-              <p class="speaker-rol">{s.rol}</p>
-              <span class="speaker-origin">{s.origen}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA SECTION -->
-  <section id="cta">
-    <div class="cta-bg"></div>
-    <div class="cta-content">
-      <h2 class="cta-h2" id="cta-h2">
-        <span class="stroke">APRENDE DE LOS MEJORES.</span>
-        <span class="stroke">IMPULSA TU COMPAÑÍA.</span>
-        <span class="filled">RESERVA TU ACCESO HOY.</span>
-      </h2>
-      <div class="cta-row">
-        <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:1rem;padding:18px 48px;">
-          Reservar Entrada General
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <div class="cta-badges">
-          <div class="cta-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
-            Certificado Incluido
-          </div>
-          <div class="cta-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
-            Acceso a Grabación
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  
+    <!-- ══════════════════════════════════
+         STATS
+    ══════════════════════════════════ -->
+    <div class="cc-stats-bar">
+      <div class="cc-container cc-stats-inner">
+        {stats.map((s, i) => (
+          <div class={`cc-stat cc-reveal cc-s${i}`}>
+            <span class="cc-stat-num font-display">
+              {s.num}<span class="cc-stat-suffix">{s.suffix}</span>
+            </span>
+            <span class="cc-stat-label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         TALLERES
+    ══════════════════════════════════ -->
+    <section class="cc-section" id="talleres">
+      <div class="cc-container">
+
+        <div class="cc-section-head cc-reveal">
+          <span class="cc-eyebrow">Programación Ejecutiva</span>
+          <h2 class="cc-section-title font-display">
+            AGENDA Y <span class="cc-gold">CONFERENCIAS ACTIVAS</span>
+          </h2>
+          <div class="cc-bar" data-bar></div>
+        </div>
+
+        <div class="cc-workshop-list">
+          {workshops.map((w, i) => (
+            <div class={`cc-float-card cc-workshop-card cc-reveal cc-s${i % 3}`}>
+
+              <div class="cc-ws-img-wrap">
+                <img src={w.img} alt={w.title} class="cc-img cc-zoom-target" />
+                <div class="cc-ws-img-overlay"></div>
+              </div>
+
+              <div class="cc-ws-body">
+                <div class="cc-ws-meta">
+                  <span class="cc-ws-tag">
+                    <span class="cc-ws-tag-dot"></span>
+                    {w.tag}
+                  </span>
+                  <span class="cc-ws-date">{w.fecha}</span>
+                </div>
+                <h3 class="cc-ws-title font-display">{w.title}</h3>
+                <p class="cc-ws-desc">{w.desc}</p>
+                <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank"
+                   rel="noopener noreferrer" class="cc-ws-cta">
+                  Registrarme en esta sesión
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+
+              <div class="cc-ws-accent-bar"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         SPEAKERS
+    ══════════════════════════════════ -->
+    <section class="cc-section cc-blue-bg" id="speakers">
+      <div class="cc-orb cc-orb-sp" aria-hidden="true"></div>
+      <div class="cc-container" style="position:relative;z-index:2;">
+
+        <div class="cc-section-head cc-reveal">
+          <span class="cc-eyebrow cc-eyebrow-gold">Ponentes Destacados</span>
+          <h2 class="cc-section-title cc-white font-display">
+            EXPOSITORES <span class="cc-gold">INTERNACIONALES</span>
+          </h2>
+          <div class="cc-bar cc-bar-gold" data-bar></div>
+        </div>
+
+        <div class="cc-speakers-grid">
+          {speakers.map((s, i) => (
+            <div class={`cc-float-card cc-speaker-card cc-reveal cc-s${i % 3}`}>
+
+              <div class="cc-sp-img-wrap">
+                <img src={s.img} alt={s.nombre} class="cc-img cc-zoom-target" />
+                <div class="cc-sp-img-overlay"></div>
+              </div>
+
+              <div class="cc-sp-body">
+                <h3 class="cc-sp-name font-display">{s.nombre}</h3>
+                <p class="cc-sp-rol">{s.rol}</p>
+                <span class="cc-sp-origin">{s.origen}</span>
+              </div>
+
+              <div class="cc-sp-bar"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         CTA
+    ══════════════════════════════════ -->
+    <section class="cc-section cc-soft-bg" id="cta">
+      <div class="cc-container cc-cta-inner cc-reveal">
+        <span class="cc-eyebrow">Próximos Accesos</span>
+        <h2 class="cc-section-title font-display">
+          APRENDE DE LOS MEJORES.<br/>
+          <span class="cc-gold">RESERVA TU ACCESO HOY.</span>
+        </h2>
+        <div class="cc-bar" data-bar></div>
+
+        <div class="cc-cta-actions">
+          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank"
+             rel="noopener noreferrer" class="cc-btn-primary font-display">
+            Reservar Entrada General
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+          <div class="cc-cta-chips">
+            {["Certificado Incluido","Acceso a Grabación","Expertos Internacionales"].map(b => (
+              <div class="cc-cta-chip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="3" width="11" height="11"
+                     style="color:var(--gold);">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {b}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
 </Layout>
+
+<style>
+/* ══════════════════════════════════
+   TOKENS — idénticos al sistema CBIT
+══════════════════════════════════ */
+:root {
+  --blue:      #1A4B8C;
+  --blue-mid:  #2D7DD2;
+  --blue-lt:   #EBF3FB;
+  --gold:      #C9993A;
+  --gold-lt:   #F5E8CC;
+  --white:     #ffffff;
+  --soft:      #F0F4FA;
+  --text:      #1e293b;
+  --muted:     #64748B;
+  --faint:     #94A3B8;
+
+  --sh1: 0 1px 3px rgba(0,0,0,0.08),  0 4px 6px rgba(0,0,0,0.04);
+  --sh2: 0 4px 12px rgba(0,0,0,0.10), 0 8px 24px rgba(26,75,140,0.10);
+  --sh3: 0 8px 28px rgba(0,0,0,0.12), 0 18px 48px rgba(26,75,140,0.16);
+  --sh-hover: 0 14px 40px rgba(0,0,0,0.14), 0 28px 60px rgba(26,75,140,0.22);
+
+  --r:    20px;
+  --r-lg: 28px;
+  --r-xl: 36px;
+}
+
+/* ══════════════════════════════════
+   BASE
+══════════════════════════════════ */
+.cc-main      { background: var(--white); overflow-x: hidden; }
+.cc-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.cc-white     { color: var(--white) !important; }
+.cc-gold      { color: var(--gold); }
+
+/* ══════════════════════════════════
+   SECCIONES
+══════════════════════════════════ */
+.cc-section  { padding: 7rem 0; background: var(--white); }
+.cc-blue-bg  { background: var(--blue); position: relative; overflow: hidden; }
+.cc-soft-bg  { background: var(--soft); }
+
+/* ══════════════════════════════════
+   HERO
+══════════════════════════════════ */
+.cc-hero {
+  background: var(--blue);
+  padding: 10rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.cc-hero-mesh {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.cc-orb {
+  position: absolute; border-radius: 50%;
+  pointer-events: none; filter: blur(80px);
+}
+.cc-orb-1  { width:500px;height:500px; top:-150px;right:-120px; background:radial-gradient(circle,rgba(201,153,58,0.18),transparent 70%); }
+.cc-orb-2  { width:350px;height:350px; bottom:-80px;left:-80px;  background:radial-gradient(circle,rgba(45,125,210,0.16),transparent 70%); }
+.cc-orb-3  { width:250px;height:250px; top:40%;left:40%;          background:radial-gradient(circle,rgba(26,75,140,0.12),transparent 70%); }
+.cc-orb-sp { width:450px;height:450px; top:-100px;left:50%;transform:translateX(-50%); background:radial-gradient(circle,rgba(201,153,58,0.12),transparent 70%); }
+
+.cc-hero-inner { display: flex; flex-direction: column; gap: 3rem; }
+.cc-hero-top {
+  display: flex; flex-direction: column; gap: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  padding-bottom: 3rem;
+}
+@media(min-width:1024px) {
+  .cc-hero-top { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+}
+
+.cc-hero-title {
+  font-size: clamp(3.8rem, 10vw, 8rem);
+  color: #fff; line-height: 1.02; margin: 0;
+}
+.cc-hero-gradient {
+  background: linear-gradient(90deg, var(--gold), var(--blue-mid));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cc-hero-side {
+  width: 100%; max-width: 42%;
+  display: flex; flex-direction: column; gap: 2rem;
+}
+@media(max-width:1023px) { .cc-hero-side { max-width: 100%; } }
+
+.cc-hero-sub {
+  font-size: 1.1rem; color: rgba(255,255,255,0.6);
+  border-left: 2px solid var(--gold);
+  padding-left: 1.5rem; line-height: 1.85; margin: 0;
+}
+.cc-hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ══════════════════════════════════
+   BOTONES
+══════════════════════════════════ */
+.cc-btn-primary {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; text-decoration: none;
+  padding: 1rem 2rem; color: var(--blue);
+  background: linear-gradient(135deg, var(--gold), #f2c82f);
+  border-radius: 4px;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;
+  box-shadow: 0 4px 16px rgba(201,153,58,0.35);
+}
+.cc-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(201,153,58,0.5);
+}
+.cc-btn-outline {
+  display: inline-flex; align-items: center;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; text-decoration: none;
+  padding: 1rem 1.75rem;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 4px;
+  transition: border-color 0.3s, color 0.3s, transform 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.cc-btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+
+/* ══════════════════════════════════
+   STATS BAR
+══════════════════════════════════ */
+.cc-stats-bar {
+  background: var(--blue);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.cc-stats-inner {
+  display: flex; flex-wrap: wrap;
+  justify-content: space-around; gap: 2rem;
+  padding: 3rem 2rem;
+}
+.cc-stat      { display: flex; align-items: center; gap: 1rem; }
+.cc-stat-num  { font-size: 2.75rem; line-height: 1; color: var(--gold); }
+.cc-stat-suffix { font-size: 1.3rem; }
+.cc-stat-label {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4);
+  max-width: 110px; line-height: 1.5;
+}
+
+/* ══════════════════════════════════
+   SECTION HEADER
+══════════════════════════════════ */
+.cc-section-head { text-align: center; margin-bottom: 4rem; }
+.cc-eyebrow {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--blue-mid); margin-bottom: 0.6rem;
+}
+.cc-eyebrow-gold { color: var(--gold); }
+
+.cc-section-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  color: var(--blue); line-height: 1.12; margin: 0 0 1.2rem;
+}
+.cc-bar {
+  display: block; height: 3px; width: 0;
+  background: var(--blue-mid); border-radius: 2px;
+  margin: 0 auto;
+  transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s;
+}
+.cc-bar-gold { background: var(--gold); }
+.cc-bar.cc-bar-on { width: 56px; }
+
+/* ══════════════════════════════════
+   FLOAT CARD — mismo sistema
+══════════════════════════════════ */
+.cc-float-card {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh2);
+  border: 1px solid rgba(26,75,140,0.06);
+  transition: transform 0.42s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.42s cubic-bezier(0.22,1,0.36,1);
+  overflow: hidden;
+}
+.cc-float-card:hover {
+  transform: translateY(-10px) scale(1.012);
+  box-shadow: var(--sh-hover);
+}
+.cc-img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.cc-float-card:hover .cc-zoom-target { transform: scale(1.05); }
+
+/* ══════════════════════════════════
+   WORKSHOPS
+══════════════════════════════════ */
+.cc-workshop-list {
+  display: flex; flex-direction: column; gap: 2rem;
+}
+.cc-workshop-card {
+  display: grid; grid-template-columns: 300px 1fr;
+  min-height: 240px; position: relative;
+}
+.cc-ws-img-wrap { position: relative; overflow: hidden; height: 100%; min-height: 220px; }
+.cc-ws-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 60%, rgba(255,255,255,0.9));
+}
+.cc-ws-body {
+  padding: 2.5rem 2.5rem 2.5rem 2rem;
+  display: flex; flex-direction: column; justify-content: center; gap: 0.9rem;
+}
+.cc-ws-meta { display: flex; justify-content: space-between; align-items: center; }
+.cc-ws-tag {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold);
+}
+.cc-ws-tag-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+.cc-ws-date {
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--faint);
+  border: 1px solid rgba(26,75,140,0.12);
+  padding: 0.25rem 0.75rem; border-radius: 50px;
+}
+.cc-ws-title {
+  font-size: 1.35rem; color: var(--blue);
+  margin: 0; line-height: 1.2;
+  transition: color 0.3s;
+}
+.cc-float-card:hover .cc-ws-title { color: var(--gold); }
+.cc-ws-desc {
+  font-size: 0.9rem; line-height: 1.78;
+  color: var(--muted); margin: 0;
+}
+.cc-ws-cta {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--blue-mid); text-decoration: none;
+  transition: color 0.3s, gap 0.3s;
+}
+.cc-ws-cta:hover { color: var(--gold); gap: 0.7rem; }
+.cc-ws-accent-bar {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+}
+.cc-float-card:hover .cc-ws-accent-bar { transform: scaleX(1); }
+
+@media(max-width:768px) {
+  .cc-workshop-card { grid-template-columns: 1fr; }
+  .cc-ws-img-wrap   { height: 200px; min-height: unset; }
+  .cc-ws-img-overlay{ background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 60%); }
+}
+
+/* ══════════════════════════════════
+   SPEAKERS
+══════════════════════════════════ */
+.cc-speakers-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem;
+}
+.cc-speaker-card { text-align: center; position: relative; }
+.cc-sp-img-wrap  { height: 340px; overflow: hidden; position: relative; }
+.cc-sp-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,75,140,0.85) 0%, transparent 55%);
+}
+.cc-sp-body { padding: 1.75rem 1.5rem 2rem; }
+.cc-sp-name {
+  font-size: 1.1rem; color: var(--blue);
+  margin: 0 0 0.35rem;
+}
+.cc-sp-rol {
+  font-size: 0.8rem; color: var(--gold);
+  font-weight: 600; letter-spacing: 0.04em;
+  line-height: 1.4; margin: 0 0 0.9rem;
+}
+.cc-sp-origin {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--faint);
+  border: 1px solid rgba(26,75,140,0.12);
+  padding: 0.25rem 0.85rem; border-radius: 50px;
+}
+.cc-sp-bar {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+}
+.cc-float-card:hover .cc-sp-bar { transform: scaleX(1); }
+
+/* Override títulos en sección azul */
+.cc-blue-bg .cc-section-title { color: var(--white); }
+
+/* ══════════════════════════════════
+   CTA
+══════════════════════════════════ */
+.cc-cta-inner { text-align: center; }
+.cc-cta-actions {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: center; gap: 1.5rem; margin-top: 2.5rem;
+}
+.cc-cta-chips { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+.cc-cta-chip {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); border: 1px solid rgba(26,75,140,0.12);
+  border-radius: 50px; padding: 0.45rem 1rem;
+  background: var(--white);
+  transition: border-color 0.3s, color 0.3s;
+}
+.cc-cta-chip:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ══════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════ */
+.cc-reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+              transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.cc-reveal.cc-on { opacity: 1; transform: translateY(0); }
+.cc-d1 { transition-delay: .13s; }
+.cc-d2 { transition-delay: .26s; }
+.cc-s0 { transition-delay: 0s;   }
+.cc-s1 { transition-delay: .10s; }
+.cc-s2 { transition-delay: .20s; }
+.cc-s3 { transition-delay: .30s; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media(max-width:1024px) {
+  .cc-speakers-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:640px) {
+  .cc-speakers-grid { grid-template-columns: 1fr; }
+  .cc-section       { padding: 4.5rem 0; }
+  .cc-hero          { padding: 9rem 0 5rem; }
+  .cc-container     { padding: 0 1.25rem; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .cc-reveal { opacity:1; transform:none; transition:none; }
+  .cc-bar    { width:56px; transition:none; }
+}
+</style>
 
 <script>
   import gsap from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
 
-  if (typeof window !== 'undefined') {
+  let ctx: gsap.Context | null = null;
+
+  function initPage() {
+    if (ctx) { ctx.revert(); ctx = null; }
     gsap.registerPlugin(ScrollTrigger);
 
-    // Initial Hero Entrance Animation
-    const tl = gsap.timeline({ delay: 0.2 });
-    tl.to('#hero-kicker', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' })
-      .to('#hero-h1 .line-wrap span', { y: 0, duration: 1, stagger: 0.15, ease: 'power4.out' }, "-=0.6")
-      .to('#hero-desc', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=0.5")
-      .to('#hero-ctas', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, "-=0.6")
-      .to('#scroll-hint', { opacity: 1, duration: 0.6 }, "-=0.2");
+    ctx = gsap.context(() => {
 
-    // Workshops Header Animation
-    gsap.from('#work-header > *', {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '#talleres',
-        start: 'top 80%',
-      }
-    });
+      /* ── 1. SCROLL REVEAL ── */
+      const revealIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('cc-on');
+            revealIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
 
-    // Workshop Cards reveal
-    gsap.from('.workshop-card', {
-      y: 60,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '#work-list',
-        start: 'top 75%',
-      }
-    });
+      document.querySelectorAll('.cc-reveal').forEach(el => revealIO.observe(el));
 
-    // Speakers Section Animation
-    gsap.from('#speakers-header > *', {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '#speakers',
-        start: 'top 80%',
-      }
-    });
+      /* ── 2. GOLD BAR DRAW ── */
+      const barIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('cc-bar-on');
+            barIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.8 });
 
-    gsap.from('.speaker-card', {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '#speakers-grid',
-        start: 'top 75%',
-      }
-    });
+      document.querySelectorAll('[data-bar]').forEach(el => barIO.observe(el));
 
-    // CTA section entrance
-    gsap.from('#cta-h2 > *', {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '#cta',
-        start: 'top 75%',
-      }
+      /* ── 3. HERO ENTRANCE ── */
+      gsap.timeline({ delay: 0.15 })
+        .from('.cc-hero-title', { y: 60, opacity: 0, duration: 1.1, ease: 'power4.out' }, 0.2)
+        .from('.cc-hero-sub',   { y: 25, opacity: 0, duration: 0.85, ease: 'power3.out' }, 0.65)
+        .from('.cc-hero-ctas',  { y: 20, opacity: 0, duration: 0.8,  ease: 'power3.out' }, 0.85);
+
+      /* ── 4. PARALLAX HERO TITLE ── */
+      gsap.to('.cc-hero-title', {
+        yPercent: 20, ease: 'none',
+        scrollTrigger: { trigger: '.cc-hero', start: 'top top', end: 'bottom top', scrub: 1.8 }
+      });
+
+      /* ── 5. PARALLAX ORBS ── */
+      document.querySelectorAll<HTMLElement>('.cc-orb-1, .cc-orb-2').forEach((orb, i) => {
+        gsap.to(orb, {
+          yPercent: i % 2 === 0 ? -25 : 20, ease: 'none',
+          scrollTrigger: { trigger: '.cc-hero', start: 'top top', end: 'bottom top', scrub: 2 }
+        });
+      });
+
+      /* ── 6. STAGGER GRIDS ── */
+      ['#talleres .cc-workshop-list', '#speakers .cc-speakers-grid'].forEach(sel => {
+        const grid = document.querySelector(sel);
+        if (!grid) return;
+        const cards = Array.from(grid.querySelectorAll<HTMLElement>('.cc-reveal'));
+        ScrollTrigger.create({
+          trigger: grid, start: 'top 86%', once: true,
+          onEnter: () => {
+            cards.forEach((card, i) => {
+              gsap.to(card, {
+                opacity: 1, y: 0, duration: 0.72,
+                delay: i * 0.12, ease: 'power3.out', overwrite: true,
+              });
+            });
+          }
+        });
+      });
+
     });
   }
+
+  function cleanup() {
+    if (ctx) { ctx.revert(); ctx = null; }
+    ScrollTrigger.getAll().forEach(t => t.kill());
+  }
+
+  initPage();
+  document.addEventListener('astro:page-load', () => { cleanup(); initPage(); });
+  document.addEventListener('astro:before-swap', cleanup);
 </script>

@@ -11,7 +11,7 @@ const events = [
     location: "Auditorio Central",
     category: "Académico",
     img: "https://picsum.photos/seed/event1/800/600",
-    colorClass: "amber"
+    color: "#C9993A",
   },
   {
     title: "TORNEO INTERDISCIPLINARIO CBIT",
@@ -21,7 +21,7 @@ const events = [
     location: "Complejo Polideportivo",
     category: "Deportivo",
     img: "https://picsum.photos/seed/event2/800/600",
-    colorClass: "green"
+    color: "#1A4B8C",
   },
   {
     title: "CARRERA Y FERIA DE SALUD INTEGRAL",
@@ -31,7 +31,7 @@ const events = [
     location: "Campus Central",
     category: "Comunidad",
     img: "https://picsum.photos/seed/event3/800/600",
-    colorClass: "blue"
+    color: "#2D7DD2",
   },
   {
     title: "CAMPAMENTO DE ÉLITE PARA PROMESAS",
@@ -41,292 +41,465 @@ const events = [
     location: "Centro de Alto Rendimiento",
     category: "Deportivo",
     img: "https://picsum.photos/seed/event4/800/600",
-    colorClass: "yellow"
+    color: "#C9993A",
   }
 ];
-
-// Color tokens por categoría — solo las propiedades que realmente usamos
-type ColorTokens = { accent: string; badgeBg: string; badgeBorder: string; };
-
-const colorMap: Record<string, ColorTokens> = {
-  green:  { accent: '#4ade80', badgeBg: 'rgba(74,222,128,0.08)',  badgeBorder: 'rgba(74,222,128,0.25)'  },
-  blue:   { accent: '#38bdf8', badgeBg: 'rgba(56,189,248,0.08)',  badgeBorder: 'rgba(56,189,248,0.25)'  },
-  yellow: { accent: '#facc15', badgeBg: 'rgba(250,204,21,0.08)',  badgeBorder: 'rgba(250,204,21,0.25)'  },
-  amber:  { accent: '#f59e0b', badgeBg: 'rgba(245,158,11,0.08)',  badgeBorder: 'rgba(245,158,11,0.25)'  },
-};
-const getColor = (c: string) => colorMap[c] ?? colorMap.amber;
 ---
 
-<Layout title="Próximos Eventos | CBTFI">
+<Layout title="Próximos Eventos | CBIT">
   <Navbar />
 
-  <main class="events-main min-h-screen pt-28 pb-24 relative overflow-hidden">
+  <main class="ev-main">
 
-    <!-- Glows: reducidos y con will-change:none para no triggerar compositing innecesario -->
-    <div class="glow-r absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
-         aria-hidden="true"></div>
-    <div class="glow-l absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
-         aria-hidden="true"></div>
+    <!-- ══════════════════════════════════
+         HERO
+    ══════════════════════════════════ -->
+    <section class="ev-hero" id="ev-hero">
+      <div class="ev-hero-mesh" aria-hidden="true"></div>
+      <div class="ev-orb ev-orb-1" aria-hidden="true"></div>
+      <div class="ev-orb ev-orb-2" aria-hidden="true"></div>
+      <div class="ev-orb ev-orb-3" aria-hidden="true"></div>
 
-    <div class="container mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
+      <div class="ev-container ev-hero-inner">
+        <div class="ev-reveal">
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/10 pb-12">
 
-      <!-- ── HEADER ── -->
-      <header class="flex flex-col lg:flex-row lg:items-end gap-8 border-b pb-12 mb-16 lg:mb-20"
-              style="border-color:rgba(255,255,255,0.07);">
-        <div class="lg:w-2/3">
-          <p class="eyebrow text-[10px] font-bold tracking-[0.4em] uppercase text-amber-500 mb-4">
-            Calendario de Actividades
-          </p>
-          <h1 class="headline font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tighter leading-[0.92]">
-            PRÓXIMOS<br/>
-            <span class="text-amber-500">EVENTOS</span>
-          </h1>
-          <div class="accent-line mt-7 h-[3px] w-0 bg-amber-500 origin-left"></div>
+            <h1 class="ev-hero-title font-display">
+              PRÓXIMOS<br/>
+              <span style="color:#f2c82f">EVENTOS</span>
+            </h1>
+
+            <div class="ev-hero-side ev-reveal ev-d1">
+              <p class="ev-hero-sub">
+                Mantente al día con nuestras competencias, conferencias magistrales, ferias de salud y jornadas deportivas de primer nivel en toda Bolivia.
+              </p>
+            </div>
+
+          </div>
         </div>
-        <div class="lg:w-1/3 lg:pb-3 desc-block">
-          <p class="text-gray-400 text-base sm:text-lg border-l-2 border-amber-500/60 pl-5 leading-relaxed">
-            Mantente al día con nuestras competencias, conferencias magistrales, ferias de salud y jornadas deportivas de primer nivel.
-          </p>
-        </div>
-      </header>
-
-      <!-- ── GRID ── -->
-      <div class="events-grid grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-        {events.map((event) => {
-          const c = getColor(event.colorClass);
-          const [day, month] = event.date.split(' ');
-          return (
-            <article
-              class="event-card group relative overflow-hidden cursor-pointer"
-              style={`--accent:${c.accent};--badge-bg:${c.badgeBg};--badge-border:${c.badgeBorder};`}
-            >
-              <!-- Image wrapper: transform isolated on its own layer -->
-              <div class="img-wrap relative h-[200px] sm:h-[240px] overflow-hidden">
-                <img
-                  src={event.img}
-                  alt={event.title}
-                  width="800"
-                  height="600"
-                  loading="lazy"
-                  decoding="async"
-                  class="card-img w-full h-full object-cover"
-                />
-                <!-- overlay — CSS only, no JS -->
-                <div class="img-overlay absolute inset-0"></div>
-
-                <!-- Date badge -->
-                <div class="date-badge absolute top-4 right-4 px-4 py-2 text-center"
-                     style="background:rgba(0,0,0,0.82);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(6px);">
-                  <span class="block text-xl font-display font-bold leading-none"
-                        style={`color:${c.accent};`}>{day}</span>
-                  <span class="block text-[10px] text-gray-400 font-bold tracking-widest uppercase mt-0.5">{month}</span>
-                </div>
-
-                <!-- Category badge -->
-                <div class="absolute bottom-4 left-5">
-                  <span class="px-3 py-1 text-[9px] font-bold tracking-widest uppercase"
-                        style={`background:${c.badgeBg};border:1px solid ${c.badgeBorder};color:${c.accent};`}>
-                    {event.category}
-                  </span>
-                </div>
-              </div>
-
-              <!-- Body -->
-              <div class="card-body relative z-10 p-5 sm:p-7 flex flex-col justify-between min-h-[220px] sm:min-h-[240px]">
-                <div>
-                  <h2 class="card-title font-display text-lg sm:text-xl md:text-2xl text-white leading-tight mb-3 line-clamp-2">
-                    {event.title}
-                  </h2>
-                  <p class="text-gray-400 text-xs sm:text-sm leading-relaxed line-clamp-3">
-                    {event.desc}
-                  </p>
-                </div>
-
-                <!-- Meta row -->
-                <div class="flex items-center justify-between mt-5 pt-4 border-t"
-                     style="border-color:rgba(255,255,255,0.06);">
-                  <span class="meta-item flex items-center gap-1.5 text-[10px] text-gray-500 tracking-wide">
-                    <!-- clock icon -->
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 text-amber-500" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                    </svg>
-                    {event.time}
-                  </span>
-                  <span class="meta-item flex items-center gap-1.5 text-[10px] text-gray-500 tracking-wide">
-                    <!-- pin icon -->
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                         stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 text-amber-500" aria-hidden="true">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-                    </svg>
-                    {event.location}
-                  </span>
-                </div>
-              </div>
-
-              <!-- Corner brackets — CSS transform only, GPU-composited -->
-              <span class="bracket bracket-tl-h" aria-hidden="true"></span>
-              <span class="bracket bracket-tl-v" aria-hidden="true"></span>
-              <span class="bracket bracket-br-h" aria-hidden="true"></span>
-              <span class="bracket bracket-br-v" aria-hidden="true"></span>
-
-              <!-- Hover border glow -->
-              <div class="card-glow absolute inset-0 pointer-events-none opacity-0"></div>
-            </article>
-          );
-        })}
       </div>
+    </section>
 
-    </div>
+    <!-- ══════════════════════════════════
+         GRID DE EVENTOS
+    ══════════════════════════════════ -->
+    <section class="ev-section ev-soft-bg" id="eventos">
+      <div class="ev-container">
+
+        <div class="ev-section-head ev-reveal">
+          <span class="ev-eyebrow">Calendario de Actividades</span>
+          <h2 class="ev-section-title font-display">AGENDA <span class="ev-gold">CBIT</span></h2>
+          <div class="ev-bar" data-bar></div>
+        </div>
+
+        <div class="ev-events-grid">
+          {events.map((event, i) => {
+            const [day, month] = event.date.split(' ');
+            return (
+              <article class={`ev-float-card ev-event-card ev-reveal ev-s${i % 4}`}>
+
+                <!-- Imagen -->
+                <div class="ev-img-wrap">
+                  <img
+                    src={event.img}
+                    alt={event.title}
+                    width="800"
+                    height="600"
+                    loading="lazy"
+                    decoding="async"
+                    class="ev-img ev-zoom-target"
+                  />
+
+                  <!-- Date badge -->
+                  <div class="ev-date-badge">
+                    <span class="ev-date-day font-display" style={`color:${event.color}`}>{day}</span>
+                    <span class="ev-date-month">{month}</span>
+                  </div>
+
+                  <!-- Category pill -->
+                  <div class="ev-cat-pill" style={`border-left-color:${event.color}`}>
+                    {event.category}
+                  </div>
+                </div>
+
+                <!-- Body -->
+                <div class="ev-card-body">
+                  <div class="ev-card-accent" style={`background:${event.color}`}></div>
+                  <h3 class="ev-card-title font-display" style={`color:${event.color}`}>{event.title}</h3>
+                  <p class="ev-card-desc">{event.desc}</p>
+
+                  <!-- Meta -->
+                  <div class="ev-card-meta">
+                    <span class="ev-meta-item">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                      </svg>
+                      {event.time}
+                    </span>
+                    <span class="ev-meta-item">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                      </svg>
+                      {event.location}
+                    </span>
+                  </div>
+                </div>
+
+              </article>
+            );
+          })}
+        </div>
+
+      </div>
+    </section>
+
   </main>
 </Layout>
 
 <style>
-  /* ── BASE ── */
-  
+/* ══════════════════════════════════
+   TOKENS (mismo sistema que SobreNosotros)
+══════════════════════════════════ */
+:root {
+  --blue:      #1A4B8C;
+  --blue-mid:  #2D7DD2;
+  --blue-lt:   #EBF3FB;
+  --cyan:      #f5c21a;
+  --gold:      #C9993A;
+  --gold-lt:   #F5E8CC;
+  --white:     #ffffff;
+  --soft:      #F0F4FA;
+  --text:      #1e293b;
+  --muted:     #64748B;
+  --faint:     #94A3B8;
 
-  /* Glows: filter:blur solo en pseudo — no afecta al layout */
-  .glow-r {
-    translate: 33% -33%;
-    background: radial-gradient(ellipse, rgba(14,165,233,0.07) 0%, transparent 70%);
-    filter: blur(60px);
-    will-change: auto;
-  }
-  .glow-l {
-    translate: -50% 50%;
-    background: radial-gradient(ellipse, rgba(45,212,191,0.05) 0%, transparent 70%);
-    filter: blur(70px);
-    will-change: auto;
-  }
+  --sh1: 0 1px 3px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.04);
+  --sh2: 0 4px 12px rgba(0,0,0,0.10), 0 8px 24px rgba(26,75,140,0.10);
+  --sh3: 0 8px 28px rgba(0,0,0,0.12), 0 18px 48px rgba(26,75,140,0.16);
+  --sh-hover: 0 14px 40px rgba(0,0,0,0.14), 0 28px 60px rgba(26,75,140,0.22);
 
-  /* ── HEADER REVEAL (CSS-only, sin GSAP) ── */
-  .eyebrow {
-    opacity: 0;
-    translate: 0 12px;
-    animation: fadeUp 0.6s 0.1s ease forwards;
-  }
-  .headline {
-    opacity: 0;
-    translate: 0 20px;
-    animation: fadeUp 0.7s 0.2s ease forwards;
-  }
-  .accent-line {
-    animation: expandLine 0.7s 0.6s ease forwards;
-  }
-  .desc-block {
-    opacity: 0;
-    animation: fadeIn 0.8s 0.5s ease forwards;
-  }
+  --r: 20px;
+  --r-lg: 28px;
+  --r-xl: 36px;
+}
 
-  @keyframes fadeUp {
-    to { opacity: 1; translate: 0 0; }
-  }
-  @keyframes fadeIn {
-    to { opacity: 1; }
-  }
-  @keyframes expandLine {
-    to { width: 64px; }
-  }
+/* ══════════════════════════════════
+   BASE
+══════════════════════════════════ */
+.ev-main       { background: var(--white); overflow-x: hidden; }
+.ev-container  { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.ev-gold       { color: var(--gold); }
 
-  /* ── CARD ── */
-  .event-card {
-    background: #0a0a0f;
-    border: 1px solid rgba(255,255,255,0.06);
-    /* entrada con CSS animation + delay por nth-child */
-    opacity: 0;
-    translate: 0 24px;
-    animation: fadeUp 0.65s ease forwards;
-    /* stagger por índice — Astro renderiza en orden */
-  }
-  .event-card:nth-child(1) { animation-delay: 0.35s; }
-  .event-card:nth-child(2) { animation-delay: 0.48s; }
-  .event-card:nth-child(3) { animation-delay: 0.61s; }
-  .event-card:nth-child(4) { animation-delay: 0.74s; }
+/* ══════════════════════════════════
+   SECCIONES
+══════════════════════════════════ */
+.ev-section  { padding: 7rem 0; background: var(--white); }
+.ev-soft-bg  { background: var(--soft); }
 
-  /* ── IMAGE — solo opacity + scale, aislado con contain ── */
-  .img-wrap { contain: strict; }
+/* ══════════════════════════════════
+   HERO — idéntico al de SobreNosotros
+══════════════════════════════════ */
+.ev-hero {
+  background: var(--blue);
+  padding: 10rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.ev-hero-mesh {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.ev-orb {
+  position: absolute; border-radius: 50%;
+  pointer-events: none; filter: blur(80px);
+}
+.ev-orb-1 { width:500px;height:500px; top:-150px;right:-120px; background:radial-gradient(circle,rgba(14,165,233,0.18),transparent 70%); }
+.ev-orb-2 { width:350px;height:350px; bottom:-80px;left:-80px;  background:radial-gradient(circle,rgba(201,153,58,0.16),transparent 70%); }
+.ev-orb-3 { width:250px;height:250px; top:40%;left:40%;          background:radial-gradient(circle,rgba(45,125,210,0.12),transparent 70%); }
 
-  .card-img {
-    opacity: 0.38;
-    filter: grayscale(1);
-    /* Solo transform + opacity + filter en will-change → compositor thread */
-    will-change: transform, opacity, filter;
-    transition:
-      opacity      400ms ease,
-      filter       400ms ease,
-      transform    600ms ease;
-  }
-  .event-card:hover .card-img {
-    opacity: 0.78;
-    filter: grayscale(0);
-    transform: scale(1.04);
-  }
+.ev-hero-inner { display: flex; flex-direction: column; gap: 3rem; }
 
-  .img-overlay {
-    background: linear-gradient(to top, #0a0a0f 0%, rgba(10,10,15,0.3) 50%, transparent 100%);
-    /* pointer-events ya son none por ser decorativo */
-  }
+.ev-hero-title {
+  font-size: clamp(3.8rem, 10vw, 8rem);
+  color: #fff;
+  line-height: 1.02;
+  margin: 0;
+}
 
-  /* ── CARD BODY ── */
-  .card-body { background: #0a0a0f; }
+.ev-hero-side { width: 100%; max-width: 42%; }
+.ev-hero-sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.6);
+  border-left: 2px solid var(--cyan);
+  padding-left: 1.5rem;
+  line-height: 1.85;
+}
 
-  .card-title {
-    transition: color 250ms ease;
-  }
-  .event-card:hover .card-title {
-    color: var(--accent);
-  }
+/* ══════════════════════════════════
+   SECTION HEADER
+══════════════════════════════════ */
+.ev-section-head  { text-align: center; margin-bottom: 4rem; }
+.ev-eyebrow {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--blue-mid); margin-bottom: 0.6rem;
+}
+.ev-section-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  color: var(--blue);
+  line-height: 1.12;
+  margin: 0 0 1.2rem;
+}
+.ev-bar {
+  display: block; height: 3px; width: 0;
+  background: var(--blue-mid); border-radius: 2px;
+  margin: 0 auto;
+  transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s;
+}
+.ev-bar.ev-bar-on { width: 56px; }
 
-  /* ── CORNER BRACKETS — transform solo en GPU ── */
-  .bracket {
-    position: absolute;
-    background: var(--accent);
-    will-change: transform;
-  }
-  .bracket-tl-h { top: 14px; left: 14px; width: 22px; height: 2px; transform: scaleX(0); transform-origin: left;  transition: transform 350ms ease; }
-  .bracket-tl-v { top: 14px; left: 14px; width: 2px; height: 22px; transform: scaleY(0); transform-origin: top;   transition: transform 350ms 50ms ease; }
-  .bracket-br-h { bottom: 14px; right: 14px; width: 22px; height: 2px; transform: scaleX(0); transform-origin: right;  transition: transform 350ms ease; }
-  .bracket-br-v { bottom: 14px; right: 14px; width: 2px; height: 22px; transform: scaleY(0); transform-origin: bottom; transition: transform 350ms 50ms ease; }
+/* ══════════════════════════════════
+   FLOAT CARD — idéntico al de SobreNosotros
+══════════════════════════════════ */
+.ev-float-card {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh2);
+  border: 1px solid rgba(26,75,140,0.06);
+  transition: transform 0.42s cubic-bezier(0.22,1,0.36,1), box-shadow 0.42s cubic-bezier(0.22,1,0.36,1);
+  overflow: hidden;
+}
+.ev-float-card:hover {
+  transform: translateY(-10px) scale(1.012);
+  box-shadow: var(--sh-hover);
+}
 
-  .event-card:hover .bracket-tl-h,
-  .event-card:hover .bracket-br-h { transform: scaleX(1); }
-  .event-card:hover .bracket-tl-v,
-  .event-card:hover .bracket-br-v { transform: scaleY(1); }
+/* ══════════════════════════════════
+   GRID Y TARJETAS DE EVENTO
+══════════════════════════════════ */
+.ev-events-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
 
-  /* ── CARD GLOW — opacity only (compositor) ── */
-  .card-glow {
-    box-shadow: inset 0 0 0 1px var(--accent);
-    opacity: 0;
-    transition: opacity 300ms ease;
-  }
-  .event-card:hover .card-glow { opacity: 0.35; }
+/* Imagen */
+.ev-img-wrap {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+}
+.ev-img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.ev-float-card:hover .ev-zoom-target { transform: scale(1.05); }
 
-  /* ── hover shadow — box-shadow no fuerza reflow ── */
-  .event-card {
-    transition:
-      box-shadow 300ms ease,
-      border-color 300ms ease;
-  }
-  .event-card:hover {
-    border-color: rgba(245,158,11,0.18);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 24px rgba(245,158,11,0.07);
-  }
+/* Date badge — esquina superior derecha */
+.ev-date-badge {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: rgba(26,75,140,0.88);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 0.55rem 0.9rem;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.12);
+  min-width: 52px;
+}
+.ev-date-day   { display: block; font-size: 1.45rem; line-height: 1; }
+.ev-date-month {
+  display: block; font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.65); margin-top: 0.2rem;
+}
 
-  /* ── RESPONSIVE tweaks ── */
-  @media (max-width: 480px) {
-    .meta-item { font-size: 9px; }
-    .date-badge { padding: 8px 12px; }
-  }
+/* Category pill — esquina inferior izquierda */
+.ev-cat-pill {
+  position: absolute;
+  bottom: 1rem; left: 1rem;
+  background: rgba(26,75,140,0.82);
+  backdrop-filter: blur(8px);
+  color: #fff; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.4rem 0.9rem; border-radius: 50px;
+  border-left: 3px solid;           /* color set inline */
+}
 
-  /* reduce-motion: sin animaciones de entrada */
-  @media (prefers-reduced-motion: reduce) {
-    .eyebrow, .headline, .desc-block, .event-card {
-      opacity: 1 !important;
-      translate: none !important;
-      animation: none !important;
-    }
-    .accent-line { width: 64px !important; animation: none !important; }
-    .card-img { transition: opacity 200ms ease !important; }
-    .bracket { transition: transform 200ms ease !important; }
-  }
+/* Body */
+.ev-card-body  { padding: 1.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.ev-card-accent {
+  width: 28px; height: 3.5px;
+  border-radius: 2px;
+  transition: width 0.35s;
+  margin-bottom: 0.25rem;
+}
+.ev-float-card:hover .ev-card-accent { width: 52px; }
+
+.ev-card-title {
+  font-size: 1.05rem;
+  margin: 0 0 0.3rem;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+}
+.ev-card-desc {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Meta row */
+.ev-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(26,75,140,0.07);
+  margin-top: 0.4rem;
+}
+.ev-meta-item {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.74rem; font-weight: 600;
+  color: var(--faint);
+}
+.ev-meta-item svg { color: var(--gold); flex-shrink: 0; }
+
+/* ══════════════════════════════════
+   SCROLL REVEAL — igual que SobreNosotros
+══════════════════════════════════ */
+.ev-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.ev-reveal.ev-on { opacity: 1; transform: translateY(0); }
+.ev-d1 { transition-delay: .13s; }
+.ev-d2 { transition-delay: .26s; }
+.ev-s0 { transition-delay: 0s; }
+.ev-s1 { transition-delay: .10s; }
+.ev-s2 { transition-delay: .20s; }
+.ev-s3 { transition-delay: .30s; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media(max-width:1024px){
+  .ev-hero-side { max-width: 100%; }
+}
+@media(max-width:768px){
+  .ev-events-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:640px){
+  .ev-section { padding: 4.5rem 0; }
+  .ev-hero    { padding: 9rem 0 5rem; }
+  .ev-container { padding: 0 1.25rem; }
+}
+@media(prefers-reduced-motion:reduce){
+  .ev-reveal { opacity: 1; transform: none; transition: none; }
+  .ev-bar    { width: 56px; transition: none; }
+}
 </style>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  let ctx: gsap.Context | null = null;
+
+  function initPage() {
+    if (ctx) { ctx.revert(); ctx = null; }
+    gsap.registerPlugin(ScrollTrigger);
+
+    ctx = gsap.context(() => {
+
+      /* ── 1. SCROLL REVEAL ── */
+      const revealIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('ev-on');
+            revealIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+
+      document.querySelectorAll('.ev-reveal').forEach(el => revealIO.observe(el));
+
+      /* ── 2. BAR DRAW ── */
+      const barIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('ev-bar-on');
+            barIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.8 });
+
+      document.querySelectorAll('[data-bar]').forEach(el => barIO.observe(el));
+
+      /* ── 3. PARALLAX HERO TITLE ── */
+      const heroTitle = document.querySelector<HTMLElement>('.ev-hero-title');
+      if (heroTitle) {
+        gsap.to(heroTitle, {
+          yPercent: 20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.ev-hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.8,
+          }
+        });
+      }
+
+      /* ── 4. PARALLAX ORBS ── */
+      document.querySelectorAll<HTMLElement>('.ev-orb-1, .ev-orb-2').forEach((orb, i) => {
+        gsap.to(orb, {
+          yPercent: i % 2 === 0 ? -25 : 20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.ev-hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 2,
+          }
+        });
+      });
+
+      /* ── 5. STAGGER GRID ── */
+      const grid = document.querySelector('#eventos .ev-events-grid');
+      if (grid) {
+        const cards = Array.from(grid.querySelectorAll<HTMLElement>('.ev-reveal'));
+        ScrollTrigger.create({
+          trigger: grid,
+          start: 'top 86%',
+          once: true,
+          onEnter: () => {
+            cards.forEach((card, i) => {
+              gsap.to(card, {
+                opacity: 1, y: 0,
+                duration: 0.72,
+                delay: i * 0.1,
+                ease: 'power3.out',
+                overwrite: true,
+              });
+            });
+          }
+        });
+      }
+
+    });
+  }
+
+  function cleanup() {
+    if (ctx) { ctx.revert(); ctx = null; }
+    ScrollTrigger.getAll().forEach(t => t.kill());
+  }
+
+  initPage();
+  document.addEventListener('astro:page-load', () => { cleanup(); initPage(); });
+  document.addEventListener('astro:before-swap', cleanup);
+</script>

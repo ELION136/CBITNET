@@ -1,6 +1,6 @@
 ---
 // components/BackgroundFX.astro
-// Aurora Dorada — azul + teal + dorado/ámbar
+// Aurora Clara — azules suaves + dorado suave sobre fondo blanco
 ---
 
 <canvas id="bg-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
@@ -11,18 +11,18 @@ const ctx = canvas.getContext('2d')!;
 
 let W: number, H: number, animId: number;
 
-// ── Paleta: dorado/ámbar mezclado con azul y teal
+// ── Paleta clara: azules suaves, dorado pálido, teal ligero
 const BLOB_COLORS: [number, number, number][] = [
-  [43,  90, 62],   // dorado cálido principal
-  [38,  95, 58],   // ámbar profundo
-  [210, 78, 58],   // azul cielo
-  [175, 72, 52],   // teal / cian
-  [32,  88, 65],   // oro claro
-  [230, 65, 62],   // índigo suave
-  [48,  82, 55],   // amarillo oscuro
-  [195, 82, 55],   // cyan vivo
-  [36,  75, 50],   // bronce
-  [215, 70, 60],   // azul medio
+  [210, 70, 88],   // azul claro suave
+  [37,  90, 88],   // dorado pálido
+  [195, 65, 90],   // azul cielo claro
+  [175, 60, 88],   // teal suave
+  [220, 75, 92],   // azul lavanda
+  [43,  80, 88],   // ámbar muy suave
+  [200, 68, 90],   // celeste
+  [35,  85, 90],   // amarillo suave
+  [215, 72, 91],   // azul medio claro
+  [180, 65, 90],   // cyan pálido
 ];
 
 type Blob = {
@@ -48,20 +48,20 @@ function buildBlobs(): Blob[] {
   const count = Math.max(8, Math.floor((W * H) / 120_000));
   return Array.from({ length: count }, (_, i) => {
     const [hue, sat, lit] = BLOB_COLORS[i % BLOB_COLORS.length];
-    const speed = 0.10 + Math.random() * 0.17;
+    const speed = 0.08 + Math.random() * 0.12;
     const angle = Math.random() * Math.PI * 2;
     return {
       x: Math.random() * W,
       y: Math.random() * H,
       vx: Math.cos(angle) * speed,
       vy: Math.sin(angle) * speed,
-      baseR: Math.min(W, H) * (0.20 + Math.random() * 0.30),
-      hue:   hue + (Math.random() - 0.5) * 16,
+      baseR: Math.min(W, H) * (0.22 + Math.random() * 0.32),
+      hue:   hue + (Math.random() - 0.5) * 12,
       sat, lit,
       phase:      Math.random() * Math.PI * 2,
-      pulseSpeed: 0.35 + Math.random() * 0.50,
-      pulseAmp:   0.09 + Math.random() * 0.13,
-      alpha:      0.13 + Math.random() * 0.11,
+      pulseSpeed: 0.25 + Math.random() * 0.40,
+      pulseAmp:   0.06 + Math.random() * 0.10,
+      alpha:      0.06 + Math.random() * 0.07,
     };
   });
 }
@@ -76,21 +76,21 @@ function draw(ts: number) {
   ctx.clearRect(0, 0, W, H);
   const t = ts * 0.001;
 
-  // ── 1. Fondo base — noche con tinte cálido sutil
-  ctx.fillStyle = 'hsl(28, 18%, 5%)';
+  // ── 1. Fondo base blanco puro
+  ctx.fillStyle = '#FFFFFF';
   ctx.fillRect(0, 0, W, H);
 
-  // ── 2. Gradiente de profundidad central con tonalidad cálida
-  const cg = ctx.createRadialGradient(W * 0.5, H * 0.5, 0, W * 0.5, H * 0.5, Math.max(W, H) * 0.7);
-  cg.addColorStop(0, 'rgba(50, 35, 8, 0.42)');
-  cg.addColorStop(1, 'rgba(0, 0, 0, 0)');
+  // ── 2. Gradiente central muy suave (azul -> blanco)
+  const cg = ctx.createRadialGradient(W * 0.5, H * 0.4, 0, W * 0.5, H * 0.4, Math.max(W, H) * 0.75);
+  cg.addColorStop(0, 'rgba(219, 234, 254, 0.35)');
+  cg.addColorStop(1, 'rgba(255, 255, 255, 0)');
   ctx.fillStyle = cg;
   ctx.fillRect(0, 0, W, H);
 
-  // ── 3. Blobs de aurora
+  // ── 3. Blobs de aurora suave
   blobs.forEach((b) => {
-    const noiseX = smoothNoise(t * 0.3 + b.phase)       * 0.25;
-    const noiseY = smoothNoise(t * 0.3 + b.phase + 1.5) * 0.25;
+    const noiseX = smoothNoise(t * 0.3 + b.phase)       * 0.20;
+    const noiseY = smoothNoise(t * 0.3 + b.phase + 1.5) * 0.20;
 
     b.x += b.vx + noiseX;
     b.y += b.vy + noiseY;
@@ -106,12 +106,12 @@ function draw(ts: number) {
 
     const grd = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, r);
     grd.addColorStop(0,   `hsla(${b.hue}, ${b.sat}%, ${b.lit}%, ${b.alpha})`);
-    grd.addColorStop(0.4, `hsla(${b.hue}, ${b.sat}%, ${b.lit - 8}%, ${b.alpha * 0.6})`);
-    grd.addColorStop(1,   `hsla(${b.hue}, ${b.sat}%, ${b.lit - 15}%, 0)`);
+    grd.addColorStop(0.4, `hsla(${b.hue}, ${b.sat}%, ${b.lit + 3}%, ${b.alpha * 0.5})`);
+    grd.addColorStop(1,   `hsla(${b.hue}, ${b.sat}%, ${b.lit + 6}%, 0)`);
 
     ctx.save();
-    const skewX = 1 + smoothNoise(t * 0.15 + b.phase + 3) * 0.15;
-    const skewY = 1 + smoothNoise(t * 0.15 + b.phase + 5) * 0.15;
+    const skewX = 1 + smoothNoise(t * 0.15 + b.phase + 3) * 0.12;
+    const skewY = 1 + smoothNoise(t * 0.15 + b.phase + 5) * 0.12;
     ctx.translate(b.x, b.y);
     ctx.scale(skewX, skewY);
     ctx.translate(-b.x, -b.y);
@@ -122,44 +122,34 @@ function draw(ts: number) {
     ctx.restore();
   });
 
-  // ── 4. Capa de luz cálida — resplandor dorado pulsante al centro
+  // ── 4. Resplandor azul suave pulsante al centro
   const breathe = 0.5 + 0.5 * Math.sin(t * 0.35);
-  const warmGlow = ctx.createRadialGradient(
-    W * 0.5, H * 0.55, 0,
-    W * 0.5, H * 0.55, Math.min(W, H) * 0.58
+  const softGlow = ctx.createRadialGradient(
+    W * 0.5, H * 0.5, 0,
+    W * 0.5, H * 0.5, Math.min(W, H) * 0.6
   );
-  warmGlow.addColorStop(0,   `rgba(210, 145, 25, ${0.035 + breathe * 0.028})`);
-  warmGlow.addColorStop(0.45,`rgba(14, 165, 233, ${0.018 + breathe * 0.012})`);
-  warmGlow.addColorStop(1,   'rgba(0, 0, 0, 0)');
-  ctx.fillStyle = warmGlow;
+  softGlow.addColorStop(0,   `rgba(59, 130, 246, ${0.03 + breathe * 0.02})`);
+  softGlow.addColorStop(0.5, `rgba(37, 99, 235, ${0.01 + breathe * 0.01})`);
+  softGlow.addColorStop(1,   'rgba(255, 255, 255, 0)');
+  ctx.fillStyle = softGlow;
   ctx.fillRect(0, 0, W, H);
 
-  // ── 5. Segundo foco de luz dorada en esquina superior (acento)
-  const cornerGlow = ctx.createRadialGradient(W * 0.8, H * 0.15, 0, W * 0.8, H * 0.15, Math.min(W, H) * 0.4);
-  cornerGlow.addColorStop(0,   `rgba(240, 170, 40, ${0.04 + breathe * 0.02})`);
-  cornerGlow.addColorStop(1,   'rgba(0, 0, 0, 0)');
+  // ── 5. Acento dorado suave en esquina superior derecha
+  const cornerGlow = ctx.createRadialGradient(W * 0.82, H * 0.12, 0, W * 0.82, H * 0.12, Math.min(W, H) * 0.38);
+  cornerGlow.addColorStop(0,   `rgba(251, 191, 36, ${0.06 + breathe * 0.03})`);
+  cornerGlow.addColorStop(1,   'rgba(255, 255, 255, 0)');
   ctx.fillStyle = cornerGlow;
   ctx.fillRect(0, 0, W, H);
 
-  // ── 6. Scanline dorada sutil
-  scanY += 0.4;
+  // ── 6. Scanline muy sutil (apenas visible en claro)
+  scanY += 0.3;
   if (scanY > H + 60) scanY = -60;
   const sg = ctx.createLinearGradient(0, scanY - 40, 0, scanY + 40);
-  sg.addColorStop(0,   'rgba(210, 160, 50, 0)');
-  sg.addColorStop(0.5, 'rgba(210, 160, 50, 0.028)');
-  sg.addColorStop(1,   'rgba(210, 160, 50, 0)');
+  sg.addColorStop(0,   'rgba(59, 130, 246, 0)');
+  sg.addColorStop(0.5, 'rgba(59, 130, 246, 0.012)');
+  sg.addColorStop(1,   'rgba(59, 130, 246, 0)');
   ctx.fillStyle = sg;
   ctx.fillRect(0, scanY - 40, W, 80);
-
-  // ── 7. Viñeta final
-  const vg = ctx.createRadialGradient(
-    W * 0.5, H * 0.5, Math.min(W, H) * 0.28,
-    W * 0.5, H * 0.5, Math.max(W, H) * 0.82
-  );
-  vg.addColorStop(0, 'rgba(0, 0, 0, 0)');
-  vg.addColorStop(1, 'rgba(0, 0, 0, 0.62)');
-  ctx.fillStyle = vg;
-  ctx.fillRect(0, 0, W, H);
 
   animId = requestAnimationFrame(draw);
 }

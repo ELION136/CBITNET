@@ -27,64 +27,91 @@ const allNews = entries
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-const ads   = allNews.filter(n => n.type === 'ad');
-const news  = allNews.filter(n => n.type !== 'ad');
-
-const heroNews  = news.find(n => n.featured) ?? news[0];
-const gridNews  = news.filter(n => n !== heroNews);
+const ads      = allNews.filter(n => n.type === 'ad');
+const news     = allNews.filter(n => n.type !== 'ad');
+const heroNews = news.find(n => n.featured) ?? news[0];
+const gridNews = news.filter(n => n !== heroNews);
 
 const allCategories = ['TODOS', ...new Set(news.map(n => n.category))];
+
+// Estadísticas rápidas del portal
+const stats = [
+  { value: news.length.toString(),        label: "Artículos publicados" },
+  { value: ads.length.toString(),         label: "Anuncios activos"     },
+  { value: allCategories.length - 1 + "", label: "Categorías cubiertas" },
+  { value: "24/7",                        label: "Actualización continua" },
+];
 ---
 
 <Layout title="Noticias | CBIT">
   <Navbar />
 
-  <main class="min-h-screen pt-24 pb-20 text-white" >
+  <main class="lt-main">
 
-    <!-- ── HEADER ── -->
-    <div class="relative overflow-hidden border-b" style="border-color:rgba(255,255,255,0.06);">
-      
-      <div class="max-w-[1600px] mx-auto px-6 lg:px-10 py-12 md:py-16">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div>
-            <div class="inline-flex items-center gap-3 mb-4">
-              <span class="w-6 h-[1.5px] bg-[#eab308] block"></span>
-              <span class="text-[10px] font-bold tracking-[0.35em] uppercase text-[#eab308]">
-                Portal de Noticias
-              </span>
+    <!-- ══════════════════════════════════
+         HERO
+    ══════════════════════════════════ -->
+    <section class="lt-hero" id="lt-hero">
+      <div class="lt-hero-mesh"  aria-hidden="true"></div>
+      <div class="lt-orb lt-orb-1" aria-hidden="true"></div>
+      <div class="lt-orb lt-orb-2" aria-hidden="true"></div>
+      <div class="lt-orb lt-orb-3" aria-hidden="true"></div>
+
+      <div class="lt-container lt-hero-inner">
+        <div class="lt-reveal">
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6
+                      border-b pb-12"
+               style="border-color:rgba(255,255,255,0.10);">
+
+            <div>
+              <!-- eyebrow -->
+              <div class="lt-hero-eyebrow lt-reveal lt-d0">
+                <span class="lt-hero-line"></span>
+                <span>Portal de Noticias</span>
+              </div>
+
+              <h1 class="lt-hero-title font-display">
+                NOTICIAS<br/>
+                <span style="color:#f2c82f">Y ANUNCIOS</span>
+              </h1>
             </div>
 
-            <!-- ── TÍTULO: usa font-display de Tailwind (igual al resto del sitio) ── -->
-            <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-[7rem] tracking-tighter leading-none uppercase">
-              <span class="text-[#eab308]">NOTICIAS</span>
-              <span class="text-white"> Y ANUNCIOS</span>
-            </h1>
-
-            <p class="text-gray-500 text-sm mt-3 max-w-xl leading-relaxed">
-              Noticias, anuncios y novedades oficiales de CBIT
-            </p>
-          </div>
-
-          <!-- Live indicator -->
-          <div class="flex items-center gap-2 self-start md:self-end">
-            <span class="w-2 h-2 rounded-full bg-[#eab308] animate-pulse"></span>
-            <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-[#eab308]">ACTUALIZADO</span>
-            <span class="text-[10px] text-gray-600 ml-2" id="portal-time"></span>
+            <div class="lt-hero-side lt-reveal lt-d1">
+              <p class="lt-hero-sub">
+                Noticias, anuncios y novedades oficiales de la Corporación Boliviana de Talento. Toda la actualidad institucional en un solo lugar.
+              </p>
+              <!-- live indicator -->
+              <div class="lt-live-badge">
+                <span class="lt-live-dot" aria-hidden="true"></span>
+                <span class="lt-live-label">ACTUALIZADO</span>
+                <span class="lt-live-time" id="portal-time"></span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Category filter tabs -->
-        <div class="flex gap-2 mt-8 overflow-x-auto pb-1 scrollbar-hide" id="cat-filter">
+        <!-- STATS STRIP -->
+        <div class="lt-stats-strip lt-reveal lt-d2">
+          {stats.map(s => (
+            <div class="lt-stat">
+              <span class="lt-stat-value font-display">{s.value}</span>
+              <span class="lt-stat-label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         FILTROS DE CATEGORÍA
+    ══════════════════════════════════ -->
+    <div class="lt-filter-bar lt-reveal">
+      <div class="lt-container">
+        <div class="lt-filter-inner" id="cat-filter">
           {allCategories.map((cat, i) => (
             <button
-              class="cat-tab flex-shrink-0 px-4 py-1.5 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
+              class={`lt-cat-tab${i === 0 ? ' lt-cat-active' : ''}`}
               data-cat={cat}
-              style={`
-                clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,5px 100%,0 calc(100% - 5px));
-                ${i === 0
-                  ? 'background:#eab308;color:#000;'
-                  : 'background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.08);'}
-              `}
             >
               {cat}
             </button>
@@ -93,242 +120,812 @@ const allCategories = ['TODOS', ...new Set(news.map(n => n.category))];
       </div>
     </div>
 
-    <!-- ── MAIN CONTENT ── -->
-    <div class="max-w-[1600px] mx-auto px-6 lg:px-10 mt-8 md:mt-12">
-      <div class="flex flex-col xl:flex-row gap-8">
+    <!-- ══════════════════════════════════
+         CONTENIDO PRINCIPAL
+    ══════════════════════════════════ -->
+    <section class="lt-section lt-soft-bg" id="noticias-grid">
+      <div class="lt-container">
+        <div class="lt-layout">
 
-        <!-- ── LEFT: HERO + GRID ── -->
-        <div class="flex-1 min-w-0">
+          <!-- ── COLUMNA IZQUIERDA ── -->
+          <div class="lt-col-main">
 
-          <!-- HERO -->
-          {heroNews && (
-            <div class="mb-6">
-              <NewsCard
-                title={heroNews.title}
-                excerpt={heroNews.excerpt}
-                category={heroNews.category}
-                tag={heroNews.tag}
-                date={heroNews.date}
-                image={heroNews.image}
-                href={heroNews.href}
-                own={true}
-                size="hero"
-              />
-            </div>
-          )}
-
-          <!-- Section label -->
-          <div class="flex items-center gap-3 mb-5">
-            <span class="w-5 h-[1.5px] bg-[#0ea5e9] block"></span>
-            <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-[#0ea5e9]">
-              Todas las noticias
-            </span>
-            <div class="flex-1 h-[1px]" style="background:rgba(255,255,255,0.06);"></div>
-            <span class="text-[9px] text-gray-600 tracking-widest">{gridNews.length} artículos</span>
-          </div>
-
-          <!-- Grid -->
-          {gridNews.length > 0 ? (
-            <div class="grid gap-4" id="news-grid"
-                 style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));">
-              {gridNews.map((n, i) => (
-                <div class="news-item" data-cat={n.category}>
+            <!-- HERO NEWS -->
+            {heroNews && (
+              <div class="lt-hero-card-wrap lt-reveal lt-d0">
+                <div class="lt-section-label" style="margin-bottom:1rem;">
+                  <span class="lt-label-line" style="background:var(--gold)"></span>
+                  <span class="lt-label-text" style="color:var(--gold)">Destacado</span>
+                </div>
+                <div class="lt-float-card lt-news-hero-card">
                   <NewsCard
-                    title={n.title}
-                    excerpt={n.excerpt}
-                    category={n.category}
-                    tag={n.tag}
-                    date={n.date}
-                    image={n.image}
-                    href={n.href}
+                    title={heroNews.title}
+                    excerpt={heroNews.excerpt}
+                    category={heroNews.category}
+                    tag={heroNews.tag}
+                    date={heroNews.date}
+                    image={heroNews.image}
+                    href={heroNews.href}
                     own={true}
-                    size={i < 2 ? 'large' : 'medium'}
+                    size="hero"
                   />
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div class="flex flex-col items-center justify-center py-20 text-center">
-              <div class="w-12 h-12 rounded-full mb-4 flex items-center justify-center"
-                   style="background:rgba(234,179,8,0.08);border:1px solid rgba(234,179,8,0.2);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                     stroke="#eab308" stroke-width="1.5">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                  <path d="M2 17l10 5 10-5"/>
-                  <path d="M2 12l10 5 10-5"/>
-                </svg>
               </div>
-              <p class="text-[11px] font-bold tracking-[0.25em] uppercase text-gray-600">
-                Sin noticias adicionales
-              </p>
-              <p class="text-[10px] text-gray-700 mt-1">
-                Agrega archivos .md en src/content/news/
-              </p>
+            )}
+
+            <!-- SECTION LABEL -->
+            <div class="lt-section-label lt-reveal" style="margin-top:2.5rem;margin-bottom:1.25rem;">
+              <span class="lt-label-line" style="background:var(--blue-mid)"></span>
+              <span class="lt-label-text" style="color:var(--blue-mid)">Todas las noticias</span>
+              <div class="lt-label-fill"></div>
+              <span class="lt-label-count">{gridNews.length} artículos</span>
             </div>
-          )}
-        </div>
 
-        <!-- ── RIGHT: SIDEBAR ── -->
-        <aside class="w-full xl:w-[300px] flex-shrink-0">
-
-          <!-- PUBLICIDADES -->
-          {ads.length > 0 && (
-            <div class="mb-6">
-              <div class="flex items-center gap-2 mb-3">
-                <span class="w-4 h-[1.5px] bg-[#eab308] block"></span>
-                <span class="text-[9px] font-bold tracking-[0.25em] uppercase text-[#eab308]">
-                  Publicidad
-                </span>
-              </div>
-              <div class="flex flex-col gap-3">
-                {ads.map(ad => (
-                  <a href={ad.href}
-                     class="ad-card group relative flex overflow-hidden transition-all duration-500 h-[110px]"
-                     style="clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));background:#0a0f1c;border:1px solid rgba(234,179,8,0.2);">
-                    {ad.image && (
-                      <img src={ad.image} alt={ad.title}
-                           class="w-[90px] flex-shrink-0 object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300 grayscale group-hover:grayscale-0" />
-                    )}
-                    <div class="flex-1 p-3 flex flex-col justify-between">
-                      <div>
-                        <span class="text-[8px] font-bold tracking-[0.2em] uppercase text-[#eab308] block mb-1">
-                          {ad.category}
-                        </span>
-                        <p class="text-[10px] text-white/80 leading-snug line-clamp-2
-                                  group-hover:text-white transition-colors duration-300 font-semibold">
-                          {ad.title}
-                        </p>
-                      </div>
-                      <span class="text-[8px] font-bold tracking-[0.15em] uppercase
-                                   text-[#eab308]/60 group-hover:text-[#eab308]
-                                   transition-colors duration-300 flex items-center gap-1">
-                        VER MÁS
-                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2.5">
-                          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-                        </svg>
-                      </span>
-                    </div>
-                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100
-                                transition-opacity duration-500 pointer-events-none"
-                         style="border:1px solid rgba(234,179,8,0.4);
-                                clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));"></div>
-                  </a>
+            <!-- GRID -->
+            {gridNews.length > 0 ? (
+              <div class="lt-news-grid" id="news-grid">
+                {gridNews.map((n, i) => (
+                  <div class={`news-item lt-float-card lt-reveal lt-s${i % 4}`} data-cat={n.category}>
+                    <NewsCard
+                      title={n.title}
+                      excerpt={n.excerpt}
+                      category={n.category}
+                      tag={n.tag}
+                      date={n.date}
+                      image={n.image}
+                      href={n.href}
+                      own={true}
+                      size={i < 2 ? 'large' : 'medium'}
+                    />
+                  </div>
                 ))}
               </div>
-            </div>
-          )}
+            ) : (
+              <div class="lt-empty lt-reveal">
+                <div class="lt-empty-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                  </svg>
+                </div>
+                <p class="lt-empty-title">Sin noticias adicionales</p>
+                <p class="lt-empty-sub">Agrega archivos .md en <code>src/content/news/</code></p>
+              </div>
+            )}
 
-          <!-- ÍNDICE -->
-          <div class="sticky top-24">
-            <div class="flex items-center gap-2 mb-4">
-              <span class="w-4 h-[1.5px] bg-[#0ea5e9] block"></span>
-              <span class="text-[9px] font-bold tracking-[0.25em] uppercase text-[#0ea5e9]">
-                Índice
-              </span>
-            </div>
-
-            <div class="flex flex-col">
-              {allNews.filter(n => n.type !== 'ad').map((n, i) => (
-                <a href={n.href}
-                   class="sidebar-item group flex items-start gap-3 p-3
-                          transition-all duration-300 hover:bg-white/[0.03]"
-                   style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                  <span class="text-[26px] font-display font-bold leading-none flex-shrink-0
-                               transition-colors duration-300 group-hover:text-[#eab308]"
-                        style="color:rgba(255,255,255,0.07);">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <span class="text-[8px] font-bold tracking-[0.2em] uppercase block mb-0.5"
-                          style="color:rgba(234,179,8,0.6);">
-                      {n.category}
-                    </span>
-                    <p class="text-[10px] text-white/60 leading-snug line-clamp-2
-                               group-hover:text-white transition-colors duration-300">
-                      {n.title}
-                    </p>
-                  </div>
-                </a>
-              ))}
-            </div>
-
-            <!-- CTA contacto -->
-            <div class="mt-6 p-4"
-                 style="background:linear-gradient(135deg,rgba(234,179,8,0.06),rgba(14,165,233,0.03));
-                        border:1px solid rgba(234,179,8,0.12);
-                        clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));">
-              <p class="text-[9px] font-bold tracking-[0.2em] uppercase text-[#eab308] mb-2">
-                PUBLICAR CONTENIDO
-              </p>
-              <p class="text-[10px] text-gray-500 leading-relaxed">
-                ¿Querés publicar tu clasificado o anuncio? Contáctanos al
-                <span class="text-[#0ea5e9] font-bold"> 7704659</span>
-                para noticias y anuncios.
-              </p>
-            </div>
           </div>
-        </aside>
 
+          <!-- ── SIDEBAR ── -->
+          <aside class="lt-sidebar">
+            <div class="lt-sidebar-inner">
+
+              <!-- PUBLICIDADES -->
+              {ads.length > 0 && (
+                <div class="lt-sidebar-block lt-reveal">
+                  <div class="lt-section-label" style="margin-bottom:1rem;">
+                    <span class="lt-label-line" style="background:var(--gold)"></span>
+                    <span class="lt-label-text" style="color:var(--gold)">Publicidad</span>
+                  </div>
+                  <div class="lt-ads-list">
+                    {ads.map(ad => (
+                      <a href={ad.href} class="lt-ad-card lt-float-card">
+                        {ad.image && (
+                          <img src={ad.image} alt={ad.title}
+                               class="lt-ad-img lt-zoom-target"
+                               width="90" height="110" loading="lazy" />
+                        )}
+                        <div class="lt-ad-body">
+                          <span class="lt-ad-cat">{ad.category}</span>
+                          <p class="lt-ad-title">{ad.title}</p>
+                          <span class="lt-ad-cta">
+                            VER MÁS
+                            <svg width="9" height="9" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2.5">
+                              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                            </svg>
+                          </span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <!-- ÍNDICE -->
+              <div class="lt-sidebar-block lt-reveal lt-d1 lt-sidebar-sticky">
+                <div class="lt-section-label" style="margin-bottom:1rem;">
+                  <span class="lt-label-line" style="background:var(--blue-mid)"></span>
+                  <span class="lt-label-text" style="color:var(--blue-mid)">Índice</span>
+                </div>
+                <div class="lt-index-list">
+                  {allNews.filter(n => n.type !== 'ad').map((n, i) => (
+                    <a href={n.href} class="lt-index-item">
+                      <span class="lt-index-num font-display">{String(i + 1).padStart(2, '0')}</span>
+                      <div class="lt-index-info">
+                        <span class="lt-index-cat">{n.category}</span>
+                        <p class="lt-index-title">{n.title}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+
+                <!-- CTA CONTACTO -->
+                <div class="lt-cta-card lt-reveal lt-d2" style="margin-top:1.5rem;">
+                  <div class="lt-cta-accent"></div>
+                  <p class="lt-cta-label">PUBLICAR CONTENIDO</p>
+                  <p class="lt-cta-body">
+                    ¿Querés publicar tu clasificado o anuncio oficial? Contactá a CBIT al
+                    <strong style="color:var(--blue-mid)"> 7704659</strong>
+                    para noticias y comunicados institucionales.
+                  </p>
+                  <a href="tel:7704659" class="lt-cta-btn">
+                    Contactar ahora
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                      <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </aside>
+
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         CATEGORÍAS — franja visual extra
+    ══════════════════════════════════ -->
+    <section class="lt-section lt-blue-bg" id="categorias">
+      <div class="lt-orb lt-orb-cat" aria-hidden="true"></div>
+      <div class="lt-container" style="position:relative;z-index:2;">
+        <div class="lt-section-head lt-reveal">
+          <span class="lt-eyebrow lt-eyebrow-gold">Explora por tema</span>
+          <h2 class="lt-section-title lt-white font-display">CATEGORÍAS <span class="lt-gold">DE INTERÉS</span></h2>
+          <div class="lt-bar lt-bar-gold" data-bar></div>
+        </div>
+        <div class="lt-cats-grid">
+          {allCategories.filter(c => c !== 'TODOS').map((cat, i) => (
+            <button
+              class={`lt-cat-card lt-float-card-dark lt-reveal lt-s${i % 3}`}
+              data-cat={cat}
+              onclick={`document.querySelector('[data-cat="${cat}"]')?.click(); document.getElementById('noticias-grid')?.scrollIntoView({behavior:'smooth'})`}
+            >
+              <div class="lt-cat-card-bar"></div>
+              <span class="lt-cat-card-name font-display">{cat}</span>
+              <span class="lt-cat-card-count">
+                {news.filter(n => n.category === cat).length} artículos
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
   </main>
 </Layout>
 
 <style>
-  .scrollbar-hide { scrollbar-width: none; }
-  .scrollbar-hide::-webkit-scrollbar { display: none; }
+/* ══════════════════════════════════
+   TOKENS — mismo sistema que SobreNosotros
+══════════════════════════════════ */
+:root {
+  --blue:      #1A4B8C;
+  --blue-mid:  #2D7DD2;
+  --blue-lt:   #EBF3FB;
+  --cyan:      #f5c21a;
+  --gold:      #C9993A;
+  --gold-lt:   #F5E8CC;
+  --white:     #ffffff;
+  --soft:      #F0F4FA;
+  --text:      #1e293b;
+  --muted:     #64748B;
+  --faint:     #94A3B8;
 
-  .cat-tab.active {
-    background: #eab308 !important;
-    color: #000 !important;
-    border-color: transparent !important;
-  }
+  --sh2: 0 4px 12px rgba(0,0,0,0.10), 0 8px 24px rgba(26,75,140,0.10);
+  --sh-hover: 0 14px 40px rgba(0,0,0,0.14), 0 28px 60px rgba(26,75,140,0.22);
+  --r-xl: 36px;
+}
 
-  .news-item.hidden { display: none; }
+/* ══════════════════════════════════
+   BASE
+══════════════════════════════════ */
+.lt-main       { background: var(--white); overflow-x: hidden; }
+.lt-container  { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+.lt-white      { color: var(--white) !important; }
+.lt-gold       { color: var(--gold); }
+.lt-soft-bg    { background: var(--soft); }
+.lt-blue-bg    { background: var(--blue); position: relative; overflow: hidden; }
+
+/* ══════════════════════════════════
+   HERO
+══════════════════════════════════ */
+.lt-hero {
+  background: var(--blue);
+  padding: 10rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.lt-hero-mesh {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.lt-orb {
+  position: absolute; border-radius: 50%;
+  pointer-events: none; filter: blur(80px);
+}
+.lt-orb-1 { width:520px;height:520px; top:-150px;right:-130px; background:radial-gradient(circle,rgba(14,165,233,0.18),transparent 70%); }
+.lt-orb-2 { width:360px;height:360px; bottom:-80px;left:-80px;  background:radial-gradient(circle,rgba(201,153,58,0.16),transparent 70%); }
+.lt-orb-3 { width:260px;height:260px; top:40%;left:38%;          background:radial-gradient(circle,rgba(45,125,210,0.12),transparent 70%); }
+.lt-orb-cat { width:450px;height:450px; top:-100px;left:50%;transform:translateX(-50%); background:radial-gradient(circle,rgba(14,165,233,0.12),transparent 70%); }
+
+.lt-hero-inner { display: flex; flex-direction: column; gap: 0; }
+
+.lt-hero-eyebrow {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--gold);
+}
+.lt-hero-line { display: block; width: 24px; height: 1.5px; background: var(--gold); }
+
+.lt-hero-title {
+  font-size: clamp(3.8rem, 10vw, 8rem);
+  color: #fff;
+  line-height: 1.02;
+  margin: 0;
+}
+.lt-hero-side { max-width: 42%; }
+.lt-hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.6);
+  border-left: 2px solid var(--cyan);
+  padding-left: 1.4rem;
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+
+.lt-live-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold);
+}
+.lt-live-dot {
+  width: 7px; height: 7px;
+  background: var(--gold); border-radius: 50%;
+  animation: lt-pulse 2s infinite;
+}
+@keyframes lt-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(201,153,58,.5); }
+  50%      { box-shadow: 0 0 0 5px rgba(201,153,58,0); }
+}
+.lt-live-label { color: var(--gold); }
+.lt-live-time  { color: rgba(255,255,255,0.4); margin-left: 0.5rem; }
+
+/* STATS STRIP */
+.lt-stats-strip {
+  display: flex; gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.09);
+  margin-top: 3rem;
+  padding-top: 2rem;
+}
+.lt-stat {
+  flex: 1;
+  padding: 0 1.5rem 0 0;
+  border-right: 1px solid rgba(255,255,255,0.09);
+  display: flex; flex-direction: column; gap: 0.3rem;
+}
+.lt-stat:last-child { border-right: none; padding-right: 0; padding-left: 1.5rem; }
+.lt-stat:first-child { padding-left: 0; }
+.lt-stat-value {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--gold);
+  line-height: 1;
+}
+.lt-stat-label {
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ══════════════════════════════════
+   FILTER BAR
+══════════════════════════════════ */
+.lt-filter-bar {
+  background: var(--white);
+  border-bottom: 1px solid rgba(26,75,140,0.08);
+  padding: 1rem 0;
+  position: sticky; top: 64px; z-index: 30;
+  box-shadow: 0 2px 12px rgba(26,75,140,0.07);
+}
+.lt-filter-inner {
+  display: flex; gap: 0.5rem;
+  overflow-x: auto; padding-bottom: 2px;
+  scrollbar-width: none;
+}
+.lt-filter-inner::-webkit-scrollbar { display: none; }
+
+.lt-cat-tab {
+  flex-shrink: 0;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  border-radius: 50px;
+  border: 1px solid rgba(26,75,140,0.14);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.lt-cat-tab:hover {
+  background: var(--blue-lt);
+  color: var(--blue);
+  border-color: rgba(26,75,140,0.3);
+}
+.lt-cat-tab.lt-cat-active,
+.lt-cat-tab.active {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+  box-shadow: 0 2px 10px rgba(201,153,58,0.28);
+}
+
+/* ══════════════════════════════════
+   SECCIONES
+══════════════════════════════════ */
+.lt-section { padding: 5rem 0; }
+
+/* Layout principal */
+.lt-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-items: flex-start;
+}
+.lt-col-main { flex: 1; min-width: 0; }
+
+/* SIDEBAR */
+.lt-sidebar { width: 300px; flex-shrink: 0; }
+.lt-sidebar-inner { display: flex; flex-direction: column; gap: 2rem; }
+.lt-sidebar-sticky { position: sticky; top: 120px; }
+.lt-sidebar-block  { /* wrapper de bloque */ }
+
+/* ══════════════════════════════════
+   FLOAT CARD (light)
+══════════════════════════════════ */
+.lt-float-card {
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: var(--sh2);
+  border: 1px solid rgba(26,75,140,0.06);
+  transition: transform 0.42s cubic-bezier(0.22,1,0.36,1), box-shadow 0.42s cubic-bezier(0.22,1,0.36,1);
+  overflow: hidden;
+}
+.lt-float-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--sh-hover);
+}
+.lt-float-card:hover .lt-zoom-target { transform: scale(1.05); }
+
+/* FLOAT CARD dark (para sección azul) */
+.lt-float-card-dark {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.16);
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), background 0.3s, box-shadow 0.4s;
+  overflow: hidden;
+}
+.lt-float-card-dark:hover {
+  transform: translateY(-8px);
+  background: rgba(255,255,255,0.13);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.26);
+}
+
+/* ══════════════════════════════════
+   LABELS
+══════════════════════════════════ */
+.lt-section-label {
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.lt-label-line { display: block; width: 18px; height: 1.5px; flex-shrink: 0; }
+.lt-label-text {
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.28em; text-transform: uppercase;
+}
+.lt-label-fill { flex: 1; height: 1px; background: rgba(26,75,140,0.07); }
+.lt-label-count {
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ══════════════════════════════════
+   NEWS GRID
+══════════════════════════════════ */
+.lt-hero-card-wrap { margin-bottom: 2rem; }
+
+/* El wrapper float-card del hero aplica radius/overflow al NewsCard interno */
+.lt-news-hero-card { border-radius: 24px !important; }
+
+.lt-news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.5rem;
+}
+
+/* news-item es ahora lt-float-card: forza que el componente hijo llene la altura */
+.lt-news-grid .news-item {
+  display: flex;
+  flex-direction: column;
+}
+.lt-news-grid .news-item > * {
+  flex: 1;
+  height: 100%;
+}
+
+.news-item.hidden { display: none; }
+
+/* EMPTY STATE */
+.lt-empty {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem; text-align: center;
+  background: var(--white); border-radius: 24px;
+  border: 1px dashed rgba(26,75,140,0.15);
+}
+.lt-empty-icon {
+  width: 52px; height: 52px;
+  background: var(--gold-lt);
+  border: 1px solid rgba(201,153,58,0.3);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.lt-empty-title { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.lt-empty-sub   { font-size: 0.75rem; color: var(--faint); margin-top: 0.4rem; }
+.lt-empty-sub code { background: var(--soft); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.72rem; }
+
+/* ══════════════════════════════════
+   SIDEBAR — ADS
+══════════════════════════════════ */
+.lt-ads-list { display: flex; flex-direction: column; gap: 0.85rem; }
+.lt-ad-card {
+  display: flex; overflow: hidden; height: 100px; cursor: pointer;
+  text-decoration: none;
+}
+.lt-ad-img {
+  width: 90px; flex-shrink: 0; object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+}
+.lt-ad-body { flex: 1; padding: 0.9rem 1rem; display: flex; flex-direction: column; justify-content: space-between; }
+.lt-ad-cat {
+  font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); display: block; margin-bottom: 0.25rem;
+}
+.lt-ad-title { font-size: 0.82rem; font-weight: 700; color: var(--text); line-height: 1.35; }
+.lt-ad-cta {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--blue-mid);
+  transition: gap 0.25s;
+}
+.lt-ad-card:hover .lt-ad-cta { gap: 0.6rem; }
+
+/* ══════════════════════════════════
+   SIDEBAR — ÍNDICE
+══════════════════════════════════ */
+.lt-index-list { display: flex; flex-direction: column; }
+.lt-index-item {
+  display: flex; align-items: flex-start; gap: 0.85rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(26,75,140,0.07);
+  text-decoration: none;
+  transition: background 0.25s;
+  border-radius: 8px;
+  padding-left: 0.5rem;
+}
+.lt-index-item:hover { background: var(--blue-lt); }
+.lt-index-num {
+  font-size: 1.6rem; line-height: 1; color: rgba(26,75,140,0.12); flex-shrink: 0;
+  transition: color 0.25s;
+}
+.lt-index-item:hover .lt-index-num { color: var(--gold); }
+.lt-index-info { display: flex; flex-direction: column; gap: 0.2rem; }
+.lt-index-cat  {
+  font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(201,153,58,0.7);
+}
+.lt-index-title {
+  font-size: 0.78rem; line-height: 1.45;
+  color: var(--muted);
+  transition: color 0.25s;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.lt-index-item:hover .lt-index-title { color: var(--blue); }
+
+/* CTA CARD */
+.lt-cta-card {
+  background: var(--blue-lt);
+  border: 1px solid rgba(26,75,140,0.14);
+  border-radius: 20px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.lt-cta-accent {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+}
+.lt-cta-label {
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.6rem;
+}
+.lt-cta-body {
+  font-size: 0.82rem; line-height: 1.65; color: var(--muted); margin-bottom: 1rem;
+}
+.lt-cta-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.5rem 1.1rem;
+  background: var(--blue);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.25s;
+}
+.lt-cta-btn:hover { background: var(--blue-mid); transform: translateY(-2px); }
+
+/* ══════════════════════════════════
+   SECTION HEADER (secciones azules)
+══════════════════════════════════ */
+.lt-section-head { text-align: center; margin-bottom: 3.5rem; }
+.lt-eyebrow {
+  display: inline-block; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--blue-mid); margin-bottom: 0.5rem;
+}
+.lt-eyebrow-gold { color: var(--gold); }
+.lt-section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--blue);
+  line-height: 1.12;
+  margin: 0 0 1rem;
+}
+.lt-bar {
+  display: block; height: 3px; width: 0;
+  background: var(--blue-mid); border-radius: 2px;
+  margin: 0 auto;
+  transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s;
+}
+.lt-bar-gold { background: var(--gold); }
+.lt-bar.lt-bar-on { width: 56px; }
+
+/* ══════════════════════════════════
+   CATEGORÍAS GRID
+══════════════════════════════════ */
+.lt-cats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 1.25rem;
+}
+.lt-cat-card {
+  padding: 2rem 1.5rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  cursor: pointer; text-align: left;
+  position: relative;
+}
+.lt-cat-card-bar {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--cyan));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.lt-float-card-dark:hover .lt-cat-card-bar { transform: scaleX(1); }
+.lt-cat-card-name {
+  font-size: 1.05rem; color: var(--white); letter-spacing: 0.04em;
+}
+.lt-cat-card-count {
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ══════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════ */
+.lt-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.lt-reveal.lt-on { opacity: 1; transform: translateY(0); }
+.lt-d0 { transition-delay: 0s; }
+.lt-d1 { transition-delay: .13s; }
+.lt-d2 { transition-delay: .26s; }
+.lt-s0 { transition-delay: 0s; }
+.lt-s1 { transition-delay: .09s; }
+.lt-s2 { transition-delay: .18s; }
+.lt-s3 { transition-delay: .27s; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media(max-width:1100px){
+  .lt-layout    { flex-direction: column; }
+  .lt-sidebar   { width: 100%; }
+  .lt-sidebar-sticky { position: static; }
+  .lt-hero-side { max-width: 100%; }
+}
+@media(max-width:768px){
+  .lt-stats-strip { flex-wrap: wrap; }
+  .lt-stat { flex: 1 1 45%; border-right: none; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.09); }
+  .lt-stat:last-child { border-bottom: none; }
+  .lt-cats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width:640px){
+  .lt-hero  { padding: 9rem 0 4rem; }
+  .lt-section { padding: 4rem 0; }
+  .lt-container { padding: 0 1.25rem; }
+  .lt-cats-grid { grid-template-columns: 1fr 1fr; }
+}
+@media(prefers-reduced-motion:reduce){
+  .lt-reveal { opacity: 1; transform: none; transition: none; }
+  .lt-bar    { width: 56px; transition: none; }
+  .lt-live-dot { animation: none; }
+}
 </style>
 
 <script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  let ctx: gsap.Context | null = null;
+
+  function initPage() {
+    if (ctx) { ctx.revert(); ctx = null; }
+    gsap.registerPlugin(ScrollTrigger);
+
+    ctx = gsap.context(() => {
+
+      /* ── 1. SCROLL REVEAL ── */
+      const revealIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('lt-on');
+            revealIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+
+      document.querySelectorAll('.lt-reveal').forEach(el => revealIO.observe(el));
+
+      /* ── 2. BAR DRAW ── */
+      const barIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('lt-bar-on');
+            barIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.8 });
+
+      document.querySelectorAll('[data-bar]').forEach(el => barIO.observe(el));
+
+      /* ── 3. PARALLAX HERO TITLE ── */
+      const heroTitle = document.querySelector<HTMLElement>('.lt-hero-title');
+      if (heroTitle) {
+        gsap.to(heroTitle, {
+          yPercent: 20, ease: 'none',
+          scrollTrigger: {
+            trigger: '.lt-hero',
+            start: 'top top', end: 'bottom top',
+            scrub: 1.8,
+          }
+        });
+      }
+
+      /* ── 4. PARALLAX ORBS ── */
+      document.querySelectorAll<HTMLElement>('.lt-orb-1, .lt-orb-2').forEach((orb, i) => {
+        gsap.to(orb, {
+          yPercent: i % 2 === 0 ? -22 : 18, ease: 'none',
+          scrollTrigger: {
+            trigger: '.lt-hero',
+            start: 'top top', end: 'bottom top',
+            scrub: 2,
+          }
+        });
+      });
+
+      /* ── 5. STAGGER GRIDS ── */
+      ['#noticias-grid .lt-news-grid', '#categorias .lt-cats-grid'].forEach(sel => {
+        const grid = document.querySelector(sel);
+        if (!grid) return;
+        const cards = Array.from(grid.querySelectorAll<HTMLElement>('.lt-reveal'));
+        ScrollTrigger.create({
+          trigger: grid,
+          start: 'top 88%',
+          once: true,
+          onEnter: () => {
+            cards.forEach((card, i) => {
+              gsap.to(card, {
+                opacity: 1, y: 0,
+                duration: 0.7,
+                delay: i * 0.09,
+                ease: 'power3.out',
+                overwrite: true,
+              });
+            });
+          }
+        });
+      });
+
+      /* ── 6. STAT COUNTERS (números en el hero) ── */
+      document.querySelectorAll<HTMLElement>('.lt-stat-value').forEach(el => {
+        const raw = el.textContent?.trim() ?? '';
+        if (!/^\d+$/.test(raw)) return;          // solo números puros
+        const end = parseInt(raw, 10);
+        el.textContent = '0';
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 90%',
+          once: true,
+          onEnter: () => {
+            gsap.to({ val: 0 }, {
+              val: end,
+              duration: 1.4,
+              ease: 'power2.out',
+              onUpdate: function() {
+                el.textContent = Math.round(this.targets()[0].val).toString();
+              }
+            });
+          }
+        });
+      });
+
+    });
+  }
+
+  function cleanup() {
+    if (ctx) { ctx.revert(); ctx = null; }
+    ScrollTrigger.getAll().forEach(t => t.kill());
+  }
+
+  initPage();
+  document.addEventListener('astro:page-load', () => { cleanup(); initPage(); });
+  document.addEventListener('astro:before-swap', cleanup);
+
+  /* ── RELOJ ── */
   const timeEl = document.getElementById('portal-time');
   const tick = () => {
     if (!timeEl) return;
-    timeEl.textContent = new Date().toLocaleTimeString('es-BO', {
-      hour: '2-digit', minute: '2-digit'
-    });
+    timeEl.textContent = new Date().toLocaleTimeString('es-BO', { hour: '2-digit', minute: '2-digit' });
   };
   tick();
   setInterval(tick, 60_000);
 
-  const tabs  = document.querySelectorAll<HTMLButtonElement>('.cat-tab');
+  /* ── FILTRO DE CATEGORÍAS ── */
+  const tabs  = document.querySelectorAll<HTMLButtonElement>('.lt-cat-tab');
   const items = document.querySelectorAll<HTMLElement>('.news-item');
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+      tabs.forEach(t => { t.classList.remove('lt-cat-active'); t.classList.remove('active'); });
+      tab.classList.add('lt-cat-active');
       const cat = tab.dataset.cat ?? 'TODOS';
       items.forEach(item => {
         item.classList.toggle('hidden', cat !== 'TODOS' && item.dataset.cat !== cat);
       });
     });
-  });
-
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          (entry.target as HTMLElement).style.opacity = '1';
-          (entry.target as HTMLElement).style.transform = 'translateY(0)';
-        }, i * 40);
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.05 });
-
-  document.querySelectorAll<HTMLElement>('.news-card, .sidebar-item, .ad-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(14px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    obs.observe(el);
   });
 </script>

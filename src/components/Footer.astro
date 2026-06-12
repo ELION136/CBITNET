@@ -1,0 +1,154 @@
+---
+const slides = [
+  { id: 1, title: "INFOCADE",       subtitle: "Instituto Deportivo",      href: "/infocade"    },
+  { id: 2, title: "CENACAP",        subtitle: "Centro de Capacitacion",   href: "/cenacap"     },
+  { id: 3, title: "NUEVO SIGLO",    subtitle: "Formacion Profesional",    href: "/nuevo-ciclo" },
+  { id: 4, title: "FUNDECT",        subtitle: "Fundacion Educativa",      href: "/fundect"     },
+  { id: 5, title: "CLUB DE LEONES", subtitle: "Accion Civica y Social",   href: "/club-leones" },
+];
+---
+
+<!-- FOOTER -->
+<footer class="relative w-full overflow-hidden" style="background:#0b337e;">
+  <div class="absolute top-0 left-0 right-0 h-[2px]" style="background:linear-gradient(90deg,transparent 0%,#F59E0B 20%,#FCD34D 50%,#F59E0B 80%,transparent 100%);"></div>
+  <div class="absolute top-0 right-0 w-[500px] h-[300px] pointer-events-none" style="background:linear-gradient(135deg,transparent,rgba(29,78,216,0.15));transform:skewY(-6deg);transform-origin:top right;"></div>
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10 pt-14 pb-10 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+      <div class="flex flex-col items-center md:items-start text-center md:text-left">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="/images/milogo.webp" alt="CBIT Logo" class="h-12 w-auto object-contain"
+               style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)) drop-shadow(0 2px 10px rgba(37,99,235,0.3));" />
+          <span class="font-display text-2xl text-white tracking-widest">CB<span style="color:#F59E0B;">IT</span></span>
+        </div>
+        <p class="text-blue-200/70 text-xs leading-relaxed max-w-xs mb-5">
+          Corporación Boliviana de Talento y Formación Integral. Forjando el futuro académico, cívico y deportivo mediante alianzas de excelencia.
+        </p>
+        <div class="flex items-center gap-2">
+          <a href="https://wa.me/59177101440" target="_blank" rel="noopener noreferrer"
+             class="footer-social w-8 h-8 flex items-center justify-center rounded-lg border border-white/10 bg-white/05 hover:bg-[#25D366]/15 hover:border-[#25D366]/40 transition-all duration-200">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.993L2 22l5.13-1.347a9.947 9.947 0 0 0 4.881 1.279h.005c5.505 0 9.988-4.478 9.99-9.985 0-2.67-1.037-5.18-2.92-7.065A9.925 9.925 0 0 0 12.012 2zm5.727 14.123c-.253.715-1.47 1.387-2.022 1.478-.497.082-1.135.15-3.32-.756-2.793-1.157-4.595-4.004-4.736-4.193-.14-.188-1.136-1.51-1.136-2.88 0-1.37.718-2.043.97-2.317.254-.275.563-.343.75-.343.187 0 .375.002.537.01.17.008.402-.065.63.486.23.557.788 1.92.857 2.062.069.141.115.306.022.493-.092.188-.138.305-.276.467-.137.16-.29.356-.413.478-.138.136-.282.285-.121.562.162.277.72 1.184 1.543 1.916.822.732 1.517.957 1.733 1.05.215.093.342.079.467-.066.126-.145.539-.627.683-.84.143-.214.287-.18.483-.107.195.074 1.238.583 1.452.69.214.108.356.162.408.252.052.09.052.522-.201 1.238z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/share/192VbQWo7p/" target="_blank" rel="noopener noreferrer"
+             class="footer-social w-8 h-8 flex items-center justify-center rounded-lg border border-white/10 bg-white/05 hover:bg-[#1877F2]/15 hover:border-[#1877F2]/40 transition-all duration-200">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#1877F2"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/cenacap.bo" target="_blank" rel="noopener noreferrer"
+             class="footer-social w-8 h-8 flex items-center justify-center rounded-lg border border-white/10 bg-white/05 hover:border-pink-400/40 transition-all duration-200">
+            <svg width="14" height="14" viewBox="0 0 24 24"><defs><linearGradient id="ig-f" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FD5949"/><stop offset="50%" stop-color="#D6249F"/><stop offset="100%" stop-color="#285AEB"/></linearGradient></defs><path fill="url(#ig-f)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@cenacap.bo" target="_blank" rel="noopener noreferrer"
+             class="footer-social w-8 h-8 flex items-center justify-center rounded-lg border border-white/10 bg-white/05 hover:bg-white/10 hover:border-white/30 transition-all duration-200">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .8.11V9.4a6.27 6.27 0 0 0-8.31 6A6.25 6.25 0 0 0 12 21.67a6.24 6.24 0 0 0 6.25-6.25v-8.2a8.73 8.73 0 0 0 4.74 1.48V5.3a5.22 5.22 0 0 1-3.4-1.28z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center md:items-start text-center md:text-left">
+        <h4 class="text-white text-xs font-bold tracking-[0.28em] uppercase mb-4 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full inline-block" style="background:#F59E0B;"></span>
+          Instituciones
+        </h4>
+        <ul class="space-y-2.5 w-full">
+          {slides.map(s => (
+            <li>
+              <a href={s.href} class="flex items-center gap-2.5 text-blue-200/70 hover:text-white transition-colors duration-200 text-xs group">
+                <svg width="6" height="6" viewBox="0 0 6 6" class="flex-shrink-0 group-hover:translate-x-0.5 transition-transform duration-200" style="color:#F59E0B;">
+                  <circle cx="3" cy="3" r="3" fill="currentColor"/>
+                </svg>
+                <span class="font-semibold tracking-wider">{s.title}</span>
+                <span class="text-blue-200/40 text-[10px]">— {s.subtitle}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="flex flex-col items-center md:items-start text-center md:text-left">
+        <h4 class="text-white text-xs font-bold tracking-[0.28em] uppercase mb-4 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full inline-block" style="background:#3B82F6;"></span>
+          Ubicación y Horarios
+        </h4>
+        <ul class="space-y-3 text-xs text-blue-200/70 w-full">
+          <li class="flex items-start gap-2.5 text-left">
+            <svg class="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style="color:#3B82F6;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span><strong class="text-white/90 block">Central Cochabamba</strong> Av. América Oeste #456, Zona Queru Queru</span>
+          </li>
+          <li class="flex items-start gap-2.5 text-left">
+            <svg class="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style="color:#14B8A6;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span><strong class="text-white/90 block">Sucursal Sacaba</strong> Av. Circunvalación, Zona Quintanilla</span>
+          </li>
+          <li class="flex items-start gap-2.5 text-left mt-1">
+            <svg class="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style="color:#F59E0B;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span><strong class="text-white/90 block">Lun–Vie</strong> 08:30–12:30 · 14:30–19:30</span>
+          </li>
+          <li class="flex items-start gap-2.5 text-left">
+            <svg class="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style="color:#F59E0B;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span><strong class="text-white/90 block">Sábados</strong> 09:00–13:00</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col items-center md:items-start text-center md:text-left">
+        <h4 class="text-white text-xs font-bold tracking-[0.28em] uppercase mb-4 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full inline-block" style="background:#7C3AED;"></span>
+          Contacto
+        </h4>
+        <ul class="space-y-3 text-xs text-blue-200/70 w-full mb-5">
+          <li class="flex items-center gap-2.5">
+            <svg class="w-3.5 h-3.5" fill="#25D366" viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.993L2 22l5.13-1.347a9.947 9.947 0 0 0 4.881 1.279h.005c5.505 0 9.988-4.478 9.99-9.985 0-2.67-1.037-5.18-2.92-7.065A9.925 9.925 0 0 0 12.012 2zm5.727 14.123c-.253.715-1.47 1.387-2.022 1.478-.497.082-1.135.15-3.32-.756-2.793-1.157-4.595-4.004-4.736-4.193-.14-.188-1.136-1.51-1.136-2.88 0-1.37.718-2.043.97-2.317.254-.275.563-.343.75-.343.187 0 .375.002.537.01.17.008.402-.065.63.486.23.557.788 1.92.857 2.062.069.141.115.306.022.493-.092.188-.138.305-.276.467-.137.16-.29.356-.413.478-.138.136-.282.285-.121.562.162.277.72 1.184 1.543 1.916.822.732 1.517.957 1.733 1.05.215.093.342.079.467-.066.126-.145.539-.627.683-.84.143-.214.287-.18.483-.107.195.074 1.238.583 1.452.69.214.108.356.162.408.252.052.09.052.522-.201 1.238z"/></svg>
+            <a href="https://wa.me/59177101440" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200">+591 77101440</a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <svg class="w-3.5 h-3.5" style="color:#3B82F6;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <a href="mailto:contacto@cbit.edu.bo" class="hover:text-white transition-colors duration-200 break-all">contacto@cbit.edu.bo</a>
+          </li>
+        </ul>
+        <a href="/inscribirse"
+           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold tracking-[0.18em] uppercase transition-all duration-200 hover:scale-105 hover:-translate-y-0.5"
+           style="background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;box-shadow:0 4px 16px rgba(245,158,11,0.35),0 0 0 1px rgba(245,158,11,0.2);">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          Inscribirse Ahora
+        </a>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3 mb-6">
+      <div class="flex-1 h-[1px]" style="background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12));"></div>
+      <div class="flex gap-1.5">
+        <span class="w-1 h-1 rounded-full" style="background:#F59E0B;"></span>
+        <span class="w-1 h-1 rounded-full" style="background:#3B82F6;opacity:0.5;"></span>
+        <span class="w-1 h-1 rounded-full" style="background:#F59E0B;opacity:0.3;"></span>
+      </div>
+      <div class="flex-1 h-[1px]" style="background:linear-gradient(90deg,rgba(255,255,255,0.12),transparent);"></div>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <span class="text-[10px] text-blue-200/40 text-center md:text-left tracking-wider">
+        © 2026 CBIT · Corporación Boliviana de Talento y Formación Integral · Todos los derechos reservados.
+      </span>
+      <div class="flex items-center gap-5 text-[10px] text-blue-200/50 tracking-wider">
+        <a href="/sobre-nosotros" class="hover:text-white transition-colors duration-200">Sobre Nosotros</a>
+        <a href="/carreras" class="hover:text-white transition-colors duration-200">Carreras</a>
+        <a href="/proximos-eventos" class="hover:text-white transition-colors duration-200">Eventos</a>
+        <a href="/inscribirse" class="font-bold transition-colors duration-200" style="color:#F59E0B;">Inscribirse</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-social { transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease; }
+  .footer-social:hover { transform: translateY(-2px); }
+</style>

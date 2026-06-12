@@ -2,44 +2,68 @@
 import Layout from '../layouts/Layout.astro';
 
 const carreras = [
-  { nombre: "Arbitraje de Fútbol Amateur", desc: "Formación de árbitros con las reglas FIFA, control de partidos y gestión de incidencias.", code: "ARB-01", imagen: "/images/1.png" },
-  { nombre: "Arbitraje de Voleyball en Cancha", desc: "Árbitros certificados para competencias de voleibol indoor y playa.", code: "ARB-02", imagen: "/images/1.png" },
-  { nombre: "Comunicación y Periodismo Deportivo", desc: "Relatos deportivos, cobertura mediática y producción de contenido.", code: "COM-01", imagen: "/images/1.png" },
-  { nombre: "Entrenador de Fútbol", desc: "Licencia de entrenador, metodologías de entrenamiento y gestión de equipos.", code: "ENT-01", imagen: "/images/1.png" },
-  { nombre: "Entrenador de Beach Voley", desc: "Especialización en vóley playa, tácticas y preparación física específica.", code: "ENT-02", imagen: "/images/1.png" },
-  { nombre: "Marketing Deportivo", desc: "Estrategias de marketing aplicadas al deporte, patrocinios y gestión de marcas.", code: "MKT-01", imagen: "/images/1.png" },
-  { nombre: "Auditoría de Organizaciones Deportivas", desc: "Control y auditoría de entidades deportivas, cumplimiento normativo.", code: "AUD-01", imagen: "/images/1.png" },
-  { nombre: "Dirigencia Deportiva", desc: "Gestión de clubes, federaciones y organizaciones deportivas.", code: "DIR-01", imagen: "/images/1.png" },
-  { nombre: "Gestión de Eventos Deportivos y Protocolo", desc: "Organización de eventos, logística, protocolo y ceremonias.", code: "EVT-01", imagen: "/images/1.png" },
-  { nombre: "Escuela de Negocios Industriales", desc: "Gestión empresarial aplicada al sector industrial y deportivo.", code: "NEG-01", imagen: "/images/1.png" },
-  { nombre: "Informática Industrial", desc: "Tecnología de la información aplicada a la gestión deportiva y empresarial.", code: "INF-01", imagen: "/images/1.png" },
+  { nombre: "Arbitraje de Fútbol Amateur",         desc: "Formación de árbitros con las reglas FIFA, control de partidos y gestión de incidencias.", code: "ARB-01", imagen: "/images/1.png" },
+  { nombre: "Arbitraje de Voleyball en Cancha",    desc: "Árbitros certificados para competencias de voleibol indoor y playa.",                     code: "ARB-02", imagen: "/images/1.png" },
+  { nombre: "Comunicación y Periodismo Deportivo", desc: "Relatos deportivos, cobertura mediática y producción de contenido.",                       code: "COM-01", imagen: "/images/1.png" },
+  { nombre: "Entrenador de Fútbol",                desc: "Licencia de entrenador, metodologías de entrenamiento y gestión de equipos.",              code: "ENT-01", imagen: "/images/1.png" },
+  { nombre: "Entrenador de Beach Voley",           desc: "Especialización en vóley playa, tácticas y preparación física específica.",                code: "ENT-02", imagen: "/images/1.png" },
+  { nombre: "Marketing Deportivo",                 desc: "Estrategias de marketing aplicadas al deporte, patrocinios y gestión de marcas.",          code: "MKT-01", imagen: "/images/1.png" },
+  { nombre: "Auditoría de Organizaciones Deportivas", desc: "Control y auditoría de entidades deportivas, cumplimiento normativo.",                  code: "AUD-01", imagen: "/images/1.png" },
+  { nombre: "Dirigencia Deportiva",                desc: "Gestión de clubes, federaciones y organizaciones deportivas.",                             code: "DIR-01", imagen: "/images/1.png" },
+  { nombre: "Gestión de Eventos Deportivos",       desc: "Organización de eventos, logística, protocolo y ceremonias.",                              code: "EVT-01", imagen: "/images/1.png" },
+  { nombre: "Escuela de Negocios Industriales",    desc: "Gestión empresarial aplicada al sector industrial y deportivo.",                           code: "NEG-01", imagen: "/images/1.png" },
+  { nombre: "Informática Industrial",              desc: "Tecnología de la información aplicada a la gestión deportiva y empresarial.",              code: "INF-01", imagen: "/images/1.png" },
 ];
+
+/* Categorías para filtros */
+const catMap: Record<string, string> = {
+  "ARB-01": "Arbitraje", "ARB-02": "Arbitraje",
+  "COM-01": "Comunicación",
+  "ENT-01": "Entrenamiento", "ENT-02": "Entrenamiento",
+  "MKT-01": "Marketing",
+  "AUD-01": "Gestión", "DIR-01": "Gestión", "EVT-01": "Gestión", "NEG-01": "Gestión",
+  "INF-01": "Tecnología",
+};
 
 const ticker_items = ["ARBITRAJE", "ENTRENAMIENTO", "MARKETING DEPORTIVO", "PERIODISMO", "DIRIGENCIA", "GESTIÓN DE EVENTOS", "INFORMÁTICA INDUSTRIAL", "BEACH VOLEY"];
 
-const testimonios = [
-  {
-    cita: "Gracias a INFOCADE conseguí mi licencia de entrenador y ahora dirijo un equipo juvenil. La formación práctica fue clave.",
-    autor: "Jorge Ramírez",
-    rol: "Egresado de Entrenador de Fútbol"
-  },
-  {
-    cita: "El curso de Periodismo Deportivo me abrió puertas en medios locales. Aprendí a relatar partidos con profesionalismo.",
-    autor: "Lucía Mendoza",
-    rol: "Egresada de Comunicación Deportiva"
-  },
-  {
-    cita: "La certificación en arbitraje me permitió empezar a dirigir partidos oficiales rápidamente. Recomiendo INFOCADE al 100%.",
-    autor: "Andrés Gómez",
-    rol: "Egresado de Arbitraje de Fútbol"
-  }
+const servicios = [
+  { titulo: "Arbitraje Deportivo",      desc: "Certificación FIFA y FIVB para árbitros de fútbol y vóley a nivel competitivo.",  imagen: "/images/1.png" },
+  { titulo: "Entrenamiento de Élite",   desc: "Metodologías modernas de entrenamiento físico, táctico y mental.",                 imagen: "/images/1.png" },
+  { titulo: "Gestión y Dirigencia",     desc: "Administración de clubes, auditorías deportivas y gestión de eventos.",            imagen: "/images/1.png" },
+  { titulo: "Comunicación Deportiva",   desc: "Periodismo, producción audiovisual y marketing aplicado al deporte.",              imagen: "/images/1.png" },
 ];
 
-const instalaciones = [
-  { imagen: "/images/instalacion1.jpg", titulo: "Aula de Tecnología", desc: "Equipos de última generación para clases prácticas." },
-  { imagen: "/images/instalacion2.jpg", titulo: "Cancha Polideportiva", desc: "Espacio reglamentario para prácticas de fútbol y vóley." },
-  { imagen: "/images/instalacion3.jpg", titulo: "Estudio de Grabación", desc: "Para prácticas de periodismo y producción audiovisual." },
-  { imagen: "/images/instalacion4.jpg", titulo: "Sala de Simulación", desc: "Entrenamiento de arbitraje con tecnología VAR simulada." },
+const stats = [
+  { num: "800+", label: "Profesionales Egresados" },
+  { num: "11",   label: "Programas Activos"        },
+  { num: "100%", label: "Certificación Válida"      },
+  { num: "8+",   label: "Años de Experiencia"       },
+];
+
+const whyItems = [
+  { t: "Certificación Reconocida",    d: "Validez nacional respaldada por instituciones del sector deportivo y empresarial." },
+  { t: "Instructores en Ejercicio",   d: "Profesionales activos que aportan experiencia real desde el campo de juego."       },
+  { t: "Metodología Aplicada",        d: "Casos reales, prácticas de campo y simulaciones desde el primer módulo."           },
+  { t: "Modalidad Flexible",          d: "Presencial o virtual. Estudia sin renunciar a tu actividad deportiva o laboral."   },
+];
+
+const testimonios = [
+  { cita: "Gracias a INFOCADE conseguí mi licencia de entrenador y ahora dirijo un equipo juvenil. La formación práctica fue clave.", autor: "Jorge Ramírez", rol: "Egresado · Entrenador de Fútbol",     ini: "JR" },
+  { cita: "El curso de Periodismo Deportivo me abrió puertas en medios locales. Aprendí a relatar partidos con profesionalismo.",       autor: "Lucía Mendoza", rol: "Egresada · Comunicación Deportiva", ini: "LM" },
+  { cita: "La certificación en arbitraje me permitió empezar a dirigir partidos oficiales rápidamente. Recomiendo INFOCADE al 100%.", autor: "Andrés Gómez", rol: "Egresado · Arbitraje de Fútbol",      ini: "AG" },
+];
+
+const vacantes = [
+  { cargo: "Árbitro de Fútbol Amateur",  area: "Arbitraje Deportivo"   },
+  { cargo: "Entrenador Juvenil",         area: "Entrenamiento y Tácticas" },
+  { cargo: "Gestor de Eventos Deportivos", area: "Organización y Protocolo" },
+];
+
+const heroSlides = [
+  { img: "/images/mon.webp",  tag: "Arbitraje & Entrenamiento",  h1a: "FORMAMOS",     h1b: "ÁRBITROS Y",   h1c: "ENTRENADORES." },
+  { img: "/images/ban.webp",  tag: "Gestión & Dirigencia",       h1a: "DESARROLLAMOS", h1b: "LÍDERES DEL", h1c: "DEPORTE."      },
+  { img: "/images/ima1.jpg",  tag: "Comunicación & Marketing",   h1a: "IMPULSAMOS",   h1b: "TU CARRERA",   h1c: "DEPORTIVA."    },
 ];
 ---
 
@@ -48,632 +72,565 @@ const instalaciones = [
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --c-black: #000000;
-    --c-ink: #060606;
-    --c-orange: #f97316;
-    --c-orange-hot: #fb923c;
-    --c-red: #ef4444;
-    --c-yellow: #fbbf24;
-    --c-white: #f8fafc;
-    --c-gray: #6b7280;
-    --c-border: rgba(255,255,255,0.06);
-    --c-surface: rgba(255,255,255,0.03);
+    /* ── PALETA INFOCADE ── */
+    --red:        #cc1f1f;
+    --red-mid:    #e02424;
+    --red-lt:     #fdeaea;
+    --red-dim:    rgba(204,31,31,0.12);
+
+    /* Acentos por sección: Azul (secciones impares) · Amarillo (secciones pares) */
+    --blue:       #1a4b8c;
+    --blue-mid:   #2d6fcc;
+    --blue-lt:    #e8f0fb;
+
+    --yellow:     #c48a00;
+    --yellow-mid: #e6a800;
+    --yellow-lt:  #fdf6e0;
+
+    /* Neutros */
+    --white:      #ffffff;
+    --off:        #f5f4f1;     /* fondo secciones alternas */
+    --cream:      #eeece8;
+    --dark:       #111111;
+    --mid:        #4a4a4a;
+    --soft:       #7a7a7a;
+    --faint:      #ababab;
+    --border:     #e0ddd8;
+
+    --r:    10px;
+    --r-lg: 18px;
+    --r-xl: 28px;
   }
 
-  /* ── NAVBAR ── */
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--white);
+    color: var(--dark);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ══════════════ NAVBAR ══════════════ */
   #navbar {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-    height: 70px;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+    height: 64px;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 52px;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--c-border);
+    padding: 0 48px;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
   }
-  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-  .nav-logo img { height: 36px; width: auto; }
-  .nav-wordmark {
-    font-family: 'Anton', sans-serif;
-    letter-spacing: 0.1em;
-    font-size: 1.3rem;
-    color: var(--c-white);
+  #navbar.scrolled { box-shadow: 0 2px 20px rgba(204,31,31,0.09); }
+
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo img { height: 32px; }
+  .nav-wordmark { font-family: 'Anton', sans-serif; font-size: 1.15rem; letter-spacing: 0.08em; color: var(--dark); }
+  .nav-wordmark em { color: var(--red); font-style: normal; }
+
+  .nav-links { display: flex; align-items: center; gap: 6px; }
+  .nav-link {
+    padding: 7px 16px; color: var(--mid);
+    font-size: 0.83rem; font-weight: 500;
+    text-decoration: none; border-radius: 100px; transition: all 0.2s;
   }
-  .nav-wordmark em { color: var(--c-orange); font-style: normal; }
+  .nav-link:hover { color: var(--dark); background: var(--cream); }
+
   .nav-cta {
-    display: inline-flex; align-items: center; gap: 9px;
-    padding: 10px 26px;
-    background: var(--c-orange);
-    color: #000;
-    font-family: 'Anton', sans-serif;
-    font-size: 0.82rem;
-    letter-spacing: 0.12em;
-    text-decoration: none;
-    text-transform: uppercase;
-    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-    transition: all 0.25s;
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 9px 22px;
+    background: var(--red); color: #fff;
+    font-size: 0.83rem; font-weight: 700;
+    text-decoration: none; border-radius: 100px;
+    letter-spacing: 0.02em; transition: all 0.25s;
   }
-  .nav-cta:hover {
-    background: var(--c-orange-hot);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(249,115,22,0.5);
-  }
-  .nav-cta svg { width: 13px; height: 13px; }
+  .nav-cta:hover { background: var(--red-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(204,31,31,0.35); }
 
-  /* ── HERO ── */
+  /* ══════════════ HERO CARRUSEL ══════════════ */
   #hero {
-    position: relative;
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: end;
-    overflow: hidden;
+    margin-top: 64px;
+    position: relative; overflow: hidden;
+    border-radius: 0 0 var(--r-xl) var(--r-xl);
+    height: calc(100vh - 64px); min-height: 560px; max-height: 820px;
   }
 
-  .hero-bg {
+  .hero-slide {
     position: absolute; inset: 0;
-    background: url('/images/mon.webp') center center / cover no-repeat;
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.4,0,0.2,1);
+    pointer-events: none;
   }
+  .hero-slide.active { opacity: 1; pointer-events: auto; }
+
+  .hero-slide-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transform: scale(1.04);
+    transition: transform 7s ease-out;
+  }
+  .hero-slide.active .hero-slide-img { transform: scale(1); }
+
   .hero-overlay {
     position: absolute; inset: 0;
-    background:
-      linear-gradient(135deg, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0.15) 100%),
-      linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 40%);
-  }
-  .hero-scanlines {
-    position: absolute; inset: 0; z-index: 1;
-    background-image: repeating-linear-gradient(
-      0deg,
-      transparent, transparent 3px,
-      rgba(0,0,0,0.07) 3px, rgba(0,0,0,0.07) 4px
-    );
-    pointer-events: none;
-  }
-  .hero-noise {
-    position: absolute; inset: 0; z-index: 1; opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    pointer-events: none;
-  }
-  .hero-diag {
-    position: absolute;
-    top: 0; right: 35%;
-    width: 2px; height: 100%;
-    background: linear-gradient(to bottom, transparent, var(--c-orange) 30%, var(--c-orange) 70%, transparent);
-    opacity: 0.15;
-    transform: rotate(8deg) translateX(40px);
-    z-index: 2;
+    background: linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.35) 55%, transparent 100%);
   }
 
-  .hero-left {
-    position: relative; z-index: 10;
-    padding: 140px 0 80px 52px;
-    display: flex; flex-direction: column; align-items: flex-start;
+  .hero-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0 56px 56px; z-index: 2;
   }
 
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 12px;
-    font-size: 0.7rem; font-weight: 700;
-    letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--c-orange);
-    margin-bottom: 28px;
-    opacity: 0;
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px;
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.20);
+    border-radius: 100px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    color: #fff; margin-bottom: 20px;
   }
-  .hero-eyebrow-line { display: block; width: 36px; height: 1.5px; background: var(--c-orange); }
+  .hero-tag-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red-mid); }
 
   .hero-h1 {
     font-family: 'Anton', sans-serif;
-    font-size: clamp(5rem, 10vw, 9.5rem);
-    line-height: 0.88;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    color: var(--c-white);
-    margin-bottom: 8px;
-    overflow: visible;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.92; letter-spacing: 0.01em; text-transform: uppercase;
+    color: #fff; max-width: 700px; margin-bottom: 28px;
   }
-  .hero-h1 .h1-line { display: block; overflow: hidden; }
-  .hero-h1 .h1-inner { display: block; }
-  .hero-h1 .stroke-line {
-    -webkit-text-stroke: 1.5px rgba(255,255,255,0.18);
-    color: transparent;
-  }
-  .hero-h1 .orange-line { color: var(--c-orange); }
+  .hero-h1 .c-red { color: #ff7070; }
 
-  .hero-tagline {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    color: rgba(255,255,255,0.42);
-    max-width: 380px;
-    line-height: 1.75;
-    margin-top: 28px;
-    margin-bottom: 40px;
-    opacity: 0;
-  }
+  .hero-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 
-  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; opacity: 0; }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 15px 36px;
-    background: var(--c-orange);
-    color: #000;
-    font-family: 'Anton', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.12em;
-    text-decoration: none;
-    text-transform: uppercase;
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-    transition: all 0.3s;
-  }
-  .btn-primary:hover {
-    background: var(--c-orange-hot);
-    transform: translateY(-3px);
-    box-shadow: 0 14px 40px rgba(249,115,22,0.55);
-  }
-  .btn-ghost {
+  .btn-white {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 28px;
-    border: 1.5px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.55);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-decoration: none;
-    text-transform: uppercase;
-    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-    transition: all 0.3s;
+    padding: 14px 32px; background: var(--white); color: var(--dark);
+    font-weight: 700; font-size: 0.9rem; text-decoration: none;
+    border-radius: 100px; transition: all 0.3s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
   }
-  .btn-ghost:hover { border-color: var(--c-orange); color: var(--c-orange); }
+  .btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.22); background: var(--cream); }
 
-  .hero-stats {
-    position: relative; z-index: 10;
-    padding: 0 52px 80px 0;
-    display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end;
-    gap: 3px;
-    opacity: 0;
+  .btn-outline-white {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 28px;
+    border: 1.5px solid rgba(255,255,255,0.42); color: rgba(255,255,255,0.82);
+    font-weight: 600; font-size: 0.88rem; text-decoration: none;
+    border-radius: 100px; transition: all 0.3s;
   }
-  .hstat {
-    display: flex; flex-direction: column; align-items: flex-end;
-    padding: 20px 28px;
-    border: 1px solid var(--c-border);
-    background: rgba(0,0,0,0.55);
-    backdrop-filter: blur(12px);
-    min-width: 200px;
-    position: relative; overflow: hidden;
-    transition: border-color 0.3s;
-  }
-  .hstat::before {
-    content: '';
-    position: absolute; right: 0; top: 0; bottom: 0; width: 3px;
-    background: var(--c-orange);
-    transform: scaleY(0); transform-origin: bottom;
-    transition: transform 0.4s;
-  }
-  .hstat:hover { border-color: rgba(249,115,22,0.3); }
-  .hstat:hover::before { transform: scaleY(1); }
-  .hstat-num {
-    font-family: 'Anton', sans-serif;
-    font-size: 2.8rem;
-    line-height: 1;
-    color: var(--c-orange);
-  }
-  .hstat-label {
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin-top: 4px;
+  .btn-outline-white:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.10); }
+
+  .hero-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .hero-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 14px;
+    background: rgba(255,255,255,0.09); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px; font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.78);
   }
 
-  .scroll-hint {
-    position: absolute; bottom: 32px; left: 52px; z-index: 10;
-    display: flex; align-items: center; gap: 14px;
-    opacity: 0;
+  /* controles carrusel */
+  .hero-controls {
+    position: absolute; bottom: 56px; right: 56px;
+    z-index: 10; display: flex; gap: 10px; align-items: center;
   }
-  .scroll-hint span {
-    font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(255,255,255,0.2);
+  .hc-btn {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.22);
+    backdrop-filter: blur(8px); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.25s;
   }
-  .scroll-line {
-    width: 60px; height: 1px;
-    background: linear-gradient(to right, var(--c-orange), transparent);
-    animation: scrollScan 2s ease-in-out infinite;
+  .hc-btn:hover { background: var(--red); border-color: var(--red); }
+
+  .hero-dots {
+    position: absolute; bottom: 72px; left: 56px;
+    z-index: 10; display: flex; gap: 8px;
   }
-  @keyframes scrollScan {
-    0% { transform: scaleX(0); transform-origin: left; opacity: 0; }
-    50% { transform: scaleX(1); opacity: 1; }
-    100% { transform: scaleX(0); transform-origin: right; opacity: 0; }
+  .hero-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.28); border: none; cursor: pointer;
+    transition: all 0.3s; padding: 0;
+  }
+  .hero-dot.active { background: var(--red-mid); transform: scale(1.4); }
+
+  .hero-progress {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px; z-index: 10;
+    background: rgba(255,255,255,0.09);
+  }
+  .hero-progress-bar {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--red), #ff7070);
+    transition: none;
+  }
+  .hero-progress-bar.running {
+    width: 100%;
+    transition: width 5.5s linear;
   }
 
-  /* ── MARQUEE STRIP ── */
+  /* ══════════════ MARQUEE ══════════════ */
   #marquee-strip {
-    background: var(--c-orange);
-    padding: 14px 0;
+    background: var(--red);
+    padding: 13px 0;
     overflow: hidden;
   }
   .marquee-track {
     display: flex; gap: 0; flex-shrink: 0;
-    animation: marqueeRun 20s linear infinite;
+    animation: marqueeRun 22s linear infinite;
     white-space: nowrap;
   }
-  @keyframes marqueeRun {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+  @keyframes marqueeRun { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
   .marquee-item {
     display: inline-flex; align-items: center; gap: 20px;
     padding: 0 40px;
     font-family: 'Anton', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #000;
+    font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #fff;
   }
-  .marquee-dot { width: 5px; height: 5px; background: rgba(0,0,0,0.35); border-radius: 50%; }
+  .marquee-dot { width: 5px; height: 5px; background: rgba(255,255,255,0.4); border-radius: 50%; }
 
-  /* ── SECTION BASE ── */
-  .section-wrap { max-width: 1300px; margin: 0 auto; padding: 110px 52px; }
-  .section-eyebrow {
-    display: inline-flex; align-items: center; gap: 12px;
-    font-size: 0.68rem; font-weight: 700;
-    letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--c-orange);
-    margin-bottom: 18px;
-  }
-  .section-eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--c-orange); display: block; }
-  .section-title {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(2.8rem, 5.5vw, 5rem);
-    letter-spacing: 0.02em;
-    line-height: 0.92;
-    text-transform: uppercase;
-    color: var(--c-white);
-  }
-  .section-title .hl {
-    -webkit-text-stroke: 1.5px var(--c-orange);
-    color: transparent;
-  }
+  /* ══════════════ ABOUT — Azul ══════════════ */
+  #about { background: var(--white); }
+  .about-wrap { max-width: 1280px; margin: 0 auto; padding: 90px 56px; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 
-  /* ── CURSOS GRID (estático, sin scroll) ── */
-  #cursos { background: var(--c-ink); border-top: 1px solid var(--c-border); }
-  .cursos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 2px;
-    margin-top: 48px;
+  .about-eyebrow {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--blue-mid); margin-bottom: 16px;
   }
+  .about-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--blue-mid); border-radius: 2px; display: block; }
 
-  .curso-card {
-    background: rgba(255,255,255,0.025);
-    border: 1px solid var(--c-border);
-    overflow: hidden;
-    transition: all 0.35s ease;
-    cursor: default;
-    display: flex;
-    flex-direction: column;
-  }
-  .curso-card:hover {
-    background: rgba(249,115,22,0.05);
-    border-color: rgba(249,115,22,0.25);
-    transform: translateY(-4px);
-  }
-  .curso-card:hover .curso-img { transform: scale(1.07); filter: grayscale(0%); }
-  .curso-img-wrap {
-    height: 200px; overflow: hidden; position: relative;
-  }
-  .curso-img-wrap::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(6,6,6,0.85) 100%);
-  }
-  .curso-img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.6s ease;
-    filter: grayscale(30%);
-  }
-  .curso-code-badge {
-    position: absolute; top: 16px; left: 16px; z-index: 2;
-    font-family: 'Anton', sans-serif;
-    font-size: 0.75rem; letter-spacing: 0.15em;
-    padding: 5px 12px;
-    background: var(--c-orange);
-    color: #000;
-    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
-  }
-  .curso-body { padding: 24px 28px 28px; flex: 1; display: flex; flex-direction: column; }
-  .curso-nombre {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase;
-    color: var(--c-white);
-    line-height: 1.2; margin-bottom: 12px;
-    transition: color 0.3s;
-  }
-  .curso-card:hover .curso-nombre { color: var(--c-orange); }
-  .curso-desc {
-    font-size: 0.83rem;
-    color: rgba(255,255,255,0.35);
-    line-height: 1.72; flex: 1;
-    margin-bottom: 20px;
-  }
-  .curso-cert {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--c-orange);
-    padding: 8px 0;
-    margin-top: auto;
-  }
-  .curso-cert svg { width: 11px; height: 11px; }
+  .about-h2 { font-family: 'Anton', sans-serif; font-size: clamp(2rem, 4vw, 3.8rem); line-height: 1; letter-spacing: 0.01em; text-transform: uppercase; color: var(--dark); margin-bottom: 20px; }
+  .about-h2 .hl { color: var(--blue-mid); }
+  .about-desc { font-size: 0.95rem; color: var(--mid); line-height: 1.78; margin-bottom: 32px; }
 
-  /* ── ABOUT ── */
-  #about {
-    background: #000;
-    border-top: 1px solid var(--c-border);
-  }
-  .about-layout {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 80px; align-items: center;
-  }
-  .about-img-wrap {
-    position: relative; height: 560px;
-  }
-  .about-img {
-    width: 100%; height: 100%; object-fit: cover;
-    filter: grayscale(50%) contrast(1.1);
-    transition: filter 0.6s;
-  }
-  .about-img:hover { filter: grayscale(0%) contrast(1.1); }
-  .about-img-wrap::before {
-    content: '';
-    position: absolute; top: -10px; left: -10px;
-    width: 28px; height: 28px;
-    border-top: 2px solid var(--c-orange);
-    border-left: 2px solid var(--c-orange);
-    z-index: 2;
-  }
-  .about-img-wrap::after {
-    content: '';
-    position: absolute; bottom: -10px; right: -10px;
-    width: 28px; height: 28px;
-    border-bottom: 2px solid var(--c-orange);
-    border-right: 2px solid var(--c-orange);
-    z-index: 2;
-  }
-  .about-frame {
-    position: absolute; inset: 0;
-    border: 1px solid rgba(249,115,22,0.15);
-    pointer-events: none; z-index: 1;
-  }
-  .about-big-num {
-    position: absolute; bottom: -30px; right: -20px;
-    font-family: 'Anton', sans-serif;
-    font-size: 9rem; line-height: 1;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(249,115,22,0.08);
-    z-index: 0; pointer-events: none;
-    user-select: none;
-  }
-
-  .about-right { display: flex; flex-direction: column; gap: 32px; }
-  .about-claim {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(2.2rem, 4vw, 3.8rem);
-    letter-spacing: 0.02em; line-height: 0.95;
-    text-transform: uppercase;
-    color: var(--c-white);
-  }
-  .about-claim .hl { color: var(--c-orange); }
-  .about-body {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.38);
-    line-height: 1.85;
-    max-width: 460px;
-  }
-  .about-list { display: flex; flex-direction: column; gap: 2px; }
-  .about-item {
-    display: flex; align-items: center; gap: 16px;
-    padding: 16px 20px;
-    border: 1px solid var(--c-border);
-    background: var(--c-surface);
+  .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .ab-feat {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 16px 18px;
+    background: var(--blue-lt); border-radius: var(--r);
+    border: 1px solid #ccdaf4;
     transition: all 0.3s;
   }
-  .about-item:hover { border-color: rgba(249,115,22,0.2); background: rgba(249,115,22,0.04); }
-  .about-item-icon {
-    width: 36px; height: 36px; flex-shrink: 0;
-    border: 1px solid rgba(249,115,22,0.25);
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(249,115,22,0.06);
-  }
-  .about-item-icon svg { width: 15px; height: 15px; color: var(--c-orange); }
-  .about-item-text {
-    font-size: 0.82rem; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-  }
+  .ab-feat:hover { background: #dae8fb; border-color: var(--blue-mid); transform: translateY(-2px); }
+  .ab-feat-icon { color: var(--blue-mid); flex-shrink: 0; margin-top: 2px; }
+  .ab-feat-title { font-weight: 700; font-size: 0.82rem; color: var(--dark); margin-bottom: 3px; }
+  .ab-feat-desc { font-size: 0.76rem; color: var(--soft); line-height: 1.5; }
 
-  /* ── TESTIMONIOS ── */
-  #testimonios {
-    background: var(--c-ink);
-    border-top: 1px solid var(--c-border);
-    border-bottom: 1px solid var(--c-border);
-  }
-  .testimonios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    margin-top: 48px;
-  }
-  .testimonio-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--c-border);
-    padding: 36px 32px;
-    transition: all 0.3s;
-  }
-  .testimonio-card:hover {
-    border-color: rgba(249,115,22,0.3);
-    background: rgba(249,115,22,0.04);
-  }
-  .testimonio-cita {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.7;
-    margin-bottom: 24px;
-    font-style: italic;
-  }
-  .testimonio-autor {
-    font-family: 'Anton', sans-serif;
-    font-size: 0.95rem;
-    letter-spacing: 0.05em;
-    color: var(--c-white);
-    text-transform: uppercase;
-  }
-  .testimonio-rol {
-    font-size: 0.75rem;
-    color: var(--c-orange);
-    letter-spacing: 0.1em;
-    margin-top: 4px;
-  }
+  .about-right { position: relative; }
+  .about-mosaic { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 280px 180px; gap: 12px; }
+  .ab-img { border-radius: var(--r-lg); overflow: hidden; }
+  .ab-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+  .ab-img:hover img { transform: scale(1.05); }
+  .ab-img.span2 { grid-column: span 2; }
 
-  /* ── INSTALACIONES GALLERY (grid, sin scroll) ── */
-  #instalaciones {
-    background: #000;
-    border-top: 1px solid var(--c-border);
+  .about-badge {
+    position: absolute; bottom: -20px; left: -20px;
+    background: var(--blue); color: #fff;
+    padding: 18px 24px; border-radius: var(--r-lg);
+    text-align: center;
+    box-shadow: 0 12px 32px rgba(26,75,140,0.28);
   }
-  .instalaciones-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin-top: 48px;
+  .about-badge-num { font-family: 'Anton', sans-serif; font-size: 2.4rem; color: #7ab4ff; line-height: 1; }
+  .about-badge-lbl { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 3px; }
+
+  /* ══════════════ SHARED SECTION ══════════════ */
+  .sw { max-width: 1280px; margin: 0 auto; padding: 90px 56px; }
+  .sec-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 52px; gap: 24px; flex-wrap: wrap; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 12px;
   }
-  .galeria-item {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--c-border);
-    transition: all 0.3s;
-    height: 280px;
+  .eyebrow::before { content: ''; width: 28px; height: 2px; border-radius: 2px; display: block; }
+  .eyebrow.red    { color: var(--red);       } .eyebrow.red::before    { background: var(--red);       }
+  .eyebrow.blue   { color: var(--blue-mid);  } .eyebrow.blue::before   { background: var(--blue-mid);  }
+  .eyebrow.yellow { color: var(--yellow);    } .eyebrow.yellow::before { background: var(--yellow);    }
+
+  .sec-title { font-family: 'Anton', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 0.95; letter-spacing: 0.01em; text-transform: uppercase; color: var(--dark); }
+  .hl-red    { color: var(--red);      }
+  .hl-blue   { color: var(--blue-mid); }
+  .hl-yellow { color: var(--yellow);   }
+
+  .link-all {
+    display: inline-flex; align-items: center; gap: 7px; padding: 10px 22px;
+    border: 1.5px solid var(--border); border-radius: 100px;
+    font-size: 0.8rem; font-weight: 600; color: var(--soft); text-decoration: none; transition: all 0.25s; white-space: nowrap;
   }
-  .galeria-item:hover {
-    border-color: var(--c-orange);
-    transform: translateY(-4px);
+  .link-all:hover { border-color: var(--red); color: var(--red); }
+
+  /* ══════════════ SERVICIOS — Amarillo ══════════════ */
+  #servicios { background: var(--off); }
+  .servicios-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+  .serv-card {
+    background: var(--white); border-radius: var(--r-lg);
+    border: 1px solid var(--border); overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.4s, border-color 0.3s;
   }
-  .galeria-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s;
+  .serv-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(198,139,0,0.13); border-color: var(--yellow-mid); }
+  .serv-img { height: 200px; overflow: hidden; }
+  .serv-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.55s; }
+  .serv-card:hover .serv-img img { transform: scale(1.07); }
+  .serv-body { padding: 20px 20px 22px; }
+  .serv-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--yellow-mid); margin-bottom: 10px; }
+  .serv-title { font-family: 'Anton', sans-serif; font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dark); margin-bottom: 7px; }
+  .serv-desc { font-size: 0.78rem; color: var(--soft); line-height: 1.6; }
+
+  /* ══════════════ PROGRAMAS — Rojo ══════════════ */
+  #programas { background: var(--white); }
+
+  .prog-tabs { display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
+  .prog-tab {
+    padding: 8px 20px; background: transparent;
+    border: 1.5px solid var(--border); border-radius: 100px;
+    font-size: 0.78rem; font-weight: 600; color: var(--soft);
+    cursor: pointer; transition: all 0.22s;
   }
-  .galeria-item:hover img { transform: scale(1.05); }
-  .galeria-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    transform: translateY(0);
+  .prog-tab:hover { border-color: var(--red); color: var(--red); }
+  .prog-tab.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+  .prog-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+
+  .prog-card {
+    border-radius: var(--r-lg); overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(204,31,31,0.05);
+    transition: transform 0.38s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.38s, border-color 0.3s;
+    display: none;
+  }
+  .prog-card.visible { display: block; }
+  .prog-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(204,31,31,0.12); border-color: var(--red); }
+
+  .prog-card-img { height: 160px; overflow: hidden; position: relative; }
+  .prog-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+  .prog-card:hover .prog-card-img img { transform: scale(1.06); }
+  .prog-card-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 55%); }
+  .prog-cat-badge {
+    position: absolute; bottom: 10px; left: 12px;
+    font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    color: #fff; background: var(--red); padding: 3px 10px; border-radius: 50px;
+  }
+  .prog-card-body { padding: 14px 16px 18px; }
+  .prog-card-code { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
+  .prog-card-title { font-weight: 700; font-size: 0.88rem; color: var(--dark); line-height: 1.3; margin-bottom: 6px; }
+  .prog-card-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .prog-cta {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--red); text-decoration: none; transition: gap 0.2s;
+  }
+  .prog-cta:hover { gap: 8px; }
+
+  /* ══════════════ WHY — Azul ══════════════ */
+  #why { background: var(--off); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+
+  .why-img-col { position: relative; }
+  .why-img-main { width: 100%; height: 480px; object-fit: cover; border-radius: var(--r-xl); display: block; }
+
+  .why-float {
+    position: absolute; top: 32px; right: -28px;
+    background: var(--white); border-radius: var(--r-lg);
+    padding: 18px 22px;
+    box-shadow: 0 12px 40px rgba(26,75,140,0.12);
+    text-align: center; min-width: 130px;
+  }
+  .why-float-num { font-family: 'Anton', sans-serif; font-size: 2.2rem; color: var(--blue-mid); line-height: 1; }
+  .why-float-lbl { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); margin-top: 3px; }
+
+  .why-float-2 {
+    position: absolute; bottom: 32px; left: -28px;
+    background: var(--blue);
+    border-radius: var(--r-lg);
+    padding: 18px 22px;
+    box-shadow: 0 12px 40px rgba(26,75,140,0.22);
+    text-align: center; min-width: 130px;
+  }
+  .why-float-2 .why-float-num { color: #7ab4ff; }
+  .why-float-2 .why-float-lbl { color: rgba(255,255,255,0.45); }
+
+  .why-items { display: flex; flex-direction: column; gap: 16px; }
+  .why-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 20px 22px; background: var(--white);
+    border-radius: var(--r); border: 1px solid var(--border);
+    transition: transform 0.35s cubic-bezier(0.34,1.4,0.64,1), border-color 0.3s, box-shadow 0.3s;
+  }
+  .why-item:hover { transform: translateX(8px); border-color: var(--blue-mid); box-shadow: 0 4px 20px rgba(26,75,140,0.09); }
+  .why-num { font-family: 'Anton', sans-serif; font-size: 1.4rem; color: #c5d8f4; line-height: 1; flex-shrink: 0; width: 32px; transition: color 0.3s; }
+  .why-item:hover .why-num { color: var(--blue-mid); }
+  .why-t { font-weight: 700; font-size: 0.9rem; color: var(--dark); margin-bottom: 4px; }
+  .why-d { font-size: 0.8rem; color: var(--soft); line-height: 1.6; }
+
+  /* ══════════════ STATS — oscuro con Amarillo ══════════════ */
+  #stats { background: #111111; }
+  .stats-inner { max-width: 1280px; margin: 0 auto; padding: 72px 56px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+  .stat-block {
+    text-align: center; padding: 48px 32px;
+    border-right: 1px solid rgba(255,255,255,0.06);
     transition: background 0.3s;
   }
-  .galeria-item:hover .galeria-info {
-    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.4));
-  }
-  .galeria-info h3 {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.04em;
-    color: var(--c-white);
-    margin-bottom: 4px;
-  }
-  .galeria-info p {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.5;
-  }
+  .stat-block:last-child { border-right: none; }
+  .stat-block:hover { background: rgba(255,255,255,0.03); }
+  .stat-num { font-family: 'Anton', sans-serif; font-size: clamp(2.8rem,5vw,4rem); color: var(--yellow-mid); line-height: 1; margin-bottom: 10px; }
+  .stat-lbl { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.36); }
 
-  /* ── CTA ── */
-  #cta {
-    position: relative; overflow: hidden;
-    background: var(--c-ink);
-    border-top: 1px solid var(--c-border);
+  /* ══════════════ TESTIMONIOS — blanco ══════════════ */
+  #testimonios { background: var(--white); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+  .testi-card {
+    background: var(--off);
+    border: 1px solid var(--border); border-radius: var(--r-lg);
+    padding: 34px 30px; position: relative; overflow: hidden;
+    transition: transform 0.38s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.38s;
   }
-  .cta-bg-img {
-    position: absolute; inset: 0;
-    background: url('/imagen/voley.jpg') center 30% / cover no-repeat;
-    opacity: 0.06; filter: blur(3px);
+  .testi-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--red), var(--yellow-mid));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
   }
-  .cta-diag {
-    position: absolute; top: 0; bottom: 0; left: -5%;
-    width: 55%;
-    background: linear-gradient(135deg, rgba(249,115,22,0.08) 0%, transparent 70%);
-    pointer-events: none;
+  .testi-card:hover { transform: translateY(-8px); box-shadow: 0 24px 56px rgba(204,31,31,0.08); }
+  .testi-card:hover::after { transform: scaleX(1); }
+  .testi-stars { color: var(--yellow-mid); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 16px; }
+  .testi-cita { font-size: 0.93rem; color: var(--mid); line-height: 1.76; font-style: italic; margin-bottom: 22px; }
+  .testi-footer { display: flex; align-items: center; gap: 12px; }
+  .testi-av {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--red);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Anton', sans-serif; font-size: 0.8rem; color: #fff; flex-shrink: 0;
   }
+  .testi-card:nth-child(2) .testi-av { background: var(--blue); }
+  .testi-card:nth-child(3) .testi-av { background: #8b6914; }
+  .testi-autor { font-weight: 700; font-size: 0.87rem; color: var(--dark); }
+  .testi-rol { font-size: 0.71rem; color: var(--red); font-weight: 600; margin-top: 2px; }
+
+  /* ══════════════ VACANTES — Amarillo ══════════════ */
+  #vacantes { background: var(--off); }
+  .vacantes-list { display: flex; flex-direction: column; gap: 14px; }
+  .vacante-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 24px 28px; background: var(--white);
+    border: 1px solid var(--border); border-radius: var(--r-lg); transition: all 0.3s;
+  }
+  .vacante-row:hover { border-color: var(--yellow-mid); box-shadow: 0 6px 24px rgba(198,139,0,0.10); transform: translateX(6px); }
+  .vac-num { font-family: 'Anton', sans-serif; font-size: 1.5rem; color: #e0ceaa; flex-shrink: 0; width: 32px; transition: color 0.3s; }
+  .vacante-row:hover .vac-num { color: var(--yellow-mid); }
+  .vac-info { flex: 1; }
+  .vac-cargo { font-weight: 700; font-size: 1rem; color: var(--dark); margin-bottom: 4px; }
+  .vac-area { font-size: 0.78rem; color: var(--soft); }
+  .btn-apply {
+    display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px;
+    background: var(--red); color: #fff;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em;
+    text-decoration: none; border-radius: 100px; transition: all 0.25s;
+  }
+  .btn-apply:hover { background: var(--red-mid); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(204,31,31,0.35); }
+
+  /* ══════════════ CTA BANNER ══════════════ */
+  #cta { position: relative; overflow: hidden; background: #111; }
+  .cta-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.07; }
   .cta-inner {
-    position: relative; z-index: 2;
-    max-width: 1300px; margin: 0 auto;
-    padding: 140px 52px;
-    display: grid; grid-template-columns: 1fr auto;
-    gap: 60px; align-items: end;
+    position: relative; z-index: 1;
+    max-width: 1280px; margin: 0 auto;
+    padding: 100px 56px;
+    display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap;
   }
-  .cta-h2 {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(3.5rem, 8vw, 8rem);
-    line-height: 0.9; letter-spacing: 0.01em;
-    text-transform: uppercase;
+  .cta-tag {
+    display: inline-flex; align-items: center; gap: 7px; padding: 6px 14px;
+    background: rgba(255,112,112,0.12); border: 1px solid rgba(255,112,112,0.25);
+    border-radius: 100px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    color: #ff7070; margin-bottom: 20px;
   }
-  .cta-h2 .l1 { display: block; color: var(--c-white); }
-  .cta-h2 .l2 { display: block; -webkit-text-stroke: 1.5px rgba(255,255,255,0.18); color: transparent; }
-  .cta-h2 .l3 { display: block; color: var(--c-orange); }
-  .cta-right { display: flex; flex-direction: column; align-items: flex-end; gap: 20px; }
-  .cta-sub {
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.3);
-    max-width: 280px;
-    line-height: 1.7;
-    text-align: right;
-  }
-  .cta-badges { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
-  .cta-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 16px;
-    border: 1px solid rgba(255,255,255,0.08);
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    background: rgba(255,255,255,0.02);
-  }
-  .cta-badge svg { width: 11px; height: 11px; color: var(--c-orange); }
+  .cta-h2 { font-family: 'Anton', sans-serif; font-size: clamp(2.4rem,5vw,5rem); line-height: 0.93; letter-spacing: 0.01em; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
+  .cta-h2 .c-red { color: #ff7070; }
+  .cta-sub { font-size: 0.95rem; color: rgba(255,255,255,0.48); line-height: 1.7; max-width: 440px; }
+  .cta-right { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
 
-  /* ── FOOTER ── */
-  footer {
-    padding: 30px 52px;
-    border-top: 1px solid var(--c-border);
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 14px;
-    background: #000;
+  .btn-cta-prim {
+    display: inline-flex; align-items: center; gap: 9px; padding: 16px 40px;
+    background: var(--red); color: #fff; font-weight: 800; font-size: 0.95rem;
+    letter-spacing: 0.02em; text-decoration: none; border-radius: 100px;
+    transition: all 0.3s; box-shadow: 0 6px 24px rgba(204,31,31,0.4);
   }
-  .footer-brand {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.05rem; letter-spacing: 0.12em;
-    color: var(--c-white);
-  }
-  .footer-brand em { color: var(--c-orange); font-style: normal; }
-  .footer-copy { font-size: 0.73rem; color: rgba(255,255,255,0.18); letter-spacing: 0.06em; }
+  .btn-cta-prim:hover { background: var(--red-mid); transform: translateY(-3px); box-shadow: 0 12px 36px rgba(204,31,31,0.5); }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 1024px) {
-    #hero { grid-template-columns: 1fr; }
-    .hero-stats { display: none; }
-    .hero-left { padding: 130px 28px 80px; }
-    .about-layout { grid-template-columns: 1fr; gap: 40px; }
-    .about-img-wrap { height: 320px; }
-    .cta-inner { grid-template-columns: 1fr; }
-    .cta-right { align-items: flex-start; }
-    .cta-sub { text-align: left; }
-    .cta-badges { align-items: flex-start; }
-    .cursos-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .btn-cta-sec {
+    display: inline-flex; align-items: center; gap: 9px; padding: 15px 32px;
+    border: 1.5px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.65);
+    font-weight: 600; font-size: 0.9rem; text-decoration: none;
+    border-radius: 100px; transition: all 0.3s;
   }
-  @media (max-width: 768px) {
-    #navbar { padding: 0 24px; }
-    .section-wrap { padding: 80px 24px; }
-    footer { padding: 24px; }
-    .scroll-hint { left: 28px; }
-    .cursos-grid { grid-template-columns: 1fr; }
-    .instalaciones-grid { grid-template-columns: 1fr; }
+  .btn-cta-sec:hover { border-color: rgba(255,255,255,0.48); color: #fff; }
+
+  .cta-chips { display: flex; gap: 10px; flex-wrap: wrap; }
+  .cta-chip {
+    display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px;
+    border: 1px solid rgba(255,255,255,0.09); border-radius: 100px;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: rgba(255,255,255,0.42);
+  }
+  .chip-d { width: 5px; height: 5px; border-radius: 50%; background: #ff7070; }
+
+  /* ══════════════ FOOTER ══════════════ */
+  footer { background: #0a0a0a; padding: 48px 56px 32px; }
+  .footer-top {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px;
+    padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 28px;
+  }
+  .footer-brand { font-family: 'Anton', sans-serif; font-size: 1.2rem; letter-spacing: 0.1em; color: #fff; margin-bottom: 12px; }
+  .footer-brand em { color: var(--red-mid); font-style: normal; }
+  .footer-desc { font-size: 0.8rem; color: rgba(255,255,255,0.28); line-height: 1.7; }
+  .footer-col-title { font-weight: 700; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+  .footer-links { display: flex; flex-direction: column; gap: 9px; }
+  .footer-link { font-size: 0.82rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .footer-link:hover { color: #ff7070; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.18); letter-spacing: 0.04em; }
+  .footer-accent { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--red-mid); font-weight: 600; }
+
+  /* ══════════════ ANIMACIONES ══════════════ */
+  .anim-up    { opacity: 0; transform: translateY(44px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
+  .anim-left  { opacity: 0; transform: translateX(-52px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
+  .anim-right { opacity: 0; transform: translateX(52px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
+  .anim-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+  .anim-up.in, .anim-left.in, .anim-right.in, .anim-scale.in { opacity: 1; transform: none; }
+  .d1{transition-delay:0.07s} .d2{transition-delay:0.14s}
+  .d3{transition-delay:0.21s} .d4{transition-delay:0.28s}
+
+  /* ══════════════ RESPONSIVE ══════════════ */
+  @media(max-width:1024px){
+    .servicios-grid{grid-template-columns:repeat(2,1fr)}
+    .prog-grid{grid-template-columns:repeat(2,1fr)}
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .footer-top{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:768px){
+    #navbar{padding:0 20px}
+    .nav-links{display:none}
+    .hero-content{padding:0 24px 40px}
+    .hero-controls{right:24px;bottom:40px}
+    .hero-dots{left:24px;bottom:56px}
+    .about-wrap,.sw,.stats-inner{padding:72px 24px}
+    .about-grid,.why-grid{grid-template-columns:1fr;gap:40px}
+    .about-mosaic{grid-template-rows:200px 140px}
+    .about-badge{left:0;bottom:-14px}
+    .testi-grid{grid-template-columns:1fr}
+    .servicios-grid{grid-template-columns:1fr}
+    .prog-grid{grid-template-columns:repeat(2,1fr)}
+    .cta-inner{flex-direction:column;padding:72px 24px}
+    footer{padding:40px 24px 24px}
+    .footer-top{grid-template-columns:1fr;gap:28px}
+    .why-float{right:-10px;top:16px}
+    .why-float-2{left:-10px}
+  }
+  @media(max-width:480px){
+    .prog-grid{grid-template-columns:1fr}
   }
 </style>
 
@@ -683,66 +640,77 @@ const instalaciones = [
     <img src="/images/log3.png" alt="INFOCADE" onerror="this.style.display='none'" />
     <span class="nav-wordmark">INFO<em>CADE</em></span>
   </a>
+  <div class="nav-links">
+    <a href="#about"      class="nav-link">Nosotros</a>
+    <a href="#servicios"  class="nav-link">Especialidades</a>
+    <a href="#programas"  class="nav-link">Programas</a>
+    <a href="#testimonios"class="nav-link">Egresados</a>
+    <a href="#vacantes"   class="nav-link">Vacantes</a>
+  </div>
   <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="nav-cta">
     Inscribirme
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
   </a>
 </nav>
 
-<!-- HERO -->
+<!-- HERO CARRUSEL -->
 <section id="hero">
-  <div class="hero-bg" id="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-scanlines"></div>
-  <div class="hero-noise"></div>
-  <div class="hero-diag"></div>
-
-  <!-- Left content -->
-  <div class="hero-left">
-    <div class="hero-eyebrow" id="hero-eyebrow">
-      <span class="hero-eyebrow-line"></span>
-      Instituto de Formación Deportiva y Empresarial
-    </div>
-    <h1 class="hero-h1" id="hero-h1">
-      <span class="h1-line"><span class="h1-inner">INFO</span></span>
-      <span class="h1-line"><span class="h1-inner stroke-line">CADE</span></span>
-      <span class="h1-line"><span class="h1-inner orange-line">ELITE.</span></span>
-    </h1>
-    <p class="hero-tagline" id="hero-tagline">
-      Formación certificada en arbitraje, entrenamiento, gestión deportiva, marketing y empresarismo. Programas diseñados para el profesional que el deporte necesita.
-    </p>
-    <div class="hero-btns" id="hero-btns">
-      <a href="#cursos" class="btn-primary">
-        Ver Programas
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </a>
-      <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="btn-ghost">
-        Inscribirse
-      </a>
-    </div>
-  </div>
-
-  <!-- Right stats -->
-  <div class="hero-stats" id="hero-stats">
-    {[
-      { num: "11", label: "Programas Activos" },
-      { num: "800+", label: "Egresados Certificados" },
-      { num: "100%", label: "Certificación Válida" },
-    ].map(s => (
-      <div class="hstat">
-        <span class="hstat-num">{s.num}</span>
-        <span class="hstat-label">{s.label}</span>
+  {heroSlides.map((slide, i) => (
+    <div class={`hero-slide${i === 0 ? ' active' : ''}`} data-slide={i}>
+      <img
+        src={slide.img}
+        alt={slide.tag}
+        class="hero-slide-img"
+        onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=1600&q=80'"
+      />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          {slide.tag}
+        </div>
+        <h1 class="hero-h1">
+          <span>{slide.h1a}</span><br/>
+          <span>{slide.h1b}</span><br/>
+          <span class="c-red">{slide.h1c}</span>
+        </h1>
+        <div class="hero-row">
+          <a href="#programas" class="btn-white">
+            Ver Programas
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="btn-outline-white">Inscribirme</a>
+        </div>
+        <div class="hero-chips">
+          <span class="hero-chip">100% Certificación Válida</span>
+          <span class="hero-chip">11 Programas</span>
+          <span class="hero-chip">800+ Egresados</span>
+        </div>
       </div>
+    </div>
+  ))}
+
+  <div class="hero-dots">
+    {heroSlides.map((_, i) => (
+      <button class={`hero-dot${i === 0 ? ' active' : ''}`} data-dot={i} aria-label={`Slide ${i+1}`}></button>
     ))}
   </div>
 
-  <div class="scroll-hint" id="scroll-hint">
-    <div class="scroll-line"></div>
-    <span>Explorar</span>
+  <div class="hero-controls">
+    <button class="hc-btn" id="hc-prev" aria-label="Anterior">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="hc-btn" id="hc-next" aria-label="Siguiente">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <div class="hero-progress">
+    <div class="hero-progress-bar" id="hero-prog-bar"></div>
   </div>
 </section>
 
-<!-- MARQUEE STRIP -->
+<!-- MARQUEE -->
 <div id="marquee-strip" aria-hidden="true">
   <div style="display:flex;overflow:hidden;">
     <div class="marquee-track">
@@ -755,31 +723,71 @@ const instalaciones = [
   </div>
 </div>
 
-<!-- CURSOS (grid fijo) -->
-<section id="cursos">
-  <div class="section-wrap">
-    <div class="section-eyebrow">Oferta Académica</div>
-    <h2 class="section-title">PROGRAMAS <span class="hl">CERTIFI</span><br/>CADOS</h2>
+<!-- ABOUT — Azul -->
+<section id="about">
+  <div class="about-wrap">
+    <div class="about-grid">
+      <div class="about-left anim-left">
+        <div class="about-eyebrow">Quiénes Somos</div>
+        <h2 class="about-h2">INSTITUTO DE <span class="hl">FORMACIÓN</span> DEPORTIVA Y EMPRESARIAL</h2>
+        <p class="about-desc">
+          INFOCADE lleva más de 8 años certificando profesionales del deporte y el ámbito empresarial. Nuestros programas son diseñados y dictados por árbitros, entrenadores y gestores activos del sector.
+        </p>
+        <div class="about-features">
+          {[
+            { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/></svg>`, t: "Certificación Reconocida",  d: "Validez nacional e internacional" },
+            { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>`, t: "Instructores en Ejercicio",  d: "Profesionales activos del sector" },
+            { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`, t: "Modalidad Flexible",         d: "Presencial, virtual o híbrido" },
+            { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>`, t: "Prácticas desde el Día 1",   d: "Simulaciones reales en campo" },
+          ].map(f => (
+            <div class="ab-feat">
+              <span class="ab-feat-icon" set:html={f.icon} />
+              <div>
+                <div class="ab-feat-title">{f.t}</div>
+                <div class="ab-feat-desc">{f.d}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="about-right anim-right" style="padding:20px 20px 28px 0;">
+        <div class="about-mosaic">
+          <div class="ab-img"><img src="/images/jun.jpg" alt="Clase" onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=400&q=80'" /></div>
+          <div class="ab-img"><img src="/images/1.png"   alt="Campo" onerror="this.src='https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&q=80'" /></div>
+          <div class="ab-img span2"><img src="/images/6.png" alt="Deporte" onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80'" /></div>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">8+</div>
+          <div class="about-badge-lbl">Años de Experiencia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="cursos-grid">
-      {carreras.map(c => (
-        <div class="curso-card">
-          <div class="curso-img-wrap">
-            <img
-              src={c.imagen}
-              alt={c.nombre}
-              class="curso-img"
-              onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=600&q=80'"
-            />
-            <span class="curso-code-badge">{c.code}</span>
+<!-- SERVICIOS — Amarillo -->
+<section id="servicios">
+  <div class="sw">
+    <div class="sec-head">
+      <div class="anim-up">
+        <div class="eyebrow yellow">Nuestras Especialidades</div>
+        <h2 class="sec-title">ÁREAS DE <span class="hl-yellow">FORMACIÓN</span></h2>
+      </div>
+      <a href="#programas" class="link-all anim-up d2">
+        Ver todos
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="servicios-grid">
+      {servicios.map((s, i) => (
+        <div class={`serv-card anim-up d${i+1}`}>
+          <div class="serv-img">
+            <img src={s.imagen} alt={s.titulo} onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=400&q=80'" />
           </div>
-          <div class="curso-body">
-            <h3 class="curso-nombre">{c.nombre}</h3>
-            <p class="curso-desc">{c.desc}</p>
-            <span class="curso-cert">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-              Certificado Incluido
-            </span>
+          <div class="serv-body">
+            <div class="serv-dot"></div>
+            <div class="serv-title">{s.titulo}</div>
+            <div class="serv-desc">{s.desc}</div>
           </div>
         </div>
       ))}
@@ -787,41 +795,83 @@ const instalaciones = [
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-wrap">
-    <div class="about-layout">
-      <div class="about-img-wrap">
-        <img
-          src="/imagen/voley.jpg"
-          alt="Instalaciones INFOCADE"
-          class="about-img"
-          onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=800&q=80'"
-        />
-        <div class="about-frame"></div>
-        <span class="about-big-num">11</span>
+<!-- PROGRAMAS — Rojo -->
+<section id="programas">
+  <div class="sw">
+    <div class="sec-head">
+      <div class="anim-up">
+        <div class="eyebrow red">Oferta Académica</div>
+        <h2 class="sec-title">PROGRAMAS <span class="hl-red">CERTIFICADOS</span></h2>
       </div>
-      <div class="about-right">
-        <div>
-          <div class="section-eyebrow">Por Que Elegirnos</div>
-          <h2 class="about-claim">FORMACION<br/>QUE <span class="hl">TRANSFORMA</span><br/>CARRERAS</h2>
+    </div>
+
+    <div class="prog-tabs anim-up d1" id="prog-tabs">
+      <button class="prog-tab active" data-filter="Todos">Todos</button>
+      <button class="prog-tab" data-filter="Arbitraje">Arbitraje</button>
+      <button class="prog-tab" data-filter="Entrenamiento">Entrenamiento</button>
+      <button class="prog-tab" data-filter="Gestión">Gestión</button>
+      <button class="prog-tab" data-filter="Comunicación">Comunicación</button>
+      <button class="prog-tab" data-filter="Marketing">Marketing</button>
+      <button class="prog-tab" data-filter="Tecnología">Tecnología</button>
+    </div>
+
+    <div class="prog-grid" id="prog-grid">
+      {carreras.map((c, i) => (
+        <div
+          class="prog-card visible anim-scale"
+          data-cat={catMap[c.code]}
+          style={`transition-delay:${(i % 4) * 0.07}s`}
+        >
+          <div class="prog-card-img">
+            <img src={c.imagen} alt={c.nombre} onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=400&q=80'" />
+            <div class="prog-card-img-overlay"></div>
+            <span class="prog-cat-badge">{catMap[c.code]}</span>
+          </div>
+          <div class="prog-card-body">
+            <div class="prog-card-code">{c.code}</div>
+            <div class="prog-card-title">{c.nombre}</div>
+            <div class="prog-card-meta">
+              <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="prog-cta">
+                Ver más
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
-        <p class="about-body">
-          INFOCADE es el referente en formación deportiva y empresarial certificada. Nuestros programas combinan teoría aplicada con experiencia real en campo, preparando profesionales listos para el mercado.
-        </p>
-        <div class="about-list">
-          {[
-            { label: "Instructores en Ejercicio Activo" },
-            { label: "Certificacion con Respaldo Institucional" },
-            { label: "Modalidad Presencial y Virtual" },
-            { label: "Proyectos Practicos Desde el Dia 1" },
-            { label: "Red de Contactos Deportivos y Empresariales" },
-          ].map(item => (
-            <div class="about-item">
-              <div class="about-item-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- WHY — Azul -->
+<section id="why">
+  <div class="sw">
+    <div class="why-grid">
+      <div class="why-img-col anim-left">
+        <img src="/images/jun.jpg" alt="Formación INFOCADE" class="why-img-main"
+             onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=800&q=80'" />
+        <div class="why-float">
+          <div class="why-float-num">100%</div>
+          <div class="why-float-lbl">Certificación Válida</div>
+        </div>
+        <div class="why-float-2">
+          <div class="why-float-num">11</div>
+          <div class="why-float-lbl">Programas Activos</div>
+        </div>
+      </div>
+      <div>
+        <div class="anim-right">
+          <div class="eyebrow blue">Por Qué Elegirnos</div>
+          <h2 class="sec-title" style="margin-bottom:36px">LO QUE NOS HACE <span class="hl-blue">DIFERENTES</span></h2>
+        </div>
+        <div class="why-items">
+          {whyItems.map((item, i) => (
+            <div class={`why-item anim-right d${i+1}`}>
+              <span class="why-num">0{i+1}</span>
+              <div>
+                <div class="why-t">{item.t}</div>
+                <div class="why-d">{item.d}</div>
               </div>
-              <span class="about-item-text">{item.label}</span>
             </div>
           ))}
         </div>
@@ -830,36 +880,71 @@ const instalaciones = [
   </div>
 </section>
 
-<!-- TESTIMONIOS -->
-<section id="testimonios">
-  <div class="section-wrap">
-    <div class="section-eyebrow">Testimonios</div>
-    <h2 class="section-title">LO QUE DICEN<br/><span class="hl">NUESTROS</span> ALUMNOS</h2>
-    <div class="testimonios-grid">
-      {testimonios.map(t => (
-        <div class="testimonio-card">
-          <p class="testimonio-cita">“{t.cita}”</p>
-          <div class="testimonio-autor">{t.autor}</div>
-          <div class="testimonio-rol">{t.rol}</div>
+<!-- STATS — Amarillo sobre negro -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="stats-grid">
+      {stats.map((s, i) => (
+        <div class={`stat-block anim-up d${i+1}`}>
+          <div class="stat-num">{s.num}</div>
+          <div class="stat-lbl">{s.label}</div>
         </div>
       ))}
     </div>
   </div>
 </section>
 
-<!-- INSTALACIONES (grid, sin scroll) -->
-<section id="instalaciones">
-  <div class="section-wrap">
-    <div class="section-eyebrow">Nuestras Instalaciones</div>
-    <h2 class="section-title">ESPACIOS <span class="hl">DISEÑADOS</span><br/>PARA EL DEPORTE</h2>
-    <div class="instalaciones-grid">
-      {instalaciones.map(item => (
-        <div class="galeria-item">
-          <img src={item.imagen} alt={item.titulo} onerror="this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80'" />
-          <div class="galeria-info">
-            <h3>{item.titulo}</h3>
-            <p>{item.desc}</p>
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="sw">
+    <div class="sec-head">
+      <div class="anim-up">
+        <div class="eyebrow yellow">Testimonios</div>
+        <h2 class="sec-title">LO QUE DICEN<br/><span class="hl-yellow">NUESTROS</span> ALUMNOS</h2>
+      </div>
+    </div>
+    <div class="testi-grid">
+      {testimonios.map((t, i) => (
+        <div class={`testi-card anim-up d${i+1}`}>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-cita">"{t.cita}"</p>
+          <div class="testi-footer">
+            <div class="testi-av">{t.ini}</div>
+            <div>
+              <div class="testi-autor">{t.autor}</div>
+              <div class="testi-rol">{t.rol}</div>
+            </div>
           </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- VACANTES — Amarillo -->
+<section id="vacantes">
+  <div class="sw">
+    <div class="sec-head">
+      <div class="anim-up">
+        <div class="eyebrow yellow">Oportunidades</div>
+        <h2 class="sec-title">CONSTRUYE TU <span class="hl-blue">CARRERA</span><br/>CON NOSOTROS</h2>
+      </div>
+    </div>
+    <p class="anim-up" style="font-size:0.95rem;color:var(--soft);margin-bottom:36px;max-width:520px;line-height:1.75;">
+      Al graduarte en INFOCADE accedes a nuestra red de organizaciones aliadas. Estas son algunas posiciones solicitadas por nuestros egresados.
+    </p>
+    <div class="vacantes-list">
+      {vacantes.map((v, i) => (
+        <div class={`vacante-row anim-up d${i+1}`}>
+          <span class="vac-num">0{i+1}</span>
+          <div class="vac-info">
+            <div class="vac-cargo">{v.cargo}</div>
+            <div class="vac-area">{v.area}</div>
+          </div>
+          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="btn-apply">
+            Inscribirme
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
         </div>
       ))}
     </div>
@@ -868,93 +953,148 @@ const instalaciones = [
 
 <!-- CTA -->
 <section id="cta">
-  <div class="cta-bg-img"></div>
-  <div class="cta-diag"></div>
+  <img src="/images/mon.webp" alt="" class="cta-bg-img" aria-hidden="true"
+       onerror="this.style.display='none'" />
   <div class="cta-inner">
-    <h2 class="cta-h2">
-      <span class="l1">TU CARRERA</span>
-      <span class="l2">PROFESIONAL</span>
-      <span class="l3">EMPIEZA HOY.</span>
-    </h2>
-    <div class="cta-right">
-      <p class="cta-sub">Inscripciones abiertas. Cupos limitados para garantizar formacion personalizada.</p>
-      <div class="cta-badges">
-        {["Proceso 100% en Linea", "Certificado al Finalizar", "Inicio Inmediato"].map(b => (
-          <span class="cta-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            {b}
-          </span>
-        ))}
-      </div>
-      <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin-top:8px;font-size:0.95rem;padding:17px 44px;">
+    <div class="cta-left anim-left">
+      <div class="cta-tag">Inscripciones Abiertas 2025</div>
+      <h2 class="cta-h2">TU PRÓXIMO<br/>NIVEL ESTÁ<br/><span class="c-red">AQUÍ.</span></h2>
+      <p class="cta-sub">Más de 800 profesionales del deporte ya dieron el paso. Certifícate con los mejores.</p>
+    </div>
+    <div class="cta-right anim-right">
+      <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="btn-cta-prim">
         Inscribirme Ahora
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
+      <a href="#servicios" class="btn-cta-sec">Ver Programas</a>
+      <div class="cta-chips">
+        <span class="cta-chip"><span class="chip-d"></span> Certificado Válido</span>
+        <span class="cta-chip"><span class="chip-d"></span> Horario Flexible</span>
+        <span class="cta-chip"><span class="chip-d"></span> 100% Certificación</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-brand">INFO<em>CADE</em></span>
-  <span class="footer-copy">© 2025 INFOCADE · Instituto de Formacion Deportiva y Empresarial · Todos los derechos reservados</span>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">INFO<em>CADE</em></div>
+      <p class="footer-desc">Instituto de Formación Deportiva y Empresarial. Certificamos profesionales del deporte y la gestión para el mercado laboral actual.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Programas</div>
+      <div class="footer-links">
+        <a href="#servicios" class="footer-link">Arbitraje Deportivo</a>
+        <a href="#servicios" class="footer-link">Entrenamiento de Élite</a>
+        <a href="#servicios" class="footer-link">Marketing Deportivo</a>
+        <a href="#servicios" class="footer-link">Comunicación Deportiva</a>
+        <a href="#servicios" class="footer-link">Gestión y Dirigencia</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Institución</div>
+      <div class="footer-links">
+        <a href="#about"       class="footer-link">Quiénes Somos</a>
+        <a href="#testimonios" class="footer-link">Egresados</a>
+        <a href="#vacantes"    class="footer-link">Vacantes</a>
+        <a href="#why"         class="footer-link">Por Qué INFOCADE</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <div class="footer-links">
+        <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="footer-link">Formulario de Inscripción</a>
+        <span class="footer-link">info@infocade.edu</span>
+        <span class="footer-link">+591 4 000 0000</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 INFOCADE — Todos los derechos reservados</span>
+    <span class="footer-accent">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Formación deportiva certificada
+    </span>
+  </div>
 </footer>
 
 <script>
-  // Solo animación de entrada del hero, sin ScrollTrigger
-  const initGSAP = async () => {
-    try {
-      const gsapModule = await import('gsap');
-      return { gsap: gsapModule.default };
-    } catch (e) {
-      console.warn('GSAP no encontrado como módulo, cargando desde CDN...');
-      await new Promise((resolve) => {
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
-        script.onload = resolve;
-        document.head.appendChild(script);
-      });
-      return { gsap: (window as any).gsap };
+  /* ── CARRUSEL HERO ── */
+  (() => {
+    const slides   = Array.from(document.querySelectorAll<HTMLElement>('.hero-slide'));
+    const dots     = Array.from(document.querySelectorAll<HTMLButtonElement>('.hero-dot'));
+    const bar      = document.getElementById('hero-prog-bar');
+    const DURATION = 5500;
+    let current = 0;
+    let timer: ReturnType<typeof setTimeout>;
+
+    function goTo(idx: number) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (idx + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      resetBar();
     }
-  };
 
-  const runHeroAnimation = (gsap: any) => {
-    const kicker = document.getElementById('hero-eyebrow');
-    const h1Lines = document.querySelectorAll('#hero-h1 .h1-inner');
-    const heroTagline = document.getElementById('hero-tagline');
-    const heroBtns = document.getElementById('hero-btns');
-    const heroStats = document.getElementById('hero-stats');
-    const scrollHint = document.getElementById('scroll-hint');
+    function resetBar() {
+      if (!bar) return;
+      bar.classList.remove('running');
+      void bar.offsetWidth;
+      bar.classList.add('running');
+      clearTimeout(timer);
+      timer = setTimeout(() => goTo(current + 1), DURATION);
+    }
 
-    if (!kicker || !h1Lines.length || !heroTagline || !heroBtns || !heroStats || !scrollHint) return;
+    document.getElementById('hc-prev')?.addEventListener('click', () => goTo(current - 1));
+    document.getElementById('hc-next')?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 
-    gsap.set('#hero-h1 .h1-line', { overflow: 'hidden', display: 'block' });
-    gsap.set(h1Lines, { yPercent: 110, skewY: 4 });
-    gsap.set([heroTagline, heroBtns, heroStats], { opacity: 0, y: 24 });
+    const hero = document.getElementById('hero')!;
+    hero.addEventListener('mouseenter', () => { clearTimeout(timer); bar?.classList.remove('running'); });
+    hero.addEventListener('mouseleave', resetBar);
 
-    const tl = gsap.timeline({ delay: 0.15 });
-    tl
-      .to(kicker, { opacity: 1, duration: 0.5, ease: 'power2.out' })
-      .to(h1Lines, {
-        yPercent: 0, skewY: 0,
-        duration: 0.9, ease: 'power4.out', stagger: 0.1
-      }, '-=0.2')
-      .to(heroTagline, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.4')
-      .to(heroBtns, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, '-=0.45')
-      .to(heroStats, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.08 }, '-=0.4')
-      .to(scrollHint, { opacity: 1, duration: 0.5 }, '-=0.3');
-  };
+    resetBar();
+  })();
 
-  // Pausa del marquee al hover
-  const marqueeTrack = document.querySelector('.marquee-track') as HTMLElement;
-  if (marqueeTrack) {
-    marqueeTrack.addEventListener('mouseenter', () => marqueeTrack.style.animationPlayState = 'paused');
-    marqueeTrack.addEventListener('mouseleave', () => marqueeTrack.style.animationPlayState = 'running');
+  /* ── FILTROS PROGRAMAS ── */
+  (() => {
+    const tabs  = document.querySelectorAll<HTMLButtonElement>('.prog-tab');
+    const cards = document.querySelectorAll<HTMLElement>('.prog-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter!;
+        cards.forEach((card, i) => {
+          const match = filter === 'Todos' || card.dataset.cat === filter;
+          card.classList.toggle('visible', match);
+          (card as HTMLElement).style.transitionDelay = match ? `${(i % 4) * 0.07}s` : '0s';
+        });
+      });
+    });
+  })();
+
+  /* ── NAVBAR SCROLL ── */
+  const nb = document.getElementById('navbar')!;
+  window.addEventListener('scroll', () => nb.classList.toggle('scrolled', scrollY > 40), { passive: true });
+
+  /* ── MARQUEE PAUSE ── */
+  const mTrack = document.querySelector('.marquee-track') as HTMLElement;
+  if (mTrack) {
+    mTrack.addEventListener('mouseenter', () => mTrack.style.animationPlayState = 'paused');
+    mTrack.addEventListener('mouseleave', () => mTrack.style.animationPlayState = 'running');
   }
 
-  // Inicializar
-  initGSAP().then(({ gsap }) => {
-    if (gsap) runHeroAnimation(gsap);
-  }).catch(err => console.error('Error al cargar GSAP:', err));
+  /* ── SCROLL REVEAL ── */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+  document.querySelectorAll('.anim-up, .anim-left, .anim-right, .anim-scale').forEach(el => io.observe(el));
 </script>
 </Layout>

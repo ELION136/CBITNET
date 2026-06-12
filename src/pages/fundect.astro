@@ -1,109 +1,347 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-
 const projects = [
   {
-    tag: "PROYECTO 01 / INFORMÁTICA DEPORTIVA",
+    tag: "Informática Deportiva",
     title: "Plataforma de Analítica de Rendimiento",
-    desc: "Desarrollamos algoritmos de seguimiento cinemático de código abierto para evaluar el desempeño físico de jóvenes en riesgo social.",
-    image: "https://picsum.photos/seed/fundect1/800/600"
+    desc: "Algoritmos de seguimiento cinemático de código abierto para evaluar el desempeño físico de jóvenes en riesgo social.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&auto=format&fit=crop&q=85",
+    alt: "Pantallas de analítica de datos deportivos",
+    color: "#0EA5E9"
   },
   {
-    tag: "PROYECTO 02 / BECAS DE TECNOLOGÍA",
+    tag: "Becas Tecnológicas",
     title: "Programa Semillas Digitales",
     desc: "Financiamos la educación superior en computación y desarrollo de software de atletas destacados sin recursos.",
-    image: "https://picsum.photos/seed/fundect2/800/600"
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=900&auto=format&fit=crop&q=85",
+    alt: "Joven programando en computadora",
+    color: "#F97316"
   },
   {
-    tag: "PROYECTO 03 / ROBÓTICA COMUNITARIA",
+    tag: "Robótica Comunitaria",
     title: "Talleres Tecnológicos Deportivos",
     desc: "Fusionamos la física del deporte con talleres de robótica y sensores interactivos para motivar el ingenio tecnológico en comunidades.",
-    image: "https://picsum.photos/seed/fundect3/800/600"
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&auto=format&fit=crop&q=85",
+    alt: "Taller de robótica educativa",
+    color: "#F59E0B"
   }
 ];
 
+const events = [
+  {
+    date: "14 JUL 2025",
+    type: "Feria Científica",
+    title: "Expo Ciencia & Comunidad 2025",
+    location: "Centro Cultural — Cochabamba",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&auto=format&fit=crop&q=80",
+  },
+  {
+    date: "22 AGO 2025",
+    type: "Taller",
+    title: "Robótica para Jóvenes Deportistas",
+    location: "Escuela Técnica — Sacaba",
+    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&auto=format&fit=crop&q=80",
+  },
+  {
+    date: "09 SEP 2025",
+    type: "Relaciones Institucionales",
+    title: "Convenio Universidad — Fundect",
+    location: "UMSS — Cochabamba",
+    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&auto=format&fit=crop&q=80",
+  },
+  {
+    date: "18 OCT 2025",
+    type: "Congreso",
+    title: "Cumbre Regional de Innovación Social",
+    location: "Centro de Convenciones — Bolivia",
+    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80",
+  },
+];
+
+const gallery = [
+  { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=80", alt: "Feria científica estudiantil", size: "tall" },
+  { src: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&auto=format&fit=crop&q=80", alt: "Taller de robótica" },
+  { src: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&auto=format&fit=crop&q=80", alt: "Convenio institucional" },
+  { src: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=900&auto=format&fit=crop&q=80", alt: "Jóvenes en congreso", size: "wide" },
+  { src: "https://images.unsplash.com/photo-1496065187959-7f07b8353c55?w=600&auto=format&fit=crop&q=80", alt: "Laboratorio tecnológico" },
+  { src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&auto=format&fit=crop&q=80", alt: "Exposición estudiantil" },
+  { src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&auto=format&fit=crop&q=80", alt: "Trabajo en equipo" },
+];
+
 const values = [
-  { title: "Innovación Abierta", desc: "Creemos en la democratización del software y la ingeniería para el desarrollo comunitario." },
-  { title: "Equidad Social", desc: "El talento tecnológico no tiene origen social; abrimos puertas a quienes más lo necesitan." },
-  { title: "Sinergia Integral", desc: "El entrenamiento mental y físico construyen un carácter resiliente y enfocado al éxito." }
+  {
+    title: "Innovación Abierta",
+    desc: "Democratizamos el software y la ingeniería para el beneficio comunitario.",
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+  },
+  {
+    title: "Equidad Social",
+    desc: "El talento tecnológico no tiene origen social; abrimos puertas a quienes más lo necesitan.",
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`,
+  },
+  {
+    title: "Sinergia Integral",
+    desc: "Entrenamiento mental y físico que construye carácter resiliente y enfocado.",
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 6 0 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 6 0V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>`,
+  },
+];
+
+const tickerItems = [
+  "Ferias Científicas", "Robótica Educativa", "Becas Tecnológicas", "Talleres STEM",
+  "Relaciones Institucionales", "Software Libre", "Ciencia Aplicada", "Congresos",
+  "Innovación Social", "Deporte & Tecnología",
+];
+
+const stats = [
+  { val: "300", suffix: "+", label: "Jóvenes formados" },
+  { val: "18",  suffix: "",  label: "Becas otorgadas" },
+  { val: "5",   suffix: "K+", label: "Horas de taller" },
+  { val: "12",  suffix: "",  label: "Eventos realizados" },
 ];
 ---
 
-<Layout title="FUNDECT | Innovación Tecnológica y Social">
+<Layout title="FUNDECT | Educación, Ciencia y Tecnología">
 
-  
-  <main class="bg-[#030303] text-white min-h-screen overflow-hidden pt-28">
-    
-    <!-- Hero Section: Organic Purple/Fuchsia Mesh Background -->
-    <section class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-6 py-12 md:py-0 border-b border-white/5">
-      
-      <!-- Flowing mesh gradients -->
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.05)_0%,transparent_60%)] pointer-events-none"></div>
-      <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[350px] md:w-[600px] h-[350px] md:h-[600px] bg-fuchsia-500/10 blur-[130px] md:blur-[180px] rounded-full pointer-events-none"></div>
-      
-      <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 border border-purple-500/30 bg-purple-950/20 text-purple-400 rounded-full text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-8">
-          <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
-          FUNDACIÓN PARA EL DESARROLLO DE CIENCIA, DEPORTE & TECNOLOGÍA
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <main class="fd-root">
+
+    <!-- ═══════════════════════════════════════════════════════
+         HERO — imagen de fondo full, logo grande flotante
+    ═══════════════════════════════════════════════════════ -->
+    <section class="fd-hero" id="fd-hero">
+
+      <!-- Imagen de fondo full-bleed -->
+      <div class="fd-hero-bg">
+        <img
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1800&auto=format&fit=crop&q=85"
+          alt=""
+          aria-hidden="true"
+          class="fd-hero-bg-img"
+        />
+        <!-- Gradiente de identidad: azul marino → naranja cálido abajo-derecha -->
+        <div class="fd-hero-gradient" aria-hidden="true"></div>
+      </div>
+
+      <!-- Contenido del hero -->
+      <div class="fd-hero-content">
+
+        <!-- Logo —GRANDE— con halo -->
+        <div class="fd-hero-logo-wrap fd-anim-logo">
+          <div class="fd-logo-halo" aria-hidden="true"></div>
+          <img
+            src="/images/fd.png"
+            alt="Fundect — Fundación para la Educación, la Ciencia y la Tecnología"
+            class="fd-hero-logo"
+          />
         </div>
-        
-        <h1 class="text-6xl md:text-8xl font-display font-bold tracking-widest text-white leading-none uppercase mb-6 hero-title">
-          FUNDECT<span class="text-fuchsia-400 font-sans">_</span>
+
+        <!-- Eyebrow -->
+        <div class="fd-hero-eyebrow fd-anim-eyebrow">
+          <span class="fd-dot fd-dot--pulse" aria-hidden="true"></span>
+          Fundación para la Educación, la Ciencia y la Tecnología
+        </div>
+
+        <!-- Headline display -->
+        <h1 class="fd-hero-h1 fd-anim-title">
+          Ciencia que<br/><em>transforma</em><br/>comunidades
         </h1>
-        
-        <p class="text-gray-400 text-sm md:text-lg max-w-xl md:max-w-2xl leading-relaxed mb-12 hero-desc">
-          Impulsamos el futuro de la sociedad a través del desarrollo científico y tecnológico aplicado al entorno comunitario y deportivo. Rompemos la brecha digital con educación y ciencia de élite.
+
+        <p class="fd-hero-desc fd-anim-desc">
+          Rompemos la brecha digital con educación de élite, becas tecnológicas
+          y robótica comunitaria para jóvenes con talento real.
         </p>
 
-        <a 
-          href="#projects-section" 
-          class="px-8 py-3.5 border border-purple-500/50 hover:border-purple-400 bg-purple-500/10 text-purple-300 hover:bg-purple-500 hover:text-black font-bold tracking-widest text-xs uppercase transition-all duration-300 rounded-md"
-        >
-          CONOCER NUESTROS PROYECTOS
-        </a>
-      </div>
-    </section>
-
-    <!-- Asymmetrical Projects Grid Section -->
-    <section class="py-24 px-6 relative" id="projects-section">
-      <div class="absolute top-1/3 left-0 w-[300px] h-[300px] bg-purple-500/5 blur-[100px] rounded-full pointer-events-none"></div>
-
-      <div class="max-w-[1400px] mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-4">
-          <div class="text-left">
-            <span class="text-purple-400 font-display text-sm tracking-[0.3em] block mb-2">INICIATIVAS DE CAMBIO</span>
-            <h2 class="text-4xl md:text-5xl font-display font-bold text-white tracking-widest uppercase">PROYECTOS TECNOCÍVICOS</h2>
-          </div>
-          <div class="h-[2px] w-24 bg-purple-500/50 hidden md:block"></div>
+        <div class="fd-hero-btns fd-anim-btns">
+          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="fd-btn-solar">
+            Inscribirse ahora
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#fd-events" class="fd-btn-glass">
+            Ver eventos
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+          </a>
         </div>
 
-        <!-- Asymmetrical layout (row-alternating) -->
-        <div class="space-y-32">
-          {projects.map((proj, idx) => (
-            <div class={`project-row flex flex-col ${idx % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-12 lg:gap-20`}>
-              
-              <!-- Image Column -->
-              <div class="w-full md:w-1/2 relative">
-                <!-- Decorative frame and shadow -->
-                <div class="absolute -top-4 -left-4 w-full h-full border-2 border-purple-500/20 z-0 rounded-lg group-hover:scale-102 transition-transform"></div>
-                <div class="relative z-10 w-full h-[300px] md:h-[450px] overflow-hidden rounded-lg shadow-2xl group">
-                  <img src={proj.image} alt={proj.title} class="w-full h-full object-cover grayscale opacity-70 hover:opacity-100 hover:scale-105 hover:grayscale-0 transition-all duration-700 pointer-events-auto" />
-                  <div class="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent"></div>
-                </div>
-              </div>
+      </div>
 
-              <!-- Text Content Column -->
-              <div class="w-full md:w-1/2 flex flex-col justify-center text-left project-content">
-                <span class="text-purple-400 font-mono text-xs tracking-widest mb-3 block">{proj.tag}</span>
-                <h3 class="text-3xl md:text-4xl font-display font-bold text-white mb-6 leading-tight">{proj.title}</h3>
-                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8">{proj.desc}</p>
-                <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-4 text-white font-bold uppercase tracking-widest hover:text-purple-400 transition-colors w-max group">
-                  Postular/Involucrarse
-                  <div class="w-12 h-[1px] bg-purple-500 group-hover:w-20 transition-all duration-300"></div>
+      <!-- Estadísticas en barra inferior del hero -->
+      <div class="fd-hero-stats fd-anim-stats" id="fd-stats">
+        {stats.map((s, i) => (
+          <>
+            <div class="fd-hstat">
+              <span class="fd-hstat-num">
+                <span class="fd-count" data-target={s.val}>{s.val}</span>{s.suffix}
+              </span>
+              <span class="fd-hstat-label">{s.label}</span>
+            </div>
+            {i < stats.length - 1 && <div class="fd-hstat-sep" aria-hidden="true"></div>}
+          </>
+        ))}
+      </div>
+
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         TICKER ANIMADO
+    ═══════════════════════════════════════════════════════ -->
+    <div class="fd-ticker" aria-hidden="true">
+      <div class="fd-ticker-track">
+        {[...tickerItems, ...tickerItems].map(item => (
+          <span class="fd-ticker-item">
+            <span class="fd-ticker-dot" aria-hidden="true"></span>
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         MISIÓN — split con imagen grande
+    ═══════════════════════════════════════════════════════ -->
+    <section class="fd-mission" id="fd-mission">
+
+      <div class="fd-mission-img-col">
+        <div class="fd-mission-img-inner">
+          <img
+            src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1000&auto=format&fit=crop&q=85"
+            alt="Jóvenes en feria científica de Fundect"
+            loading="lazy"
+          />
+          <!-- Badge flotante sobre la imagen -->
+          <div class="fd-mission-badge">
+            <span class="fd-badge-num fd-count-badge" data-target="300">0</span>
+            <span class="fd-badge-label">jóvenes<br/>impactados</span>
+          </div>
+        </div>
+        <!-- Segunda imagen pequeña superpuesta -->
+        <div class="fd-mission-img-secondary">
+          <img
+            src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500&auto=format&fit=crop&q=80"
+            alt="Taller de tecnología"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <div class="fd-mission-text">
+        <span class="fd-eyebrow-tag">Quiénes somos</span>
+        <h2 class="fd-section-h2">
+          Una fundación hecha de<br/><em>ciencia</em> y vocación
+        </h2>
+        <p>
+          Fundect nace de la convicción de que la tecnología es la herramienta más poderosa
+          para nivelar el campo de juego. Unimos el rigor científico con la calidez comunitaria
+          para guiar a jóvenes hacia un futuro donde su talento no tenga techo.
+        </p>
+        <blockquote class="fd-blockquote">
+          "Cuando un joven entiende que puede construir soluciones, deja de ser
+          espectador de su propio destino."
+        </blockquote>
+        <p>
+          Ferias científicas, talleres de robótica, becas universitarias y convenios
+          institucionales son las herramientas con las que escribimos esa historia,
+          evento a evento, joven a joven.
+        </p>
+        <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="fd-btn-solar" style="margin-top:8px; display:inline-flex;">
+          Unirse a la misión
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         PROYECTOS — cards con esquina diagonal
+    ═══════════════════════════════════════════════════════ -->
+    <section class="fd-projects-section" id="fd-projects">
+      <div class="fd-container">
+
+        <div class="fd-section-header">
+          <div>
+            <span class="fd-eyebrow-tag">Iniciativas activas</span>
+            <h2 class="fd-section-h2">Proyectos<br/><em>tecnocívicos</em></h2>
+          </div>
+          <p class="fd-section-lead">
+            Cada proyecto es una respuesta concreta a una brecha real.<br/>
+            Tecnología con propósito y alcance comunitario.
+          </p>
+        </div>
+
+        <div class="fd-proj-grid">
+          {projects.map((proj, i) => (
+            <article class="fd-proj-card" data-delay={i * 140} style={`--proj-color: ${proj.color};`}>
+              <div class="fd-proj-img">
+                <img src={proj.image} alt={proj.alt} loading="lazy" />
+                <div class="fd-proj-img-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="fd-proj-body">
+                <span class="fd-proj-tag">{proj.tag}</span>
+                <h3 class="fd-proj-title">{proj.title}</h3>
+                <p class="fd-proj-desc">{proj.desc}</p>
+                <a
+                  href="https://forms.gle/cVVdBKkZb4oSyXf27"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="fd-proj-link"
+                >
+                  Postular / Involucrarse
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
               </div>
+            </article>
+          ))}
+        </div>
 
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         EVENTOS — grid editorial con fechas
+    ═══════════════════════════════════════════════════════ -->
+    <section class="fd-events-section" id="fd-events">
+
+      <!-- Franja de color de fondo con imagen superpuesta -->
+      <div class="fd-events-backdrop" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1600&auto=format&fit=crop&q=70"
+          alt=""
+        />
+        <div class="fd-events-backdrop-overlay"></div>
+      </div>
+
+      <div class="fd-container fd-events-inner">
+
+        <div class="fd-events-header">
+          <span class="fd-eyebrow-tag fd-eyebrow-tag--light">Agenda</span>
+          <h2 class="fd-section-h2 fd-section-h2--light">Eventos &amp;<br/><em>actividades</em></h2>
+        </div>
+
+        <div class="fd-events-grid">
+          {events.map((ev, i) => (
+            <div class="fd-event-card" data-delay={i * 100}>
+              <div class="fd-event-img">
+                <img src={ev.image} alt={ev.title} loading="lazy" />
+                <span class="fd-event-type">{ev.type}</span>
+              </div>
+              <div class="fd-event-body">
+                <time class="fd-event-date">{ev.date}</time>
+                <h3 class="fd-event-title">{ev.title}</h3>
+                <div class="fd-event-location">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  {ev.location}
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -111,54 +349,1142 @@ const values = [
       </div>
     </section>
 
-    <!-- Values / Core Cards Section -->
-    <section class="py-24 px-6 relative border-t border-white/5 bg-[#050505]/30">
-      <div class="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-purple-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
-      <div class="max-w-[1200px] mx-auto text-center">
-        <span class="text-purple-400 font-display text-sm tracking-[0.3em] block mb-2">IDEARIO CIENTÍFICO</span>
-        <h2 class="text-4xl md:text-5xl font-display font-bold text-white tracking-widest uppercase mb-16">FILOSOFÍA DE ACCIÓN</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="values-grid">
-          {values.map((val) => (
-            <div class="p-8 border border-white/10 bg-black/50 hover:border-purple-500/30 transition-all duration-300 rounded-lg text-center flex flex-col justify-center relative overflow-hidden group">
-              <!-- Grid glow dot hover -->
-              <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-purple-500/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-              <h3 class="text-xl font-display text-white group-hover:text-purple-400 transition-colors mb-4 relative z-10">{val.title}</h3>
-              <p class="text-gray-400 text-sm leading-relaxed relative z-10">{val.desc}</p>
+    <!-- ═══════════════════════════════════════════════════════
+         GALERÍA — mosaico masonry asimétrico
+    ═══════════════════════════════════════════════════════ -->
+    <section class="fd-gallery-section" id="fd-gallery">
+      <div class="fd-container">
+        <div class="fd-gallery-header">
+          <span class="fd-eyebrow-tag">Momentos reales</span>
+          <h2 class="fd-section-h2">Nuestra comunidad<br/><em>en acción</em></h2>
+        </div>
+        <div class="fd-gallery-grid">
+          {gallery.map((img, i) => (
+            <div
+              class={`fd-gal-item ${img.size === 'tall' ? 'fd-gal-tall' : ''} ${img.size === 'wide' ? 'fd-gal-wide' : ''}`}
+              data-delay={i * 80}
+            >
+              <img src={img.src} alt={img.alt} loading="lazy" />
+              <div class="fd-gal-overlay" aria-hidden="true">
+                <span class="fd-gal-caption">{img.alt}</span>
+              </div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- Support Call to Action -->
-    <section class="py-32 px-6 relative text-center">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[600px] h-[350px] md:h-[600px] bg-purple-500/10 blur-[120px] md:blur-[180px] rounded-full pointer-events-none"></div>
 
-      <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-        <h2 class="text-4xl md:text-6xl font-display font-bold text-white tracking-widest uppercase mb-6 cta-title">
-          SE PARTE DEL CÍRCULO CIENTÍFICO-DEPORTIVO
+    <!-- ═══════════════════════════════════════════════════════
+         VALORES — cards con acento superior de color
+    ═══════════════════════════════════════════════════════ -->
+    <section class="fd-values-section" id="fd-values">
+      <div class="fd-container">
+        <div class="fd-section-center">
+          <span class="fd-eyebrow-tag">Ideario científico</span>
+          <h2 class="fd-section-h2">Filosofía<br/>de <em>acción</em></h2>
+        </div>
+        <div class="fd-values-grid" id="fd-values-grid">
+          {values.map((val, i) => (
+            <div class="fd-val-card" data-delay={i * 120}>
+              <div class="fd-val-icon" set:html={val.icon}></div>
+              <h3 class="fd-val-title">{val.title}</h3>
+              <p class="fd-val-desc">{val.desc}</p>
+              <div class="fd-val-bar" aria-hidden="true"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         CTA FINAL — imagen full + logo
+    ═══════════════════════════════════════════════════════ -->
+    <section class="fd-cta-section" id="fd-cta">
+      <div class="fd-cta-bg">
+        <img
+          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&auto=format&fit=crop&q=80"
+          alt=""
+          aria-hidden="true"
+        />
+        <div class="fd-cta-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="fd-cta-inner">
+        <img src="/images/fd.png" alt="Fundect" class="fd-cta-logo" />
+        <h2 class="fd-cta-h2">
+          Sé parte del<br/><em>círculo científico</em>
         </h2>
-        <p class="text-gray-400 text-sm md:text-lg leading-relaxed mb-12 max-w-2xl">
-          Nuestras convocatorias de becas científicas de alto nivel están abiertas constantemente. Registra tu perfil en el formulario externo para agendar la primera prueba de aptitud tecnológica.
+        <p class="fd-cta-p">
+          Nuestras convocatorias de becas tecnológicas están abiertas constantemente.
+          Registra tu perfil y agenda tu primera prueba de aptitud.
         </p>
-
-        <a 
-          href="https://forms.gle/cVVdBKkZb4oSyXf27" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-purple-500 hover:bg-purple-400 text-black font-bold tracking-widest text-sm uppercase transition-all duration-300 shadow-[0_0_30px_rgba(168,85,247,0.3)] hover:shadow-[0_0_45px_rgba(168,85,247,0.6)] hover:scale-105 active:scale-95 group"
-        >
-          INSCRIBIRSE AHORA
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
+        <div class="fd-cta-btns">
+          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="fd-btn-solar">
+            Inscribirse ahora
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <button class="fd-btn-outline-white">Ser voluntario</button>
+        </div>
       </div>
     </section>
 
   </main>
+
 </Layout>
 
+
+<!-- ════════════════════════════════════════════════════════
+     ESTILOS
+     ════════════════════════════════════════════════════════ -->
+<style>
+
+  /* ─── Tokens ──────────────────────────────────────────── */
+  :root {
+    /* Fondo general — azul hielo claro (NO blanco, NO cream) */
+    --bg:           #EEF2FF;
+    --bg-2:         #E4EAFB;
+    --bg-dark:      #1B3461;  /* azul marino logo */
+    --bg-darkest:   #122347;
+
+    /* Acento solar — del trazo naranja del logo */
+    --solar:        #F97316;
+    --solar-dark:   #C2570A;
+    --solar-light:  #FEF3E8;
+    --solar-glow:   rgba(249,115,22,0.22);
+
+    /* Cian tecnológico */
+    --cyan:         #0EA5E9;
+    --cyan-light:   #E0F4FD;
+    --cyan-dim:     rgba(14,165,233,0.15);
+
+    /* Dorado */
+    --gold:         #F59E0B;
+
+    /* Texto */
+    --ink:          #1B3461;
+    --ink-2:        #2D4A7A;
+    --muted:        #607498;
+    --muted-light:  rgba(255,255,255,0.65);
+
+    /* Tipografía */
+    --font-display: 'Syne', system-ui, sans-serif;
+    --font-body:    'DM Sans', system-ui, sans-serif;
+
+    /* Misc */
+    --r-sm:   8px;
+    --r-md:   16px;
+    --r-lg:   24px;
+    --r-xl:   32px;
+    --sh-sm:  0 2px 16px rgba(27,52,97,0.08);
+    --sh-md:  0 8px 40px rgba(27,52,97,0.12);
+    --sh-lg:  0 20px 64px rgba(27,52,97,0.16);
+    --ease:   cubic-bezier(0.4, 0, 0.2, 1);
+    --dur:    0.38s;
+  }
+
+  /* ─── Reset base ──────────────────────────────────────── */
+  .fd-root {
+    background: var(--bg);
+    color: var(--ink);
+    overflow-x: hidden;
+    font-family: var(--font-body);
+  }
+  .fd-root * { box-sizing: border-box; }
+
+  .fd-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 52px;
+  }
+
+  /* ─── Tipografía compartida ───────────────────────────── */
+  .fd-section-h2 {
+    font-family: var(--font-display);
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 0;
+  }
+  .fd-section-h2 em { font-style: normal; color: var(--solar); }
+  .fd-section-h2--light { color: #fff; }
+  .fd-section-h2--light em { color: var(--gold); }
+
+  .fd-eyebrow-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--solar);
+    margin-bottom: 12px;
+  }
+  .fd-eyebrow-tag::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--solar);
+    flex-shrink: 0;
+  }
+  .fd-eyebrow-tag--light { color: var(--gold); }
+  .fd-eyebrow-tag--light::before { background: var(--gold); }
+
+  .fd-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+  .fd-section-lead {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 340px;
+    text-align: right;
+  }
+  .fd-section-center {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .fd-section-center .fd-eyebrow-tag::before { display: none; }
+
+  /* ─── Botones ──────────────────────────────────────────── */
+  .fd-btn-solar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--solar);
+    color: #fff;
+    border: none;
+    padding: 15px 32px;
+    border-radius: 40px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  }
+  .fd-btn-solar:hover {
+    background: var(--solar-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px var(--solar-glow);
+  }
+
+  .fd-btn-glass {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    padding: 15px 32px;
+    border-radius: 40px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .fd-btn-glass:hover {
+    background: rgba(255,255,255,0.22);
+    border-color: rgba(255,255,255,0.55);
+    transform: translateY(-2px);
+  }
+
+  .fd-btn-outline-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    padding: 15px 32px;
+    border-radius: 40px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .fd-btn-outline-white:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.6);
+  }
+
+
+  /* ════════════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════════════ */
+  .fd-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Imagen de fondo */
+  .fd-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .fd-hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform-origin: center;
+  }
+  /* Gradiente: azul marino semiopaco cubre la foto, naranja sutil en esquina */
+  .fd-hero-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(105deg,
+        rgba(27,52,97,0.92) 0%,
+        rgba(18,35,71,0.80) 55%,
+        rgba(249,115,22,0.18) 100%
+      );
+  }
+
+  /* Contenido */
+  .fd-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    padding: 120px 80px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Logo GRANDE */
+  .fd-hero-logo-wrap {
+    position: relative;
+    margin-bottom: 44px;
+  }
+  .fd-logo-halo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 100px;
+    background: radial-gradient(ellipse, rgba(249,115,22,0.22) 0%, transparent 70%);
+    pointer-events: none;
+    filter: blur(12px);
+  }
+  .fd-hero-logo {
+    height: 130px;
+    width: auto;
+    max-width: 520px;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    z-index: 1;
+    /* Quitar fondo negro del PNG con blend o drop-shadow */
+    filter: drop-shadow(0 4px 24px rgba(249,115,22,0.30));
+  }
+
+  /* Eyebrow pill */
+  .fd-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 40px;
+    padding: 8px 18px;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(6px);
+    margin-bottom: 28px;
+  }
+  .fd-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--solar);
+    flex-shrink: 0;
+  }
+  .fd-dot--pulse {
+    animation: fd-pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes fd-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.45; transform: scale(0.65); }
+  }
+
+  /* H1 hero */
+  .fd-hero-h1 {
+    font-family: var(--font-display);
+    font-size: 80px;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 24px;
+  }
+  .fd-hero-h1 em { font-style: normal; color: var(--gold); }
+
+  .fd-hero-desc {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.68);
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+  .fd-hero-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+
+  /* Stats bar bottom hero */
+  .fd-hero-stats {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: stretch;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255,255,255,0.10);
+    padding: 28px 80px;
+    gap: 0;
+    margin-top: auto;
+  }
+  .fd-hstat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .fd-hstat-num {
+    font-family: var(--font-display);
+    font-size: 46px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .fd-hstat-label {
+    font-family: var(--font-body);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+  }
+  .fd-hstat-sep {
+    width: 1px;
+    background: rgba(255,255,255,0.10);
+    flex-shrink: 0;
+    margin: 0 8px;
+  }
+
+
+  /* ════════════════════════════════════════════════════════
+     TICKER
+     ════════════════════════════════════════════════════════ */
+  .fd-ticker {
+    background: var(--bg-dark);
+    border-top: none;
+    overflow: hidden;
+    padding: 14px 0;
+    white-space: nowrap;
+  }
+  .fd-ticker-track {
+    display: inline-flex;
+    gap: 0;
+    animation: fd-ticker 28s linear infinite;
+    will-change: transform;
+  }
+  .fd-ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 40px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .fd-ticker-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--solar);
+    flex-shrink: 0;
+  }
+  @keyframes fd-ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+
+  /* ════════════════════════════════════════════════════════
+     MISIÓN
+     ════════════════════════════════════════════════════════ */
+  .fd-mission {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 120px 80px;
+    max-width: 1360px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+  }
+  .fd-mission.visible { opacity: 1; transform: translateY(0); }
+
+  .fd-mission-img-col { position: relative; }
+
+  .fd-mission-img-inner {
+    position: relative;
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    height: 560px;
+    box-shadow: var(--sh-lg);
+  }
+  .fd-mission-img-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s var(--ease);
+  }
+  .fd-mission-img-inner:hover img { transform: scale(1.04); }
+
+  /* Badge flotante */
+  .fd-mission-badge {
+    position: absolute;
+    bottom: 28px;
+    left: 28px;
+    background: var(--solar);
+    color: #fff;
+    border-radius: var(--r-md);
+    padding: 16px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    box-shadow: 0 8px 28px var(--solar-glow);
+  }
+  .fd-badge-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .fd-badge-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+    line-height: 1.3;
+  }
+
+  /* Segunda imagen superpuesta */
+  .fd-mission-img-secondary {
+    position: absolute;
+    top: -32px;
+    right: -32px;
+    width: 200px;
+    height: 200px;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: var(--sh-md);
+    border: 4px solid var(--bg);
+  }
+  .fd-mission-img-secondary img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .fd-mission-text .fd-eyebrow-tag { display: block; }
+  .fd-mission-text .fd-section-h2  { margin-bottom: 24px; }
+  .fd-mission-text p {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.82;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .fd-blockquote {
+    margin: 24px 0;
+    padding: 18px 24px;
+    border-left: 3px solid var(--solar);
+    background: var(--solar-light);
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.72;
+    color: var(--ink-2);
+  }
+
+
+  /* ════════════════════════════════════════════════════════
+     PROYECTOS
+     ════════════════════════════════════════════════════════ */
+  .fd-projects-section {
+    background: var(--bg-2);
+    padding: 120px 0;
+  }
+
+  .fd-proj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .fd-proj-card {
+    background: #fff;
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    box-shadow: var(--sh-sm);
+    opacity: 0;
+    transform: translateY(48px);
+    transition:
+      opacity 0.7s var(--ease),
+      transform 0.7s var(--ease),
+      box-shadow var(--dur) var(--ease);
+  }
+  .fd-proj-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fd-proj-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--sh-lg);
+  }
+
+  .fd-proj-img {
+    position: relative;
+    height: 230px;
+    overflow: hidden;
+  }
+  .fd-proj-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s var(--ease), filter 0.6s var(--ease);
+    filter: saturate(0.85);
+  }
+  .fd-proj-card:hover .fd-proj-img img {
+    transform: scale(1.07);
+    filter: saturate(1.1);
+  }
+  .fd-proj-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(27,52,97,0.50) 0%,
+      transparent 60%
+    );
+    /* Color de acento por proyecto via CSS var */
+    transition: background 0.4s var(--ease);
+  }
+  .fd-proj-card:hover .fd-proj-img-overlay {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--proj-color) 45%, transparent) 0%,
+      transparent 55%
+    );
+  }
+
+  .fd-proj-body {
+    padding: 28px 28px 34px;
+  }
+  .fd-proj-tag {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--solar);
+    margin-bottom: 10px;
+  }
+  .fd-proj-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .fd-proj-desc {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 22px;
+  }
+  .fd-proj-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--solar);
+    text-decoration: none;
+    transition: gap var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  .fd-proj-link:hover { gap: 14px; color: var(--solar-dark); }
+
+
+  /* ════════════════════════════════════════════════════════
+     EVENTOS
+     ════════════════════════════════════════════════════════ */
+  .fd-events-section {
+    position: relative;
+    padding: 120px 0;
+    overflow: hidden;
+  }
+  .fd-events-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .fd-events-backdrop img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .fd-events-backdrop-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(18,35,71,0.94) 0%,
+      rgba(27,52,97,0.88) 60%,
+      rgba(120,50,0,0.65) 100%
+    );
+  }
+  .fd-events-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .fd-events-header {
+    margin-bottom: 64px;
+  }
+
+  .fd-events-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .fd-event-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(36px);
+    transition:
+      opacity 0.65s var(--ease),
+      transform 0.65s var(--ease),
+      border-color var(--dur) var(--ease),
+      box-shadow var(--dur) var(--ease);
+  }
+  .fd-event-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fd-event-card:hover {
+    border-color: rgba(245,158,11,0.4);
+    box-shadow: 0 12px 40px rgba(249,115,22,0.15);
+    transform: translateY(-6px);
+  }
+
+  .fd-event-img {
+    position: relative;
+    height: 160px;
+    overflow: hidden;
+  }
+  .fd-event-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s var(--ease), filter 0.55s var(--ease);
+    filter: saturate(0.75) brightness(0.9);
+  }
+  .fd-event-card:hover .fd-event-img img {
+    transform: scale(1.06);
+    filter: saturate(1) brightness(1);
+  }
+  .fd-event-type {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--solar);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 40px;
+  }
+
+  .fd-event-body {
+    padding: 20px 20px 24px;
+  }
+  .fd-event-date {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .fd-event-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .fd-event-location {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.02em;
+  }
+  .fd-event-location svg { flex-shrink: 0; }
+
+
+  /* ════════════════════════════════════════════════════════
+     GALERÍA MASONRY
+     ════════════════════════════════════════════════════════ */
+  .fd-gallery-section {
+    background: var(--bg);
+    padding: 120px 0;
+  }
+  .fd-gallery-header {
+    margin-bottom: 52px;
+  }
+
+  /* Grid masonry asimétrico: 4 cols, filas variables */
+  .fd-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 260px 200px 240px;
+    gap: 14px;
+  }
+
+  /* Posicionamiento manual para efecto masonry rico */
+  .fd-gal-item:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 3; } /* tall+wide */
+  .fd-gal-item:nth-child(2) { grid-column: 3;     grid-row: 1; }
+  .fd-gal-item:nth-child(3) { grid-column: 4;     grid-row: 1; }
+  .fd-gal-item:nth-child(4) { grid-column: 3 / 5; grid-row: 2; }     /* wide */
+  .fd-gal-item:nth-child(5) { grid-column: 1;     grid-row: 3; }
+  .fd-gal-item:nth-child(6) { grid-column: 2 / 4; grid-row: 3; }     /* wide */
+  .fd-gal-item:nth-child(7) { grid-column: 4;     grid-row: 3; }
+
+  .fd-gal-item {
+    position: relative;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.96);
+    transition:
+      opacity 0.65s var(--ease),
+      transform 0.65s var(--ease);
+  }
+  .fd-gal-item.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .fd-gal-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s var(--ease), filter 0.55s var(--ease);
+    filter: saturate(0.9);
+  }
+  .fd-gal-item:hover img {
+    transform: scale(1.07);
+    filter: saturate(1.15);
+  }
+  .fd-gal-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(27,52,97,0.70) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+  }
+  .fd-gal-item:hover .fd-gal-overlay { opacity: 1; }
+  .fd-gal-caption {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+
+
+  /* ════════════════════════════════════════════════════════
+     VALORES
+     ════════════════════════════════════════════════════════ */
+  .fd-values-section {
+    background: var(--bg-dark);
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fd-values-section::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(249,115,22,0.10) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .fd-values-section .fd-section-h2  { color: #fff; }
+  .fd-values-section .fd-section-h2 em { color: var(--gold); }
+  .fd-values-section .fd-eyebrow-tag { color: var(--gold); }
+  .fd-values-section .fd-eyebrow-tag::before { background: var(--gold); }
+
+  .fd-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .fd-val-card {
+    position: relative;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--r-xl);
+    padding: 44px 36px 40px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 0.7s var(--ease),
+      transform 0.7s var(--ease),
+      border-color var(--dur) var(--ease),
+      background var(--dur) var(--ease);
+    overflow: hidden;
+  }
+  .fd-val-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fd-val-card:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(249,115,22,0.30);
+  }
+
+  /* Barra de acento superior */
+  .fd-val-bar {
+    position: absolute;
+    top: 0;
+    left: 36px;
+    width: 40px;
+    height: 3px;
+    background: var(--solar);
+    border-radius: 0 0 4px 4px;
+    transition: width var(--dur) var(--ease);
+  }
+  .fd-val-card:hover .fd-val-bar { width: 80px; }
+
+  .fd-val-icon {
+    color: var(--solar);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .fd-val-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #fff;
+    margin-bottom: 12px;
+    transition: color var(--dur) var(--ease);
+  }
+  .fd-val-card:hover .fd-val-title { color: var(--gold); }
+  .fd-val-desc {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.50);
+  }
+
+
+  /* ════════════════════════════════════════════════════════
+     CTA FINAL
+     ════════════════════════════════════════════════════════ */
+  .fd-cta-section {
+    position: relative;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  .fd-cta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .fd-cta-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .fd-cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(18,35,71,0.92) 0%,
+      rgba(27,52,97,0.80) 50%,
+      rgba(180,60,0,0.65) 100%
+    );
+  }
+
+  .fd-cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    padding: 80px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  }
+  .fd-cta-inner.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fd-cta-logo {
+    height: 88px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 40px;
+    filter: drop-shadow(0 0 24px rgba(249,115,22,0.35));
+  }
+  .fd-cta-h2 {
+    font-family: var(--font-display);
+    font-size: 60px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.0;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .fd-cta-h2 em { font-style: normal; color: var(--gold); }
+  .fd-cta-p {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 44px;
+    max-width: 500px;
+  }
+  .fd-cta-btns {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ── Reduced motion ─────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .fd-dot--pulse,
+    .fd-ticker-track,
+    .fd-scroll-hint span { animation: none !important; }
+    .fd-mission,
+    .fd-proj-card,
+    .fd-event-card,
+    .fd-gal-item,
+    .fd-val-card,
+    .fd-cta-inner {
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+</style>
+
+
+<!-- ════════════════════════════════════════════════════════
+     ANIMACIONES GSAP
+     ════════════════════════════════════════════════════════ -->
 <script>
   import gsap from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -166,58 +1492,143 @@ const values = [
   if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero
-    gsap.from('.hero-title', { opacity: 0, y: 30, duration: 1, ease: 'power3.out', delay: 0.4 });
-    gsap.from('.hero-desc', { opacity: 0, y: 35, duration: 1, ease: 'power3.out', delay: 0.6 });
+    /* ── 1. Hero — stagger orquestado ────────────────────────── */
+    const heroTl = gsap.timeline({ delay: 0.15 });
+    heroTl
+      .from('.fd-anim-logo',    { opacity: 0, y: -24, duration: 1.0, ease: 'power3.out' })
+      .from('.fd-anim-eyebrow', { opacity: 0, y: 14,  duration: 0.7, ease: 'power3.out' }, '-=0.5')
+      .from('.fd-anim-title',   { opacity: 0, y: 32,  duration: 0.9, ease: 'power3.out' }, '-=0.5')
+      .from('.fd-anim-desc',    { opacity: 0, y: 20,  duration: 0.7, ease: 'power3.out' }, '-=0.45')
+      .from('.fd-anim-btns',    { opacity: 0, y: 16,  duration: 0.6, ease: 'power3.out' }, '-=0.4')
+      .from('.fd-anim-stats',   { opacity: 0, y: 20,  duration: 0.6, ease: 'power3.out' }, '-=0.3');
 
-    // Project Rows Reveal
-    const projectRows = document.querySelectorAll('.project-row');
-    projectRows.forEach((row) => {
-      const img = row.querySelector('.relative.z-10 img');
-      const frame = row.querySelector('.absolute.z-0');
-      const content = row.querySelector('.project-content');
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: row,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      tl.from(img, {
-        scale: 1.1,
-        opacity: 0,
-        duration: 1.2,
-        ease: 'power3.out'
-      })
-      .from(frame, {
-        x: row.classList.contains('md:flex-row-reverse') ? 30 : -30,
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out'
-      }, '-=0.8')
-      .from(content?.children || [], {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out'
-      }, '-=0.6');
+    /* ── 2. Contadores de stats ──────────────────────────────── */
+    let counted = false;
+    ScrollTrigger.create({
+      trigger: '#fd-stats',
+      start: 'top 90%',
+      onEnter: () => {
+        if (counted) return;
+        counted = true;
+        document.querySelectorAll('.fd-count').forEach(el => {
+          const target = parseInt(el.getAttribute('data-target') || '0', 10);
+          const obj = { v: 0 };
+          gsap.to(obj, {
+            v: target, duration: 2.2, ease: 'power2.out',
+            onUpdate: () => { (el as HTMLElement).textContent = Math.floor(obj.v).toLocaleString(); }
+          });
+        });
+      }
     });
 
-    // Values Grid Scroll trigger
-    gsap.from('#values-grid > div', {
-      scrollTrigger: {
-        trigger: '#values-grid',
-        start: 'top 85%'
+    /* Badge misión counter */
+    let badgeCounted = false;
+    ScrollTrigger.create({
+      trigger: '.fd-mission-badge',
+      start: 'top 85%',
+      onEnter: () => {
+        if (badgeCounted) return;
+        badgeCounted = true;
+        const el = document.querySelector('.fd-count-badge');
+        if (!el) return;
+        const obj = { v: 0 };
+        gsap.to(obj, {
+          v: 300, duration: 2, ease: 'power2.out',
+          onUpdate: () => { (el as HTMLElement).textContent = Math.floor(obj.v).toString(); }
+        });
+      }
+    });
+
+    /* ── 3. Misión ───────────────────────────────────────────── */
+    ScrollTrigger.create({
+      trigger: '#fd-mission',
+      start: 'top 78%',
+      onEnter: () => {
+        const el = document.getElementById('fd-mission');
+        if (el) el.classList.add('visible');
       },
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: 'power3.out'
+    });
+
+    /* ── 4. Proyectos — stagger ─────────────────────────────── */
+    document.querySelectorAll('.fd-proj-card').forEach((card) => {
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top 88%',
+        onEnter: () => {
+          const d = parseInt((card as HTMLElement).dataset.delay || '0', 10);
+          setTimeout(() => card.classList.add('visible'), d);
+        }
+      });
+    });
+
+    /* ── 5. Proyectos row reveal (imagen + contenido) ─────────── */
+    document.querySelectorAll('.fd-proj-card').forEach((card, i) => {
+      const img     = card.querySelector('.fd-proj-img img') as HTMLElement;
+      const content = card.querySelector('.fd-proj-body') as HTMLElement;
+      if (!img || !content) return;
+      gsap.timeline({
+        scrollTrigger: { trigger: card, start: 'top 86%', toggleActions: 'play none none reverse' }
+      })
+      .from(img,     { scale: 1.08, opacity: 0, duration: 1.1, ease: 'power3.out' })
+      .from(content.children, { y: 22, opacity: 0, duration: 0.7, stagger: 0.09, ease: 'power3.out' }, '-=0.6');
+    });
+
+    /* ── 6. Eventos ─────────────────────────────────────────── */
+    document.querySelectorAll('.fd-event-card').forEach((card) => {
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top 88%',
+        onEnter: () => {
+          const d = parseInt((card as HTMLElement).dataset.delay || '0', 10);
+          setTimeout(() => card.classList.add('visible'), d);
+        }
+      });
+    });
+
+    /* ── 7. Galería ─────────────────────────────────────────── */
+    document.querySelectorAll('.fd-gal-item').forEach((item) => {
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top 90%',
+        onEnter: () => {
+          const d = parseInt((item as HTMLElement).dataset.delay || '0', 10);
+          setTimeout(() => item.classList.add('visible'), d);
+        }
+      });
+    });
+
+    /* ── 8. Valores ─────────────────────────────────────────── */
+    document.querySelectorAll('.fd-val-card').forEach((card) => {
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top 87%',
+        onEnter: () => {
+          const d = parseInt((card as HTMLElement).dataset.delay || '0', 10);
+          setTimeout(() => card.classList.add('visible'), d);
+        }
+      });
+    });
+
+    /* ── 9. CTA ─────────────────────────────────────────────── */
+    ScrollTrigger.create({
+      trigger: '#fd-cta',
+      start: 'top 80%',
+      onEnter: () => {
+        const el = document.querySelector('.fd-cta-inner');
+        if (el) el.classList.add('visible');
+      }
+    });
+
+    /* ── 10. Parallax hero imagen ───────────────────────────── */
+    gsap.to('.fd-hero-bg-img', {
+      scrollTrigger: {
+        trigger: '.fd-hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+      y: 80,
+      ease: 'none',
     });
   }
 </script>

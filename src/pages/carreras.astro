@@ -7,8 +7,7 @@ const services = [
     title: "DEPORTES",
     tag: "Alto Rendimiento",
     number: "01",
-    accent: "#0ea5e9",
-    accentAlt: "#2dd4bf",
+    color: "#C9993A",
     img: "https://images.unsplash.com/photo-1526676317768-d9b14f15615a?w=900&q=80",
     link: "/deportes",
     desc: "Formación de alto rendimiento deportivo con metodologías de clase mundial. Nuestro programa integra dirección técnica especializada, preparación física avanzada y psicología del deporte para desarrollar atletas completos.",
@@ -23,8 +22,7 @@ const services = [
     title: "RAMAS TÉCNICAS",
     tag: "Formación Digital",
     number: "02",
-    accent: "#2dd4bf",
-    accentAlt: "#0ea5e9",
+    color: "#1A4B8C",
     img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=900&q=80",
     link: "/ramas-tecnicas",
     desc: "Carreras técnicas y digitales diseñadas para el mercado laboral actual. Integramos habilidades prácticas con fundamentos sólidos para formar profesionales altamente competitivos a nivel nacional e internacional.",
@@ -39,8 +37,7 @@ const services = [
     title: "CURSOS Y CONFERENCIAS",
     tag: "Actualización Continua",
     number: "03",
-    accent: "#0ea5e9",
-    accentAlt: "#2dd4bf",
+    color: "#2D7DD2",
     img: "https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80",
     link: "/cursos-conferencias",
     desc: "Programas de actualización continua que conectan el conocimiento académico con las tendencias globales. Nuestros seminarios y masterclasses son diseñados por expertos con trayectoria internacional.",
@@ -57,281 +54,676 @@ const services = [
 <Layout title="Carreras y Servicios | CBIT">
   <Navbar />
 
-  <main class="min-h-screen pt-32 pb-32 relative overflow-hidden" >
+  <main class="cs-main">
 
-    <!-- Grain overlay -->
-    <div class="fixed inset-0 pointer-events-none z-0 opacity-[0.025]"
-         style="background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');background-size:200px 200px;"></div>
+    <!-- ══════════════════════════════════
+         HERO
+    ══════════════════════════════════ -->
+    <section class="cs-hero" id="cs-hero">
+      <div class="cs-hero-mesh"  aria-hidden="true"></div>
+      <div class="cs-orb cs-orb-1" aria-hidden="true"></div>
+      <div class="cs-orb cs-orb-2" aria-hidden="true"></div>
+      <div class="cs-orb cs-orb-3" aria-hidden="true"></div>
 
-    <!-- Glows ambientales -->
-    <div class="absolute top-0 right-0 w-[700px] h-[700px] pointer-events-none z-0"
-         style="background:radial-gradient(ellipse,rgba(14,165,233,0.08) 0%,transparent 65%);filter:blur(60px);transform:translate(30%,-30%);"></div>
-    <div class="absolute bottom-0 left-0 w-[600px] h-[600px] pointer-events-none z-0"
-         style="background:radial-gradient(ellipse,rgba(45,212,191,0.06) 0%,transparent 65%);filter:blur(80px);transform:translate(-40%,40%);"></div>
-
-    <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
-
-      <!-- ── HEADER ── -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-14 mb-24">
-        <div class="overflow-hidden">
-          <p class="eyebrow text-[10px] font-display text-[#0ea5e9] tracking-[0.5em] uppercase mb-5">
-            Desarrollo Profesional
-          </p>
-          <h1 class="hero-title text-5xl md:text-7xl lg:text-[8.5rem] font-display font-bold leading-none tracking-tighter text-white">
-            CARRERAS<br/>
-            <span style="color:#f2c82f">Y SERVICIOS</span>
-          </h1>
-          <div class="hero-line w-0 h-[2px] mt-8 origin-left"
-               style="background:linear-gradient(to right,#0ea5e9,#2dd4bf);"></div>
+      <div class="cs-container cs-hero-inner">
+        <div class="cs-reveal">
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6
+                      border-b pb-12"
+               style="border-color:rgba(255,255,255,0.10);">
+            <div>
+              <div class="cs-hero-eyebrow cs-reveal cs-d0">
+                <span class="cs-hero-line"></span>
+                <span>Desarrollo Profesional</span>
+              </div>
+              <h1 class="cs-hero-title font-display">
+                CARRERAS<br/>
+                <span style="color:#f2c82f">Y SERVICIOS</span>
+              </h1>
+            </div>
+            <div class="cs-hero-side cs-reveal cs-d1">
+              <p class="cs-hero-sub">
+                Nuestra infraestructura académica y de entrenamiento te proporciona las herramientas, el análisis y el soporte integral necesario para llevar tu talento al siguiente nivel.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="hero-desc opacity-0 max-w-sm">
-          <p class="text-gray-400 text-sm leading-relaxed border-l-2 border-[#2dd4bf] pl-5 mb-0">
-            Nuestra infraestructura académica y de entrenamiento te proporciona las herramientas, el análisis y el soporte integral necesario para llevar tu talento al siguiente nivel. Descubre nuestras especialidades.
-          </p>
+
+        <!-- STATS STRIP -->
+        <div class="cs-stats-strip cs-reveal cs-d2">
+          <div class="cs-stat">
+            <span class="cs-stat-value font-display">{services.length}</span>
+            <span class="cs-stat-label">Áreas de formación</span>
+          </div>
+          <div class="cs-stat">
+            <span class="cs-stat-value font-display">100%</span>
+            <span class="cs-stat-label">Docentes certificados</span>
+          </div>
+          <div class="cs-stat">
+            <span class="cs-stat-value font-display">+500</span>
+            <span class="cs-stat-label">Egresados activos</span>
+          </div>
+          <div class="cs-stat">
+            <span class="cs-stat-value font-display">24/7</span>
+            <span class="cs-stat-label">Soporte académico</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- ── FILAS DE SERVICIOS ── -->
-      <div class="flex flex-col">
-        {services.map((s, i) => (
-          <div
-            class="service-row border-b border-white/[0.07] py-2"
-            data-index={i}
-          >
-            <div class={`grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch`}>
+    <!-- ══════════════════════════════════
+         FILAS DE SERVICIOS
+    ══════════════════════════════════ -->
+    <section class="cs-section cs-soft-bg" id="servicios">
+      <div class="cs-container">
 
-              <!-- ── IMAGEN ── -->
-              <div
-                class={`img-col relative group ${i % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}`}
-                style="min-height:480px; padding: 2rem;"
-              >
-                <!-- Número grande decorativo de fondo -->
-                <div class="absolute z-0 select-none pointer-events-none"
-                     style={`${i%2===1 ? 'right:2.5rem;' : 'left:2.5rem;'} bottom:1rem; font-size:14rem; font-weight:800; line-height:1; color:${s.accent}; opacity:0.04; font-family:system-ui;`}>
-                  {s.number}
-                </div>
+        <div class="cs-section-head cs-reveal">
+          <span class="cs-eyebrow">Nuestras Especialidades</span>
+          <h2 class="cs-section-title font-display">PROGRAMAS <span class="cs-gold">CBIT</span></h2>
+          <div class="cs-bar" data-bar></div>
+        </div>
 
-                <!-- Marco clip gradiente -->
-                <div class="img-frame w-full h-full relative z-10"
-                     style={`padding:2px; clip-path:polygon(8% 0,100% 0,100% 92%,92% 100%,0 100%,0 8%); background:linear-gradient(135deg,${s.accent},${s.accentAlt});`}>
-                  <div class="w-full h-full relative overflow-hidden"
-                       style="clip-path:polygon(8% 0,100% 0,100% 92%,92% 100%,0 100%,0 8%); background:#090909; min-height:420px;">
+        <div class="cs-services-list">
+          {services.map((s, i) => (
+            <div class="cs-service-row cs-reveal" data-index={i}>
+              <div class={`cs-row-grid ${i % 2 === 1 ? 'cs-row-reverse' : ''}`}>
 
-                    <img
-                      src={s.img}
-                      alt={s.title}
-                      class="w-full h-full object-cover block transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)]"
-                      style="opacity:0.55; min-height:420px;"
-                      data-img
-                    />
+                <!-- ── IMAGEN ── -->
+                <div class="cs-img-col">
+                  <!-- número decorativo -->
+                  <div class="cs-num-deco font-display" style={`color:${s.color}`}>
+                    {s.number}
+                  </div>
 
-                    <!-- Overlay -->
-                    <div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(6,6,6,0.4) 0%,transparent 60%),linear-gradient(to top,#060606 0%,transparent 50%);"></div>
+                  <!-- tarjeta imagen -->
+                  <div class="cs-float-card cs-img-card" data-img-card>
+                    <div class="cs-img-overflow">
+                      <img
+                        src={s.img}
+                        alt={s.title}
+                        width="900" height="600"
+                        loading="lazy" decoding="async"
+                        class="cs-img cs-zoom-target"
+                        data-img
+                      />
+                      <!-- overlay degradado inferior -->
+                      <div class="cs-img-overlay" aria-hidden="true"></div>
+                    </div>
 
-                    <!-- Scan line animada -->
-                    <div class="scan-line absolute left-0 right-0 h-[1px] pointer-events-none"
-                         style={`background:linear-gradient(to right,transparent,${s.accent}88,transparent); top:0;`}></div>
+                    <!-- pill tag -->
+                    <div class="cs-img-pill" style={`border-left-color:${s.color}`}>
+                      <div class="cs-pill-dot" style={`background:${s.color}`}></div>
+                      <span class="cs-pill-tag" style={`color:${s.color}`}>{s.tag}</span>
+                      <span class="cs-pill-title">{s.title}</span>
+                    </div>
 
-                    <!-- Brackets esquina superior izquierda -->
-                    <div class="bracket-tl-h absolute top-4 left-4 h-[2px] w-0 transition-none"
-                         style={`background:${s.accent};`}></div>
-                    <div class="bracket-tl-v absolute top-4 left-4 w-[2px] h-0 transition-none"
-                         style={`background:${s.accent};`}></div>
-                    <!-- Brackets esquina inferior derecha -->
-                    <div class="bracket-br-h absolute bottom-4 right-4 h-[2px] w-0 transition-none"
-                         style={`background:${s.accentAlt};`}></div>
-                    <div class="bracket-br-v absolute bottom-4 right-4 w-[2px] h-0 transition-none"
-                         style={`background:${s.accentAlt};`}></div>
-
-                    <!-- Tag en esquina inferior -->
-                    <div class="absolute bottom-7 left-7 z-10">
-                      <span class="text-[9px] font-bold tracking-[0.3em] uppercase block mb-1"
-                            style={`color:${s.accent};`}>{s.tag}</span>
-                      <p class="text-white font-bold text-lg tracking-wider leading-none"
-                         style="font-family:system-ui;">{s.title}</p>
+                    <!-- número en tarjeta -->
+                    <div class="cs-img-num font-display" style={`color:${s.color}`}>
+                      {s.number}
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- ── TEXTO ── -->
-              <div
-                class={`text-col flex flex-col justify-center px-6 lg:px-16 py-16 ${i % 2 === 1 ? 'lg:order-1' : 'lg:order-2'}`}
-              >
-                <!-- Header del bloque -->
-                <div class="row-header flex items-center gap-4 mb-8">
-                  <span class="font-display font-bold text-[10px] tracking-[0.4em]"
-                        style={`color:${s.accent};`}>{s.number}</span>
-                  <div class="flex-1 h-[1px]" style={`background:linear-gradient(to right,${s.accent}66,transparent);`}></div>
-                  <span class="text-[9px] font-bold tracking-[0.3em] uppercase border px-3 py-1"
-                        style={`color:${s.accent}; border-color:${s.accent}44;`}>{s.tag}</span>
-                </div>
+                <!-- ── TEXTO ── -->
+                <div class="cs-text-col">
 
-                <!-- Título -->
-                <h2 class="row-title text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tighter leading-none text-white mb-4 overflow-hidden">
-                  <span class="block translate-y-full opacity-0">{s.title}</span>
-                </h2>
+                  <!-- header fila -->
+                  <div class="cs-row-eyebrow">
+                    <span class="cs-row-num font-display" style={`color:${s.color}`}>{s.number}</span>
+                    <div class="cs-row-eyebrow-line" style={`background:${s.color}`}></div>
+                    <span class="cs-row-tag" style={`color:${s.color};border-color:${s.color}55`}>{s.tag}</span>
+                  </div>
 
-                <!-- Línea decorativa -->
-                <div class="row-line w-0 h-[2px] mb-8 origin-left"
-                     style={`background:linear-gradient(to right,${s.accent},${s.accentAlt});`}></div>
+                  <!-- título -->
+                  <div class="cs-title-overflow">
+                    <h2 class="cs-service-title font-display" style={`color:${s.color}`}>
+                      {s.title}
+                    </h2>
+                  </div>
 
-                <!-- Descripción -->
-                <p class="row-desc text-gray-400 text-sm md:text-base leading-[1.85] mb-8 opacity-0 max-w-lg">
-                  {s.desc}
-                </p>
+                  <!-- barra color -->
+                  <div class="cs-title-bar" data-bar-row style={`background:${s.color}`}></div>
 
-                <!-- Bullets -->
-                <ul class="row-bullets mb-10 flex flex-col gap-3">
-                  {s.bullets.map((b) => (
-                    <li class="bullet-item flex items-start gap-3 opacity-0 translate-x-4">
-                      <span class="mt-[7px] w-[5px] h-[5px] rounded-none flex-shrink-0 rotate-45"
-                            style={`background:${s.accent};`}></span>
-                      <span class="text-gray-400 text-sm leading-relaxed">{b}</span>
-                    </li>
-                  ))}
-                </ul>
+                  <!-- descripción -->
+                  <p class="cs-service-desc">{s.desc}</p>
 
-                <!-- CTA -->
-                <div class="row-cta opacity-0 translate-y-4">
-                  <a
-                    href={s.link}
-                    class="cta-btn inline-flex items-center gap-4 border px-7 py-4 text-white text-[11px] font-bold tracking-[0.3em] uppercase transition-all duration-300 relative overflow-hidden group/btn"
-                    style={`border-color:${s.accent}55; clip-path:polygon(0 0,92% 0,100% 18%,100% 100%,8% 100%,0 82%);`}
-                    data-accent={s.accent}
-                  >
-                    <span class="relative z-10">CONOCER MÁS</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="relative z-10 transition-transform duration-300 group-hover/btn:translate-x-2">
+                  <!-- bullets -->
+                  <ul class="cs-bullets">
+                    {s.bullets.map(b => (
+                      <li class="cs-bullet">
+                        <span class="cs-bullet-dot" style={`background:${s.color}`}></span>
+                        <span class="cs-bullet-text">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <!-- CTA -->
+                  <a href={s.link} class="cs-cta-btn" style={`--btn-color:${s.color}`}>
+                    <span>CONOCER MÁS</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
                       <line x1="5" y1="12" x2="19" y2="12"/>
                       <polyline points="12 5 19 12 12 19"/>
                     </svg>
-                    <!-- Hover fill -->
-                    <div class="cta-fill absolute inset-0 scale-x-0 origin-left transition-transform duration-400"
-                         style={`background:${s.accent}18;`}></div>
+                    <div class="cs-cta-fill"></div>
                   </a>
-                </div>
 
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-    </div>
+      </div>
+    </section>
+
   </main>
 </Layout>
 
 <style>
-  @keyframes scanMove {
-    0%   { top: 0%;    opacity: 0; }
-    5%   { opacity: 1; }
-    95%  { opacity: 1; }
-    100% { top: 100%;  opacity: 0; }
-  }
-  .scan-line { animation: scanMove 4s linear infinite; }
+/* ══════════════════════════════════
+   TOKENS — sistema CBIT
+══════════════════════════════════ */
+:root {
+  --blue:      #1A4B8C;
+  --blue-mid:  #2D7DD2;
+  --blue-lt:   #EBF3FB;
+  --cyan:      #f5c21a;
+  --gold:      #C9993A;
+  --gold-lt:   #F5E8CC;
+  --white:     #ffffff;
+  --soft:      #F0F4FA;
+  --text:      #1e293b;
+  --muted:     #64748B;
+  --faint:     #94A3B8;
 
-  .cta-btn:hover .cta-fill { transform: scaleX(1); }
-  .cta-btn:hover { border-color: v-bind('s.accent') !important; }
+  --sh2:     0 4px 12px rgba(0,0,0,0.10), 0 8px 24px rgba(26,75,140,0.10);
+  --sh3:     0 8px 28px rgba(0,0,0,0.12), 0 18px 48px rgba(26,75,140,0.16);
+  --sh-hover:0 14px 40px rgba(0,0,0,0.14), 0 28px 60px rgba(26,75,140,0.22);
+  --r-xl:    36px;
+}
+
+/* ══════════════════════════════════
+   BASE
+══════════════════════════════════ */
+.cs-main      { background: var(--white); overflow-x: hidden; }
+.cs-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.cs-gold      { color: var(--gold); }
+.cs-soft-bg   { background: var(--soft); }
+
+/* ══════════════════════════════════
+   HERO — igual que SobreNosotros
+══════════════════════════════════ */
+.cs-hero {
+  background: var(--blue);
+  padding: 10rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.cs-hero-mesh {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.cs-orb {
+  position: absolute; border-radius: 50%;
+  pointer-events: none; filter: blur(80px);
+}
+.cs-orb-1 { width:520px;height:520px; top:-150px;right:-130px; background:radial-gradient(circle,rgba(14,165,233,0.18),transparent 70%); }
+.cs-orb-2 { width:360px;height:360px; bottom:-80px;left:-80px;  background:radial-gradient(circle,rgba(201,153,58,0.16),transparent 70%); }
+.cs-orb-3 { width:260px;height:260px; top:40%;left:38%;          background:radial-gradient(circle,rgba(45,125,210,0.12),transparent 70%); }
+
+.cs-hero-inner { display: flex; flex-direction: column; gap: 0; }
+
+.cs-hero-eyebrow {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--gold);
+}
+.cs-hero-line { display: block; width: 24px; height: 1.5px; background: var(--gold); flex-shrink: 0; }
+
+.cs-hero-title {
+  font-size: clamp(3.8rem, 10vw, 8rem);
+  color: #fff;
+  line-height: 1.02;
+  margin: 0;
+}
+.cs-hero-side { max-width: 42%; }
+.cs-hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.6);
+  border-left: 2px solid var(--cyan);
+  padding-left: 1.4rem;
+  line-height: 1.85;
+}
+
+/* STATS STRIP */
+.cs-stats-strip {
+  display: flex; gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.09);
+  margin-top: 3rem;
+  padding-top: 2rem;
+}
+.cs-stat {
+  flex: 1;
+  padding: 0 1.5rem 0 0;
+  border-right: 1px solid rgba(255,255,255,0.09);
+  display: flex; flex-direction: column; gap: 0.3rem;
+}
+.cs-stat:last-child { border-right: none; padding-right: 0; padding-left: 1.5rem; }
+.cs-stat:first-child { padding-left: 0; }
+.cs-stat-value {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--gold);
+  line-height: 1;
+}
+.cs-stat-label {
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ══════════════════════════════════
+   SECCIÓN
+══════════════════════════════════ */
+.cs-section { padding: 6rem 0; }
+
+.cs-section-head { text-align: center; margin-bottom: 4.5rem; }
+.cs-eyebrow {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--blue-mid); margin-bottom: 0.6rem;
+}
+.cs-section-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  color: var(--blue); line-height: 1.12; margin: 0 0 1.2rem;
+}
+.cs-bar {
+  display: block; height: 3px; width: 0;
+  background: var(--blue-mid); border-radius: 2px;
+  margin: 0 auto;
+  transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s;
+}
+.cs-bar.cs-bar-on { width: 56px; }
+
+/* ══════════════════════════════════
+   FLOAT CARD
+══════════════════════════════════ */
+.cs-float-card {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh2);
+  border: 1px solid rgba(26,75,140,0.06);
+  transition: transform 0.42s cubic-bezier(0.22,1,0.36,1), box-shadow 0.42s;
+  overflow: hidden;
+}
+.cs-float-card:hover {
+  transform: translateY(-10px) scale(1.012);
+  box-shadow: var(--sh-hover);
+}
+.cs-float-card:hover .cs-zoom-target { transform: scale(1.05); }
+
+/* ══════════════════════════════════
+   FILAS DE SERVICIOS
+══════════════════════════════════ */
+.cs-services-list { display: flex; flex-direction: column; gap: 5rem; }
+
+.cs-service-row {
+  /* separador superior suave */
+}
+
+.cs-row-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.cs-row-reverse { direction: rtl; }
+.cs-row-reverse > * { direction: ltr; }
+
+/* ── COLUMNA IMAGEN ── */
+.cs-img-col { position: relative; }
+
+.cs-num-deco {
+  position: absolute;
+  font-size: 12rem; line-height: 1;
+  opacity: 0.04;
+  top: -1rem; right: -1.5rem;
+  pointer-events: none; select-none: true;
+  z-index: 0;
+}
+.cs-row-reverse .cs-num-deco { right: auto; left: -1.5rem; }
+
+.cs-img-card {
+  position: relative; z-index: 1;
+}
+.cs-img-overflow {
+  height: 460px;
+  overflow: hidden;
+  position: relative;
+}
+.cs-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.cs-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,75,140,0.18) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* pill inferior */
+.cs-img-pill {
+  position: absolute; bottom: 1.25rem; left: 1.25rem;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  border-left: 3px solid;
+  border-radius: 12px;
+  padding: 0.65rem 1.1rem;
+  display: flex; align-items: center; gap: 0.6rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+.cs-pill-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+  animation: cs-pulse 2.2s infinite;
+}
+@keyframes cs-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(201,153,58,0.5); }
+  50%      { box-shadow: 0 0 0 5px rgba(201,153,58,0); }
+}
+.cs-pill-tag {
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.cs-pill-title {
+  font-size: 0.78rem; font-weight: 800;
+  color: var(--blue); letter-spacing: 0.04em;
+}
+
+/* número en la tarjeta imagen esquina superior derecha */
+.cs-img-num {
+  position: absolute; top: 1rem; right: 1.25rem;
+  font-size: 2.5rem; line-height: 1;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* ── COLUMNA TEXTO ── */
+.cs-text-col {
+  display: flex; flex-direction: column; gap: 1.2rem;
+}
+
+.cs-row-eyebrow {
+  display: flex; align-items: center; gap: 0.85rem;
+}
+.cs-row-num {
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.35em;
+}
+.cs-row-eyebrow-line {
+  flex: 1; height: 1.5px; opacity: 0.35;
+  max-width: 3rem;
+}
+.cs-row-tag {
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  border: 1px solid;
+  padding: 0.25rem 0.75rem; border-radius: 50px;
+}
+
+.cs-title-overflow { overflow: hidden; }
+.cs-service-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.08;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.cs-title-bar {
+  height: 3px; width: 0; border-radius: 2px;
+  transition: width 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s;
+}
+.cs-title-bar.cs-bar-row-on { width: 48px; }
+
+.cs-service-desc {
+  font-size: 1.02rem; line-height: 1.88;
+  color: var(--muted); margin: 0;
+  max-width: 48ch;
+}
+
+/* bullets */
+.cs-bullets { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+.cs-bullet  { display: flex; align-items: flex-start; gap: 0.85rem; }
+.cs-bullet-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  margin-top: 0.5rem;
+  transition: transform 0.3s;
+}
+.cs-bullet:hover .cs-bullet-dot { transform: scale(1.5); }
+.cs-bullet-text { font-size: 0.96rem; line-height: 1.7; color: var(--muted); }
+
+/* CTA */
+.cs-cta-btn {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 0.85rem 1.75rem;
+  background: var(--white);
+  color: var(--btn-color, var(--blue));
+  border: 1.5px solid var(--btn-color, var(--blue));
+  border-radius: 50px;
+  font-size: 0.68rem; font-weight: 800;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  text-decoration: none;
+  position: relative; overflow: hidden;
+  transition: color 0.3s, transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s;
+  align-self: flex-start;
+}
+.cs-cta-fill {
+  position: absolute; inset: 0;
+  background: var(--btn-color, var(--blue));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  z-index: 0;
+}
+.cs-cta-btn span,
+.cs-cta-btn svg { position: relative; z-index: 1; }
+.cs-cta-btn:hover .cs-cta-fill { transform: scaleX(1); }
+.cs-cta-btn:hover {
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(26,75,140,0.20);
+}
+.cs-cta-btn:hover svg { transform: translateX(4px); }
+.cs-cta-btn svg { transition: transform 0.3s ease; }
+
+/* ══════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════ */
+.cs-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.cs-reveal.cs-on { opacity: 1; transform: translateY(0); }
+.cs-d0 { transition-delay: 0s; }
+.cs-d1 { transition-delay: .13s; }
+.cs-d2 { transition-delay: .26s; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media(max-width:1024px){
+  .cs-row-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .cs-row-reverse { direction: ltr; }
+  .cs-hero-side { max-width: 100%; }
+  .cs-num-deco  { display: none; }
+}
+@media(max-width:768px){
+  .cs-stats-strip { flex-wrap: wrap; }
+  .cs-stat { flex: 1 1 45%; border-right: none; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.09); }
+  .cs-stat:last-child { border-bottom: none; }
+  .cs-img-overflow { height: 300px; }
+}
+@media(max-width:640px){
+  .cs-hero    { padding: 9rem 0 4rem; }
+  .cs-section { padding: 4rem 0; }
+  .cs-container { padding: 0 1.25rem; }
+  .cs-services-list { gap: 3.5rem; }
+}
+@media(prefers-reduced-motion:reduce){
+  .cs-reveal { opacity: 1; transform: none; transition: none; }
+  .cs-bar    { width: 56px; transition: none; }
+  .cs-title-bar { width: 48px; transition: none; }
+  .cs-pill-dot  { animation: none; }
+}
 </style>
 
 <script>
   import gsap from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
-  
 
-  if (typeof window !== 'undefined') {
+  let ctx: gsap.Context | null = null;
+
+  function initPage() {
+    if (ctx) { ctx.revert(); ctx = null; }
     gsap.registerPlugin(ScrollTrigger);
 
-    /* ── HEADER ── */
-    const headerTl = gsap.timeline({ delay: 0.15 });
+    ctx = gsap.context(() => {
 
-    headerTl
-      .from('.eyebrow', {
-        y: 20, opacity: 0, duration: 0.8, ease: 'power3.out'
-      })
-      .from('.hero-title', {
-        y: 60, opacity: 0, duration: 1.1, ease: 'power4.out'
-      }, '-=0.5')
-      .to('.hero-line', {
-        width: '3rem', duration: 0.9, ease: 'power3.out'
-      }, '-=0.6')
-      .to('.hero-desc', {
-        opacity: 1, y: 0, duration: 0.9, ease: 'power2.out'
-      }, '-=0.5');
+      /* ── 1. SCROLL REVEAL global ── */
+      const revealIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('cs-on');
+            revealIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
 
-    /* ── FILAS ── */
-    document.querySelectorAll<HTMLElement>('.service-row').forEach((row) => {
+      document.querySelectorAll('.cs-reveal').forEach(el => revealIO.observe(el));
 
-      const imgFrame   = row.querySelector<HTMLElement>('.img-frame');
-      const titleSpan  = row.querySelector<HTMLElement>('.row-title span');
-      const line       = row.querySelector<HTMLElement>('.row-line');
-      const desc       = row.querySelector<HTMLElement>('.row-desc');
-      const bullets    = row.querySelectorAll<HTMLElement>('.bullet-item');
-      const cta        = row.querySelector<HTMLElement>('.row-cta');
-      const brackets   = row.querySelectorAll<HTMLElement>('.bracket-tl-h,.bracket-tl-v,.bracket-br-h,.bracket-br-v');
-      const img        = row.querySelector<HTMLImageElement>('[data-img]');
-      const header     = row.querySelector<HTMLElement>('.row-header');
+      /* ── 2. BAR DRAW (sección header) ── */
+      const barIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('cs-bar-on');
+            barIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.8 });
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: row,
-          start: 'top 78%',
-          once: true,
-        }
+      document.querySelectorAll('[data-bar]').forEach(el => barIO.observe(el));
+
+      /* ── 3. PARALLAX HERO ── */
+      const heroTitle = document.querySelector<HTMLElement>('.cs-hero-title');
+      if (heroTitle) {
+        gsap.to(heroTitle, {
+          yPercent: 20, ease: 'none',
+          scrollTrigger: { trigger: '.cs-hero', start: 'top top', end: 'bottom top', scrub: 1.8 }
+        });
+      }
+      document.querySelectorAll<HTMLElement>('.cs-orb-1, .cs-orb-2').forEach((orb, i) => {
+        gsap.to(orb, {
+          yPercent: i % 2 === 0 ? -22 : 18, ease: 'none',
+          scrollTrigger: { trigger: '.cs-hero', start: 'top top', end: 'bottom top', scrub: 2 }
+        });
       });
 
-      /* imagen: fade in + leve scale desde abajo */
-      tl.fromTo(imgFrame,
-        { opacity: 0, y: 40, scale: 0.97 },
-        { opacity: 1, y: 0, scale: 1, duration: 1.1, ease: 'power3.out' },
-        0
-      )
-      /* imagen interior opacidad */
-      .to(img, { opacity: 0.62, duration: 1.2, ease: 'power2.out' }, 0.1)
+      /* ── 4. ANIMACIÓN POR FILA ── */
+      document.querySelectorAll<HTMLElement>('.cs-service-row').forEach((row) => {
+        const imgCard   = row.querySelector<HTMLElement>('[data-img-card]');
+        const img       = row.querySelector<HTMLElement>('[data-img]');
+        const title     = row.querySelector<HTMLElement>('.cs-service-title');
+        const titleBar  = row.querySelector<HTMLElement>('.cs-title-bar');
+        const desc      = row.querySelector<HTMLElement>('.cs-service-desc');
+        const bullets   = row.querySelectorAll<HTMLElement>('.cs-bullet');
+        const cta       = row.querySelector<HTMLElement>('.cs-cta-btn');
+        const eyebrow   = row.querySelector<HTMLElement>('.cs-row-eyebrow');
 
-      /* brackets dibujados uno a uno */
-      .to(row.querySelector('.bracket-tl-h'), { width: '2rem', duration: 0.35, ease: 'power2.out' }, 0.5)
-      .to(row.querySelector('.bracket-tl-v'), { height: '2rem', duration: 0.35, ease: 'power2.out' }, 0.62)
-      .to(row.querySelector('.bracket-br-h'), { width: '2rem', duration: 0.35, ease: 'power2.out' }, 0.72)
-      .to(row.querySelector('.bracket-br-v'), { height: '2rem', duration: 0.35, ease: 'power2.out' }, 0.84)
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: row,
+            start: 'top 78%',
+            once: true,
+          }
+        });
 
-      /* header tag */
-      .from(header, { opacity: 0, x: -20, duration: 0.6, ease: 'power2.out' }, 0.3)
+        if (imgCard) tl.fromTo(imgCard,
+          { opacity: 0, y: 50, scale: 0.96 },
+          { opacity: 1, y: 0,  scale: 1,   duration: 1.1, ease: 'power3.out' },
+          0
+        );
+        if (img) tl.fromTo(img,
+          { scale: 1.08 },
+          { scale: 1, duration: 1.4, ease: 'power2.out' },
+          0
+        );
+        if (eyebrow) tl.from(eyebrow,
+          { opacity: 0, x: -20, duration: 0.6, ease: 'power2.out' },
+          0.3
+        );
+        if (title) tl.fromTo(title,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0,  duration: 0.8, ease: 'power3.out' },
+          0.45
+        );
+        if (titleBar) tl.add(() => titleBar.classList.add('cs-bar-row-on'), 0.7);
+        if (desc) tl.fromTo(desc,
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0,  duration: 0.75, ease: 'power2.out' },
+          0.75
+        );
+        if (bullets.length) tl.fromTo(bullets,
+          { opacity: 0, x: 18 },
+          { opacity: 1, x: 0,  duration: 0.55, stagger: 0.09, ease: 'power2.out' },
+          0.9
+        );
+        if (cta) tl.fromTo(cta,
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0,  duration: 0.6, ease: 'back.out(1.5)' },
+          1.25
+        );
+      });
 
-      /* título slide up */
-      .to(titleSpan, { y: '0%', opacity: 1, duration: 0.9, ease: 'power4.out' }, 0.45)
+      /* ── 5. HOVER IMAGEN ── */
+      document.querySelectorAll<HTMLElement>('.cs-img-card').forEach(card => {
+        const img = card.querySelector<HTMLElement>('[data-img]');
+        if (!img) return;
+        card.addEventListener('mouseenter', () =>
+          gsap.to(img, { scale: 1.06, duration: 0.7, ease: 'power2.out' })
+        );
+        card.addEventListener('mouseleave', () =>
+          gsap.to(img, { scale: 1,    duration: 0.7, ease: 'power2.out' })
+        );
+      });
 
-      /* línea */
-      .to(line, { width: '3rem', duration: 0.7, ease: 'power3.out' }, 0.7)
+      /* ── 6. STAT COUNTERS ── */
+      document.querySelectorAll<HTMLElement>('.cs-stat-value').forEach(el => {
+        const raw = el.textContent?.trim() ?? '';
+        if (!/^\d+$/.test(raw)) return;
+        const end = parseInt(raw, 10);
+        el.textContent = '0';
+        ScrollTrigger.create({
+          trigger: el, start: 'top 90%', once: true,
+          onEnter: () => {
+            gsap.to({ val: 0 }, {
+              val: end, duration: 1.4, ease: 'power2.out',
+              onUpdate: function() {
+                el.textContent = Math.round(this.targets()[0].val).toString();
+              }
+            });
+          }
+        });
+      });
 
-      /* descripción */
-      .to(desc, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 0.8)
-
-      /* bullets escalonados */
-      .to(bullets, {
-        opacity: 1, x: 0, duration: 0.5,
-        stagger: 0.1, ease: 'power2.out'
-      }, 1.0)
-
-      /* CTA */
-      .to(cta, { opacity: 1, y: 0, duration: 0.6, ease: 'back.out(1.5)' }, 1.4);
-
-    });
-
-    /* ── hover en imagen: brillo ── */
-    document.querySelectorAll<HTMLElement>('.img-col').forEach((col) => {
-      const img = col.querySelector<HTMLImageElement>('[data-img]');
-      if (!img) return;
-      col.addEventListener('mouseenter', () => gsap.to(img, { opacity: 0.88, scale: 1.04, duration: 0.8, ease: 'power2.out' }));
-      col.addEventListener('mouseleave', () => gsap.to(img, { opacity: 0.62, scale: 1,    duration: 0.8, ease: 'power2.out' }));
-    });
-
-    /* ── hover CTA: fill ── */
-    document.querySelectorAll<HTMLElement>('.cta-btn').forEach((btn) => {
-      const fill = btn.querySelector<HTMLElement>('.cta-fill');
-      if (!fill) return;
-      btn.addEventListener('mouseenter', () => gsap.to(fill, { scaleX: 1, duration: 0.35, ease: 'power2.out' }));
-      btn.addEventListener('mouseleave', () => gsap.to(fill, { scaleX: 0, duration: 0.3,  ease: 'power2.in'  }));
     });
   }
+
+  function cleanup() {
+    if (ctx) { ctx.revert(); ctx = null; }
+    ScrollTrigger.getAll().forEach(t => t.kill());
+  }
+
+  initPage();
+  document.addEventListener('astro:page-load', () => { cleanup(); initPage(); });
+  document.addEventListener('astro:before-swap', cleanup);
 </script>

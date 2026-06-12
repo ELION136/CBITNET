@@ -143,321 +143,293 @@ const courses = [
     ]
   },
 ];
+
+// Colores de tag
+const tagColor: Record<string, string> = {
+  "Gestión":     "#C9993A",
+  "Arbitraje":   "#1A4B8C",
+  "Competición": "#2D7DD2",
+  "Liderazgo":   "#C9993A",
+  "Coaching":    "#1A4B8C",
+  "Eventos":     "#2D7DD2",
+  "Medios":      "#C9993A",
+  "Marketing":   "#2D7DD2",
+};
+const getTagColor = (tag: string) => tagColor[tag] ?? "#C9993A";
+
+const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
 ---
 
 <Layout title="Deportes y Alto Rendimiento | CBIT">
   <Navbar />
 
-  <main class="min-h-screen relative overflow-hidden">
+  <main class="dr-main">
 
-    <!-- ── HERO ── -->
-    <section class="relative min-h-screen flex flex-col justify-end overflow-hidden"
-             style="padding:0 3rem 5rem;">
+    <!-- ══════════════════════════════════
+         HERO — fondo imagen con overlays
+         (se conserva el look cinematográfico
+         original pero con el sistema CBIT)
+    ══════════════════════════════════ -->
+    <section class="dr-hero" id="dr-hero">
 
-      <div id="hero-bg" class="absolute inset-0 will-change-transform"
+      <!-- fondo imagen con parallax -->
+      <div id="hero-bg" class="dr-hero-bg"
            style="background:url('/images/ima2.jpg') center 20% / cover no-repeat;"></div>
 
-      <!-- Overlay doble: oscurece + dirige la lectura a la izquierda -->
-      <div class="absolute inset-0"
-           style="background:
-             linear-gradient(to top,rgba(0,0,0,0.97) 0%,rgba(0,0,0,0.55) 45%,rgba(0,0,0,0.15) 100%),
-             linear-gradient(to right,rgba(0,0,0,0.9) 0%,transparent 65%);"></div>
+      <!-- overlay doble -->
+      <div class="dr-hero-overlay" aria-hidden="true"></div>
+      <!-- mesh punteado CBIT encima del overlay -->
+      <div class="dr-hero-mesh"   aria-hidden="true"></div>
+      <!-- orbs de color CBIT -->
+      <div class="dr-orb dr-orb-1" aria-hidden="true"></div>
+      <div class="dr-orb dr-orb-2" aria-hidden="true"></div>
 
-      <!-- Scanlines sutiles -->
-      <div class="absolute inset-0 pointer-events-none z-[1]"
-           style="background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.08) 2px,rgba(0,0,0,0.08) 4px);"></div>
+      <div class="dr-hero-content">
 
-      <div class="relative z-[2] max-w-5xl">
+        <!-- eyebrow -->
+        <div class="dr-hero-eyebrow" id="hero-eyebrow">
+          <span class="dr-hero-line"></span>
+          <span>Academia de Alto Rendimiento</span>
+        </div>
 
-        <!-- Kicker -->
-        
-        <!-- Título hero -->
-        <h1 class="font-display font-bold tracking-tighter leading-[0.9] text-white mb-8 overflow-hidden"
-            style="font-size:clamp(3.2rem,9vw,8.5rem);">
+        <!-- título — conserva el slide-up original -->
+        <h1 class="dr-hero-title font-display" id="hero-title">
           <span class="hero-line block overflow-hidden">
             <span class="block translate-y-full">ACADEMIA DE</span>
           </span>
           <span class="hero-line block overflow-hidden">
-            <span class="block translate-y-full"
-                  style="-webkit-text-stroke:1px rgba(255, 255, 255, 0.12);color:rgb(243, 214, 22);">
-              ALTO RENDIMIENTO
-            </span>
+            <span class="block translate-y-full dr-gold-text">ALTO RENDIMIENTO</span>
           </span>
           <span class="hero-line block overflow-hidden">
-            <span class="block translate-y-full"
-                  style="background:linear-gradient(90deg,#0ea5e9,#2dd4bf);
-                         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-                         background-clip:text;">
-              DEPORTIVO
-            </span>
+            <span class="block translate-y-full dr-blue-text">DEPORTIVO</span>
           </span>
         </h1>
 
-        <!-- Meta row -->
-        <div class="flex flex-wrap items-start gap-10 mt-4">
-          <p id="hero-desc"
-             class="text-gray-400 text-sm md:text-base max-w-lg leading-[1.85] border-l-2 border-[#0ea5e9]/40 pl-5"
-             style="opacity:0;transform:translateY(18px);">
+        <!-- desc + ctas -->
+        <div class="dr-hero-bottom">
+          <p id="hero-desc" class="dr-hero-desc">
             Formamos directores técnicos, preparadores físicos, árbitros, psicólogos y especialistas
             con metodologías de nivel élite, integrados a la red de scouting profesional boliviano
             e internacional.
           </p>
-
-          <div id="hero-ctas" class="flex gap-3 flex-wrap"
-               style="opacity:0;transform:translateY(18px);">
-            <a href="#cursos"
-               class="inline-flex items-center gap-3 font-display font-bold text-[11px] tracking-[0.18em] uppercase px-8 py-4 text-black transition-all duration-300 hover:-translate-y-1 hover:brightness-110"
-               style="background:linear-gradient(135deg,#0ea5e9,#2dd4bf);
-                      clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));">
+          <div id="hero-ctas" class="dr-hero-ctas">
+            <a href="#cursos" class="dr-btn-primary font-display">
               Ver Cursos
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
               </svg>
             </a>
             <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 font-bold text-[11px] tracking-[0.18em] uppercase px-7 py-4 border text-gray-300 transition-all duration-300 hover:border-[#0ea5e9] hover:text-[#0ea5e9]"
-               style="border-color:rgba(255,255,255,0.12);
-                      clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));">
+               class="dr-btn-outline">
               Inscribirse
             </a>
           </div>
         </div>
       </div>
 
-      <!-- Scroll hint -->
-      <div id="scroll-hint" class="absolute bottom-10 right-12 flex flex-col items-center gap-2 z-[2]"
-           style="opacity:0;">
-        <span class="text-[9px] tracking-[0.25em] uppercase text-white/25"
-              style="writing-mode:vertical-rl;">Deslizar</span>
-        <div class="w-[1px] h-14"
-             style="background:linear-gradient(to bottom,rgba(255,255,255,0.25),transparent);
-                    animation:scrollPulse 2s ease-in-out infinite;"></div>
+      <!-- scroll hint -->
+      <div id="scroll-hint" class="dr-scroll-hint">
+        <span class="dr-scroll-text">Deslizar</span>
+        <div class="dr-scroll-line"></div>
       </div>
     </section>
 
-    <!-- ── STATS BAR ── -->
-    <div class="border-t border-b border-white/[0.05]"
-         style="background:rgba(0,0,0,0.5);backdrop-filter:blur(12px);">
-      <div class="max-w-6xl mx-auto px-10 py-10 flex flex-wrap justify-around gap-8">
+    <!-- ══════════════════════════════════
+         STATS BAR — ahora con el sistema
+         de token blanco/soft de CBIT
+    ══════════════════════════════════ -->
+    <div class="dr-stats-bar">
+      <div class="dr-container dr-stats-inner">
         {stats.map(s => (
-          <div class="stat-chip flex items-center gap-4">
-            <span class="font-display font-bold leading-none"
-                  style="font-size:2.75rem;
-                         background:linear-gradient(135deg,#0ea5e9,#2dd4bf);
-                         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-                         background-clip:text;">
-              {s.num}<span style="font-size:0.5em;">{s.suffix}</span>
-            </span>
-            <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-white/35
-                         max-w-[90px] leading-[1.5]">
-              {s.label}
-            </span>
+          <div class="dr-stat-chip dr-reveal">
+            <span class="dr-stat-num font-display" data-target={s.num}>0</span>
+            <span class="dr-stat-suffix font-display">{s.suffix}</span>
+            <span class="dr-stat-label">{s.label}</span>
           </div>
         ))}
       </div>
     </div>
 
-    <!-- ── CURSOS ── -->
-    <section id="cursos" class="max-w-7xl mx-auto px-6 md:px-10 py-24 relative z-10">
+    <!-- ══════════════════════════════════
+         CURSOS
+    ══════════════════════════════════ -->
+    <section class="dr-section dr-soft-bg" id="cursos">
+      <div class="dr-container">
 
-      <!-- Header sección -->
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8
-                  border-b border-white/[0.07] pb-12 mb-14">
-        <div id="courses-header">
-          <p class="text-[9px] font-bold tracking-[0.45em] uppercase mb-4"
-             style="color:#0ea5e9;">
-            Programas Especializados
-          </p>
-          <h2 class="font-display font-bold tracking-tighter leading-[0.93] text-white"
-              style="font-size:clamp(2.6rem,5.5vw,5rem);">
-            DISCIPLINAS Y<br/>
-            <span style="-webkit-text-stroke:1.5px #0ea5e9;color:transparent;">FORMACIÓN</span>
-            <span class="text-white"> ÉLITE</span>
+        <!-- Header sección -->
+        <div class="dr-section-head dr-reveal">
+          <span class="dr-eyebrow">Programas Especializados</span>
+          <h2 class="dr-section-title font-display">
+            DISCIPLINAS <span class="dr-gold">Y FORMACIÓN</span>
           </h2>
-          <div id="courses-line" class="w-0 h-[2px] mt-5 origin-left"
-               style="background:linear-gradient(to right,#0ea5e9,#2dd4bf);"></div>
+          <div class="dr-bar" data-bar></div>
         </div>
 
-        <!-- Badge INFOCADE -->
-        <div id="infocade-badge-main"
-             class="flex items-center gap-3 self-start lg:self-end px-5 py-3 border"
-             style="border-color:rgba(14,165,233,0.25);
-                    background:rgba(14,165,233,0.04);
-                    clip-path:polygon(0 0,92% 0,100% 20%,100% 100%,8% 100%,0 80%);
-                    opacity:0;">
-          <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-               style="background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.35);">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-                 stroke="#0ea5e9" stroke-width="2" stroke-linecap="round">
-              <circle cx="12" cy="12" r="9"/>
-              <line x1="12" y1="8" x2="12" y2="13"/>
-              <circle cx="12" cy="16.5" r=".6" fill="#0ea5e9"/>
-            </svg>
-          </div>
-          <div class="flex flex-col">
-            <span class="text-[8px] font-bold tracking-[0.3em] uppercase"
-                  style="color:#0ea5e9;opacity:0.7;">Promocionado por</span>
-            <span class="text-white font-bold text-sm tracking-[0.2em]">INFOCADE</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4" id="courses-grid">
-        {courses.map((c, i) => (
-          <div
-            class="course-card group relative border border-white/[0.07] overflow-hidden
-                   transition-colors duration-300"
-            style={`clip-path:polygon(0 0,96% 0,100% 4%,100% 100%,4% 100%,0 96%);
-                    background:rgba(255,255,255,0.02);
-                    opacity:0;transform:translateY(36px);`}
-            data-idx={i}
-          >
-            <!-- Imagen -->
-            <div class="relative overflow-hidden" style="height:190px;">
-              <img
-                src={c.img}
-                alt={c.title}
-                class="w-full h-full object-cover block transition-all duration-700 group-hover:scale-[1.04]"
-                style="opacity:0.4;"
-                data-card-img
-              />
-              <div class="absolute inset-0"
-                   style="background:linear-gradient(to top,rgba(0,0,0,0.95) 0%,transparent 60%);"></div>
-
-              <!-- Badge INFOCADE -->
-              <div class="absolute top-3 right-3 flex items-center gap-1.5 px-2 py-1"
-                   style="background:rgba(4,4,4,0.92);
-                          border:1px solid rgba(14,165,233,0.3);
-                          clip-path:polygon(0 0,88% 0,100% 20%,100% 100%,0 100%);">
-                <div class="w-[11px] h-[11px] rounded-full flex items-center justify-center flex-shrink-0"
-                     style="background:#0ea5e9;">
-                  <svg width="6" height="6" viewBox="0 0 10 10" fill="none"
-                       stroke="#fff" stroke-width="2.5">
-                    <circle cx="5" cy="5" r="3.5"/>
-                  </svg>
-                </div>
-                <span class="text-[7px] font-bold tracking-[0.2em] uppercase"
-                      style="color:#0ea5e9;">INFOCADE</span>
-              </div>
-
-              <!-- Número en imagen -->
-              <div class="absolute bottom-3 left-4 font-bold leading-none pointer-events-none select-none"
-                   style="font-size:5rem;color:#0ea5e9;opacity:0.05;line-height:1;">{c.num}</div>
+        <!-- Badge INFOCADE + filtros de tag -->
+        <div class="dr-toolbar dr-reveal">
+          <!-- badge -->
+          <div class="dr-infocade-badge">
+            <div class="dr-infocade-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="9"/>
+                <line x1="12" y1="8" x2="12" y2="13"/>
+                <circle cx="12" cy="16.5" r=".6" fill="currentColor"/>
+              </svg>
             </div>
-
-            <!-- Brackets hover top-left -->
-            <div class="absolute top-0 left-0 w-0 h-[2px] group-hover:w-9
-                        transition-all duration-500" style="background:#0ea5e9;"></div>
-            <div class="absolute top-0 left-0 w-[2px] h-0 group-hover:h-9
-                        transition-all duration-500 delay-[60ms]" style="background:#0ea5e9;"></div>
-
-            <!-- Cuerpo -->
-            <div class="px-5 pt-4 pb-3">
-              <div class="flex items-center gap-2 mb-2">
-                <div class="w-3 h-[1px]" style="background:#0ea5e9;opacity:0.6;"></div>
-                <span class="text-[8px] font-bold tracking-[0.3em] uppercase"
-                      style="color:#0ea5e9;">{c.tag}</span>
-              </div>
-              <h3 class="text-white font-bold leading-snug"
-                  style="font-size:0.875rem;letter-spacing:0.02em;">{c.title}</h3>
+            <div>
+              <span class="dr-infocade-sub">Promovido por</span>
+              <span class="dr-infocade-name">INFOCADE</span>
             </div>
+          </div>
 
-            <!-- Footer card -->
-            <div class="flex items-center justify-between px-5 py-3"
-                 style="border-top:1px solid rgba(255,255,255,0.05);">
-              <span class="text-[8px] uppercase tracking-[0.15em] text-white/25 font-semibold">
-                {c.modalidad}
-              </span>
+          <!-- filtros -->
+          <div class="dr-tag-filters" id="tag-filter">
+            {allTags.map((tag, i) => (
               <button
-                class="learn-btn text-[8px] font-bold tracking-[0.2em] uppercase px-3 py-1.5
-                       border transition-colors duration-200 hover:bg-[#0ea5e9]/10"
-                style="color:#0ea5e9;
-                       border-color:rgba(14,165,233,0.3);
-                       clip-path:polygon(0 0,86% 0,100% 22%,100% 100%,14% 100%,0 78%);"
-                data-target={`panel-${i}`}
+                class={`dr-tag-btn${i === 0 ? ' dr-tag-active' : ''}`}
+                data-tag={tag}
               >
-                ¿Qué aprenderás?
+                {tag}
               </button>
-            </div>
-
-            <!-- Panel expandible -->
-            <div class="learn-panel overflow-hidden" id={`panel-${i}`}
-                 style="max-height:0;">
-              <div class="px-5 pb-5 pt-3"
-                   style="background:rgba(14,165,233,0.03);
-                          border-top:1px solid rgba(14,165,233,0.1);">
-                <div class="flex items-center gap-2 mb-3">
-                  <div class="w-4 h-[1px]" style="background:#0ea5e9;"></div>
-                  <span class="text-[8px] font-bold tracking-[0.25em] uppercase"
-                        style="color:#0ea5e9;">CONTENIDO DEL CURSO</span>
-                </div>
-                <ul class="flex flex-col gap-2.5">
-                  {c.learn.map(l => (
-                    <li class="flex items-start gap-2.5 text-white/50 text-xs leading-relaxed">
-                      <span class="mt-[5px] w-[4px] h-[4px] flex-shrink-0 rotate-45 bg-[#0ea5e9]
-                                   opacity-70 block"></span>
-                      {l}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  class="close-panel mt-4 flex items-center gap-2 text-[8px] font-bold
-                         tracking-[0.2em] uppercase text-[#0ea5e9]/60 hover:text-[#0ea5e9]
-                         transition-colors duration-200"
-                  style="background:none;border:none;cursor:pointer;"
-                  data-target={`panel-${i}`}
-                >
-                  <svg width="9" height="9" viewBox="0 0 12 12" fill="none"
-                       stroke="currentColor" stroke-width="2">
-                    <line x1="2" y1="2" x2="10" y2="10"/>
-                    <line x1="10" y1="2" x2="2" y2="10"/>
-                  </svg>
-                  CERRAR
-                </button>
-              </div>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        <!-- Grid de cursos -->
+        <div class="dr-courses-grid" id="courses-grid">
+          {courses.map((c, i) => {
+            const color = getTagColor(c.tag);
+            return (
+              <article
+                class="dr-course-card dr-float-card dr-reveal"
+                data-tag={c.tag}
+                data-idx={i}
+                style={`--card-color:${color};`}
+              >
+                <!-- imagen -->
+                <div class="dr-card-img-wrap">
+                  <img
+                    src={c.img}
+                    alt={c.title}
+                    class="dr-card-img dr-zoom-target"
+                    loading="lazy" decoding="async"
+                    data-card-img
+                  />
+                  <div class="dr-card-overlay" aria-hidden="true"></div>
+
+                  <!-- badge INFOCADE en imagen -->
+                  <div class="dr-card-infocade" style={`color:${color};border-color:${color}44`}>
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/></svg>
+                    INFOCADE
+                  </div>
+
+                  <!-- número decorativo en imagen -->
+                  <div class="dr-card-num-deco font-display" style={`color:${color}`}>{c.num}</div>
+                </div>
+
+                <!-- cuerpo -->
+                <div class="dr-card-body">
+                  <div class="dr-card-accent" style={`background:${color}`}></div>
+
+                  <div class="dr-card-tag-row">
+                    <div class="dr-card-tag-line" style={`background:${color}`}></div>
+                    <span class="dr-card-tag" style={`color:${color}`}>{c.tag}</span>
+                  </div>
+
+                  <h3 class="dr-card-title font-display" style={`color:${color}`}>{c.title}</h3>
+                  <p class="dr-card-modalidad">{c.modalidad}</p>
+                </div>
+
+                <!-- footer -->
+                <div class="dr-card-footer">
+                  <button
+                    class="dr-learn-btn"
+                    style={`color:${color};border-color:${color}44`}
+                    data-target={`panel-${i}`}
+                    aria-expanded="false"
+                  >
+                    <svg class="dr-learn-icon" width="12" height="12" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                    ¿Qué aprenderás?
+                  </button>
+                </div>
+
+                <!-- panel expandible — conserva la lógica original -->
+                <div class="dr-learn-panel" id={`panel-${i}`}>
+                  <div class="dr-panel-inner" style={`border-top-color:${color}22`}>
+                    <div class="dr-panel-head">
+                      <div class="dr-panel-line" style={`background:${color}`}></div>
+                      <span class="dr-panel-label" style={`color:${color}`}>CONTENIDO DEL CURSO</span>
+                    </div>
+                    <ul class="dr-panel-list">
+                      {c.learn.map(l => (
+                        <li class="dr-panel-item">
+                          <span class="dr-panel-dot" style={`background:${color}`}></span>
+                          <span>{l}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <button
+                      class="dr-close-btn"
+                      style={`color:${color}`}
+                      data-target={`panel-${i}`}
+                    >
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none"
+                           stroke="currentColor" stroke-width="2">
+                        <line x1="2" y1="2" x2="10" y2="10"/>
+                        <line x1="10" y1="2" x2="2" y2="10"/>
+                      </svg>
+                      CERRAR
+                    </button>
+                  </div>
+                </div>
+
+              </article>
+            );
+          })}
+        </div>
+
+        <!-- contador visible de resultados -->
+        <div class="dr-results-bar dr-reveal">
+          <span class="dr-results-count" id="results-count">{courses.length} programas</span>
+          <div class="dr-results-line"></div>
+          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer"
+             class="dr-results-cta">
+            Inscribirme ahora
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
       </div>
     </section>
 
-    <!-- ── CTA ── -->
-    <section class="relative overflow-hidden border-t border-white/[0.05]">
-      <div class="absolute inset-0"
-           style="background:url('/images/ima3.jpg') center 30% / cover no-repeat;
-                  opacity:0.04;filter:blur(6px);"></div>
-      <!-- Glow cálido de fondo CTA -->
-      <div class="absolute inset-0 pointer-events-none"
-           style="background:radial-gradient(ellipse at 20% 50%,rgba(14,165,233,0.06) 0%,transparent 60%);"></div>
+    <!-- ══════════════════════════════════
+         CTA FINAL — azul CBIT
+    ══════════════════════════════════ -->
+    <section class="dr-cta-section dr-blue-bg" id="cta-section">
+      <div class="dr-orb dr-orb-cta1" aria-hidden="true"></div>
+      <div class="dr-orb dr-orb-cta2" aria-hidden="true"></div>
+      <div class="dr-hero-mesh dr-cta-mesh" aria-hidden="true"></div>
 
-      <div class="relative z-10 max-w-6xl mx-auto px-10 py-28 flex flex-col items-start"
-           id="cta-section">
-        <h2 class="font-display font-bold tracking-tighter leading-[0.9] mb-10"
-            style="font-size:clamp(2.8rem,7vw,6.5rem);">
-          <span class="block"
-                style="-webkit-text-stroke:1px rgba(255,255,255,0.1);color:transparent;">
-            LLEVA TU PASIÓN
-          </span>
-          <span class="block"
-                style="-webkit-text-stroke:1px rgba(255,255,255,0.1);color:transparent;">
-            AL SIGUIENTE NIVEL.
-          </span>
-          <span class="block"
-                style="background:linear-gradient(90deg,#0ea5e9,#2dd4bf);
-                       -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-                       background-clip:text;">
-            INICIA TU CAMINO HOY.
-          </span>
-        </h2>
+      <div class="dr-container dr-cta-inner">
+        <div class="dr-cta-text dr-reveal">
+          <span class="dr-eyebrow dr-eyebrow-gold">Tu próximo paso</span>
+          <h2 class="dr-cta-title font-display">
+            LLEVA TU PASIÓN<br/>
+            AL SIGUIENTE <span class="dr-gold">NIVEL.</span>
+          </h2>
+          <div class="dr-bar dr-bar-gold" data-bar></div>
+        </div>
 
-        <div class="flex flex-wrap items-center gap-5">
+        <div class="dr-cta-actions dr-reveal dr-d1">
           <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 font-display font-bold text-sm
-                    tracking-[0.14em] uppercase px-10 py-5 text-black
-                    transition-all duration-300 hover:-translate-y-1 hover:brightness-110"
-             style="background:linear-gradient(135deg,#0ea5e9,#2dd4bf);
-                    clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));">
+             class="dr-cta-btn-main">
             Reservar Mi Cupo
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2.5">
@@ -465,15 +437,11 @@ const courses = [
             </svg>
           </a>
 
-          <div class="flex gap-2.5 flex-wrap">
+          <div class="dr-cta-badges">
             {["Cupos Limitados","Validez Curricular","Cert. Analítico"].map(b => (
-              <div class="inline-flex items-center gap-2 px-4 py-2.5 border
-                          text-white/40 text-[9px] font-bold tracking-[0.15em] uppercase
-                          hover:border-[#0ea5e9]/30 hover:text-white/60 transition-colors duration-300"
-                   style="border-color:rgba(255,255,255,0.07);
-                          clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px));">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="3"
-                     width="10" height="10">
+              <div class="dr-cta-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                     width="11" height="11" style="color:var(--gold)">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
                 {b}
@@ -488,123 +456,682 @@ const courses = [
 </Layout>
 
 <style>
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.25; }
-    50%       { opacity: 0.7; }
-  }
+/* ══════════════════════════════════
+   TOKENS CBIT
+══════════════════════════════════ */
+:root {
+  --blue:      #1A4B8C;
+  --blue-mid:  #2D7DD2;
+  --blue-lt:   #EBF3FB;
+  --cyan:      #f5c21a;
+  --gold:      #C9993A;
+  --gold-lt:   #F5E8CC;
+  --white:     #ffffff;
+  --soft:      #F0F4FA;
+  --text:      #1e293b;
+  --muted:     #64748B;
+  --faint:     #94A3B8;
+
+  --sh2:      0 4px 12px rgba(0,0,0,0.10), 0 8px 24px rgba(26,75,140,0.10);
+  --sh-hover: 0 14px 40px rgba(0,0,0,0.14), 0 28px 60px rgba(26,75,140,0.22);
+  --r-xl:     36px;
+}
+
+/* ══════════════════════════════════
+   BASE
+══════════════════════════════════ */
+.dr-main      { background: var(--white); overflow-x: hidden; }
+.dr-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.dr-gold      { color: var(--gold); }
+.dr-soft-bg   { background: var(--soft); }
+.dr-blue-bg   { background: var(--blue); position: relative; overflow: hidden; }
+
+/* ══════════════════════════════════
+   HERO — imagen de fondo cinematográfica
+   conservada, con orbs y mesh CBIT encima
+══════════════════════════════════ */
+.dr-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 3rem 5rem;
+  overflow: hidden;
+}
+.dr-hero-bg {
+  position: absolute; inset: 0;
+  will-change: transform;
+}
+.dr-hero-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.18) 100%),
+    linear-gradient(to right, rgba(0,0,0,0.88) 0%, transparent 65%);
+}
+.dr-hero-mesh {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.dr-orb {
+  position: absolute; border-radius: 50%;
+  pointer-events: none; filter: blur(80px);
+}
+.dr-orb-1 { width:500px;height:500px; top:-100px;right:-100px;
+  background:radial-gradient(circle,rgba(201,153,58,0.14),transparent 70%); }
+.dr-orb-2 { width:350px;height:350px; bottom:5%;left:55%;
+  background:radial-gradient(circle,rgba(45,125,210,0.10),transparent 70%); }
+.dr-orb-cta1 { width:450px;height:450px; top:-80px;right:-80px;
+  background:radial-gradient(circle,rgba(14,165,233,0.14),transparent 70%); }
+.dr-orb-cta2 { width:300px;height:300px; bottom:-60px;left:-60px;
+  background:radial-gradient(circle,rgba(201,153,58,0.12),transparent 70%); }
+.dr-cta-mesh { opacity: 0.5; }
+
+.dr-hero-content {
+  position: relative; z-index: 2;
+  max-width: 1000px;
+}
+
+.dr-hero-eyebrow {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0; transform: translateY(12px);
+}
+.dr-hero-line { display: block; width: 24px; height: 1.5px; background: var(--gold); flex-shrink: 0; }
+
+.dr-hero-title {
+  font-size: clamp(3rem, 9vw, 8.5rem);
+  line-height: 0.92;
+  margin: 0 0 2rem;
+  color: #fff;
+}
+.dr-gold-text { color: #f3d616; }
+.dr-blue-text {
+  background: linear-gradient(90deg, var(--blue-mid), #38bdf8);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dr-hero-bottom {
+  display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2.5rem;
+}
+.dr-hero-desc {
+  font-size: 0.95rem; line-height: 1.85; color: rgba(255,255,255,0.55);
+  border-left: 2px solid rgba(201,153,58,0.5); padding-left: 1.25rem;
+  max-width: 44ch;
+  opacity: 0; transform: translateY(18px);
+}
+.dr-hero-ctas {
+  display: flex; gap: 0.85rem; flex-wrap: wrap;
+  opacity: 0; transform: translateY(18px);
+}
+.dr-btn-primary {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--gold), #d4a83a);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.dr-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(201,153,58,0.35); }
+.dr-btn-outline {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 1rem 1.75rem;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.65);
+  border-radius: 50px;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color 0.3s, color 0.3s;
+}
+.dr-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+.dr-scroll-hint {
+  position: absolute; bottom: 2.5rem; right: 3rem;
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  z-index: 2; opacity: 0;
+}
+.dr-scroll-text {
+  font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  writing-mode: vertical-rl;
+}
+.dr-scroll-line {
+  width: 1px; height: 56px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent);
+  animation: drScrollPulse 2s ease-in-out infinite;
+}
+@keyframes drScrollPulse { 0%,100%{opacity:.25}50%{opacity:.75} }
+
+/* ══════════════════════════════════
+   STATS BAR — light con borde CBIT
+══════════════════════════════════ */
+.dr-stats-bar {
+  background: var(--white);
+  border-bottom: 1px solid rgba(26,75,140,0.08);
+  box-shadow: 0 2px 16px rgba(26,75,140,0.06);
+}
+.dr-stats-inner {
+  display: flex; flex-wrap: wrap; justify-content: space-around;
+  gap: 1.5rem; padding: 2.5rem 2rem;
+}
+.dr-stat-chip {
+  display: flex; align-items: center; gap: 1rem;
+}
+.dr-stat-num {
+  font-size: clamp(2rem,4vw,3rem); line-height: 1;
+  color: var(--gold);
+}
+.dr-stat-suffix {
+  font-size: 1rem; color: var(--gold); margin-left: -0.5rem;
+}
+.dr-stat-label {
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); max-width: 90px; line-height: 1.45;
+}
+
+/* ══════════════════════════════════
+   SECCIÓN CURSOS
+══════════════════════════════════ */
+.dr-section { padding: 6rem 0; }
+
+.dr-section-head { text-align: center; margin-bottom: 3rem; }
+.dr-eyebrow {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--blue-mid); margin-bottom: 0.5rem;
+}
+.dr-eyebrow-gold { color: var(--gold); }
+.dr-section-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  color: var(--blue); line-height: 1.12; margin: 0 0 1.2rem;
+}
+.dr-bar {
+  display: block; height: 3px; width: 0;
+  background: var(--blue-mid); border-radius: 2px;
+  margin: 0 auto;
+  transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s;
+}
+.dr-bar-gold { background: var(--gold); }
+.dr-bar.dr-bar-on { width: 56px; }
+
+/* toolbar — badge + filtros */
+.dr-toolbar {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.dr-infocade-badge {
+  display: flex; align-items: center; gap: 0.65rem;
+  padding: 0.6rem 1.1rem;
+  background: var(--blue-lt);
+  border: 1px solid rgba(26,75,140,0.16);
+  border-radius: 50px;
+}
+.dr-infocade-icon {
+  width: 28px; height: 28px;
+  background: var(--blue); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; flex-shrink: 0;
+}
+.dr-infocade-sub  { display: block; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); }
+.dr-infocade-name { display: block; font-size: 0.82rem; font-weight: 800; color: var(--blue); letter-spacing: 0.06em; }
+
+.dr-tag-filters {
+  display: flex; gap: 0.45rem; flex-wrap: wrap;
+}
+.dr-tag-btn {
+  padding: 0.4rem 1rem;
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  border: 1px solid rgba(26,75,140,0.14);
+  border-radius: 50px;
+  background: transparent; color: var(--muted);
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.dr-tag-btn:hover { background: var(--blue-lt); color: var(--blue); border-color: rgba(26,75,140,0.3); }
+.dr-tag-btn.dr-tag-active {
+  background: var(--gold); color: #fff;
+  border-color: var(--gold);
+  box-shadow: 0 2px 10px rgba(201,153,58,0.28);
+}
+
+/* ══════════════════════════════════
+   FLOAT CARD
+══════════════════════════════════ */
+.dr-float-card {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh2);
+  border: 1px solid rgba(26,75,140,0.06);
+  transition: transform 0.42s cubic-bezier(0.22,1,0.36,1), box-shadow 0.42s, border-color 0.3s;
+  overflow: hidden;
+}
+.dr-float-card:hover {
+  transform: translateY(-10px) scale(1.012);
+  box-shadow: var(--sh-hover);
+  border-color: rgba(var(--card-color, 201,153,58), 0.2);
+}
+.dr-float-card:hover .dr-zoom-target { transform: scale(1.05); }
+
+/* ══════════════════════════════════
+   CARD DE CURSO
+══════════════════════════════════ */
+.dr-courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+.dr-course-card { display: flex; flex-direction: column; }
+
+.dr-card-img-wrap { position: relative; height: 190px; overflow: hidden; }
+.dr-card-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.dr-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,75,140,0.22) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* badge INFOCADE en imagen */
+.dr-card-infocade {
+  position: absolute; top: 0.75rem; right: 0.75rem;
+  display: flex; align-items: center; gap: 0.35rem;
+  padding: 0.28rem 0.65rem;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid;
+  border-radius: 50px;
+  font-size: 0.58rem; font-weight: 800;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  backdrop-filter: blur(6px);
+}
+
+/* número decorativo grande */
+.dr-card-num-deco {
+  position: absolute; bottom: 0.5rem; left: 1rem;
+  font-size: 5.5rem; line-height: 1;
+  opacity: 0.06; pointer-events: none;
+}
+
+/* body */
+.dr-card-body { padding: 1.25rem 1.4rem 0.5rem; flex: 1; }
+.dr-card-accent {
+  width: 24px; height: 3px; border-radius: 2px;
+  margin-bottom: 0.75rem;
+  transition: width 0.35s;
+}
+.dr-float-card:hover .dr-card-accent { width: 44px; }
+.dr-card-tag-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+.dr-card-tag-line { width: 12px; height: 1.5px; opacity: 0.6; }
+.dr-card-tag {
+  font-size: 0.6rem; font-weight: 800;
+  letter-spacing: 0.22em; text-transform: uppercase;
+}
+.dr-card-title {
+  font-size: 0.95rem; line-height: 1.3;
+  margin: 0 0 0.4rem;
+  letter-spacing: 0.02em;
+}
+.dr-card-modalidad {
+  font-size: 0.72rem; color: var(--faint);
+  font-weight: 600; letter-spacing: 0.08em;
+}
+
+/* footer card */
+.dr-card-footer {
+  padding: 0.85rem 1.4rem 1.2rem;
+  border-top: 1px solid rgba(26,75,140,0.07);
+  margin-top: 0.75rem;
+}
+.dr-learn-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.42rem 0.95rem;
+  border: 1px solid;
+  border-radius: 50px;
+  background: transparent;
+  font-size: 0.6rem; font-weight: 800;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+.dr-learn-btn:hover { background: var(--blue-lt); }
+.dr-learn-icon { transition: transform 0.3s ease; flex-shrink: 0; }
+.dr-learn-btn[aria-expanded="true"] .dr-learn-icon { transform: rotate(45deg); }
+
+/* ══════════════════════════════════
+   PANEL EXPANDIBLE — lógica original
+   conservada, estilos CBIT
+══════════════════════════════════ */
+.dr-learn-panel {
+  overflow: hidden;
+  max-height: 0;
+}
+.dr-panel-inner {
+  padding: 1rem 1.4rem 1.25rem;
+  background: var(--soft);
+  border-top: 1px solid;
+}
+.dr-panel-head {
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+.dr-panel-line { width: 14px; height: 1.5px; flex-shrink: 0; }
+.dr-panel-label {
+  font-size: 0.58rem; font-weight: 800;
+  letter-spacing: 0.24em; text-transform: uppercase;
+}
+.dr-panel-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.dr-panel-item {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  font-size: 0.82rem; line-height: 1.65; color: var(--muted);
+}
+.dr-panel-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 0.45rem; opacity: 0.75;
+}
+.dr-close-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 0.85rem;
+  background: none; border: none; cursor: pointer;
+  font-size: 0.58rem; font-weight: 800;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+.dr-close-btn:hover { opacity: 1; }
+
+/* barra de resultados */
+.dr-results-bar {
+  display: flex; align-items: center; gap: 1rem;
+  margin-top: 2.5rem;
+}
+.dr-results-count {
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); flex-shrink: 0;
+}
+.dr-results-line { flex: 1; height: 1px; background: rgba(26,75,140,0.1); }
+.dr-results-cta {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.5rem 1.1rem;
+  background: var(--blue);
+  color: #fff; border-radius: 50px;
+  font-size: 0.62rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.25s;
+  flex-shrink: 0;
+}
+.dr-results-cta:hover { background: var(--blue-mid); transform: translateY(-2px); }
+
+/* ══════════════════════════════════
+   CTA FINAL
+══════════════════════════════════ */
+.dr-cta-section { padding: 7rem 0; }
+.dr-cta-inner { display: flex; flex-direction: column; align-items: flex-start; gap: 2.5rem; position: relative; z-index: 2; }
+.dr-cta-title {
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  color: #fff; line-height: 0.95; margin: 1rem 0 1.2rem;
+}
+.dr-cta-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
+.dr-cta-btn-main {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 1.1rem 2.2rem;
+  background: linear-gradient(135deg, var(--gold), #d4a83a);
+  color: #fff; border-radius: 50px;
+  font-size: 0.8rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.dr-cta-btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(201,153,58,0.40); }
+.dr-cta-badges { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+.dr-cta-badge {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50px;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  transition: border-color 0.25s, color 0.25s;
+}
+.dr-cta-badge:hover { border-color: rgba(201,153,58,0.4); color: rgba(255,255,255,0.85); }
+
+/* ══════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════ */
+.dr-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.dr-reveal.dr-on { opacity: 1; transform: translateY(0); }
+.dr-d1 { transition-delay: .13s; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media(max-width:1024px){
+  .dr-courses-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:768px){
+  .dr-hero { padding: 0 1.5rem 4rem; }
+  .dr-courses-grid { grid-template-columns: 1fr; }
+  .dr-toolbar { flex-direction: column; align-items: flex-start; }
+}
+@media(max-width:640px){
+  .dr-section  { padding: 4rem 0; }
+  .dr-container { padding: 0 1.25rem; }
+  .dr-cta-section { padding: 5rem 0; }
+}
+@media(prefers-reduced-motion:reduce){
+  .dr-reveal { opacity: 1; transform: none; transition: none; }
+  .dr-bar    { width: 56px; transition: none; }
+  .dr-scroll-line { animation: none; }
+  .dr-hero-eyebrow, .dr-hero-desc, .dr-hero-ctas, #scroll-hint { opacity: 1; transform: none; }
+}
 </style>
 
 <script>
   import gsap from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
 
-  if (typeof window !== 'undefined') {
+  let ctx: gsap.Context | null = null;
+
+  function initPage() {
+    if (ctx) { ctx.revert(); ctx = null; }
     gsap.registerPlugin(ScrollTrigger);
 
-    /* ── HERO ── */
-    const heroTl = gsap.timeline({ delay: 0.1 });
-    heroTl
-      .from('#hero-bg',      { scale: 1.08, duration: 2.4, ease: 'power2.out' }, 0)
-      .to('#hero-kicker',    { y: 0, opacity: 1, duration: 0.85, ease: 'power3.out' }, 0.25)
-      .to('.hero-line span', { y: '0%', duration: 1.05, stagger: 0.14, ease: 'power4.out' }, 0.45)
-      .to('#hero-desc',      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.88)
-      .to('#hero-ctas',      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 1.02)
-      .to('#scroll-hint',    { opacity: 1, duration: 0.5 }, 1.25);
+    ctx = gsap.context(() => {
 
-    /* Parallax hero */
-    gsap.to('#hero-bg', {
-      yPercent: 20,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: 'section',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
+      /* ══ HERO ══ */
+      const heroTl = gsap.timeline({ delay: 0.1 });
+      heroTl
+        .from('#hero-bg',      { scale: 1.08, duration: 2.4, ease: 'power2.out' }, 0)
+        .to('#hero-eyebrow',   { y: 0, opacity: 1, duration: 0.85, ease: 'power3.out' }, 0.25)
+        .to('.hero-line span', { y: '0%', duration: 1.05, stagger: 0.14, ease: 'power4.out' }, 0.4)
+        .to('#hero-desc',      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.88)
+        .to('#hero-ctas',      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 1.02)
+        .to('#scroll-hint',    { opacity: 1, duration: 0.5 }, 1.25);
+
+      /* parallax hero bg */
+      gsap.to('#hero-bg', {
+        yPercent: 20, ease: 'none',
+        scrollTrigger: { trigger: '.dr-hero', start: 'top top', end: 'bottom top', scrub: true }
+      });
+
+      /* ══ SCROLL REVEAL global ══ */
+      const revealIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('dr-on');
+            revealIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+
+      document.querySelectorAll('.dr-reveal').forEach(el => revealIO.observe(el));
+
+      /* ══ BAR DRAW ══ */
+      const barIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('dr-bar-on');
+            barIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.8 });
+
+      document.querySelectorAll('[data-bar]').forEach(el => barIO.observe(el));
+
+      /* ══ STAT COUNTERS ══ */
+      document.querySelectorAll<HTMLElement>('[data-target]').forEach(el => {
+        const end = parseInt(el.dataset.target ?? '0', 10);
+        ScrollTrigger.create({
+          trigger: el, start: 'top 90%', once: true,
+          onEnter: () => {
+            gsap.to({ val: 0 }, {
+              val: end, duration: 1.5, ease: 'power2.out',
+              onUpdate: function() {
+                el.textContent = Math.round(this.targets()[0].val).toString();
+              }
+            });
+          }
+        });
+      });
+
+      /* ══ CARDS: entrada stagger ══ */
+      const grid = document.querySelector('#courses-grid');
+      if (grid) {
+        const cards = Array.from(grid.querySelectorAll<HTMLElement>('.dr-course-card'));
+        ScrollTrigger.create({
+          trigger: grid, start: 'top 88%', once: true,
+          onEnter: () => {
+            cards.forEach((card, i) => {
+              gsap.to(card, {
+                opacity: 1, y: 0, duration: 0.72,
+                delay: (i % 3) * 0.09,
+                ease: 'power3.out', overwrite: true,
+              });
+            });
+          }
+        });
       }
-    });
 
-    /* Stats */
-    gsap.utils.toArray<HTMLElement>('.stat-chip').forEach((chip, i) => {
-      gsap.from(chip, {
-        y: 24, opacity: 0, duration: 0.65,
-        delay: i * 0.08,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: chip, start: 'top 90%' }
-      });
-    });
-
-    /* Header cursos */
-    const hdrTl = gsap.timeline({
-      scrollTrigger: { trigger: '#courses-header', start: 'top 84%' }
-    });
-    hdrTl
-      .from('#courses-header > *', {
-        y: 35, opacity: 0, duration: 0.75, stagger: 0.18, ease: 'power3.out'
-      })
-      .to('#courses-line', { width: '3rem', duration: 0.75, ease: 'power3.out' }, '-=0.35')
-      .to('#infocade-badge-main', { opacity: 1, duration: 0.6, ease: 'back.out(1.4)' }, '-=0.25');
-
-    /* Cards */
-    gsap.utils.toArray<HTMLElement>('.course-card').forEach((card, i) => {
-      const img = card.querySelector<HTMLImageElement>('[data-card-img]');
-
-      gsap.to(card, {
-        y: 0, opacity: 1, duration: 0.85,
-        ease: 'power3.out',
-        delay: (i % 3) * 0.1,
-        scrollTrigger: { trigger: card, start: 'top 90%', once: true }
+      /* ══ HOVER IMAGEN ══ */
+      document.querySelectorAll<HTMLElement>('.dr-course-card').forEach(card => {
+        const img = card.querySelector<HTMLElement>('[data-card-img]');
+        if (!img) return;
+        card.addEventListener('mouseenter', () =>
+          gsap.to(img, { scale: 1.06, duration: 0.65, ease: 'power2.out' })
+        );
+        card.addEventListener('mouseleave', () =>
+          gsap.to(img, { scale: 1,    duration: 0.65, ease: 'power2.out' })
+        );
       });
 
-      card.addEventListener('mouseenter', () => {
-        if (img) gsap.to(img, { opacity: 0.72, duration: 0.55, ease: 'power2.out' });
-        gsap.to(card, { borderColor: 'rgba(14,165,233,0.35)', duration: 0.25 });
-      });
-      card.addEventListener('mouseleave', () => {
-        if (img) gsap.to(img, { opacity: 0.4, duration: 0.55, ease: 'power2.out' });
-        gsap.to(card, { borderColor: 'rgba(255,255,255,0.07)', duration: 0.25 });
-      });
-    });
+      /* ══ PANEL EXPANDIBLE — lógica original conservada ══ */
+      document.querySelectorAll<HTMLButtonElement>('.dr-learn-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const panel   = document.getElementById(btn.dataset.target!)!;
+          const isOpen  = parseFloat(panel.style.maxHeight || '0') > 0;
 
-    /* Panel expandible */
-    document.querySelectorAll<HTMLButtonElement>('.learn-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const panel  = document.getElementById(btn.dataset.target!)!;
-        const isOpen = parseFloat(panel.style.maxHeight || '0') > 0;
-
-        document.querySelectorAll<HTMLElement>('.learn-panel').forEach(p => {
-          gsap.to(p, {
-            maxHeight: 0, duration: 0.38, ease: 'power3.in',
-            onComplete: () => { p.style.maxHeight = '0'; }
+          // cerrar todos
+          document.querySelectorAll<HTMLElement>('.dr-learn-panel').forEach(p => {
+            gsap.to(p, { maxHeight: 0, duration: 0.38, ease: 'power3.in',
+              onComplete: () => { p.style.maxHeight = '0'; } });
           });
-        });
+          document.querySelectorAll<HTMLButtonElement>('.dr-learn-btn').forEach(b => {
+            b.setAttribute('aria-expanded', 'false');
+          });
 
-        if (!isOpen) {
-          gsap.fromTo(panel,
-            { maxHeight: 0 },
-            { maxHeight: 420, duration: 0.48, ease: 'power3.out' }
+          if (!isOpen) {
+            btn.setAttribute('aria-expanded', 'true');
+            gsap.fromTo(panel,
+              { maxHeight: 0 },
+              { maxHeight: 480, duration: 0.48, ease: 'power3.out' }
+            );
+            gsap.from(panel.querySelectorAll('.dr-panel-item'), {
+              x: -10, opacity: 0, duration: 0.38,
+              stagger: 0.07, delay: 0.16, ease: 'power2.out'
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll<HTMLButtonElement>('.dr-close-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const panel = document.getElementById(btn.dataset.target!)!;
+          gsap.to(panel, { maxHeight: 0, duration: 0.38, ease: 'power3.in',
+            onComplete: () => { panel.style.maxHeight = '0'; } });
+          const learnBtn = document.querySelector<HTMLButtonElement>(
+            `[data-target="${btn.dataset.target}"].dr-learn-btn`
           );
-          gsap.from(panel.querySelectorAll('li'), {
-            x: -8, opacity: 0, duration: 0.35,
-            stagger: 0.06, delay: 0.14, ease: 'power2.out'
-          });
-        }
-      });
-    });
-
-    document.querySelectorAll<HTMLButtonElement>('.close-panel').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const panel = document.getElementById(btn.dataset.target!)!;
-        gsap.to(panel, {
-          maxHeight: 0, duration: 0.38, ease: 'power3.in',
-          onComplete: () => { panel.style.maxHeight = '0'; }
+          learnBtn?.setAttribute('aria-expanded', 'false');
         });
       });
-    });
 
-    /* CTA */
-    gsap.from('#cta-section > *', {
-      y: 45, opacity: 0, duration: 0.85, stagger: 0.18, ease: 'power3.out',
-      scrollTrigger: { trigger: '#cta-section', start: 'top 80%' }
+      /* ══ FILTRO DE TAGS ══ */
+      const tagBtns  = document.querySelectorAll<HTMLButtonElement>('.dr-tag-btn');
+      const cards2   = document.querySelectorAll<HTMLElement>('.dr-course-card');
+      const counter  = document.getElementById('results-count');
+
+      tagBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tagBtns.forEach(b => b.classList.remove('dr-tag-active'));
+          btn.classList.add('dr-tag-active');
+          const tag = btn.dataset.tag ?? 'TODOS';
+          let visible = 0;
+
+          cards2.forEach(card => {
+            const show = tag === 'TODOS' || card.dataset.tag === tag;
+            if (show) {
+              card.style.display = '';
+              gsap.to(card, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' });
+              visible++;
+            } else {
+              gsap.to(card, { opacity: 0, y: 12, duration: 0.25, ease: 'power2.in',
+                onComplete: () => { card.style.display = 'none'; } });
+            }
+          });
+
+          // actualizar contador con delay para que termine la animación
+          setTimeout(() => {
+            if (counter) counter.textContent = `${visible} programa${visible !== 1 ? 's' : ''}`;
+          }, 320);
+        });
+      });
+
+      /* ══ CTA FINAL ══ */
+      gsap.from('#cta-section > *', {
+        y: 40, opacity: 0, duration: 0.85, stagger: 0.18, ease: 'power3.out',
+        scrollTrigger: { trigger: '#cta-section', start: 'top 80%' }
+      });
+
     });
   }
+
+  function cleanup() {
+    if (ctx) { ctx.revert(); ctx = null; }
+    ScrollTrigger.getAll().forEach(t => t.kill());
+  }
+
+  initPage();
+  document.addEventListener('astro:page-load', () => { cleanup(); initPage(); });
+  document.addEventListener('astro:before-swap', cleanup);
 </script>

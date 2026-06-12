@@ -3,497 +3,257 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import AutoridadesCarousel from '../components/AutoridadesCarousel.astro';
 
-// Datos de los Valores Corporativos (Imágenes tipo Álbum)
 const valores = [
-  {
-    id: "integridad",
-    title: "INTEGRIDAD",
-    color: "#f59e0b", // Dorado / Ámbar
-    glow: "rgba(245,158,11,0.25)",
-    image: "/images/int.webp",
-    desc: "Actuamos con honestidad, ética y responsabilidad en cada acción de formación educativa y deportiva.",
-    details: "Para nosotros, la integridad es el pilar de la confianza. Formamos a estudiantes y atletas bajo rigurosos principios morales, garantizando una competencia justa y un aprendizaje transparente y de alta calidad."
-  },
-  {
-    id: "inclusion",
-    title: "INCLUSIÓN",
-    color: "#10b981", // Esmeralda / Verde
-    glow: "rgba(16,185,129,0.25)",
-    image: "/images/jun.webp",
-    desc: "Promovemos la igualdad de oportunidades, respetando la diversidad cultural, social y de capacidades.",
-    details: "Derribamos barreras físicas y sociales para construir una comunidad diversa. En CBIT, creemos que el talento no tiene fronteras y que cada persona aporta un valor único e indispensable al colectivo."
-  },
-  {
-    id: "bienestar",
-    title: "BIENESTAR",
-    color: "#8b5cf6", // Violeta / Lavanda
-    glow: "rgba(139,92,246,0.25)",
-    image: "/images/ban.webp",
-    desc: "Promovemos hábitos saludables y una vida equilibrada en lo físico, emocional y social.",
-    details: "El éxito verdadero nace de la armonía. Diseñamos entornos educativos y rutinas físicas que priorizan la salud mental, el descanso, la alimentación balanceada y las relaciones interpersonales sanas."
-  },
-  {
-    id: "disciplina",
-    title: "DISCIPLINA",
-    color: "#ef4444", // Rojo
-    glow: "rgba(239,68,68,0.25)",
-    image: "/images/ku.webp",
-    desc: "Fomentamos el compromiso, la constancia y la responsabilidad personal como fundamentos del desarrollo humano y deportivo.",
-    details: "La constancia supera al talento innato. Inculcamos la dedicación diaria y la auto-exigencia organizada como herramientas indispensables para superar desafíos y forjar caracteres inquebrantables."
-  },
-  {
-    id: "superacion",
-    title: "SUPERACIÓN",
-    color: "#0ea5e9", // Cian
-    glow: "rgba(14,165,233,0.25)",
-    image: "/images/sup5.webp",
-    desc: "Impulsamos el deseo de aprender, mejorar y alcanzar metas, tanto personales como colectivas.",
-    details: "Buscamos siempre rebasar nuestros propios límites. Fomentamos una mentalidad de crecimiento continuo (kaizen) donde los errores son oportunidades de aprendizaje y cada meta alcanzada es el punto de inicio de un nuevo reto."
-  },
-  {
-    id: "trabajo-equipo",
-    title: "TRABAJO EN EQUIPO",
-    color: "#2dd4bf", // Teal / Turquesa
-    glow: "rgba(45,212,191,0.25)",
-    image: "/images/eq8.webp",
-    desc: "Valoramos la cooperación, la solidaridad y el apoyo mutuo como principios que fortalecen el crecimiento comunitario.",
-    details: "La sinergia de voluntades multiplica los resultados. Enseñar a colaborar, delegar y celebrar el triunfo ajeno es la piedra angular sobre la que descansa el éxito colectivo de nuestros alumnos y atletas."
-  }
+  { id: "integridad",    title: "INTEGRIDAD",       color: "#C9993A", image: "/images/int.webp",   desc: "Actuamos con honestidad, ética y responsabilidad en cada acción de formación educativa y deportiva.", details: "La integridad es el pilar de la confianza. Formamos a estudiantes y atletas bajo rigurosos principios morales, garantizando una competencia justa y un aprendizaje transparente." },
+  { id: "inclusion",    title: "INCLUSIÓN",         color: "#1A4B8C", image: "/images/jun.webp",   desc: "Promovemos la igualdad de oportunidades, respetando la diversidad cultural, social y de capacidades.", details: "Derribamos barreras físicas y sociales para construir una comunidad diversa donde el talento no tiene fronteras." },
+  { id: "bienestar",    title: "BIENESTAR",         color: "#2D7DD2", image: "/images/ban.webp",   desc: "Promovemos hábitos saludables y una vida equilibrada en lo físico, emocional y social.", details: "Diseñamos entornos y rutinas que priorizan la salud mental, el descanso y las relaciones interpersonales sanas." },
+  { id: "disciplina",   title: "DISCIPLINA",        color: "#C9993A", image: "/images/ku.webp",    desc: "Fomentamos el compromiso, la constancia y la responsabilidad como fundamentos del desarrollo humano.", details: "La constancia supera al talento innato. Inculcamos la dedicación diaria para superar desafíos y forjar caracteres." },
+  { id: "superacion",   title: "SUPERACIÓN",        color: "#1A4B8C", image: "/images/sup5.webp",  desc: "Impulsamos el deseo de aprender, mejorar y alcanzar metas tanto personales como colectivas.", details: "Fomentamos una mentalidad de crecimiento donde cada error es oportunidad y cada meta el inicio de un reto nuevo." },
+  { id: "equipo",       title: "TRABAJO EN EQUIPO", color: "#2D7DD2", image: "/images/eq8.webp",   desc: "Valoramos la cooperación, la solidaridad y el apoyo mutuo como principios que fortalecen el crecimiento.", details: "La sinergia de voluntades multiplica los resultados. Colaborar y celebrar el triunfo ajeno es nuestra piedra angular." }
 ];
 
-// Datos del Personal
 const personal = [
-  { name: "Prof. Alejandro Valda", role: "Coordinador Deportivo", desc: "Ex-atleta olímpico y consultor certificado en alto rendimiento.", image: "https://picsum.photos/seed/staff1/300/300", badge: "Deportes", color: "#f59e0b" },
-  { name: "Dra. Valeria Sanjinés", role: "Psicóloga del Deporte", desc: "Especialista en preparación mental y motivación estudiantil.", image: "https://picsum.photos/seed/staff2/300/300", badge: "Bienestar", color: "#8b5cf6" },
-  { name: "Ing. Roberto Claros", role: "Tecnología Educativa", desc: "Director de plataformas virtuales y educación digital.", image: "https://picsum.photos/seed/staff3/300/300", badge: "Académica", color: "#0ea5e9" },
-  { name: "Lic. Andrea Torrico", role: "Coordinadora de Relaciones", desc: "Gestora de convenios internacionales y apoyo social.", image: "https://picsum.photos/seed/staff4/300/300", badge: "Convenios", color: "#2dd4bf" }
+  { name: "Prof. Alejandro Valda",  role: "Coordinador Deportivo",       desc: "Ex-atleta olímpico y consultor certificado en alto rendimiento deportivo.", image: "https://picsum.photos/seed/staff1/400/400", badge: "Deportes" },
+  { name: "Dra. Valeria Sanjinés",  role: "Psicóloga del Deporte",        desc: "Especialista en preparación mental y motivación estudiantil.", image: "https://picsum.photos/seed/staff2/400/400", badge: "Bienestar" },
+  { name: "Ing. Roberto Claros",    role: "Tecnología Educativa",         desc: "Director de plataformas virtuales y educación digital avanzada.", image: "https://picsum.photos/seed/staff3/400/400", badge: "Académica" },
+  { name: "Lic. Andrea Torrico",    role: "Coordinadora de Relaciones",   desc: "Gestora de convenios internacionales y programas de apoyo social.", image: "https://picsum.photos/seed/staff4/400/400", badge: "Convenios" }
 ];
 
-// Datos de los Certificados
 const certificados = [
-  {
-    title: "Alto Rendimiento Deportivo",
-    issuer: "INAF - Deportes CBIT",
-    desc: "Acredita capacidades de nivel competitivo, preparación física táctica y liderazgo de equipo.",
-    badge: "Sports Certified",
-    color: "#f59e0b",
-    glow: "rgba(245,158,11,0.25)",
-    icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-  },
-  {
-    title: "Formación Integral Académica",
-    issuer: "CBIT Corporativo",
-    desc: "Valida competencias profesionales de gestión, ética y desarrollo en planes curriculares avanzados.",
-    badge: "Academic Honor",
-    color: "#0ea5e9",
-    glow: "rgba(14,165,233,0.25)",
-    icon: "M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 6v12M6 12h12"
-  },
-  {
-    title: "Gestión y Liderazgo Cívico",
-    issuer: "Club de Leones Alianza",
-    desc: "Certifica proyectos de voluntariado de alto impacto y gestión social cívico-comunitaria.",
-    badge: "Civic Leadership",
-    color: "#10b981",
-    glow: "rgba(16,185,129,0.25)",
-    icon: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
-  }
+  { title: "Alto Rendimiento Deportivo",    issuer: "INAF · Deportes CBIT",  desc: "Acredita capacidades de nivel competitivo, preparación física táctica y liderazgo de equipo en contextos de alta exigencia.", badge: "Sports Certified",  icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" },
+  { title: "Formación Integral Académica",  issuer: "CBIT Corporativo",       desc: "Valida competencias profesionales de gestión, ética y desarrollo en planes curriculares avanzados de nivel superior.", badge: "Academic Honor",    icon: "M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 6v12M6 12h12" },
+  { title: "Gestión y Liderazgo Cívico",    issuer: "Club de Leones Alianza", desc: "Certifica proyectos de voluntariado de alto impacto y gestión social cívico-comunitaria a nivel regional y nacional.", badge: "Civic Leadership",  icon: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" }
 ];
 ---
 
-<Layout title="Sobre Nosotros | Sports & Academic Hub">
+<Layout title="Sobre Nosotros | CBIT">
   <Navbar />
-  <main class=" min-h-screen overflow-hidden pt-32 pb-24 relative">
-    
-    <!-- ── BACKGROUND BEAM CANVAS ── -->
-   
-    <!-- ── SECCIÓN: RESEÑA HISTÓRICA + MISIÓN Y VISIÓN ── -->
-<!-- ── SECCIÓN: RESEÑA HISTÓRICA + MISIÓN Y VISIÓN ── -->
-<section class="container mx-auto px-6 relative z-10 mb-32" id="historia-mision-section">
+  <main class="sn-main">
 
-  <!-- ─── RESEÑA HISTÓRICA ─── -->
-  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/10 pb-12 mb-16">
-    <h1 class="text-5xl md:text-7xl lg:text-[8rem] font-display font-bold text-white tracking-tighter leading-none reveal-item">
-      SOBRE <br/>
-      <span class="text-[#0ea5e9] filter drop-shadow-[0_0_20px_rgba(14,165,233,0.3)]">NOSOTROS</span>
-    </h1>
-    <div class="w-full lg:w-5/12 pb-2 reveal-item delay-200">
-      <p class="text-gray-400 text-base md:text-lg border-l-2 border-[#0ea5e9] pl-6 leading-relaxed">
-        Forjando campeones dentro y fuera de las aulas. Una trayectoria orientada al desarrollo integral del talento boliviano mediante alianzas educativas de gran envergadura.
-      </p>
-    </div>
-  </div>
+    <!-- ══════════════════════════════════
+         HERO
+    ══════════════════════════════════ -->
+    <section class="sn-hero" id="sn-hero">
+      <div class="sn-hero-mesh" aria-hidden="true"></div>
+      <div class="sn-orb sn-orb-1" aria-hidden="true"></div>
+      <div class="sn-orb sn-orb-2" aria-hidden="true"></div>
+      <div class="sn-orb sn-orb-3" aria-hidden="true"></div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32">
-    <!-- Foto Histórica — marco corregido -->
-    <div class="lg:col-span-7 relative group select-none reveal-item">
-      <!--
-        CORRECCIÓN: El borde gradiente se hace con un div wrapper que tiene
-        padding:2px + clip-path + background gradiente.
-        El hijo repite el mismo clip-path con fondo sólido.
-        NO usar absolute inset-0 para el marco — el wrapper debe tener
-        display:block con dimensiones propias.
-      -->
-      <div
-        class="transition-all duration-500 group-hover:scale-[1.01]"
-        style="
-          padding: 2px;
-          clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
-          background: linear-gradient(135deg, #0ea5e9, #2dd4bf);
-        "
-      >
-        <div
-          class="relative overflow-hidden"
-          style="
-            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
-            background: #060606;
-          "
-        >
-          <img
-            src="/images/mila.webp"
-            alt="Reseña histórica CBIT"
-            class="w-full h-[380px] md:h-[480px] object-cover opacity-60 group-hover:opacity-90 group-hover:scale-105 transition-all duration-1000 block"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent"></div>
+      <div class="sn-container sn-hero-inner">
+        <div class="sn-reveal">
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/10 pb-12 mb-0">
 
-          <!-- Brackets decorativos internos -->
-          <div class="absolute top-3 left-3 w-8 h-[2px] bg-[#0ea5e9]"></div>
-          <div class="absolute top-3 left-3 w-[2px] h-8 bg-[#0ea5e9]"></div>
-          <div class="absolute bottom-3 right-3 w-8 h-[2px] bg-[#2dd4bf]"></div>
-          <div class="absolute bottom-3 right-3 w-[2px] h-8 bg-[#2dd4bf]"></div>
+            <!-- ✅ Anton (font-display) solo aquí. Sin font-bold ni tracking-tighter que contradicen Anton -->
+            <h1 class="sn-hero-title font-display">
+              SOBRE<br/>
+              <span style="color:#f2c82f">NOSOTROS</span>
+            </h1>
 
-          <div class="absolute bottom-8 left-8 text-left z-10">
-            <span class="text-[#0ea5e9] font-bold tracking-[0.25em] text-xs uppercase mb-2 block font-display">FUNDACIÓN E IMPACTO</span>
-            <h3 class="font-display text-2xl md:text-3xl text-white tracking-wider leading-none">CBIT: EL INICIO DE LA EXCELENCIA</h3>
+            <div class="sn-hero-side sn-reveal sn-d1">
+              <!-- ✅ Inter heredado del body, sin clase de fuente innecesaria -->
+              <p class="sn-hero-sub">
+                Forjando campeones dentro y fuera de las aulas. Una trayectoria orientada al desarrollo integral del talento boliviano mediante alianzas educativas de gran envergadura.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Texto Histórico -->
-    <div class="lg:col-span-5 flex flex-col gap-6 reveal-item delay-300 text-left">
-      <div class="relative">
-        <h2 class="text-xl font-display text-white tracking-widest uppercase mb-4">
-          <span class="text-[#2dd4bf]">RESEÑA</span> HISTORICA
-        </h2>
-        <div class="h-[2px] w-12 bg-gradient-to-r from-[#0ea5e9] to-[#2dd4bf] mb-6"></div>
-      </div>
-      <p class="text-gray-400 text-sm md:text-base leading-relaxed">
-        Desde la fundación de la <strong class="text-gray-200 font-semibold">Corporación Boliviana de Talento (CBIT)</strong>, nos propusimos demostrar que el desarrollo intelectual y el rendimiento físico son fuerzas que se complementan para dar origen a líderes íntegros.
-      </p>
-      <p class="text-gray-400 text-sm md:text-base leading-relaxed">
-        A lo largo de los años, hemos consolidado alianzas estratégicas con institutos de alto renombre deportivo como <strong class="text-gray-200 font-semibold">INAF</strong>, centros de capacitación como <strong class="text-gray-200 font-semibold">CENACAP</strong>, e importantes instituciones sociales y cívicas, evaluando constantemente oportunidades académicas internacionales.
-      </p>
-      <div class="mt-4 flex items-center gap-4">
-        <div class="flex flex-col">
-          <span class="text-3xl font-display font-bold text-white leading-none">50+</span>
-          <span class="text-[#0ea5e9] text-[10px] font-bold uppercase tracking-wider mt-1">Convenios de Nivel</span>
+    </section>
+
+    <!-- ══════════════════════════════════
+         HISTORIA
+    ══════════════════════════════════ -->
+    <section class="sn-section" id="historia">
+      <div class="sn-container">
+        <div class="sn-section-head sn-reveal">
+          <span class="sn-eyebrow">Reseña Histórica</span>
+          <!-- ✅ Anton en títulos de sección -->
+          <h2 class="sn-section-title font-display">El inicio de la <span class="sn-gold">excelencia</span></h2>
+          <div class="sn-bar" data-bar></div>
         </div>
-        <div class="w-[1px] h-10 bg-white/10 mx-2"></div>
-        <div class="flex flex-col">
-          <span class="text-3xl font-display font-bold text-white leading-none">2000+</span>
-          <span class="text-[#2dd4bf] text-[10px] font-bold uppercase tracking-wider mt-1">Talentos Formados</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ─── MISIÓN Y VISIÓN ─── -->
- <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/10 pb-12 mb-16">
-  
-  <h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white tracking-normal leading-tight reveal-item">
-    MISIÓN <span class="text-[#0ea5e9] filter drop-shadow-[0_0_10px_rgba(14,165,233,0.3)]">&amp;</span>
-    <span class="text-[#2dd4bf] filter drop-shadow-[0_0_10px_rgba(45,212,191,0.3)]">VISIÓN</span>
-  </h1>
 
-  <div class="w-full lg:w-5/12 pb-2 reveal-item delay-200">
-    <p class="text-gray-400 text-sm md:text-base border-l-2 border-[#2dd4bf] pl-6 leading-relaxed">
-      Los principios que guían cada decisión, cada programa y cada alianza que construimos con la comunidad boliviana.
-    </p>
-  </div>
-</div>
-
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <!-- Card Misión -->
-    <div
-      class="group relative border border-white/10 bg-white/[0.03] hover:bg-[#0ea5e9]/[0.06] hover:border-[#0ea5e9]/40 transition-all duration-500 p-10 reveal-item"
-      style="clip-path: polygon(0 0, 96% 0, 100% 4%, 100% 100%, 4% 100%, 0 96%);"
-    >
-      <!-- Líneas de acento esquina superior izquierda -->
-      <div class="absolute top-0 left-0 w-2/5 h-[1px] bg-[#0ea5e9]"></div>
-      <div class="absolute top-0 left-0 w-6 h-[2px] bg-[#0ea5e9]"></div>
-      <div class="absolute top-0 left-0 w-[2px] h-6 bg-[#0ea5e9]"></div>
-      <!-- Línea acento esquina inferior derecha -->
-      <div class="absolute bottom-0 right-0 w-16 h-[1px] bg-[#0ea5e9]/30"></div>
-      <div class="absolute bottom-0 right-0 w-[1px] h-16 bg-[#0ea5e9]/30"></div>
-
-      <span class="text-[#0ea5e9] font-bold tracking-[0.3em] text-xs uppercase block mb-5 font-display">MISIÓN</span>
-
-      <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-8 font-display tracking-wide">
-        Promover el desarrollo integral de las personas en diferentes etapas de su vida mediante actividades de formación con enfoque deportivo y programas educativos complementarios innovadores, impulsando el aprendizaje, la salud física, el bienestar emocional, la construcción de valores y la inclusión social.
-      </p>
-    </div>
-
-    <!-- Card Visión -->
-    <div
-      class="group relative border border-white/10 bg-white/[0.03] hover:bg-[#2dd4bf]/[0.06] hover:border-[#2dd4bf]/40 transition-all duration-500 p-10 reveal-item delay-200"
-      style="clip-path: polygon(0 0, 96% 0, 100% 4%, 100% 100%, 4% 100%, 0 96%);"
-    >
-      <!-- Líneas de acento esquina superior izquierda -->
-      <div class="absolute top-0 left-0 w-2/5 h-[1px] bg-[#2dd4bf]"></div>
-      <div class="absolute top-0 left-0 w-6 h-[2px] bg-[#2dd4bf]"></div>
-      <div class="absolute top-0 left-0 w-[2px] h-6 bg-[#2dd4bf]"></div>
-      <!-- Línea acento esquina inferior derecha -->
-      <div class="absolute bottom-0 right-0 w-16 h-[1px] bg-[#2dd4bf]/30"></div>
-      <div class="absolute bottom-0 right-0 w-[1px] h-16 bg-[#2dd4bf]/30"></div>
-
-      <span class="text-[#2dd4bf] font-bold tracking-[0.3em] text-xs uppercase block mb-5 font-display">VISIÓN</span>
-
-      <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-8 font-display tracking-wide">
-        Ser una institución de referencia nacional reconocida por su excelencia para promover un ecosistema de formación integral de talento deportivo de alto rendimiento, logrando el bienestar y salud en la comunidad, haciendo que el deporte sea un pilar fundamental para una vida plena y un motor de desarrollo social con conciencia ambiental.
-      </p>
-    </div>
-  </div>
-</section>
-
-   
-    
-    <!-- ── 3. SECCIÓN: VALORES CORPORATIVOS (Álbum de fotos interactivo con hover reveal) ── -->
-    <section class="container mx-auto px-6 relative z-10 mb-36" id="valores-section">
-      <div class="text-center mb-16">
-        <span class="text-[#f59e0b] font-bold tracking-[0.3em] text-xs uppercase mb-3 block font-display">ÁLBUM DE PRINCIPIOS</span>
-        <h2 class="text-4xl md:text-6xl font-display font-bold text-white tracking-widest uppercase mb-4 reveal-item">
-          VALORES <span class="text-amber-400 filter drop-shadow-[0_0_15px_rgba(245,158,11,0.25)]">COOPERATIVOS</span>
-        </h2>
-        <div class="w-16 h-[2px] bg-amber-400 mx-auto reveal-item"></div>
-      </div>
-
-      <!-- Photo Album interactive grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {valores.map((val) => (
-          <div 
-            class="relative overflow-hidden group select-none flex flex-col justify-end w-full h-[380px] md:h-[420px] bg-[#060606] transition-all duration-500 border border-white/5 hover:border-[var(--val-color)] rounded-2xl reveal-item"
-            style={`
-              clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
-              --val-color: ${val.color};
-              --val-glow: ${val.glow};
-            `}
-          >
-            <!-- Background Image (representing the value) -->
-            <img src={val.image} alt={val.title} 
-                 class="absolute inset-0 w-full h-full object-cover transition-all duration-700 transform scale-100 group-hover:scale-108 grayscale opacity-45 group-hover:opacity-75 group-hover:grayscale-0" />
-                 
-            <!-- Vignette shadow -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent transition-opacity duration-500 group-hover:opacity-30"></div>
-
-            <!-- Static default title at bottom (Fades out and moves up on hover) -->
-            <div class="absolute bottom-6 left-6 right-6 transition-all duration-500 transform translate-y-0 opacity-100 group-hover:translate-y-[-100px] group-hover:opacity-0 z-10 text-left">
-              <div class="h-[2px] w-8 mb-3 transition-all duration-500" style={`background: ${val.color};`}></div>
-              <h3 class="font-display text-2xl md:text-3xl font-bold tracking-wider leading-none" style={`color: ${val.color}; text-shadow: 0 0 12px ${val.glow};`}>
-                {val.title}
-              </h3>
+        <div class="sn-historia-grid">
+          <div class="sn-float-card sn-reveal sn-img-card">
+            <div class="sn-img-overflow" data-parallax>
+              <img src="/images/mila.webp" alt="Historia CBIT" class="sn-img" />
             </div>
-
-            <!-- Hover overlay panel - vertical sliding reveal of text -->
-            <div class="absolute inset-x-0 bottom-0 max-h-[85%] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] p-6 md:p-8 flex flex-col justify-end text-left z-20"
-                 style="background: linear-gradient(to top, rgba(6, 6, 6, 0.98) 75%, rgba(6, 6, 6, 0) 100%);">
-              
-              <!-- Title inside panel -->
-              <h3 class="font-display text-xl md:text-2xl font-bold tracking-wider mb-2 leading-none" style={`color: ${val.color};`}>
-                {val.title}
-              </h3>
-              
-              <div class="h-[1.5px] w-12 mb-4" style={`background: ${val.color};`}></div>
-              
-              <!-- Value Statement -->
-              <p class="text-white text-xs md:text-sm font-semibold leading-relaxed mb-3 border-l-2 pl-3" style={`border-color: ${val.color};`}>
-                {val.desc}
-              </p>
-              
-              <!-- Extended application details -->
-              <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed">
-                {val.details}
-              </p>
+            <div class="sn-img-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              Fundación e Impacto
             </div>
-
-            <!-- Glowing cyberpunk corner tabs -->
-            <div class="absolute top-0 left-0 w-3 h-[1.5px] transition-colors duration-300" style={`background: rgba(255,255,255,0.1); group-hover:background: ${val.color};`}></div>
-            <div class="absolute top-0 left-0 w-[1.5px] h-3 transition-colors duration-300" style={`background: rgba(255,255,255,0.1); group-hover:background: ${val.color};`}></div>
-            <div class="absolute bottom-0 right-0 w-3 h-[1.5px] transition-colors duration-300" style={`background: rgba(255,255,255,0.1); group-hover:background: ${val.color};`}></div>
-            <div class="absolute bottom-0 right-0 w-[1.5px] h-3 transition-colors duration-300" style={`background: rgba(255,255,255,0.1); group-hover:background: ${val.color};`}></div>
           </div>
-        ))}
+
+          <!-- ✅ Cuerpo de texto: Inter puro, sin clases de fuente -->
+          <div class="sn-reveal sn-d1 sn-historia-txt">
+            <p class="sn-body">
+              Desde la fundación de la <strong>Corporación Boliviana de Talento (CBIT)</strong>, nos propusimos demostrar que el desarrollo intelectual y el rendimiento físico se complementan para dar origen a líderes íntegros.
+            </p>
+            <p class="sn-body">
+              A lo largo de los años consolidamos alianzas estratégicas con institutos como <strong>INAF</strong>, centros de capacitación como <strong>CENACAP</strong>, e importantes instituciones sociales y cívicas, evaluando constantemente oportunidades académicas internacionales.
+            </p>
+            <div class="sn-checks">
+              <div class="sn-check"><span class="sn-dot"></span>Alianzas educativas nacionales e internacionales de nivel</div>
+              <div class="sn-check"><span class="sn-dot"></span>Programas de formación deportiva y académica integrados</div>
+              <div class="sn-check"><span class="sn-dot"></span>Reconocimiento institucional a nivel boliviano</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ── 4. SECCIÓN: AUTORIDADES ── -->
-    <section class="border-t border-white/5 pt-24 relative z-10 mb-36" id="autoridades-section">
-      <div class="container mx-auto px-6 text-center mb-6">
-        <span class="text-[#0ea5e9] font-bold tracking-[0.3em] text-xs uppercase mb-3 block font-display">LIDERAZGO ACTIVO</span>
-        <h2 class="text-4xl md:text-6xl font-display font-bold text-white tracking-widest uppercase mb-4 reveal-item">
-          NUESTRAS <span class="text-cyan-400 filter drop-shadow-[0_0_15px_rgba(14,165,233,0.25)]">AUTORIDADES</span>
-        </h2>
-        <div class="w-16 h-[2px] bg-cyan-400 mx-auto reveal-item"></div>
-      </div>
-      
-      <div class="reveal-item">
-        <AutoridadesCarousel />
+    <!-- ══════════════════════════════════
+         MISIÓN & VISIÓN
+    ══════════════════════════════════ -->
+    <section class="sn-section sn-blue-bg" id="mision">
+      <div class="sn-orb sn-orb-mv1" aria-hidden="true"></div>
+      <div class="sn-orb sn-orb-mv2" aria-hidden="true"></div>
+      <div class="sn-container" style="position:relative;z-index:2">
+        <div class="sn-section-head sn-reveal">
+          <span class="sn-eyebrow sn-eyebrow-gold">Nuestra Esencia</span>
+          <!-- ✅ Anton en título de sección -->
+          <h2 class="sn-section-title sn-white font-display">MISIÓN <span class="sn-gold">&amp;</span> VISIÓN</h2>
+          <div class="sn-bar sn-bar-gold" data-bar></div>
+        </div>
+        <div class="sn-mv-grid">
+          <div class="sn-mv-card sn-reveal">
+            <div class="sn-mv-icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <!-- ✅ Labels pequeños: Inter, sin font-display -->
+            <span class="sn-mv-label">MISIÓN</span>
+            <p class="sn-mv-text">Promover el desarrollo integral de las personas en diferentes etapas de su vida mediante actividades de formación con enfoque deportivo y programas educativos complementarios innovadores, impulsando el aprendizaje, la salud física, el bienestar emocional, la construcción de valores y la inclusión social.</p>
+          </div>
+          <div class="sn-mv-card sn-reveal sn-d1">
+            <div class="sn-mv-icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <span class="sn-mv-label">VISIÓN</span>
+            <p class="sn-mv-text">Ser una institución de referencia nacional reconocida por su excelencia para promover un ecosistema de formación integral de talento deportivo de alto rendimiento, logrando el bienestar y salud en la comunidad, haciendo que el deporte sea un pilar fundamental para una vida plena y un motor de desarrollo social.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ── 5. SECCIÓN: NUESTRO PERSONAL ── -->
-    <section class="container mx-auto px-6 relative z-10 mb-36" id="personal-section">
-      <div class="text-center mb-16">
-        <span class="text-[#2dd4bf] font-bold tracking-[0.3em] text-xs uppercase mb-3 block font-display">EQUIPO DE EXCELENCIA</span>
-        <h2 class="text-4xl md:text-6xl font-display font-bold text-white tracking-widest uppercase mb-4 reveal-item">
-          NUESTRO <span class="text-teal-400 filter drop-shadow-[0_0_15px_rgba(45,212,191,0.25)]">PERSONAL</span>
-        </h2>
-        <div class="w-16 h-[2px] bg-teal-400 mx-auto reveal-item"></div>
-      </div>
-
-      <!-- Staff Cards Grid (Cyber Digital ID cards) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-        {personal.map((staff) => (
-          <div 
-            class="staff-card border bg-[#060606]/80 backdrop-blur-md overflow-hidden relative group transition-all duration-300 cursor-default reveal-item"
-            style={`
-              border-color: rgba(255,255,255,0.06);
-              clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-              transform: translateY(0);
-            `}
-          >
-            <!-- Hover Dynamic Fill -->
-            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                 style={`background: linear-gradient(135deg, ${staff.color}15, transparent);`}></div>
-            
-            <div class="p-5 flex flex-col items-center text-center">
-              <!-- Profile Image Frame -->
-              <div class="w-28 h-28 rounded-full overflow-hidden border-2 mb-4 transition-all duration-500 scale-95 group-hover:scale-100 shadow-lg"
-                   style={`border-color: ${staff.color}60; box-shadow: 0 0 15px ${staff.color}1a;`}>
-                <img src={staff.image} alt={staff.name} class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+    <!-- ══════════════════════════════════
+         VALORES
+    ══════════════════════════════════ -->
+    <section class="sn-section sn-soft-bg" id="valores">
+      <div class="sn-container">
+        <div class="sn-section-head sn-reveal">
+          <span class="sn-eyebrow">Nuestros Principios</span>
+          <!-- ✅ Anton en título de sección -->
+          <h2 class="sn-section-title font-display">VALORES <span class="sn-gold">CORPORATIVOS</span></h2>
+          <div class="sn-bar" data-bar></div>
+        </div>
+        <div class="sn-valores-grid">
+          {valores.map((val, i) => (
+            <div class={`sn-float-card sn-valor-card sn-reveal sn-s${i % 3}`}>
+              <div class="sn-val-img-wrap">
+                <img src={val.image} alt={val.title} class="sn-img sn-zoom-target" />
               </div>
-
-              <!-- Badge -->
-              <span class="text-[9px] font-bold tracking-[0.2em] uppercase px-2 py-0.5 rounded border mb-3"
-                    style={`color: ${staff.color}; border-color: ${staff.color}35; background: ${staff.color}0a;`}>
-                {staff.badge}
-              </span>
-
-              <!-- Text Info -->
-              <h3 class="font-display text-base text-white font-bold leading-tight group-hover:text-white transition-colors duration-300">
-                {staff.name}
-              </h3>
-              <p class="text-white/40 text-[10px] font-semibold uppercase tracking-wider mt-1 mb-3">
-                {staff.role}
-              </p>
-              
-              <div class="w-8 h-[1px] bg-white/10 mb-3 group-hover:w-16 transition-all duration-300"></div>
-
-              <p class="text-gray-400 text-xs leading-relaxed">
-                {staff.desc}
-              </p>
+              <div class="sn-val-body">
+                <div class="sn-val-accent" style={`background:${val.color}`}></div>
+                <!-- ✅ Títulos de tarjeta: Anton -->
+                <h3 class="sn-val-title font-display" style={`color:${val.color}`}>{val.title}</h3>
+                <!-- ✅ Descripción: Inter puro -->
+                <p class="sn-val-desc">{val.desc}</p>
+                <p class="sn-val-detail">{val.details}</p>
+              </div>
             </div>
-
-            <!-- Sleek indicator bar at the bottom -->
-            <div class="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-300"
-                 style={`background: ${staff.color};`}></div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
 
-    <!-- ── 6. SECCIÓN: CERTIFICACIÓN ── -->
-    <section class="container mx-auto px-6 relative z-10 mb-20" id="certificacion-section">
-      <div class="text-center mb-16">
-        <span class="text-[#8b5cf6] font-bold tracking-[0.3em] text-xs uppercase mb-3 block font-display">DOCUMENTACIÓN OFICIAL</span>
-        <h2 class="text-4xl md:text-6xl font-display font-bold text-white tracking-widest uppercase mb-4 reveal-item">
-          VALIDEZ Y <span class="text-violet-400 filter drop-shadow-[0_0_15px_rgba(139,92,246,0.25)]">CERTIFICACIÓN</span>
-        </h2>
-        <div class="w-16 h-[2px] bg-violet-400 mx-auto reveal-item"></div>
+    <!-- ══════════════════════════════════
+         AUTORIDADES
+    ══════════════════════════════════ -->
+    <section class="sn-section sn-blue-bg" id="autoridades">
+      <div class="sn-orb sn-orb-aut" aria-hidden="true"></div>
+      <div class="sn-container" style="position:relative;z-index:2">
+        <div class="sn-section-head sn-reveal">
+          <span class="sn-eyebrow sn-eyebrow-gold">Liderazgo Activo</span>
+          <!-- ✅ Anton en título de sección -->
+          <h2 class="sn-section-title sn-white font-display">NUESTRAS <span class="sn-gold">AUTORIDADES</span></h2>
+          <div class="sn-bar sn-bar-gold" data-bar></div>
+        </div>
+        <div class="sn-reveal">
+          <AutoridadesCarousel />
+        </div>
       </div>
+    </section>
 
-      <!-- Certificates interactive grids -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        {certificados.map((cert, index) => (
-          <div 
-            class="certificate-card border bg-[#060606]/85 backdrop-blur-md overflow-hidden relative group transition-all duration-500 cursor-default select-none reveal-item"
-            style={`
-              border-color: rgba(255,255,255,0.06);
-              clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
-              --cert-color: ${cert.color};
-              --cert-glow: ${cert.glow};
-            `}
-          >
-            <!-- Simulated metallic holographic glow sweep -->
-            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-750 pointer-events-none z-10"
-                 style="
-                   background: linear-gradient(135deg, 
-                     rgba(255,255,255,0) 30%, 
-                     rgba(255,255,255,0.08) 48%, 
-                     rgba(255,255,255,0.2) 50%, 
-                     rgba(255,255,255,0.08) 52%, 
-                     rgba(255,255,255,0) 70%
-                   );
-                   background-size: 200% 200%;
-                   background-position: -120% -120%;
-                 "
-                 id={`holo-sweep-${index}`}></div>
+    <!-- ══════════════════════════════════
+         PERSONAL
+    ══════════════════════════════════ -->
+    <section class="sn-section" id="personal">
+      <div class="sn-container">
+        <div class="sn-section-head sn-reveal">
+          <span class="sn-eyebrow">Equipo de Excelencia</span>
+          <!-- ✅ Anton en título de sección -->
+          <h2 class="sn-section-title font-display">NUESTRO <span class="sn-gold">PERSONAL</span></h2>
+          <div class="sn-bar" data-bar></div>
+        </div>
+        <div class="sn-personal-grid">
+          {personal.map((staff, i) => (
+            <div class={`sn-float-card sn-staff-card sn-reveal sn-s${i % 4}`}>
+              <div class="sn-staff-img-wrap">
+                <img src={staff.image} alt={staff.name} class="sn-img sn-zoom-target" />
+              </div>
+              <div class="sn-staff-body">
+                <span class="sn-badge-gold">{staff.badge}</span>
+                <!-- ✅ Nombres de staff: Inter bold (no Anton, son nombres propios) -->
+                <h3 class="sn-staff-name">{staff.name}</h3>
+                <p class="sn-staff-role">{staff.role}</p>
+                <hr class="sn-staff-hr" />
+                <p class="sn-staff-desc">{staff.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
-            <!-- Soft background color glow -->
-            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                 style={`background: linear-gradient(135deg, ${cert.glow}, transparent 60%);`}></div>
-
-            <div class="p-6 md:p-8 flex flex-col justify-between h-[360px] text-left relative z-20">
-              <!-- Top Header -->
-              <div class="flex items-start justify-between">
-                <!-- Glowing Badge Icon with glow -->
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-300"
-                     style={`border-color: ${cert.color}40; background: ${cert.color}0a; color: ${cert.color}; box-shadow: 0 0 12px ${cert.color}15;`}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-300">
+    <!-- ══════════════════════════════════
+         CERTIFICACIONES
+    ══════════════════════════════════ -->
+    <section class="sn-section sn-soft-bg" id="certificacion">
+      <div class="sn-container">
+        <div class="sn-section-head sn-reveal">
+          <span class="sn-eyebrow">Documentación Oficial</span>
+          <!-- ✅ Anton en título de sección -->
+          <h2 class="sn-section-title font-display">VALIDEZ Y <span class="sn-gold">CERTIFICACIÓN</span></h2>
+          <div class="sn-bar" data-bar></div>
+        </div>
+        <div class="sn-cert-grid">
+          {certificados.map((cert, i) => (
+            <div class={`sn-float-card sn-cert-card sn-reveal sn-s${i % 3}`}>
+              <div class="sn-cert-top">
+                <div class="sn-cert-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <path d={cert.icon} />
                   </svg>
                 </div>
-                
-                <!-- Badge Text -->
-                <span class="text-[9px] font-bold tracking-[0.2em] uppercase px-2.5 py-1 rounded border"
-                      style={`color: ${cert.color}; border-color: ${cert.color}35; background: ${cert.color}0f;`}>
-                  {cert.badge}
-                </span>
+                <span class="sn-badge-blue">{cert.badge}</span>
               </div>
-
-              <!-- Center Body -->
-              <div class="my-6">
-                <span class="text-white/40 text-[9px] font-bold tracking-[0.25em] uppercase block mb-1">PROGRAMA OFICIAL</span>
-                <h3 class="font-display text-xl md:text-2xl text-white font-bold leading-tight group-hover:text-white transition-colors duration-300">
-                  {cert.title}
-                </h3>
-                <p class="text-gray-400 text-xs leading-relaxed mt-3">
-                  {cert.desc}
-                </p>
-              </div>
-
-              <!-- Bottom Footer -->
-              <div class="border-t border-white/5 pt-4 flex justify-between items-center">
+              <span class="sn-cert-prog">Programa Oficial</span>
+              <!-- ✅ Títulos de certificado: Anton -->
+              <h3 class="sn-cert-title font-display">{cert.title}</h3>
+              <!-- ✅ Descripción: Inter puro -->
+              <p class="sn-cert-desc">{cert.desc}</p>
+              <div class="sn-cert-footer">
                 <div>
-                  <span class="text-white/30 text-[8px] font-bold tracking-widest uppercase block">ENTIDAD EMISORA</span>
-                  <span class="text-white/80 font-display text-[10px] tracking-widest uppercase font-semibold group-hover:text-white transition-colors duration-300">
-                    {cert.issuer}
-                  </span>
+                  <span class="sn-cert-iss-lbl">Entidad Emisora</span>
+                  <span class="sn-cert-issuer">{cert.issuer}</span>
                 </div>
-                
-                <!-- Tiny Secure Logo -->
-                <div class="flex items-center gap-1 opacity-20 group-hover:opacity-80 transition-opacity duration-300">
-                  <span class="text-[7px] font-bold tracking-wider text-white">SECURE</span>
-                  <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                <div class="sn-verified">
+                  <span class="sn-green-dot"></span>Verificado
                 </div>
               </div>
+              <div class="sn-cert-bar"></div>
             </div>
-
-            <!-- Drawing glowing corner borders -->
-            <div class="absolute top-0 left-0 w-3 h-[1.5px] bg-white/20 group-hover:w-6 transition-all duration-300" style={`background: ${cert.color};`}></div>
-            <div class="absolute top-0 left-0 w-[1.5px] h-3 bg-white/20 group-hover:h-6 transition-all duration-300" style={`background: ${cert.color};`}></div>
-            <div class="absolute bottom-0 right-0 w-3 h-[1.5px] bg-white/20 group-hover:w-6 transition-all duration-300" style={`background: ${cert.color};`}></div>
-            <div class="absolute bottom-0 right-0 w-[1.5px] h-3 bg-white/20 group-hover:h-6 transition-all duration-300" style={`background: ${cert.color};`}></div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
 
@@ -501,180 +261,435 @@ const certificados = [
 </Layout>
 
 <style>
-  /* Staff Cards styling */
-  .staff-card {
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
+/* ══════════════════════════════════
+   TOKENS
+══════════════════════════════════ */
+:root {
+  --blue:      #1A4B8C;
+  --blue-mid:  #2D7DD2;
+  --blue-lt:   #EBF3FB;
+  --cyan:      #f5c21a;
+  --gold:      #C9993A;
+  --gold-lt:   #F5E8CC;
+  --white:     #ffffff;
+  --soft:      #F0F4FA;
+  --text:      #1e293b;
+  --muted:     #64748B;
+  --faint:     #94A3B8;
 
-  .staff-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(255, 255, 255, 0.15) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-  }
+  --sh1: 0 1px 3px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.04);
+  --sh2: 0 4px 12px rgba(0,0,0,0.10), 0 8px 24px rgba(26,75,140,0.10);
+  --sh3: 0 8px 28px rgba(0,0,0,0.12), 0 18px 48px rgba(26,75,140,0.16);
+  --sh-hover: 0 14px 40px rgba(0,0,0,0.14), 0 28px 60px rgba(26,75,140,0.22);
 
-  /* Certificates styling */
-  .certificate-card {
-    transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-  .certificate-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    border-color: var(--cert-color) !important;
-    box-shadow: 0 15px 40px var(--cert-glow);
-  }
+  --r: 20px;
+  --r-lg: 28px;
+  --r-xl: 36px;
+}
+
+/* ══════════════════════════════════
+   BASE
+══════════════════════════════════ */
+.sn-main { background: var(--white); overflow-x: hidden; }
+.sn-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.sn-white  { color: var(--white) !important; }
+.sn-gold   { color: var(--gold); }
+
+/* ══════════════════════════════════
+   SECCIONES
+══════════════════════════════════ */
+.sn-section  { padding: 7rem 0; background: var(--white); }
+.sn-blue-bg  { background: var(--blue); position: relative; overflow: hidden; }
+.sn-soft-bg  { background: var(--soft); }
+
+/* ══════════════════════════════════
+   HERO
+══════════════════════════════════ */
+.sn-hero {
+  background: var(--blue);
+  padding: 10rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.sn-hero-mesh {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.sn-orb {
+  position: absolute; border-radius: 50%;
+  pointer-events: none; filter: blur(80px);
+}
+.sn-orb-1  { width:500px;height:500px; top:-150px;right:-120px; background:radial-gradient(circle,rgba(14,165,233,0.18),transparent 70%); }
+.sn-orb-2  { width:350px;height:350px; bottom:-80px;left:-80px; background:radial-gradient(circle,rgba(201,153,58,0.16),transparent 70%); }
+.sn-orb-3  { width:250px;height:250px; top:40%;left:40%; background:radial-gradient(circle,rgba(45,125,210,0.12),transparent 70%); }
+.sn-orb-mv1{ width:400px;height:400px; top:-100px;right:-100px; background:radial-gradient(circle,rgba(14,165,233,0.14),transparent 70%); }
+.sn-orb-mv2{ width:300px;height:300px; bottom:-60px;left:-60px; background:radial-gradient(circle,rgba(201,153,58,0.12),transparent 70%); }
+.sn-orb-aut{ width:450px;height:450px; top:-100px;left:50%;transform:translateX(-50%); background:radial-gradient(circle,rgba(14,165,233,0.12),transparent 70%); }
+
+.sn-hero-inner { display: flex; flex-direction: column; gap: 3rem; }
+
+/* ✅ Hero title: solo tamaño y color. La fuente viene de font-display en el HTML */
+.sn-hero-title {
+  font-size: clamp(3.8rem, 10vw, 8rem);
+  color: #fff;
+  line-height: 1.02;
+  margin: 0;
+  /* font-weight eliminado: Anton solo tiene un peso */
+  /* letter-spacing eliminado: font-display ya define letter-spacing: 0.02em */
+}
+
+.sn-hero-side { width: 100%; max-width: 42%; }
+.sn-hero-sub {
+  font-size: 1.1rem;
+  /* Inter heredado del body */
+  color: rgba(255,255,255,0.6);
+  border-left: 2px solid var(--cyan);
+  padding-left: 1.5rem;
+  line-height: 1.85;
+}
+
+/* ══════════════════════════════════
+   SECTION HEADER
+══════════════════════════════════ */
+.sn-section-head { text-align: center; margin-bottom: 4rem; }
+.sn-eyebrow {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  /* Inter heredado */
+  color: var(--blue-mid); margin-bottom: 0.6rem;
+}
+.sn-eyebrow-gold { color: var(--gold); }
+
+/* ✅ Títulos de sección: solo tamaño y color. La fuente (Anton) viene de font-display en el HTML */
+.sn-section-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  color: var(--blue);
+  line-height: 1.12;
+  margin: 0 0 1.2rem;
+  /* font-weight: 800 eliminado — Anton no tiene variantes de peso */
+  /* letter-spacing eliminado — font-display ya lo define */
+}
+
+.sn-bar {
+  display: block; height: 3px; width: 0;
+  background: var(--blue-mid); border-radius: 2px;
+  margin: 0 auto;
+  transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s;
+}
+.sn-bar-gold { background: var(--gold); }
+.sn-bar.sn-bar-on { width: 56px; }
+
+/* ══════════════════════════════════
+   FLOAT CARD
+══════════════════════════════════ */
+.sn-float-card {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh2);
+  border: 1px solid rgba(26,75,140,0.06);
+  transition: transform 0.42s cubic-bezier(0.22,1,0.36,1), box-shadow 0.42s cubic-bezier(0.22,1,0.36,1);
+  overflow: hidden;
+}
+.sn-float-card:hover {
+  transform: translateY(-10px) scale(1.012);
+  box-shadow: var(--sh-hover);
+}
+
+/* ══════════════════════════════════
+   HISTORIA
+══════════════════════════════════ */
+.sn-historia-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4.5rem; align-items: center; }
+.sn-img-card { overflow: hidden; position: relative; }
+.sn-img-overflow { overflow: hidden; height: 480px; }
+.sn-img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+.sn-float-card:hover .sn-zoom-target { transform: scale(1.05); }
+.sn-img-card:hover .sn-img { transform: scale(1.04); }
+.sn-img-pill {
+  position: absolute; bottom: 1.25rem; left: 1.25rem;
+  background: rgba(26,75,140,0.88);
+  backdrop-filter: blur(8px);
+  color: #fff; font-size: 0.78rem; font-weight: 600;
+  /* Inter heredado */
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 0.5rem 1rem; border-radius: 50px;
+  border-left: 3px solid var(--gold);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.sn-historia-txt { display:flex; flex-direction:column; gap:1.4rem; }
+.sn-body { font-size: 1.05rem; line-height: 1.9; color: var(--muted); /* Inter heredado */ }
+.sn-body strong { color: var(--blue); font-weight: 700; }
+.sn-checks { display:flex; flex-direction:column; gap:0.8rem; }
+.sn-check  { display:flex; align-items:center; gap:0.85rem; font-size:1rem; color:var(--muted); }
+.sn-dot    { width:9px; height:9px; background:var(--gold); border-radius:50%; flex-shrink:0; }
+
+/* ══════════════════════════════════
+   MISIÓN / VISIÓN
+══════════════════════════════════ */
+.sn-mv-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+.sn-mv-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--r-xl);
+  padding: 2.75rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), background 0.35s, box-shadow 0.4s;
+}
+.sn-mv-card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.12); box-shadow: 0 20px 56px rgba(0,0,0,0.28); }
+.sn-mv-icon-wrap {
+  width: 54px; height: 54px;
+  background: rgba(201,153,58,0.18);
+  border: 1px solid rgba(201,153,58,0.38);
+  border-radius: 16px;
+  display:flex; align-items:center; justify-content:center;
+  color: var(--gold); margin-bottom: 1.25rem;
+  transition: transform 0.3s;
+}
+.sn-mv-card:hover .sn-mv-icon-wrap { transform: scale(1.1); }
+.sn-mv-label {
+  display:block; font-size:0.7rem; font-weight:700;
+  letter-spacing:0.22em; text-transform:uppercase;
+  /* Inter heredado — labels pequeños no usan Anton */
+  color:var(--gold); margin-bottom:1rem;
+}
+.sn-mv-text { font-size: 1.05rem; line-height: 1.88; color: rgba(255,255,255,0.78); margin:0; /* Inter heredado */ }
+
+/* ══════════════════════════════════
+   VALORES
+══════════════════════════════════ */
+.sn-valores-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+.sn-val-img-wrap { height:210px; overflow:hidden; }
+.sn-val-body { padding:1.75rem; }
+.sn-val-accent { width:28px; height:3.5px; border-radius:2px; margin-bottom:0.85rem; transition:width 0.35s; }
+.sn-float-card:hover .sn-val-accent { width:52px; }
+/* ✅ Títulos de valor: tamaño y color solo. Anton viene del HTML */
+.sn-val-title  { font-size:1rem; margin:0 0 0.6rem; letter-spacing:0.06em; }
+.sn-val-desc   { font-size:1rem; line-height:1.75; color:var(--blue); font-weight:500; margin-bottom:0.65rem; /* Inter */ }
+.sn-val-detail { font-size:0.88rem; line-height:1.7; color:var(--faint); margin:0; /* Inter */ }
+
+/* ══════════════════════════════════
+   PERSONAL
+══════════════════════════════════ */
+.sn-personal-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.75rem; }
+.sn-staff-card { text-align:center; }
+.sn-staff-img-wrap { height:180px; overflow:hidden; }
+.sn-staff-body { padding:1.4rem 1.25rem 1.75rem; }
+.sn-badge-gold {
+  display:inline-block; font-size:0.63rem; font-weight:700;
+  letter-spacing:0.16em; text-transform:uppercase;
+  /* Inter heredado */
+  color:var(--gold); background:var(--gold-lt);
+  border:1px solid rgba(201,153,58,0.3);
+  padding:0.25rem 0.8rem; border-radius:50px; margin-bottom:0.8rem;
+}
+/* ✅ Nombres de staff: Inter bold (nombres propios no se ven bien en Anton) */
+.sn-staff-name { font-size:1.02rem; font-weight:800; color:var(--blue); margin:0 0 0.25rem; line-height:1.3; }
+.sn-staff-role { font-size:0.76rem; font-weight:600; color:var(--blue-mid); text-transform:uppercase; letter-spacing:0.07em; margin:0; /* Inter */ }
+.sn-staff-hr   { border:none; height:2px; background:var(--gold-lt); width:32px; margin:0.85rem auto; border-radius:2px; transition:width 0.3s, background 0.3s; }
+.sn-float-card:hover .sn-staff-hr { width:52px; background:var(--gold); }
+.sn-staff-desc { font-size:0.9rem; line-height:1.7; color:var(--faint); margin:0; /* Inter */ }
+
+/* ══════════════════════════════════
+   CERTIFICACIONES
+══════════════════════════════════ */
+.sn-cert-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:980px; margin:0 auto; }
+.sn-cert-card { display:flex; flex-direction:column; gap:1rem; padding:2.25rem; position:relative; }
+.sn-cert-top  { display:flex; justify-content:space-between; align-items:flex-start; }
+.sn-cert-icon {
+  width:50px; height:50px;
+  background:var(--blue-lt); border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--blue); transition:background 0.3s,color 0.3s,transform 0.3s;
+}
+.sn-float-card:hover .sn-cert-icon { background:var(--blue); color:#fff; transform:scale(1.1); }
+.sn-badge-blue {
+  font-size:0.6rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase;
+  /* Inter heredado */
+  color:var(--blue-mid); background:var(--blue-lt);
+  border:1px solid rgba(45,125,210,0.24);
+  padding:0.28rem 0.7rem; border-radius:50px;
+}
+.sn-cert-prog  { font-size:0.62rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--faint); /* Inter */ }
+/* ✅ Títulos de certificado: tamaño y color solo. Anton viene del HTML */
+.sn-cert-title { font-size:1.12rem; margin:0; line-height:1.3; color:var(--blue); }
+.sn-cert-desc  { font-size:0.95rem; line-height:1.78; color:var(--muted); margin:0; flex:1; /* Inter */ }
+.sn-cert-footer{
+  display:flex; justify-content:space-between; align-items:center;
+  border-top:1px solid rgba(26,75,140,0.08); padding-top:1rem;
+}
+.sn-cert-iss-lbl { display:block; font-size:0.6rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--faint); margin-bottom:0.18rem; }
+.sn-cert-issuer  { font-size:0.82rem; font-weight:700; color:var(--blue); /* Inter */ }
+.sn-verified     { display:flex; align-items:center; gap:0.32rem; font-size:0.65rem; font-weight:700; color:#16a34a; }
+.sn-green-dot    { width:7px; height:7px; background:#22c55e; border-radius:50%; animation:sn-pulse 2s infinite; }
+@keyframes sn-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)} }
+.sn-cert-bar {
+  position:absolute; bottom:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--gold));
+  transform:scaleX(0); transform-origin:left;
+  transition:transform 0.45s cubic-bezier(0.22,1,0.36,1);
+  border-radius:0 0 var(--r-xl) var(--r-xl);
+}
+.sn-float-card:hover .sn-cert-bar { transform:scaleX(1); }
+
+/* ══════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════ */
+.sn-reveal {
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.sn-reveal.sn-on { opacity:1; transform:translateY(0); }
+.sn-d1 { transition-delay:.13s; }
+.sn-d2 { transition-delay:.26s; }
+.sn-s0 { transition-delay:0s; }
+.sn-s1 { transition-delay:.10s; }
+.sn-s2 { transition-delay:.20s; }
+.sn-s3 { transition-delay:.30s; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media(max-width:1024px){
+  .sn-historia-grid  { grid-template-columns:1fr; gap:2.5rem; }
+  .sn-valores-grid   { grid-template-columns:repeat(2,1fr); }
+  .sn-personal-grid  { grid-template-columns:repeat(2,1fr); }
+  .sn-mv-grid        { grid-template-columns:1fr; }
+  .sn-cert-grid      { grid-template-columns:repeat(2,1fr); }
+  .sn-hero-side      { max-width:100%; }
+}
+@media(max-width:640px){
+  .sn-valores-grid   { grid-template-columns:1fr; }
+  .sn-cert-grid      { grid-template-columns:1fr; }
+  .sn-section        { padding:4.5rem 0; }
+  .sn-hero           { padding:9rem 0 5rem; }
+  .sn-container      { padding:0 1.25rem; }
+}
+@media(max-width:480px){
+  .sn-personal-grid  { grid-template-columns:1fr; }
+}
+@media(prefers-reduced-motion:reduce){
+  .sn-reveal  { opacity:1; transform:none; transition:none; }
+  .sn-bar     { width:56px; transition:none; }
+}
 </style>
 
 <script>
   import gsap from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
 
-  let beamRAF: number | null = null;
-  let resizeListener: (() => void) | null = null;
-
-  // ── A. BEAM BACKGROUND CANVAS ANIMATION ──
-  type Beam = {
-    x: number; y: number; vx: number; vy: number;
-    life: number; maxLife: number; width: number; color: string;
-  };
-
-  function initBeams() {
-    const canvas = document.getElementById('about-beam-canvas') as HTMLCanvasElement | null;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const resize = () => { 
-      canvas.width = canvas.offsetWidth; 
-      canvas.height = canvas.offsetHeight; 
-    };
-    resize();
-    
-    resizeListener = resize;
-    window.addEventListener('resize', resize);
-
-    const beams: Beam[] = [];
-    const colors = ['rgba(14,165,233,', 'rgba(45,212,191,', 'rgba(139,92,246,'];
-
-    const spawnBeam = () => {
-      const w = canvas.width;
-      const h = canvas.height;
-      const side = Math.random();
-      let x = 0, y = 0, vx = 0, vy = 0;
-      const speed = 0.3 + Math.random() * 0.55;
-      const angle = (Math.random() * 50 - 25) * Math.PI / 180;
-      
-      if (side < 0.5) {
-        x = side < 0.25 ? 0 : w;
-        y = Math.random() * h;
-        vx = side < 0.25 ?  Math.cos(angle) * speed : -Math.cos(angle) * speed;
-        vy = Math.sin(angle) * speed;
-      } else {
-        x = Math.random() * w;
-        y = side < 0.75 ? 0 : h;
-        vx = Math.sin(angle) * speed;
-        vy = side < 0.75 ? Math.cos(angle) * speed : -Math.cos(angle) * speed;
-      }
-      beams.push({
-        x, y, vx, vy, life: 0,
-        maxLife: 200 + Math.random() * 250,
-        width: 0.3 + Math.random() * 1.0,
-        color: colors[Math.floor(Math.random() * colors.length)]
-      });
-    };
-
-    // Spawn inicial
-    for (let i = 0; i < 8; i++) spawnBeam();
-
-    const drawFrame = () => {
-      const w = canvas.width;
-      const h = canvas.height;
-      ctx.clearRect(0, 0, w, h);
-      if (Math.random() < 0.035) spawnBeam();
-
-      for (let i = beams.length - 1; i >= 0; i--) {
-        const b = beams[i];
-        b.life++; b.x += b.vx; b.y += b.vy;
-        const p = b.life / b.maxLife;
-        let alpha = p < 0.15 ? p / 0.15 : p > 0.75 ? 1 - (p - 0.75) / 0.25 : 1;
-        alpha *= 0.15;
-        
-        ctx.beginPath();
-        ctx.moveTo(b.x - b.vx * 100, b.y - b.vy * 100);
-        ctx.lineTo(b.x, b.y);
-        ctx.strokeStyle = b.color + alpha + ')';
-        ctx.lineWidth = b.width;
-        ctx.stroke();
-        
-        if (b.life >= b.maxLife) beams.splice(i, 1);
-      }
-      beamRAF = requestAnimationFrame(drawFrame);
-    };
-    drawFrame();
-  }
-
-  // ── B. EFECTO HOLOGRÁFICO EN CERTIFICADOS ──
-  function initHoloSweep() {
-    const cards = document.querySelectorAll('.certificate-card');
-    cards.forEach((card, index) => {
-      const holo = document.getElementById(`holo-sweep-${index}`);
-      if (!holo) return;
-
-      card.addEventListener('mousemove', (e: any) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const px = (x / rect.width) * 100;
-        const py = (y / rect.height) * 100;
-
-        holo.style.backgroundPosition = `${px}% ${py}%`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        holo.style.backgroundPosition = '-120% -120%';
-      });
-    });
-  }
-
-  // ── C. REVELACIÓN CON SCROLL GSAP ──
-  function initScrollReveals() {
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.utils.toArray('.reveal-item').forEach((elem: any) => {
-      gsap.from(elem, {
-        scrollTrigger: {
-          trigger: elem,
-          start: 'top 88%',
-          toggleActions: 'play none none reverse'
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.95,
-        ease: 'power3.out'
-      });
-    });
-  }
-
-  // ── D. CONTROL DE LIFECYCLE ──
-  function cleanup() {
-    if (beamRAF) {
-      cancelAnimationFrame(beamRAF);
-      beamRAF = null;
-    }
-    if (resizeListener) {
-      window.removeEventListener('resize', resizeListener);
-      resizeListener = null;
-    }
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-  }
+  let ctx: gsap.Context | null = null;
 
   function initPage() {
-    cleanup();
-    initBeams();
-    initHoloSweep();
-    initScrollReveals();
+    if (ctx) { ctx.revert(); ctx = null; }
+    gsap.registerPlugin(ScrollTrigger);
+
+    ctx = gsap.context(() => {
+
+      /* ── 1. SCROLL REVEAL ── */
+      const revealIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('sn-on');
+            revealIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+
+      document.querySelectorAll('.sn-reveal').forEach(el => revealIO.observe(el));
+
+      /* ── 2. GOLD BAR DRAW ── */
+      const barIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('sn-bar-on');
+            barIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.8 });
+
+      document.querySelectorAll('[data-bar]').forEach(el => barIO.observe(el));
+
+      /* ── 3. PARALLAX IMAGEN HISTORIA ── */
+      const pImg = document.querySelector<HTMLElement>('[data-parallax] .sn-img');
+      if (pImg) {
+        gsap.fromTo(pImg,
+          { yPercent: -6 },
+          {
+            yPercent: 6,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '#historia',
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1.4,
+            }
+          }
+        );
+      }
+
+      /* ── 4. PARALLAX HERO TITLE ── */
+      const heroTitle = document.querySelector<HTMLElement>('.sn-hero-title');
+      if (heroTitle) {
+        gsap.to(heroTitle, {
+          yPercent: 20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.sn-hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.8,
+          }
+        });
+      }
+
+      /* ── 5. PARALLAX ORBS HERO ── */
+      document.querySelectorAll<HTMLElement>('.sn-orb-1, .sn-orb-2').forEach((orb, i) => {
+        gsap.to(orb, {
+          yPercent: i % 2 === 0 ? -25 : 20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.sn-hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 2,
+          }
+        });
+      });
+
+      /* ── 6. STAGGER GRID ENTRANCE ── */
+      ['#valores .sn-valores-grid', '#personal .sn-personal-grid', '#certificacion .sn-cert-grid'].forEach(sel => {
+        const grid = document.querySelector(sel);
+        if (!grid) return;
+        const cards = Array.from(grid.querySelectorAll<HTMLElement>('.sn-reveal'));
+        ScrollTrigger.create({
+          trigger: grid,
+          start: 'top 86%',
+          once: true,
+          onEnter: () => {
+            cards.forEach((card, i) => {
+              gsap.to(card, {
+                opacity: 1, y: 0,
+                duration: 0.72,
+                delay: i * 0.1,
+                ease: 'power3.out',
+                overwrite: true,
+              });
+            });
+          }
+        });
+      });
+
+    });
   }
 
-  // Iniciar en carga y cambios de vista de Astro
+  function cleanup() {
+    if (ctx) { ctx.revert(); ctx = null; }
+    ScrollTrigger.getAll().forEach(t => t.kill());
+  }
+
   initPage();
-  document.addEventListener('astro:page-load', initPage);
+  document.addEventListener('astro:page-load', () => { cleanup(); initPage(); });
   document.addEventListener('astro:before-swap', cleanup);
 </script>

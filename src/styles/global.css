@@ -24,8 +24,8 @@ html.lenis, html.lenis body {
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #F5F7FA;
+  color: #111827;
   overflow-x: hidden;
 }
 
@@ -36,6 +36,6 @@ body {
 }
 
 .text-stroke {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  -webkit-text-stroke: 1px rgba(17, 24, 39, 0.15);
   color: transparent;
 }

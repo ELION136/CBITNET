@@ -1,198 +1,1329 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-
 const pillars = [
   {
     num: "01",
     title: "Desarrollo Deportivo",
     desc: "Entrenamientos estructurados de alto rendimiento y clínicas deportivas impartidas por directores certificados internacionales.",
-    color: "from-yellow-500/20 to-amber-500/10"
+    img: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=700&auto=format&fit=crop&q=80",
+    alt: "Jóvenes en entrenamiento deportivo"
   },
   {
     num: "02",
     title: "Soporte Académico",
     desc: "Mentorías personalizadas, clases de nivelación académica y preparación para exámenes de ingreso a universidades de prestigio.",
-    color: "from-amber-600/20 to-yellow-600/10"
+    img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700&auto=format&fit=crop&q=80",
+    alt: "Estudiantes en clase"
   },
   {
     num: "03",
     title: "Liderazgo & Valores",
     desc: "Talleres prácticos de resolución de conflictos, inteligencia emocional, oratoria y compromiso cívico comunitario.",
-    color: "from-yellow-400/20 to-amber-600/10"
+    img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=700&auto=format&fit=crop&q=80",
+    alt: "Taller de liderazgo grupal"
   }
 ];
 
 const achievements = [
-  { year: "2021", title: "Fundación e Inicios", desc: "Nace la fundación con el objetivo de rescatar espacios deportivos y guiar académicamente a 50 jóvenes talentos." },
-  { year: "2023", title: "Expansión y Becas USA", desc: "Firmamos convenios clave con academias de EE. UU. y logramos las primeras 12 becas deportivas completas." },
-  { year: "2025", title: "Centro de Alto Rendimiento", desc: "Inauguramos el primer centro integral con salas de estudio híbridas y clínicas médicas asociadas." },
+  { year: "2021", title: "Fundación e Inicios", desc: "Nace la fundación con el objetivo de rescatar espacios deportivos y guiar académicamente a 50 jóvenes talentos en comunidades vulnerables." },
+  { year: "2023", title: "Expansión y Becas USA", desc: "Firmamos convenios clave con academias de EE. UU. y logramos las primeras 12 becas deportivas completas para jóvenes de la fundación." },
+  { year: "2025", title: "Centro de Alto Rendimiento", desc: "Inauguramos el primer centro integral con salas de estudio híbridas y clínicas médicas asociadas para el desarrollo pleno del atleta." },
   { year: "2026", title: "Impacto Global Continuo", desc: "Superamos la cifra de 1,500 alumnos guiados en todo el país con presencia en múltiples disciplinas deportivas." }
+];
+
+const gallery = [
+  { src: "https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=900&auto=format&fit=crop&q=80", alt: "Partido de fútbol comunitario", span: "tall" },
+  { src: "https://images.unsplash.com/photo-1567581935884-3349723552ca?w=600&auto=format&fit=crop&q=80", alt: "Taller académico" },
+  { src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&auto=format&fit=crop&q=80", alt: "Entrenamiento físico" },
+  { src: "https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=600&auto=format&fit=crop&q=80", alt: "Celebración de logros" },
+  { src: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&auto=format&fit=crop&q=80", alt: "Sala de estudio" },
 ];
 ---
 
-<Layout title="NUEVO SIGLO | Fundación Deportiva y Académica">
+<Layout title="NUEVO CICLO | Fundación Deportiva y Académica">
 
-  
-  <main class="bg-[#030303] text-white min-h-screen overflow-hidden pt-28">
-    
-    <!-- Hero Section: Warm Amber Mesh Glow and Dynamic Counter Stats -->
-    <section class="relative min-h-[95vh] flex flex-col items-center justify-center text-center px-6 py-12 md:py-0 border-b border-white/5">
-      
-      <!-- Fluid Warm Amber Mesh Background -->
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(234,179,8,0.04)_0%,transparent_50%)] pointer-events-none"></div>
-      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[350px] md:w-[650px] h-[350px] md:h-[650px] bg-yellow-500/10 blur-[130px] md:blur-[190px] rounded-full pointer-events-none"></div>
-      
-      <!-- Main Container -->
-      <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 border border-yellow-500/30 bg-yellow-950/20 text-yellow-400 rounded-full text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-8">
-          <span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
-          FUNDACIÓN PARA EL DESARROLLO INTEGRAL Y DEPORTIVO
+  <!-- Google Fonts con font-display=swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <main class="ns-root">
+
+    <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+    <section class="ns-hero" id="ns-hero">
+
+      <!-- Columna izquierda: texto -->
+      <div class="ns-hero-left">
+
+        <!-- Logo -->
+        <div class="ns-logo-wrap">
+          <img
+            src="/images/ns.png"
+            alt="Nuevo Ciclo — Fundación Deportiva y Académica"
+            class="ns-logo"
+          />
         </div>
-        
-        <h1 class="text-6xl md:text-8xl font-display font-bold tracking-widest text-white leading-none uppercase mb-6 hero-title">
-          NUEVO SIGLO<span class="text-yellow-500 font-sans">_</span>
+
+        <div class="ns-eyebrow">
+          <span class="ns-eyebrow-line"></span>
+          Fundación de Solidaridad &amp; Apoyo
+        </div>
+
+        <h1 class="ns-hero-h1">
+          Transformamos vidas con <em>amor</em> y compromiso
         </h1>
-        
-        <p class="text-gray-400 text-sm md:text-lg max-w-xl md:max-w-2xl leading-relaxed mb-16 hero-desc">
-          Transformamos realidades a través del poder integrador del deporte de élite y la excelencia académica. Creemos en dar alas al talento juvenil para forjar profesionales y atletas de impacto global.
+
+        <p class="ns-hero-p">
+          Desde 2021 acompañamos a jóvenes talentos con apoyo deportivo, académico y humano.
+          Creemos que cada niño merece una oportunidad real de brillar.
         </p>
 
-        <!-- Stats Counters -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 w-full max-w-3xl border-t border-white/10 pt-10" id="stats-section">
-          <div class="flex flex-col items-center">
-            <span class="text-5xl md:text-6xl font-display font-bold text-yellow-500 tracking-wider flex items-center">
-              <span class="stat-counter" data-target="1500">0</span><span>+</span>
-            </span>
-            <span class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase mt-2">JÓVENES APOYADOS</span>
-          </div>
-          <div class="flex flex-col items-center border-y border-white/5 sm:border-y-0 sm:border-x sm:border-white/10 py-6 sm:py-0">
-            <span class="text-5xl md:text-6xl font-display font-bold text-white tracking-wider flex items-center">
-              <span class="stat-counter" data-target="45">0</span><span>+</span>
-            </span>
-            <span class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase mt-2">BECAS DEPORTIVAS USA</span>
-          </div>
-          <div class="flex flex-col items-center">
-            <span class="text-5xl md:text-6xl font-display font-bold text-yellow-500 tracking-wider flex items-center">
-              <span class="stat-counter" data-target="10">0</span><span>K+</span>
-            </span>
-            <span class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase mt-2">HORAS DE ENTRENAMIENTO</span>
-          </div>
+        <div class="ns-hero-btns">
+          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="ns-btn-primary">
+            Inscribirse ahora
+            <!-- Icono flecha derecha -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <button class="ns-btn-secondary">
+            <!-- Icono play -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Ver historia
+          </button>
         </div>
 
-      </div>
-    </section>
-
-    <!-- Pillars of the Foundation -->
-    <section class="py-24 px-6 relative">
-      <div class="absolute bottom-1/4 left-0 w-[300px] h-[300px] bg-yellow-500/5 blur-[100px] rounded-full pointer-events-none"></div>
-
-      <div class="max-w-[1200px] mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-          <div class="text-left">
-            <span class="text-yellow-500 font-display text-sm tracking-[0.3em] block mb-2">ÁREAS METODOLÓGICAS</span>
-            <h2 class="text-4xl md:text-5xl font-display font-bold text-white tracking-widest uppercase">NUESTROS TRES PILARES</h2>
+        <!-- Estadísticas -->
+        <div class="ns-stats-row" id="ns-stats">
+          <div class="ns-stat">
+            <span class="ns-stat-val"><span class="count" data-target="1500">0</span>+</span>
+            <span class="ns-stat-label">Jóvenes apoyados</span>
           </div>
-          <div class="h-[2px] w-24 bg-yellow-500/50 hidden md:block"></div>
-        </div>
-
-        <!-- Pillars Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="pillars-grid">
-          {pillars.map((pillar) => (
-            <div class={`p-8 border border-white/10 bg-gradient-to-br ${pillar.color} rounded-md hover:border-yellow-500/40 hover:shadow-[0_0_30px_rgba(234,179,8,0.1)] transition-all duration-500 flex flex-col justify-between group`}>
-              <div>
-                <span class="text-3xl font-display text-yellow-500/60 block mb-6 font-semibold">{pillar.num}</span>
-                <h3 class="text-2xl font-display text-white group-hover:text-yellow-400 transition-colors mb-4">{pillar.title}</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">{pillar.desc}</p>
-              </div>
-              <div class="h-[1px] w-12 bg-white/10 group-hover:w-full group-hover:bg-yellow-500/30 transition-all duration-500"></div>
-            </div>
-          ))}
+          <div class="ns-stat-divider"></div>
+          <div class="ns-stat">
+            <span class="ns-stat-val"><span class="count" data-target="45">0</span>+</span>
+            <span class="ns-stat-label">Becas deportivas USA</span>
+          </div>
+          <div class="ns-stat-divider"></div>
+          <div class="ns-stat">
+            <span class="ns-stat-val"><span class="count" data-target="10">0</span>K+</span>
+            <span class="ns-stat-label">Horas de formación</span>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- Scrolling GSAP timeline Section -->
-    <section class="py-24 px-6 bg-[#050505]/40 border-t border-white/5 relative">
-      <div class="absolute top-1/2 right-10 w-[350px] h-[350px] bg-yellow-500/5 blur-[120px] rounded-full pointer-events-none"></div>
-
-      <div class="max-w-[1000px] mx-auto">
-        <div class="text-center mb-20">
-          <span class="text-yellow-500 font-display text-sm tracking-[0.3em] block mb-2">NUESTRA HISTORIA</span>
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-white tracking-widest uppercase">LÍNEA DE TIEMPO DEL IMPACTO</h2>
-        </div>
-
-        <!-- Vertical Timeline for scroll-triggered GSAP animations -->
-        <div class="relative pl-8 md:pl-0" id="vertical-timeline">
-          
-          <!-- Connective line down center on desktop, side on mobile -->
-          <div class="absolute top-0 bottom-0 left-[16px] md:left-1/2 w-[2px] bg-white/10 z-0 -translate-x-1/2"></div>
-          <div class="absolute top-0 left-[16px] md:left-1/2 w-[2px] bg-yellow-500 z-0 -translate-x-1/2 timeline-fill" style="height: 0%;"></div>
-
-          {achievements.map((ach, idx) => (
-            <div class="relative mb-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 timeline-row group">
-              
-              <!-- Indicator Year circle -->
-              <div class="absolute left-[-26px] md:left-1/2 w-8 h-8 rounded-full bg-[#030303] border-2 border-white/20 group-hover:border-yellow-500 transition-colors flex items-center justify-center z-10 -translate-x-1/2 shadow-[0_0_10px_rgba(0,0,0,0.8)]">
-                <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
-              </div>
-
-              <!-- Content left column (Desktop) -->
-              <div class="w-full md:w-[45%] text-left md:text-right hidden md:block select-none pointer-events-none">
-                {idx % 2 === 0 && (
-                  <div>
-                    <span class="text-4xl font-display font-bold text-yellow-500/40 group-hover:text-yellow-500 transition-colors duration-500">{ach.year}</span>
-                  </div>
-                )}
-              </div>
-
-              <!-- Content Card right/left depending on index -->
-              <div class="w-full md:w-[45%] bg-black/60 border border-white/5 p-6 md:p-8 hover:border-yellow-500/20 transition-all duration-300 rounded-md">
-                <span class="text-3xl font-display font-bold text-yellow-500/50 block md:hidden mb-2">{ach.year}</span>
-                {idx % 2 !== 0 && (
-                  <span class="hidden md:block text-xs font-mono tracking-widest text-yellow-500/50 uppercase mb-2">{ach.year} / CRONOLOGÍA</span>
-                )}
-                {idx % 2 === 0 && (
-                  <span class="hidden md:block text-xs font-mono tracking-widest text-gray-500 uppercase mb-2">{ach.year} / CRONOLOGÍA</span>
-                )}
-                <h3 class="text-xl font-display text-white mb-2">{ach.title}</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">{ach.desc}</p>
-              </div>
-
-            </div>
-          ))}
-
+      <!-- Columna derecha: imagen principal -->
+      <div class="ns-hero-right">
+        <img
+          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1000&auto=format&fit=crop&q=85"
+          alt="Jóvenes de la fundación unidos en comunidad"
+          class="ns-hero-img"
+        />
+        <div class="ns-hero-overlay">
+          <span class="ns-hero-badge">Comunidad activa · 2025</span>
+          <p class="ns-hero-caption">Unidos por un mismo sueño: un futuro digno</p>
         </div>
       </div>
+
     </section>
 
-    <!-- Core CTA for Foundations -->
-    <section class="py-32 px-6 relative text-center">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[600px] h-[350px] md:h-[600px] bg-yellow-500/10 blur-[120px] md:blur-[180px] rounded-full pointer-events-none"></div>
+    <!-- ═══════════════════════════════ BARRA DE IMPACTO ════════════════════ -->
+    <div class="ns-impact-bar">
+      <div class="ns-impact-item">
+        <!-- Icono corazón (profesional, outline) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="ns-impact-icon" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Solidaridad como pilar central
+      </div>
+      <div class="ns-impact-sep"></div>
+      <div class="ns-impact-item">
+        <!-- Icono birrete/académico -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="ns-impact-icon" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Apoyo académico personalizado
+      </div>
+      <div class="ns-impact-sep"></div>
+      <div class="ns-impact-item">
+        <!-- Icono trofeo -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="ns-impact-icon" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+        Desarrollo deportivo de élite
+      </div>
+      <div class="ns-impact-sep"></div>
+      <div class="ns-impact-item">
+        <!-- Icono globo terráqueo -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="ns-impact-icon" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Becas internacionales EE.UU.
+      </div>
+    </div>
 
-      <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-        <h2 class="text-4xl md:text-6xl font-display font-bold text-white tracking-widest uppercase mb-6 cta-title">
-          ÚNETE Y CAMBIA UNA VIDA HOY
+    <!-- ═══════════════════════════════ MISIÓN ══════════════════════════════ -->
+    <section class="ns-mission" id="ns-mission">
+
+      <!-- Mosaico de imágenes -->
+      <div class="ns-mission-mosaic">
+        <div class="ns-mosaic-main">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&auto=format&fit=crop&q=80" alt="Entrenamiento deportivo grupal" />
+        </div>
+        <div class="ns-mosaic-sm">
+          <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=500&auto=format&fit=crop&q=80" alt="Estudio y aprendizaje" />
+        </div>
+        <div class="ns-mosaic-sm">
+          <img src="https://images.unsplash.com/photo-1576866209830-589e1bfbaa4d?w=500&auto=format&fit=crop&q=80" alt="Comunidad unida" />
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div class="ns-mission-text">
+        <div class="ns-section-eyebrow">Quiénes somos</div>
+        <h2 class="ns-section-h2">
+          Una fundación hecha de <em>corazón</em> y esfuerzo colectivo
         </h2>
-        <p class="text-gray-400 text-sm md:text-lg leading-relaxed mb-12 max-w-2xl">
-          Ya sea que busques postular a un joven atleta talentoso o colaborar como padrino o voluntario académico/deportivo, tu esfuerzo multiplica las posibilidades de transformar el futuro.
+        <p>
+          No somos solo una institución — somos una familia que cree profundamente en el
+          potencial de cada joven. Nuestro modelo une el entrenamiento deportivo de alto
+          nivel con la guía académica y el desarrollo humano integral.
         </p>
+        <blockquote class="ns-quote">
+          "Cuando un joven descubre que alguien cree en él, cambia no solo su historia
+          sino la de toda su comunidad."
+        </blockquote>
+        <p>
+          Cada programa está diseñado con cariño, rigor y visión de futuro. Trabajamos
+          codo a codo con familias, entrenadores y educadores para que ningún talento
+          quede invisible.
+        </p>
+      </div>
 
-        <a 
-          href="https://forms.gle/cVVdBKkZb4oSyXf27" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold tracking-widest text-sm uppercase transition-all duration-300 shadow-[0_0_30px_rgba(234,179,8,0.3)] hover:shadow-[0_0_45px_rgba(234,179,8,0.6)] hover:scale-105 active:scale-95 group"
-        >
-          INSCRIBIRSE AHORA
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
+    </section>
+
+    <!-- ═══════════════════════════════ PILARES ═════════════════════════════ -->
+    <section class="ns-pillars-section">
+      <div class="ns-container">
+        <div class="ns-section-center">
+          <span class="ns-section-eyebrow">Áreas de enfoque</span>
+          <h2 class="ns-section-h2">Los tres pilares que sostienen nuestra misión</h2>
+          <p class="ns-section-sub">Cada pilar es una promesa: acompañarte con excelencia en el deporte, en el aula y en la vida.</p>
+        </div>
+
+        <div class="ns-pillars-grid" id="ns-pillars">
+          {pillars.map((pillar, i) => (
+            <article class="ns-pillar-card" data-delay={i * 120}>
+              <div class="ns-pillar-img">
+                <img src={pillar.img} alt={pillar.alt} loading="lazy" />
+              </div>
+              <div class="ns-pillar-body">
+                <span class="ns-pillar-num">{pillar.num} · Pilar</span>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.desc}</p>
+                <span class="ns-pillar-link">
+                  Saber más
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ TIMELINE ════════════════════════════ -->
+    <section class="ns-timeline-section">
+      <div class="ns-container ns-timeline-inner">
+
+        <!-- Imagen lateral -->
+        <div class="ns-timeline-img-col">
+          <img
+            src="https://images.unsplash.com/photo-1593476087123-36d1de271f08?w=700&auto=format&fit=crop&q=80"
+            alt="Atleta en acción representando el crecimiento de la fundación"
+            class="ns-timeline-side-img"
+          />
+          <div class="ns-timeline-img-caption">
+            <span>Más de 5 años</span>
+            construyendo caminos
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="ns-timeline-col">
+          <div class="ns-section-eyebrow">Nuestra historia</div>
+          <h2 class="ns-section-h2">Línea de tiempo del impacto</h2>
+
+          <div class="ns-timeline" id="ns-timeline">
+            <div class="ns-tl-line"></div>
+            <div class="ns-tl-fill" id="ns-tl-fill"></div>
+
+            {achievements.map((ach, i) => (
+              <div class="ns-tl-row" data-idx={i}>
+                <div class="ns-tl-dot">
+                  <div class="ns-tl-dot-inner"></div>
+                </div>
+                <div class="ns-tl-card">
+                  <span class="ns-tl-year">{ach.year}</span>
+                  <h3 class="ns-tl-title">{ach.title}</h3>
+                  <p class="ns-tl-desc">{ach.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ GALERÍA ═════════════════════════════ -->
+    <section class="ns-gallery-section" id="ns-gallery-section">
+      <div class="ns-container">
+        <div class="ns-section-center" style="margin-bottom: 48px;">
+          <span class="ns-section-eyebrow">Momentos reales</span>
+          <h2 class="ns-section-h2">Nuestra comunidad en acción</h2>
+        </div>
+        <div class="ns-gallery-grid" id="ns-gallery">
+          {gallery.map((img, i) => (
+            <div class={`ns-gallery-item ${img.span === 'tall' ? 'ns-gallery-tall' : ''}`} data-delay={i * 100}>
+              <img src={img.src} alt={img.alt} loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ TESTIMONIAL ═════════════════════════ -->
+    <section class="ns-testimonial-section">
+      <div class="ns-container">
+        <div class="ns-testimonial-grid">
+          <div class="ns-testimonial-img">
+            <img
+              src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=600&auto=format&fit=crop&q=80"
+              alt="Joven beneficiario de la fundación"
+            />
+          </div>
+          <div class="ns-testimonial-body">
+            <div class="ns-section-eyebrow">Testimonio</div>
+            <blockquote class="ns-testimonial-quote">
+              "La fundación no solo me dio una beca — me dio familia, dirección y la
+              confianza de que yo podía lograr cosas grandes. Hoy estudio en EE.UU.
+              gracias a ellos."
+            </blockquote>
+            <div class="ns-testimonial-author">
+              <div class="ns-testimonial-avatar">JM</div>
+              <div>
+                <strong>Juan Medina</strong>
+                <span>Beneficiario 2023 · Beca Deportiva Miami</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ CTA FINAL ═══════════════════════════ -->
+    <section class="ns-cta-section" id="ns-cta">
+      <div class="ns-cta-bg-img">
+        <img
+          src="https://images.unsplash.com/photo-1526976668912-1a811878dd37?w=1600&auto=format&fit=crop&q=80"
+          alt="Equipo de jóvenes celebrando juntos"
+        />
+        <div class="ns-cta-overlay"></div>
+      </div>
+      <div class="ns-cta-content">
+        <span class="ns-eyebrow" style="color: #f5c87a;">
+          <span class="ns-eyebrow-line" style="background:#f5c87a;"></span>
+          Sé parte del cambio
+        </span>
+        <h2 class="ns-cta-h2">Únete y cambia una vida hoy</h2>
+        <p class="ns-cta-p">
+          Ya sea que busques inscribir a un joven talentoso o colaborar como voluntario,
+          tu esfuerzo multiplica las posibilidades de transformar el futuro de una generación.
+        </p>
+        <div class="ns-cta-btns">
+          <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="ns-btn-primary">
+            Inscribirse ahora
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <button class="ns-btn-ghost">Ser voluntario</button>
+        </div>
       </div>
     </section>
 
   </main>
+
 </Layout>
 
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     ESTILOS
+     ═══════════════════════════════════════════════════════════════════════ -->
+<style>
+
+  /* ── Tipografía ──────────────────────────────────────────────────────────
+     Bebas Neue  → títulos H1 / H2 / CTA (display, uppercase natural)
+     Inter       → cuerpo, labels, botones
+     font-display:swap está declarado en la llamada a Google Fonts (ver <link>)
+  ─────────────────────────────────────────────────────────────────────── */
+
+  /* ── Tokens ──────────────────────────────────────────────────────────────── */
+  :root {
+    --amber:        #C4873A;
+    --amber-dark:   #a86e2a;
+    --amber-light:  #FFF4E6;
+    --amber-mid:    #F5C87A;
+    --dark:         #1a1a18;
+    --dark-2:       #2e2e2b;
+    --gray-1:       #FAFAF8;
+    --gray-2:       #F5F2EC;
+    --gray-3:       #E8E4DC;
+    --gray-4:       #C8C4BC;
+    --gray-5:       #888580;
+    --gray-6:       #555450;
+    --radius-sm:    8px;
+    --radius-md:    16px;
+    --radius-lg:    24px;
+    --shadow-sm:    0 2px 12px rgba(0,0,0,0.07);
+    --shadow-md:    0 8px 32px rgba(0,0,0,0.10);
+    --shadow-lg:    0 20px 60px rgba(0,0,0,0.12);
+    --transition:   0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Fuentes */
+    --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+    --font-body:    'Inter', system-ui, sans-serif;
+  }
+
+  /* ── Reset / base ─────────────────────────────────────────────────────────── */
+  .ns-root {
+    background: var(--gray-1);
+    color: var(--dark);
+    overflow-x: hidden;
+    font-family: var(--font-body);
+  }
+
+  .ns-root * {
+    box-sizing: border-box;
+  }
+
+  .ns-container {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* ── Logo ─────────────────────────────────────────────────────────────────── */
+  .ns-logo-wrap {
+    margin-bottom: 10px;
+  }
+
+  .ns-logo {
+    height: 200px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* ── Eyebrow genérico ─────────────────────────────────────────────────────── */
+  .ns-section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-body);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .ns-section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+
+  /* Títulos H2 — display uppercase */
+  .ns-section-h2 {
+    font-family: var(--font-display);
+    font-size: 52px;
+    font-weight: 400; /* Bebas Neue sólo tiene weight 400 */
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 18px;
+  }
+
+  .ns-section-h2 em {
+    font-style: normal;
+    color: var(--amber);
+  }
+
+  .ns-section-sub {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--gray-5);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .ns-section-center {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .ns-section-center .ns-section-eyebrow::before { display: none; }
+
+  /* ── Botones ──────────────────────────────────────────────────────────────── */
+  .ns-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--amber);
+    color: #fff;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 40px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  .ns-btn-primary:hover {
+    background: var(--amber-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(196, 135, 58, 0.32);
+  }
+
+  .ns-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--dark);
+    border: 1.5px solid var(--gray-3);
+    padding: 14px 30px;
+    border-radius: 40px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .ns-btn-secondary:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+
+  .ns-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    border: 1.5px solid rgba(255,255,255,0.25);
+    padding: 14px 30px;
+    border-radius: 40px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .ns-btn-ghost:hover {
+    border-color: rgba(255,255,255,0.6);
+    color: #fff;
+  }
+
+
+  /* ══════════════════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════════════════ */
+  .ns-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 94vh;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .ns-hero.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Columna texto */
+  .ns-hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 64px;
+    background: var(--gray-1);
+  }
+
+  .ns-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .ns-eyebrow-line {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+
+  /* H1 hero — Bebas Neue, uppercase automático */
+  .ns-hero-h1 {
+    font-family: var(--font-display);
+    font-size: 72px;
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 24px;
+    max-width: 520px;
+  }
+
+  .ns-hero-h1 em {
+    font-style: normal;
+    color: var(--amber);
+  }
+
+  .ns-hero-p {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--gray-6);
+    max-width: 460px;
+    margin-bottom: 40px;
+  }
+
+  .ns-hero-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .ns-stats-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding-top: 40px;
+    border-top: 1px solid var(--gray-3);
+  }
+
+  .ns-stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ns-stat-val {
+    font-family: var(--font-display);
+    font-size: 44px;
+    font-weight: 400;
+    color: var(--dark);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  .ns-stat-label {
+    font-family: var(--font-body);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--gray-5);
+    text-transform: uppercase;
+  }
+
+  .ns-stat-divider {
+    width: 1px;
+    height: 44px;
+    background: var(--gray-3);
+    margin: 0 24px;
+    flex-shrink: 0;
+  }
+
+  /* Columna imagen */
+  .ns-hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ns-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 7s ease;
+  }
+
+  .ns-hero-right:hover .ns-hero-img {
+    transform: scale(1.05);
+  }
+
+  .ns-hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(26,26,24,0.78) 0%, transparent 65%);
+    padding: 44px 40px 40px;
+  }
+
+  .ns-hero-badge {
+    display: inline-block;
+    background: rgba(196,135,58,0.88);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 40px;
+    margin-bottom: 12px;
+    backdrop-filter: blur(6px);
+  }
+
+  .ns-hero-caption {
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+
+  /* ══════════════════════════════════════════════════════════
+     BARRA DE IMPACTO
+     ══════════════════════════════════════════════════════════ */
+  .ns-impact-bar {
+    background: var(--dark);
+    padding: 18px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .ns-impact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: rgba(255,255,255,0.82);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .ns-impact-icon {
+    color: var(--amber-mid);
+    flex-shrink: 0;
+  }
+
+  .ns-impact-sep {
+    width: 1px;
+    height: 22px;
+    background: rgba(255,255,255,0.12);
+  }
+
+
+  /* ══════════════════════════════════════════════════════════
+     MISIÓN
+     ══════════════════════════════════════════════════════════ */
+  .ns-mission {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 100px 64px;
+    max-width: 1260px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .ns-mission.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ns-mission-mosaic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 240px 190px;
+    gap: 12px;
+  }
+
+  .ns-mosaic-main {
+    grid-column: 1 / 3;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .ns-mosaic-sm {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  .ns-mosaic-main img,
+  .ns-mosaic-sm img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s ease;
+  }
+
+  .ns-mosaic-main:hover img,
+  .ns-mosaic-sm:hover img {
+    transform: scale(1.06);
+  }
+
+  .ns-mission-text p {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.82;
+    color: var(--gray-6);
+    margin-bottom: 16px;
+  }
+
+  .ns-quote {
+    margin: 24px 0;
+    padding: 20px 24px;
+    border-left: 3px solid var(--amber);
+    background: var(--amber-light);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gray-6);
+    line-height: 1.75;
+  }
+
+
+  /* ══════════════════════════════════════════════════════════
+     PILARES
+     ══════════════════════════════════════════════════════════ */
+  .ns-pillars-section {
+    background: var(--gray-2);
+    padding: 100px 0;
+  }
+
+  .ns-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .ns-pillar-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    opacity: 0;
+    transform: translateY(44px);
+    transition: opacity 0.7s ease, transform 0.7s ease, box-shadow var(--transition);
+  }
+
+  .ns-pillar-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ns-pillar-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .ns-pillar-img {
+    height: 210px;
+    overflow: hidden;
+  }
+
+  .ns-pillar-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s ease;
+  }
+
+  .ns-pillar-card:hover .ns-pillar-img img {
+    transform: scale(1.07);
+  }
+
+  .ns-pillar-body {
+    padding: 28px 28px 32px;
+  }
+
+  .ns-pillar-num {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .ns-pillar-body h3 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+
+  .ns-pillar-body p {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--gray-5);
+    margin-bottom: 20px;
+  }
+
+  .ns-pillar-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--amber);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: gap var(--transition);
+  }
+
+  .ns-pillar-link:hover {
+    gap: 10px;
+  }
+
+
+  /* ══════════════════════════════════════════════════════════
+     TIMELINE
+     ══════════════════════════════════════════════════════════ */
+  .ns-timeline-section {
+    background: var(--gray-1);
+    padding: 100px 0;
+  }
+
+  .ns-timeline-inner {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .ns-timeline-img-col {
+    position: sticky;
+    top: 100px;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .ns-timeline-img-col.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .ns-timeline-side-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    display: block;
+    box-shadow: var(--shadow-md);
+  }
+
+  .ns-timeline-img-caption {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--gray-5);
+  }
+
+  .ns-timeline-img-caption span {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .ns-timeline-col .ns-section-h2 {
+    margin-bottom: 48px;
+  }
+
+  .ns-timeline {
+    position: relative;
+    padding-left: 36px;
+  }
+
+  .ns-tl-line {
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gray-3);
+    z-index: 0;
+  }
+
+  .ns-tl-fill {
+    position: absolute;
+    left: 8px;
+    top: 0;
+    width: 2px;
+    height: 0%;
+    background: var(--amber);
+    z-index: 1;
+    transition: height 0.05s linear;
+  }
+
+  .ns-tl-row {
+    position: relative;
+    margin-bottom: 44px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .ns-tl-row.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .ns-tl-dot {
+    position: absolute;
+    left: -32px;
+    top: 4px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--gray-1);
+    border: 2px solid var(--gray-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: border-color var(--transition);
+  }
+
+  .ns-tl-row.visible .ns-tl-dot {
+    border-color: var(--amber);
+  }
+
+  .ns-tl-dot-inner {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--amber);
+  }
+
+  .ns-tl-card {
+    background: #fff;
+    border: 1px solid var(--gray-3);
+    border-radius: var(--radius-md);
+    padding: 24px 28px;
+    transition: box-shadow var(--transition), border-color var(--transition);
+  }
+
+  .ns-tl-row:hover .ns-tl-card {
+    border-color: var(--amber);
+    box-shadow: var(--shadow-md);
+  }
+
+  .ns-tl-year {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .ns-tl-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .ns-tl-desc {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--gray-5);
+    margin: 0;
+  }
+
+
+  /* ══════════════════════════════════════════════════════════
+     GALERÍA
+     ══════════════════════════════════════════════════════════ */
+  .ns-gallery-section {
+    background: var(--gray-2);
+    padding: 100px 0;
+  }
+
+  .ns-gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 270px 200px;
+    gap: 14px;
+  }
+
+  .ns-gallery-item {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .ns-gallery-item.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .ns-gallery-tall {
+    grid-row: 1 / 3;
+  }
+
+  .ns-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s ease;
+  }
+
+  .ns-gallery-item:hover img {
+    transform: scale(1.07);
+  }
+
+
+  /* ══════════════════════════════════════════════════════════
+     TESTIMONIAL
+     ══════════════════════════════════════════════════════════ */
+  .ns-testimonial-section {
+    background: var(--gray-1);
+    padding: 100px 0;
+  }
+
+  .ns-testimonial-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .ns-testimonial-img {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: 440px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .ns-testimonial-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ns-testimonial-quote {
+    font-family: var(--font-body);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.55;
+    color: var(--dark);
+    border: none;
+    padding: 0;
+    margin: 0 0 32px;
+    font-style: italic;
+  }
+
+  .ns-testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .ns-testimonial-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--amber);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ns-testimonial-author strong {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+
+  .ns-testimonial-author span {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--gray-5);
+    letter-spacing: 0.04em;
+  }
+
+
+  /* ══════════════════════════════════════════════════════════
+     CTA FINAL
+     ══════════════════════════════════════════════════════════ */
+  .ns-cta-section {
+    position: relative;
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .ns-cta-bg-img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .ns-cta-bg-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ns-cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26,26,24,0.88) 0%, rgba(120,70,10,0.72) 100%);
+  }
+
+  .ns-cta-content {
+    position: relative;
+    z-index: 1;
+    padding: 80px 48px;
+    max-width: 680px;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .ns-cta-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* H2 CTA — Bebas Neue uppercase */
+  .ns-cta-h2 {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 1.0;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .ns-cta-p {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 40px;
+  }
+
+  .ns-cta-btns {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ── Reduced motion ─────────────────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .ns-hero,
+    .ns-mission,
+    .ns-pillar-card,
+    .ns-tl-row,
+    .ns-gallery-item,
+    .ns-cta-content,
+    .ns-timeline-img-col {
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+</style>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     ANIMACIONES GSAP
+     ════════════════════════════════════════════════════════════════════════ -->
 <script>
   import gsap from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -200,77 +1331,121 @@ const achievements = [
   if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero Anim
-    gsap.from('.hero-title', { opacity: 0, y: 30, duration: 1, ease: 'power3.out', delay: 0.4 });
-    gsap.from('.hero-desc', { opacity: 0, y: 35, duration: 1, ease: 'power3.out', delay: 0.6 });
+    /* ── 1. Hero entrada al cargar ───────────────────────────────────────── */
+    window.addEventListener('load', () => {
+      const hero = document.getElementById('ns-hero');
+      if (hero) setTimeout(() => hero.classList.add('visible'), 120);
+    });
 
-    // Numeric Stats Counters triggers
-    const statCounters = document.querySelectorAll('.stat-counter');
-    gsap.from(statCounters, {
-      scrollTrigger: {
-        trigger: '#stats-section',
-        start: 'top 85%',
-        toggleActions: 'play none none reverse'
-      },
-      opacity: 0,
-      y: 20,
-      duration: 0.8,
-      ease: 'power3.out',
-      onComplete: () => {
-        statCounters.forEach(counter => {
-          const target = parseInt(counter.getAttribute('data-target') || '0');
+    /* ── 2. Contadores de estadísticas ───────────────────────────────────── */
+    let statsAnimated = false;
+    ScrollTrigger.create({
+      trigger: '#ns-stats',
+      start: 'top 85%',
+      onEnter: () => {
+        if (statsAnimated) return;
+        statsAnimated = true;
+        document.querySelectorAll('.count').forEach((el) => {
+          const target = parseInt(el.getAttribute('data-target') || '0', 10);
           const obj = { val: 0 };
           gsap.to(obj, {
             val: target,
             duration: 2,
             ease: 'power2.out',
             onUpdate: () => {
-              counter.innerText = Math.floor(obj.val).toString();
-            }
+              (el as HTMLElement).innerText = Math.floor(obj.val).toLocaleString();
+            },
           });
         });
-      }
-    });
-
-    // Pillars Grid Trigger
-    gsap.from('#pillars-grid > div', {
-      scrollTrigger: {
-        trigger: '#pillars-grid',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
       },
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: 'power3.out'
     });
 
-    // Vertical Timeline fill animation
-    gsap.to('.timeline-fill', {
+    /* ── 3. Sección Misión ───────────────────────────────────────────────── */
+    ScrollTrigger.create({
+      trigger: '#ns-mission',
+      start: 'top 80%',
+      onEnter: () => {
+        const el = document.getElementById('ns-mission');
+        if (el) el.classList.add('visible');
+      },
+    });
+
+    /* ── 4. Pilares en cascada ───────────────────────────────────────────── */
+    document.querySelectorAll('.ns-pillar-card').forEach((card) => {
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top 88%',
+        onEnter: () => {
+          const delay = parseInt((card as HTMLElement).dataset.delay || '0', 10);
+          setTimeout(() => card.classList.add('visible'), delay);
+        },
+      });
+    });
+
+    /* ── 5. Imagen lateral del timeline ─────────────────────────────────── */
+    ScrollTrigger.create({
+      trigger: '.ns-timeline-img-col',
+      start: 'top 82%',
+      onEnter: () => {
+        const el = document.querySelector('.ns-timeline-img-col');
+        if (el) el.classList.add('visible');
+      },
+    });
+
+    /* ── 6. Filas del timeline ───────────────────────────────────────────── */
+    document.querySelectorAll('.ns-tl-row').forEach((row, i) => {
+      ScrollTrigger.create({
+        trigger: row,
+        start: 'top 84%',
+        onEnter: () => {
+          setTimeout(() => row.classList.add('visible'), i * 110);
+        },
+      });
+    });
+
+    /* ── 7. Línea de relleno (scrub) ─────────────────────────────────────── */
+    gsap.to('#ns-tl-fill', {
       scrollTrigger: {
-        trigger: '#vertical-timeline',
+        trigger: '#ns-timeline',
         start: 'top 60%',
         end: 'bottom 40%',
-        scrub: 1
+        scrub: 1,
       },
-      height: '100%'
+      height: '100%',
     });
 
-    // Timeline rows trigger
-    const rows = document.querySelectorAll('.timeline-row');
-    rows.forEach((row) => {
-      gsap.from(row, {
-        scrollTrigger: {
-          trigger: row,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
+    /* ── 8. Galería en cascada ───────────────────────────────────────────── */
+    document.querySelectorAll('.ns-gallery-item').forEach((item) => {
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top 90%',
+        onEnter: () => {
+          const delay = parseInt((item as HTMLElement).dataset.delay || '0', 10);
+          setTimeout(() => item.classList.add('visible'), delay);
         },
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out'
       });
+    });
+
+    /* ── 9. CTA final ────────────────────────────────────────────────────── */
+    ScrollTrigger.create({
+      trigger: '#ns-cta',
+      start: 'top 80%',
+      onEnter: () => {
+        const el = document.querySelector('.ns-cta-content');
+        if (el) el.classList.add('visible');
+      },
+    });
+
+    /* ── 10. Parallax sutil hero ─────────────────────────────────────────── */
+    gsap.to('.ns-hero-img', {
+      scrollTrigger: {
+        trigger: '.ns-hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+      y: 60,
+      ease: 'none',
     });
   }
 </script>
