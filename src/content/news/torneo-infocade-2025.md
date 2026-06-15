@@ -4,7 +4,7 @@ subtitle: "Inscripciones abiertas hasta el 15 de junio"
 category: "ANUNCIO"
 tag: "OFICIAL"
 date: 2025-06-01
-image: "/images/mix5.webp"
+image: "/images/futi.jpg"
 featured: true
 author: "CBTFI"
 excerpt: "El Instituto Deportivo INFOCADE abre las puertas de su torneo más grande del año, con categorías para todas las edades y disciplinas."
