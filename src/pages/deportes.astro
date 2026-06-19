@@ -173,8 +173,14 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
     <section class="dr-hero" id="dr-hero">
 
       <!-- fondo imagen con parallax -->
-      <div id="hero-bg" class="dr-hero-bg"
-           style="background:url('/images/fuchi.webp') center 20% / cover no-repeat;"></div>
+      <video
+    class="hero-video"
+    src="/images/video2.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+       ></video>
 
       <!-- overlay doble -->
       <div class="dr-hero-overlay" aria-hidden="true"></div>
@@ -185,12 +191,6 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
       <div class="dr-orb dr-orb-2" aria-hidden="true"></div>
 
       <div class="dr-hero-content">
-
-        <!-- eyebrow -->
-        <div class="dr-hero-eyebrow" id="hero-eyebrow">
-          <span class="dr-hero-line"></span>
-          <span>Academia de Alto Rendimiento</span>
-        </div>
 
         <!-- título — conserva el slide-up original -->
         <h1 class="dr-hero-title font-display" id="hero-title">
@@ -506,8 +506,8 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
 .dr-hero-overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.18) 100%),
-    linear-gradient(to right, rgba(0,0,0,0.88) 0%, transparent 65%);
+    linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.10) 100%),
+    linear-gradient(to right, rgba(0,0,0,0.55) 0%, transparent 65%);
 }
 .dr-hero-mesh {
   position: absolute; inset: 0;
@@ -545,7 +545,7 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
 .dr-hero-line { display: block; width: 24px; height: 1.5px; background: var(--gold); flex-shrink: 0; }
 
 .dr-hero-title {
-  font-size: clamp(3rem, 9vw, 8.5rem);
+  font-size: clamp(1rem, 7vw, 6.5rem);
   line-height: 0.92;
   margin: 0 0 2rem;
   color: #fff;
@@ -944,6 +944,20 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
   .dr-bar    { width: 56px; transition: none; }
   .dr-scroll-line { animation: none; }
   .dr-hero-eyebrow, .dr-hero-desc, .dr-hero-ctas, #scroll-hint { opacity: 1; transform: none; }
+}
+ /* ══════════════ HERO VIDEO ══════════════ */
+#hero {
+  margin-top: 64px;
+  position: relative; overflow: hidden;
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+  height: calc(100vh - 64px); min-height: 560px; max-height: 820px;
+}
+
+.hero-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
 }
 </style>
 
