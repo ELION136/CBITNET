@@ -1,0 +1,932 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const institutions = [
+  {
+    name: "INAF",
+    category: "Formacion internacional",
+    color: "#D97706",
+    glow: "rgba(217,119,6,0.12)",
+    path: "M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z M2 12h20",
+    url: "https://inaf.cl",
+    image: "/images/mix5.webp",
+    desc: "Alianza orientada a fortalecer rutas de especializacion, certificacion y proyeccion academica con enfoque deportivo.",
+  },
+  {
+    name: "UNITEP",
+    category: "Educacion superior",
+    color: "#059669",
+    glow: "rgba(5,150,105,0.1)",
+    path: "M22 10v6M2 10l10-5 10 5-10 5z M6 12.5V16a6 6 0 0 0 12 0v-3.5",
+    url: "https://unitepc.edu.bo",
+    image: "/images/un (1).webp",
+    desc: "Convenio para ampliar oportunidades de continuidad academica, capacitacion y articulacion institucional.",
+  },
+  {
+    name: "UNIFRANZ",
+    category: "Universidad aliada",
+    color: "#7C3AED",
+    glow: "rgba(124,58,237,0.1)",
+    path: "M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5z",
+    url: "https://unifranz.edu.bo",
+    image: "/images/un (4).webp",
+    desc: "Vinculo academico para impulsar programas, experiencias formativas y redes de crecimiento profesional.",
+  },
+  {
+    name: "CLUB OLIMPIC",
+    category: "Alto rendimiento",
+    color: "#DC2626",
+    glow: "rgba(220,38,38,0.1)",
+    path: "M6 9H4.5a2.5 2.5 0 0 1 0-5H6 M18 9h1.5a2.5 2.5 0 0 0 0-5H18 M4 22h16 M10 14.66V17c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2.34 M12 2a5 5 0 0 0-5 5v3c0 2.2 1.8 4 4 4h2c2.2 0 4-1.8 4-4V7a5 5 0 0 0-5-5z",
+    url: "https://www.facebook.com/ClubOlympicCbba",
+    image: "/images/futi.jpg",
+    desc: "Cooperacion deportiva para promover entrenamiento, disciplina competitiva y experiencias de formacion integral.",
+  },
+  {
+    name: "INTRASPORTS",
+    category: "Gestion deportiva",
+    color: "#0284C7",
+    glow: "rgba(2,132,199,0.1)",
+    path: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
+    url: "https://fcintrasports.com",
+    image: "/images/fuchi.webp",
+    desc: "Alianza para conectar procesos deportivos con tecnologia, competencia, seguimiento y proyeccion de talentos.",
+  },
+  {
+    name: "CLUB DE LEONES",
+    category: "Accion civica y social",
+    color: "#1D4ED8",
+    glow: "rgba(29,78,216,0.11)",
+    path: "M12 21s-7-4.35-9.33-9.91C.97 7.02 3.38 3 7.4 3c2.14 0 3.55 1.13 4.6 2.46C13.05 4.13 14.46 3 16.6 3c4.02 0 6.43 4.02 4.73 8.09C19 16.65 12 21 12 21z",
+    url: "/club-leones",
+    image: "/images/miro1.JPG",
+    desc: "Convenio social para fortalecer voluntariado, liderazgo comunitario, servicio civico y actividades solidarias.",
+  },
+];
+
+const impact = [
+  { value: "6", label: "Instituciones aliadas" },
+  { value: "3", label: "Ejes de trabajo" },
+  { value: "100%", label: "Enfoque integral" },
+];
+
+const axes = [
+  {
+    title: "Academico",
+    text: "Rutas de continuidad, capacitacion, certificacion y formacion profesional para estudiantes y deportistas.",
+  },
+  {
+    title: "Deportivo",
+    text: "Entrenamiento, competencia, gestion de talentos y acompanamiento para procesos de alto rendimiento.",
+  },
+  {
+    title: "Social",
+    text: "Accion civica, voluntariado y proyectos comunitarios que conectan la formacion con impacto real.",
+  },
+];
+---
+
+<Layout title="Convenios | CBIT" showBackgroundFX={false}>
+  <Navbar />
+  <main class="cv-main">
+    <section class="cv-hero">
+      <div class="cv-hero-bg" aria-hidden="true">
+        <div class="cv-grid"></div>
+        <div class="cv-cut cv-cut-a"></div>
+        <div class="cv-cut cv-cut-b"></div>
+      </div>
+
+      <div class="cv-container cv-hero-inner">
+        <div class="cv-hero-copy cv-reveal">
+          <span class="cv-eyebrow">Red estrategica CBIT</span>
+          <h1 class="cv-title font-display">
+            CONVENIOS<br />
+            <span>INSTITUCIONALES</span>
+          </h1>
+          <p class="cv-lead">
+            Trabajamos junto a instituciones academicas, deportivas y sociales para abrir oportunidades reales de formacion, competencia, certificacion y servicio.
+          </p>
+          <div class="cv-actions">
+            <a href="#instituciones" class="cv-btn cv-btn-primary">
+              Ver convenios
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/59177101440?text=Hola,%20quiero%20informacion%20sobre%20convenios" target="_blank" rel="noopener noreferrer" class="cv-btn cv-btn-ghost">
+              Contactar
+            </a>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <section class="cv-strip" aria-label="Impacto de los convenios">
+      <div class="cv-container cv-strip-grid">
+        {impact.map(item => (
+          <div class="cv-stat cv-reveal">
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="cv-section" id="instituciones">
+      <div class="cv-container">
+        <div class="cv-section-head cv-reveal">
+          <span class="cv-eyebrow cv-eyebrow-blue">Convenios vigentes</span>
+          <h2 class="cv-section-title font-display">Instituciones que caminan con nosotros</h2>
+          <p>
+            Cada convenio suma una pieza distinta al ecosistema CBIT: educacion, deporte, gestion, comunidad y proyeccion.
+          </p>
+        </div>
+
+        <div class="cv-card-grid">
+          {institutions.map((inst, i) => (
+            <article class={`cv-card cv-reveal cv-s${i % 3}`} style={`--c:${inst.color};--g:${inst.glow}`}>
+              <a href={inst.url} target={inst.url.startsWith('http') ? '_blank' : undefined} rel={inst.url.startsWith('http') ? 'noopener noreferrer' : undefined} class="cv-card-link" aria-label={`Ver convenio con ${inst.name}`}>
+                <div class="cv-img-wrap">
+                  <img src={inst.image} alt={`Convenio CBIT con ${inst.name}`} loading="lazy" />
+                  <span class="cv-img-tag">{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <div class="cv-card-body">
+                  <div class="cv-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={inst.path} /></svg>
+                  </div>
+                  <span class="cv-category">{inst.category}</span>
+                  <h3>{inst.name}</h3>
+                  <p>{inst.desc}</p>
+                  <div class="cv-card-foot">
+                    <span>Ver institucion</span>
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section cv-blue">
+      <div class="cv-container cv-axis-layout">
+        <div class="cv-axis-copy cv-reveal">
+          <span class="cv-eyebrow">Como se traducen</span>
+          <h2 class="cv-section-title font-display">Convenios con sentido practico</h2>
+          <p>
+            No los mostramos solo como logos: cada alianza existe para habilitar acciones concretas dentro del recorrido formativo de CBIT.
+          </p>
+        </div>
+        <div class="cv-axis-grid">
+          {axes.map((axis, i) => (
+            <div class={`cv-axis cv-reveal cv-s${i}`}>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              <h3>{axis.title}</h3>
+              <p>{axis.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-cta">
+      <div class="cv-cta-img" aria-hidden="true"></div>
+      <div class="cv-container cv-cta-inner cv-reveal">
+        <span class="cv-eyebrow">Gestion institucional</span>
+        <h2 class="font-display">Sumemos una nueva alianza</h2>
+        <p>
+          Si representas una institucion academica, deportiva o social, podemos conversar sobre una ruta de cooperacion seria, clara y beneficiosa.
+        </p>
+        <a href="https://wa.me/59177101440?text=Hola,%20quiero%20proponer%20un%20convenio%20institucional" target="_blank" rel="noopener noreferrer" class="cv-btn cv-btn-primary">
+          Proponer convenio
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  :root {
+    --cv-blue: #0b337e;
+    --cv-blue-2: #123f8f;
+    --cv-gold: #f59e0b;
+    --cv-gold-2: #fcd34d;
+    --cv-ink: #0f172a;
+    --cv-text: #334155;
+    --cv-muted: #64748b;
+    --cv-soft: #f4f7fb;
+    --cv-line: rgba(15, 23, 42, 0.1);
+  }
+
+  .cv-main {
+    background: #fff;
+    color: var(--cv-ink);
+    overflow: hidden;
+  }
+
+  .cv-container {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .cv-hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 132px 0 74px;
+    display: flex;
+    align-items: center;
+    background: var(--cv-blue);
+    color: #fff;
+  }
+
+  .cv-hero-bg,
+  .cv-grid {
+    position: absolute;
+    inset: 0;
+  }
+
+  .cv-grid {
+    opacity: 0.34;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .cv-cut {
+    position: absolute;
+    background: #08265f;
+    opacity: 0.82;
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+  }
+
+  .cv-cut-a {
+    top: 0;
+    right: 0;
+    width: min(44vw, 520px);
+    height: min(44vw, 520px);
+  }
+
+  .cv-cut-b {
+    left: 0;
+    bottom: 0;
+    width: 210px;
+    height: 210px;
+    transform: rotate(180deg);
+    background: #16469a;
+  }
+
+  .cv-hero::before {
+    content: "";
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--cv-gold), var(--cv-gold-2), transparent);
+    z-index: 1;
+  }
+
+  .cv-hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.72fr);
+    gap: 54px;
+    align-items: center;
+  }
+
+  .cv-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    color: var(--cv-gold-2);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .cv-eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  .cv-eyebrow-blue {
+    color: var(--cv-blue-2);
+  }
+
+  .cv-title {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(4.2rem, 11vw, 9rem);
+    line-height: 0.9;
+  }
+
+  .cv-title span {
+    color: var(--cv-gold-2);
+  }
+
+  .cv-lead {
+    max-width: 620px;
+    margin: 26px 0 0;
+    color: rgba(255,255,255,0.72);
+    font-size: clamp(1rem, 1.6vw, 1.18rem);
+    line-height: 1.9;
+  }
+
+  .cv-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 34px;
+  }
+
+  .cv-btn {
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 22px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.24s ease, background 0.24s ease, border-color 0.24s ease, color 0.24s ease;
+  }
+
+  .cv-btn:hover {
+    transform: translateY(-3px);
+  }
+
+  .cv-btn-primary {
+    background: linear-gradient(135deg, var(--cv-gold-2), var(--cv-gold));
+    color: #10224c;
+    box-shadow: 0 18px 38px rgba(245, 158, 11, 0.22);
+  }
+
+  .cv-btn-ghost {
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.24);
+    background: rgba(255,255,255,0.06);
+  }
+
+  .cv-btn-ghost:hover {
+    border-color: rgba(252,211,77,0.6);
+    color: var(--cv-gold-2);
+  }
+
+  .cv-hero-panel {
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 26px 80px rgba(0,0,0,0.24);
+    backdrop-filter: blur(18px);
+    padding: 22px;
+  }
+
+  .cv-panel-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .cv-panel-top img {
+    height: 54px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.28));
+  }
+
+  .cv-panel-top span {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.58);
+    text-transform: uppercase;
+  }
+
+  .cv-mini-list {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .cv-mini-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.22s ease, background 0.22s ease;
+  }
+
+  .cv-mini-row:hover {
+    transform: translateX(5px);
+    background: rgba(255,255,255,0.1);
+  }
+
+  .cv-mini-icon {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    color: var(--c);
+    background: var(--g);
+    flex: 0 0 auto;
+  }
+
+  .cv-mini-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .cv-mini-row strong,
+  .cv-mini-row small {
+    display: block;
+  }
+
+  .cv-mini-row strong {
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+  }
+
+  .cv-mini-row small {
+    margin-top: 2px;
+    color: rgba(255,255,255,0.48);
+    font-size: 0.72rem;
+  }
+
+  .cv-leones-link {
+    margin-top: 14px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: #10224c;
+    background: var(--cv-gold-2);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .cv-strip {
+    background: #08265f;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .cv-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cv-stat {
+    padding: 34px 28px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .cv-stat:last-child {
+    border-right: 0;
+  }
+
+  .cv-stat strong {
+    display: block;
+    color: var(--cv-gold-2);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1;
+    font-weight: 900;
+  }
+
+  .cv-stat span {
+    display: block;
+    margin-top: 8px;
+    color: rgba(255,255,255,0.58);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .cv-section {
+    padding: 104px 0;
+    background: #fff;
+  }
+
+  .cv-section-head {
+    max-width: 760px;
+    margin: 0 auto 46px;
+    text-align: center;
+  }
+
+  .cv-section-title {
+    margin: 0;
+    color: var(--cv-blue);
+    font-size: clamp(2.5rem, 5vw, 4.6rem);
+    line-height: 0.96;
+  }
+
+  .cv-section-head p,
+  .cv-axis-copy p,
+  .cv-cta-inner p {
+    margin: 18px auto 0;
+    color: var(--cv-muted);
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+
+  .cv-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .cv-card {
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--cv-line);
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  }
+
+  .cv-card:hover {
+    transform: translateY(-7px);
+    border-color: color-mix(in srgb, var(--c), transparent 62%);
+    box-shadow: 0 24px 58px rgba(15, 23, 42, 0.14);
+  }
+
+  .cv-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+  }
+
+  .cv-img-wrap {
+    position: relative;
+    height: 230px;
+    overflow: hidden;
+    background: var(--cv-soft);
+  }
+
+  .cv-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.92) contrast(0.98);
+    transition: transform 0.52s ease, filter 0.52s ease;
+  }
+
+  .cv-card:hover .cv-img-wrap img {
+    transform: scale(1.05);
+    filter: saturate(1.05) contrast(1.02);
+  }
+
+  .cv-img-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 32%, rgba(8, 38, 95, 0.78));
+  }
+
+  .cv-img-tag {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    z-index: 2;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    padding: 7px 9px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.22);
+  }
+
+  .cv-card-body {
+    position: relative;
+    padding: 24px;
+  }
+
+  .cv-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    margin-top: -48px;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 3;
+    border-radius: 8px;
+    color: var(--c);
+    background: #fff;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.16), 0 0 0 6px var(--g);
+  }
+
+  .cv-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cv-category {
+    display: block;
+    color: var(--c);
+    font-size: 0.67rem;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .cv-card h3 {
+    margin: 9px 0 10px;
+    color: var(--cv-blue);
+    font-size: 1.35rem;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+  }
+
+  .cv-card p {
+    min-height: 104px;
+    margin: 0;
+    color: var(--cv-muted);
+    font-size: 0.93rem;
+    line-height: 1.72;
+  }
+
+  .cv-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid var(--cv-line);
+    color: var(--c);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .cv-blue {
+    background: var(--cv-blue);
+    color: #fff;
+    position: relative;
+  }
+
+  .cv-blue::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.22;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  .cv-axis-layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 44px;
+    align-items: start;
+  }
+
+  .cv-blue .cv-section-title {
+    color: #fff;
+  }
+
+  .cv-axis-copy p {
+    color: rgba(255,255,255,0.66);
+    margin-left: 0;
+  }
+
+  .cv-axis-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .cv-axis {
+    border-radius: 8px;
+    padding: 26px;
+    border: 1px solid rgba(255,255,255,0.13);
+    background: rgba(255,255,255,0.07);
+  }
+
+  .cv-axis span {
+    color: var(--cv-gold-2);
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+  }
+
+  .cv-axis h3 {
+    margin: 12px 0 8px;
+    color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .cv-axis p {
+    margin: 0;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.78;
+  }
+
+  .cv-cta {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #081f4f;
+  }
+
+  .cv-cta-img {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(8,31,79,0.96) 0%, rgba(8,31,79,0.78) 48%, rgba(8,31,79,0.48) 100%),
+      url('/images/miro2.JPG') center / cover no-repeat;
+  }
+
+  .cv-cta-inner {
+    position: relative;
+    z-index: 1;
+    padding: 88px 0;
+    color: #fff;
+  }
+
+  .cv-cta-inner h2 {
+    max-width: 720px;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(3rem, 7vw, 6.4rem);
+    line-height: 0.92;
+  }
+
+  .cv-cta-inner p {
+    max-width: 560px;
+    margin-left: 0;
+    margin-bottom: 28px;
+    color: rgba(255,255,255,0.68);
+  }
+
+  .cv-reveal {
+    opacity: 0;
+    transform: translateY(34px);
+    transition: opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1), transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .cv-reveal.cv-on {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .cv-d1 { transition-delay: 0.12s; }
+  .cv-s0 { transition-delay: 0s; }
+  .cv-s1 { transition-delay: 0.09s; }
+  .cv-s2 { transition-delay: 0.18s; }
+
+  @media (max-width: 1040px) {
+    .cv-hero-inner,
+    .cv-axis-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .cv-hero-panel {
+      max-width: 620px;
+    }
+
+    .cv-card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .cv-container {
+      width: min(100% - 28px, 1180px);
+    }
+
+    .cv-hero {
+      min-height: auto;
+      padding: 112px 0 56px;
+    }
+
+    .cv-title {
+      font-size: clamp(3.25rem, 18vw, 5.2rem);
+    }
+
+    .cv-hero-panel {
+      padding: 16px;
+    }
+
+    .cv-panel-top {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cv-strip-grid,
+    .cv-card-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cv-stat {
+      border-right: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cv-stat:last-child {
+      border-bottom: 0;
+    }
+
+    .cv-section {
+      padding: 72px 0;
+    }
+
+    .cv-img-wrap {
+      height: 210px;
+    }
+
+    .cv-card p {
+      min-height: 0;
+    }
+
+    .cv-cta {
+      min-height: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cv-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .cv-btn,
+    .cv-card,
+    .cv-img-wrap img,
+    .cv-mini-row {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  let observer: IntersectionObserver | null = null;
+
+  function initConvenios() {
+    observer?.disconnect();
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add('cv-on');
+          observer?.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -44px 0px' });
+
+    document.querySelectorAll('.cv-reveal').forEach(el => observer?.observe(el));
+  }
+
+  function cleanupConvenios() {
+    observer?.disconnect();
+    observer = null;
+  }
+
+  initConvenios();
+  document.addEventListener('astro:page-load', initConvenios);
+  document.addEventListener('astro:before-swap', cleanupConvenios);
+</script>

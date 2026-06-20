@@ -7,13 +7,17 @@ import Loader from '../components/Loader.astro';
 ---
 
 <Layout title="Comparación de Educación | Sports & Academic Hub">
-	<!-- <Loader /> -->
-	<Navbar />
-	<main class="bg-[#030303] min-h-screen overflow-hidden">
-		<CoverflowHero />
-
-		
-
-		
-	</main>
+  <Navbar />
+  <main style="padding-top: var(--nav-h-desk);">
+    <CoverflowHero />
+  </main>
 </Layout>
+
+<style>
+  /* En móvil usa la altura móvil del navbar */
+  @media (max-width: 820px) {
+    main {
+      padding-top: var(--nav-h-mob) !important;
+    }
+  }
+</style>

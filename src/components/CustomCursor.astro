@@ -1,6 +1,7 @@
 ---
 // components/CustomCursor.astro
-// Cursor Premium de Aurora y Partículas Cósmicas
+// Cursor Elegante y Formal — Doble Anillo con Acento Dorado CBIT
+// Diseñado para mantener contraste tanto en fondos claros como oscuros
 ---
 
 <div id="custom-cursor-container">
@@ -17,7 +18,7 @@
     pointer-events: none;
     z-index: 99999;
   }
-  
+
   #custom-cursor-canvas {
     position: absolute;
     top: 0;
@@ -33,7 +34,6 @@
   let cleanupFn: (() => void) | null = null;
 
   function initCursor() {
-    // ── 1. Limpieza de instancias previas
     if (cleanupFn) {
       cleanupFn();
       cleanupFn = null;
@@ -50,7 +50,7 @@
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // ── 2. Ocultar cursor nativo
+    // ── Ocultar cursor nativo
     const styleEl = document.createElement('style');
     styleEl.id = 'cursor-hide-style';
     styleEl.innerHTML = `
@@ -61,7 +61,7 @@
     `;
     document.head.appendChild(styleEl);
 
-    // ── 3. Ajuste de dimensiones de pantalla (Soporte High-DPI / Retina)
+    // ── Dimensiones / High-DPI
     let DPR = window.devicePixelRatio || 1;
     let W = window.innerWidth;
     let H = window.innerHeight;
@@ -74,164 +74,29 @@
       canvas!.height = H * DPR;
       canvas!.style.width = W + 'px';
       canvas!.style.height = H + 'px';
+      ctx!.setTransform(1, 0, 0, 1, 0, 0);
       ctx!.scale(DPR, DPR);
     }
     resize();
     window.addEventListener('resize', resize);
 
-    // ── 4. Estado de posición y físicas del cursor
+    // ── Estado
     let mouse = { x: W / 2, y: H / 2 };
-    let core = { x: W / 2, y: H / 2 };      // Núcleo central ultra-responsivo
-    let follower = { x: W / 2, y: H / 2 };  // Anillo exterior con inercia
-    
+    let core = { x: W / 2, y: H / 2 };     // punto central, alta precisión
+    let ring = { x: W / 2, y: H / 2 };     // anillo exterior, inercia ligera
+
     let isHovering = false;
     let isClicking = false;
-    let hoverProgress = 0;                  // 0 -> 1 para transiciones suaves
-    let lastMoveTime = Date.now();
-    let speed = 0;                          // Velocidad del mouse para ajustar spawn de partículas
-    let lastMouse = { x: W / 2, y: H / 2 };
-    
-    // ── 5. Listas de animación
-    type Particle = {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-      baseSize: number;
-      hue: number;
-      sat: number;
-      lit: number;
-      alpha: number;
-      life: number;
-      decay: number;
-      wigglePhase: number;
-      wiggleSpeed: number;
-      wiggleAmp: number;
-    };
+    let isText = false; // hover sobre texto/inputs -> cursor en barra (I-beam formal)
+    let hoverProgress = 0;
+    let clickPulse = 0; // animación de pulso al hacer click
 
-    type Shockwave = {
-      x: number;
-      y: number;
-      r: number;
-      maxR: number;
-      alpha: number;
-      color: string;
-      lineWidth: number;
-    };
-
-    let particles: Particle[] = [];
-    let shockwaves: Shockwave[] = [];
-
-    // ── 6. Generador de Partículas
-    function spawnParticle(x: number, y: number, angle: number, velocity: number, customHue?: number) {
-      // Determinar el color según el estado
-      let hue = 195; // Cyan por defecto
-      let sat = 90;
-      let lit = 65;
-
-      if (isHovering) {
-        // Ámbar dorado de la marca CBIT
-        hue = 38 + Math.random() * 10;
-        sat = 95;
-        lit = 55;
-      } else if (customHue !== undefined) {
-        hue = customHue;
-      } else {
-        // Mezcla aleatoria de colores de la aurora: cian, violeta, agua marina
-        const rand = Math.random();
-        if (rand < 0.4) {
-          hue = 195 + (Math.random() - 0.5) * 15; // Cyan vivo
-        } else if (rand < 0.7) {
-          hue = 250 + (Math.random() - 0.5) * 20; // Violeta / Lavanda
-        } else {
-          hue = 175 + (Math.random() - 0.5) * 15; // Agua marina / Teal
-        }
-      }
-
-      const baseSize = (1.0 + Math.random() * 2.2);
-
-      particles.push({
-        x,
-        y,
-        vx: Math.cos(angle) * velocity,
-        vy: Math.sin(angle) * velocity,
-        size: baseSize,
-        baseSize,
-        hue,
-        sat,
-        lit,
-        alpha: 1,
-        life: 1,
-        decay: 0.015 + Math.random() * 0.02,
-        wigglePhase: Math.random() * Math.PI * 2,
-        wiggleSpeed: 0.05 + Math.random() * 0.1,
-        wiggleAmp: 0.15 + Math.random() * 0.35
-      });
-    }
-
-    // ── 7. Captura de Eventos
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-      lastMoveTime = Date.now();
-
-      // Calcular velocidad
-      const dx = mouse.x - lastMouse.x;
-      const dy = mouse.y - lastMouse.y;
-      speed = Math.hypot(dx, dy);
-      
-      lastMouse.x = mouse.x;
-      lastMouse.y = mouse.y;
-
-      // Spawn continuo al mover
-      const count = isHovering ? 2 : Math.min(Math.floor(speed * 0.25), 3);
-      for (let i = 0; i < count; i++) {
-        const spawnAngle = Math.atan2(dy, dx) + Math.PI + (Math.random() - 0.5) * 0.75;
-        const velocity = (0.2 + Math.random() * 1.5);
-        // Generar partículas un poco dispersas alrededor del núcleo
-        const offsetDist = Math.random() * 4;
-        const offsetX = Math.cos(spawnAngle) * offsetDist;
-        const offsetY = Math.sin(spawnAngle) * offsetDist;
-        spawnParticle(core.x + offsetX, core.y + offsetY, spawnAngle, velocity);
-      }
-    };
-
-    const handleMouseDown = () => {
-      isClicking = true;
-      
-      // ── Explosión radial de chispas
-      const sparkCount = isHovering ? 25 : 16;
-      for (let i = 0; i < sparkCount; i++) {
-        const angle = (i / sparkCount) * Math.PI * 2 + (Math.random() - 0.5) * 0.3;
-        const velocity = 1.5 + Math.random() * 3.5;
-        // Si estamos flotando en un botón, la explosión es completamente dorada/ámbar
-        spawnParticle(core.x, core.y, angle, velocity, isHovering ? 42 : undefined);
-      }
-
-      // ── Crear onda expansiva
-      const color = isHovering ? 'rgba(245, 158, 11, 0.75)' : 'rgba(14, 165, 233, 0.75)';
-      shockwaves.push({
-        x: core.x,
-        y: core.y,
-        r: 8,
-        maxR: isHovering ? 65 : 50,
-        alpha: 0.9,
-        color,
-        lineWidth: 1.5
-      });
-    };
-
-    const handleMouseUp = () => {
-      isClicking = false;
-    };
-
-    // Eventos del Hover con Event Delegation
+    // ── Detección de tipo de elemento bajo el cursor
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      if (
+      const interactive =
         target.tagName === 'A' ||
         target.tagName === 'BUTTON' ||
         target.closest('a') ||
@@ -239,17 +104,22 @@
         target.closest('.social-btn') ||
         target.closest('.inst-btn') ||
         target.closest('.coverflow-card') ||
-        target.getAttribute('role') === 'button'
-      ) {
-        isHovering = true;
-      }
+        target.getAttribute('role') === 'button';
+
+      const textInput =
+        target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA' ||
+        (target as HTMLElement).isContentEditable;
+
+      if (interactive) isHovering = true;
+      if (textInput) isText = true;
     };
 
     const handleMouseOut = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      if (
+      const interactive =
         target.tagName === 'A' ||
         target.tagName === 'BUTTON' ||
         target.closest('a') ||
@@ -257,10 +127,29 @@
         target.closest('.social-btn') ||
         target.closest('.inst-btn') ||
         target.closest('.coverflow-card') ||
-        target.getAttribute('role') === 'button'
-      ) {
-        isHovering = false;
-      }
+        target.getAttribute('role') === 'button';
+
+      const textInput =
+        target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA' ||
+        (target as HTMLElement).isContentEditable;
+
+      if (interactive) isHovering = false;
+      if (textInput) isText = false;
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+
+    const handleMouseDown = () => {
+      isClicking = true;
+      clickPulse = 1;
+    };
+
+    const handleMouseUp = () => {
+      isClicking = false;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -269,218 +158,103 @@
     document.addEventListener('mouseover', handleMouseOver);
     document.addEventListener('mouseout', handleMouseOut);
 
-    // ── 8. Bucle de Renderizado Principal
-    let t = 0;
-    let angleRotation = 0;
+    // ── Paleta formal (no depende del fondo: doble contorno claro+oscuro)
+    const GOLD = '#caa14a';        // dorado institucional, más apagado/elegante que ámbar vivo
+    const GOLD_LIGHT = '#e8cf94';
+    const INK = '#16213a';         // azul-tinta oscuro, casi negro, de marca
 
     function draw() {
       ctx!.clearRect(0, 0, W, H);
-      t += 0.02;
 
-      // ── A. Interpolación suave de coordenadas (lerp)
-      // El núcleo central tiene un lerp responsivo para no dar sensación de delay táctil
-      core.x += (mouse.x - core.x) * 0.32;
-      core.y += (mouse.y - core.y) * 0.32;
+      // Interpolación: núcleo muy responsivo, anillo con leve retraso (elegancia, no látigo)
+      core.x += (mouse.x - core.x) * 0.45;
+      core.y += (mouse.y - core.y) * 0.45;
+      ring.x += (mouse.x - ring.x) * 0.16;
+      ring.y += (mouse.y - ring.y) * 0.16;
 
-      // El seguidor exterior es más pesado y orgánico
-      const lerpFactor = isHovering ? 0.18 : 0.12;
-      follower.x += (mouse.x - follower.x) * lerpFactor;
-      follower.y += (mouse.y - follower.y) * lerpFactor;
-
-      // Animación de hover suave
       const targetHover = isHovering ? 1 : 0;
-      hoverProgress += (targetHover - hoverProgress) * 0.15;
+      hoverProgress += (targetHover - hoverProgress) * 0.18;
+      clickPulse *= 0.86;
 
-      // ── B. Actualizar y dibujar partículas
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
-        
-        // Movimiento + fricción ligera
-        p.vx *= 0.96;
-        p.vy *= 0.96;
-        
-        // Efecto wiggle orgánico (onda de viento espacial)
-        p.wigglePhase += p.wiggleSpeed;
-        const driftX = Math.sin(p.wigglePhase) * p.wiggleAmp;
-        
-        p.x += p.vx + driftX;
-        p.y += p.vy;
+      ctx!.save();
 
-        // Desvanecimiento
-        p.life -= p.decay;
-        p.alpha = Math.max(0, p.life);
-        p.size = p.baseSize * p.life;
+      if (isText) {
+        // ── Cursor de texto formal: barra vertical fina, doble contorno
+        const h = 17;
+        const w = 1.4;
+        const x = ring.x;
+        const y = ring.y;
 
-        if (p.life <= 0 || p.size < 0.2) {
-          particles.splice(i, 1);
-          continue;
-        }
-
-        // Dibujar partícula con brillo radial
+        ctx!.strokeStyle = 'rgba(255,255,255,0.9)';
+        ctx!.lineWidth = w + 1.6;
+        ctx!.lineCap = 'round';
         ctx!.beginPath();
-        ctx!.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx!.fillStyle = `hsla(${p.hue}, ${p.sat}%, ${p.lit}%, ${p.alpha})`;
-        
-        // Agregar glow sutil a las partículas más grandes
-        if (p.size > 1.8) {
-          ctx!.save();
-          ctx!.shadowColor = `hsla(${p.hue}, ${p.sat}%, ${p.lit}%, 0.6)`;
-          ctx!.shadowBlur = 6;
-          ctx!.fill();
-          ctx!.restore();
-        } else {
-          ctx!.fill();
-        }
-      }
-
-      // ── C. Actualizar y dibujar ondas de impacto (shockwaves)
-      for (let i = shockwaves.length - 1; i >= 0; i--) {
-        const sw = shockwaves[i];
-        sw.r += (sw.maxR - sw.r) * 0.12;
-        sw.alpha *= 0.88;
-        sw.lineWidth = 1.5 * sw.alpha;
-
-        if (sw.alpha < 0.02) {
-          shockwaves.splice(i, 1);
-          continue;
-        }
-
-        ctx!.save();
-        ctx!.beginPath();
-        ctx!.arc(sw.x, sw.y, sw.r, 0, Math.PI * 2);
-        ctx!.strokeStyle = sw.color.replace(/[\d.]+\)$/, `${sw.alpha})`);
-        ctx!.lineWidth = sw.lineWidth;
-        ctx!.shadowColor = sw.color;
-        ctx!.shadowBlur = 10;
+        ctx!.moveTo(x, y - h / 2);
+        ctx!.lineTo(x, y + h / 2);
         ctx!.stroke();
+
+        ctx!.strokeStyle = INK;
+        ctx!.lineWidth = w;
+        ctx!.beginPath();
+        ctx!.moveTo(x, y - h / 2);
+        ctx!.lineTo(x, y + h / 2);
+        ctx!.stroke();
+
         ctx!.restore();
+        activeAnimId = requestAnimationFrame(draw);
+        return;
       }
 
-      // ── D. Spawn inactivo (micro chispas sutiles alrededor del núcleo en reposo)
-      const idleTime = Date.now() - lastMoveTime;
-      if (idleTime > 150 && Math.random() > 0.8) {
-        const rad = Math.random() * Math.PI * 2;
-        const dist = 3 + Math.random() * 8;
-        spawnParticle(
-          core.x + Math.cos(rad) * dist,
-          core.y + Math.sin(rad) * dist,
-          rad,
-          0.1 + Math.random() * 0.3
-        );
-      }
+      // ── Anillo exterior
+      const baseRadius = 11;
+      const hoverExpand = 1 + hoverProgress * 0.9;     // se expande al pasar sobre links/botones
+      const clickShrink = isClicking ? 0.82 : 1;
+      const radius = baseRadius * hoverExpand * clickShrink;
 
-      // ── E. Dibujar el Anillo Exterior (Follower Cyber-Aurora)
-      // Dimensiones según estado de hover y clicks
-      const baseRadius = 13;
-      const hoverMultiplier = 1.0 + hoverProgress * 0.75; // Se expande de 13px a ~23px
-      const clickScale = isClicking ? 0.72 : 1.0;
-      const ringRadius = baseRadius * hoverMultiplier * clickScale;
+      // Contorno claro (asegura visibilidad sobre fondos oscuros/saturados)
+      ctx!.beginPath();
+      ctx!.arc(ring.x, ring.y, radius, 0, Math.PI * 2);
+      ctx!.strokeStyle = 'rgba(255,255,255,0.85)';
+      ctx!.lineWidth = 2.6;
+      ctx!.stroke();
 
-      angleRotation += 0.015; // Velocidad de rotación constante
+      // Contorno oscuro interior (asegura visibilidad sobre fondos claros/blancos)
+      ctx!.beginPath();
+      ctx!.arc(ring.x, ring.y, radius, 0, Math.PI * 2);
+      ctx!.strokeStyle = isHovering ? GOLD : INK;
+      ctx!.lineWidth = 1.3;
+      ctx!.stroke();
 
-      ctx!.save();
-      // Color dinámico: HSL ciclando entre tonos de la aurora o dorado CBIT
-      let ringGrad;
-      const xG = follower.x;
-      const yG = follower.y;
-      
-      // Crear gradiente radial/lineal para simular aurora giratoria
-      const gradAngle = angleRotation * 1.5;
-      const x1 = xG + Math.cos(gradAngle) * ringRadius;
-      const y1 = yG + Math.sin(gradAngle) * ringRadius;
-      const x2 = xG - Math.cos(gradAngle) * ringRadius;
-      const y2 = yG - Math.sin(gradAngle) * ringRadius;
-      
-      ringGrad = ctx!.createLinearGradient(x1, y1, x2, y2);
-
-      if (isHovering) {
-        // En hover, gradiente dorado/ámbar vibrante
-        ringGrad.addColorStop(0, '#f59e0b');
-        ringGrad.addColorStop(0.5, '#eab308');
-        ringGrad.addColorStop(1, '#fef08a');
-      } else {
-        // En reposo, colores cósmicos cambiantes
-        const hueShift1 = (t * 20) % 360;
-        const hueShift2 = (hueShift1 + 120) % 360;
-        ringGrad.addColorStop(0, `hsla(${180 + Math.sin(t) * 20}, 95%, 55%, 0.9)`); // Teal/Cian
-        ringGrad.addColorStop(0.5, `hsla(${250 + Math.cos(t) * 20}, 90%, 65%, 0.8)`); // Lavanda/Violeta
-        ringGrad.addColorStop(1, `hsla(${195 + Math.sin(t*0.5) * 15}, 95%, 60%, 0.9)`); // Cyan puro
-      }
-
-      ctx!.strokeStyle = ringGrad;
-      ctx!.lineWidth = (1.5 + hoverProgress * 1.0) * (isClicking ? 1.4 : 1.0);
-      
-      // Sombra con glow
-      ctx!.shadowColor = isHovering ? 'rgba(245, 158, 11, 0.6)' : `hsla(${200 + Math.sin(t)*30}, 95%, 60%, 0.5)`;
-      ctx!.shadowBlur = 6 + hoverProgress * 8;
-
-      // Dibujar anillo tipo crosshair/cyberpunk (3 arcos con pequeños espacios de corte)
-      const numSegments = 3;
-      const segmentArc = (Math.PI * 2) / numSegments;
-      const gapArc = 0.22 - (hoverProgress * 0.08); // El gap se encoge al hacer hover
-
-      for (let i = 0; i < numSegments; i++) {
-        const startAngle = segmentArc * i + angleRotation;
-        const endAngle = startAngle + segmentArc - gapArc;
-        
+      // Línea de acento dorada — pequeño arco superior, detalle de marca sobrio
+      if (hoverProgress > 0.02) {
         ctx!.beginPath();
-        ctx!.arc(follower.x, follower.y, ringRadius, startAngle, endAngle);
+        ctx!.arc(ring.x, ring.y, radius + 4.5, -Math.PI * 0.65, -Math.PI * 0.35);
+        ctx!.strokeStyle = `rgba(202,161,74,${hoverProgress})`;
+        ctx!.lineWidth = 1.6;
+        ctx!.lineCap = 'round';
         ctx!.stroke();
       }
 
-      // Dibujar brackets de mira en las esquinas si está haciendo hover (Cyber-tech visual brackets)
-      if (hoverProgress > 0.05) {
-        ctx!.strokeStyle = `rgba(245, 158, 11, ${hoverProgress * 0.8})`;
-        ctx!.lineWidth = 1.0;
-        ctx!.shadowBlur = 2;
-        const bDist = ringRadius + 4; // Distancia de los brackets del anillo
-        const bLen = 3.5;              // Longitud de las patillas del bracket
-
-        // Dibujar 4 brackets alrededor del follower
-        const bracketPositions = [
-          { dx: -1, dy: -1 }, // Superior Izq
-          { dx: 1, dy: -1 },  // Superior Der
-          { dx: -1, dy: 1 },  // Inferior Izq
-          { dx: 1, dy: 1 }    // Inferior Der
-        ];
-
-        bracketPositions.forEach(b => {
-          const bx = follower.x + b.dx * bDist;
-          const by = follower.y + b.dy * bDist;
-
-          ctx!.beginPath();
-          // Horizontal line
-          ctx!.moveTo(bx, by);
-          ctx!.lineTo(bx - b.dx * bLen, by);
-          // Vertical line
-          ctx!.moveTo(bx, by);
-          ctx!.lineTo(bx, by - b.dy * bLen);
-          ctx!.stroke();
-        });
+      // Pulso sutil al hacer click (anillo de eco, formal, sin chispas)
+      if (clickPulse > 0.03) {
+        ctx!.beginPath();
+        ctx!.arc(ring.x, ring.y, radius + (1 - clickPulse) * 14, 0, Math.PI * 2);
+        ctx!.strokeStyle = `rgba(202,161,74,${clickPulse * 0.55})`;
+        ctx!.lineWidth = 1.2;
+        ctx!.stroke();
       }
 
-      ctx!.restore();
+      // ── Núcleo central: punto de precisión, doble contorno también
+      const coreRadius = isClicking ? 2.1 : 2.6;
 
-      // ── F. Dibujar el Núcleo (Core)
-      // El núcleo es un punto sólido de precisión en mouse.x, mouse.y
-      ctx!.save();
-      
-      const coreRadius = isClicking ? 2.5 : 3.5;
-      
-      // Brillo del núcleo
-      ctx!.shadowColor = isHovering ? '#f59e0b' : '#0ea5e9';
-      ctx!.shadowBlur = isHovering ? 8 : 6;
-
-      // Dibujar el glow del núcleo
       ctx!.beginPath();
-      ctx!.arc(core.x, core.y, coreRadius, 0, Math.PI * 2);
-      ctx!.fillStyle = isHovering ? '#f59e0b' : '#0ea5e9';
+      ctx!.arc(core.x, core.y, coreRadius + 1.1, 0, Math.PI * 2);
+      ctx!.fillStyle = 'rgba(255,255,255,0.9)';
       ctx!.fill();
 
-      // Dibujar el punto brillante interior de precisión
       ctx!.beginPath();
-      ctx!.arc(core.x, core.y, 1.2, 0, Math.PI * 2);
-      ctx!.fillStyle = '#ffffff';
+      ctx!.arc(core.x, core.y, coreRadius, 0, Math.PI * 2);
+      ctx!.fillStyle = isHovering ? GOLD : INK;
       ctx!.fill();
 
       ctx!.restore();
@@ -488,33 +262,24 @@
       activeAnimId = requestAnimationFrame(draw);
     }
 
-    // Iniciar loop
     activeAnimId = requestAnimationFrame(draw);
 
-    // ── 9. Función de Cleanup
     cleanupFn = () => {
-      // Remover estilos inyectados
       const styleNode = document.getElementById('cursor-hide-style');
       if (styleNode) styleNode.remove();
 
-      // Desvincular eventos
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseout', handleMouseOut);
-
-      particles = [];
-      shockwaves = [];
     };
   }
 
-  // Inicializar en carga de página y en view transitions
   initCursor();
   document.addEventListener('astro:page-load', initCursor);
 
-  // Cleanup antes de cambiar de página para evitar fugas de memoria
   document.addEventListener('astro:before-swap', () => {
     if (cleanupFn) {
       cleanupFn();
