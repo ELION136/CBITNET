@@ -47,7 +47,7 @@ const gallery = [
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
 
@@ -356,8 +356,8 @@ const gallery = [
 <style>
 
   /* ── Tipografía ──────────────────────────────────────────────────────────
-     Bebas Neue  → títulos H1 / H2 / CTA (display, uppercase natural)
-     Inter       → cuerpo, labels, botones
+     Montserrat    → títulos H1 / H2 / CTA
+     Source Sans 3 → cuerpo, labels, botones
      font-display:swap está declarado en la llamada a Google Fonts (ver <link>)
   ─────────────────────────────────────────────────────────────────────── */
 
@@ -384,8 +384,8 @@ const gallery = [
     --transition:   0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Fuentes */
-    --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
-    --font-body:    'Inter', system-ui, sans-serif;
+    --font-display: 'Montserrat', sans-serif;
+    --font-body:    'Source Sans 3', sans-serif;
   }
 
   /* ── Reset / base ─────────────────────────────────────────────────────────── */
@@ -445,7 +445,7 @@ const gallery = [
   .ns-section-h2 {
     font-family: var(--font-display);
     font-size: 52px;
-    font-weight: 400; /* Bebas Neue sólo tiene weight 400 */
+    font-weight: 800;
     line-height: 1.05;
     letter-spacing: 0.03em;
     text-transform: uppercase;
@@ -594,7 +594,7 @@ const gallery = [
     flex-shrink: 0;
   }
 
-  /* H1 hero — Bebas Neue, uppercase automático */
+  /* H1 hero */
   .ns-hero-h1 {
     font-family: var(--font-display);
     font-size: 72px;
@@ -1276,7 +1276,7 @@ const gallery = [
     transform: translateY(0);
   }
 
-  /* H2 CTA — Bebas Neue uppercase */
+  /* H2 CTA */
   .ns-cta-h2 {
     font-family: var(--font-display);
     font-size: 64px;

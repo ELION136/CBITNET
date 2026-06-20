@@ -43,14 +43,12 @@ const certificados = [
         <div class="sn-reveal">
           <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/10 pb-12 mb-0">
 
-            <!-- ✅ Anton (font-display) solo aquí. Sin font-bold ni tracking-tighter que contradicen Anton -->
             <h1 class="sn-hero-title font-display">
               SOBRE<br/>
               <span style="color:#f2c82f">NOSOTROS</span>
             </h1>
 
             <div class="sn-hero-side sn-reveal sn-d1">
-              <!-- ✅ Inter heredado del body, sin clase de fuente innecesaria -->
               <p class="sn-hero-sub">
                 Forjando campeones dentro y fuera de las aulas. Una trayectoria orientada al desarrollo integral del talento boliviano mediante alianzas educativas de gran envergadura.
               </p>
@@ -67,7 +65,6 @@ const certificados = [
       <div class="sn-container">
         <div class="sn-section-head sn-reveal">
           <span class="sn-eyebrow">Reseña Histórica</span>
-          <!-- ✅ Anton en títulos de sección -->
           <h2 class="sn-section-title font-display">El inicio de la <span class="sn-gold">excelencia</span></h2>
           <div class="sn-bar" data-bar></div>
         </div>
@@ -83,7 +80,6 @@ const certificados = [
             </div>
           </div>
 
-          <!-- ✅ Cuerpo de texto: Inter puro, sin clases de fuente -->
           <div class="sn-reveal sn-d1 sn-historia-txt">
             <p class="sn-body">
               Desde la fundación de la <strong>Corporación Boliviana de Talento (CBIT)</strong>, nos propusimos demostrar que el desarrollo intelectual y el rendimiento físico se complementan para dar origen a líderes íntegros.
@@ -110,7 +106,6 @@ const certificados = [
       <div class="sn-container" style="position:relative;z-index:2">
         <div class="sn-section-head sn-reveal">
           <span class="sn-eyebrow sn-eyebrow-gold">Nuestra Esencia</span>
-          <!-- ✅ Anton en título de sección -->
           <h2 class="sn-section-title sn-white font-display">MISIÓN <span class="sn-gold">&amp;</span> VISIÓN</h2>
           <div class="sn-bar sn-bar-gold" data-bar></div>
         </div>
@@ -119,7 +114,6 @@ const certificados = [
             <div class="sn-mv-icon-wrap">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
             </div>
-            <!-- ✅ Labels pequeños: Inter, sin font-display -->
             <span class="sn-mv-label">MISIÓN</span>
             <p class="sn-mv-text">Promover el desarrollo integral de las personas en diferentes etapas de su vida mediante actividades de formación con enfoque deportivo y programas educativos complementarios innovadores, impulsando el aprendizaje, la salud física, el bienestar emocional, la construcción de valores y la inclusión social.</p>
           </div>
@@ -141,7 +135,6 @@ const certificados = [
       <div class="sn-container">
         <div class="sn-section-head sn-reveal">
           <span class="sn-eyebrow">Nuestros Principios</span>
-          <!-- ✅ Anton en título de sección -->
           <h2 class="sn-section-title font-display">VALORES <span class="sn-gold">CORPORATIVOS</span></h2>
           <div class="sn-bar" data-bar></div>
         </div>
@@ -153,9 +146,7 @@ const certificados = [
               </div>
               <div class="sn-val-body">
                 <div class="sn-val-accent" style={`background:${val.color}`}></div>
-                <!-- ✅ Títulos de tarjeta: Anton -->
                 <h3 class="sn-val-title font-display" style={`color:${val.color}`}>{val.title}</h3>
-                <!-- ✅ Descripción: Inter puro -->
                 <p class="sn-val-desc">{val.desc}</p>
                 <p class="sn-val-detail">{val.details}</p>
               </div>
@@ -173,7 +164,6 @@ const certificados = [
       <div class="sn-container" style="position:relative;z-index:2">
         <div class="sn-section-head sn-reveal">
           <span class="sn-eyebrow sn-eyebrow-gold">Liderazgo Activo</span>
-          <!-- ✅ Anton en título de sección -->
           <h2 class="sn-section-title sn-white font-display">NUESTRAS <span class="sn-gold">AUTORIDADES</span></h2>
           <div class="sn-bar sn-bar-gold" data-bar></div>
         </div>
@@ -190,7 +180,6 @@ const certificados = [
       <div class="sn-container">
         <div class="sn-section-head sn-reveal">
           <span class="sn-eyebrow">Equipo de Excelencia</span>
-          <!-- ✅ Anton en título de sección -->
           <h2 class="sn-section-title font-display">NUESTRO <span class="sn-gold">PERSONAL</span></h2>
           <div class="sn-bar" data-bar></div>
         </div>
@@ -202,7 +191,6 @@ const certificados = [
               </div>
               <div class="sn-staff-body">
                 <span class="sn-badge-gold">{staff.badge}</span>
-                <!-- ✅ Nombres de staff: Inter bold (no Anton, son nombres propios) -->
                 <h3 class="sn-staff-name">{staff.name}</h3>
                 <p class="sn-staff-role">{staff.role}</p>
                 <hr class="sn-staff-hr" />
@@ -221,7 +209,6 @@ const certificados = [
       <div class="sn-container">
         <div class="sn-section-head sn-reveal">
           <span class="sn-eyebrow">Documentación Oficial</span>
-          <!-- ✅ Anton en título de sección -->
           <h2 class="sn-section-title font-display">VALIDEZ Y <span class="sn-gold">CERTIFICACIÓN</span></h2>
           <div class="sn-bar" data-bar></div>
         </div>
@@ -237,9 +224,7 @@ const certificados = [
                 <span class="sn-badge-blue">{cert.badge}</span>
               </div>
               <span class="sn-cert-prog">Programa Oficial</span>
-              <!-- ✅ Títulos de certificado: Anton -->
               <h3 class="sn-cert-title font-display">{cert.title}</h3>
-              <!-- ✅ Descripción: Inter puro -->
               <p class="sn-cert-desc">{cert.desc}</p>
               <div class="sn-cert-footer">
                 <div>
@@ -330,20 +315,16 @@ const certificados = [
 
 .sn-hero-inner { display: flex; flex-direction: column; gap: 3rem; }
 
-/* ✅ Hero title: solo tamaño y color. La fuente viene de font-display en el HTML */
 .sn-hero-title {
   font-size: clamp(3.8rem, 10vw, 8rem);
   color: #fff;
   line-height: 1.02;
   margin: 0;
-  /* font-weight eliminado: Anton solo tiene un peso */
-  /* letter-spacing eliminado: font-display ya define letter-spacing: 0.02em */
 }
 
 .sn-hero-side { width: 100%; max-width: 42%; }
 .sn-hero-sub {
   font-size: 1.1rem;
-  /* Inter heredado del body */
   color: rgba(255,255,255,0.6);
   border-left: 2px solid var(--cyan);
   padding-left: 1.5rem;
@@ -357,19 +338,15 @@ const certificados = [
 .sn-eyebrow {
   display: inline-block; font-size: 0.7rem; font-weight: 700;
   letter-spacing: 0.22em; text-transform: uppercase;
-  /* Inter heredado */
   color: var(--blue-mid); margin-bottom: 0.6rem;
 }
 .sn-eyebrow-gold { color: var(--gold); }
 
-/* ✅ Títulos de sección: solo tamaño y color. La fuente (Anton) viene de font-display en el HTML */
 .sn-section-title {
   font-size: clamp(2.2rem, 4.5vw, 3.2rem);
   color: var(--blue);
   line-height: 1.12;
   margin: 0 0 1.2rem;
-  /* font-weight: 800 eliminado — Anton no tiene variantes de peso */
-  /* letter-spacing eliminado — font-display ya lo define */
 }
 
 .sn-bar {
@@ -411,14 +388,13 @@ const certificados = [
   background: rgba(26,75,140,0.88);
   backdrop-filter: blur(8px);
   color: #fff; font-size: 0.78rem; font-weight: 600;
-  /* Inter heredado */
   letter-spacing: 0.07em; text-transform: uppercase;
   padding: 0.5rem 1rem; border-radius: 50px;
   border-left: 3px solid var(--gold);
   display: flex; align-items: center; gap: 0.5rem;
 }
 .sn-historia-txt { display:flex; flex-direction:column; gap:1.4rem; }
-.sn-body { font-size: 1.05rem; line-height: 1.9; color: var(--muted); /* Inter heredado */ }
+.sn-body { font-size: 1.05rem; line-height: 1.9; color: var(--muted); }
 .sn-body strong { color: var(--blue); font-weight: 700; }
 .sn-checks { display:flex; flex-direction:column; gap:0.8rem; }
 .sn-check  { display:flex; align-items:center; gap:0.85rem; font-size:1rem; color:var(--muted); }
@@ -450,10 +426,9 @@ const certificados = [
 .sn-mv-label {
   display:block; font-size:0.7rem; font-weight:700;
   letter-spacing:0.22em; text-transform:uppercase;
-  /* Inter heredado — labels pequeños no usan Anton */
   color:var(--gold); margin-bottom:1rem;
 }
-.sn-mv-text { font-size: 1.05rem; line-height: 1.88; color: rgba(255,255,255,0.78); margin:0; /* Inter heredado */ }
+.sn-mv-text { font-size: 1.05rem; line-height: 1.88; color: rgba(255,255,255,0.78); margin:0; }
 
 /* ══════════════════════════════════
    VALORES
@@ -463,10 +438,9 @@ const certificados = [
 .sn-val-body { padding:1.75rem; }
 .sn-val-accent { width:28px; height:3.5px; border-radius:2px; margin-bottom:0.85rem; transition:width 0.35s; }
 .sn-float-card:hover .sn-val-accent { width:52px; }
-/* ✅ Títulos de valor: tamaño y color solo. Anton viene del HTML */
 .sn-val-title  { font-size:1rem; margin:0 0 0.6rem; letter-spacing:0.06em; }
-.sn-val-desc   { font-size:1rem; line-height:1.75; color:var(--blue); font-weight:500; margin-bottom:0.65rem; /* Inter */ }
-.sn-val-detail { font-size:0.88rem; line-height:1.7; color:var(--faint); margin:0; /* Inter */ }
+.sn-val-desc   { font-size:1rem; line-height:1.75; color:var(--blue); font-weight:500; margin-bottom:0.65rem; }
+.sn-val-detail { font-size:0.88rem; line-height:1.7; color:var(--faint); margin:0; }
 
 /* ══════════════════════════════════
    PERSONAL
@@ -478,17 +452,15 @@ const certificados = [
 .sn-badge-gold {
   display:inline-block; font-size:0.63rem; font-weight:700;
   letter-spacing:0.16em; text-transform:uppercase;
-  /* Inter heredado */
   color:var(--gold); background:var(--gold-lt);
   border:1px solid rgba(201,153,58,0.3);
   padding:0.25rem 0.8rem; border-radius:50px; margin-bottom:0.8rem;
 }
-/* ✅ Nombres de staff: Inter bold (nombres propios no se ven bien en Anton) */
 .sn-staff-name { font-size:1.02rem; font-weight:800; color:var(--blue); margin:0 0 0.25rem; line-height:1.3; }
-.sn-staff-role { font-size:0.76rem; font-weight:600; color:var(--blue-mid); text-transform:uppercase; letter-spacing:0.07em; margin:0; /* Inter */ }
+.sn-staff-role { font-size:0.76rem; font-weight:600; color:var(--blue-mid); text-transform:uppercase; letter-spacing:0.07em; margin:0; }
 .sn-staff-hr   { border:none; height:2px; background:var(--gold-lt); width:32px; margin:0.85rem auto; border-radius:2px; transition:width 0.3s, background 0.3s; }
 .sn-float-card:hover .sn-staff-hr { width:52px; background:var(--gold); }
-.sn-staff-desc { font-size:0.9rem; line-height:1.7; color:var(--faint); margin:0; /* Inter */ }
+.sn-staff-desc { font-size:0.9rem; line-height:1.7; color:var(--faint); margin:0; }
 
 /* ══════════════════════════════════
    CERTIFICACIONES
@@ -505,21 +477,19 @@ const certificados = [
 .sn-float-card:hover .sn-cert-icon { background:var(--blue); color:#fff; transform:scale(1.1); }
 .sn-badge-blue {
   font-size:0.6rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase;
-  /* Inter heredado */
   color:var(--blue-mid); background:var(--blue-lt);
   border:1px solid rgba(45,125,210,0.24);
   padding:0.28rem 0.7rem; border-radius:50px;
 }
-.sn-cert-prog  { font-size:0.62rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--faint); /* Inter */ }
-/* ✅ Títulos de certificado: tamaño y color solo. Anton viene del HTML */
+.sn-cert-prog  { font-size:0.62rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--faint); }
 .sn-cert-title { font-size:1.12rem; margin:0; line-height:1.3; color:var(--blue); }
-.sn-cert-desc  { font-size:0.95rem; line-height:1.78; color:var(--muted); margin:0; flex:1; /* Inter */ }
+.sn-cert-desc  { font-size:0.95rem; line-height:1.78; color:var(--muted); margin:0; flex:1; }
 .sn-cert-footer{
   display:flex; justify-content:space-between; align-items:center;
   border-top:1px solid rgba(26,75,140,0.08); padding-top:1rem;
 }
 .sn-cert-iss-lbl { display:block; font-size:0.6rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--faint); margin-bottom:0.18rem; }
-.sn-cert-issuer  { font-size:0.82rem; font-weight:700; color:var(--blue); /* Inter */ }
+.sn-cert-issuer  { font-size:0.82rem; font-weight:700; color:var(--blue); }
 .sn-verified     { display:flex; align-items:center; gap:0.32rem; font-size:0.65rem; font-weight:700; color:#16a34a; }
 .sn-green-dot    { width:7px; height:7px; background:#22c55e; border-radius:50%; animation:sn-pulse 2s infinite; }
 @keyframes sn-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)} }

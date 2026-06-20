@@ -91,7 +91,7 @@ const axes = [
 <Layout title="Convenios | CBIT" showBackgroundFX={false}>
   <Navbar />
   <main class="cv-main">
-    <section class="cv-hero">
+    <section class="cv-hero" id="cv-hero">
       <div class="cv-hero-bg" aria-hidden="true">
         <div class="cv-grid"></div>
         <div class="cv-cut cv-cut-a"></div>
@@ -123,7 +123,7 @@ const axes = [
       </div>
     </section>
 
-    <section class="cv-strip" aria-label="Impacto de los convenios">
+    <section class="cv-strip" id="impacto" aria-label="Impacto de los convenios">
       <div class="cv-container cv-strip-grid">
         {impact.map(item => (
           <div class="cv-stat cv-reveal">
@@ -171,7 +171,7 @@ const axes = [
       </div>
     </section>
 
-    <section class="cv-section cv-blue">
+    <section class="cv-section cv-blue" id="sentido">
       <div class="cv-container cv-axis-layout">
         <div class="cv-axis-copy cv-reveal">
           <span class="cv-eyebrow">Como se traducen</span>
@@ -192,7 +192,7 @@ const axes = [
       </div>
     </section>
 
-    <section class="cv-cta">
+    <section class="cv-cta" id="alianza">
       <div class="cv-cta-img" aria-hidden="true"></div>
       <div class="cv-container cv-cta-inner cv-reveal">
         <span class="cv-eyebrow">Gestion institucional</span>
