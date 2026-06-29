@@ -71,10 +71,6 @@ const services = [
                       border-b pb-12"
                style="border-color:rgba(255,255,255,0.10);">
             <div>
-              <div class="cs-hero-eyebrow cs-reveal cs-d0">
-                <span class="cs-hero-line"></span>
-                <span>Desarrollo Profesional</span>
-              </div>
               <h1 class="cs-hero-title font-display">
                 PROGRAMAS<br/>
                 <span style="color:#f2c82f">ACADEMICOS</span>
@@ -253,15 +249,21 @@ const services = [
    HERO — igual que SobreNosotros
 ══════════════════════════════════ */
 .cs-hero {
-  background: var(--blue);
-  padding: 10rem 0 5rem;
+  background-image: url('/images/fondo.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10rem 0 6rem;
   position: relative;
   overflow: hidden;
 }
 .cs-hero-mesh {
   position: absolute; inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-  background-size: 32px 32px;
+  /*background-image:
+    radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(26,75,140,0.78), rgba(26,75,140,0.85));*/
+  background-size: 32px 32px, cover;
+  background-position: 0 0, center;
   pointer-events: none;
 }
 .cs-orb {

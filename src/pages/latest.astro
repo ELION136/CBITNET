@@ -65,14 +65,11 @@ const stats = [
 
             <div>
               <!-- eyebrow -->
-              <div class="lt-hero-eyebrow lt-reveal lt-d0">
-                <span class="lt-hero-line"></span>
-                <span>Portal de Noticias</span>
-              </div>
+              
 
               <h1 class="lt-hero-title font-display">
                 NOTICIAS<br/>
-                <span style="color:#f2c82f">Y ANUNCIOS</span>
+                <span style="color:#f2c82f">ANUNCIOS</span>
               </h1>
             </div>
 
@@ -343,15 +340,21 @@ const stats = [
    HERO
 ══════════════════════════════════ */
 .lt-hero {
-  background: var(--blue);
-  padding: 10rem 0 5rem;
+  background-image: url('/images/fondo.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10rem 0 6rem;
   position: relative;
   overflow: hidden;
 }
 .lt-hero-mesh {
   position: absolute; inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-  background-size: 32px 32px;
+  /*background-image:
+    radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(26,75,140,0.78), rgba(26,75,140,0.85));*/
+  background-size: 32px 32px, cover;
+  background-position: 0 0, center;
   pointer-events: none;
 }
 .lt-orb {
@@ -374,7 +377,7 @@ const stats = [
 .lt-hero-line { display: block; width: 24px; height: 1.5px; background: var(--gold); }
 
 .lt-hero-title {
-  font-size: clamp(3.8rem, 10vw, 8rem);
+  font-size: clamp(2.8rem, 9vw, 7rem);
   color: #fff;
   line-height: 1.02;
   margin: 0;
