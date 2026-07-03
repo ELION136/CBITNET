@@ -6,63 +6,57 @@ import Footer from '../components/Footer.astro';
 const institutions = [
   {
     name: "INAF",
-    category: "Formacion internacional",
-    color: "#D97706",
-    glow: "rgba(217,119,6,0.12)",
-    path: "M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z M2 12h20",
-    url: "https://inaf.cl",
+    category: "Formación internacional",
+    color: "#C9993A",
     image: "/images/mix5.webp",
-    desc: "Alianza orientada a fortalecer rutas de especializacion, certificacion y proyeccion academica con enfoque deportivo.",
+    desc: "Alianza orientada a fortalecer rutas de especialización, certificación y proyección académica con enfoque deportivo.",
+    url: "https://inaf.cl",
+    icon: "M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z M2 12h20",
   },
   {
     name: "UNITEP",
-    category: "Educacion superior",
-    color: "#059669",
-    glow: "rgba(5,150,105,0.1)",
-    path: "M22 10v6M2 10l10-5 10 5-10 5z M6 12.5V16a6 6 0 0 0 12 0v-3.5",
-    url: "https://unitepc.edu.bo",
+    category: "Educación superior",
+    color: "#1A4B8C",
     image: "/images/un (1).webp",
-    desc: "Convenio para ampliar oportunidades de continuidad academica, capacitacion y articulacion institucional.",
+    desc: "Convenio para ampliar oportunidades de continuidad académica, capacitación y articulación institucional.",
+    url: "https://unitepc.edu.bo",
+    icon: "M22 10v6M2 10l10-5 10 5-10 5z M6 12.5V16a6 6 0 0 0 12 0v-3.5",
   },
   {
     name: "UNIFRANZ",
     category: "Universidad aliada",
-    color: "#7C3AED",
-    glow: "rgba(124,58,237,0.1)",
-    path: "M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5z",
-    url: "https://unifranz.edu.bo",
+    color: "#2D7DD2",
     image: "/images/un (4).webp",
-    desc: "Vinculo academico para impulsar programas, experiencias formativas y redes de crecimiento profesional.",
+    desc: "Vínculo académico para impulsar programas, experiencias formativas y redes de crecimiento profesional.",
+    url: "https://unifranz.edu.bo",
+    icon: "M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5z",
   },
   {
     name: "CLUB OLIMPIC",
     category: "Alto rendimiento",
-    color: "#DC2626",
-    glow: "rgba(220,38,38,0.1)",
-    path: "M6 9H4.5a2.5 2.5 0 0 1 0-5H6 M18 9h1.5a2.5 2.5 0 0 0 0-5H18 M4 22h16 M10 14.66V17c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2.34 M12 2a5 5 0 0 0-5 5v3c0 2.2 1.8 4 4 4h2c2.2 0 4-1.8 4-4V7a5 5 0 0 0-5-5z",
-    url: "https://www.facebook.com/ClubOlympicCbba",
+    color: "#C9993A",
     image: "/images/futi.jpg",
-    desc: "Cooperacion deportiva para promover entrenamiento, disciplina competitiva y experiencias de formacion integral.",
+    desc: "Cooperación deportiva para promover entrenamiento, disciplina competitiva y experiencias de formación integral.",
+    url: "https://www.facebook.com/ClubOlympicCbba",
+    icon: "M6 9H4.5a2.5 2.5 0 0 1 0-5H6 M18 9h1.5a2.5 2.5 0 0 0 0-5H18 M4 22h16 M10 14.66V17c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2.34 M12 2a5 5 0 0 0-5 5v3c0 2.2 1.8 4 4 4h2c2.2 0 4-1.8 4-4V7a5 5 0 0 0-5-5z",
   },
   {
     name: "INTRASPORTS",
-    category: "Gestion deportiva",
-    color: "#0284C7",
-    glow: "rgba(2,132,199,0.1)",
-    path: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
-    url: "https://fcintrasports.com",
+    category: "Gestión deportiva",
+    color: "#1A4B8C",
     image: "/images/fuchi.webp",
-    desc: "Alianza para conectar procesos deportivos con tecnologia, competencia, seguimiento y proyeccion de talentos.",
+    desc: "Alianza para conectar procesos deportivos con tecnología, competencia, seguimiento y proyección de talentos.",
+    url: "https://fcintrasports.com",
+    icon: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
   },
   {
     name: "CLUB DE LEONES",
-    category: "Accion civica y social",
-    color: "#1D4ED8",
-    glow: "rgba(29,78,216,0.11)",
-    path: "M12 21s-7-4.35-9.33-9.91C.97 7.02 3.38 3 7.4 3c2.14 0 3.55 1.13 4.6 2.46C13.05 4.13 14.46 3 16.6 3c4.02 0 6.43 4.02 4.73 8.09C19 16.65 12 21 12 21z",
-    url: "/club-leones",
+    category: "Acción cívica y social",
+    color: "#2D7DD2",
     image: "/images/miro1.JPG",
-    desc: "Convenio social para fortalecer voluntariado, liderazgo comunitario, servicio civico y actividades solidarias.",
+    desc: "Convenio social para fortalecer voluntariado, liderazgo comunitario, servicio cívico y actividades solidarias.",
+    url: "/club-leones",
+    icon: "M12 21s-7-4.35-9.33-9.91C.97 7.02 3.38 3 7.4 3c2.14 0 3.55 1.13 4.6 2.46C13.05 4.13 14.46 3 16.6 3c4.02 0 6.43 4.02 4.73 8.09C19 16.65 12 21 12 21z",
   },
 ];
 
@@ -73,860 +67,516 @@ const impact = [
 ];
 
 const axes = [
-  {
-    title: "Academico",
-    text: "Rutas de continuidad, capacitacion, certificacion y formacion profesional para estudiantes y deportistas.",
-  },
-  {
-    title: "Deportivo",
-    text: "Entrenamiento, competencia, gestion de talentos y acompanamiento para procesos de alto rendimiento.",
-  },
-  {
-    title: "Social",
-    text: "Accion civica, voluntariado y proyectos comunitarios que conectan la formacion con impacto real.",
-  },
+  { title: "Académico", text: "Rutas de continuidad, capacitación, certificación y formación profesional para estudiantes y deportistas." },
+  { title: "Deportivo", text: "Entrenamiento, competencia, gestión de talentos y acompañamiento para procesos de alto rendimiento." },
+  { title: "Social", text: "Acción cívica, voluntariado y proyectos comunitarios que conectan la formación con impacto real." },
 ];
 ---
 
-<Layout title="Convenios | CBIT" showBackgroundFX={false}>
+<Layout title="Convenios | CBIT">
   <Navbar />
   <main class="cv-main">
+
+    <!-- ══════════════════════════════════
+         HERO
+    ══════════════════════════════════ -->
     <section class="cv-hero" id="cv-hero">
-      <div class="cv-hero-bg" aria-hidden="true">
-        <div class="cv-grid"></div>
-        <div class="cv-cut cv-cut-a"></div>
-        <div class="cv-cut cv-cut-b"></div>
-      </div>
+      <div class="cv-hero-mesh" aria-hidden="true"></div>
+      <div class="cv-orb cv-orb-1" aria-hidden="true"></div>
+      <div class="cv-orb cv-orb-2" aria-hidden="true"></div>
+      <div class="cv-orb cv-orb-3" aria-hidden="true"></div>
 
       <div class="cv-container cv-hero-inner">
-        <div class="cv-hero-copy cv-reveal">
-         
-          <h1 class="cv-title font-display">
-            CONVENIOS<br />
-            <span>INSTITUCIONALES</span>
-          </h1>
-          <p class="cv-lead">
-            Trabajamos junto a instituciones academicas, deportivas y sociales para abrir oportunidades reales de formacion, competencia, certificacion y servicio.
-          </p>
-          <div class="cv-actions">
-            <a href="#instituciones" class="cv-btn cv-btn-primary">
-              Ver convenios
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-            <a href="https://wa.me/59177101440?text=Hola,%20quiero%20informacion%20sobre%20convenios" target="_blank" rel="noopener noreferrer" class="cv-btn cv-btn-ghost">
-              Contactar
-            </a>
+        <div class="cv-reveal">
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/10 pb-12 mb-0">
+
+            <h1 class="cv-hero-title font-display">
+              CONVENIOS<br/>
+              <span style="color:#f2c82f">INSTITUCIONALES</span>
+            </h1>
+
+            <div class="cv-hero-side cv-reveal cv-d1">
+              <p class="cv-hero-sub">
+                Trabajamos junto a instituciones académicas, deportivas y sociales para abrir oportunidades reales
+                de formación, competencia, certificación y servicio a la comunidad.
+              </p>
+              
+            </div>
           </div>
         </div>
-
-
       </div>
     </section>
 
-    <section class="cv-strip" id="impacto" aria-label="Impacto de los convenios">
-      <div class="cv-container cv-strip-grid">
-        {impact.map(item => (
-          <div class="cv-stat cv-reveal">
-            <strong>{item.value}</strong>
-            <span>{item.label}</span>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <section class="cv-section" id="instituciones">
+    <!-- ══════════════════════════════════
+         IMPACTO
+    ══════════════════════════════════ -->
+    <section class="cv-section cv-soft-bg" id="impacto">
       <div class="cv-container">
         <div class="cv-section-head cv-reveal">
-          <span class="cv-eyebrow cv-eyebrow-blue">Convenios vigentes</span>
-          <h2 class="cv-section-title font-display">Instituciones que caminan con nosotros</h2>
-          <p>
-            Cada convenio suma una pieza distinta al ecosistema CBIT: educacion, deporte, gestion, comunidad y proyeccion.
-          </p>
+          <span class="cv-eyebrow">Resultados</span>
+          <h2 class="cv-section-title font-display">NUESTRO <span class="cv-gold">IMPACTO</span></h2>
+          <div class="cv-bar" data-bar></div>
         </div>
-
-        <div class="cv-card-grid">
-          {institutions.map((inst, i) => (
-            <article class={`cv-card cv-reveal cv-s${i % 3}`} style={`--c:${inst.color};--g:${inst.glow}`}>
-              <a href={inst.url} target={inst.url.startsWith('http') ? '_blank' : undefined} rel={inst.url.startsWith('http') ? 'noopener noreferrer' : undefined} class="cv-card-link" aria-label={`Ver convenio con ${inst.name}`}>
-                <div class="cv-img-wrap">
-                  <img src={inst.image} alt={`Convenio CBIT con ${inst.name}`} loading="lazy" />
-                  <span class="cv-img-tag">{String(i + 1).padStart(2, '0')}</span>
-                </div>
-                <div class="cv-card-body">
-                  <div class="cv-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={inst.path} /></svg>
-                  </div>
-                  <span class="cv-category">{inst.category}</span>
-                  <h3>{inst.name}</h3>
-                  <p>{inst.desc}</p>
-                  <div class="cv-card-foot">
-                    <span>Ver institucion</span>
-                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-                  </div>
-                </div>
-              </a>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="cv-section cv-blue" id="sentido">
-      <div class="cv-container cv-axis-layout">
-        <div class="cv-axis-copy cv-reveal">
-          <span class="cv-eyebrow">Como se traducen</span>
-          <h2 class="cv-section-title font-display">Convenios con sentido practico</h2>
-          <p>
-            No los mostramos solo como logos: cada alianza existe para habilitar acciones concretas dentro del recorrido formativo de CBIT.
-          </p>
-        </div>
-        <div class="cv-axis-grid">
-          {axes.map((axis, i) => (
-            <div class={`cv-axis cv-reveal cv-s${i}`}>
-              <span>{String(i + 1).padStart(2, '0')}</span>
-              <h3>{axis.title}</h3>
-              <p>{axis.text}</p>
+        <div class="cv-impact-grid">
+          {impact.map((item, i) => (
+            <div class={`cv-float-card cv-stat-card cv-reveal cv-s${i}`}>
+              <strong class="cv-stat-value">{item.value}</strong>
+              <span class="cv-stat-label">{item.label}</span>
             </div>
           ))}
         </div>
       </div>
     </section>
 
+    <!-- ══════════════════════════════════
+         INSTITUCIONES
+    ══════════════════════════════════ -->
+    <section class="cv-section" id="instituciones">
+      <div class="cv-container">
+        <div class="cv-section-head cv-reveal">
+          <span class="cv-eyebrow">Convenios Vigentes</span>
+          <h2 class="cv-section-title font-display">INSTITUCIONES QUE <span class="cv-gold">CAMINAN CON NOSOTROS</span></h2>
+          <div class="cv-bar" data-bar></div>
+        </div>
+
+        <div class="cv-card-grid">
+          {institutions.map((inst, i) => (
+            <a
+              href={inst.url}
+              target={inst.url.startsWith('http') ? '_blank' : undefined}
+              rel={inst.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+              class={`cv-float-card cv-inst-card cv-reveal cv-s${i % 3}`}
+              aria-label={`Ver convenio con ${inst.name}`}
+            >
+              <div class="cv-inst-img-wrap">
+                <img src={inst.image} alt={`Convenio CBIT con ${inst.name}`} class="cv-img cv-zoom-target" loading="lazy" />
+                <span class="cv-img-tag">{String(i + 1).padStart(2, '0')}</span>
+              </div>
+              <div class="cv-inst-body">
+                <div class="cv-inst-accent" style={`background:${inst.color}`}></div>
+                <div class="cv-inst-icon" style={`color:${inst.color}`}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={inst.icon} /></svg>
+                </div>
+                <span class="cv-inst-category" style={`color:${inst.color}`}>{inst.category}</span>
+                <h3 class="cv-inst-title font-display">{inst.name}</h3>
+                <p class="cv-inst-desc">{inst.desc}</p>
+                <div class="cv-inst-foot" style={`color:${inst.color}`}>
+                  Ver institución
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         SENTIDO / EJES
+    ══════════════════════════════════ -->
+    <section class="cv-section cv-blue-bg" id="sentido">
+      <div class="cv-orb cv-orb-mv1" aria-hidden="true"></div>
+      <div class="cv-orb cv-orb-mv2" aria-hidden="true"></div>
+      <div class="cv-container" style="position:relative;z-index:2">
+        <div class="cv-section-head cv-reveal">
+          <span class="cv-eyebrow cv-eyebrow-gold">Cómo se Traducen</span>
+          <h2 class="cv-section-title cv-white font-display">CONVENIOS CON <span class="cv-gold">SENTIDO PRÁCTICO</span></h2>
+          <div class="cv-bar cv-bar-gold" data-bar></div>
+          <p class="cv-axis-lead">No los mostramos solo como logos: cada alianza existe para habilitar acciones concretas dentro del recorrido formativo de CBIT.</p>
+        </div>
+        <div class="cv-axis-grid">
+          {axes.map((axis, i) => (
+            <div class={`cv-axis-card cv-reveal cv-s${i}`}>
+              <span class="cv-axis-num">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="cv-axis-title">{axis.title}</h3>
+              <p class="cv-axis-text">{axis.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         CTA
+    ══════════════════════════════════ -->
     <section class="cv-cta" id="alianza">
-      <div class="cv-cta-img" aria-hidden="true"></div>
+      <div class="cv-cta-mesh" aria-hidden="true"></div>
       <div class="cv-container cv-cta-inner cv-reveal">
-        <span class="cv-eyebrow">Gestion institucional</span>
-        <h2 class="font-display">Sumemos una nueva alianza</h2>
-        <p>
-          Si representas una institucion academica, deportiva o social, podemos conversar sobre una ruta de cooperacion seria, clara y beneficiosa.
+        <span class="cv-eyebrow cv-eyebrow-gold">Gestión Institucional</span>
+        <h2 class="cv-cta-title font-display">SUMEMOS UNA <span style="color:#f2c82f">NUEVA ALIANZA</span></h2>
+        <p class="cv-cta-text">
+          Si representas una institución académica, deportiva o social, podemos conversar sobre una ruta de
+          cooperación seria, clara y beneficiosa.
         </p>
         <a href="https://wa.me/59177101440?text=Hola,%20quiero%20proponer%20un%20convenio%20institucional" target="_blank" rel="noopener noreferrer" class="cv-btn cv-btn-primary">
           Proponer convenio
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
     </section>
+
   </main>
   <Footer />
 </Layout>
 
 <style>
-  :root {
-    --cv-blue: #0b337e;
-    --cv-blue-2: #123f8f;
-    --cv-gold: #f59e0b;
-    --cv-gold-2: #fcd34d;
-    --cv-ink: #0f172a;
-    --cv-text: #334155;
-    --cv-muted: #64748b;
-    --cv-soft: #f4f7fb;
-    --cv-line: rgba(15, 23, 42, 0.1);
-  }
-
-  .cv-main {
-    background: #fff;
-    color: var(--cv-ink);
-    overflow: hidden;
-  }
-
-  .cv-container {
-    width: min(1180px, calc(100% - 40px));
-    margin: 0 auto;
-  }
-
-  .cv-hero {
-    position: relative;
-    min-height: 100vh;
-    padding: 132px 0 74px;
-    display: flex;
-    align-items: center;
-    background: var(--cv-blue);
-    color: #fff;
-  }
-
-  .cv-hero-bg,
-  .cv-grid {
-    position: absolute;
-    inset: 0;
-  }
-
-  .cv-grid {
-    opacity: 0.34;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
-    background-size: 56px 56px;
-  }
-
-  .cv-cut {
-    position: absolute;
-    background: #08265f;
-    opacity: 0.82;
-    clip-path: polygon(100% 0, 0 0, 100% 100%);
-  }
-
-  .cv-cut-a {
-    top: 0;
-    right: 0;
-    width: min(44vw, 520px);
-    height: min(44vw, 520px);
-  }
-
-  .cv-cut-b {
-    left: 0;
-    bottom: 0;
-    width: 210px;
-    height: 210px;
-    transform: rotate(180deg);
-    background: #16469a;
-  }
-
-  .cv-hero::before {
-    content: "";
-    position: absolute;
-    top: 68px;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--cv-gold), var(--cv-gold-2), transparent);
-    z-index: 1;
-  }
-
-  .cv-hero-inner {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.72fr);
-    gap: 54px;
-    align-items: center;
-  }
-
-  .cv-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 18px;
-    color: var(--cv-gold-2);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-  }
-
-  .cv-eyebrow::before {
-    content: "";
-    width: 28px;
-    height: 2px;
-    background: currentColor;
-  }
-
-  .cv-eyebrow-blue {
-    color: var(--cv-blue-2);
-  }
-
-  .cv-title {
-    margin: 0;
-    color: #fff;
-    font-size: clamp(3.2rem, 9vw, 7rem);
-    line-height: 0.9;
-  }
-
-  .cv-title span {
-    color: var(--cv-gold-2);
-  }
-
-  .cv-lead {
-    max-width: 620px;
-    margin: 26px 0 0;
-    color: rgba(255,255,255,0.72);
-    font-size: clamp(1rem, 1.6vw, 1.18rem);
-    line-height: 1.9;
-  }
-
-  .cv-actions {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 34px;
-  }
-
-  .cv-btn {
-    min-height: 46px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 13px 22px;
-    border-radius: 8px;
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: transform 0.24s ease, background 0.24s ease, border-color 0.24s ease, color 0.24s ease;
-  }
-
-  .cv-btn:hover {
-    transform: translateY(-3px);
-  }
-
-  .cv-btn-primary {
-    background: linear-gradient(135deg, var(--cv-gold-2), var(--cv-gold));
-    color: #10224c;
-    box-shadow: 0 18px 38px rgba(245, 158, 11, 0.22);
-  }
-
-  .cv-btn-ghost {
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.24);
-    background: rgba(255,255,255,0.06);
-  }
-
-  .cv-btn-ghost:hover {
-    border-color: rgba(252,211,77,0.6);
-    color: var(--cv-gold-2);
-  }
-
-  .cv-hero-panel {
-    border: 1px solid rgba(255,255,255,0.16);
-    border-radius: 8px;
-    background: rgba(255,255,255,0.08);
-    box-shadow: 0 26px 80px rgba(0,0,0,0.24);
-    backdrop-filter: blur(18px);
-    padding: 22px;
-  }
-
-  .cv-panel-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-  }
-
-  .cv-panel-top img {
-    height: 54px;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 0 12px rgba(255,255,255,0.28));
-  }
-
-  .cv-panel-top span {
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.2em;
-    color: rgba(255,255,255,0.58);
-    text-transform: uppercase;
-  }
-
-  .cv-mini-list {
-    display: grid;
-    gap: 10px;
-    margin-top: 18px;
-  }
-
-  .cv-mini-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 11px;
-    border-radius: 8px;
-    color: #fff;
-    text-decoration: none;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: transform 0.22s ease, background 0.22s ease;
-  }
-
-  .cv-mini-row:hover {
-    transform: translateX(5px);
-    background: rgba(255,255,255,0.1);
-  }
-
-  .cv-mini-icon {
-    width: 39px;
-    height: 39px;
-    display: grid;
-    place-items: center;
-    border-radius: 8px;
-    color: var(--c);
-    background: var(--g);
-    flex: 0 0 auto;
-  }
-
-  .cv-mini-icon svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  .cv-mini-row strong,
-  .cv-mini-row small {
-    display: block;
-  }
-
-  .cv-mini-row strong {
-    font-size: 0.88rem;
-    letter-spacing: 0.04em;
-  }
-
-  .cv-mini-row small {
-    margin-top: 2px;
-    color: rgba(255,255,255,0.48);
-    font-size: 0.72rem;
-  }
-
-  .cv-leones-link {
-    margin-top: 14px;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    border-radius: 8px;
-    padding: 12px 14px;
-    color: #10224c;
-    background: var(--cv-gold-2);
-    text-decoration: none;
-    font-size: 0.78rem;
-    font-weight: 900;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .cv-strip {
-    background: #08265f;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .cv-strip-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .cv-stat {
-    padding: 34px 28px;
-    text-align: center;
-    border-right: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .cv-stat:last-child {
-    border-right: 0;
-  }
-
-  .cv-stat strong {
-    display: block;
-    color: var(--cv-gold-2);
-    font-size: clamp(2.2rem, 5vw, 4rem);
-    line-height: 1;
-    font-weight: 900;
-  }
-
-  .cv-stat span {
-    display: block;
-    margin-top: 8px;
-    color: rgba(255,255,255,0.58);
-    font-size: 0.76rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-
-  .cv-section {
-    padding: 104px 0;
-    background: #fff;
-  }
-
-  .cv-section-head {
-    max-width: 760px;
-    margin: 0 auto 46px;
-    text-align: center;
-  }
-
-  .cv-section-title {
-    margin: 0;
-    color: var(--cv-blue);
-    font-size: clamp(2.5rem, 5vw, 4.6rem);
-    line-height: 0.96;
-  }
-
-  .cv-section-head p,
-  .cv-axis-copy p,
-  .cv-cta-inner p {
-    margin: 18px auto 0;
-    color: var(--cv-muted);
-    font-size: 1rem;
-    line-height: 1.85;
-  }
-
-  .cv-card-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
-
-  .cv-card {
-    border-radius: 8px;
-    overflow: hidden;
-    background: #fff;
-    border: 1px solid var(--cv-line);
-    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
-    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
-  }
-
-  .cv-card:hover {
-    transform: translateY(-7px);
-    border-color: color-mix(in srgb, var(--c), transparent 62%);
-    box-shadow: 0 24px 58px rgba(15, 23, 42, 0.14);
-  }
-
-  .cv-card-link {
-    display: block;
-    color: inherit;
-    text-decoration: none;
-    height: 100%;
-  }
-
-  .cv-img-wrap {
-    position: relative;
-    height: 230px;
-    overflow: hidden;
-    background: var(--cv-soft);
-  }
-
-  .cv-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: saturate(0.92) contrast(0.98);
-    transition: transform 0.52s ease, filter 0.52s ease;
-  }
-
-  .cv-card:hover .cv-img-wrap img {
-    transform: scale(1.05);
-    filter: saturate(1.05) contrast(1.02);
-  }
-
-  .cv-img-wrap::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 32%, rgba(8, 38, 95, 0.78));
-  }
-
-  .cv-img-tag {
-    position: absolute;
-    left: 14px;
-    bottom: 14px;
-    z-index: 2;
-    color: #fff;
-    font-size: 0.72rem;
-    font-weight: 900;
-    letter-spacing: 0.16em;
-    padding: 7px 9px;
-    border-radius: 6px;
-    background: rgba(255,255,255,0.14);
-    border: 1px solid rgba(255,255,255,0.22);
-  }
-
-  .cv-card-body {
-    position: relative;
-    padding: 24px;
-  }
-
-  .cv-icon {
-    width: 48px;
-    height: 48px;
-    display: grid;
-    place-items: center;
-    margin-top: -48px;
-    margin-bottom: 18px;
-    position: relative;
-    z-index: 3;
-    border-radius: 8px;
-    color: var(--c);
-    background: #fff;
-    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.16), 0 0 0 6px var(--g);
-  }
-
-  .cv-icon svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  .cv-category {
-    display: block;
-    color: var(--c);
-    font-size: 0.67rem;
-    font-weight: 900;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-
-  .cv-card h3 {
-    margin: 9px 0 10px;
-    color: var(--cv-blue);
-    font-size: 1.35rem;
-    line-height: 1.1;
-    letter-spacing: 0.04em;
-  }
-
-  .cv-card p {
-    min-height: 104px;
-    margin: 0;
-    color: var(--cv-muted);
-    font-size: 0.93rem;
-    line-height: 1.72;
-  }
-
-  .cv-card-foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-top: 22px;
-    padding-top: 16px;
-    border-top: 1px solid var(--cv-line);
-    color: var(--c);
-    font-size: 0.72rem;
-    font-weight: 900;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  .cv-blue {
-    background: var(--cv-blue);
-    color: #fff;
-    position: relative;
-  }
-
-  .cv-blue::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0.22;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-    background-size: 72px 72px;
-  }
-
-  .cv-axis-layout {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 44px;
-    align-items: start;
-  }
-
-  .cv-blue .cv-section-title {
-    color: #fff;
-  }
-
-  .cv-axis-copy p {
-    color: rgba(255,255,255,0.66);
-    margin-left: 0;
-  }
-
-  .cv-axis-grid {
-    display: grid;
-    gap: 12px;
-  }
-
-  .cv-axis {
-    border-radius: 8px;
-    padding: 26px;
-    border: 1px solid rgba(255,255,255,0.13);
-    background: rgba(255,255,255,0.07);
-  }
-
-  .cv-axis span {
-    color: var(--cv-gold-2);
-    font-size: 0.78rem;
-    font-weight: 900;
-    letter-spacing: 0.16em;
-  }
-
-  .cv-axis h3 {
-    margin: 12px 0 8px;
-    color: #fff;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .cv-axis p {
-    margin: 0;
-    color: rgba(255,255,255,0.62);
-    line-height: 1.78;
-  }
-
-  .cv-cta {
-    position: relative;
-    min-height: 520px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: #081f4f;
-  }
-
-  .cv-cta-img {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(90deg, rgba(8,31,79,0.96) 0%, rgba(8,31,79,0.78) 48%, rgba(8,31,79,0.48) 100%),
-      url('/images/miro2.JPG') center / cover no-repeat;
-  }
-
-  .cv-cta-inner {
-    position: relative;
-    z-index: 1;
-    padding: 88px 0;
-    color: #fff;
-  }
-
-  .cv-cta-inner h2 {
-    max-width: 720px;
-    margin: 0;
-    color: #fff;
-    font-size: clamp(3rem, 7vw, 6.4rem);
-    line-height: 0.92;
-  }
-
-  .cv-cta-inner p {
-    max-width: 560px;
-    margin-left: 0;
-    margin-bottom: 28px;
-    color: rgba(255,255,255,0.68);
-  }
-
-  .cv-reveal {
-    opacity: 0;
-    transform: translateY(34px);
-    transition: opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1), transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .cv-reveal.cv-on {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .cv-d1 { transition-delay: 0.12s; }
-  .cv-s0 { transition-delay: 0s; }
-  .cv-s1 { transition-delay: 0.09s; }
-  .cv-s2 { transition-delay: 0.18s; }
-
-  @media (max-width: 1040px) {
-    .cv-hero-inner,
-    .cv-axis-layout {
-      grid-template-columns: 1fr;
-    }
-
-    .cv-hero-panel {
-      max-width: 620px;
-    }
-
-    .cv-card-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 720px) {
-    .cv-container {
-      width: min(100% - 28px, 1180px);
-    }
-
-    .cv-hero {
-      min-height: auto;
-      padding: 112px 0 56px;
-    }
-
-    .cv-title {
-      font-size: clamp(3.25rem, 18vw, 5.2rem);
-    }
-
-    .cv-hero-panel {
-      padding: 16px;
-    }
-
-    .cv-panel-top {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .cv-strip-grid,
-    .cv-card-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .cv-stat {
-      border-right: 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .cv-stat:last-child {
-      border-bottom: 0;
-    }
-
-    .cv-section {
-      padding: 72px 0;
-    }
-
-    .cv-img-wrap {
-      height: 210px;
-    }
-
-    .cv-card p {
-      min-height: 0;
-    }
-
-    .cv-cta {
-      min-height: auto;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .cv-reveal {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-
-    .cv-btn,
-    .cv-card,
-    .cv-img-wrap img,
-    .cv-mini-row {
-      transition: none;
-    }
-  }
+/* ══════════════════════════════════
+   TOKENS (idénticos a Sobre Nosotros)
+══════════════════════════════════ */
+:root {
+  --blue:      #1A4B8C;
+  --blue-mid:  #2D7DD2;
+  --blue-lt:   #EBF3FB;
+  --cyan:      #f5c21a;
+  --gold:      #C9993A;
+  --gold-lt:   #F5E8CC;
+  --white:     #ffffff;
+  --soft:      #F0F4FA;
+  --text:      #1e293b;
+  --muted:     #64748B;
+  --faint:     #94A3B8;
+
+  --sh1: 0 1px 3px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.04);
+  --sh2: 0 4px 12px rgba(0,0,0,0.10), 0 8px 24px rgba(26,75,140,0.10);
+  --sh3: 0 8px 28px rgba(0,0,0,0.12), 0 18px 48px rgba(26,75,140,0.16);
+  --sh-hover: 0 14px 40px rgba(0,0,0,0.14), 0 28px 60px rgba(26,75,140,0.22);
+
+  --r: 20px;
+  --r-lg: 28px;
+  --r-xl: 36px;
+}
+
+/* ══════════════════════════════════
+   BASE
+══════════════════════════════════ */
+.cv-main { background: var(--white); overflow-x: hidden; }
+.cv-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.cv-white { color: var(--white) !important; }
+.cv-gold  { color: var(--gold); }
+
+/* ══════════════════════════════════
+   SECCIONES
+══════════════════════════════════ */
+.cv-section  { padding: 7rem 0; background: var(--white); }
+.cv-blue-bg  { background: var(--blue); position: relative; overflow: hidden; }
+.cv-soft-bg  { background: var(--soft); }
+
+/* ══════════════════════════════════
+   HERO
+══════════════════════════════════ */
+.cv-hero {
+  background-image: url('/images/fondo.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.cv-hero-mesh {
+  position: absolute; inset: 0;
+  
+  background-size: 32px 32px, cover;
+  background-position: 0 0, center;
+  pointer-events: none;
+}
+.cv-orb {
+  position: absolute; border-radius: 50%;
+  pointer-events: none; filter: blur(80px);
+}
+.cv-orb-1   { width:500px;height:500px; top:-150px;right:-120px; background:radial-gradient(circle,rgba(245,194,26,0.16),transparent 70%); }
+.cv-orb-2   { width:350px;height:350px; bottom:-80px;left:-80px; background:radial-gradient(circle,rgba(201,153,58,0.16),transparent 70%); }
+.cv-orb-3   { width:250px;height:250px; top:40%;left:40%; background:radial-gradient(circle,rgba(45,125,210,0.14),transparent 70%); }
+.cv-orb-mv1 { width:400px;height:400px; top:-100px;right:-100px; background:radial-gradient(circle,rgba(14,165,233,0.14),transparent 70%); }
+.cv-orb-mv2 { width:300px;height:300px; bottom:-60px;left:-60px; background:radial-gradient(circle,rgba(201,153,58,0.12),transparent 70%); }
+
+.cv-hero-inner { display: flex; flex-direction: column; gap: 3rem; position: relative; z-index: 2; }
+
+.cv-hero-title {
+  font-size: clamp(3.6rem, 7vw, 5.6rem);
+  color: #fff;
+  line-height: 1.08;
+  margin: 0;
+}
+
+.cv-hero-side { width: 100%; max-width: 42%; display: flex; flex-direction: column; gap: 1.75rem; }
+.cv-hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.6);
+  border-left: 2px solid var(--cyan);
+  padding-left: 1.5rem;
+  line-height: 1.85;
+}
+
+.cv-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; padding-left: 1.5rem; }
+.cv-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+  min-height: 48px; padding: 0.85rem 1.6rem; border-radius: 50px;
+  font-size: 0.74rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+  text-decoration: none; transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;
+}
+.cv-btn:hover { transform: translateY(-3px); }
+.cv-btn-primary { background: var(--gold); color: #1e293b; box-shadow: var(--sh2); }
+.cv-btn-primary:hover { box-shadow: var(--sh-hover); }
+.cv-btn-ghost { color: #fff; border: 1px solid rgba(255,255,255,0.28); background: rgba(255,255,255,0.06); }
+.cv-btn-ghost:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+/* ══════════════════════════════════
+   SECTION HEADER
+══════════════════════════════════ */
+.cv-section-head { text-align: center; margin-bottom: 4rem; }
+.cv-eyebrow {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--blue-mid); margin-bottom: 0.6rem;
+}
+.cv-eyebrow-gold { color: var(--gold); }
+
+.cv-section-title {
+  font-size: clamp(2.1rem, 4.2vw, 3rem);
+  color: var(--blue);
+  line-height: 1.14;
+  margin: 0 0 1.2rem;
+}
+
+.cv-bar {
+  display: block; height: 3px; width: 0;
+  background: var(--blue-mid); border-radius: 2px;
+  margin: 0 auto;
+  transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s;
+}
+.cv-bar-gold { background: var(--gold); }
+.cv-bar.cv-bar-on { width: 56px; }
+
+.cv-axis-lead { max-width: 640px; margin: 1.4rem auto 0; color: rgba(255,255,255,0.7); font-size: 1.02rem; line-height: 1.85; }
+
+/* ══════════════════════════════════
+   FLOAT CARD
+══════════════════════════════════ */
+.cv-float-card {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh2);
+  border: 1px solid rgba(26,75,140,0.06);
+  transition: transform 0.42s cubic-bezier(0.22,1,0.36,1), box-shadow 0.42s cubic-bezier(0.22,1,0.36,1);
+  overflow: hidden;
+}
+.cv-float-card:hover {
+  transform: translateY(-10px) scale(1.012);
+  box-shadow: var(--sh-hover);
+}
+
+/* ══════════════════════════════════
+   IMPACTO
+══════════════════════════════════ */
+.cv-impact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+.cv-stat-card { text-align: center; padding: 2.75rem 1.5rem; }
+.cv-stat-value { display: block; font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; color: var(--blue); line-height: 1; }
+.cv-stat-label { display: block; margin-top: 0.7rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+/* ══════════════════════════════════
+   INSTITUCIONES
+══════════════════════════════════ */
+.cv-card-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+.cv-inst-card { display: block; text-decoration: none; color: inherit; }
+.cv-inst-img-wrap { position: relative; height: 210px; overflow: hidden; }
+.cv-img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+.cv-float-card:hover .cv-zoom-target { transform: scale(1.06); }
+.cv-img-tag {
+  position: absolute; bottom: 0.9rem; left: 0.9rem;
+  background: rgba(26,75,140,0.88); backdrop-filter: blur(8px);
+  color: #fff; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em;
+  padding: 0.35rem 0.7rem; border-radius: 50px;
+  border-left: 3px solid var(--gold);
+}
+.cv-inst-body { padding: 1.75rem; position: relative; }
+.cv-inst-accent { width: 28px; height: 3.5px; border-radius: 2px; margin-bottom: 0.9rem; transition: width 0.35s; }
+.cv-float-card:hover .cv-inst-accent { width: 52px; }
+.cv-inst-icon {
+  width: 46px; height: 46px; margin-top: -3.4rem; margin-bottom: 1rem;
+  background: var(--white); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--sh2); position: relative; z-index: 2;
+}
+.cv-inst-icon svg { width: 22px; height: 22px; }
+.cv-inst-category { display: block; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.cv-inst-title { font-size: 1.2rem; color: var(--blue); margin: 0 0 0.6rem; letter-spacing: 0.03em; }
+.cv-inst-desc  { font-size: 0.92rem; line-height: 1.72; color: var(--muted); margin: 0 0 1.3rem; min-height: 78px; }
+.cv-inst-foot  { display: flex; align-items: center; gap: 0.5rem; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; padding-top: 1rem; border-top: 1px solid rgba(26,75,140,0.08); }
+
+/* ══════════════════════════════════
+   EJES (estilo Misión/Visión)
+══════════════════════════════════ */
+.cv-axis-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3rem; }
+.cv-axis-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--r-xl);
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), background 0.35s, box-shadow 0.4s;
+}
+.cv-axis-card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.12); box-shadow: 0 20px 56px rgba(0,0,0,0.28); }
+.cv-axis-num { display: block; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 1rem; }
+.cv-axis-title { font-size: 1.15rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; margin: 0 0 0.9rem; }
+.cv-axis-text { font-size: 0.98rem; line-height: 1.85; color: rgba(255,255,255,0.72); margin: 0; }
+
+/* ══════════════════════════════════
+   CTA
+══════════════════════════════════ */
+.cv-cta {
+  background-image: url('/images/miro2.JPG');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0;
+}
+.cv-cta-mesh {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8,38,95,0.88), rgba(26,75,140,0.92));
+  pointer-events: none;
+}
+.cv-cta-inner { position: relative; z-index: 2; max-width: 680px; }
+.cv-cta-title { font-size: clamp(2.4rem, 5.5vw, 4rem); color: #fff; line-height: 1.05; margin: 0.6rem 0 1.4rem; }
+.cv-cta-text { font-size: 1.05rem; line-height: 1.9; color: rgba(255,255,255,0.7); margin: 0 0 2.2rem; }
+
+/* ══════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════ */
+.cv-reveal {
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.cv-reveal.cv-on { opacity:1; transform:translateY(0); }
+.cv-d1 { transition-delay:.13s; }
+.cv-d2 { transition-delay:.26s; }
+.cv-s0 { transition-delay:0s; }
+.cv-s1 { transition-delay:.10s; }
+.cv-s2 { transition-delay:.20s; }
+.cv-s3 { transition-delay:.30s; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media(max-width:1024px){
+  .cv-card-grid     { grid-template-columns:repeat(2,1fr); }
+  .cv-axis-grid     { grid-template-columns:1fr; }
+  .cv-impact-grid   { grid-template-columns:repeat(3,1fr); }
+  .cv-hero-side     { max-width:100%; }
+}
+@media(max-width:640px){
+  .cv-card-grid     { grid-template-columns:1fr; }
+  .cv-impact-grid   { grid-template-columns:1fr; }
+  .cv-section       { padding:4.5rem 0; }
+  .cv-hero          { padding:9rem 0 5rem; }
+  .cv-container     { padding:0 1.25rem; }
+  .cv-actions       { padding-left: 0; }
+}
+@media(prefers-reduced-motion:reduce){
+  .cv-reveal  { opacity:1; transform:none; transition:none; }
+  .cv-bar     { width:56px; transition:none; }
+}
 </style>
 
 <script>
-  let observer: IntersectionObserver | null = null;
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
 
-  function initConvenios() {
-    observer?.disconnect();
-    observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          (entry.target as HTMLElement).classList.add('cv-on');
-          observer?.unobserve(entry.target);
-        }
+  let ctx: gsap.Context | null = null;
+
+  function initPage() {
+    if (ctx) { ctx.revert(); ctx = null; }
+    gsap.registerPlugin(ScrollTrigger);
+
+    ctx = gsap.context(() => {
+
+      /* ── 1. SCROLL REVEAL ── */
+      const revealIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('cv-on');
+            revealIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+
+      document.querySelectorAll('.cv-reveal').forEach(el => revealIO.observe(el));
+
+      /* ── 2. GOLD BAR DRAW ── */
+      const barIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add('cv-bar-on');
+            barIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.8 });
+
+      document.querySelectorAll('[data-bar]').forEach(el => barIO.observe(el));
+
+      /* ── 3. PARALLAX HERO TITLE ── */
+      const heroTitle = document.querySelector<HTMLElement>('.cv-hero-title');
+      if (heroTitle) {
+        gsap.to(heroTitle, {
+          yPercent: 20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.cv-hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.8,
+          }
+        });
+      }
+
+      /* ── 4. PARALLAX ORBS HERO ── */
+      document.querySelectorAll<HTMLElement>('.cv-orb-1, .cv-orb-2').forEach((orb, i) => {
+        gsap.to(orb, {
+          yPercent: i % 2 === 0 ? -25 : 20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.cv-hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 2,
+          }
+        });
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -44px 0px' });
 
-    document.querySelectorAll('.cv-reveal').forEach(el => observer?.observe(el));
+      /* ── 5. STAGGER GRID ENTRANCE ── */
+      ['#impacto .cv-impact-grid', '#instituciones .cv-card-grid', '#sentido .cv-axis-grid'].forEach(sel => {
+        const grid = document.querySelector(sel);
+        if (!grid) return;
+        const cards = Array.from(grid.querySelectorAll<HTMLElement>('.cv-reveal'));
+        ScrollTrigger.create({
+          trigger: grid,
+          start: 'top 86%',
+          once: true,
+          onEnter: () => {
+            cards.forEach((card, i) => {
+              gsap.to(card, {
+                opacity: 1, y: 0,
+                duration: 0.72,
+                delay: i * 0.1,
+                ease: 'power3.out',
+                overwrite: true,
+              });
+            });
+          }
+        });
+      });
+
+    });
   }
 
-  function cleanupConvenios() {
-    observer?.disconnect();
-    observer = null;
+  function cleanup() {
+    if (ctx) { ctx.revert(); ctx = null; }
+    ScrollTrigger.getAll().forEach(t => t.kill());
   }
 
-  initConvenios();
-  document.addEventListener('astro:page-load', initConvenios);
-  document.addEventListener('astro:before-swap', cleanupConvenios);
+  initPage();
+  document.addEventListener('astro:page-load', () => { cleanup(); initPage(); });
+  document.addEventListener('astro:before-swap', cleanup);
 </script>

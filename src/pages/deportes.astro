@@ -38,7 +38,7 @@ const courses = [
     num: "03", tag: "Competición",
     title: "Deporte Competitivo",
     modalidad: "Presencial",
-    img: "/images/ima4.jpg",
+    img: "/images/un (5).webp",
     learn: [
       "Periodización del entrenamiento y planificación de temporada",
       "Análisis táctico y preparación psicológica precompetitiva",
@@ -50,7 +50,7 @@ const courses = [
     num: "04", tag: "Liderazgo",
     title: "Dirigencia Deportiva",
     modalidad: "Virtual",
-    img: "/images/ima5.jpg",
+    img: "/images/un (5).webp",
     learn: [
       "Administración y gestión de organizaciones deportivas",
       "Liderazgo estratégico y toma de decisiones institucionales",
@@ -62,7 +62,7 @@ const courses = [
     num: "05", tag: "Coaching",
     title: "Entrenador de Fútbol",
     modalidad: "Presencial",
-    img: "/images/ima2.jpg",
+    img: "/images/un (5).webp",
     learn: [
       "Sistemas tácticos modernos: 4-3-3, 4-2-3-1, presión alta",
       "Planificación de sesiones de entrenamiento por etapas",
@@ -74,7 +74,7 @@ const courses = [
     num: "06", tag: "Eventos",
     title: "Gestión de Eventos Deportivos y Protocolo",
     modalidad: "Presencial / Virtual",
-    img: "/images/ima3.jpg",
+    img: "/images/un (5).webp",
     learn: [
       "Planificación y logística de eventos deportivos de gran escala",
       "Protocolo oficial y ceremonias de apertura/clausura",
@@ -86,7 +86,7 @@ const courses = [
     num: "07", tag: "Arbitraje",
     title: "Arbitraje de Voleibol en Cancha",
     modalidad: "Presencial",
-    img: "/images/ima4.jpg",
+    img: "/images/un (5).webp",
     learn: [
       "Reglamento oficial FIVB y adaptaciones para competición amateur",
       "Posicionamiento del árbitro 1.º y 2.º en cancha",
@@ -98,7 +98,7 @@ const courses = [
     num: "08", tag: "Medios",
     title: "Comunicación y Periodismo Deportivo",
     modalidad: "Virtual",
-    img: "/images/ima5.jpg",
+    img: "/images/un (5).webp",
     learn: [
       "Redacción periodística deportiva: géneros y formatos digitales",
       "Entrevistas en campo, sala de prensa y redes sociales",
@@ -110,7 +110,7 @@ const courses = [
     num: "09", tag: "Coaching",
     title: "Entrenador de Beach Vóley",
     modalidad: "Presencial",
-    img: "/images/ima2.jpg",
+    img: "/images/un (5).webp",
     learn: [
       "Técnica individual: recepción, defensa, ataque y saque en arena",
       "Sistemas tácticos 2x2 y rotaciones de pareja",
@@ -122,7 +122,7 @@ const courses = [
     num: "10", tag: "Marketing",
     title: "Marketing Deportivo",
     modalidad: "Presencial / Virtual",
-    img: "/images/ima3.jpg",
+    img: "/images/un (5).webp",
     learn: [
       "Branding de clubes, atletas y eventos deportivos",
       "Estrategias de patrocinio y activación de marcas",
@@ -134,7 +134,7 @@ const courses = [
     num: "11", tag: "Gestión",
     title: "Auditoría de Organizaciones Deportivas",
     modalidad: "Virtual",
-    img: "/images/ima4.jpg",
+    img: "/images/un (5).webp",
     learn: [
       "Marcos de auditoría aplicados a clubes y federaciones",
       "Indicadores de desempeño institucional en el deporte",
@@ -166,21 +166,19 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
   <main class="dr-main">
 
     <!-- ══════════════════════════════════
-         HERO — fondo imagen con overlays
-         (se conserva el look cinematográfico
-         original pero con el sistema CBIT)
+         HERO — fondo video con overlays
     ══════════════════════════════════ -->
     <section class="dr-hero" id="dr-hero">
 
-      <!-- fondo imagen con parallax -->
+      <!-- fondo video -->
       <video
-    class="hero-video"
-    src="/images/video2.mp4"
-    autoplay
-    muted
-    loop
-    playsinline
-       ></video>
+        class="hero-video"
+        src="/images/video2.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+      ></video>
 
       <!-- overlay doble -->
       <div class="dr-hero-overlay" aria-hidden="true"></div>
@@ -235,8 +233,7 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
     </section>
 
     <!-- ══════════════════════════════════
-         STATS BAR — ahora con el sistema
-         de token blanco/soft de CBIT
+         STATS BAR
     ══════════════════════════════════ -->
     <div class="dr-stats-bar">
       <div class="dr-container dr-stats-inner">
@@ -358,7 +355,7 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
                   </button>
                 </div>
 
-                <!-- panel expandible — conserva la lógica original -->
+                <!-- panel expandible -->
                 <div class="dr-learn-panel" id={`panel-${i}`}>
                   <div class="dr-panel-inner" style={`border-top-color:${color}22`}>
                     <div class="dr-panel-head">
@@ -487,8 +484,7 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
 .dr-blue-bg   { background: var(--blue); position: relative; overflow: hidden; }
 
 /* ══════════════════════════════════
-   HERO — imagen de fondo cinematográfica
-   conservada, con orbs y mesh CBIT encima
+   HERO — video de fondo + navbar libre
 ══════════════════════════════════ */
 .dr-hero {
   position: relative;
@@ -496,21 +492,35 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 3rem 5rem;
+  /* padding-top deja espacio para que el navbar fijo no tape el título */
+  padding: 9rem 3rem 5rem;
   overflow: hidden;
+  background: #061229; /* fallback mientras carga el video */
 }
-.dr-hero-bg {
-  position: absolute; inset: 0;
-  will-change: transform;
+
+/* video de fondo, detrás de todo */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 0;
 }
+
 .dr-hero-overlay {
   position: absolute; inset: 0;
+  z-index: 1;
+  /* overlay más uniforme: ya no genera una franja oscura extra arriba
+     que se sumaba a la del navbar y tapaba el título */
   background:
-    linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.10) 100%),
-    linear-gradient(to right, rgba(0,0,0,0.55) 0%, transparent 65%);
+    linear-gradient(to top, rgba(6,12,35,0.78) 0%, rgba(6,12,35,0.40) 55%, rgba(6,12,35,0.30) 100%),
+    linear-gradient(to right, rgba(6,12,35,0.45) 0%, transparent 65%);
 }
 .dr-hero-mesh {
   position: absolute; inset: 0;
+  z-index: 1;
   background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
@@ -518,6 +528,7 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
 .dr-orb {
   position: absolute; border-radius: 50%;
   pointer-events: none; filter: blur(80px);
+  z-index: 1;
 }
 .dr-orb-1 { width:500px;height:500px; top:-100px;right:-100px;
   background:radial-gradient(circle,rgba(201,153,58,0.14),transparent 70%); }
@@ -533,16 +544,6 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
   position: relative; z-index: 2;
   max-width: 1000px;
 }
-
-.dr-hero-eyebrow {
-  display: flex; align-items: center; gap: 0.75rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 0.35em; text-transform: uppercase;
-  color: var(--gold);
-  opacity: 0; transform: translateY(12px);
-}
-.dr-hero-line { display: block; width: 24px; height: 1.5px; background: var(--gold); flex-shrink: 0; }
 
 .dr-hero-title {
   font-size: clamp(1rem, 7vw, 6.5rem);
@@ -613,7 +614,7 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
 @keyframes drScrollPulse { 0%,100%{opacity:.25}50%{opacity:.75} }
 
 /* ══════════════════════════════════
-   STATS BAR — light con borde CBIT
+   STATS BAR
 ══════════════════════════════════ */
 .dr-stats-bar {
   background: var(--white);
@@ -812,8 +813,7 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
 .dr-learn-btn[aria-expanded="true"] .dr-learn-icon { transform: rotate(45deg); }
 
 /* ══════════════════════════════════
-   PANEL EXPANDIBLE — lógica original
-   conservada, estilos CBIT
+   PANEL EXPANDIBLE
 ══════════════════════════════════ */
 .dr-learn-panel {
   overflow: hidden;
@@ -930,7 +930,7 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
   .dr-courses-grid { grid-template-columns: repeat(2,1fr); }
 }
 @media(max-width:768px){
-  .dr-hero { padding: 0 1.5rem 4rem; }
+  .dr-hero { padding: 7rem 1.5rem 4rem; }
   .dr-courses-grid { grid-template-columns: 1fr; }
   .dr-toolbar { flex-direction: column; align-items: flex-start; }
 }
@@ -943,21 +943,7 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
   .dr-reveal { opacity: 1; transform: none; transition: none; }
   .dr-bar    { width: 56px; transition: none; }
   .dr-scroll-line { animation: none; }
-  .dr-hero-eyebrow, .dr-hero-desc, .dr-hero-ctas, #scroll-hint { opacity: 1; transform: none; }
-}
- /* ══════════════ HERO VIDEO ══════════════ */
-#hero {
-  margin-top: 64px;
-  position: relative; overflow: hidden;
-  border-radius: 0 0 var(--r-xl) var(--r-xl);
-  height: calc(100vh - 64px); min-height: 560px; max-height: 820px;
-}
-
-.hero-video {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
+  .dr-hero-desc, .dr-hero-ctas, #scroll-hint { opacity: 1; transform: none; }
 }
 </style>
 
@@ -976,16 +962,15 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
       /* ══ HERO ══ */
       const heroTl = gsap.timeline({ delay: 0.1 });
       heroTl
-        .from('#hero-bg',      { scale: 1.08, duration: 2.4, ease: 'power2.out' }, 0)
-        .to('#hero-eyebrow',   { y: 0, opacity: 1, duration: 0.85, ease: 'power3.out' }, 0.25)
-        .to('.hero-line span', { y: '0%', duration: 1.05, stagger: 0.14, ease: 'power4.out' }, 0.4)
-        .to('#hero-desc',      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.88)
-        .to('#hero-ctas',      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 1.02)
-        .to('#scroll-hint',    { opacity: 1, duration: 0.5 }, 1.25);
+        .from('.hero-video',   { scale: 1.08, duration: 2.4, ease: 'power2.out' }, 0)
+        .to('.hero-line span', { y: '0%', duration: 1.05, stagger: 0.14, ease: 'power4.out' }, 0.3)
+        .to('#hero-desc',      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.78)
+        .to('#hero-ctas',      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.92)
+        .to('#scroll-hint',    { opacity: 1, duration: 0.5 }, 1.15);
 
-      /* parallax hero bg */
-      gsap.to('#hero-bg', {
-        yPercent: 20, ease: 'none',
+      /* parallax hero video */
+      gsap.to('.hero-video', {
+        yPercent: 12, ease: 'none',
         scrollTrigger: { trigger: '.dr-hero', start: 'top top', end: 'bottom top', scrub: true }
       });
 
@@ -1019,10 +1004,11 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
         ScrollTrigger.create({
           trigger: el, start: 'top 90%', once: true,
           onEnter: () => {
-            gsap.to({ val: 0 }, {
+            const counter = { val: 0 };
+            gsap.to(counter, {
               val: end, duration: 1.5, ease: 'power2.out',
-              onUpdate: function() {
-                el.textContent = Math.round(this.targets()[0].val).toString();
+              onUpdate: () => {
+                el.textContent = Math.round(counter.val).toString();
               }
             });
           }
@@ -1059,7 +1045,7 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
         );
       });
 
-      /* ══ PANEL EXPANDIBLE — lógica original conservada ══ */
+      /* ══ PANEL EXPANDIBLE ══ */
       document.querySelectorAll<HTMLButtonElement>('.dr-learn-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const panel   = document.getElementById(btn.dataset.target!)!;
@@ -1124,7 +1110,6 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
             }
           });
 
-          // actualizar contador con delay para que termine la animación
           setTimeout(() => {
             if (counter) counter.textContent = `${visible} programa${visible !== 1 ? 's' : ''}`;
           }, 320);
