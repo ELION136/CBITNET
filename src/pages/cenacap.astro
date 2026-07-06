@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import '../styles/cenacap.css';
 
 const carreras = [
   {
@@ -9,6 +10,8 @@ const carreras = [
       { nombre: "Sistemas de Gestión Ambiental", modalidad: "Presencial / Virtual", imagen: "/images/1.png" },
       { nombre: "Sistemas de Gestión de Calidad", modalidad: "Presencial", imagen: "/images/2.png" },
       { nombre: "Prevención de Riesgos Laborales", modalidad: "Presencial", imagen: "/images/5.png" },
+      { nombre: "Auditor Líder ISO 9001:2015", modalidad: "Presencial / Virtual", imagen: "/images/2.png" },
+      { nombre: "Gestión de Procesos y Mejora Continua", modalidad: "Virtual", imagen: "/images/1.png" },
     ],
   },
   {
@@ -17,6 +20,8 @@ const carreras = [
     cursos: [
       { nombre: "Diseño Gráfico y Producción Audiovisual", modalidad: "Presencial / Virtual", imagen: "/images/6.png" },
       { nombre: "Microsoft Project", modalidad: "Virtual", imagen: "/images/3.png" },
+      { nombre: "Marketing Digital y Redes Sociales", modalidad: "Virtual", imagen: "/images/6.png" },
+      { nombre: "Ofimática Avanzada y Excel Empresarial", modalidad: "Presencial / Virtual", imagen: "/images/3.png" },
     ],
   },
   {
@@ -25,26 +30,34 @@ const carreras = [
     cursos: [
       { nombre: "Sistemas Tácticos Deportivos", modalidad: "Presencial", imagen: "/images/4.png" },
       { nombre: "Deporte de Alto Rendimiento", modalidad: "Presencial", imagen: "/images/8.png" },
+      { nombre: "Nutrición Deportiva y Rendimiento Físico", modalidad: "Presencial", imagen: "/images/8.png" },
+      { nombre: "Entrenamiento Funcional y Fitness", modalidad: "Presencial", imagen: "/images/4.png" },
     ],
   },
 ];
 
 const servicios = [
-  { titulo: "Gestión de Calidad",  desc: "ISO 9001 y auditorías internas para estándares internacionales.", imagen: "/images/2.png" },
-  { titulo: "Gestión Ambiental",   desc: "Normas ISO 14001 y estrategias de impacto ambiental empresarial.", imagen: "/images/1.png" },
-  { titulo: "Diseño Gráfico",      desc: "Software profesional, video y producción para medios digitales.", imagen: "/images/6.png" },
-  { titulo: "Alto Rendimiento",    desc: "Entrenamiento táctico, físico y mental de élite competitiva.", imagen: "/images/8.png" },
+  { titulo: "Capacitación Especializada", desc: "Programas dictados por profesionales en ejercicio, con metodología práctica y actualizada.", imagen: "/images/cena1.webp" },
+  { titulo: "Consultoría y Auditoría",    desc: "Acompañamiento a empresas en la implementación y auditoría de sistemas de gestión bajo normas internacionales.", imagen: "/images/cena2.webp" },
+  { titulo: "Certificación de Competencias", desc: "Evaluación y certificación de habilidades técnicas y profesionales con validez reconocida.", imagen: "/images/cena3.webp" },
+  { titulo: "Capacitación In-Company",    desc: "Programas a medida, dictados directamente en las instalaciones de tu empresa.", imagen: "/images/cena4.webp" },
 ];
 
 const programas = [
-  { titulo: "Sistemas de Gestión Ambiental",           cat: "Calidad",    modalidad: "Presencial / Virtual", imagen: "/images/1.png"    },
-  { titulo: "Diseño Visual Corporativo",                cat: "Diseño",     modalidad: "Presencial / Virtual", imagen: "/images/6.png"    },
-  { titulo: "Prevención de Riesgos Laborales",          cat: "Seguridad",  modalidad: "Presencial",           imagen: "/images/5.png"    },
+  { titulo: "Sistemas de Gestión Ambiental",           cat: "Calidad",    modalidad: "Presencial / Virtual", imagen: "/images/cursoc1.webp"    },
+  { titulo: "Diseño Visual Corporativo",                cat: "Diseño",     modalidad: "Presencial / Virtual", imagen: "/images/cursoc2.webp"    },
+  { titulo: "Prevención de Riesgos Laborales",          cat: "Seguridad",  modalidad: "Presencial",           imagen: "/images/cursoc5.webp"    },
   { titulo: "Entrenamiento Deportivo de Alto Nivel",    cat: "Deporte",    modalidad: "Presencial",           imagen: "/images/8.png"    },
-  { titulo: "Microsoft Project",                        cat: "Tecnología", modalidad: "Virtual",              imagen: "/images/3.png"    },
-  { titulo: "Sistemas Tácticos Deportivos",             cat: "Deporte",    modalidad: "Presencial",           imagen: "/images/4.png"    },
-  { titulo: "Sistemas de Gestión de Calidad ISO 9001",  cat: "Calidad",    modalidad: "Presencial",           imagen: "/images/2.png"    },
-  { titulo: "Informática Industrial",                   cat: "Tecnología", modalidad: "Presencial / Virtual", imagen: "/images/3.png"    },
+  { titulo: "Microsoft Project",                        cat: "Tecnología", modalidad: "Virtual",              imagen: "/images/cursoc6.webp"    },
+  { titulo: "Sistemas Tácticos Deportivos",             cat: "Deporte",    modalidad: "Presencial",           imagen: "/images/cursoc4.webp"    },
+  { titulo: "Sistemas de Gestión de Calidad ISO 9001",  cat: "Calidad",    modalidad: "Presencial",           imagen: "/images/cursoc3.webp"    },
+  { titulo: "Informática Industrial",                   cat: "Tecnología", modalidad: "Presencial / Virtual", imagen: "/images/cursoc7.webp"    },
+  { titulo: "Auditor Líder ISO 9001:2015",              cat: "Calidad",    modalidad: "Presencial / Virtual", imagen: "/images/2.png"    },
+  { titulo: "Gestión de Procesos y Mejora Continua",    cat: "Calidad",    modalidad: "Virtual",              imagen: "/images/1.png"    },
+  { titulo: "Marketing Digital y Redes Sociales",       cat: "Diseño",     modalidad: "Virtual",              imagen: "/images/6.png"    },
+  { titulo: "Ofimática Avanzada y Excel Empresarial",   cat: "Tecnología", modalidad: "Presencial / Virtual", imagen: "/images/3.png"    },
+  { titulo: "Nutrición Deportiva y Rendimiento Físico", cat: "Deporte",    modalidad: "Presencial",           imagen: "/images/8.png"    },
+  { titulo: "Entrenamiento Funcional y Fitness",        cat: "Deporte",    modalidad: "Presencial",           imagen: "/images/4.png"    },
 ];
 
 const testimonios = [
@@ -82,484 +95,12 @@ const heroSlides = [
 ---
 
 <Layout title="CENACAP | Centro Nacional de Capacitación Profesional" showBackgroundFX={false}>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    /* ── PALETA CENACAP: verde · azul · crema ── */
-    --green:     #1e6b45;
-    --green-mid: #28834f;
-    --green-lt:  #e6f4ec;
-    --green-dim: rgba(30,107,69,0.18);
-    --blue:      #1a4b8c;
-    --blue-mid:  #2d7dd2;
-    --blue-lt:   #ebf3fb;
-    --cream:     #f5f0e8;
-    --cream2:    #ede7d9;
-    --beige:     #c9b99a;
-    --brown:     #8b7355;
-    --dark:      #1a1612;
-    --dark2:     #1d2820;   /* verde muy oscuro */
-    --mid:       #4a5e52;
-    --soft:      #7a9080;
-    --faint:     #a8b8b0;
-    --white:     #ffffff;
-    --accent:    #2ca2f1;   /* dorado para detalles cálidos */
-    --r:         12px;
-    --r-lg:      20px;
-    --r-xl:      32px;
-  }
-  html { scroll-behavior: smooth; }
-  body { background: var(--white); color: var(--dark); font-family: 'Source Sans 3', sans-serif; overflow-x: hidden; }
-
-  /* ══════════════ NAVBAR ══════════════ */
-  #navbar {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-    height: 64px;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px;
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid #dce8e0;
-    transition: box-shadow 0.3s;
-  }
-  #navbar.scrolled { box-shadow: 0 2px 20px rgba(30,107,69,0.10); }
-  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo img { height: 32px; }
-  .nav-wordmark { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; letter-spacing: 0.08em; color: var(--dark); }
-  .nav-wordmark em { color: var(--green); font-style: normal; }
-  .nav-links { display: flex; align-items: center; gap: 6px; }
-  .nav-link { padding: 7px 16px; color: var(--mid); font-size: 0.83rem; font-weight: 500; text-decoration: none; border-radius: 100px; transition: all 0.2s; }
-  .nav-link:hover { color: var(--dark); background: var(--cream); }
-  .nav-cta { display: inline-flex; align-items: center; gap: 7px; padding: 9px 22px; background: var(--green); color: #fff; font-size: 0.83rem; font-weight: 700; text-decoration: none; border-radius: 100px; letter-spacing: 0.02em; transition: all 0.25s; }
-  .nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,107,69,0.35); }
-
-  /* ══════════════ HERO CARRUSEL ══════════════ */
-  #hero {
-    margin-top: 64px;
-    position: relative; overflow: hidden;
-    border-radius: 0 0 var(--r-xl) var(--r-xl);
-    height: calc(100vh - 64px); min-height: 560px; max-height: 820px;
-  }
-
-  /* slides */
-  .hero-slide {
-    position: absolute; inset: 0;
-    opacity: 0;
-    transition: opacity 1s cubic-bezier(0.4,0,0.2,1);
-    pointer-events: none;
-  }
-  .hero-slide.active { opacity: 1; pointer-events: auto; }
-
-  .hero-slide-img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-    transform: scale(1.04);
-    transition: transform 7s ease-out;
-  }
-  .hero-slide.active .hero-slide-img { transform: scale(1); }
-
-  .hero-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(14,30,20,0.82) 0%, rgba(14,30,20,0.3) 55%, transparent 100%);
-  }
-
-  /* contenido slide */
-  .hero-content {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 0 56px 56px; z-index: 2;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 6px 16px;
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.22);
-    border-radius: 100px;
-    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-    color: #fff; margin-bottom: 20px;
-  }
-  .hero-tag-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green-mid); }
-  .hero-h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    line-height: 0.92; letter-spacing: 0.01em; text-transform: uppercase;
-    color: #fff; max-width: 700px; margin-bottom: 28px;
-  }
-  .hero-h1 .c-green { color: #6ee6a0; }
-
-  .hero-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-  .btn-white {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 32px; background: var(--white); color: var(--dark);
-    font-weight: 700; font-size: 0.9rem; text-decoration: none;
-    border-radius: 100px; transition: all 0.3s;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  }
-  .btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); background: var(--cream); }
-  .btn-outline-white {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 13px 28px;
-    border: 1.5px solid rgba(255,255,255,0.45); color: rgba(255,255,255,0.85);
-    font-weight: 600; font-size: 0.88rem; text-decoration: none;
-    border-radius: 100px; transition: all 0.3s;
-  }
-  .btn-outline-white:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.12); }
-  .hero-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
-  .hero-chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 7px 14px;
-    background: rgba(255,255,255,0.10); backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.16);
-    border-radius: 100px; font-size: 0.7rem; font-weight: 600;
-    letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.8);
-  }
-
-  /* controles carrusel */
-  .hero-controls {
-    position: absolute; bottom: 56px; right: 56px;
-    z-index: 10; display: flex; gap: 10px; align-items: center;
-  }
-  .hc-btn {
-    width: 42px; height: 42px; border-radius: 50%;
-    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
-    backdrop-filter: blur(8px); color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: all 0.25s;
-  }
-  .hc-btn:hover { background: var(--green); border-color: var(--green); }
-
-  .hero-dots {
-    position: absolute; bottom: 72px; left: 56px;
-    z-index: 10; display: flex; gap: 8px;
-  }
-  .hero-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: rgba(255,255,255,0.3); border: none; cursor: pointer;
-    transition: all 0.3s; padding: 0;
-  }
-  .hero-dot.active { background: var(--green-mid); transform: scale(1.4); }
-
-  /* barra de progreso */
-  .hero-progress {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 3px; z-index: 10;
-    background: rgba(255,255,255,0.1);
-  }
-  .hero-progress-bar {
-    height: 100%; width: 0%;
-    background: linear-gradient(90deg, var(--green-mid), #6ee6a0);
-    transition: none;
-  }
-  .hero-progress-bar.running {
-    width: 100%;
-    transition: width 5.5s linear;
-  }
-
-  /* ══════════════ ABOUT ══════════════ */
-  #about { background: var(--white); }
-  .about-wrap { max-width: 1280px; margin: 0 auto; padding: 90px 56px; }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-  .about-eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
-  .about-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--green); border-radius: 2px; display: block; }
-  .about-h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 4vw, 3.8rem); line-height: 1; letter-spacing: 0.01em; text-transform: uppercase; color: var(--dark); margin-bottom: 20px; }
-  .about-h2 .hl { color: var(--green); }
-  .about-desc { font-size: 0.95rem; color: var(--mid); line-height: 1.78; margin-bottom: 32px; }
-  .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .ab-feat {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 16px 18px;
-    background: var(--cream); border-radius: var(--r);
-    border: 1px solid #dce8e0;
-    transition: all 0.3s;
-  }
-  .ab-feat:hover { background: var(--green-lt); border-color: var(--green); transform: translateY(-2px); }
-  .ab-feat-icon { color: var(--green); flex-shrink: 0; margin-top: 2px; }
-  .ab-feat-title { font-weight: 700; font-size: 0.82rem; color: var(--dark); margin-bottom: 3px; }
-  .ab-feat-desc { font-size: 0.76rem; color: var(--soft); line-height: 1.5; }
-  .about-right { position: relative; }
-  .about-mosaic { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 280px 180px; gap: 12px; }
-  .ab-img { border-radius: var(--r-lg); overflow: hidden; }
-  .ab-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
-  .ab-img:hover img { transform: scale(1.05); }
-  .ab-img.span2 { grid-column: span 2; }
-  .about-badge {
-    position: absolute; bottom: -20px; left: -20px;
-    background: var(--green); color: #fff;
-    padding: 18px 24px; border-radius: var(--r-lg);
-    text-align: center;
-    box-shadow: 0 12px 32px rgba(30,107,69,0.3);
-  }
-  .about-badge-num { font-family: 'Montserrat', sans-serif; font-size: 2.4rem; color: #6ee6a0; line-height: 1; }
-  .about-badge-lbl { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 3px; }
-
-  /* ══════════════ SECCIÓN SHARED ══════════════ */
-  .sw { max-width: 1280px; margin: 0 auto; padding: 90px 56px; }
-  .sec-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 52px; gap: 24px; flex-wrap: wrap; }
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 9px;
-    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 12px;
-  }
-  .eyebrow::before { content: ''; width: 28px; height: 2px; border-radius: 2px; display: block; }
-  .eyebrow.green  { color: var(--green);    } .eyebrow.green::before  { background: var(--green);    }
-  .eyebrow.blue   { color: var(--blue-mid); } .eyebrow.blue::before   { background: var(--blue-mid); }
-  .eyebrow.cream  { color: var(--brown);    } .eyebrow.cream::before  { background: var(--brown);    }
-  .sec-title { font-family: 'Montserrat', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 0.95; letter-spacing: 0.01em; text-transform: uppercase; color: var(--dark); }
-  .hl-green { color: var(--green);    }
-  .hl-blue  { color: var(--blue-mid); }
-  .hl-acc   { color: var(--accent);   }
-  .link-all {
-    display: inline-flex; align-items: center; gap: 7px; padding: 10px 22px;
-    border: 1.5px solid #c8ddd0; border-radius: 100px;
-    font-size: 0.8rem; font-weight: 600; color: var(--mid); text-decoration: none; transition: all 0.25s; white-space: nowrap;
-  }
-  .link-all:hover { border-color: var(--green); color: var(--green); }
-
-  /* ══════════════ SERVICIOS ══════════════ */
-  #servicios { background: var(--cream); }
-  .servicios-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .serv-card {
-    background: var(--white); border-radius: var(--r-lg);
-    border: 1px solid #dce8e0; overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.4s, border-color 0.3s;
-  }
-  .serv-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(30,107,69,0.12); border-color: var(--green); }
-  .serv-img { height: 200px; overflow: hidden; }
-  .serv-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.55s; }
-  .serv-card:hover .serv-img img { transform: scale(1.07); }
-  .serv-body { padding: 20px 20px 22px; }
-  .serv-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); margin-bottom: 10px; }
-  .serv-title { font-family: 'Montserrat', sans-serif; font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dark); margin-bottom: 7px; }
-  .serv-desc { font-size: 0.78rem; color: var(--soft); line-height: 1.6; }
-
-  /* ══════════════ PROGRAMAS CERTIFICADOS ══════════════ */
-  #programas { background: var(--white); }
-
-  .prog-tabs { display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
-  .prog-tab {
-    padding: 8px 20px; background: transparent;
-    border: 1.5px solid #c8ddd0; border-radius: 100px;
-    font-size: 0.78rem; font-weight: 600; color: var(--soft);
-    cursor: pointer; transition: all 0.22s;
-  }
-  .prog-tab:hover { border-color: var(--green); color: var(--green); }
-  .prog-tab.active { background: var(--green); border-color: var(--green); color: #fff; }
-
-  .prog-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-  }
-
-  .prog-card {
-    border-radius: var(--r-lg); overflow: hidden;
-    border: 1px solid #dce8e0;
-    background: var(--white);
-    box-shadow: 0 2px 8px rgba(30,107,69,0.06);
-    transition: transform 0.38s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.38s, border-color 0.3s;
-    display: none; /* oculto por defecto, JS lo muestra */
-  }
-  .prog-card.visible {
-    display: block;
-  }
-  .prog-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(30,107,69,0.14); border-color: var(--green); }
-  .prog-card-img { height: 160px; overflow: hidden; position: relative; }
-  .prog-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
-  .prog-card:hover .prog-card-img img { transform: scale(1.06); }
-  .prog-card-img-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(14,30,20,0.6) 0%, transparent 55%);
-  }
-  .prog-cat-badge {
-    position: absolute; bottom: 10px; left: 12px;
-    font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-    color: #fff; background: var(--green); padding: 3px 10px; border-radius: 50px;
-  }
-  .prog-card-body { padding: 14px 16px 18px; }
-  .prog-card-title { font-weight: 700; font-size: 0.88rem; color: var(--dark); line-height: 1.3; margin-bottom: 6px; }
-  .prog-card-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  .prog-modalidad { font-size: 0.65rem; color: var(--faint); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
-  .prog-cta {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--green); text-decoration: none; transition: gap 0.2s;
-  }
-  .prog-cta:hover { gap: 8px; }
-
-  /* ══════════════ WHY ══════════════ */
-  #why { background: var(--cream); }
-  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-  .why-img-col { position: relative; }
-  .why-img-main { width: 100%; height: 480px; object-fit: cover; border-radius: var(--r-xl); display: block; }
-  .why-float {
-    position: absolute; top: 32px; right: -28px;
-    background: var(--white); border-radius: var(--r-lg);
-    padding: 18px 22px;
-    box-shadow: 0 12px 40px rgba(30,107,69,0.15);
-    text-align: center; min-width: 130px;
-  }
-  .why-float-num { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; color: var(--green); line-height: 1; }
-  .why-float-lbl { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); margin-top: 3px; }
-  .why-float-2 {
-    position: absolute; bottom: 32px; left: -28px;
-    background: var(--dark2);
-    border-radius: var(--r-lg);
-    padding: 18px 22px;
-    box-shadow: 0 12px 40px rgba(14,30,20,0.25);
-    text-align: center; min-width: 130px;
-  }
-  .why-float-2 .why-float-num { color: #6ee6a0; }
-  .why-float-2 .why-float-lbl { color: rgba(255,255,255,0.45); }
-  .why-items { display: flex; flex-direction: column; gap: 16px; }
-  .why-item {
-    display: flex; gap: 16px; align-items: flex-start;
-    padding: 20px 22px; background: var(--white);
-    border-radius: var(--r); border: 1px solid #dce8e0;
-    transition: transform 0.35s cubic-bezier(0.34,1.4,0.64,1), border-color 0.3s, box-shadow 0.3s;
-  }
-  .why-item:hover { transform: translateX(8px); border-color: var(--green); box-shadow: 0 4px 20px rgba(30,107,69,0.10); }
-  .why-num { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: #c8ddd0; line-height: 1; flex-shrink: 0; width: 32px; transition: color 0.3s; }
-  .why-item:hover .why-num { color: var(--green); }
-  .why-t { font-weight: 700; font-size: 0.9rem; color: var(--dark); margin-bottom: 4px; }
-  .why-d { font-size: 0.8rem; color: var(--soft); line-height: 1.6; }
-
-  /* ══════════════ STATS ══════════════ */
-  #stats { background: var(--dark2); }
-  .stats-inner { max-width: 1280px; margin: 0 auto; padding: 72px 56px; }
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
-  .stat-block {
-    text-align: center; padding: 48px 32px;
-    border-right: 1px solid rgba(255,255,255,0.06);
-    transition: background 0.3s;
-  }
-  .stat-block:last-child { border-right: none; }
-  .stat-block:hover { background: rgba(255,255,255,0.03); }
-  .stat-num { font-family: 'Montserrat', sans-serif; font-size: clamp(2.8rem, 5vw, 4rem); color: #6ee6a0; line-height: 1; margin-bottom: 10px; }
-  .stat-lbl { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
-
-  /* ══════════════ TESTIMONIOS ══════════════ */
-  #testimonios { background: var(--white); }
-  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  .testi-card {
-    background: var(--cream);
-    border: 1px solid #dce8e0; border-radius: var(--r-lg);
-    padding: 34px 30px; position: relative; overflow: hidden;
-    transition: transform 0.38s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.38s;
-  }
-  .testi-card::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, var(--green), var(--blue-mid));
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-  .testi-card:hover { transform: translateY(-8px); box-shadow: 0 24px 56px rgba(30,107,69,0.10); }
-  .testi-card:hover::after { transform: scaleX(1); }
-  .testi-stars { color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 16px; }
-  .testi-cita { font-size: 0.93rem; color: var(--mid); line-height: 1.76; font-style: italic; margin-bottom: 22px; }
-  .testi-footer { display: flex; align-items: center; gap: 12px; }
-  .testi-av { width: 42px; height: 42px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: #fff; flex-shrink: 0; }
-  .testi-card:nth-child(2) .testi-av { background: var(--blue); }
-  .testi-card:nth-child(3) .testi-av { background: var(--brown); }
-  .testi-autor { font-weight: 700; font-size: 0.87rem; color: var(--dark); }
-  .testi-rol { font-size: 0.71rem; color: var(--green); font-weight: 600; margin-top: 2px; }
-
-  /* ══════════════ VACANTES ══════════════ */
-  #vacantes { background: var(--cream); }
-  .vacantes-list { display: flex; flex-direction: column; gap: 14px; }
-  .vacante-row {
-    display: flex; align-items: center; justify-content: space-between; gap: 20px;
-    padding: 24px 28px; background: var(--white);
-    border: 1px solid #dce8e0; border-radius: var(--r-lg); transition: all 0.3s;
-  }
-  .vacante-row:hover { border-color: var(--green); box-shadow: 0 6px 24px rgba(30,107,69,0.10); transform: translateX(6px); }
-  .vac-num { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; color: #c8ddd0; flex-shrink: 0; width: 32px; transition: color 0.3s; }
-  .vacante-row:hover .vac-num { color: var(--green); }
-  .vac-info { flex: 1; }
-  .vac-cargo { font-weight: 700; font-size: 1rem; color: var(--dark); margin-bottom: 4px; }
-  .vac-area { font-size: 0.78rem; color: var(--soft); }
-  .btn-apply { display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; background: var(--green); color: #fff; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-decoration: none; border-radius: 100px; transition: all 0.25s; }
-  .btn-apply:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(30,107,69,0.35); }
-
-  /* ══════════════ CTA BANNER ══════════════ */
-  #cta { position: relative; overflow: hidden; background: var(--dark2); }
-  .cta-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.07; }
-  .cta-inner {
-    position: relative; z-index: 1;
-    max-width: 1280px; margin: 0 auto;
-    padding: 100px 56px;
-    display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap;
-  }
-  .cta-tag { display: inline-flex; align-items: center; gap: 7px; padding: 6px 14px; background: rgba(110,230,160,0.12); border: 1px solid rgba(110,230,160,0.25); border-radius: 100px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6ee6a0; margin-bottom: 20px; }
-  .cta-h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.4rem, 5vw, 5rem); line-height: 0.93; letter-spacing: 0.01em; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
-  .cta-h2 .c-acc { color: #6ee6a0; }
-  .cta-sub { font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 440px; }
-  .cta-right { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
-  .btn-cta-prim { display: inline-flex; align-items: center; gap: 9px; padding: 16px 40px; background: var(--green); color: #fff; font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em; text-decoration: none; border-radius: 100px; transition: all 0.3s; box-shadow: 0 6px 24px rgba(30,107,69,0.4); }
-  .btn-cta-prim:hover { background: var(--green-mid); transform: translateY(-3px); box-shadow: 0 12px 36px rgba(30,107,69,0.5); }
-  .btn-cta-sec { display: inline-flex; align-items: center; gap: 9px; padding: 15px 32px; border: 1.5px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); font-weight: 600; font-size: 0.9rem; text-decoration: none; border-radius: 100px; transition: all 0.3s; }
-  .btn-cta-sec:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
-  .cta-chips { display: flex; gap: 10px; flex-wrap: wrap; }
-  .cta-chip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border: 1px solid rgba(255,255,255,0.10); border-radius: 100px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
-  .chip-d { width: 5px; height: 5px; border-radius: 50%; background: #6ee6a0; }
-
-  /* ══════════════ FOOTER ══════════════ */
-  footer { background: var(--dark); padding: 56px 56px 36px; }
-  .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 32px; }
-  .footer-brand { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 0.1em; color: #fff; margin-bottom: 12px; }
-  .footer-brand em { color: #6ee6a0; font-style: normal; }
-  .footer-desc { font-size: 0.8rem; color: rgba(255,255,255,0.32); line-height: 1.7; }
-  .footer-col-title { font-weight: 700; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 16px; }
-  .footer-links { display: flex; flex-direction: column; gap: 9px; }
-  .footer-link { font-size: 0.82rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
-  .footer-link:hover { color: #6ee6a0; }
-  .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); letter-spacing: 0.04em; }
-  .footer-accent { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; color: #6ee6a0; font-weight: 600; }
-
-  /* ══════════════ ANIMACIONES ══════════════ */
-  .anim-up    { opacity: 0; transform: translateY(44px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
-  .anim-left  { opacity: 0; transform: translateX(-52px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
-  .anim-right { opacity: 0; transform: translateX(52px); transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1); }
-  .anim-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
-  .anim-up.in, .anim-left.in, .anim-right.in, .anim-scale.in { opacity: 1; transform: none; }
-  .d1 { transition-delay: 0.07s; } .d2 { transition-delay: 0.14s; }
-  .d3 { transition-delay: 0.21s; } .d4 { transition-delay: 0.28s; }
-
-  /* ══════════════ RESPONSIVE ══════════════ */
-  @media(max-width:1024px) {
-    .servicios-grid { grid-template-columns: repeat(2,1fr); }
-    .prog-grid { grid-template-columns: repeat(2,1fr); }
-    .stats-grid { grid-template-columns: repeat(2,1fr); }
-    .footer-top { grid-template-columns: 1fr 1fr; }
-  }
-  @media(max-width:768px) {
-    #navbar { padding: 0 20px; }
-    .nav-links { display: none; }
-    .hero-content { padding: 0 24px 40px; }
-    .hero-controls { right: 24px; bottom: 40px; }
-    .hero-dots { left: 24px; bottom: 56px; }
-    .about-wrap, .sw, .stats-inner { padding: 72px 24px; }
-    .about-grid, .why-grid { grid-template-columns: 1fr; gap: 40px; }
-    .about-mosaic { grid-template-rows: 200px 140px; }
-    .about-badge { left: 0; bottom: -14px; }
-    .testi-grid { grid-template-columns: 1fr; }
-    .servicios-grid { grid-template-columns: 1fr; }
-    .prog-grid { grid-template-columns: repeat(2,1fr); }
-    .cta-inner { flex-direction: column; padding: 72px 24px; }
-    footer { padding: 48px 24px 28px; }
-    .footer-top { grid-template-columns: 1fr; gap: 32px; }
-    .why-float  { right: -10px; top: 16px; }
-    .why-float-2{ left: -10px; }
-  }
-  @media(max-width:480px) {
-    .prog-grid { grid-template-columns: 1fr; }
-  }
-</style>
 
 <!-- NAVBAR -->
 <nav id="navbar">
   <a href="/" class="nav-logo">
     <img src="/images/log2.png" alt="CENACAP" onerror="this.style.display='none'" />
-    <span class="nav-wordmark">CENA<em>CAP</em></span>
+    <span class="nav-wordmark">CENACAP</span>
   </a>
   <div class="nav-links">
     <a href="#about"      class="nav-link">Nosotros</a>
@@ -587,10 +128,7 @@ const heroSlides = [
       />
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <div class="hero-tag">
-          <span class="hero-tag-dot"></span>
-          {slide.tag}
-        </div>
+        
         <h1 class="hero-h1">
           <span>{slide.h1a}</span><br/>
           <span>{slide.h1b}</span><br/>
@@ -643,8 +181,12 @@ const heroSlides = [
       <div class="about-left anim-left">
         <div class="about-eyebrow">Quiénes Somos</div>
         <h2 class="about-h2">SOMOS UN CENTRO DE <span class="hl">FORMACIÓN</span> PROFESIONAL</h2>
+
         <p class="about-desc">
-          CENACAP lleva más de 12 años desarrollando competencias certificadas en gestión, tecnología y deporte de alto rendimiento. Nuestros programas son diseñados y dictados por profesionales activos del mercado laboral.
+          El Centro de Capacitación Técnica Privado CENACAP es una entidad dedicada a la formación y actualización de competencias técnicas y profesionales, orientada a responder de manera eficiente a las demandas del mercado laboral y al desarrollo productivo. Su enfoque se basa en la capacitación práctica, la innovación metodológica y la mejora continua, promoviendo el aprendizaje significativo y la aplicación efectiva de conocimientos.
+        </p>
+        <p class="about-desc">
+          Ofrecemos procesos de capacitación flexibles y especializados, dirigidos a personas que buscan fortalecer sus habilidades técnicas, mejorar su desempeño profesional e incorporarse de manera competitiva al ámbito laboral. Asimismo, fomentamos valores como la responsabilidad, la ética, la calidad y el compromiso social, contribuyendo al desarrollo integral de nuestros participantes y al progreso de la comunidad.
         </p>
         <div class="about-features">
           {[
@@ -665,13 +207,13 @@ const heroSlides = [
       </div>
       <div class="about-right anim-right" style="padding:20px 20px 28px 0;">
         <div class="about-mosaic">
-          <div class="ab-img"><img src="/images/jun.jpg" alt="Clase" onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80'" /></div>
-          <div class="ab-img"><img src="/images/1.png" alt="Gestión" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80'" /></div>
-          <div class="ab-img span2"><img src="/images/6.png" alt="Diseño" onerror="this.src='https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80'" /></div>
+          <div class="ab-img"><img src="/images/cena6.webp" alt="Clase" onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80'" /></div>
+          <div class="ab-img"><img src="/images/cena8.webp" alt="Gestión" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80'" /></div>
+          <div class="ab-img span2"><img src="/images/cena7.webp" alt="Diseño" onerror="this.src='https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80'" /></div>
         </div>
         <div class="about-badge">
-          <div class="about-badge-num">12+</div>
-          <div class="about-badge-lbl">Años de Experiencia</div>
+          <div class="about-badge-num"></div>
+          <div class="about-badge-lbl">RM 0286/2025</div>
         </div>
       </div>
     </div>
@@ -684,7 +226,7 @@ const heroSlides = [
     <div class="sec-head">
       <div class="sec-head-left anim-up">
         <div class="eyebrow cream">Nuestras Especialidades</div>
-        <h2 class="sec-title">ÁREAS DE <span class="hl-acc">FORMACIÓN</span></h2>
+        <h2 class="sec-title">NUESTROS <span class="hl-acc">SERVICIOS</span></h2>
       </div>
       <a href="#programas" class="link-all anim-up d2">
         Ver todos
@@ -713,13 +255,13 @@ const heroSlides = [
   <div class="sw">
     <div class="sec-head">
       <div class="anim-up">
-        <div class="eyebrow blue">Oferta Académica</div>
+        <div class="eyebrow green">Oferta Académica</div>
         <h2 class="sec-title">PROGRAMAS <span class="hl-green">CERTIFICADOS</span></h2>
       </div>
     </div>
 
     <!-- Filtros -->
-    <div class="prog-tabs anim-up d1" id="prog-tabs">
+    <div class="prog-tabs" id="prog-tabs">
       <button class="prog-tab active" data-filter="Todos">Todos</button>
       <button class="prog-tab" data-filter="Calidad">Calidad</button>
       <button class="prog-tab" data-filter="Diseño">Diseño</button>
@@ -732,9 +274,8 @@ const heroSlides = [
     <div class="prog-grid" id="prog-grid">
       {programas.map((p, i) => (
         <div
-          class="prog-card visible anim-scale"
+          class="prog-card visible"
           data-cat={p.cat}
-          style={`transition-delay:${(i % 4) * 0.07}s`}
         >
           <div class="prog-card-img">
             <img src={p.imagen} alt={p.titulo} onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80'" />
@@ -762,7 +303,7 @@ const heroSlides = [
   <div class="sw">
     <div class="why-grid">
       <div class="why-img-col anim-left">
-        <img src="/images/jun.jpg" alt="Formación CENACAP" class="why-img-main"
+        <img src="/images/cena6.webp" alt="Formación CENACAP" class="why-img-main"
              onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80'" />
         <div class="why-float">
           <div class="why-float-num">97%</div>
@@ -841,7 +382,7 @@ const heroSlides = [
     <div class="sec-head">
       <div class="anim-up">
         <div class="eyebrow green">Oportunidades</div>
-        <h2 class="sec-title">CONSTRUYE TU <span class="hl-blue">CARRERA</span><br/>CON NOSOTROS</h2>
+        <h2 class="sec-title">CONSTRUYE TU <span class="hl-green">CARRERA</span><br/>CON NOSOTROS</h2>
       </div>
     </div>
     <p class="anim-up" style="font-size:0.95rem;color:var(--soft);margin-bottom:36px;max-width:520px;line-height:1.75;">
@@ -975,7 +516,7 @@ const heroSlides = [
     resetBar(); // arrancar
   })();
 
-  /* ── FILTROS PROGRAMAS ── */
+  /* ── FILTROS PROGRAMAS (transición instantánea, sin animación de aparición) ── */
   (() => {
     const tabs  = document.querySelectorAll<HTMLButtonElement>('.prog-tab');
     const cards = document.querySelectorAll<HTMLElement>('.prog-card');
@@ -986,15 +527,28 @@ const heroSlides = [
         tab.classList.add('active');
         const filter = tab.dataset.filter!;
 
-        cards.forEach((card, i) => {
+        cards.forEach((card) => {
           const match = filter === 'Todos' || card.dataset.cat === filter;
           card.classList.toggle('visible', match);
-          // re-stagger visual
-          (card as HTMLElement).style.transitionDelay = match ? `${(i % 4) * 0.07}s` : '0s';
         });
       });
     });
   })();
+
+  /* ── NAVBAR: scroll instantáneo a la sección (misma página, sin animación de bajada) ── */
+  document.querySelectorAll<HTMLAnchorElement>('.nav-link, .footer-link[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href') || '';
+      if (!href.startsWith('#')) return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      const navH = document.getElementById('navbar')?.offsetHeight ?? 64;
+      const y = (target as HTMLElement).getBoundingClientRect().top + window.scrollY - navH;
+      window.scrollTo({ top: y, behavior: 'auto' });
+      history.pushState(null, '', href);
+    });
+  });
 
   /* ── NAVBAR SCROLL ── */
   const nb = document.getElementById('navbar')!;
