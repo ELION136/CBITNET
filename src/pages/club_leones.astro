@@ -62,11 +62,50 @@ const causas = [
   },
 ];
 
+// ── BENEFICIOS DE SER LEÓN ──
+const beneficios = [
+  {
+    title: "Marcar la diferencia",
+    desc: "Hay más de 48.000 clubes de Leones en el mundo. Cada club está formado por personas como usted que han decidido actuar y servir a los demás.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>`,
+  },
+  {
+    title: "Servir con orgullo",
+    desc: "Tendrá la oportunidad de dedicar su tiempo, compartir sus talentos y sentirse orgulloso de saber que ha tenido un impacto positivo en la vida de otras personas.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path d="M8.5 14.5 7 22l5-3 5 3-1.5-7.5"/></svg>`,
+  },
+  {
+    title: "Crear conexiones",
+    desc: "Entable relaciones con las personas de su club y con los líderes locales con quienes colabora, además de Leones de su distrito y del mundo.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3 2.5-5.5 5.5-5.5S13 17 13 20M11 20c0-2.5 2-4.5 4.5-4.5S20 17.5 20 20"/></svg>`,
+  },
+  {
+    title: "Adquirir credibilidad",
+    desc: "Hay Leones en más de 200 países. Reciba el respeto que proviene de ser parte de una organización mundial conocida por su labor durante más de 100 años.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z"/><path d="m9 12 2 2 4-4"/></svg>`,
+  },
+  {
+    title: "Forjar nuevas amistades",
+    desc: "Sienta que pertenece a la asociación junto a los demás socios del club y al 1,4 millón de Leones de todo el mundo, conectados a través de la app MyLion.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>`,
+  },
+  {
+    title: "Mostrar su liderato",
+    desc: "Tiene acceso a nuestro sistema de aprendizaje en línea para pulir sus habilidades de liderato, con la oportunidad de dirigir en su club.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V9M12 21V3M20 21v-6"/><path d="M4 9h16"/></svg>`,
+  },
+  {
+    title: "Recibir apoyo global",
+    desc: "Todo León recibe apoyo de una red mundial de voluntarios y de la Fundación LCIF, que ofrece fondos de subvenciones para respaldar el servicio local y mundial.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a15 15 0 0 0 0 20a15 15 0 0 0 0-20Z"/><path d="M2 12h20"/></svg>`,
+  },
+];
+
 const activities = [
-  { title: "Torneos Comunitarios", desc: "Ligas deportivas juveniles reuniendo a más de 500 atletas en disciplinas múltiples.", imagen: "/images/miu1.jpeg" },
-  { title: "Brigadas de Salud", desc: "Campañas médicas gratuitas y soporte nutricional para familias de escasos recursos.", imagen: "/images/miu2.jpeg" },
+  { title: "Comunidad Colaborativa", desc: "Conecta con profesionales, comparte conocimientos y escala tus proyectos en equipo.", imagen: "/images/miu12.webp" },
+  { title: "Brigadas de Salud", desc: "Campañas médicas gratuitas y soporte nutricional para familias de escasos recursos.", imagen: "/images/miu4.jpeg" },
   { title: "Equipamiento Deportivo", desc: "Renovación de complejos deportivos barriales y dotación de material técnico de calidad.", imagen: "/images/miu3.jpeg" },
-  { title: "Becas y Formación", desc: "Clínicas de liderazgo cívico para guiar el carácter ético de los futuros campeones.", imagen: "/images/miu4.jpeg" },
+  { title: "Formación del Futuro", desc: "Forjadores de liderazgo cívico para guiar el carácter ético de los futuros campeones.", imagen: "/images/miu2.jpeg" },
   { title: "Ceremonia de Afiliación", desc: "Acto formal de bienvenida a nuevos miembros del Club de Leones Sacaba.", imagen: "/images/miro1.JPG" },
   { title: "Día del Peatón", desc: "Campañas de educación vial y seguridad ciudadana en jornadas de restricción vehicular.", imagen: "/images/miu5.jpeg" },
 ];
@@ -95,6 +134,7 @@ const secretariaWhatsapp = "https://wa.me/59172201160?text=Hola%2C%20quisiera%20
   <div class="nav-links">
     <a href="#quienes" class="nav-link">Quiénes Somos</a>
     <a href="#causas" class="nav-link">Nuestras Causas</a>
+    <a href="#beneficios" class="nav-link">Beneficios</a>
     <a href="#actividades" class="nav-link">Actividades</a>
     <a href="#unirse" class="nav-link">Unirse</a>
     <a href="https://www.lionsclubs.org/es" target="_blank" class="nav-link">Internacional</a>
@@ -223,6 +263,42 @@ const secretariaWhatsapp = "https://wa.me/59172201160?text=Hola%2C%20quisiera%20
   </div>
 </section>
 
+<!-- BENEFICIOS DE SER LEÓN -->
+<section id="beneficios">
+  <div class="section-wrap">
+    <div class="ben-layout">
+      <div class="ben-img-wrap" id="ben-img">
+        <img src="https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?w=900&q=80" alt="Voluntarios sirviendo a la comunidad"
+          class="ben-img" onerror="this.src='https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80'" />
+      </div>
+      <div id="ben-text">
+        <div class="eyebrow">Por Qué Unirse</div>
+        <h2 class="section-title">LOS BENEFICIOS<br/>DE SER <span class="hl">LEÓN</span></h2>
+        <p class="ben-intro">Ser socio de un club de Leones beneficia a su comunidad y a usted.</p>
+      </div>
+    </div>
+
+    <div class="ben-grid" id="ben-grid">
+      {beneficios.map(b => (
+        <div class="ben-card">
+          <div class="ben-icon" set:html={b.icon} />
+          <h3 class="ben-title">{b.title}</h3>
+          <p class="ben-desc">{b.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="ben-photos" id="ben-photos">
+      <img src="/images/leon1.webp" alt="Liderazgo y trabajo en equipo"
+        onerror="this.src='https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80'" />
+      <img src="/images/leon2.webp" alt="Red global de voluntarios"
+        onerror="this.src='https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80'" />
+      <img src="/images/leon3.webp" alt="Amistad entre socios del club"
+        onerror="this.src='https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80'" />
+    </div>
+  </div>
+</section>
+
 <!-- ACTIVIDADES / SERVICIO COMUNITARIO -->
 <section id="actividades">
   <div class="section-wrap">
@@ -335,6 +411,7 @@ const secretariaWhatsapp = "https://wa.me/59172201160?text=Hola%2C%20quisiera%20
     <a href="https://www.lionsclubs.org/es" target="_blank" class="footer-link">lionsclubs.org</a>
     <a href="#quienes" class="footer-link">Quiénes Somos</a>
     <a href="#causas" class="footer-link">Nuestras Causas</a>
+    <a href="#beneficios" class="footer-link">Beneficios</a>
     <a href="#unirse" class="footer-link">Unirse</a>
   </div>
   <span class="footer-copy">© 2025 Club de Leones Sacaba · Todos los derechos reservados</span>
@@ -408,6 +485,24 @@ ScrollTrigger.create({
 ScrollTrigger.create({
   trigger: '#causas-grid', start: 'top 80%', once: true,
   onEnter: () => gsap.from('#causas-grid .cause-card', { opacity: 0, y: 50, duration: 0.65, stagger: 0.08, ease: 'power3.out' })
+});
+
+// ── BENEFICIOS ──
+ScrollTrigger.create({
+  trigger: '#ben-img', start: 'top 78%', once: true,
+  onEnter: () => gsap.from('#ben-img', { opacity: 0, x: -40, duration: 0.9, ease: 'power3.out' })
+});
+ScrollTrigger.create({
+  trigger: '#ben-text', start: 'top 78%', once: true,
+  onEnter: () => gsap.from('#ben-text > *', { opacity: 0, x: 40, duration: 0.7, stagger: 0.1, ease: 'power3.out' })
+});
+ScrollTrigger.create({
+  trigger: '#ben-grid', start: 'top 80%', once: true,
+  onEnter: () => gsap.from('#ben-grid .ben-card', { opacity: 0, y: 40, duration: 0.6, stagger: 0.08, ease: 'power3.out' })
+});
+ScrollTrigger.create({
+  trigger: '#ben-photos', start: 'top 85%', once: true,
+  onEnter: () => gsap.from('#ben-photos img', { opacity: 0, scale: 0.95, duration: 0.6, stagger: 0.1, ease: 'power3.out' })
 });
 
 // ── ACTIVIDADES ──

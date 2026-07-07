@@ -1,4 +1,4 @@
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Lato:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Lato:wght@300;400;500;600;700&display=swap');
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -487,6 +487,70 @@
     color: #5b6688; line-height: 1.65;
   }
 
+  /* ── BENEFICIOS DE SER LEÓN ── */
+  #beneficios {
+    background: var(--off-white);
+    border-top: 1px solid var(--gray-light);
+  }
+  .ben-layout {
+    display: grid; grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px; align-items: center;
+    margin-bottom: 64px;
+  }
+  .ben-img-wrap {
+    height: 340px; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 20px 50px rgba(26,58,143,0.16);
+  }
+  .ben-img { width: 100%; height: 100%; object-fit: cover; }
+  .ben-intro {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.05rem; font-weight: 400;
+    color: var(--blue-mid); margin-top: 18px; line-height: 1.7;
+  }
+  .ben-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 22px; margin-bottom: 56px;
+  }
+  .ben-card {
+    padding: 28px 22px;
+    background: var(--white);
+    border: 1.5px solid var(--gray-light);
+    border-radius: 10px;
+    transition: all 0.3s;
+  }
+  .ben-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 34px rgba(15,36,96,0.12);
+  }
+  .ben-icon {
+    width: 44px; height: 44px;
+    color: var(--blue);
+    margin-bottom: 16px;
+  }
+  .ben-card:hover .ben-icon { color: var(--gold-dark); }
+  .ben-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--blue-dark); margin-bottom: 8px;
+  }
+  .ben-desc {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.88rem; font-weight: 300;
+    color: #0c45ee; line-height: 1.65;
+  }
+  .ben-photos {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .ben-photos img {
+    width: 100%; height: 200px; object-fit: cover;
+    border-radius: 10px;
+    filter: saturate(0.95);
+    transition: transform 0.5s;
+  }
+  .ben-photos img:hover { transform: scale(1.04); }
+
   /* ── ACTIVIDADES / SERVICIO COMUNITARIO ── */
   #actividades {
     background: var(--white);
@@ -726,6 +790,9 @@
     .quienes-img-wrap { height: 380px; }
     .causas-grid { grid-template-columns: repeat(2, 1fr); }
     .act-grid { grid-template-columns: 1fr 1fr; }
+    .ben-layout { grid-template-columns: 1fr; }
+    .ben-grid { grid-template-columns: repeat(2, 1fr); }
+    .ben-photos { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
     #navbar { padding: 0 24px; height: 68px; }
@@ -736,6 +803,7 @@
     .stats-row { grid-template-columns: repeat(2, 1fr); }
     .causas-grid { grid-template-columns: 1fr; }
     .act-grid { grid-template-columns: 1fr; }
+    .ben-grid { grid-template-columns: 1fr; }
     footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
     .scroll-hint { right: 24px; }
   }
