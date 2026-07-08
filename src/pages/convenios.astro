@@ -3,13 +3,23 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
+// NOTA: los campos "since", "benefits", "importance" y "gallery" tienen datos de ejemplo.
+// Reemplázalos con la información real y las fotos reales de cada convenio.
 const institutions = [
   {
     name: "INAF",
     category: "Formación internacional",
     color: "#C9993A",
+    since: "2022",
     image: "/images/mix5.webp",
+    gallery: ["/images/un (1).webp", "/images/futi.jpg", "/images/miro1.JPG"],
     desc: "Alianza orientada a fortalecer rutas de especialización, certificación y proyección académica con enfoque deportivo.",
+    importance: "Abre la puerta a certificaciones que pocas veces llegan a instituciones formativas locales: convierte la trayectoria de un estudiante CBIT en un currículum con validez internacional.",
+    benefits: [
+      "Certificaciones internacionales avaladas",
+      "Acompañamiento en proyección académica-deportiva",
+      "Descuentos exclusivos para estudiantes CBIT",
+    ],
     url: "https://inaf.cl",
     icon: "M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z M2 12h20",
   },
@@ -17,8 +27,16 @@ const institutions = [
     name: "UNITEP",
     category: "Educación superior",
     color: "#1A4B8C",
+    since: "2021",
     image: "/images/un (1).webp",
+    gallery: ["/images/mix5.webp", "/images/miro1.JPG", "/images/un (4).webp"],
     desc: "Convenio para ampliar oportunidades de continuidad académica, capacitación y articulación institucional.",
+    importance: "Elimina la barrera más común al terminar la etapa escolar: qué hacer después. Con revalidación directa de créditos, el paso a la universidad deja de ser una incógnita.",
+    benefits: [
+      "Continuidad académica con revalidación de créditos",
+      "Becas y descuentos para egresados CBIT",
+      "Capacitaciones conjuntas entre ambas instituciones",
+    ],
     url: "https://unitepc.edu.bo",
     icon: "M22 10v6M2 10l10-5 10 5-10 5z M6 12.5V16a6 6 0 0 0 12 0v-3.5",
   },
@@ -26,8 +44,16 @@ const institutions = [
     name: "UNIFRANZ",
     category: "Universidad aliada",
     color: "#2D7DD2",
+    since: "2023",
     image: "/images/un (4).webp",
+    gallery: ["/images/un (1).webp", "/images/fuchi.webp", "/images/futi.jpg"],
     desc: "Vínculo académico para impulsar programas, experiencias formativas y redes de crecimiento profesional.",
+    importance: "Conecta a nuestros estudiantes con una red universitaria consolidada, ampliando el abanico de carreras y experiencias disponibles después de CBIT.",
+    benefits: [
+      "Programas académicos con enfoque profesional",
+      "Experiencias formativas complementarias",
+      "Redes de networking y crecimiento profesional",
+    ],
     url: "https://unifranz.edu.bo",
     icon: "M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5z",
   },
@@ -35,8 +61,16 @@ const institutions = [
     name: "CLUB OLIMPIC",
     category: "Alto rendimiento",
     color: "#C9993A",
+    since: "2020",
     image: "/images/futi.jpg",
+    gallery: ["/images/fuchi.webp", "/images/miro1.JPG", "/images/mix5.webp"],
     desc: "Cooperación deportiva para promover entrenamiento, disciplina competitiva y experiencias de formación integral.",
+    importance: "Da a los deportistas de CBIT un espacio real de exigencia competitiva, algo que ninguna cancha propia puede reemplazar por sí sola.",
+    benefits: [
+      "Espacios de entrenamiento de alto rendimiento",
+      "Disciplina competitiva guiada por cuerpo técnico",
+      "Formación integral dentro y fuera de la cancha",
+    ],
     url: "https://www.facebook.com/ClubOlympicCbba",
     icon: "M6 9H4.5a2.5 2.5 0 0 1 0-5H6 M18 9h1.5a2.5 2.5 0 0 0 0-5H18 M4 22h16 M10 14.66V17c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2.34 M12 2a5 5 0 0 0-5 5v3c0 2.2 1.8 4 4 4h2c2.2 0 4-1.8 4-4V7a5 5 0 0 0-5-5z",
   },
@@ -44,8 +78,16 @@ const institutions = [
     name: "INTRASPORTS",
     category: "Gestión deportiva",
     color: "#1A4B8C",
+    since: "2022",
     image: "/images/fuchi.webp",
+    gallery: ["/images/futi.jpg", "/images/mix5.webp", "/images/un (1).webp"],
     desc: "Alianza para conectar procesos deportivos con tecnología, competencia, seguimiento y proyección de talentos.",
+    importance: "Convierte el esfuerzo diario de entrenamiento en datos y oportunidades concretas de competencia, dando visibilidad a talentos que de otra forma pasarían desapercibidos.",
+    benefits: [
+      "Seguimiento tecnológico del desempeño deportivo",
+      "Conexión con procesos de competencia formal",
+      "Proyección de talentos hacia nuevas oportunidades",
+    ],
     url: "https://fcintrasports.com",
     icon: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
   },
@@ -53,8 +95,16 @@ const institutions = [
     name: "CLUB DE LEONES",
     category: "Acción cívica y social",
     color: "#2D7DD2",
+    since: "2019",
     image: "/images/miro1.JPG",
+    gallery: ["/images/miro2.JPG", "/images/un (4).webp", "/images/mix5.webp"],
     desc: "Convenio social para fortalecer voluntariado, liderazgo comunitario, servicio cívico y actividades solidarias.",
+    importance: "Recuerda que la formación no termina en el aula ni en la cancha: aporta a que cada estudiante entienda su rol dentro de una comunidad más amplia.",
+    benefits: [
+      "Programas de voluntariado y liderazgo comunitario",
+      "Actividades solidarias con impacto real",
+      "Servicio cívico articulado con formación CBIT",
+    ],
     url: "/club_leones",
     icon: "M12 21s-7-4.35-9.33-9.91C.97 7.02 3.38 3 7.4 3c2.14 0 3.55 1.13 4.6 2.46C13.05 4.13 14.46 3 16.6 3c4.02 0 6.43 4.02 4.73 8.09C19 16.65 12 21 12 21z",
   },
@@ -87,41 +137,32 @@ const axes = [
       <div class="cv-orb cv-orb-3" aria-hidden="true"></div>
 
       <div class="cv-container cv-hero-inner">
-        <div class="cv-reveal">
-          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/10 pb-12 mb-0">
+        <div class="cv-reveal cv-hero-row">
 
-            <h1 class="cv-hero-title font-display">
-              CONVENIOS<br/>
-              <span style="color:#f2c82f">INSTITUCIONALES</span>
-            </h1>
+          <h1 class="cv-hero-title font-display">
+            CONVENIOS <span style="color:#f2c82f">INSTITUCIONALES</span>
+          </h1>
 
-            <div class="cv-hero-side cv-reveal cv-d1">
-              <p class="cv-hero-sub">
-                Trabajamos junto a instituciones académicas, deportivas y sociales para abrir oportunidades reales
-                de formación, competencia, certificación y servicio a la comunidad.
-              </p>
-              
-            </div>
+          <div class="cv-hero-side cv-reveal cv-d1">
+            <p class="cv-hero-sub">
+              Trabajamos junto a instituciones académicas, deportivas y sociales para abrir oportunidades reales
+              de formación, competencia, certificación y servicio a la comunidad.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ══════════════════════════════════
-         IMPACTO
+         IMPACTO (compacto)
     ══════════════════════════════════ -->
-    <section class="cv-section cv-soft-bg" id="impacto">
+    <section class="cv-impact-section cv-soft-bg" id="impacto">
       <div class="cv-container">
-        <div class="cv-section-head cv-reveal">
-          <span class="cv-eyebrow">Resultados</span>
-          <h2 class="cv-section-title font-display">NUESTRO <span class="cv-gold">IMPACTO</span></h2>
-          <div class="cv-bar" data-bar></div>
-        </div>
-        <div class="cv-impact-grid">
+        <div class="cv-impact-bar cv-reveal">
           {impact.map((item, i) => (
-            <div class={`cv-float-card cv-stat-card cv-reveal cv-s${i}`}>
-              <strong class="cv-stat-value">{item.value}</strong>
-              <span class="cv-stat-label">{item.label}</span>
+            <div class={`cv-impact-chip cv-s${i}`}>
+              <strong class="cv-impact-value">{item.value}</strong>
+              <span class="cv-impact-label">{item.label}</span>
             </div>
           ))}
         </div>
@@ -129,7 +170,7 @@ const axes = [
     </section>
 
     <!-- ══════════════════════════════════
-         INSTITUCIONES
+         INSTITUCIONES — diseño editorial
     ══════════════════════════════════ -->
     <section class="cv-section" id="instituciones">
       <div class="cv-container">
@@ -139,33 +180,76 @@ const axes = [
           <div class="cv-bar" data-bar></div>
         </div>
 
-        <div class="cv-card-grid">
+        <div class="cv-inst-list">
           {institutions.map((inst, i) => (
-            <a
-              href={inst.url}
-              target={inst.url.startsWith('http') ? '_blank' : undefined}
-              rel={inst.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-              class={`cv-float-card cv-inst-card cv-reveal cv-s${i % 3}`}
-              aria-label={`Ver convenio con ${inst.name}`}
-            >
-              <div class="cv-inst-img-wrap">
-                <img src={inst.image} alt={`Convenio CBIT con ${inst.name}`} class="cv-img cv-zoom-target" loading="lazy" />
-                <span class="cv-img-tag">{String(i + 1).padStart(2, '0')}</span>
-              </div>
-              <div class="cv-inst-body">
-                <div class="cv-inst-accent" style={`background:${inst.color}`}></div>
-                <div class="cv-inst-icon" style={`color:${inst.color}`}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={inst.icon} /></svg>
+            <article class="cv-inst-card cv-reveal">
+
+              <!-- Imagen protagonista con overlay editorial -->
+              <div class="cv-inst-hero">
+                <img src={inst.image} alt={`Convenio CBIT con ${inst.name}`} class="cv-inst-heroimg" loading="lazy" />
+                <div class="cv-inst-heroshade" aria-hidden="true"></div>
+                <span class="cv-inst-ghostnum" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+
+                <div class="cv-inst-herotop">
+                  <span class="cv-since-tag">Convenio desde {inst.since}</span>
                 </div>
-                <span class="cv-inst-category" style={`color:${inst.color}`}>{inst.category}</span>
-                <h3 class="cv-inst-title font-display">{inst.name}</h3>
-                <p class="cv-inst-desc">{inst.desc}</p>
-                <div class="cv-inst-foot" style={`color:${inst.color}`}>
-                  Ver institución
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+
+                <div class="cv-inst-herobottom">
+                  <span class="cv-inst-category" style={`color:${inst.color}`}>{inst.category}</span>
+                  <h3 class="cv-inst-title font-display">{inst.name}</h3>
                 </div>
               </div>
-            </a>
+
+              <!-- Panel de contenido -->
+              <div class="cv-inst-panel">
+                <div class="cv-inst-main">
+                  <p class="cv-inst-desc">{inst.desc}</p>
+
+                  {inst.benefits && (
+                    <ul class="cv-inst-benefits">
+                      {inst.benefits.map((b) => (
+                        <li>
+                          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke={inst.color} stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <a
+                    href={inst.url}
+                    target={inst.url.startsWith('http') ? '_blank' : undefined}
+                    rel={inst.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    class="cv-inst-cta"
+                    style={`background:${inst.color}`}
+                    aria-label={`Ver convenio con ${inst.name}`}
+                  >
+                    Ver institución
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                  </a>
+                </div>
+
+                <!-- Por qué importa -->
+                <div class="cv-inst-why" style={`background:${inst.color}14; border-color:${inst.color}33;`}>
+                  <div class="cv-inst-icon" style={`background:${inst.color};`}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={inst.icon} /></svg>
+                  </div>
+                  <span class="cv-inst-why-label" style={`color:${inst.color}`}>Por qué importa</span>
+                  <p class="cv-inst-why-text">{inst.importance}</p>
+                </div>
+              </div>
+
+              <!-- Galería grande -->
+              {inst.gallery && inst.gallery.length > 0 && (
+                <div class="cv-inst-gallery">
+                  {inst.gallery.map((g) => (
+                    <div class="cv-gallery-item">
+                      <img src={g} alt={`Imagen adicional convenio ${inst.name}`} loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </article>
           ))}
         </div>
       </div>
@@ -221,7 +305,7 @@ const axes = [
 
 <style>
 /* ══════════════════════════════════
-   TOKENS (idénticos a Sobre Nosotros)
+   TOKENS
 ══════════════════════════════════ */
 :root {
   --blue:      #1A4B8C;
@@ -275,7 +359,6 @@ const axes = [
 }
 .cv-hero-mesh {
   position: absolute; inset: 0;
-  
   background-size: 32px 32px, cover;
   background-position: 0 0, center;
   pointer-events: none;
@@ -292,23 +375,41 @@ const axes = [
 
 .cv-hero-inner { display: flex; flex-direction: column; gap: 3rem; position: relative; z-index: 2; }
 
-.cv-hero-title {
-  font-size: clamp(3.6rem, 7vw, 5.6rem);
-  color: #fff;
-  line-height: 1.08;
-  margin: 0;
+.cv-hero-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 3rem;
 }
 
-.cv-hero-side { width: 100%; max-width: 42%; display: flex; flex-direction: column; gap: 1.75rem; }
+/* Título de una sola pieza: nada de <br> manual ni word-break forzado.
+   El navegador solo puede partir la línea en el espacio entre palabras,
+   nunca dentro de "INSTITUCIONALES", así que no hay riesgo de que se vea
+   partido con espacios raros a mitad de palabra. */
+.cv-hero-title {
+  flex: 1 1 320px;
+  max-width: 780px;
+  font-size: clamp(1.9rem, 5.6vw, 5.2rem);
+  color: #fff;
+  line-height: 1.14;
+  margin: 0;
+  white-space: normal;
+  word-spacing: normal;
+  letter-spacing: normal;
+}
+
+.cv-hero-side { flex: 1 1 280px; max-width: 460px; display: flex; flex-direction: column; gap: 1.75rem; }
 .cv-hero-sub {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   color: rgba(255,255,255,0.6);
   border-left: 2px solid var(--cyan);
-  padding-left: 1.5rem;
-  line-height: 1.85;
+  padding-left: 1.25rem;
+  line-height: 1.8;
 }
 
-.cv-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; padding-left: 1.5rem; }
 .cv-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
   min-height: 48px; padding: 0.85rem 1.6rem; border-radius: 50px;
@@ -318,8 +419,6 @@ const axes = [
 .cv-btn:hover { transform: translateY(-3px); }
 .cv-btn-primary { background: var(--gold); color: #1e293b; box-shadow: var(--sh2); }
 .cv-btn-primary:hover { box-shadow: var(--sh-hover); }
-.cv-btn-ghost { color: #fff; border: 1px solid rgba(255,255,255,0.28); background: rgba(255,255,255,0.06); }
-.cv-btn-ghost:hover { border-color: var(--gold); color: var(--gold-lt); }
 
 /* ══════════════════════════════════
    SECTION HEADER
@@ -351,61 +450,188 @@ const axes = [
 .cv-axis-lead { max-width: 640px; margin: 1.4rem auto 0; color: rgba(255,255,255,0.7); font-size: 1.02rem; line-height: 1.85; }
 
 /* ══════════════════════════════════
-   FLOAT CARD
+   IMPACTO — versión compacta
 ══════════════════════════════════ */
-.cv-float-card {
+.cv-impact-section { padding: 2.25rem 0; background: var(--soft); }
+.cv-impact-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
   background: var(--white);
+  border-radius: 100px;
+  box-shadow: var(--sh1);
+  border: 1px solid rgba(26,75,140,0.06);
+  padding: 0.4rem;
+  max-width: 620px;
+  margin: 0 auto;
+}
+.cv-impact-chip {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  position: relative;
+}
+.cv-impact-chip + .cv-impact-chip::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 1px;
+  background: rgba(26,75,140,0.12);
+}
+.cv-impact-value { font-size: 1.5rem; font-weight: 800; color: var(--blue); line-height: 1; }
+.cv-impact-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+/* ══════════════════════════════════
+   INSTITUCIONES — tarjeta editorial
+══════════════════════════════════ */
+.cv-inst-list { display: flex; flex-direction: column; gap: 3.5rem; }
+
+.cv-inst-card {
   border-radius: var(--r-xl);
+  overflow: hidden;
   box-shadow: var(--sh2);
   border: 1px solid rgba(26,75,140,0.06);
-  transition: transform 0.42s cubic-bezier(0.22,1,0.36,1), box-shadow 0.42s cubic-bezier(0.22,1,0.36,1);
+  background: var(--white);
+  transition: box-shadow 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.cv-inst-card:hover { box-shadow: var(--sh-hover); }
+
+/* Imagen protagonista */
+.cv-inst-hero {
+  position: relative;
+  height: 400px;
   overflow: hidden;
 }
-.cv-float-card:hover {
-  transform: translateY(-10px) scale(1.012);
-  box-shadow: var(--sh-hover);
+.cv-inst-heroimg {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.7s cubic-bezier(0.22,1,0.36,1);
 }
-
-/* ══════════════════════════════════
-   IMPACTO
-══════════════════════════════════ */
-.cv-impact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
-.cv-stat-card { text-align: center; padding: 2.75rem 1.5rem; }
-.cv-stat-value { display: block; font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; color: var(--blue); line-height: 1; }
-.cv-stat-label { display: block; margin-top: 0.7rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-
-/* ══════════════════════════════════
-   INSTITUCIONES
-══════════════════════════════════ */
-.cv-card-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
-.cv-inst-card { display: block; text-decoration: none; color: inherit; }
-.cv-inst-img-wrap { position: relative; height: 210px; overflow: hidden; }
-.cv-img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
-.cv-float-card:hover .cv-zoom-target { transform: scale(1.06); }
-.cv-img-tag {
-  position: absolute; bottom: 0.9rem; left: 0.9rem;
-  background: rgba(26,75,140,0.88); backdrop-filter: blur(8px);
-  color: #fff; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em;
-  padding: 0.35rem 0.7rem; border-radius: 50px;
-  border-left: 3px solid var(--gold);
+.cv-inst-card:hover .cv-inst-heroimg { transform: scale(1.05); }
+.cv-inst-heroshade {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8,20,45,0.05) 0%, rgba(8,20,45,0.15) 45%, rgba(8,20,45,0.86) 100%);
 }
-.cv-inst-body { padding: 1.75rem; position: relative; }
-.cv-inst-accent { width: 28px; height: 3.5px; border-radius: 2px; margin-bottom: 0.9rem; transition: width 0.35s; }
-.cv-float-card:hover .cv-inst-accent { width: 52px; }
-.cv-inst-icon {
-  width: 46px; height: 46px; margin-top: -3.4rem; margin-bottom: 1rem;
-  background: var(--white); border-radius: 14px;
+.cv-inst-ghostnum {
+  position: absolute;
+  bottom: -0.35em;
+  right: 0.6rem;
+  font-family: var(--font-display, inherit);
+  font-size: 11rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.09);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 1;
+}
+.cv-inst-herotop { position: absolute; top: 1.25rem; right: 1.25rem; z-index: 2; }
+.cv-since-tag {
+  background: rgba(255,255,255,0.95);
+  color: var(--blue);
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em;
+  padding: 0.4rem 0.85rem; border-radius: 50px;
+  box-shadow: var(--sh1);
+}
+.cv-inst-herobottom {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  padding: 2rem 2.25rem;
+}
+.cv-inst-category {
+  display: inline-block;
+  font-size: 0.74rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  background: rgba(255,255,255,0.95);
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+}
+.cv-inst-title { font-size: clamp(1.8rem, 3vw, 2.6rem); color: #fff; margin: 0; letter-spacing: 0.02em; }
+
+/* Panel de contenido */
+.cv-inst-panel {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2.5rem;
+  padding: 2.5rem;
+}
+.cv-inst-main { display: flex; flex-direction: column; }
+.cv-inst-desc { font-size: 1rem; line-height: 1.85; color: var(--muted); margin: 0 0 1.4rem; }
+
+.cv-inst-benefits {
+  list-style: none;
+  margin: 0 0 1.6rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.cv-inst-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+.cv-inst-benefits svg { flex-shrink: 0; margin-top: 0.2rem; }
+
+.cv-inst-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  align-self: flex-start;
+  margin-top: auto;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 50px;
+  box-shadow: var(--sh1);
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;
+}
+.cv-inst-cta:hover { transform: translateY(-3px); box-shadow: var(--sh2); }
+
+/* Por qué importa */
+.cv-inst-why {
+  border-radius: var(--r);
+  border: 1px solid;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-self: start;
+}
+.cv-inst-why .cv-inst-icon {
+  width: 42px; height: 42px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: var(--sh2); position: relative; z-index: 2;
+  margin-bottom: 0.4rem;
 }
-.cv-inst-icon svg { width: 22px; height: 22px; }
-.cv-inst-category { display: block; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.5rem; }
-.cv-inst-title { font-size: 1.2rem; color: var(--blue); margin: 0 0 0.6rem; letter-spacing: 0.03em; }
-.cv-inst-desc  { font-size: 0.92rem; line-height: 1.72; color: var(--muted); margin: 0 0 1.3rem; min-height: 78px; }
-.cv-inst-foot  { display: flex; align-items: center; gap: 0.5rem; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; padding-top: 1rem; border-top: 1px solid rgba(26,75,140,0.08); }
+.cv-inst-why .cv-inst-icon svg { width: 20px; height: 20px; }
+.cv-inst-why-label { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+.cv-inst-why-text { font-size: 0.92rem; line-height: 1.7; color: var(--text); margin: 0; }
+
+/* Galería grande, a todo el ancho */
+.cv-inst-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+  padding: 0 0.25rem 0.25rem;
+}
+.cv-gallery-item { overflow: hidden; border-radius: 10px; height: 180px; }
+.cv-gallery-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+}
+.cv-gallery-item:hover img { transform: scale(1.08); }
 
 /* ══════════════════════════════════
-   EJES (estilo Misión/Visión)
+   EJES
 ══════════════════════════════════ */
 .cv-axis-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3rem; }
 .cv-axis-card {
@@ -438,7 +664,7 @@ const axes = [
   pointer-events: none;
 }
 .cv-cta-inner { position: relative; z-index: 2; max-width: 680px; }
-.cv-cta-title { font-size: clamp(2.4rem, 5.5vw, 4rem); color: #fff; line-height: 1.05; margin: 0.6rem 0 1.4rem; }
+.cv-cta-title { font-size: clamp(2.1rem, 5.5vw, 4rem); color: #fff; line-height: 1.08; margin: 0.6rem 0 1.4rem; }
 .cv-cta-text { font-size: 1.05rem; line-height: 1.9; color: rgba(255,255,255,0.7); margin: 0 0 2.2rem; }
 
 /* ══════════════════════════════════
@@ -451,28 +677,30 @@ const axes = [
 }
 .cv-reveal.cv-on { opacity:1; transform:translateY(0); }
 .cv-d1 { transition-delay:.13s; }
-.cv-d2 { transition-delay:.26s; }
-.cv-s0 { transition-delay:0s; }
-.cv-s1 { transition-delay:.10s; }
-.cv-s2 { transition-delay:.20s; }
-.cv-s3 { transition-delay:.30s; }
 
 /* ══════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════ */
-@media(max-width:1024px){
-  .cv-card-grid     { grid-template-columns:repeat(2,1fr); }
-  .cv-axis-grid     { grid-template-columns:1fr; }
-  .cv-impact-grid   { grid-template-columns:repeat(3,1fr); }
-  .cv-hero-side     { max-width:100%; }
+@media(max-width:900px){
+  .cv-inst-panel { grid-template-columns: 1fr; }
+  .cv-inst-hero { height: 320px; }
+  .cv-inst-ghostnum { font-size: 7rem; }
+  .cv-axis-grid { grid-template-columns:1fr; }
 }
 @media(max-width:640px){
-  .cv-card-grid     { grid-template-columns:1fr; }
-  .cv-impact-grid   { grid-template-columns:1fr; }
   .cv-section       { padding:4.5rem 0; }
-  .cv-hero          { padding:9rem 0 5rem; }
+  .cv-hero          { padding:8rem 0 3.5rem; }
   .cv-container     { padding:0 1.25rem; }
-  .cv-actions       { padding-left: 0; }
+  .cv-impact-bar    { border-radius: 24px; flex-direction: column; padding: 0.75rem 1rem; }
+  .cv-impact-chip   { width: 100%; justify-content: space-between; padding: 0.55rem 0.25rem; }
+  .cv-impact-chip + .cv-impact-chip::before { display: none; }
+  .cv-impact-chip + .cv-impact-chip { border-top: 1px solid rgba(26,75,140,0.1); }
+  .cv-inst-hero     { height: 260px; }
+  .cv-inst-herobottom { padding: 1.5rem; }
+  .cv-inst-panel    { padding: 1.5rem; gap: 1.5rem; }
+  .cv-inst-gallery  { grid-template-columns: repeat(3, 1fr); }
+  .cv-gallery-item  { height: 100px; }
+  .cv-inst-ghostnum { font-size: 5rem; }
 }
 @media(prefers-reduced-motion:reduce){
   .cv-reveal  { opacity:1; transform:none; transition:none; }
@@ -545,13 +773,24 @@ const axes = [
         });
       });
 
-      /* ── 5. STAGGER GRID ENTRANCE ── */
-      ['#impacto .cv-impact-grid', '#instituciones .cv-card-grid', '#sentido .cv-axis-grid'].forEach(sel => {
-        const grid = document.querySelector(sel);
-        if (!grid) return;
-        const cards = Array.from(grid.querySelectorAll<HTMLElement>('.cv-reveal'));
+      /* ── 5. STAGGER ENTRANCE ── */
+      const instCards = Array.from(document.querySelectorAll<HTMLElement>('.cv-inst-list .cv-inst-card'));
+      instCards.forEach((card) => {
         ScrollTrigger.create({
-          trigger: grid,
+          trigger: card,
+          start: 'top 88%',
+          once: true,
+          onEnter: () => {
+            gsap.to(card, { opacity: 1, y: 0, duration: 0.72, ease: 'power3.out', overwrite: true });
+          }
+        });
+      });
+
+      const axisGrid = document.querySelector('#sentido .cv-axis-grid');
+      if (axisGrid) {
+        const cards = Array.from(axisGrid.querySelectorAll<HTMLElement>('.cv-reveal'));
+        ScrollTrigger.create({
+          trigger: axisGrid,
           start: 'top 86%',
           once: true,
           onEnter: () => {
@@ -566,7 +805,7 @@ const axes = [
             });
           }
         });
-      });
+      }
 
     });
   }

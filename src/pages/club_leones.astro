@@ -143,6 +143,11 @@ const secretariaWhatsapp = "https://wa.me/59172201160?text=Hola%2C%20quisiera%20
     Ser León
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
   </a>
+  <button class="nav-toggle" aria-label="Abrir menú" id="nav-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -540,5 +545,30 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+
+// ── MOBILE MENU TOGGLE ──
+const toggleBtn = document.getElementById('nav-toggle');
+const navLinksContainer = document.querySelector('.nav-links');
+if (toggleBtn && navLinksContainer) {
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navLinksContainer.classList.toggle('nav-links-open');
+    toggleBtn.classList.toggle('toggle-active');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', () => {
+    navLinksContainer.classList.remove('nav-links-open');
+    toggleBtn.classList.remove('toggle-active');
+  });
+
+  // Close menu when clicking any link
+  navLinksContainer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinksContainer.classList.remove('nav-links-open');
+      toggleBtn.classList.remove('toggle-active');
+    });
+  });
+}
 </script>
 </Layout>

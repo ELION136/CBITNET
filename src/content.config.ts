@@ -14,6 +14,7 @@ const news = defineCollection({
     featured: z.boolean().default(false),
     author:   z.string().default('CBTFI'),
     type:     z.enum(['news', 'ad']).default('news'),  // 'ad' = publicidad/anuncio
+    link:     z.string().optional(),
   }),
 });
 

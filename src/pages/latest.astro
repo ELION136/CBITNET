@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import NewsCard from '../components/NewsCard.astro';
 import { getCollection } from 'astro:content';
+import '../styles/latest.css';
 
 const entries = await getCollection('news');
 
@@ -18,10 +19,10 @@ const allNews = entries
     tag:      e.data.tag,
     date:     e.data.date.toISOString(),
     image:    e.data.image,
-    href:     `/noticias/${e.id.replace(/\.(md|mdx)$/, '')}`,
+    href:     e.data.link || "https://wa.me/5917704659",
     featured: e.data.featured,
     type:     e.data.type,
-    own:      true,
+    own:      !e.data.link,
   }))
   .sort((a: { date: string }, b: { date: string }) =>
     new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -143,7 +144,7 @@ const stats = [
                     date={heroNews.date}
                     image={heroNews.image}
                     href={heroNews.href}
-                    own={true}
+                    own={heroNews.own}
                     size="hero"
                   />
                 </div>
@@ -171,8 +172,8 @@ const stats = [
                       date={n.date}
                       image={n.image}
                       href={n.href}
-                      own={true}
-                      size={i < 2 ? 'large' : 'medium'}
+                      own={n.own}
+                      size="medium"
                     />
                   </div>
                 ))}
@@ -197,34 +198,42 @@ const stats = [
           <aside class="lt-sidebar">
             <div class="lt-sidebar-inner">
 
-              <!-- PUBLICIDADES -->
+              <!-- ANUNCIOS Y CLASIFICADOS -->
               {ads.length > 0 && (
                 <div class="lt-sidebar-block lt-reveal">
                   <div class="lt-section-label" style="margin-bottom:1rem;">
                     <span class="lt-label-line" style="background:var(--gold)"></span>
-                    <span class="lt-label-text" style="color:var(--gold)">Publicidad</span>
+                    <span class="lt-label-text" style="color:var(--gold)">Anuncios y Clasificados</span>
                   </div>
                   <div class="lt-ads-list">
-                    {ads.map(ad => (
-                      <a href={ad.href} class="lt-ad-card lt-float-card">
-                        {ad.image && (
-                          <img src={ad.image} alt={ad.title}
-                               class="lt-ad-img lt-zoom-target"
-                               width="90" height="110" loading="lazy" />
-                        )}
-                        <div class="lt-ad-body">
-                          <span class="lt-ad-cat">{ad.category}</span>
-                          <p class="lt-ad-title">{ad.title}</p>
-                          <span class="lt-ad-cta">
-                            VER MÁS
-                            <svg width="9" height="9" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" stroke-width="2.5">
-                              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-                            </svg>
-                          </span>
-                        </div>
-                      </a>
-                    ))}
+                    {ads.map(ad => {
+                      const isExt = ad.href.startsWith('http://') || ad.href.startsWith('https://') || ad.href.startsWith('tel:') || ad.href.startsWith('mailto:');
+                      return (
+                        <a
+                          href={ad.href}
+                          target={isExt ? "_blank" : "_self"}
+                          rel={isExt ? "noopener noreferrer" : ""}
+                          class="lt-ad-card lt-float-card"
+                        >
+                          {ad.image && (
+                            <img src={ad.image} alt={ad.title}
+                                 class="lt-ad-img lt-zoom-target"
+                                 width="90" height="110" loading="lazy" />
+                          )}
+                          <div class="lt-ad-body">
+                            <span class="lt-ad-cat">{ad.category}</span>
+                            <p class="lt-ad-title">{ad.title}</p>
+                            <span class="lt-ad-cta">
+                              VER MÁS
+                              <svg width="9" height="9" viewBox="0 0 24 24" fill="none"
+                                   stroke="currentColor" stroke-width="2.5">
+                                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                              </svg>
+                            </span>
+                          </div>
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -236,32 +245,46 @@ const stats = [
                   <span class="lt-label-text" style="color:var(--blue-mid)">Índice</span>
                 </div>
                 <div class="lt-index-list">
-                  {allNews.filter(n => n.type !== 'ad').map((n, i) => (
-                    <a href={n.href} class="lt-index-item">
-                      <span class="lt-index-num font-display">{String(i + 1).padStart(2, '0')}</span>
-                      <div class="lt-index-info">
-                        <span class="lt-index-cat">{n.category}</span>
-                        <p class="lt-index-title">{n.title}</p>
-                      </div>
-                    </a>
-                  ))}
+                  {allNews.filter(n => n.type !== 'ad').map((n, i) => {
+                    const isExt = n.href.startsWith('http://') || n.href.startsWith('https://') || n.href.startsWith('tel:') || n.href.startsWith('mailto:');
+                    return (
+                      <a
+                        href={n.href}
+                        target={isExt ? "_blank" : "_self"}
+                        rel={isExt ? "noopener noreferrer" : ""}
+                        class="lt-index-item"
+                      >
+                        <span class="lt-index-num font-display">{String(i + 1).padStart(2, '0')}</span>
+                        <div class="lt-index-info">
+                          <span class="lt-index-cat">{n.category}</span>
+                          <p class="lt-index-title">{n.title}</p>
+                        </div>
+                      </a>
+                    );
+                  })}
                 </div>
 
                 <!-- CTA CONTACTO -->
                 <div class="lt-cta-card lt-reveal lt-d2" style="margin-top:1.5rem;">
                   <div class="lt-cta-accent"></div>
-                  <p class="lt-cta-label">PUBLICAR CONTENIDO</p>
+                  <p class="lt-cta-label">ATENCIÓN AL CLIENTE</p>
                   <p class="lt-cta-body">
-                    ¿Querés publicar tu clasificado o anuncio oficial? Contactá a CBIT al
-                    <strong style="color:var(--blue-mid)"> 7704659</strong>
-                    para noticias y comunicados institucionales.
+                    ¿Quieres publicar un anuncio o tienes alguna consulta oficial? Contáctanos a través de nuestros canales autorizados de la Corporación Boliviana de Talento.
                   </p>
-                  <a href="tel:7704659" class="lt-cta-btn">
-                    Contactar ahora
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-                      <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-                    </svg>
-                  </a>
+                  <div class="flex flex-col gap-2 mt-2">
+                    <a href="https://wa.me/5917704659" target="_blank" rel="noopener noreferrer" class="lt-cta-btn lt-cta-btn-wa">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.858.002-2.634-1.013-5.11-2.861-6.961S14.64 1.01 12.008 1.01c-5.442 0-9.867 4.422-9.87 9.86-.001 1.702.453 3.361 1.314 4.798L2.437 21.89l5.21-1.366zM17.487 14.4c-.27-.135-1.595-.788-1.842-.877-.246-.089-.426-.135-.606.135-.18.27-.697.877-.855 1.057-.157.18-.315.203-.585.068-1.785-.892-3.132-1.572-4.382-2.73-.33-.306-.63-.615-.92-.937-.27-.463-.03-.715.2-.943.207-.206.463-.538.697-.808.232-.27.31-.462.463-.77.153-.309.076-.58-.039-.808-.112-.228-.977-2.355-1.339-3.227-.353-.849-.714-.734-.977-.734h-.834c-.27 0-.709.102-1.08.512-.371.41-1.417 1.385-1.417 3.377 0 1.99 1.45 3.916 1.652 4.188.203.27 2.855 4.36 6.916 6.113 2.531 1.093 3.498 1.182 4.739.996 1.258-.189 2.59-.974 2.955-1.916.365-.943.365-1.75.257-1.917-.107-.168-.392-.27-.663-.405z"/>
+                      </svg>
+                      WhatsApp Directo
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="lt-cta-btn lt-cta-btn-fb">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      </svg>
+                      Facebook Oficial
+                    </a>
+                  </div>
                 </div>
 
               </div>
@@ -303,491 +326,6 @@ const stats = [
 
   </main>
 </Layout>
-
-<style>
-/* ══════════════════════════════════
-   TOKENS — mismo sistema que SobreNosotros
-══════════════════════════════════ */
-:root {
-  --blue:      #1A4B8C;
-  --blue-mid:  #2D7DD2;
-  --blue-lt:   #EBF3FB;
-  --cyan:      #f5c21a;
-  --gold:      #C9993A;
-  --gold-lt:   #F5E8CC;
-  --white:     #ffffff;
-  --soft:      #F0F4FA;
-  --text:      #1e293b;
-  --muted:     #64748B;
-  --faint:     #94A3B8;
-
-  --sh2: 0 4px 12px rgba(0,0,0,0.10), 0 8px 24px rgba(26,75,140,0.10);
-  --sh-hover: 0 14px 40px rgba(0,0,0,0.14), 0 28px 60px rgba(26,75,140,0.22);
-  --r-xl: 36px;
-}
-
-/* ══════════════════════════════════
-   BASE
-══════════════════════════════════ */
-.lt-main       { background: var(--white); overflow-x: hidden; }
-.lt-container  { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-.lt-white      { color: var(--white) !important; }
-.lt-gold       { color: var(--gold); }
-.lt-soft-bg    { background: var(--soft); }
-.lt-blue-bg    { background: var(--blue); position: relative; overflow: hidden; }
-
-/* ══════════════════════════════════
-   HERO
-══════════════════════════════════ */
-.lt-hero {
-  background-image: url('/images/fondo.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 10rem 0 6rem;
-  position: relative;
-  overflow: hidden;
-}
-.lt-hero-mesh {
-  position: absolute; inset: 0;
-  /*background-image:
-    radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(26,75,140,0.78), rgba(26,75,140,0.85));*/
-  background-size: 32px 32px, cover;
-  background-position: 0 0, center;
-  pointer-events: none;
-}
-.lt-orb {
-  position: absolute; border-radius: 50%;
-  pointer-events: none; filter: blur(80px);
-}
-.lt-orb-1 { width:520px;height:520px; top:-150px;right:-130px; background:radial-gradient(circle,rgba(14,165,233,0.18),transparent 70%); }
-.lt-orb-2 { width:360px;height:360px; bottom:-80px;left:-80px;  background:radial-gradient(circle,rgba(201,153,58,0.16),transparent 70%); }
-.lt-orb-3 { width:260px;height:260px; top:40%;left:38%;          background:radial-gradient(circle,rgba(45,125,210,0.12),transparent 70%); }
-.lt-orb-cat { width:450px;height:450px; top:-100px;left:50%;transform:translateX(-50%); background:radial-gradient(circle,rgba(14,165,233,0.12),transparent 70%); }
-
-.lt-hero-inner { display: flex; flex-direction: column; gap: 0; }
-
-.lt-hero-eyebrow {
-  display: flex; align-items: center; gap: 0.75rem;
-  margin-bottom: 1rem;
-  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.35em;
-  text-transform: uppercase; color: var(--gold);
-}
-.lt-hero-line { display: block; width: 24px; height: 1.5px; background: var(--gold); }
-
-.lt-hero-title {
-  font-size: clamp(2.8rem, 9vw, 7rem);
-  color: #fff;
-  line-height: 1.02;
-  margin: 0;
-}
-.lt-hero-side { max-width: 42%; }
-.lt-hero-sub {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.6);
-  border-left: 2px solid var(--cyan);
-  padding-left: 1.4rem;
-  line-height: 1.85;
-  margin-bottom: 1.25rem;
-}
-
-.lt-live-badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.62rem; font-weight: 700;
-  letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--gold);
-}
-.lt-live-dot {
-  width: 7px; height: 7px;
-  background: var(--gold); border-radius: 50%;
-  animation: lt-pulse 2s infinite;
-}
-@keyframes lt-pulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(201,153,58,.5); }
-  50%      { box-shadow: 0 0 0 5px rgba(201,153,58,0); }
-}
-.lt-live-label { color: var(--gold); }
-.lt-live-time  { color: rgba(255,255,255,0.4); margin-left: 0.5rem; }
-
-/* STATS STRIP */
-.lt-stats-strip {
-  display: flex; gap: 0;
-  border-top: 1px solid rgba(255,255,255,0.09);
-  margin-top: 3rem;
-  padding-top: 2rem;
-}
-.lt-stat {
-  flex: 1;
-  padding: 0 1.5rem 0 0;
-  border-right: 1px solid rgba(255,255,255,0.09);
-  display: flex; flex-direction: column; gap: 0.3rem;
-}
-.lt-stat:last-child { border-right: none; padding-right: 0; padding-left: 1.5rem; }
-.lt-stat:first-child { padding-left: 0; }
-.lt-stat-value {
-  font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--gold);
-  line-height: 1;
-}
-.lt-stat-label {
-  font-size: 0.68rem; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
-}
-
-/* ══════════════════════════════════
-   FILTER BAR
-══════════════════════════════════ */
-.lt-filter-bar {
-  background: var(--white);
-  border-bottom: 1px solid rgba(26,75,140,0.08);
-  padding: 1rem 0;
-  position: sticky; top: 64px; z-index: 30;
-  box-shadow: 0 2px 12px rgba(26,75,140,0.07);
-}
-.lt-filter-inner {
-  display: flex; gap: 0.5rem;
-  overflow-x: auto; padding-bottom: 2px;
-  scrollbar-width: none;
-}
-.lt-filter-inner::-webkit-scrollbar { display: none; }
-
-.lt-cat-tab {
-  flex-shrink: 0;
-  padding: 0.45rem 1.1rem;
-  font-size: 0.65rem; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  border-radius: 50px;
-  border: 1px solid rgba(26,75,140,0.14);
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  transition: background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
-}
-.lt-cat-tab:hover {
-  background: var(--blue-lt);
-  color: var(--blue);
-  border-color: rgba(26,75,140,0.3);
-}
-.lt-cat-tab.lt-cat-active,
-.lt-cat-tab.active {
-  background: var(--gold);
-  color: #fff;
-  border-color: var(--gold);
-  box-shadow: 0 2px 10px rgba(201,153,58,0.28);
-}
-
-/* ══════════════════════════════════
-   SECCIONES
-══════════════════════════════════ */
-.lt-section { padding: 5rem 0; }
-
-/* Layout principal */
-.lt-layout {
-  display: flex;
-  flex-direction: row;
-  gap: 3rem;
-  align-items: flex-start;
-}
-.lt-col-main { flex: 1; min-width: 0; }
-
-/* SIDEBAR */
-.lt-sidebar { width: 300px; flex-shrink: 0; }
-.lt-sidebar-inner { display: flex; flex-direction: column; gap: 2rem; }
-.lt-sidebar-sticky { position: sticky; top: 120px; }
-.lt-sidebar-block  { /* wrapper de bloque */ }
-
-/* ══════════════════════════════════
-   FLOAT CARD (light)
-══════════════════════════════════ */
-.lt-float-card {
-  background: var(--white);
-  border-radius: 20px;
-  box-shadow: var(--sh2);
-  border: 1px solid rgba(26,75,140,0.06);
-  transition: transform 0.42s cubic-bezier(0.22,1,0.36,1), box-shadow 0.42s cubic-bezier(0.22,1,0.36,1);
-  overflow: hidden;
-}
-.lt-float-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: var(--sh-hover);
-}
-.lt-float-card:hover .lt-zoom-target { transform: scale(1.05); }
-
-/* FLOAT CARD dark (para sección azul) */
-.lt-float-card-dark {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 20px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.16);
-  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), background 0.3s, box-shadow 0.4s;
-  overflow: hidden;
-}
-.lt-float-card-dark:hover {
-  transform: translateY(-8px);
-  background: rgba(255,255,255,0.13);
-  box-shadow: 0 18px 48px rgba(0,0,0,0.26);
-}
-
-/* ══════════════════════════════════
-   LABELS
-══════════════════════════════════ */
-.lt-section-label {
-  display: flex; align-items: center; gap: 0.6rem;
-}
-.lt-label-line { display: block; width: 18px; height: 1.5px; flex-shrink: 0; }
-.lt-label-text {
-  font-size: 0.62rem; font-weight: 700;
-  letter-spacing: 0.28em; text-transform: uppercase;
-}
-.lt-label-fill { flex: 1; height: 1px; background: rgba(26,75,140,0.07); }
-.lt-label-count {
-  font-size: 0.6rem; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--faint);
-}
-
-/* ══════════════════════════════════
-   NEWS GRID
-══════════════════════════════════ */
-.lt-hero-card-wrap { margin-bottom: 2rem; }
-
-/* El wrapper float-card del hero aplica radius/overflow al NewsCard interno */
-.lt-news-hero-card { border-radius: 24px !important; }
-
-.lt-news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 1.5rem;
-}
-
-/* news-item es ahora lt-float-card: forza que el componente hijo llene la altura */
-.lt-news-grid .news-item {
-  display: flex;
-  flex-direction: column;
-}
-.lt-news-grid .news-item > * {
-  flex: 1;
-  height: 100%;
-}
-
-.news-item.hidden { display: none; }
-
-/* EMPTY STATE */
-.lt-empty {
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center;
-  padding: 5rem 2rem; text-align: center;
-  background: var(--white); border-radius: 24px;
-  border: 1px dashed rgba(26,75,140,0.15);
-}
-.lt-empty-icon {
-  width: 52px; height: 52px;
-  background: var(--gold-lt);
-  border: 1px solid rgba(201,153,58,0.3);
-  border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--gold); margin-bottom: 1rem;
-}
-.lt-empty-title { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
-.lt-empty-sub   { font-size: 0.75rem; color: var(--faint); margin-top: 0.4rem; }
-.lt-empty-sub code { background: var(--soft); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.72rem; }
-
-/* ══════════════════════════════════
-   SIDEBAR — ADS
-══════════════════════════════════ */
-.lt-ads-list { display: flex; flex-direction: column; gap: 0.85rem; }
-.lt-ad-card {
-  display: flex; overflow: hidden; height: 100px; cursor: pointer;
-  text-decoration: none;
-}
-.lt-ad-img {
-  width: 90px; flex-shrink: 0; object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
-}
-.lt-ad-body { flex: 1; padding: 0.9rem 1rem; display: flex; flex-direction: column; justify-content: space-between; }
-.lt-ad-cat {
-  font-size: 0.58rem; font-weight: 700;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gold); display: block; margin-bottom: 0.25rem;
-}
-.lt-ad-title { font-size: 0.82rem; font-weight: 700; color: var(--text); line-height: 1.35; }
-.lt-ad-cta {
-  display: inline-flex; align-items: center; gap: 0.3rem;
-  font-size: 0.6rem; font-weight: 700;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--blue-mid);
-  transition: gap 0.25s;
-}
-.lt-ad-card:hover .lt-ad-cta { gap: 0.6rem; }
-
-/* ══════════════════════════════════
-   SIDEBAR — ÍNDICE
-══════════════════════════════════ */
-.lt-index-list { display: flex; flex-direction: column; }
-.lt-index-item {
-  display: flex; align-items: flex-start; gap: 0.85rem;
-  padding: 0.85rem 0;
-  border-bottom: 1px solid rgba(26,75,140,0.07);
-  text-decoration: none;
-  transition: background 0.25s;
-  border-radius: 8px;
-  padding-left: 0.5rem;
-}
-.lt-index-item:hover { background: var(--blue-lt); }
-.lt-index-num {
-  font-size: 1.6rem; line-height: 1; color: rgba(26,75,140,0.12); flex-shrink: 0;
-  transition: color 0.25s;
-}
-.lt-index-item:hover .lt-index-num { color: var(--gold); }
-.lt-index-info { display: flex; flex-direction: column; gap: 0.2rem; }
-.lt-index-cat  {
-  font-size: 0.58rem; font-weight: 700;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: rgba(201,153,58,0.7);
-}
-.lt-index-title {
-  font-size: 0.78rem; line-height: 1.45;
-  color: var(--muted);
-  transition: color 0.25s;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-}
-.lt-index-item:hover .lt-index-title { color: var(--blue); }
-
-/* CTA CARD */
-.lt-cta-card {
-  background: var(--blue-lt);
-  border: 1px solid rgba(26,75,140,0.14);
-  border-radius: 20px;
-  padding: 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
-.lt-cta-accent {
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--blue), var(--gold));
-}
-.lt-cta-label {
-  font-size: 0.62rem; font-weight: 700;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 0.6rem;
-}
-.lt-cta-body {
-  font-size: 0.82rem; line-height: 1.65; color: var(--muted); margin-bottom: 1rem;
-}
-.lt-cta-btn {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.5rem 1.1rem;
-  background: var(--blue);
-  color: #fff;
-  border-radius: 50px;
-  font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  text-decoration: none;
-  transition: background 0.25s, transform 0.25s;
-}
-.lt-cta-btn:hover { background: var(--blue-mid); transform: translateY(-2px); }
-
-/* ══════════════════════════════════
-   SECTION HEADER (secciones azules)
-══════════════════════════════════ */
-.lt-section-head { text-align: center; margin-bottom: 3.5rem; }
-.lt-eyebrow {
-  display: inline-block; font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--blue-mid); margin-bottom: 0.5rem;
-}
-.lt-eyebrow-gold { color: var(--gold); }
-.lt-section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--blue);
-  line-height: 1.12;
-  margin: 0 0 1rem;
-}
-.lt-bar {
-  display: block; height: 3px; width: 0;
-  background: var(--blue-mid); border-radius: 2px;
-  margin: 0 auto;
-  transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s;
-}
-.lt-bar-gold { background: var(--gold); }
-.lt-bar.lt-bar-on { width: 56px; }
-
-/* ══════════════════════════════════
-   CATEGORÍAS GRID
-══════════════════════════════════ */
-.lt-cats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 1.25rem;
-}
-.lt-cat-card {
-  padding: 2rem 1.5rem;
-  display: flex; flex-direction: column; gap: 0.5rem;
-  cursor: pointer; text-align: left;
-  position: relative;
-}
-.lt-cat-card-bar {
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--cyan));
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
-}
-.lt-float-card-dark:hover .lt-cat-card-bar { transform: scaleX(1); }
-.lt-cat-card-name {
-  font-size: 1.05rem; color: var(--white); letter-spacing: 0.04em;
-}
-.lt-cat-card-count {
-  font-size: 0.68rem; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-}
-
-/* ══════════════════════════════════
-   SCROLL REVEAL
-══════════════════════════════════ */
-.lt-reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
-}
-.lt-reveal.lt-on { opacity: 1; transform: translateY(0); }
-.lt-d0 { transition-delay: 0s; }
-.lt-d1 { transition-delay: .13s; }
-.lt-d2 { transition-delay: .26s; }
-.lt-s0 { transition-delay: 0s; }
-.lt-s1 { transition-delay: .09s; }
-.lt-s2 { transition-delay: .18s; }
-.lt-s3 { transition-delay: .27s; }
-
-/* ══════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════ */
-@media(max-width:1100px){
-  .lt-layout    { flex-direction: column; }
-  .lt-sidebar   { width: 100%; }
-  .lt-sidebar-sticky { position: static; }
-  .lt-hero-side { max-width: 100%; }
-}
-@media(max-width:768px){
-  .lt-stats-strip { flex-wrap: wrap; }
-  .lt-stat { flex: 1 1 45%; border-right: none; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.09); }
-  .lt-stat:last-child { border-bottom: none; }
-  .lt-cats-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media(max-width:640px){
-  .lt-hero  { padding: 9rem 0 4rem; }
-  .lt-section { padding: 4rem 0; }
-  .lt-container { padding: 0 1.25rem; }
-  .lt-cats-grid { grid-template-columns: 1fr 1fr; }
-}
-@media(prefers-reduced-motion:reduce){
-  .lt-reveal { opacity: 1; transform: none; transition: none; }
-  .lt-bar    { width: 56px; transition: none; }
-  .lt-live-dot { animation: none; }
-}
-</style>
 
 <script>
   import gsap from 'gsap';
