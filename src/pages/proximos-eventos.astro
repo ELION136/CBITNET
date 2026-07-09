@@ -5,51 +5,19 @@ import Navbar from '../components/Navbar.astro';
 const events = [
   {
     title: "CONGRESO DEPORTIVO INTERNACIONAL",
-    date: "15 JUN",
-    time: "09:00 AM - 05:00 PM",
-    desc: "Un encuentro de élite con expositores de renombre internacional sobre táctica avanzada, psicología deportiva y fisioterapia de alto rendimiento.",
-    content: "El Congreso Deportivo Internacional reúne cada año a especialistas, entrenadores y deportistas de distintos países para compartir las últimas tendencias en preparación física, táctica de competencia y recuperación deportiva. La jornada incluye paneles magistrales, talleres prácticos y espacios de networking entre profesionales del área. Está dirigido a entrenadores, estudiantes de ciencias del deporte, fisioterapeutas y todo aquel interesado en el alto rendimiento.",
-    location: "Auditorio Central",
-    category: "Académico",
-    img: "/images/juan.png",
-    gallery: ["/images/juan.png", "/images/mila.webp", "/images/int.webp"],
-    color: "#C9993A",
+    img: "/images/evento1.webp",
   },
   {
     title: "TORNEO INTERDISCIPLINARIO CBIT",
-    date: "28 JUN",
-    time: "08:00 AM - 08:00 PM",
-    desc: "La máxima competencia deportiva del año entre nuestras distintas delegaciones en fútbol, voley y básquetbol. ¡Ven a alentar a tus equipos!",
-    content: "El Torneo Interdisciplinario CBIT es el evento deportivo más esperado del año, donde las delegaciones compiten durante toda la jornada en fútbol, voleibol y básquetbol. Más que una competencia, es una celebración del trabajo en equipo y el espíritu deportivo que caracteriza a nuestra comunidad. Habrá zonas de hidratación, primeros auxilios y un cierre con la premiación a las delegaciones ganadoras.",
-    location: "Complejo Polideportivo",
-    category: "Deportivo",
-    img: "/images/lucas.jpg",
-    gallery: ["/images/lucas.jpg", "/images/futi.jpg", "/images/eq8.webp"],
-    color: "#1A4B8C",
+    img: "/images/evento2.webp",
   },
   {
     title: "CARRERA Y FERIA DE SALUD INTEGRAL",
-    date: "12 JUL",
-    time: "07:00 AM - 01:00 PM",
-    desc: "Participa de nuestra carrera 5K/10K seguida de stands informativos sobre nutrición deportiva, chequeos médicos gratuitos y conferencias.",
-    content: "La Carrera y Feria de Salud Integral combina actividad física con educación en bienestar. Tras completar el recorrido de 5K o 10K, los participantes pueden recorrer los stands de nutrición deportiva, acceder a chequeos médicos gratuitos (presión arterial, composición corporal, salud postural) y asistir a charlas breves dictadas por especialistas en salud. Una jornada pensada para toda la familia.",
-    location: "Campus Central",
-    category: "Comunidad",
-    img: "/images/int.webp",
-    gallery: ["/images/int.webp", "/images/ban.webp", "/images/ku.webp"],
-    color: "#2D7DD2",
+    img: "/images/evento3.webp",
   },
   {
     title: "CAMPAMENTO DE ÉLITE PARA PROMESAS",
-    date: "22 JUL",
-    time: "09:00 AM - 04:00 PM",
-    desc: "Clínicas especializadas de entrenamiento de alto rendimiento físico y táctico dirigidas por reclutadores internacionales.",
-    content: "Pensado para jóvenes promesas del deporte, este campamento ofrece clínicas intensivas de entrenamiento físico y táctico, dirigidas por reclutadores y entrenadores con experiencia internacional. Los participantes son evaluados en distintas pruebas de rendimiento, recibiendo retroalimentación personalizada sobre su desarrollo deportivo y posibles rutas de proyección competitiva.",
-    location: "Centro de Alto Rendimiento",
-    category: "Deportivo",
-    img: "/images/miu1.jpeg",
-    gallery: ["/images/miu1.jpeg", "/images/sup5.webp", "/images/mix5.webp"],
-    color: "#C9993A",
+    img: "/images/evento4.webp",
   }
 ];
 
@@ -102,91 +70,6 @@ const destacados = [
 
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════
-         GRID DE EVENTOS (AGENDA)
-    ══════════════════════════════════ -->
-    <section class="ev-section ev-soft-bg" id="eventos">
-      <div class="ev-container">
-
-        <div class="ev-section-head ev-reveal">
-          <span class="ev-eyebrow">Calendario de Actividades</span>
-          <h2 class="ev-section-title font-display">AGENDA <span class="ev-gold">CBIT</span></h2>
-          <div class="ev-bar" data-bar></div>
-        </div>
-
-        <div class="ev-events-grid">
-          {events.map((event, i) => {
-            const [day, month] = event.date.split(' ');
-            return (
-              <article class={`ev-float-card ev-event-card ev-reveal ev-s${i % 4}`}>
-
-                <!-- Imagen -->
-                <div class="ev-img-wrap">
-                  <img
-                    src={event.img}
-                    alt={event.title}
-                    width="800"
-                    height="600"
-                    loading="lazy"
-                    decoding="async"
-                    class="ev-img ev-zoom-target"
-                  />
-
-                  <!-- Date badge -->
-                  <div class="ev-date-badge">
-                    <span class="ev-date-day font-display" style={`color:${event.color}`}>{day}</span>
-                    <span class="ev-date-month">{month}</span>
-                  </div>
-
-                  <!-- Category pill -->
-                  <div class="ev-cat-pill" style={`border-left-color:${event.color}`}>
-                    {event.category}
-                  </div>
-                </div>
-
-                <!-- Body -->
-                <div class="ev-card-body">
-                  <div class="ev-card-accent" style={`background:${event.color}`}></div>
-                  <h3 class="ev-card-title font-display" style={`color:${event.color}`}>{event.title}</h3>
-                  <p class="ev-card-desc">{event.desc}</p>
-
-                  <!-- Meta -->
-                  <div class="ev-card-meta">
-                    <span class="ev-meta-item">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                      </svg>
-                      {event.time}
-                    </span>
-                    <span class="ev-meta-item">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-                      </svg>
-                      {event.location}
-                    </span>
-                  </div>
-
-                  <!-- Trigger detalle -->
-                  <button
-                    type="button"
-                    class="ev-detail-btn"
-                    data-ev-trigger
-                    data-index={i}
-                    style={`color:${event.color}`}
-                  >
-                    Ver más detalles
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                  </button>
-                </div>
-
-              </article>
-            );
-          })}
-        </div>
-
       </div>
     </section>
 
@@ -255,27 +138,38 @@ const destacados = [
       </div>
     </section>
 
-  </main>
+    <!-- ══════════════════════════════════
+         GRID DE EVENTOS (AGENDA) — FLYERS
+    ══════════════════════════════════ -->
+    <section class="ev-section ev-soft-bg" id="eventos">
+      <div class="ev-container">
 
-  <!-- ══════════════════════════════════
-       MODAL DE DETALLE DE EVENTO (AGENDA)
-  ══════════════════════════════════ -->
-  <div class="ev-modal-overlay" id="ev-modal" aria-hidden="true">
-    <div class="ev-modal" role="dialog" aria-modal="true" aria-labelledby="ev-modal-title">
-      <button type="button" class="ev-modal-close" id="ev-modal-close" aria-label="Cerrar">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-      </button>
+        <div class="ev-section-head ev-reveal">
+          <span class="ev-eyebrow">Calendario de Actividades</span>
+          <h2 class="ev-section-title font-display">AGENDA <span class="ev-gold">CBIT</span></h2>
+          <div class="ev-bar" data-bar></div>
+        </div>
 
-      <div class="ev-modal-gallery" id="ev-modal-gallery"></div>
+        <div class="ev-events-grid">
+          {events.map((event, i) => (
+            <div class={`ev-float-card ev-flyer-card ev-reveal ev-s${i % 4}`}>
+              <img
+                src={event.img}
+                alt={event.title}
+                width="600"
+                height="900"
+                loading="lazy"
+                decoding="async"
+                class="ev-flyer-img ev-zoom-target"
+              />
+            </div>
+          ))}
+        </div>
 
-      <div class="ev-modal-body">
-        <span class="ev-modal-cat" id="ev-modal-cat"></span>
-        <h3 class="ev-modal-title font-display" id="ev-modal-title"></h3>
-        <div class="ev-modal-meta" id="ev-modal-meta"></div>
-        <p class="ev-modal-text" id="ev-modal-text"></p>
       </div>
-    </div>
-  </div>
+    </section>
+
+  </main>
 </Layout>
 
 <style>
@@ -402,13 +296,27 @@ const destacados = [
 }
 
 /* ══════════════════════════════════
-   GRID Y TARJETAS DE EVENTO (AGENDA)
+   GRID DE FLYERS (AGENDA)
 ══════════════════════════════════ */
 .ev-events-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.5rem;
 }
+
+.ev-flyer-card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  padding: 0;
+  border: none;
+}
+.ev-flyer-img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.ev-flyer-card:hover .ev-zoom-target { transform: scale(1.04); }
 
 .ev-img-wrap {
   position: relative;
@@ -420,83 +328,6 @@ const destacados = [
   object-fit: cover; display: block;
   transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
 }
-.ev-float-card:hover .ev-zoom-target { transform: scale(1.05); }
-
-.ev-date-badge {
-  position: absolute;
-  top: 1rem; right: 1rem;
-  background: rgba(26,75,140,0.88);
-  backdrop-filter: blur(8px);
-  border-radius: 12px;
-  padding: 0.55rem 0.9rem;
-  text-align: center;
-  border: 1px solid rgba(255,255,255,0.12);
-  min-width: 52px;
-}
-.ev-date-day   { display: block; font-size: 1.45rem; line-height: 1; }
-.ev-date-month {
-  display: block; font-size: 0.6rem; font-weight: 700;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: rgba(255,255,255,0.65); margin-top: 0.2rem;
-}
-
-.ev-cat-pill {
-  position: absolute;
-  bottom: 1rem; left: 1rem;
-  background: rgba(26,75,140,0.82);
-  backdrop-filter: blur(8px);
-  color: #fff; font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  padding: 0.4rem 0.9rem; border-radius: 50px;
-  border-left: 3px solid;
-}
-
-.ev-card-body  { padding: 1.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
-.ev-card-accent {
-  width: 28px; height: 3.5px;
-  border-radius: 2px;
-  transition: width 0.35s;
-  margin-bottom: 0.25rem;
-}
-.ev-float-card:hover .ev-card-accent { width: 52px; }
-
-.ev-card-title {
-  font-size: 1.05rem;
-  margin: 0 0 0.3rem;
-  letter-spacing: 0.04em;
-  line-height: 1.25;
-}
-.ev-card-desc {
-  font-size: 0.95rem;
-  line-height: 1.75;
-  color: var(--muted);
-  margin: 0;
-}
-
-.ev-card-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem 1.4rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(26,75,140,0.07);
-  margin-top: 0.4rem;
-}
-.ev-meta-item {
-  display: flex; align-items: center; gap: 0.4rem;
-  font-size: 0.74rem; font-weight: 600;
-  color: var(--faint);
-}
-.ev-meta-item svg { color: var(--gold); flex-shrink: 0; }
-
-.ev-detail-btn {
-  display: inline-flex; align-items: center; gap: 0.45rem;
-  margin-top: 0.5rem;
-  background: none; border: none; padding: 0; cursor: pointer;
-  font-size: 0.74rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
-  transition: gap 0.25s;
-  align-self: flex-start;
-}
-.ev-detail-btn:hover { gap: 0.7rem; }
 
 /* ══════════════════════════════════
    EVENTOS DESTACADOS
@@ -558,68 +389,6 @@ const destacados = [
 .ev-dest-text:last-child { margin-bottom: 0; }
 
 /* ══════════════════════════════════
-   MODAL DE DETALLE
-══════════════════════════════════ */
-.ev-modal-overlay {
-  position: fixed; inset: 0; z-index: 200;
-  background: rgba(10, 22, 48, 0.72);
-  backdrop-filter: blur(6px);
-  display: flex; align-items: center; justify-content: center;
-  padding: 1.5rem;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-.ev-modal-overlay.ev-modal-open { opacity: 1; pointer-events: auto; }
-
-.ev-modal {
-  background: var(--white);
-  border-radius: var(--r-xl);
-  max-width: 880px; width: 100%;
-  max-height: 88vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: var(--sh-hover);
-  transform: translateY(24px) scale(0.98);
-  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
-}
-.ev-modal-overlay.ev-modal-open .ev-modal { transform: translateY(0) scale(1); }
-
-.ev-modal-close {
-  position: absolute; top: 1rem; right: 1rem; z-index: 5;
-  width: 38px; height: 38px; border-radius: 50%;
-  background: rgba(255,255,255,0.92); border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text); box-shadow: var(--sh2);
-  transition: transform 0.25s, background 0.25s;
-}
-.ev-modal-close:hover { transform: rotate(90deg); background: #fff; }
-
-.ev-modal-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-  height: 280px;
-}
-.ev-modal-gallery img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.ev-modal-gallery img:first-child { grid-column: span 2; grid-row: span 2; }
-.ev-modal-gallery { grid-template-rows: repeat(2, 1fr); }
-
-.ev-modal-body { padding: 2rem 2.25rem 2.5rem; }
-.ev-modal-cat {
-  display: inline-block; font-size: 0.7rem; font-weight: 800;
-  letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold);
-  margin-bottom: 0.7rem;
-}
-.ev-modal-title { font-size: 1.7rem; color: var(--blue); line-height: 1.2; margin: 0 0 1rem; }
-.ev-modal-meta { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; margin-bottom: 1.3rem; }
-.ev-modal-meta span {
-  display: flex; align-items: center; gap: 0.4rem;
-  font-size: 0.82rem; font-weight: 600; color: var(--faint);
-}
-.ev-modal-meta svg { color: var(--gold); flex-shrink: 0; }
-.ev-modal-text { font-size: 1rem; line-height: 1.9; color: var(--muted); margin: 0; }
-
-/* ══════════════════════════════════
    SCROLL REVEAL
 ══════════════════════════════════ */
 .ev-reveal {
@@ -643,28 +412,22 @@ const destacados = [
   .ev-destacado    { grid-template-columns: 1fr; }
   .ev-dest-body    { padding: 0.25rem 0.5rem 0.5rem; }
 }
-@media(max-width:768px){
-  .ev-events-grid    { grid-template-columns: 1fr; }
-  .ev-modal-gallery  { grid-template-columns: repeat(2,1fr); height: auto; }
-  .ev-modal-gallery img:first-child { grid-column: span 2; grid-row: span 1; height: 180px; }
-  .ev-modal-gallery img:not(:first-child) { height: 110px; }
-}
 @media(max-width:640px){
   .ev-section       { padding: 4.5rem 0; }
   .ev-hero          { padding: 9rem 0 5rem; }
   .ev-container     { padding: 0 1.25rem; }
   .ev-dest-main-wrap{ height: 240px; }
   .ev-dest-thumbs   { grid-template-columns: repeat(4,1fr); }
+  .ev-events-grid   { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+}
+@media(max-width:420px){
+  .ev-events-grid   { gap: 0.6rem; }
 }
 @media(prefers-reduced-motion:reduce){
   .ev-reveal { opacity: 1; transform: none; transition: none; }
   .ev-bar    { width: 56px; transition: none; }
 }
 </style>
-
-<script define:vars={{ eventsData: events }}>
-  window.__EV_EVENTS__ = eventsData;
-</script>
 
 <script>
   import gsap from 'gsap';
@@ -761,56 +524,6 @@ const destacados = [
     ScrollTrigger.getAll().forEach(t => t.kill());
   }
 
-  /* ── MODAL DE DETALLE DE EVENTO ── */
-  function initModal() {
-    const overlay = document.getElementById('ev-modal');
-    const closeBtn = document.getElementById('ev-modal-close');
-    const galleryEl = document.getElementById('ev-modal-gallery');
-    const catEl = document.getElementById('ev-modal-cat');
-    const titleEl = document.getElementById('ev-modal-title');
-    const metaEl = document.getElementById('ev-modal-meta');
-    const textEl = document.getElementById('ev-modal-text');
-    if (!overlay || !closeBtn || !galleryEl || !catEl || !titleEl || !metaEl || !textEl) return;
-
-    function openModal(idx: number) {
-      const data = (window as any).__EV_EVENTS__?.[idx];
-      if (!data) return;
-
-      catEl!.textContent = data.category;
-      titleEl!.textContent = data.title;
-      textEl!.textContent = data.content || data.desc;
-
-      metaEl!.innerHTML = `
-        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${data.date} · ${data.time}</span>
-        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${data.location}</span>
-      `;
-
-      const imgs = (data.gallery && data.gallery.length ? data.gallery : [data.img]) as string[];
-      galleryEl!.innerHTML = imgs.slice(0, 3).map((src) => `<img src="${src}" alt="${data.title}" loading="lazy" />`).join('');
-
-      overlay!.classList.add('ev-modal-open');
-      overlay!.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      overlay!.classList.remove('ev-modal-open');
-      overlay!.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    document.querySelectorAll<HTMLElement>('[data-ev-trigger]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx = parseInt(btn.dataset.index || '0', 10);
-        openModal(idx);
-      });
-    });
-
-    closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-  }
-
   /* ── GALERÍA DE EVENTOS DESTACADOS ── */
   function initDestacadosGallery() {
     document.querySelectorAll<HTMLElement>('.ev-destacado').forEach((card, idx) => {
@@ -833,8 +546,7 @@ const destacados = [
   }
 
   initPage();
-  initModal();
   initDestacadosGallery();
-  document.addEventListener('astro:page-load', () => { cleanup(); initPage(); initModal(); initDestacadosGallery(); });
+  document.addEventListener('astro:page-load', () => { cleanup(); initPage(); initDestacadosGallery(); });
   document.addEventListener('astro:before-swap', cleanup);
 </script>
