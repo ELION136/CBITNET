@@ -29,8 +29,8 @@ const catMap: Record<string, string> = {
 const ticker_items = ["ARBITRAJE", "ENTRENAMIENTO", "MARKETING DEPORTIVO", "PERIODISMO", "DIRIGENCIA", "GESTIÓN DE EVENTOS", "INFORMÁTICA INDUSTRIAL", "BEACH VOLEY"];
 
 const servicios = [
-  { titulo: "Arbitraje Deportivo",      desc: "Certificación FIFA y FIVB para árbitros de fútbol y vóley a nivel competitivo.",  imagen: "/images/1.png" },
-  { titulo: "Entrenamiento de Élite",   desc: "Metodologías modernas de entrenamiento físico, táctico y mental.",                 imagen: "/images/1.png" },
+  { titulo: "Arbitraje Deportivo",      desc: "Certificación FIFA y FIVB para árbitros de fútbol y vóley a nivel competitivo.",  imagen: "/images/IMG_9547.webp" },
+  { titulo: "Entrenamiento de Élite",   desc: "Metodologías modernas de entrenamiento físico, táctico y mental.",                 imagen: "/images/IMG_9548.webp" },
   { titulo: "Gestión y Dirigencia",     desc: "Administración de clubes, auditorías deportivas y gestión de eventos.",            imagen: "/images/1.png" },
   { titulo: "Comunicación Deportiva",   desc: "Periodismo, producción audiovisual y marketing aplicado al deporte.",              imagen: "/images/1.png" },
 ];
@@ -74,7 +74,7 @@ const heroSlides = [
 <nav id="navbar">
   <a href="/" class="nav-logo">
     <img src="/images/log3.png" alt="INFOCADE" onerror="this.style.display='none'" />
-    <span class="nav-wordmark">INFO<em>CADE</em></span>
+    <span class="nav-wordmark">INFOCADE</span>
   </a>
   <div class="nav-links">
     <a href="#about"      class="nav-link">Nosotros</a>
@@ -87,7 +87,25 @@ const heroSlides = [
     Inscribirme
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
   </a>
+  <button class="nav-hamburger" id="nav-ham" aria-label="Abrir menú">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="mobile-menu-drawer" id="mobile-menu">
+  <a href="#about"      class="mob-nav-link">Nosotros</a>
+  <a href="#servicios"  class="mob-nav-link">Especialidades</a>
+  <a href="#programas"  class="mob-nav-link">Programas</a>
+  <a href="#testimonios"class="mob-nav-link">Egresados</a>
+  <a href="#vacantes"   class="mob-nav-link">Vacantes</a>
+  <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="mob-nav-cta">
+    Inscribirme
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  </a>
+</div>
 
 <!-- HERO CARRUSEL -->
 <!-- HERO VIDEO -->
@@ -126,11 +144,12 @@ const heroSlides = [
   </div>
 </section>
 
+  <!-- MARQUEE 
   <div class="hero-dots">
     {heroSlides.map((_, i) => (
       <button class={`hero-dot${i === 0 ? ' active' : ''}`} data-dot={i} aria-label={`Slide ${i+1}`}></button>
     ))}
-  </div>
+  </div>-->
 
   
 
@@ -160,8 +179,8 @@ const heroSlides = [
         <div class="about-eyebrow">Quiénes Somos</div>
         <h2 class="about-h2">INSTITUTO DE <span class="hl">FORMACIÓN</span> DEPORTIVA Y EMPRESARIAL</h2>
         <p class="about-desc">
-          INFOCADE lleva más de 8 años certificando profesionales del deporte y el ámbito empresarial. Nuestros programas son diseñados y dictados por árbitros, entrenadores y gestores activos del sector.
-        </p>
+          INFOCADE es un Instituto de Formación Deportiva con Más de Cinco Años de Trayectoria, Dedicado a Formar y Certificar Profesionales en el Ámbito Deportivo y Empresarial. Nos Caracterizamos por Ofrecer una Educación de Calidad, Impartida por Árbitros, Entrenadores, Gestores y Especialistas en Ejercicio Activo, Quienes Combinan su Experiencia con una Enseñanza Práctica y Actualizada. Nuestro Compromiso es Desarrollar Profesionales Íntegros, Preparados para Afrontar los Desafíos del Mundo Laboral y Contribuir al Crecimiento del Deporte y las Organizaciones.
+         </p>
         <div class="about-features">
           {[
             { icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/></svg>`, t: "Certificación Reconocida",  d: "Validez nacional e internacional" },
@@ -186,8 +205,8 @@ const heroSlides = [
           <div class="ab-img span2"><img src="/images/fuchi.webp" alt="Deporte" onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80'" /></div>
         </div>
         <div class="about-badge">
-          <div class="about-badge-num">3+</div>
-          <div class="about-badge-lbl">Años de Experiencia</div>
+          <div class="about-badge-num">RM. 0184/2025</div>
+         
         </div>
       </div>
     </div>
@@ -386,7 +405,7 @@ const heroSlides = [
        onerror="this.style.display='none'" />
   <div class="cta-inner">
     <div class="cta-left anim-left">
-      <div class="cta-tag">Inscripciones Abiertas 2025</div>
+      <div class="cta-tag">Inscripciones Abiertas 2026</div>
       <h2 class="cta-h2">TU PRÓXIMO<br/>NIVEL ESTÁ<br/><span class="c-red">AQUÍ.</span></h2>
       <p class="cta-sub">Más de 800 profesionales del deporte ya dieron el paso. Certifícate con los mejores.</p>
     </div>
@@ -436,12 +455,12 @@ const heroSlides = [
       <div class="footer-links">
         <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="footer-link">Formulario de Inscripción</a>
         <span class="footer-link">info@infocade.edu</span>
-        <span class="footer-link">+591 4 000 0000</span>
+        <span class="footer-link">+591 71742240</span>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">© 2025 INFOCADE — Todos los derechos reservados</span>
+    <span class="footer-copy">© 2026 INFOCADE — Todos los derechos reservados</span>
     <span class="footer-accent">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       Formación deportiva certificada
@@ -507,8 +526,30 @@ const heroSlides = [
     });
   })();
 
-  /* ── NAVBAR SCROLL ── */
+  /* ── NAVBAR MOBILE TOGGLE & SCROLL ── */
   const nb = document.getElementById('navbar')!;
+  const ham = document.getElementById('nav-ham');
+  const mobMenu = document.getElementById('mobile-menu');
+
+  if (ham && mobMenu) {
+    ham.addEventListener('click', () => {
+      const isOpen = ham.classList.toggle('open');
+      mobMenu.classList.toggle('open');
+      document.body.classList.toggle('menu-open');
+      ham.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    const mobLinks = mobMenu.querySelectorAll('.mob-nav-link, .mob-nav-cta');
+    mobLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        ham.classList.remove('open');
+        mobMenu.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        ham.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
   window.addEventListener('scroll', () => nb.classList.toggle('scrolled', scrollY > 40), { passive: true });
 
   /* ── MARQUEE PAUSE ── */
