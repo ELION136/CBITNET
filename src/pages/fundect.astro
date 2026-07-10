@@ -120,27 +120,19 @@ const stats = [
       <!-- Imagen de fondo full-bleed -->
       <div class="fd-hero-bg">
         <img
-          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1800&auto=format&fit=crop&q=85"
+          src="/images/lopi.png"
           alt=""
           aria-hidden="true"
           class="fd-hero-bg-img"
         />
-        <!-- Gradiente de identidad: azul marino → naranja cálido abajo-derecha -->
-        <div class="fd-hero-gradient" aria-hidden="true"></div>
+
       </div>
 
       <!-- Contenido del hero -->
       <div class="fd-hero-content">
 
         <!-- Logo —GRANDE— con halo -->
-        <div class="fd-hero-logo-wrap fd-anim-logo">
-          <div class="fd-logo-halo" aria-hidden="true"></div>
-          <img
-            src="/images/fd.png"
-            alt="Fundect — Fundación para la Educación, la Ciencia y la Tecnología"
-            class="fd-hero-logo"
-          />
-        </div>
+       
 
         <!-- Eyebrow -->
         <div class="fd-hero-eyebrow fd-anim-eyebrow">
@@ -234,22 +226,30 @@ const stats = [
 
       <div class="fd-mission-text">
         <span class="fd-eyebrow-tag">Quiénes somos</span>
+        <span class="fd-resolution-badge">Resolución Administrativa N.º 224/1997</span>
         <h2 class="fd-section-h2">
           Una fundación hecha de<br/><em>ciencia</em> y vocación
         </h2>
         <p>
-          Fundect nace de la convicción de que la tecnología es la herramienta más poderosa
-          para nivelar el campo de juego. Unimos el rigor científico con la calidez comunitaria
-          para guiar a jóvenes hacia un futuro donde su talento no tenga techo.
+          La Fundación para la Educación, la Ciencia y la Tecnología es una entidad
+          sin fines de lucro orientada a la generación de conocimiento, el
+          fortalecimiento de capacidades y la provisión de apoyo técnico
+          especializado, con el propósito de contribuir al desarrollo sostenible,
+          la innovación y la mejora continua de organizaciones, comunidades y
+          sectores productivos.
         </p>
         <blockquote class="fd-blockquote">
           "Cuando un joven entiende que puede construir soluciones, deja de ser
           espectador de su propio destino."
         </blockquote>
         <p>
-          Ferias científicas, talleres de robótica, becas universitarias y convenios
-          institucionales son las herramientas con las que escribimos esa historia,
-          evento a evento, joven a joven.
+          Promovemos la investigación aplicada, la capacitación técnica y
+          profesional, y la asistencia técnica integral, articulando el saber
+          científico con la práctica, la transferencia de tecnología y la
+          formación de talento humano. Nuestras acciones se desarrollan bajo
+          principios de responsabilidad social, ética, inclusión y compromiso
+          con el desarrollo económico, social y ambiental, buscando generar
+          impacto positivo y soluciones pertinentes a las necesidades del entorno.
         </p>
         <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" rel="noopener noreferrer" class="fd-btn-solar" style="margin-top:8px; display:inline-flex;">
           Unirse a la misión
@@ -271,10 +271,7 @@ const stats = [
             <span class="fd-eyebrow-tag">Iniciativas activas</span>
             <h2 class="fd-section-h2">Proyectos<br/><em>tecnocívicos</em></h2>
           </div>
-          <p class="fd-section-lead">
-            Cada proyecto es una respuesta concreta a una brecha real.<br/>
-            Tecnología con propósito y alcance comunitario.
-          </p>
+          
         </div>
 
         <div class="fd-proj-grid">
@@ -412,7 +409,7 @@ const stats = [
         <div class="fd-cta-overlay" aria-hidden="true"></div>
       </div>
       <div class="fd-cta-inner">
-        <img src="/images/fd.png" alt="Fundect" class="fd-cta-logo" />
+        <img src="/images/fd_clean.png" alt="Fundect" class="fd-cta-logo" />
         <h2 class="fd-cta-h2">
           Sé parte del<br/><em>círculo científico</em>
         </h2>
@@ -537,6 +534,21 @@ const stats = [
   .fd-eyebrow-tag--light { color: var(--gold); }
   .fd-eyebrow-tag--light::before { background: var(--gold); }
 
+  /* Badge de la resolución administrativa */
+  .fd-resolution-badge {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--cyan);
+    background: var(--cyan-light);
+    border-radius: 40px;
+    padding: 6px 16px;
+    margin: 0 0 18px 12px;
+    vertical-align: middle;
+  }
+
   .fd-section-header {
     display: flex;
     justify-content: space-between;
@@ -587,9 +599,9 @@ const stats = [
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255,255,255,0.12);
-    color: #fff;
-    border: 1.5px solid rgba(255,255,255,0.3);
+    background: rgba(27, 52, 97, 0.05);
+    color: var(--ink);
+    border: 1.5px solid rgba(27, 52, 97, 0.2);
     padding: 15px 32px;
     border-radius: 40px;
     font-family: var(--font-display);
@@ -603,8 +615,8 @@ const stats = [
     transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
   }
   .fd-btn-glass:hover {
-    background: rgba(255,255,255,0.22);
-    border-color: rgba(255,255,255,0.55);
+    background: rgba(27, 52, 97, 0.1);
+    border-color: rgba(27, 52, 97, 0.4);
     transform: translateY(-2px);
   }
 
@@ -636,18 +648,24 @@ const stats = [
      ════════════════════════════════════════════════════════ */
   .fd-hero {
     position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    min-height: 85vh;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-rows: 1fr auto;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--bg-2) 100%);
     overflow: hidden;
   }
 
-  /* Imagen de fondo */
+  /* Imagen de la derecha */
   .fd-hero-bg {
-    position: absolute;
-    inset: 0;
+    grid-column: 2;
+    grid-row: 1;
+    position: relative;
     z-index: 0;
+    margin: 32px 32px 32px 0;
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    box-shadow: var(--sh-md);
   }
   .fd-hero-bg-img {
     width: 100%;
@@ -655,56 +673,53 @@ const stats = [
     object-fit: cover;
     display: block;
     transform-origin: center;
-  }
-  /* Gradiente: azul marino semiopaco cubre la foto, naranja sutil en esquina */
-  .fd-hero-gradient {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(105deg,
-        rgba(27,52,97,0.92) 0%,
-        rgba(18,35,71,0.80) 55%,
-        rgba(249,115,22,0.18) 100%
-      );
+    border-radius: inherit;
   }
 
-  /* Contenido */
+  /* Contenido a la izquierda */
   .fd-hero-content {
+    grid-column: 1;
+    grid-row: 1;
     position: relative;
-    z-index: 1;
-    max-width: 780px;
-    padding: 120px 80px 40px;
+    z-index: 2;
+    max-width: 100%;
+    padding: 120px 60px 40px 80px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
+    align-self: center;
   }
 
-  /* Logo GRANDE */
+  /* Logo GRANDE, sin borde/caja */
   .fd-hero-logo-wrap {
     position: relative;
-    margin-bottom: 44px;
+    margin-bottom: 2px;
   }
   .fd-logo-halo {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 220px;
-    height: 100px;
-    background: radial-gradient(ellipse, rgba(249,115,22,0.22) 0%, transparent 70%);
+    width: 380px;
+    height: 140px;
     pointer-events: none;
-    filter: blur(12px);
+    filter: blur(5px);
   }
   .fd-hero-logo {
-    height: 130px;
+    height: 290px;
     width: auto;
-    max-width: 520px;
+    max-width: 100%;
     object-fit: contain;
     display: block;
     position: relative;
     z-index: 1;
-    /* Quitar fondo negro del PNG con blend o drop-shadow */
-    filter: drop-shadow(0 4px 24px rgba(249,115,22,0.30));
+    border: none;
+    outline: none;
+    background: transparent;
+    box-shadow: none;
+    mix-blend-mode: normal;
+   
   }
 
   /* Eyebrow pill */
@@ -717,11 +732,11 @@ const stats = [
     font-weight: 700;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-    border: 1px solid rgba(255,255,255,0.18);
+    color: var(--ink-2);
+    border: 1px solid rgba(27, 52, 97, 0.18);
     border-radius: 40px;
     padding: 8px 18px;
-    background: rgba(255,255,255,0.06);
+    background: rgba(27, 52, 97, 0.04);
     backdrop-filter: blur(6px);
     margin-bottom: 28px;
   }
@@ -743,21 +758,21 @@ const stats = [
   /* H1 hero */
   .fd-hero-h1 {
     font-family: var(--font-display);
-    font-size: 80px;
+    font-size: 72px;
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--ink);
     margin-bottom: 24px;
   }
-  .fd-hero-h1 em { font-style: normal; color: var(--gold); }
+  .fd-hero-h1 em { font-style: normal; color: var(--solar); }
 
   .fd-hero-desc {
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.75;
-    color: rgba(255,255,255,0.68);
+    color: var(--muted);
     max-width: 480px;
     margin-bottom: 40px;
   }
@@ -770,16 +785,17 @@ const stats = [
 
   /* Stats bar bottom hero */
   .fd-hero-stats {
+    grid-column: 1 / span 2;
+    grid-row: 2;
     position: relative;
     z-index: 1;
     display: flex;
     align-items: stretch;
-    background: rgba(255,255,255,0.07);
+    background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(255,255,255,0.10);
-    padding: 28px 80px;
+    border-top: 1px solid rgba(27, 52, 97, 0.08);
+    padding: 24px 80px;
     gap: 0;
-    margin-top: auto;
   }
   .fd-hstat {
     flex: 1;
@@ -790,7 +806,7 @@ const stats = [
   }
   .fd-hstat-num {
     font-family: var(--font-display);
-    font-size: 46px;
+    font-size: 42px;
     font-weight: 800;
     color: var(--gold);
     letter-spacing: -0.02em;
@@ -802,12 +818,12 @@ const stats = [
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
+    color: var(--muted);
     text-align: center;
   }
   .fd-hstat-sep {
     width: 1px;
-    background: rgba(255,255,255,0.10);
+    background: rgba(27, 52, 97, 0.08);
     flex-shrink: 0;
     margin: 0 8px;
   }
@@ -937,7 +953,7 @@ const stats = [
     object-fit: cover;
   }
 
-  .fd-mission-text .fd-eyebrow-tag { display: block; }
+  .fd-mission-text .fd-eyebrow-tag { display: inline-flex; }
   .fd-mission-text .fd-section-h2  { margin-bottom: 24px; }
   .fd-mission-text p {
     font-family: var(--font-body);
@@ -1430,11 +1446,17 @@ const stats = [
   }
 
   .fd-cta-logo {
-    height: 88px;
+    height: 110px;
     width: auto;
+    max-width: 100%;
     object-fit: contain;
     margin-bottom: 40px;
-    filter: drop-shadow(0 0 24px rgba(249,115,22,0.35));
+    border: none;
+    outline: none;
+    background: transparent;
+    box-shadow: none;
+    mix-blend-mode: normal;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
   }
   .fd-cta-h2 {
     font-family: var(--font-display);
@@ -1476,6 +1498,233 @@ const stats = [
       transition: none !important;
       opacity: 1 !important;
       transform: none !important;
+    }
+  }
+
+  /* ── Responsive Design Media Queries ────────────────── */
+  @media (max-width: 1024px) {
+    .fd-section-h2 {
+      font-size: 42px;
+    }
+    .fd-mission {
+      gap: 40px;
+      padding: 80px 52px;
+    }
+    .fd-proj-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .fd-events-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .fd-values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .fd-container {
+      padding: 0 24px;
+    }
+    .fd-section-h2 {
+      font-size: 34px;
+    }
+    .fd-section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .fd-section-lead {
+      max-width: none;
+      text-align: left;
+    }
+    .fd-section-center {
+      margin-bottom: 36px;
+    }
+
+    /* Hero */
+    .fd-hero {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      min-height: auto;
+      padding: 0;
+    }
+    .fd-hero-content {
+      grid-column: 1;
+      grid-row: 1;
+      padding: 60px 24px 40px;
+      align-self: stretch;
+    }
+    .fd-hero-bg {
+      grid-column: 1;
+      grid-row: 2;
+      height: 320px;
+      position: relative;
+      margin: 16px 24px;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: var(--sh-md);
+    }
+    .fd-hero-logo {
+      height: 110px;
+    }
+    .fd-hero-h1 {
+      font-size: 42px;
+    }
+    .fd-hero-desc {
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+    .fd-hero-btns {
+      gap: 10px;
+    }
+    .fd-hero-stats {
+      grid-column: 1;
+      grid-row: 3;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 0;
+      border-bottom: 1px solid rgba(27, 52, 97, 0.08);
+    }
+    .fd-hstat-sep {
+      display: none;
+    }
+    .fd-hstat-num {
+      font-size: 32px;
+    }
+
+    /* Misión */
+    .fd-mission {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      padding: 60px 24px;
+    }
+    .fd-mission-img-inner {
+      height: 380px;
+    }
+    .fd-mission-img-secondary {
+      width: 140px;
+      height: 140px;
+      top: -20px;
+      right: -10px;
+    }
+    .fd-resolution-badge {
+      margin: 0 0 18px 0;
+      display: block;
+      width: fit-content;
+    }
+
+    /* Proyectos */
+    .fd-projects-section {
+      padding: 60px 0;
+    }
+    .fd-proj-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    /* Eventos */
+    .fd-events-section {
+      padding: 60px 0;
+    }
+    .fd-events-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    /* Galería Masonry */
+    .fd-gallery-section {
+      padding: 60px 0;
+    }
+    .fd-gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      auto-rows: 150px;
+      gap: 10px;
+    }
+    .fd-gal-item {
+      grid-column: span 1 !important;
+      grid-row: span 1 !important;
+    }
+    .fd-gal-item.fd-gal-wide,
+    .fd-gal-item:nth-child(1),
+    .fd-gal-item:nth-child(6) {
+      grid-column: span 2 !important;
+    }
+    .fd-gal-item.fd-gal-tall {
+      grid-row: span 2 !important;
+    }
+
+    /* Valores */
+    .fd-values-section {
+      padding: 60px 0;
+    }
+    .fd-values-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .fd-val-card {
+      padding: 32px 24px;
+    }
+    .fd-val-bar {
+      left: 24px;
+    }
+
+    /* CTA */
+    .fd-cta-inner {
+      padding: 60px 24px;
+    }
+    .fd-cta-logo {
+      height: 70px;
+      margin-bottom: 24px;
+    }
+    .fd-cta-h2 {
+      font-size: 36px;
+    }
+    .fd-cta-p {
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .fd-hero-h1 {
+      font-size: 34px;
+    }
+    .fd-hero-btns {
+      width: 100%;
+    }
+    .fd-hero-btns a {
+      width: 100%;
+      justify-content: center;
+    }
+    .fd-hero-stats {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .fd-cta-btns {
+      width: 100%;
+      flex-direction: column;
+    }
+    .fd-cta-btns a,
+    .fd-cta-btns button {
+      width: 100%;
+      justify-content: center;
+    }
+    .fd-mission-img-inner {
+      height: 280px;
+    }
+    .fd-mission-img-secondary {
+      display: none; /* Hide to prevent overlapping clutter on extra small screens */
+    }
+    .fd-gallery-grid {
+      grid-template-columns: 1fr;
+      auto-rows: 200px;
+    }
+    .fd-gal-item {
+      grid-column: span 1 !important;
+      grid-row: span 1 !important;
     }
   }
 
