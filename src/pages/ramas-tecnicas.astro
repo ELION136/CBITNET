@@ -14,7 +14,7 @@ const programs = [
     num: "01", tag: "Tecnología Industrial",
     title: "Informática Industrial",
     modalidad: "Presencial / Virtual",
-    img: "/images/3.png",
+    img: "/images/tecnicas/tec1 (3).webp",
     promo: "infocade",
     learn: [
       "Automatización y control industrial con PLC y SCADA",
@@ -27,7 +27,7 @@ const programs = [
     num: "02", tag: "Gestión Ambiental",
     title: "Sistemas de Gestión Ambiental",
     modalidad: "Presencial / Virtual",
-    img: "/images/1.png",
+    img: "/images/tecnicas/tec1 (4).webp",
     promo: "cenacap",
     learn: [
       "Norma ISO 14001 e implementación de SGA en organizaciones",
@@ -40,7 +40,7 @@ const programs = [
     num: "03", tag: "Calidad e Ingeniería",
     title: "Sistemas de Gestión de Calidad",
     modalidad: "Presencial",
-    img: "/images/1.png",
+    img: "/images/tecnicas/tec1 (5).webp",
     promo: "cenacap",
     learn: [
       "Interpretación y aplicación de la norma ISO 9001:2015",
@@ -53,7 +53,7 @@ const programs = [
     num: "04", tag: "Creativo y Multimedia",
     title: "Diseño Gráfico y Producción Audiovisual",
     modalidad: "Presencial / Virtual",
-    img: "/images/6.png",
+    img: "/images/tecnicas/tec1 (7).webp",
     promo: "cenacap",
     learn: [
       "Diseño editorial y de identidad con Adobe Illustrator y Photoshop",
@@ -66,7 +66,7 @@ const programs = [
     num: "05", tag: "Seguridad Laboral",
     title: "Supervisión y Liderazgo en Prevención de Riesgos",
     modalidad: "Presencial",
-    img: "/images/ima3.jpg",
+    img: "/images/tecnicas/tec1 (6).webp",
     promo: "cenacap",
     learn: [
       "Marco normativo de seguridad y salud ocupacional en Bolivia",
@@ -79,7 +79,7 @@ const programs = [
     num: "06", tag: "Gestión y Liderazgo",
     title: "Microsoft Project",
     modalidad: "Virtual",
-    img: "/images/ima3.jpg",
+    img: "/images/tecnicas/tec1 (8).webp",
     promo: "cenacap",
     learn: [
       "Creación y estructuración de proyectos con EDT en MS Project",
@@ -300,7 +300,7 @@ const ventajas = [
           <div class="rt-bar rt-bar-gold" data-bar></div>
 
           <div class="rt-vent-img-frame">
-            <img src="/images/ima1.jpg" alt="Certificación CBIT" class="rt-vent-img" />
+            <img src="/images/tecnicas/tec1 (1).webp" alt="Certificación CBIT" class="rt-vent-img" />
             <div class="rt-vent-img-overlay"></div>
             <div class="rt-img-pill">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -411,18 +411,21 @@ const ventajas = [
 .rt-soft-bg      { background: var(--soft); }
 
 /* ══════════════════════════════════
-   HERO
+   HERO (idéntico a Deportes: fondo imagen, tamaño y mesh)
 ══════════════════════════════════ */
 .rt-hero {
-  background: var(--blue);
+  background-image: url('/images/fondo.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 10rem 0 6rem;
   position: relative;
   overflow: hidden;
 }
 .rt-hero-mesh {
   position: absolute; inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background-size: 32px 32px, cover;
+  background-position: 0 0, center;
   pointer-events: none;
 }
 .rt-orb {
@@ -448,7 +451,7 @@ const ventajas = [
 }
 
 .rt-hero-title {
-  font-size: clamp(3.8rem, 10vw, 8rem);
+  font-size: clamp(2.8rem, 9.5vw, 6.5rem);
   color: #fff;
   line-height: 1.02;
   margin: 0;
@@ -618,7 +621,7 @@ const ventajas = [
 .rt-prog-img-wrap { position: relative; height: 200px; overflow: hidden; }
 .rt-prog-img-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(26,75,140,0.75) 0%, transparent 55%);
+  /*background: linear-gradient(to top, rgba(26,75,140,0.75) 0%, transparent 55%);*/
 }
 .rt-prog-badge {
   position: absolute; top: 0.9rem; right: 0.9rem;

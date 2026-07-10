@@ -15,28 +15,28 @@ const workshops = [
     desc: "Sesiones exclusivas con líderes globales de la tecnología, finanzas y dirección táctica que comparten metodologías de frontera y tendencias críticas del mercado.",
     tag: "Masterclass",
     fecha: "Próximamente",
-    img: "/images/lucas.jpg"
+    img: "/images/juan.png"
   },
   {
     title: "Talleres Prácticos de Liderazgo y Oratoria",
     desc: "Entrenamientos dinámicos enfocados en comunicación estratégica, resolución de conflictos, inteligencia emocional corporativa y presentaciones de alto impacto.",
     tag: "Taller Intensivo",
     fecha: "Próximamente",
-    img: "/images/mira.jpg"
+    img: "/images/orato.jpeg"
   },
   {
     title: "Seminarios de Tendencias Digitales y Nuevas Economías",
     desc: "Actualización continua sobre Inteligencia Artificial aplicada, automatización de procesos, Web3, transformación cultural digital y optimización de flujos de trabajo.",
     tag: "Seminario",
     fecha: "Próximamente",
-    img: "/images/ima1.jpg"
+    img: "/images/mipo.jpg"
   }
 ];
 
 const speakers = [
-  { nombre: "Dr. Alejandro Santos",  rol: "Especialista en Liderazgo Organizacional",       origen: "España",         img: "/images/au1.webp" },
-  { nombre: "Ing. Elena Rostova",    rol: "Consultora en Transformación Digital e IA",       origen: "Alemania",       img: "/images/au2.webp" },
-  { nombre: "Mtr. Marcus Vance",     rol: "Asesor de Negocios y Nuevas Economías",           origen: "Estados Unidos", img: "/images/au3.webp" },
+  { nombre: "Dr. Alejandro Santos",  rol: "Especialista en Liderazgo Organizacional",       origen: "España",         img: "/images/per1.webp" },
+  { nombre: "Ing. Elena Rostova",    rol: "Consultora en Transformación Digital e IA",       origen: "Alemania",       img: "/images/per2.webp" },
+  { nombre: "Mtr. Marine Vance",     rol: "Asesor de Negocios y Nuevas Economías",           origen: "Estados Unidos", img: "/images/per6.png" },
 ];
 ---
 
@@ -275,18 +275,21 @@ const speakers = [
 .cc-soft-bg  { background: var(--soft); }
 
 /* ══════════════════════════════════
-   HERO
+   HERO (idéntico a Deportes: fondo imagen, tamaño y mesh)
 ══════════════════════════════════ */
 .cc-hero {
-  background: var(--blue);
+  background-image: url('/images/fondo.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 10rem 0 6rem;
   position: relative;
   overflow: hidden;
 }
 .cc-hero-mesh {
   position: absolute; inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background-size: 32px 32px, cover;
+  background-position: 0 0, center;
   pointer-events: none;
 }
 .cc-orb {
@@ -309,7 +312,7 @@ const speakers = [
 }
 
 .cc-hero-title {
-  font-size: clamp(3.8rem, 10vw, 8rem);
+  font-size: clamp(2.8rem, 9.5vw, 6.5rem);
   color: #fff; line-height: 1.02; margin: 0;
 }
 .cc-hero-gradient {
