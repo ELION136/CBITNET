@@ -239,7 +239,7 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
       <div class="dr-container dr-stats-inner">
         {stats.map(s => (
           <div class="dr-stat-chip dr-reveal">
-            <span class="dr-stat-num font-display" data-target={s.num}>0</span>
+            <span class="dr-stat-num font-display" data-count={s.num}>0</span>
             <span class="dr-stat-suffix font-display">{s.suffix}</span>
             <span class="dr-stat-label">{s.label}</span>
           </div>
@@ -492,13 +492,11 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* padding-top deja espacio para que el navbar fijo no tape el título */
   padding: 9rem 3rem 5rem;
   overflow: hidden;
-  background: #061229; /* fallback mientras carga el video */
+  background: #061229;
 }
 
-/* video de fondo, detrás de todo */
 .hero-video {
   position: absolute;
   inset: 0;
@@ -512,8 +510,6 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
 .dr-hero-overlay {
   position: absolute; inset: 0;
   z-index: 1;
-  /* overlay más uniforme: ya no genera una franja oscura extra arriba
-     que se sumaba a la del navbar y tapaba el título */
   background:
     linear-gradient(to top, rgba(6,12,35,0.78) 0%, rgba(6,12,35,0.40) 55%, rgba(6,12,35,0.30) 100%),
     linear-gradient(to right, rgba(6,12,35,0.45) 0%, transparent 65%);
@@ -747,7 +743,6 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
   pointer-events: none;
 }
 
-/* badge INFOCADE en imagen */
 .dr-card-infocade {
   position: absolute; top: 0.75rem; right: 0.75rem;
   display: flex; align-items: center; gap: 0.35rem;
@@ -760,14 +755,12 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
   backdrop-filter: blur(6px);
 }
 
-/* número decorativo grande */
 .dr-card-num-deco {
   position: absolute; bottom: 0.5rem; left: 1rem;
   font-size: 5.5rem; line-height: 1;
   opacity: 0.06; pointer-events: none;
 }
 
-/* body */
 .dr-card-body { padding: 1.25rem 1.4rem 0.5rem; flex: 1; }
 .dr-card-accent {
   width: 24px; height: 3px; border-radius: 2px;
@@ -791,7 +784,6 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
   font-weight: 600; letter-spacing: 0.08em;
 }
 
-/* footer card */
 .dr-card-footer {
   padding: 0.85rem 1.4rem 1.2rem;
   border-top: 1px solid rgba(26,75,140,0.07);
@@ -853,7 +845,6 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
 }
 .dr-close-btn:hover { opacity: 1; }
 
-/* barra de resultados */
 .dr-results-bar {
   display: flex; align-items: center; gap: 1rem;
   margin-top: 2.5rem;
@@ -999,8 +990,8 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
       document.querySelectorAll('[data-bar]').forEach(el => barIO.observe(el));
 
       /* ══ STAT COUNTERS ══ */
-      document.querySelectorAll<HTMLElement>('[data-target]').forEach(el => {
-        const end = parseInt(el.dataset.target ?? '0', 10);
+      document.querySelectorAll<HTMLElement>('[data-count]').forEach(el => {
+        const end = parseInt(el.dataset.count ?? '0', 10);
         ScrollTrigger.create({
           trigger: el, start: 'top 90%', once: true,
           onEnter: () => {
