@@ -113,7 +113,22 @@ const heroSlides = [
     Inscribirme
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
   </a>
+  <button class="nav-hamburger" id="nav-ham" aria-label="Abrir menú">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="mobile-menu-drawer" id="mobile-menu">
+  <a href="#about"      class="mob-nav-link">Nosotros</a>
+  <a href="#servicios"  class="mob-nav-link">Servicios</a>
+  <a href="#programas"  class="mob-nav-link">Programas</a>
+  <a href="#testimonios"class="mob-nav-link">Egresados</a>
+  <a href="#vacantes"   class="mob-nav-link">Vacantes</a>
+  <a href="https://forms.gle/cVVdBKkZb4oSyXf27" target="_blank" class="mob-nav-cta">Inscribirme</a>
+</div>
 
 <!-- HERO CARRUSEL -->
 <section id="hero">
@@ -550,8 +565,30 @@ const heroSlides = [
     });
   });
 
-  /* ── NAVBAR SCROLL ── */
+  /* ── NAVBAR MOBILE TOGGLE & SCROLL ── */
   const nb = document.getElementById('navbar')!;
+  const ham = document.getElementById('nav-ham');
+  const mobMenu = document.getElementById('mobile-menu');
+
+  if (ham && mobMenu) {
+    ham.addEventListener('click', () => {
+      const isOpen = ham.classList.toggle('open');
+      mobMenu.classList.toggle('open');
+      document.body.classList.toggle('menu-open');
+      ham.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    const mobLinks = mobMenu.querySelectorAll('.mob-nav-link, .mob-nav-cta');
+    mobLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        ham.classList.remove('open');
+        mobMenu.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        ham.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
   window.addEventListener('scroll', () => nb.classList.toggle('scrolled', scrollY > 40), { passive: true });
 
   /* ── SCROLL REVEAL ── */

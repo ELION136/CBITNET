@@ -54,12 +54,13 @@
   --r-xl: 28px;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
 body {
   background: var(--white);
   color: var(--dark);
   font-family: 'Source Sans 3', sans-serif;
   overflow-x: hidden;
+  max-width: 100%;
   font-size: 1.08rem; /* Larger baseline text size */
 }
 
@@ -636,6 +637,11 @@ footer { background: #0a0a0a; padding: 48px 56px 32px; }
 .d3{transition-delay:0.21s} .d4{transition-delay:0.28s}
 
 /* ══════════════ RESPONSIVE ══════════════ */
+@media(max-width:1150px) {
+  .why-float { right: 0; }
+  .why-float-2 { left: 0; }
+  .about-badge { left: 0; }
+}
 @media(max-width:1024px){
   .servicios-grid{grid-template-columns:repeat(2,1fr)}
   .prog-grid{grid-template-columns:repeat(2,1fr)}
