@@ -3,17 +3,17 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/infocade.css';
 
 const carreras = [
-  { nombre: "Arbitraje de Fútbol Amateur",         desc: "Formación de árbitros con las reglas FIFA, control de partidos y gestión de incidencias.", code: "ARB-01", imagen: "/images/1.png" },
-  { nombre: "Arbitraje de Voleyball en Cancha",    desc: "Árbitros certificados para competencias de voleibol indoor y playa.",                     code: "ARB-02", imagen: "/images/1.png" },
-  { nombre: "Comunicación y Periodismo Deportivo", desc: "Relatos deportivos, cobertura mediática y producción de contenido.",                       code: "COM-01", imagen: "/images/1.png" },
-  { nombre: "Entrenador de Fútbol",                desc: "Licencia de entrenador, metodologías de entrenamiento y gestión de equipos.",              code: "ENT-01", imagen: "/images/1.png" },
-  { nombre: "Entrenador de Beach Voley",           desc: "Especialización en vóley playa, tácticas y preparación física específica.",                code: "ENT-02", imagen: "/images/1.png" },
-  { nombre: "Marketing Deportivo",                 desc: "Estrategias de marketing aplicadas al deporte, patrocinios y gestión de marcas.",          code: "MKT-01", imagen: "/images/1.png" },
-  { nombre: "Auditoría de Organizaciones Deportivas", desc: "Control y auditoría de entidades deportivas, cumplimiento normativo.",                  code: "AUD-01", imagen: "/images/1.png" },
-  { nombre: "Dirigencia Deportiva",                desc: "Gestión de clubes, federaciones y organizaciones deportivas.",                             code: "DIR-01", imagen: "/images/1.png" },
-  { nombre: "Gestión de Eventos Deportivos",       desc: "Organización de eventos, logística, protocolo y ceremonias.",                              code: "EVT-01", imagen: "/images/1.png" },
-  { nombre: "Escuela de Negocios Industriales",    desc: "Gestión empresarial aplicada al sector industrial y deportivo.",                           code: "NEG-01", imagen: "/images/1.png" },
-  { nombre: "Informática Industrial",              desc: "Tecnología de la información aplicada a la gestión deportiva y empresarial.",              code: "INF-01", imagen: "/images/1.png" },
+  { nombre: "Arbitraje de Fútbol Amateur",         desc: "Formación de árbitros con las reglas FIFA, control de partidos y gestión de incidencias.", code: "ARB-01", imagen: "/images/deportes/depr1 (9).webp" },
+  { nombre: "Arbitraje de Voleyball en Cancha",    desc: "Árbitros certificados para competencias de voleibol indoor y playa.",                     code: "ARB-02", imagen: "/images/deportes/depr1 (4).webp" },
+  { nombre: "Comunicación y Periodismo Deportivo", desc: "Relatos deportivos, cobertura mediática y producción de contenido.",                       code: "COM-01", imagen: "/images/deportes/depr1 (5).webp" },
+  { nombre: "Entrenador de Fútbol",                desc: "Licencia de entrenador, metodologías de entrenamiento y gestión de equipos.",              code: "ENT-01", imagen: "/images/deportes/depr1 (3).webp" },
+  { nombre: "Entrenador de Beach Voley",           desc: "Especialización en vóley playa, tácticas y preparación física específica.",                code: "ENT-02", imagen: "/images/deportes/depr1 (10).webp" },
+  { nombre: "Marketing Deportivo",                 desc: "Estrategias de marketing aplicadas al deporte, patrocinios y gestión de marcas.",          code: "MKT-01", imagen: "/images/deportes/depr1 (6).webp" },
+  { nombre: "Auditoría de Organizaciones Deportivas", desc: "Control y auditoría de entidades deportivas, cumplimiento normativo.",                  code: "AUD-01", imagen: "/images/deportes/depr1 (8).webp" },
+  { nombre: "Dirigencia Deportiva",                desc: "Gestión de clubes, federaciones y organizaciones deportivas.",                             code: "DIR-01", imagen: "/images/deportes/IMG_9556.webp" },
+  { nombre: "Gestión de Eventos Deportivos",       desc: "Organización de eventos, logística, protocolo y ceremonias.",                              code: "EVT-01", imagen: "/images/deportes/depr1 (7).webp" },
+  { nombre: "Escuela de Negocios Industriales",    desc: "Gestión empresarial aplicada al sector industrial y deportivo.",                           code: "NEG-01", imagen: "/images/cena3.webp" },
+  { nombre: "Informática Industrial",              desc: "Tecnología de la información aplicada a la gestión deportiva y empresarial.",              code: "INF-01", imagen: "/images/tecnicas/tec1 (6).webp" },
 ];
 
 /* Categorías para filtros */
@@ -31,8 +31,8 @@ const ticker_items = ["ARBITRAJE", "ENTRENAMIENTO", "MARKETING DEPORTIVO", "PERI
 const servicios = [
   { titulo: "Arbitraje Deportivo",      desc: "Certificación FIFA y FIVB para árbitros de fútbol y vóley a nivel competitivo.",  imagen: "/images/IMG_9547.webp" },
   { titulo: "Entrenamiento de Élite",   desc: "Metodologías modernas de entrenamiento físico, táctico y mental.",                 imagen: "/images/IMG_9548.webp" },
-  { titulo: "Gestión y Dirigencia",     desc: "Administración de clubes, auditorías deportivas y gestión de eventos.",            imagen: "/images/1.png" },
-  { titulo: "Comunicación Deportiva",   desc: "Periodismo, producción audiovisual y marketing aplicado al deporte.",              imagen: "/images/1.png" },
+  { titulo: "Gestión y Dirigencia",     desc: "Administración de clubes, auditorías deportivas y gestión de eventos.",            imagen: "/images/deportes/depr1 (11).webp" },
+  { titulo: "Comunicación Deportiva",   desc: "Periodismo, producción audiovisual y marketing aplicado al deporte.",              imagen: "/images/deportes/IMG_9555.webp" },
 ];
 
 const stats = [
@@ -112,7 +112,7 @@ const heroSlides = [
 <section id="hero">
   <video
     class="hero-video"
-    src="/images/video.mp4"
+    src="/images/INFOCADE.mp4"
     autoplay
     muted
     loop
@@ -200,7 +200,7 @@ const heroSlides = [
       </div>
       <div class="about-right anim-right" style="padding:20px 20px 28px 0;">
         <div class="about-mosaic">
-          <div class="ab-img"><img src="/images/jun.jpg" alt="Clase" onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=400&q=80'" /></div>
+          <div class="ab-img"><img src="/images/merus.webp" alt="Clase" onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=400&q=80'" /></div>
           <div class="ab-img"><img src="/images/nena.webp"   alt="Campo" onerror="this.src='https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&q=80'" /></div>
           <div class="ab-img span2"><img src="/images/fuchi.webp" alt="Deporte" onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80'" /></div>
         </div>
@@ -233,7 +233,7 @@ const heroSlides = [
             <img src={s.imagen} alt={s.titulo} onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=400&q=80'" />
           </div>
           <div class="serv-body">
-            <div class="serv-dot"></div>
+            
             <div class="serv-title">{s.titulo}</div>
             <div class="serv-desc">{s.desc}</div>
           </div>
@@ -296,7 +296,7 @@ const heroSlides = [
   <div class="sw">
     <div class="why-grid">
       <div class="why-img-col anim-left">
-        <img src="/images/jun.jpg" alt="Formación INFOCADE" class="why-img-main"
+        <img src="/images/meyu.webp" alt="Formación INFOCADE" class="why-img-main"
              onerror="this.src='https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=800&q=80'" />
         <div class="why-float">
           <div class="why-float-num">100%</div>

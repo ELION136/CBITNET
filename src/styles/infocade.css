@@ -16,6 +16,29 @@
   --yellow-mid: #e02424;      /* medium red */
   --yellow-lt:  #fdeaea;      /* light red / pink */
 
+
+
+  /*
+
+--primary:      #0F172A;  
+--primary-mid:  #1E3A5F;   
+--primary-lt:   #EAF2FB;   
+--primary-dim:  rgba(15,23,42,.12);
+
+
+--red:          #0F172A;
+--red-mid:      #1E3A5F;
+--red-lt:       #EAF2FB;
+--red-dim:      rgba(15,23,42,.12);
+
+--blue:         #0F172A;
+--blue-mid:     #1E3A5F;
+--blue-lt:      #EAF2FB;
+
+--yellow:       #0F172A;
+--yellow-mid:   #1E3A5F;
+--yellow-lt:    #EAF2FB;*/
+
   /* Neutros */
   --white:      #ffffff;
   --off:        #f5f4f1;     /* fondo secciones alternas */
