@@ -6,7 +6,7 @@ const stats = [
   { num: "1200", suffix: "+", label: "Egresados Activos" },
   { num: "98",   suffix: "%", label: "Inserción en Clubes" },
   { num: "15",   suffix: "+", label: "Convenios Deportivos" },
-  { num: "11",   suffix: "",  label: "Programas Activos" },
+  { num: "16",   suffix: "",  label: "Programas Activos" }, // antes decía "11"
 ];
 
 const courses = [
@@ -84,7 +84,7 @@ const courses = [
   },
   {
     num: "07", tag: "Arbitraje",
-    title: "Arbitraje de Voleibol en Cancha",
+    title: "Arbitraje de Voleibol",
     modalidad: "Presencial",
     img: "/images/deportes/depr1 (4).webp",
     learn: [
@@ -130,16 +130,66 @@ const courses = [
       "Analítica de datos y KPIs para campañas deportivas",
     ]
   },
+  // ── #11 corregido: ya no lleva la nota "falta futsala, natacion..." en el título
   {
-    num: "11", tag: "Gestión",
-    title: "Auditoría de Organizaciones Deportivas",
-    modalidad: "Virtual",
-    img: "/images/deportes/depr1 (8).webp",
+    num: "11", tag: "Coaching",
+    title: "Entrenador de Futsala",
+    modalidad: "Presencial",
+    img: "/images/deportes/deper (5).webp",
     learn: [
-      "Marcos de auditoría aplicados a clubes y federaciones",
-      "Indicadores de desempeño institucional en el deporte",
-      "Herramientas digitales de control interno",
-      "Presentación de hallazgos a directivos y stakeholders",
+      "Reglamento oficial de futsala y diferencias con el fútbol de campo",
+      "Sistemas tácticos: 4-0, 3-1, rotaciones y uso del pívot",
+      "Trabajo técnico en espacios reducidos y velocidad de decisión",
+      "Preparación física específica para superficie de cancha cubierta",
+    ]
+  },
+  // ── nuevos cursos añadidos ──
+  {
+    num: "12", tag: "Coaching",
+    title: "Entrenador de Natación",
+    modalidad: "Presencial",
+    img: "/images/deportes/deper (1).webp",
+    learn: [
+      "Técnica de los cuatro estilos: crol, espalda, pecho y mariposa",
+      "Planificación de microciclos y macrociclos de entrenamiento acuático",
+      "Análisis biomecánico de la brazada, respiración y viraje",
+      "Prevención de lesiones y readaptación en el medio acuático",
+    ]
+  },
+  {
+    num: "13", tag: "Coaching",
+    title: "Entrenador de Básquetbol",
+    modalidad: "Presencial",
+    img: "/images/deportes/deper (2).webp",
+    learn: [
+      "Sistemas ofensivos y defensivos: pick and roll, zona, hombre a hombre",
+      "Desarrollo de fundamentos individuales: manejo, tiro y defensa",
+      "Lectura de juego y toma de decisiones en transición",
+      "Planificación de temporada y periodización del rendimiento",
+    ]
+  },
+  {
+    num: "14", tag: "Competición",
+    title: "Deporte de Alto Rendimiento",
+    modalidad: "Presencial / Virtual",
+    img: "/images/deportes/deper (3).webp",
+    learn: [
+      "Fisiología del ejercicio aplicada al rendimiento competitivo",
+      "Planificación y periodización del entrenamiento de élite",
+      "Monitoreo de carga, recuperación y prevención de lesiones",
+      "Psicología deportiva aplicada a la alta competencia",
+    ]
+  },
+  {
+    num: "15", tag: "Gestión",
+    title: "Analista Táctico Deportivo",
+    modalidad: "Virtual",
+    img: "/images/deportes/deper (6).webp",
+    learn: [
+      "Video análisis y scouting de equipos rivales",
+      "Uso de software de análisis táctico y estadístico",
+      "Elaboración de reportes de rendimiento para cuerpos técnicos",
+      "Modelos de juego y estructuras tácticas modernas",
     ]
   },
 ];
@@ -206,9 +256,9 @@ const allTags = ["TODOS", ...new Set(courses.map(c => c.tag))];
         <!-- desc + ctas -->
         <div class="dr-hero-bottom">
           <p id="hero-desc" class="dr-hero-desc">
-            Formamos directores técnicos, preparadores físicos, árbitros, psicólogos y especialistas
-            con metodologías de nivel élite, integrados a la red de scouting profesional boliviano
-            e internacional.
+            Formamos Directores Técnicos, Preparadores Físicos, Árbitros, Psicólogos en Deportes y Especialistas Deportivos
+            con Metodologías de Nivel Élite Competitivo, Integrados a la Red de Scouting Profesional Boliviano
+            e Internacional.
           </p>
           <div id="hero-ctas" class="dr-hero-ctas">
             <a href="#cursos" class="dr-btn-primary font-display">

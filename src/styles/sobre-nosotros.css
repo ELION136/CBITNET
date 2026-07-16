@@ -264,7 +264,7 @@
 .sn-staff-name-anon { color: var(--faint); font-style: italic; font-weight: 600; }
 .sn-staff-hr   { border:none; height:2px; background:var(--gold-lt); width:32px; margin:0.9rem auto; border-radius:2px; transition:width 0.3s, background 0.3s; }
 .sn-float-card:hover .sn-staff-hr { width:52px; background:var(--gold); }
-.sn-staff-role { font-size:0.83rem; line-height:1.6; color:var(--muted); font-weight:600; margin:0; }
+.sn-staff-role { font-size:0.93rem; line-height:1.6; color:black; font-weight:600; margin:0; }
 
 /* ══════════════════════════════════
    CERTIFICACIONES · CREDENCIALES CON MEDALLA
