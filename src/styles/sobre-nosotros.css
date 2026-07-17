@@ -74,7 +74,7 @@
 .sn-hero-inner { display: flex; flex-direction: column; gap: 3rem; }
 
 .sn-hero-title {
-  font-size: clamp(3.8rem, 10vw, 8rem);
+  font-size: clamp(2.5rem, 8vw, 6rem);
   color: #fff;
   line-height: 1.02;
   margin: 0;
