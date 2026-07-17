@@ -267,180 +267,209 @@
 .sn-staff-role { font-size:0.93rem; line-height:1.6; color:black; font-weight:600; margin:0; }
 
 /* ══════════════════════════════════
-   CERTIFICACIONES · CREDENCIALES CON MEDALLA
+   CERTIFICACIONES · SELLO OFICIAL
 ══════════════════════════════════ */
 .sn-cert-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  max-width: 1080px;
+  gap: 1.75rem;
+  max-width: 1120px;
   margin: 0 auto;
 }
 
-.sn-seal-card {
+.sn-cert-card {
   position: relative;
-  background: linear-gradient(180deg, #ffffff 0%, #fbfaf6 100%);
-  border-radius: var(--r-lg);
+  background: linear-gradient(165deg, #ffffff 0%, #fbf8f0 52%, #f5ecd6 100%);
+  border-radius: 18px;
+  border: 1px solid rgba(201,153,58,0.3);
   box-shadow: var(--sh2);
-  border: 1px solid rgba(201,153,58,0.22);
-  padding: 2.1rem 1.1rem 1.5rem;
+  padding: 2.5rem 1.3rem 1.75rem;
   text-align: center;
   overflow: hidden;
-  transition: transform 0.38s cubic-bezier(0.22,1,0.36,1), box-shadow 0.38s cubic-bezier(0.22,1,0.36,1), border-color 0.38s;
+  isolation: isolate;
+  transition: transform 0.42s cubic-bezier(0.22,1,0.36,1), box-shadow 0.42s cubic-bezier(0.22,1,0.36,1), border-color 0.42s;
 }
-.sn-seal-card:hover {
-  transform: translateY(-7px);
+.sn-cert-card:hover {
+  transform: translateY(-9px) rotate(-0.35deg);
   box-shadow: var(--sh-hover);
-  border-color: rgba(201,153,58,0.5);
+  border-color: rgba(201,153,58,0.55);
 }
 
-/* thin foil hairline frame */
-.sn-seal-card::before {
+/* trama fina tipo guilloché, como el papel de un documento oficial */
+.sn-cert-card::before {
   content: '';
-  position: absolute;
-  inset: 6px;
-  border: 1px solid rgba(201,153,58,0.28);
-  border-radius: calc(var(--r-lg) - 8px);
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(45deg, rgba(201,153,58,0.07) 0 1px, transparent 1px 7px);
+  opacity: 0.6;
+  z-index: 0;
   pointer-events: none;
 }
 
-/* corner accents, like an official document */
-.sn-seal-corner {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-color: var(--gold);
-  border-style: solid;
-  opacity: 0.65;
+/* marco interior tipo cédula/certificado impreso */
+.sn-cert-card::after {
+  content: '';
+  position: absolute; inset: 7px;
+  border: 1px solid rgba(201,153,58,0.24);
+  border-radius: 12px;
   pointer-events: none;
+  z-index: 0;
 }
-.sn-corner-tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
-.sn-corner-br { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
 
-/* ribbon tails hanging behind the medal, award-style */
-.sn-seal-ribbon {
+/* esquina doblada, como papel membretado */
+.sn-cert-fold {
   position: absolute;
-  top: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 46px;
-  height: 40px;
+  top: 0; right: 0;
+  width: 30px; height: 30px;
+  background: linear-gradient(135deg, #efe2bc 45%, #d8c48f 100%);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  box-shadow: -3px 3px 6px rgba(147,112,31,0.22);
   z-index: 1;
 }
-.sn-ribbon-tail {
-  position: absolute;
-  top: 0;
-  width: 16px;
-  height: 40px;
-  background: linear-gradient(180deg, var(--blue-mid), var(--blue));
-}
-.sn-ribbon-l { left: 3px;  clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%); transform: rotate(-8deg); }
-.sn-ribbon-r { right: 3px; clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%); transform: rotate(8deg); }
 
-/* the medal: compact embossed gold seal with sweeping mirror-shine */
-.sn-seal {
+/* estampa de tinta tipo "vigente" */
+.sn-cert-stamp {
+  position: absolute;
+  top: 16px; left: 14px;
+  z-index: 2;
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dk);
+  border: 1.4px dashed rgba(201,153,58,0.65);
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+  background: rgba(201,153,58,0.07);
+  transform: rotate(-7deg);
+}
+
+/* ── medalla ── */
+.sn-cert-medal {
   position: relative;
   z-index: 2;
-  width: 84px;
-  height: 84px;
-  margin: 0.6rem auto 1.1rem;
+  width: 94px;
+  height: 94px;
+  margin: 0.65rem auto 1.15rem;
+}
+
+.sn-cert-rosette {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, var(--gold-hi) 0deg 4deg, var(--gold) 4deg 8deg);
+  box-shadow:
+    0 6px 16px rgba(147,112,31,0.34),
+    inset 0 0 0 3px #fff,
+    inset 0 0 0 5px rgba(201,153,58,0.45);
+}
+.sn-cert-card:hover .sn-cert-rosette {
+  animation: sn-rosette-spin 7s linear infinite;
+}
+
+.sn-cert-medal-core {
+  position: absolute;
+  inset: 15px;
   border-radius: 50%;
   overflow: hidden;
-  background: radial-gradient(circle at 32% 26%, var(--gold-hi) 0%, var(--gold) 52%, var(--gold-dk) 100%);
+  background: radial-gradient(circle at 32% 26%, var(--gold-hi) 0%, var(--gold) 55%, var(--gold-dk) 100%);
   box-shadow:
-    0 6px 16px rgba(147,112,31,0.36),
     inset 0 2px 4px rgba(255,255,255,0.55),
     inset 0 -3px 6px rgba(0,0,0,0.28);
-  transition: transform 0.38s cubic-bezier(0.22,1,0.36,1);
-}
-.sn-seal-card:hover .sn-seal { transform: scale(1.06); }
-
-.sn-seal-ring {
-  position: absolute;
-  inset: 6px;
-  border-radius: 50%;
-  border: 1.2px dashed rgba(255,255,255,0.55);
-  pointer-events: none;
-}
-
-.sn-seal-inner {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2px;
   color: #fff;
+  transition: transform 0.38s cubic-bezier(0.22,1,0.36,1);
 }
-.sn-seal-year {
-  font-size: 0.58rem;
+.sn-cert-card:hover .sn-cert-medal-core { transform: scale(1.05); }
+
+.sn-cert-medal-core::after {
+  content: '';
+  position: absolute;
+  top: -70%; left: -60%;
+  width: 55%; height: 240%;
+  background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.05) 35%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0.05) 65%, transparent 100%);
+  transform: rotate(18deg);
+  animation: sn-seal-shine 3.4s ease-in-out infinite;
+  animation-delay: var(--shine-delay, 0s);
+  pointer-events: none;
+}
+
+.sn-cert-year {
+  font-size: 0.6rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: rgba(255,255,255,0.92);
   text-shadow: 0 1px 1px rgba(0,0,0,0.25);
 }
 
-/* mirror / specular sweep — the "reflejo de espejo" */
-.sn-seal::after {
-  content: '';
+.sn-cert-ribbon-tail {
   position: absolute;
-  top: -70%;
-  left: -60%;
-  width: 55%;
-  height: 240%;
-  background: linear-gradient(
-    115deg,
-    transparent 0%,
-    rgba(255,255,255,0.05) 35%,
-    rgba(255,255,255,0.85) 50%,
-    rgba(255,255,255,0.05) 65%,
-    transparent 100%
-  );
-  transform: rotate(18deg);
-  animation: sn-seal-shine 3.4s ease-in-out infinite;
-  animation-delay: var(--shine-delay, 0s);
-  pointer-events: none;
+  top: 76%;
+  width: 14px;
+  height: 30px;
+  background: linear-gradient(180deg, var(--blue-mid), var(--blue));
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
+  z-index: 1;
 }
-@keyframes sn-seal-shine {
-  0%   { left: -60%; opacity: 0; }
-  6%   { opacity: 1; }
-  32%  { left: 130%; opacity: 0; }
-  100% { left: 130%; opacity: 0; }
+.sn-cert-tail-l { left: 21px; transform: rotate(-11deg); transform-origin: top center; }
+.sn-cert-tail-r { right: 21px; transform: rotate(11deg); transform-origin: top center; }
+
+/* línea perforada, como el talón de una entrada, entre la medalla y los datos */
+.sn-cert-divider {
+  position: relative;
+  z-index: 2;
+  width: 60%;
+  height: 1px;
+  margin: 0 auto 1.1rem;
+  background-image: repeating-linear-gradient(90deg, rgba(201,153,58,0.55) 0 4px, transparent 4px 9px);
 }
 
-.sn-seal-body { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
-.sn-seal-type {
+.sn-cert-body { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
+.sn-cert-type {
   display: block;
   font-size: 0.56rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gold-dk);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
 }
-.sn-seal-title {
-  font-size: 0.92rem;
+.sn-cert-title {
+  font-size: 0.94rem;
   color: var(--blue);
-  margin: 0 0 0.55rem;
+  margin: 0 0 0.7rem;
   letter-spacing: 0.01em;
 }
-.sn-seal-code {
+.sn-cert-code {
   display: inline-block;
   font-size: 0.7rem;
   font-weight: 800;
-  letter-spacing: 0.02em;
-  color: #fff;
-  background: linear-gradient(135deg, var(--blue), var(--blue-mid));
-  padding: 0.32rem 0.85rem;
-  border-radius: 50px;
-  box-shadow: var(--sh1);
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--blue);
+  border: 1.4px dashed rgba(26,75,140,0.4);
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(26,75,140,0.03);
+}
+
+@keyframes sn-seal-shine {
+  0%   { left: -60%; opacity: 0; }
+  6%   { opacity: 1; }
+  32%  { left: 130%; opacity: 0; }
+  100% { left: 130%; opacity: 0; }
+}
+@keyframes sn-rosette-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sn-seal::after { animation: none; opacity: 0; }
+  .sn-cert-medal-core::after { animation: none; opacity: 0; }
+  .sn-cert-card:hover .sn-cert-rosette { animation: none; }
 }
 
 /* ══════════════════════════════════

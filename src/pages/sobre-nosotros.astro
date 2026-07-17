@@ -221,7 +221,7 @@ const sellos = [
     </section>
 
     <!-- ══════════════════════════════════
-         CERTIFICACIONES · SELLOS OFICIALES
+         CERTIFICACIONES · SELLO OFICIAL
     ══════════════════════════════════ -->
     <section class="sn-section sn-soft-bg" id="certificacion">
       <div class="sn-container">
@@ -234,30 +234,29 @@ const sellos = [
 
         <div class="sn-cert-grid">
           {sellos.map((cert, i) => (
-            <div class={`sn-seal-card sn-reveal sn-s${i % 3}`}>
-              <div class="sn-seal-corner sn-corner-tl" aria-hidden="true"></div>
-              <div class="sn-seal-corner sn-corner-br" aria-hidden="true"></div>
+            <div class={`sn-cert-card sn-reveal sn-s${i % 3}`}>
+              <div class="sn-cert-fold" aria-hidden="true"></div>
+              <span class="sn-cert-stamp">Vigente</span>
 
-              <div class="sn-seal-ribbon" aria-hidden="true">
-                <span class="sn-ribbon-tail sn-ribbon-l"></span>
-                <span class="sn-ribbon-tail sn-ribbon-r"></span>
-              </div>
-
-              <div class="sn-seal" style={`--shine-delay:${i * 0.7}s`}>
-                <div class="sn-seal-ring"></div>
-                <div class="sn-seal-inner">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <div class="sn-cert-medal" style={`--shine-delay:${i * 0.7}s`}>
+                <div class="sn-cert-rosette" aria-hidden="true"></div>
+                <div class="sn-cert-medal-core">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 2l7.5 3v6c0 5-3.2 8.7-7.5 11-4.3-2.3-7.5-6-7.5-11V5L12 2z"/>
                     <path d="M9 12l2 2 4-4"/>
                   </svg>
-                  <span class="sn-seal-year">{cert.year}</span>
+                  <span class="sn-cert-year">{cert.year}</span>
                 </div>
+                <span class="sn-cert-ribbon-tail sn-cert-tail-l" aria-hidden="true"></span>
+                <span class="sn-cert-ribbon-tail sn-cert-tail-r" aria-hidden="true"></span>
               </div>
 
-              <div class="sn-seal-body">
-                <span class="sn-seal-type">{cert.type}</span>
-                <h3 class="sn-seal-title font-display">{cert.title}</h3>
-                <span class="sn-seal-code">{cert.code}</span>
+              <div class="sn-cert-divider" aria-hidden="true"></div>
+
+              <div class="sn-cert-body">
+                <span class="sn-cert-type">{cert.type}</span>
+                <h3 class="sn-cert-title font-display">{cert.title}</h3>
+                <span class="sn-cert-code">{cert.code}</span>
               </div>
             </div>
           ))}
