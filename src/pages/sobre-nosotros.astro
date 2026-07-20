@@ -21,11 +21,13 @@ const personal = [
   { name: "Roberto Torico Ph.D",                       role: "Coordinador de Programas Económicos y Financieros",             badge: "Finanzas",      image: "/images/per11.webp" },
   { name: "Msc. Lic. Karina Negron Montaño",      role: "Coordinadora de Marketing Digital",                              badge: "Marketing",     image: "/images/per9.webp" },
   { name: "Carmen Gloria Aguilar Solar Ph.D",     role: "Coordinadora de Programas de Fisioterapia, Salud y Kinesiología", badge: "Salud",         image: "/images/per23.webp" },
-  { name: "Nombre Anónimo",                       role: "Coordinador de Programas Deportivos",                           badge: "Deportes",      image: "/images/ano1.webp" },
-  { name: "Ing. Jorge",                       role: "Coordinador de Programas de la Fundación",                      badge: "Fundación",     image: "/images/per7.webp" },
+  { name: "Msc. Lic. Manuel Vargas Zapata",                       role: "Coordinador de Programas Deportivos",                           badge: "Deportes",      image: "/images/per32.webp" },
+  { name: "Ing. Jhon Calsina Alanoca",                       role: "Coordinador de Programas Fundación",                      badge: "Fundación",     image: "/images/per31.webp" },
   { name: "Ing. Juan Jimmy Beller Torrico",                       role: "Coordinador de Gestión de Proyecto de Desarrollo",                              badge: "Proyectos",     image: "/images/per3.webp" },
   { name: "Msc. Ing. Sergio Fernando Mendizabal Gomez ",                       role: "Coordinador de Seguridad y Salud Laboral",                      badge: "Seguridad",     image: "/images/per22.webp" },
-  { name: "Msc. Ing. Maria Fernanda Martinez Buais",                       role: "Coordinadora de Gestion Medio Ambiente",                      badge: "Ambiente",     image: "/images/per21.webp" }
+  { name: "Msc. Ing. Maria Fernanda Martinez Buais",                       role: "Coordinadora de Gestion Medio Ambiente",                      badge: "Ambiente",     image: "/images/per21.webp" },
+  { name: "Ing. Melani Karina Vargas Zapata",                       role: "Coordinadora de Protocolo y Organización",                      badge: "Protocolo",     image: "/images/per30.webp" }
+  
   // 👉 Para reemplazar una foto: subí el archivo a /public/images/personal/ con
   //    ese mismo nombre. Si el archivo no existe todavía, la card cae sola en
   //    la imagen genérica /images/personal/default-avatar.svg (no se rompe el diseño).
@@ -33,9 +35,9 @@ const personal = [
 
 const sellos = [
   { title: "INFOCADE",     type: "Resolución Ministerial",     code: "RM. 0148/2025" },
-  { title: "CENACAP",      type: "Resolución Ministerial",     code: "RM. 0286/2026" },
-  { title: "FUNDECT",      type: "Resolución Administrativa",  code: "R.ADM. 078/96" },
-  { title: "NUEVO SIGLO",  type: "Resolución Administrativa",  code: "R.ADM. 224/77" }
+  { title: "CENACAP",      type: "Resolución Ministerial",     code: "RM. 0286/2025" },
+  { title: "FUNDECT",      type: "Resolución Administrativa",  code: "R.ADM. 078/1996" },
+  { title: "NUEVO SIGLO",  type: "Resolución Administrativa",  code: "R.ADM. 224/1997" }
 ].map(c => ({ ...c, year: c.code.split('/').pop() }));
 ---
 
